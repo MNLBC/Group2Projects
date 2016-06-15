@@ -34,7 +34,7 @@ public class w1d3_3 {
    }
    
    public static boolean validateEmail(String email){
-      Pattern p = Pattern.compile("([A-Za-z0-9_.]+)@([A-Za-z0-9]+).com");
+      Pattern p = Pattern.compile("^([A-Za-z0-9_.]+)@([A-Za-z0-9]+).com$");
       Matcher m = p.matcher(email);
       if (m.find()) {
         return true;
@@ -44,7 +44,7 @@ public class w1d3_3 {
    }
    
    public static boolean validatePhone(String phone){
-      Pattern p = Pattern.compile("09([0-9]{2})-([0-9]{3})-([0-9]{4})");
+      Pattern p = Pattern.compile("^09([0-9]{2})-([0-9]{3})-([0-9]{4})$");
       Matcher m = p.matcher(phone);
       if (m.find()) {
         return true;
@@ -58,7 +58,7 @@ public class w1d3_3 {
    }
    
    public static String getMonth(String date){
-      Pattern p = Pattern.compile("([A-Za-z0-9]{3}) ([A-Za-z]{3}) ([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) ([A-Za-z]{3}) ([0-9]{4})");
+      Pattern p = Pattern.compile("^([A-Za-z0-9]{3}) ([A-Za-z]{3}) ([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) ([A-Za-z]{3}) ([0-9]{4})$");
       Matcher m = p.matcher(date);
       if (m.find()) {
          return m.group(2);
