@@ -44,7 +44,7 @@ public class w1d3_3 {
    }
    
    public static boolean validatePhone(String phone){
-      Pattern p = Pattern.compile("(0)([0-9]{3})-([0-9]{3})-([0-9]{4})");
+      Pattern p = Pattern.compile("09([0-9]{2})-([0-9]{3})-([0-9]{4})");
       Matcher m = p.matcher(phone);
       if (m.find()) {
         return true;
