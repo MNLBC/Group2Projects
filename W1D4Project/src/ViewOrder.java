@@ -95,7 +95,11 @@ public class ViewOrder {
       quantity = order.getQuantity();
       price = order.getPrice();
       for (int i = 0; i < product.size(); i++) {
-         System.out.println(product.get(i) + "\t \t " + quantity.get(i) + "\t \t " + price.get(i));
+         double tempPrice = 0;
+         for(int j = 0; j < quantity.get(i); j++){
+            tempPrice += price.get(i);
+         }
+         System.out.println(product.get(i) + "\t \t " + quantity.get(i) + "\t \t " + tempPrice);
          temptotal = temptotal + (price.get(i)*quantity.get(i));
       }
       System.out.println("TOTAL \t \t \t \t" + temptotal);
