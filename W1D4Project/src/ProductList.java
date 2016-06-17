@@ -133,9 +133,7 @@ public class ProductList {
          }
          case 2: {
             order = new Order();
-            products = new ArrayList<String>();
-            quantity = new ArrayList<Integer>();
-            price = new ArrayList<Double>();
+            
             orderlist = new ArrayList<Order>();
             if(cust.getOrders() == null)
                order.setId(0);
@@ -147,6 +145,9 @@ public class ProductList {
                order.setProduct(products);
                order.setQuantity(quantity);
                order.setPrice(price);
+               products = new ArrayList<String>();
+               quantity = new ArrayList<Integer>();
+               price = new ArrayList<Double>();
 //               orderlist.add(order);
 //               cust.setOrders(orderlist);
                cust.addOrder(order);

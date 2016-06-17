@@ -107,7 +107,7 @@ public class CheckoutUI {
       ord.setChange(change);
       ord.setStatus("Delivery out of storage");
       if(direct){
-         cust.getOrders().add(ord);
+         //cust.getOrders().add(ord);
       }
    }
 
