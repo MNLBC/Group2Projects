@@ -24,7 +24,6 @@ public class ProductList {
    public static void displayProductList(Customer customer){
       cust = customer;
       List<Product> productlist = store.getProducts();
-      
       System.out.println("====================");
       System.out.println("\t \t PRODUCT LIST");
       System.out.println("ID/ITEM \t \t QTY \t \t PRICE");

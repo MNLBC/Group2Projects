@@ -28,22 +28,24 @@ public class LoginCustomer
 			System.out.println("Account is invalid. Please log-in again.");
 			System.out.println("For customers who have not registered yet: enter '0'. To continue: enter '1'");
 			choice = scanner.nextInt();
+			Customer cust = new Customer();
+			MainMenu mm = new MainMenu(store);
 			
 			if (choice==0)
 			{
-				register.signUp(store);
+			   cust = register.signUp(store);
 			}
 			else if (choice==1)
 			{
-			   Customer cust = new Customer();
-			   MainMenu mm = new MainMenu(store);
 			   cust = login(store);
-			   if(cust!=null){
-		         mm.displayMainMenu(cust);
-		      }
-				System.out.println();
-			}	
+			}
+
+         if(cust!=null){
+            mm.displayMainMenu(cust);
+         }
+         System.out.println();
 		}
+		
 		else
 		{
 		   return store.getCustomerByLogin(userName, userPassword);
