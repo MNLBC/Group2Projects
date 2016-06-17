@@ -12,6 +12,7 @@ public class ProductList {
    static Customer cust;
    static Order order;
    static int itemqty;
+   static List<Order> orderlist = new ArrayList<Order>();
    
    public ProductList(Order order){
       this.order = order;
@@ -78,7 +79,18 @@ public class ProductList {
    
    public static int numberOfItems(){
       System.out.print("Number of items: ");
-      int qty = scanner.nextInt();
+      boolean validNumber = false;
+      int qty = 0;
+      while (!validNumber){
+    	  scanner = new Scanner(System.in);
+      try{
+    	  qty = scanner.nextInt();
+    	  validNumber = true;
+      }
+      catch(Exception e){
+    	  System.out.println("Invalid quantity");
+      }
+      }
       return qty;
    }
    
@@ -121,8 +133,12 @@ public class ProductList {
          }
          case 2: {
             order = new Order();
+            products = new ArrayList<String>();
+            quantity = new ArrayList<Integer>();
+            price = new ArrayList<Double>();
+            orderlist = new ArrayList<Order>();
             if(cust.getOrders() == null)
-               order.setId(1);
+               order.setId(0);
             else{
                products.add(selecteditem.name);
                quantity.add(itemqty);
@@ -131,6 +147,9 @@ public class ProductList {
                order.setProduct(products);
                order.setQuantity(quantity);
                order.setPrice(price);
+//               orderlist.add(order);
+//               cust.setOrders(orderlist);
+               cust.addOrder(order);
                ViewOrder vOrder = new ViewOrder(order,cust,store);
                vOrder.main();
             }
@@ -188,7 +207,10 @@ List<Product> productlist = store.getProducts();
       boolean validqty = false;
       validateQuantity:
       while(!validqty){
+
          int itemqty = numberOfItems();
+    	
+    	
          selecteditem = store.getProduct(itemno);
          if(selecteditem.quantity >= itemqty){
             selecteditem.quantity = selecteditem.quantity - itemqty;

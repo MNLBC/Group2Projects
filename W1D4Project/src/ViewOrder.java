@@ -65,7 +65,7 @@ public class ViewOrder {
             order.setTotal(temptotal);
             List<Order> orderList = new ArrayList<Order>();
             orderList.add(order);
-            customer.setOrders(orderList);
+//            customer.setOrders(orderList);
             refresh=true;
             MainMenu mm = new MainMenu(store);
             mm.displayMainMenu(customer);
@@ -100,6 +100,7 @@ public class ViewOrder {
       product = order.getProduct();
       quantity = order.getQuantity();
       price = order.getPrice();
+      temptotal = 0;
       for (int i = 0; i < product.size(); i++) {
          double tempPrice = 0;
          for(int j = 0; j < quantity.get(i); j++){
