@@ -66,7 +66,6 @@ public class App {
       MainMenu mm = new MainMenu(store);
       customer = dp.displayDefaultPage();
       if(customer!=null){
-         System.out.println("====================");
          mm.displayMainMenu(customer);
       }
    }

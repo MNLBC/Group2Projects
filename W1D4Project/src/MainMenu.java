@@ -74,6 +74,7 @@ public class MainMenu {
 
    private static void showUI() {
       // clearScreen();
+      System.out.println("====================");
       System.out.println("Actions:");
       System.out.println("1. Pending Orders");
       System.out.println("2. Browse Products");

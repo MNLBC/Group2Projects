@@ -1,8 +1,13 @@
-/RegisterCustomer.class
-/LoginCustomer.class
+/App.class
 /CheckoutUI.class
-/MainMenu.class
-/ShowPending.class
+/Customer.class
 /DefaultPage.class
+/LoginCustomer.class
+/MainMenu.class
+/Order.class
+/Product.class
 /ProductList.class
+/RegisterCustomer.class
+/ShowPending.class
+/Store.class
 /ViewOrder.class

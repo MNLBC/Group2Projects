@@ -35,7 +35,12 @@ public class LoginCustomer
 			}
 			else if (choice==1)
 			{
-				login(store);
+			   Customer cust = new Customer();
+			   MainMenu mm = new MainMenu(store);
+			   cust = login(store);
+			   if(cust!=null){
+		         mm.displayMainMenu(cust);
+		      }
 				System.out.println();
 			}	
 		}

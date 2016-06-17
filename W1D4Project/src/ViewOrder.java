@@ -10,6 +10,8 @@ public class ViewOrder {
    public static double temptotal;
    public static int input; 
    public static Order order;
+   public static Order orderTemp;
+   public static boolean refresh = false;
    static Store store;
    static Customer customer;
    
@@ -49,6 +51,8 @@ public class ViewOrder {
    private static void optionsMenu() {
       // TODO Auto-generated method stub
       Scanner scanner = new Scanner(System.in);
+      orderTemp = order;
+      System.out.println("====================");
       System.out.println("[1] Save order");
       System.out.println("[2] Check out");
       System.out.println("[3] Back");
@@ -62,6 +66,7 @@ public class ViewOrder {
             List<Order> orderList = new ArrayList<Order>();
             orderList.add(order);
             customer.setOrders(orderList);
+            refresh=true;
             MainMenu mm = new MainMenu(store);
             mm.displayMainMenu(customer);
             break;
@@ -88,6 +93,7 @@ public class ViewOrder {
    private static void viewOrder(Order order) {
       // TODO Auto-generated method stub
       String sample =    "                                  ";
+      System.out.println("====================");
       System.out.println("\t \t ORDERS");
       System.out.println("ITEM \t | \t QTY \t | \t PRICE");
       System.out.println("----------------------------------");

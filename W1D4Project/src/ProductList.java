@@ -25,6 +25,7 @@ public class ProductList {
       cust = customer;
       List<Product> productlist = store.getProducts();
       
+      System.out.println("====================");
       System.out.println("\t \t PRODUCT LIST");
       System.out.println("ID/ITEM \t \t QTY \t \t PRICE");
       System.out.println("----------------------------------");
@@ -102,6 +103,8 @@ public class ProductList {
       
    
    public static void optionMenu(Product selecteditem){
+      System.out.println("Order added");
+      System.out.println("====================");
       System.out.println("[1] Order more");
       System.out.println("[2] View order");
       System.out.println("[3] Reset");

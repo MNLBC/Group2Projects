@@ -15,6 +15,7 @@ public class ShowPending {
 		// TODO Auto-generated method stub
 		customer = cust;
 		boolean orderValid = false;
+		System.out.println("====================");
 		System.out.println("Pending Orders:");
 		System.out.println("ID\t | \t Products \t | \t  Status ");
 		if(getOrders().isEmpty()){
