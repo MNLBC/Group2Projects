@@ -59,10 +59,24 @@ public class Worker implements Comparable<Object> {
       workers.add(new Worker("Alex", 22, 12000));
 
       // #2 Add One Worker before Jame
-      workers.add(1, new Worker("Steven", 24, 15000));
+      int jameIndex = 0;
+      for(int a = 0;a<workers.size();a++){
+         if(workers.get(a).getName().equals("Jame")){
+            jameIndex=a;
+         }
+      }
+      workers.add(jameIndex, new Worker("Steven", 24, 15000));
+//      workers.add(1, new Worker("Steven", 24, 15000)); // Direct add
 
       // #3 Remove the worker Alex's Info
-      workers.remove(3);
+      int alexIndex = 0;
+      for(int a = 0;a<workers.size();a++){
+         if(workers.get(a).getName().equals("Alex")){
+            alexIndex=a;
+         }
+      }
+      workers.remove(alexIndex);
+//      workers.remove(3); // Direct remove
 
       // #4 Print out workers info using For
       System.out.println("For Loop:");
