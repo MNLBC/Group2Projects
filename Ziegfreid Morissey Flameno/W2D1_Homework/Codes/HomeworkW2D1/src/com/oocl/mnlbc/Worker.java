@@ -116,7 +116,7 @@ public class Worker implements Comparable<Object> {
       }
    }
 
-   // #6 Over write equals method of class Worker
+   // #6 Override equals method of class Worker (hashCode() will also be overridden)
    @Override
    public int hashCode() {
       final int prime = 31;
@@ -138,14 +138,8 @@ public class Worker implements Comparable<Object> {
       if (getClass() != obj.getClass())
          return false;
       Worker other = (Worker) obj;
-      if (age != other.age)
-         return false;
-      if (name == null) {
-         if (other.name != null)
-            return false;
-      } else if (!name.equals(other.name))
-         return false;
-      if (Double.doubleToLongBits(salary) != Double.doubleToLongBits(other.salary))
+      if (age != other.age || name != other.name
+         || Double.doubleToLongBits(salary) != Double.doubleToLongBits(other.salary))
          return false;
       return true;
    }
