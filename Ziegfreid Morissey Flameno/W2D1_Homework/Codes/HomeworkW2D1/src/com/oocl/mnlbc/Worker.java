@@ -47,7 +47,7 @@ public class Worker implements Comparable<Object> {
    }
 
    public void work() {
-      System.out.println(name + "is working");
+      System.out.println(name + " is working");
    }
 
    public static void main(String[] args) {
@@ -72,14 +72,12 @@ public class Worker implements Comparable<Object> {
          System.out.print(w.salary + "\n");
       }
 
-      // #5 Print out workers info using iterator
+      // #5 Print out work method using iterator
       System.out.println("\nIterator:");
       Iterator<Worker> i = workers.iterator();
       while (i.hasNext()) {
          Worker w = (Worker) i.next();
-         System.out.print(w.name + " ");
-         System.out.print(w.age + " ");
-         System.out.print(w.salary + "\n");
+         w.work();
       }
 
       // #7 Sort all workers from high to low by salary (see also compareTo below)
