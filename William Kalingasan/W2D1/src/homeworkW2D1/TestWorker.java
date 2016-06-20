@@ -1,6 +1,7 @@
 package homeworkW2D1;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -63,9 +64,14 @@ public class TestWorker{
       }
       Set keys = mapWorker.keySet();
       Iterator iKeys = keys.iterator();
+      List<String> list = new ArrayList<String>();
       while(iKeys.hasNext()){
          Object key = iKeys.next();
-         System.out.println("Name: " + mapWorker.get(key) + "\tSalary: " + key);
+         list.add("Name: " + mapWorker.get(key) + "\tSalary: " + key);
+      }
+      Collections.reverse(list);
+      for(int i = 0; i < list.size(); i++){
+         System.out.println(list.get(i));
       }
       
       // Item 8
