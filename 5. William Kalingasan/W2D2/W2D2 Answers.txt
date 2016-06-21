@@ -1,0 +1,14 @@
+1. A,D
+2. A,C
+3. B,C
+4. refer to Homework.java (W2D2.sql is just for reference)
+5. It is used when we donot know the driver class name, therefore we just pass string name and load
+   class in the memory.
+6. Both execute queries. Their difference is that PreparedStatement is used for commonly used queries
+   so that when the said query is run again, it would run faster than if it were ran using Statement
+7. ResultSet
+	rs.close();
+   Statement
+	stmt.close();
+   Connection
+	conn.close();
