@@ -38,17 +38,15 @@ class Booking extends Thread {
 				message = reader.readLine();
 				// Client will quit if client send "bye", and print "bye" to in the client
 
-				int remainingTicket = 
-               this.tickets.setOriginalTicket(this.tickets.getOriginalTicket()-(Integer.parseInt(message)));
 				if (message.equals("bye")) {
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("bye");
 					writer.flush();
 					continue;
-				}if (Integer.parseInt(message) > remainingTicket) {
-				   writer.println("Tickets ordered is more than 500");
 				}
 
+				int remainingTicket = 
+				   this.tickets.setOriginalTicket(this.tickets.getOriginalTicket()-(Integer.parseInt(message)));
 				// Print all the message to all clients, Group chat
 				for (int i = 0; i < socketList.size(); i++) {
 					writer = new PrintWriter(socketList.get(i)
