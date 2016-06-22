@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 
+/**
+ * Client thread
+ * @author FLAMEZI2
+ *
+ */
 class ReadBooking extends Thread {
 
    private Socket socket;
@@ -13,6 +18,9 @@ class ReadBooking extends Thread {
       this.socket = socket;
    }
 
+   /**
+    * Run method for client thread. Gets client input
+    */
    public void run() {
       BufferedReader reader = null;
       try {
