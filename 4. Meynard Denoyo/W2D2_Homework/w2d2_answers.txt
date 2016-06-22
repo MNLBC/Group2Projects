@@ -1,0 +1,20 @@
+1. A,D
+2. A,C
+3. B,C
+
+4. please refer to number 4 folder
+
+5. Class.forName() causes the class to load at the beginning. It is
+used by JDBC drivers since DriverManager class has to know which
+database driver will be used when creating a connection to the
+database.
+
+6. PreparedStatement and Statement is similar to each other. However,
+PreparedStatement can have parameterized input values, which is good
+against SQL injection.
+
+7. 
+
+ResultSet:	rs.close();
+Statement:	stmt.close();
+Connection:	conn.close();
