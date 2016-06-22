@@ -6,25 +6,28 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingServer {
 
-   class Tickets{
-      private int originalTicket;
-      
-      public Tickets(int getTicket)
-      {
-         this.originalTicket=getTicket;
-      }
+class Ticket {
+   private int originalTicket;
+   
+   Ticket(int value)
+   {
+     this.originalTicket=value;
    }
-	
-      public int getOriginalTicket() {
-         return originalTicket;
-      }
+    
+   public int getOriginalTicket() {
+      return originalTicket;
+   }
 
-      
-      public void setOriginalTicket(int originalTicket) {
-         this.originalTicket = originalTicket;
-      }
+   
+   public int setOriginalTicket(int originalTicket) {
+      this.originalTicket = originalTicket;
+      return originalTicket;
+   }
+
+}
+
+public class BookingServer {
 
    /**
 	 * Description
@@ -33,6 +36,7 @@ public class BookingServer {
 	 */
 	public void startWork() throws IOException {
 		ServerSocket serverSocket = new ServerSocket(2345);
+		Ticket tickets = new Ticket(500);
 		List<Socket> socketList = new ArrayList<Socket>();
 		Socket socket = null;
 		int count = 0;
@@ -44,7 +48,7 @@ public class BookingServer {
 			// Add any connected client to the server
 			socketList.add(socket);
 			// Will open a new thread to process, once a new client connected.
-			new Booking(ticket, count, socket, socketList).start();
+			new Booking(tickets, count, socket, socketList).start();
 		}
 	}
 

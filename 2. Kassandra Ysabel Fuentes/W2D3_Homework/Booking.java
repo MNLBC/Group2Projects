@@ -9,6 +9,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * 	
  */
@@ -16,9 +17,9 @@ class Booking extends Thread {
 	private Socket socket;
 	private List<Socket> socketList;
 	private int count;
-	private int tickets;
+	private Ticket tickets;
 
-	public Booking(int tickets, int count, Socket socket, List<Socket> socketList) {
+	public Booking(Ticket tickets, int count, Socket socket, List<Socket> socketList) {
 		this.tickets = tickets;
 		this.count = count;
 		this.socket = socket;
@@ -37,22 +38,22 @@ class Booking extends Thread {
 				message = reader.readLine();
 				// Client will quit if client send "bye", and print "bye" to in the client
 
+				int remainingTicket = 
+               this.tickets.setOriginalTicket(this.tickets.getOriginalTicket()-(Integer.parseInt(message)));
 				if (message.equals("bye")) {
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("bye");
 					writer.flush();
 					continue;
-				}if (Integer.parseInt(message) < 500) {
+				}if (Integer.parseInt(message) > remainingTicket) {
 				   writer.println("Tickets ordered is more than 500");
 				}
 
-            int remainingTickets = this.tickets;
-            remainingTickets = this.tickets-Integer.parseInt(message);
 				// Print all the message to all clients, Group chat
 				for (int i = 0; i < socketList.size(); i++) {
 					writer = new PrintWriter(socketList.get(i)
 							.getOutputStream());
-					writer.println(remainingTickets + " tickets left");
+					writer.println( remainingTicket + " tickets left");
 					writer.flush();
 				}
 
