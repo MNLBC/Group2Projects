@@ -1,0 +1,41 @@
+.logo {
+	height: 150;
+	width: 200;
+	margin-left:45%;
+	top:0;
+	position:fixed;
+}
+.box {
+	background-color: white;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -45%);
+	height: absolute;
+	position: fixed;
+	width: 325px;
+	padding: 10px;
+	font-family: Arial;
+	font-size: 17px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+.signup {
+	background-color: #F0D878;
+	margin-left:4%;
+	width:295px;
+	height:35px;
+}
+
+.label {
+	margin-left: 10px;
+}
+
+footer {
+	text-align: center;
+	width: 100%;
+	position:fixed;
+	bottom:0;
+	left:0;
+	font-family: Arial;
+	color: black;
+}
