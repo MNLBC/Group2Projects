@@ -1,0 +1,44 @@
+@CHARSET "ISO-8859-1";
+
+.form {
+
+line-height: 30px;
+height: 40%;
+width: 25%;
+padding: 20px;
+padding-right: 30px;
+border-radius: 5px;
+border: 2px solid #C4C4C4;
+font-family: "Arial";
+border-radius: 3px;
+text-align: left;
+}
+
+}
+
+#contents {
+margin-right: 5px;
+margin-left: 5px;
+}
+
+input#submit {
+background-color:orange;
+}
+
+h2 {
+font-family: "Arial";
+text-align: left;
+color:
+}
+
+#button {
+background: #f3d078;
+font-size: 14px;
+background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+height: 37px;
+width: 325px;
+background-color: #EDCA71;
+border-radius: 10px;
+font-size: 14px;
+}

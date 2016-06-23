@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+@import url("Logintyle.css");
+
+
+/* same as */
+@import "LoginStyle.css";
+</style>
+
+<meta charset="ISO-8859-1">
+<title>Amazon Login</title>
+</head>
+	<body id = "body">
+	<center>
+	<div id="img">
+	<center>
+	<img src="AmazonLogo.jpg"  height="85" width="170">
+	</center>
+	</div>
+	<div class="form">
+<h2>Create Account</h2>
+<div id="contents">
+<form>
+Your name<br> <input type="text" name="fullname" size="50"><br>
+Email<br> <input type="text" name="email" size="50"><br>
+Password<br> <input type="password" placeholder="at least 6 characters" name="password" size="50"><br>
+Password Again<br> <input type="password" name="password" size="50"><br><br>
+<input id="button" type="button" value="Create your Amazon account" > 
+<p>By creating an account, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice.</a>
+<br><br>Already have an account? <a href="#">Sign-in</a></p>
+
+</form>
+</div>
+
+</div>
+<footer>
+<center>
+<hr width="600px">
+<p
+style="font-family: Tahoma; font-size: 13px; text-decoration: none;">
+<a href="link here" style="text-decoration: none;">Conditions of
+Use</a> <a href="link here" style="text-decoration: none;"> Privacy
+Notice</a> <a href="link here" style="text-decoration: none;"> Help
+</a>
+</p>
+<p style="font-family: Tahoma; color: gray; font-size: 12px;">
+&copy; 1996-2016, Amazon.com, Inc. or its affiliates</p>
+</center>
+</footer>
+</center>
+</body>
+<script>
+document.getElementById('body').onclick = function() { 
+alert('You pressed the Left Button!') ;
+}
+
+document.getElementById('body').oncontextmenu = function() { 
+
+  alert('You pressed the Right Button!') ;}
+  
+  function printMousePos(event) {
+alert("clientX: " + event.clientX
++ " - clientY: " + event.clientY);
+
+}
+  document.addEventListener("click", printMousePos);
+
+</script>
+
+
+
+</html>
