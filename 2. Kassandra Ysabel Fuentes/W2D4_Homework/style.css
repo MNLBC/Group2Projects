@@ -2,9 +2,11 @@
 	height: 150;
 	width: 200;
 	margin-left:45%;
-	top:0;
+	top:0px;
 	position:fixed;
 }
+
+
 .box {
 	background-color: white;
 	top: 40%;
@@ -14,13 +16,14 @@
 	position: fixed;
 	width: 325px;
 	padding: 10px;
-	font-family: Arial;
+	font-family: Arial,sans-serif;
 	font-size: 17px;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .signup {
-	background-color: #F0D878;
+	background-color: #F0C14B;
+	border-radius: 4px;
 	margin-left:4%;
 	width:295px;
 	height:35px;
@@ -30,12 +33,20 @@
 	margin-left: 10px;
 }
 
+a:link {
+    color: #006C0;
+}
+
+a:hover {
+    color: #F0C14B;
+}
+
 footer {
 	text-align: center;
 	width: 100%;
 	position:fixed;
 	bottom:0;
 	left:0;
-	font-family: Arial;
+font-family: Arial,sans-serif;
 	color: black;
 }
