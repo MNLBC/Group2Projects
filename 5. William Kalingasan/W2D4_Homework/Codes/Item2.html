@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<title>Item 2</title>
+	</head>
+	<body>
+		<div onmousedown="FindMouse(event)">
+			<center>Click anywhere to find out what mouse button you clicked</center>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br>
+		</div>
+		<script style = "text/javascript">
+			function FindMouse(event) {
+				if(event.button == "0"){
+					alert("You pressed button left mouse button\nX: " + event.clientX + " Y: " + event.clientY)
+				}
+				else if(event.button == "1"){
+					alert("You pressed button middle mouse button\nX: " + event.clientX + " Y: " + event.clientY)
+				}
+				else if(event.button == "2"){
+					alert("You pressed button right mouse button\nX: " + event.clientX + " Y: " + event.clientY)
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+body{
+	font-family:Arial;
+}
+span{
+	font-size:25px;
+}
+img{
+	width: 250px;
+    height: 100px;
+}
+form{
+	width: 365px;
+    height: 400px;
+	margin:auto;
+}
+div{
+	font-size:15px;
+}
+a:link, a:visited{
+	color:#12a7ec;
+}
+button{
+	background-color:#f3cd0d;
+	width: 325px;
+	height:35px;
+}
+input[type=text]{
+	width: 325px;
+	height:35px;
+	border:2px solid gray;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+input[type=password]{
+	font-size:18px;
+	width: 325px;
+	height:35px;
+	border:2px solid gray;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
