@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<title>Amazon</title>
+		<style>
+			a
+		</style>
+	</head>
+	<body id="body">
+		<center>
+		<img src="amazon.png" width="200px">
+		<div id="form" style="border-width: thin; border-style:solid; border-radius: 5px; border-color: gray; width:28%; margin-top:30px; margin-bottom:30px">
+		<h1 style="font-weight: bold;font-family: Arial; text-align:left; margin-left: 20px; font-weight: 400;
+		font-size: 28px;">Create account</h1>
+		
+		<p style="font-weight: bold;font-family: Arial;text-align:left; margin-left: 20px; margin-bottom:-15px">Your name</p><br>
+		<input style="border-radius: 4px;width:90%; margin-top:0px; height: 35px" type="text">
+		
+		<p style="font-weight: bold;font-family: Arial;text-align:left; margin-left: 20px; margin-bottom:0px;margin-bottom:-15px">Email</p><br>
+		<input style="border-radius: 4px;width:90%; margin-top:0px; height: 35px" type="text">
+		
+		<p style="font-weight: bold;font-family: Arial;text-align:left; margin-left: 20px; margin-bottom:0px;margin-bottom:-15px">Password</p><br>
+		<input style="border-radius: 4px;width:90%; margin-top:0px; height: 35px" type="password"  placeholder="at least 6 characters">
+		
+		<p style="font-weight: bold;font-family: Arial;text-align:left; margin-left: 20px; margin-bottom:0px;margin-bottom:-15px">Password Again</p><br>
+		<input style="border-radius: 4px;width:90%; margin-top:0px; height: 35px" type="password">
+		
+		<button style="border-color:gray;border-style: solid; border-width: 1px; font-size: 11pt;font-family: Arial;border-radius:5px; width:90%; height:35px; margin-top:20px; background-color:#f7ce5c; background: -webkit-linear-gradient(top, #f7dfa5, #f0c14b);
+background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
+">Create your Amazon account</button>
+		
+		<p style="margin-bottom:30px;font-size: 10pt;font-family: Arial;text-align:left; width:90%;">By creating an account, you agree to Amazon's <a href="http://bing.com" style="text-decoration:none">Conditions of Use</a> and <a href="http://bing.com" style="text-decoration:none">Privacy Notice</a></p>
+		<hr>
+		<p style="margin-top:30px;font-size: 10pt;font-family: Arial;text-align:left; width:90%;">Already have an account? <a href="http://bing.com" style="text-decoration:none">Sign in  &#9658;</a></p>
+		</div>
+		</center>
+		<hr>
+		<center>
+		<table>
+		<tr><td><a href="http://bing.com" style="font-size: 8pt;font-family: Arial;text-decoration:none">Conditions of Use</a></td>
+		<td><a href="http://bing.com" style="font-size: 8pt;font-family: Arial;text-decoration:none">Privacy Notice</a></td>
+		<td><a href="http://bing.com" style="font-size: 8pt;font-family: Arial;text-decoration:none">Help</a></td>
+		</tr>
+		<tr>
+		<td colspan="3" style="font-size: 8pt;font-family: Arial; color:gray">&copy 1996-2016, Amazon.com, Inc. or its affiliates</td>
+		</tr>
+		</table>
+		</center>
+		
+		
+		
+	</body>
+	
+	<script>
+document.getElementById('body').onclick = function() { 
+alert('Click!') 
+}
+
+document.getElementById('body').oncontextmenu = function() { 
+
+  alert('Right Click!') 
+ } 
+  function printMousePos(event) {
+alert("clientX: " + event.clientX
++ " - clientY: " + event.clientY);
+
+}
+  document.addEventListener("click", printMousePos);
+  document.addEventListener("contextmenu", printMousePos);
+</script>
+</html>
