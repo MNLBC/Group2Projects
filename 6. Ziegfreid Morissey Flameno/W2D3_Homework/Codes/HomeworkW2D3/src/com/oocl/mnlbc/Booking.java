@@ -71,9 +71,9 @@ class Booking extends Thread {
                writer.println("Not enough tickets");
                writer.flush();
             }else{
+               this.tickets.setRemaining(this.tickets.getRemaining() - Integer.parseInt(message));
                System.out.println(message + " ticket/s was bought");
                System.out.println("Tickets left: " + this.tickets.getRemaining() + " tickets");
-               this.tickets.setRemaining(this.tickets.getRemaining() - Integer.parseInt(message));
                for (int i = 0; i < socketList.size(); i++) {
                   writer = new PrintWriter(socketList.get(i).getOutputStream());
                   writer.println("Tickets left: " + this.tickets.getRemaining() + " tickets");
