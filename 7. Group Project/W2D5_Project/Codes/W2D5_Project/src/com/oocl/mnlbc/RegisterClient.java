@@ -17,22 +17,25 @@ public class RegisterClient {
    public void  signUp() {
       Scanner scanner = new Scanner(System.in);
       LoginClient form3 = new LoginClient();
-      System.out.println("------------------------Registration Form------------------------");
+      System.out.println("---------------------Registration Form---------------------");
 
-      System.out.println("First Name: ");
+      System.out.print("First Name: ");
       firstName = scanner.nextLine();
 
-      System.out.println("Last Name: ");
+      System.out.print("Last Name: ");
       lastName = scanner.nextLine();
 
-      System.out.println("Username: ");
-      userName = scanner.nextLine().trim();
+      System.out.print("Username: ");
+      userName = scanner.nextLine();
 
-      System.out.println("Password: ");
-      userPassword = scanner.nextLine().trim();
-
-      DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
-      System.out.println("Registration successful!");
+      System.out.print("Password: ");
+      userPassword = scanner.nextLine();
+      
+      while ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
+         System.out.println("Please fill all fields");
+         signUp();
+      }
+         DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
+         System.out.println("Registration successful!");
    }
-
 }

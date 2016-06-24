@@ -20,7 +20,7 @@ public class Client {
     * @param username
     * @param password
     */
-   public Client(String fname, String lname, String username, String password) {
+   public Client(String username, String password, String fname, String lname) {
       super();
       this.fname = fname;
       this.lname = lname;

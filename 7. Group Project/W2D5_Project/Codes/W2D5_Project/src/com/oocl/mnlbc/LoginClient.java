@@ -20,17 +20,17 @@ public class LoginClient {
 
       System.out.println("-------------------------User Log-In-------------------------");
 
-      System.out.println("Username: ");
-      userName = scanner.next();
+      System.out.print("Username: ");
+      userName = scanner.nextLine();
 
-      System.out.println("Password: ");
-      userPassword = scanner.next();
+      System.out.print("Password: ");
+      userPassword = scanner.nextLine();
 
       System.out.println("Validating account...");
 
       if (DatabaseTransactions.getChatUser(userName, userPassword) == null) {
          System.out.println("Account is invalid. Please log-in again.");
-         System.out.println("For users who have not registered yet: enter '0'. To continue: enter '1'");
+         System.out.print("For users who have not registered yet: enter '0'. To continue: enter '1'");
          choice = scanner.nextInt();
 
          if (choice == 0) {

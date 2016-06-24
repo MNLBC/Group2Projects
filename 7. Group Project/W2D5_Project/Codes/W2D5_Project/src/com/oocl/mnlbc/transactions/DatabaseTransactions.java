@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.oocl.mnlbc.models.*;
 
+
 public class DatabaseTransactions {
    
    private static Connection getConn() {
@@ -30,7 +31,7 @@ public class DatabaseTransactions {
    
    public static Client getChatUser(String username,String password) {
       Connection conn = getConn();
-      Client client = null;
+      Client client=null;
       
       String sql = "SELECT * FROM CHAT_USERS WHERE USERNAME='" + username + "' AND PASSWORD='" + password + "'";
       PreparedStatement pstmt;
