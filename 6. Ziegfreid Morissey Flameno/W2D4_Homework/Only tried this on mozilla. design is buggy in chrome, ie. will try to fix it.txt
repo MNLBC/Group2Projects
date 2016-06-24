@@ -1,0 +1,1 @@
+Only tried this on mozilla. design is buggy in chrome, ie. will try to fix it
