@@ -13,7 +13,7 @@ public class DatabaseTransactions {
    
    private static Connection getConn() {
       String driver = "oracle.jdbc.driver.OracleDriver";
-      String url = "jdbc:oracle:thin:@localhost:1521/xe";
+      String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String username = "system";
       String password = "august22"; //change password of your database system
       Connection conn = null;
@@ -65,14 +65,10 @@ public class DatabaseTransactions {
      String fname = client.getFname();
      String lname = client.getLname();
      
-     String sql = "INSERT INTO CHAT_USERS(USERNAME,PASSWORD,FIRST_NAME,LAST_NAME) VALUES('?','?','?','?')";
+     String sql = "INSERT INTO CHAT_USERS(USERNAME,PASSWORD,FIRST_NAME,LAST_NAME,ACTIVE) VALUES('"+username+"','"+password+"','"+fname+"','"+lname+"','1')";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
-      pStmt.setString(1, username);
-      pStmt.setString(2, password);
-      pStmt.setString(3, fname);
-      pStmt.setString(4, lname);
       result = pStmt.executeUpdate();
       pStmt.close();
       conn.close();
@@ -120,14 +116,10 @@ public class DatabaseTransactions {
      long sessionID = message.getSessionId();
      String dateTime = message.getTimestamp();     
      
-     String sql = "INSERT INTO CHAT_MESSAGE(MESSAGE_SENDER,MESSAGE,SESSION_ID,MESSAGE_DT) VALUES('?','?','?','?')";
+     String sql = "INSERT INTO CHAT_MESSAGE(MESSAGE_SENDER,MESSAGE,SESSION_ID,MESSAGE_DT) VALUES('"+sender+"','"+messageData+"','"+sessionID+"','"+dateTime+"')";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
-      pStmt.setString(1, String.valueOf(sender));
-      pStmt.setString(2, messageData);
-      pStmt.setString(3, String.valueOf(sessionID));
-      pStmt.setString(4, dateTime);
       result = pStmt.executeUpdate();
       pStmt.close();
       conn.close();
@@ -143,11 +135,10 @@ public class DatabaseTransactions {
      Connection conn = getConn();
      int result = 0;    
      
-     String sql = "UPDATE CHAT_SESSION SET ACTIVE ='0' WHERE SESSION_ID='?'";
+     String sql = "UPDATE CHAT_SESSION SET ACTIVE ='0' WHERE SESSION_ID='"+sessionID+"'";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
-      pStmt.setString(1,String.valueOf(sessionID));
       result = pStmt.executeUpdate();
       pStmt.close();
       conn.close();
