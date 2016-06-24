@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import com.oocl.mnlbc.models.*;
 
@@ -83,11 +84,19 @@ public class DatabaseTransactions {
      return result;
   }
    
-  public static int createSession(String dateTime){
+  public static int createSession(Session session){
      Connection conn = getConn();
      int result = 0;
-     
-     String sql = "INSERT INTO CHAT_SESSION(SESSION_DESC,CREATE_DT) VALUES('Sample Description for session','" + dateTime + "')";
+     List<Client> clients = session.getClientList();
+     String clientNames = "";
+     for(int i = 0; i < clients.size(); i++){
+        clientNames = clientNames + clients.get(i).getFname() + " " + clients.get(i).getLname() + "(" + clients.get(i).getUsername() + ")";
+        if(i != clients.size() - 1){
+           clientNames = clientNames + " | ";
+        }
+     }
+     String dateTime = session.getTimestamp();
+     String sql = "INSERT INTO CHAT_SESSION(INVOLVED_CLIENTS,CREATE_DT,ACTIVE) VALUES('"+ clientNames +"','" + dateTime + "','1')";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -103,13 +112,72 @@ public class DatabaseTransactions {
      return result;
   }
   
-  public static int saveMessage(){
+  public static int saveMessage(Message message){
      Connection conn = getConn();
      int result = 0;
+     long sender = message.getClientId();
+     String messageData = message.getMessage();
+     long sessionID = message.getSessionId();
+     String dateTime = message.getTimestamp();     
      
-     String sql = "INSERT INTO CHAT_MESSAGE(MESSAGE_SENDER,MESSAGE,SESSION_ID,";
+     String sql = "INSERT INTO CHAT_MESSAGE(MESSAGE_SENDER,MESSAGE,SESSION_ID,MESSAGE_DT) VALUES('?','?','?','?')";
+     PreparedStatement pStmt;
+     try {
+      pStmt = (PreparedStatement)conn.prepareStatement(sql);
+      pStmt.setString(1, String.valueOf(sender));
+      pStmt.setString(2, messageData);
+      pStmt.setString(3, String.valueOf(sessionID));
+      pStmt.setString(4, dateTime);
+      result = pStmt.executeUpdate();
+      pStmt.close();
+      conn.close();
+      return result;
+   } catch (SQLException e) {
+      e.printStackTrace();
+   }
      
      return result;
+  }
+  
+  public static int endSession(long sessionID){
+     Connection conn = getConn();
+     int result = 0;    
+     
+     String sql = "UPDATE CHAT_SESSION SET ACTIVE ='0' WHERE SESSION_ID='?'";
+     PreparedStatement pStmt;
+     try {
+      pStmt = (PreparedStatement)conn.prepareStatement(sql);
+      pStmt.setString(1,String.valueOf(sessionID));
+      result = pStmt.executeUpdate();
+      pStmt.close();
+      conn.close();
+      return result;
+   } catch (SQLException e) {
+      e.printStackTrace();
+   }
+     
+     return result;
+  }
+  
+  public static long getSessionID(){
+     Connection conn = getConn();
+     long sessionID = 0;
+     String sql = "SELECT * FROM CHAT_SESSION WHERE ACTIVE='1'";
+     PreparedStatement pstmt;
+     try {
+         pstmt = (PreparedStatement)conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery();
+         while (rs.next()) {
+             String id = rs.getString("SESSION_ID");
+             if(!id.equals("")){
+                sessionID = Integer.parseInt(id);
+                return sessionID;
+             }
+         }
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     return sessionID;
   }
 
 }
