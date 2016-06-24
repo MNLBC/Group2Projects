@@ -16,7 +16,7 @@ public class DatabaseTransactions {
       String driver = "oracle.jdbc.driver.OracleDriver";
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String username = "system";
-      String password = "admin"; //change password of your database system
+      String password = "august22"; //change password of your database system
       Connection conn = null;
       try {
           Class.forName(driver); //classLoader,加载对应驱动
@@ -40,12 +40,10 @@ public class DatabaseTransactions {
           ResultSet rs = pstmt.executeQuery();
           while (rs.next()) {
               String id = rs.getString("USER_ID");
+              String firstName = rs.getString("FIRST_NAME");
+              String lastName = rs.getString("LAST_NAME");
               if(!id.equals("")){
-                 client.setId(id);
-                 client.setUsername(rs.getString("USERNAME"));
-                 client.setPassword(rs.getString("PASSWORD"));
-                 client.setFname(rs.getString("FIRST_NAME"));
-                 client.setLname(rs.getString("LAST_NAME"));   
+            	 client = new Client(id,firstName,lastName,username,password);  
                  pstmt.close();
                  conn.close();
                  return client;
@@ -54,7 +52,7 @@ public class DatabaseTransactions {
       } catch (SQLException e) {
           e.printStackTrace();
       }
-      return null;
+      return client;
   }
    
   public static int createUser(Client client){
