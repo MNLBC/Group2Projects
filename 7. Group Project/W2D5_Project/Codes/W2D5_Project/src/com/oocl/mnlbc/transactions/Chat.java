@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
+import com.oocl.mnlbc.models.Session;
 
 public class Chat {
 	private Socket socket;
@@ -19,13 +20,15 @@ public class Chat {
 
 	private Client client;
 	private List<Client> clientList;
+	private Session presSession;
 	
-	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> connectedClients) {
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> connectedClients, Session session) {
 		this.count = count;
 		this.socket = socket;
 		this.socketList = socketList;
 		this.client = client;
 		this.clientList = connectedClients;
+		this.presSession = session;
 		
 	}
 	
@@ -35,6 +38,8 @@ public class Chat {
 		String presClientName ="";
 		String presUsername="";
 		String screenName = "";
+		
+		
 		
 		presClientName=this.client.getFname() + " " + this.client.getLname();
 		presUsername = this.client.getUsername();
