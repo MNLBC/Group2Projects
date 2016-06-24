@@ -170,5 +170,56 @@ public class DatabaseTransactions {
      }
      return sessionID;
   }
+  
+  public static int updateActiveSession(List<Client> clients){
+     Connection conn = getConn();
+     int result = 0;    
+     
+     String clientNames = "";
+     for(int i = 0; i < clients.size(); i++){
+        clientNames = clientNames + clients.get(i).getFname() + " " + clients.get(i).getLname() + "(" + clients.get(i).getUsername() + ")";
+        if(i != clients.size() - 1){
+           clientNames = clientNames + " | ";
+        }
+     }
+     
+     String sql = "UPDATE CHAT_SESSION SET INVOLVED_CLIENTS = '" + clientNames + "' WHERE ACTIVE ='1'";
+     PreparedStatement pStmt;
+     try {
+      pStmt = (PreparedStatement)conn.prepareStatement(sql);
+      result = pStmt.executeUpdate();
+      pStmt.close();
+      conn.close();
+      return result;
+   } catch (SQLException e) {
+      e.printStackTrace();
+   }
+     
+     return result;
+  }
+  
+  public static String showClientsInSession(){
+     Connection conn = getConn();
+     String clientNames = "";
+     
+     String sql = "SELECT INVOLVED_CLIENTS FROM CHAT_SESSION WHERE ACTIVE='1'";
+     PreparedStatement pstmt;
+     try {
+         pstmt = (PreparedStatement)conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery();
+         while (rs.next()) {
+             clientNames = rs.getString("INVOLVED_CLIENTS");
+             if(!clientNames.equals("")){ 
+                pstmt.close();
+                conn.close();
+                return clientNames;
+             }
+         }
+     } catch (SQLException e) {
+         e.printStackTrace();
+     }
+     
+     return clientNames;
+  }
 
 }
