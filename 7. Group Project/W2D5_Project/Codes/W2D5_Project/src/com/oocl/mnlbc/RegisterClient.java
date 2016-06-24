@@ -14,7 +14,7 @@ public class RegisterClient {
    public static String userPassword;
 
    @SuppressWarnings("resource")
-   public Client signUp(Client client) {
+   public void  signUp() {
       Scanner scanner = new Scanner(System.in);
       LoginClient form3 = new LoginClient();
       System.out.println("------------------------Registration Form------------------------");
@@ -33,7 +33,6 @@ public class RegisterClient {
 
       DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
       System.out.println("Registration successful!");
-      return form3.login(client);
    }
 
 }
