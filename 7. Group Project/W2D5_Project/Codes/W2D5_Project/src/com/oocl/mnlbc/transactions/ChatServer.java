@@ -51,7 +51,7 @@ public class ChatServer {
 			// clients.setCount(clients.getCount() + 1);
 			System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
 			socketList.add(socket);
-			new Chat(count, socket, socketList, client, session).run();
+			new Chat(count, socket, socketList, client, clientList).run();
 			
 			
 		}
@@ -63,7 +63,7 @@ public class ChatServer {
 	 * @param args
 	 * @throws IOException
 	 */
-	public void ChatServer(Client client) throws IOException {
+	public ChatServer(Client client) throws IOException {
 		this.client = client;
 
 	}
@@ -71,5 +71,4 @@ public class ChatServer {
 	public void StartServer() throws IOException {
 		this.startWork();
 	}
-
 }

@@ -1,5 +1,6 @@
 package com.oocl.mnlbc;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,7 +12,7 @@ public class DefaultPage {
    public static Client client;
 
    @SuppressWarnings("resource")
-   public static void main(String[] args) {
+   public static void main(String[] args) throws IOException {
 
       Scanner scanner = new Scanner(System.in);
       boolean validChoice = false;
@@ -44,7 +45,7 @@ public class DefaultPage {
    }
 
    @SuppressWarnings("resource")
-   public static Client displayDefaultPage() {
+   public static Client displayDefaultPage() throws IOException {
 
       Scanner scanner = new Scanner(System.in);
       boolean validChoice = false;

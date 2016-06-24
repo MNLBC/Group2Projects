@@ -1,19 +1,20 @@
 package com.oocl.mnlbc;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
-import com.oocl.mnlbc.transactions.Chat;
+import com.oocl.mnlbc.transactions.ChatClient;
+import com.oocl.mnlbc.transactions.ChatServer;
 import com.oocl.mnlbc.transactions.DatabaseTransactions;
 
 public class LoginClient {
 
    public static String userName;
    public static String userPassword;
+   private Client client;
 
-   public void login() {
+   public void login() throws IOException {
       int choice;
       RegisterClient register = new RegisterClient();
       Scanner scanner = new Scanner(System.in);
@@ -40,8 +41,11 @@ public class LoginClient {
          }
       }
       else {
-         DatabaseTransactions.getChatUser(userName, userPassword);
-//         open chat
+         client = DatabaseTransactions.getChatUser(userName, userPassword);
+         ChatServer cs = new ChatServer(client); 
+         cs.startWork();
+         ChatClient cc = new ChatClient("127.0.0.1", client);
+         cc.connectClient();
       }
    }
 

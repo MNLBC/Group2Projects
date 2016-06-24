@@ -11,11 +11,11 @@ import com.oocl.mnlbc.models.Client;
 public class SendMessage extends Thread{
    
    private Socket socket;
-//   private Client client;
+   private Client client;
    
-   public SendMessage(Socket socket){
+   public SendMessage(Socket socket, Client client){
       this.socket = socket;
-//      this.client = client;
+      this.client = client;
    }
    
    public void run(){
@@ -34,7 +34,7 @@ public class SendMessage extends Thread{
             writer.flush();
          }
       } catch (IOException e) {
-//         System.out.println(client.getUsername() + " has left");
+         System.out.println(client.getUsername() + " has left");
       } finally {
          if (input != null) {
             try {

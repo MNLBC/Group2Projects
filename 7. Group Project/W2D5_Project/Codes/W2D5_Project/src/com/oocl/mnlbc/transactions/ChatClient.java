@@ -3,6 +3,8 @@ package com.oocl.mnlbc.transactions;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
+import com.oocl.mnlbc.models.Client;
 /**
  * Client class
  * @author Danna
@@ -11,13 +13,14 @@ import java.net.UnknownHostException;
 public class ChatClient {
 
    private String ipAdd;
-
+   private Client client;
    /**
     * Constructor
     * @param ipAdd
     */
-   public ChatClient(String ipAdd) {
+   public ChatClient(String ipAdd, Client client) {
       this.ipAdd = ipAdd;
+      this.client= client;
    }
 
    /**
@@ -27,8 +30,8 @@ public class ChatClient {
     */
    public void startWork() throws UnknownHostException, IOException {
       Socket socket = new Socket(ipAdd, 7777);
-      new ReadMessage(socket).start();
-      new SendMessage(socket).start();
+      new ReadMessage(socket, client).start();
+      new SendMessage(socket, client).start();
 
    }
 
@@ -38,9 +41,11 @@ public class ChatClient {
     * @throws UnknownHostException
     * @throws IOException
     */
-   public static void main(String[] args) throws UnknownHostException, IOException {
-      ChatClient chatClient = new ChatClient(args[0]);
-      chatClient.startWork();
+//   public void main(String[] args) throws UnknownHostException, IOException {
+//      ChatClient chatClient = new ChatClient(args[0]);
+//      chatClient.startWork();
+//   }
+   public void connectClient() throws UnknownHostException, IOException{
+      this.startWork();
    }
-
 }

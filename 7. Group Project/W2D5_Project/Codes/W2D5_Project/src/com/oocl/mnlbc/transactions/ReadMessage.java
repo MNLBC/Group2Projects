@@ -10,11 +10,11 @@ import com.oocl.mnlbc.models.Client;
 public class ReadMessage extends Thread {
 
    private Socket socket;
-//   private Client client;
+   private Client client;
 
-   public ReadMessage(Socket socket) {
+   public ReadMessage(Socket socket, Client client) {
       this.socket = socket;
-//      this.client = client;
+      this.client = client;
    }
 
    public void run() {
@@ -30,7 +30,7 @@ public class ReadMessage extends Thread {
             }
          }
       } catch (IOException e) {
-//         System.out.println(client.getUsername() + " has left");
+         System.out.println(client.getUsername() + " has left");
       } finally {
          try {
             if (reader != null) {

@@ -1,9 +1,12 @@
 package com.oocl.mnlbc;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.transactions.ChatClient;
+import com.oocl.mnlbc.transactions.ChatServer;
 import com.oocl.mnlbc.transactions.DatabaseTransactions;
 
 public class RegisterClient {
@@ -13,8 +16,9 @@ public class RegisterClient {
    public static String userName;
    public static String userPassword;
    public static boolean success;
+   private Client client;
    @SuppressWarnings("resource")
-   public void  signUp() {
+   public void  signUp() throws IOException {
       Scanner scanner = new Scanner(System.in);
       LoginClient form3 = new LoginClient();
       System.out.println("---------------------Registration Form---------------------");
@@ -50,6 +54,11 @@ public class RegisterClient {
             }
       }
 //      Go to chat
+      client = DatabaseTransactions.getChatUser(userName, userPassword);
+      ChatServer cs = new ChatServer(client); 
+      cs.startWork();
+      ChatClient cc = new ChatClient("127.0.0.1", client);
+      cc.connectClient();
       
       if (success=true){
          System.out.println("Registration successful!");

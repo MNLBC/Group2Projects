@@ -17,7 +17,7 @@ public class DatabaseTransactions {
       String driver = "oracle.jdbc.driver.OracleDriver";
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String username = "system";
-      String password = "admin"; //change password of your database system
+      String password = "fgh567FGH%^&"; //change password of your database system
       Connection conn = null;
       try {
           Class.forName(driver); //classLoader,加载对应驱动
