@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Date;
 import java.util.List;
 
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.models.Message;
 
 public class Chat {
 	private Socket socket;
@@ -44,22 +46,31 @@ public class Chat {
 			writer = new PrintWriter(socket.getOutputStream());
 			writer.println(screenName + " is now in the room.");
 			writer.flush();
-			String message = null;
+			
+			Date date = new Date();
+			//static session id still for change
+			long presClientId = Long.getLong(this.client.getId());
+			
 		
 			while (true) {
-				message = null;
-				message = reader.readLine().trim();
+				Message message = new Message(1L, 1L, presClientId, screenName, date.toString());
+				message.setMessage("");
+				message.setMessage(reader.readLine().trim());
 				
 				// Client will quit if client send "bye", and print "bye" to in the client
-				if (message.equals("-bye")) {
+				if (message.getMessage().equals("-bye")) {
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("Closing");
 					writer.flush();
 					System.exit(0);
 				
 				}
-				else if(message.equals("-list")){
-					
+				else if(message.getMessage().equals("-list")){
+					for(Client client : this.clientList){
+						writer = new PrintWriter(socket.getOutputStream());
+						writer.println(client.getUsername() + ":" +client.getFname() + " " + client.getLname() + " is online");
+						writer.flush();
+					}
 				}
 		
 				
@@ -69,7 +80,7 @@ public class Chat {
 				for (int i = 0; i < socketList.size(); i++) {
 					writer = new PrintWriter(socketList.get(i)
 							.getOutputStream());
-					writer.println(screenName + " says: " + message);
+					writer.println(screenName + " says: " + message.getMessage());
 					writer.flush();
 				}
 
