@@ -124,11 +124,11 @@ public class DatabaseTransactions {
      return result;
   }
   
-  public static int endSession(long sessionID){
+  public static int endSession(long sessionID,String endDT){
      Connection conn = getConn();
      int result = 0;    
      
-     String sql = "UPDATE CHAT_SESSION SET END_DT ='" + Timestamp.getTimestamp() + "' ACTIVE ='0' WHERE SESSION_ID='"+sessionID+"'";
+     String sql = "UPDATE CHAT_SESSION SET END_DT ='" + endDT + "' ACTIVE ='0' WHERE SESSION_ID='"+sessionID+"'";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
