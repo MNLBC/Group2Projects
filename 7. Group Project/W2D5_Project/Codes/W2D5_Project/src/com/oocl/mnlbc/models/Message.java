@@ -2,6 +2,7 @@ package com.oocl.mnlbc.models;
 
 /**
  * Base Message Class
+ * 
  * @author FLAMEZI2 Group 2
  *
  */
@@ -9,6 +10,7 @@ public class Message {
 
    private Long sessionId;
    private Long messageId;
+   private Long clientId;
    private String message;
    private String timestamp;
 
@@ -16,15 +18,25 @@ public class Message {
     * new Message constructor
     * @param sessionId
     * @param messageId
+    * @param clientId
     * @param message
     * @param timestamp
     */
-   public Message(Long sessionId, Long messageId, String message, String timestamp) {
+   public Message(Long sessionId, Long messageId, Long clientId, String message, String timestamp) {
       super();
       this.sessionId = sessionId;
       this.messageId = messageId;
+      this.clientId = clientId;
       this.message = message;
       this.timestamp = timestamp;
+   }
+
+   public Long getClientId() {
+      return clientId;
+   }
+
+   public void setClientId(Long clientId) {
+      this.clientId = clientId;
    }
 
    public Long getSessionId() {
