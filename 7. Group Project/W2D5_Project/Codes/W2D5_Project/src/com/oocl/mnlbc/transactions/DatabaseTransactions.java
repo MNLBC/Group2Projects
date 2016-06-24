@@ -150,7 +150,7 @@ public class DatabaseTransactions {
      return result;
   }
   
-  public static long getSessionID(){
+  public static long getActiveSessionID(){
      Connection conn = getConn();
      long sessionID = 0;
      String sql = "SELECT * FROM CHAT_SESSION WHERE ACTIVE='1'";
