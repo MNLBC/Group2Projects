@@ -1,0 +1,81 @@
+package com.oocl.mnlbc.transactions;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.List;
+
+
+import com.oocl.mnlbc.models.Client;
+
+public class Chat {
+	private Socket socket;
+	private List<Socket> socketList;
+	private int count;
+
+	private Client client;
+	private List<Client> clientList;
+	
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> connectedClients) {
+		this.count = count;
+		this.socket = socket;
+		this.socketList = socketList;
+		this.client = client;
+		this.clientList = connectedClients;
+		
+	}
+	
+	public synchronized void run() {
+		BufferedReader reader = null;
+		PrintWriter writer = null;
+		String presClientName ="";
+		String presUsername="";
+		String screenName = "";
+		
+		presClientName=this.client.getFname() + " " + this.client.getLname();
+		presUsername = this.client.getUsername();
+		screenName = presClientName + " <" + presUsername +"> ";
+		
+		try {
+			reader = new BufferedReader(new InputStreamReader(
+					socket.getInputStream()));
+			writer = new PrintWriter(socket.getOutputStream());
+			writer.println(screenName + " is now in the room.");
+			writer.flush();
+			String message = null;
+		
+			while (true) {
+				message = null;
+				message = reader.readLine().trim();
+				
+				// Client will quit if client send "bye", and print "bye" to in the client
+				if (message.equals("-bye")) {
+					writer = new PrintWriter(socket.getOutputStream());
+					writer.println("Closing");
+					writer.flush();
+					System.exit(0);
+				
+				}
+				else if(message.equals("-list")){
+					
+				}
+		
+				
+			
+				
+				// Print all the message to all clients, Group chat
+				for (int i = 0; i < socketList.size(); i++) {
+					writer = new PrintWriter(socketList.get(i)
+							.getOutputStream());
+					writer.println(screenName + " says: " + message);
+					writer.flush();
+				}
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
