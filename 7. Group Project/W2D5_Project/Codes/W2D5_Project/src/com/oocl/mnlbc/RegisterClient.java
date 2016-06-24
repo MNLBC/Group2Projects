@@ -31,11 +31,14 @@ public class RegisterClient {
       System.out.print("Password: ");
       userPassword = scanner.nextLine();
       
-      while ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
-         System.out.println("Please fill all fields");
-         signUp();
-      }
+      if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
+         while ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
+            System.out.println("Please fill all fields");
+            signUp();
+         }
+      }else{
          DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
-         System.out.println("Registration successful!");
+      }System.out.println("Registration successful!");
+         
    }
 }
