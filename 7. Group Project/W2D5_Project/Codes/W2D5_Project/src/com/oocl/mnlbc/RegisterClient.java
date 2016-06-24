@@ -12,7 +12,7 @@ public class RegisterClient {
    public static String lastName;
    public static String userName;
    public static String userPassword;
-
+   public static boolean success;
    @SuppressWarnings("resource")
    public void  signUp() {
       Scanner scanner = new Scanner(System.in);
@@ -35,10 +35,25 @@ public class RegisterClient {
          while ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
             System.out.println("Please fill all fields");
             signUp();
+            success = true;
          }
-      }else{
-         DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
-      }System.out.println("Registration successful!");
+      }
+         else{
+            if (DatabaseTransactions.verifyChatUser(userName) == false){
+               DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
+               success = true;
+            }
+            else{
+               System.out.println("Username taken. Please choose another");
+               signUp();
+               success=false;
+            }
+      }
+//      Go to chat
+      
+      if (success=true){
+         System.out.println("Registration successful!");
+      }
          
    }
 }

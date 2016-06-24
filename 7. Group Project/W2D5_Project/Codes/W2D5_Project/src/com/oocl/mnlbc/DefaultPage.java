@@ -35,6 +35,7 @@ public class DefaultPage {
             validChoice = true;
          } else if (choice.equals("3")) {
             // enter chat
+            client.setUsername("stranger");
             validChoice = true;
          } else {
             System.out.println("Please select the right choice");

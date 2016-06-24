@@ -41,7 +41,7 @@ public class LoginClient {
       }
       else {
          DatabaseTransactions.getChatUser(userName, userPassword);
-         // MainMenu menu = new MainMenu();
+//         open chat
       }
    }
 

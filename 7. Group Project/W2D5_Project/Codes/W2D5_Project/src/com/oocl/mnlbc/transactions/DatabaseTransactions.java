@@ -17,7 +17,7 @@ public class DatabaseTransactions {
       String driver = "oracle.jdbc.driver.OracleDriver";
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String username = "system";
-      String password = "august22"; //change password of your database system
+      String password = "admin"; //change password of your database system
       Connection conn = null;
       try {
           Class.forName(driver); //classLoader,加载对应驱动
@@ -54,6 +54,33 @@ public class DatabaseTransactions {
           e.printStackTrace();
       }
       return client;
+  }
+   
+   public static boolean verifyChatUser(String username) {
+      Connection conn = getConn();
+      Client client=null;
+      
+      String sql = "SELECT * FROM CHAT_USERS WHERE USERNAME='" + username+"'";
+      PreparedStatement pstmt;
+      try {
+          pstmt = (PreparedStatement)conn.prepareStatement(sql);
+          ResultSet rs = pstmt.executeQuery();
+          while (rs.next()) {
+              String id = rs.getString("USER_ID");
+              String firstName = rs.getString("FIRST_NAME");
+              String lastName = rs.getString("LAST_NAME");
+              String password = rs.getString("PASSWORD");
+              if(!id.equals("")){
+                client = new Client(id,firstName,lastName,username,password);  
+                 pstmt.close();
+                 conn.close();
+                 return true;
+              }
+          }
+      } catch (SQLException e) {
+          e.printStackTrace();
+      }
+      return false;
   }
    
   public static int createUser(Client client){
