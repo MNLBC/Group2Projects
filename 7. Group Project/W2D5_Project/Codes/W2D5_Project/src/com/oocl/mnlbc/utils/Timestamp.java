@@ -14,7 +14,7 @@ public class Timestamp {
     * get Timestamp
     * @return
     */
-   public String getTimestamp(){
+   public static String getTimestamp(){
       DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss.SSS");
       Calendar calobj = Calendar.getInstance();
       return df.format(calobj.getTime());
