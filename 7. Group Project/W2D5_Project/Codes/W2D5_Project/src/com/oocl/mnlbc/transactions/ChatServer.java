@@ -42,7 +42,7 @@ public class ChatServer {
 			clientList.add(client);
 			if (count > 1) {
 				if (sessid == 0) {
-					session = new Session(0L, clientList, timestamp.getTimestamp());
+					session = new Session((long) 0, timestamp.getTimestamp(), "");
 				//	DatabaseTransactions.createSession(session);
 				} //else
 				//	DatabaseTransactions.updateActiveSession(clientList);

@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.oocl.mnlbc.models.*;
+import com.oocl.mnlbc.utils.Timestamp;
 
 
 public class DatabaseTransactions {
@@ -84,8 +85,7 @@ public class DatabaseTransactions {
      int result = 0;
      
      String startDT = session.getStart();
-     String endDT = session.getEnd();
-     String sql = "INSERT INTO CHAT_SESSION(START_DT,END_DT,ACTIVE) VALUES('"+ startDT +"','" + endDT + "','1')";
+     String sql = "INSERT INTO CHAT_SESSION(START_DT,ACTIVE) VALUES('"+ startDT +"','1')";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -124,11 +124,11 @@ public class DatabaseTransactions {
      return result;
   }
   
-  public static int endSession(long sessionID){
+  public static int endSession(long sessionID,String endDT){
      Connection conn = getConn();
      int result = 0;    
      
-     String sql = "UPDATE CHAT_SESSION SET ACTIVE ='0' WHERE SESSION_ID='"+sessionID+"'";
+     String sql = "UPDATE CHAT_SESSION SET END_DT ='" + endDT + "' ACTIVE ='0' WHERE SESSION_ID='"+sessionID+"'";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
