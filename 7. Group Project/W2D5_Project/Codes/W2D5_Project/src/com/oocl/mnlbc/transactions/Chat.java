@@ -19,15 +19,15 @@ public class Chat {
 	private int count;
 
 	private Client client;
-	private List<Client> clientList;
+
 	private Session presSession;
 	
-	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> connectedClients, Session session) {
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, Session session) {
 		this.count = count;
 		this.socket = socket;
 		this.socketList = socketList;
 		this.client = client;
-		this.clientList = connectedClients;
+		
 		this.presSession = session;
 		
 	}
@@ -71,7 +71,7 @@ public class Chat {
 				
 				}
 				else if(message.getMessage().equals("-list")){
-					for(Client client : this.clientList){
+					for(Client client : this.presSession.getClientList()){
 						writer = new PrintWriter(socket.getOutputStream());
 						writer.println(client.getUsername() + ":" +client.getFname() + " " + client.getLname() + " is online");
 						writer.flush();
