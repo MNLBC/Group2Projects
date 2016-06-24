@@ -26,7 +26,7 @@ public class FileTransactions {
       try {
          String putData = "";
          BufferedWriter bw;
-         File file = new File(session.getSessionId() + ".txt");
+         File file = new File("history//"+session.getSessionId() + ".log");
          if (!file.exists()) {
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
