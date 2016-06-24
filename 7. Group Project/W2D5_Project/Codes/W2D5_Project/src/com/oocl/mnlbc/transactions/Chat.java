@@ -13,22 +13,30 @@ import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
 
+
+/**
+ * Chat
+ * 
+ * @author LOPEZLA
+ *
+ * 06-24-2016
+ */
 public class Chat {
 	private Socket socket;
 	private List<Socket> socketList;
 	private int count;
 
 	private Client client;
-
-	private Session presSession;
+	private List<Client> presClients;
 	
-	public Chat(int count, Socket socket, List<Socket> socketList, Client client, Session session) {
+	
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList) {
 		this.count = count;
 		this.socket = socket;
 		this.socketList = socketList;
 		this.client = client;
 		
-		this.presSession = session;
+		this.presClients = clientList;
 		
 	}
 	
@@ -71,7 +79,7 @@ public class Chat {
 				
 				}
 				else if(message.getMessage().equals("-list")){
-					for(Client client : this.presSession.getClientList()){
+					for(Client client : this.presClients){
 						writer = new PrintWriter(socket.getOutputStream());
 						writer.println(client.getUsername() + ":" +client.getFname() + " " + client.getLname() + " is online");
 						writer.flush();
