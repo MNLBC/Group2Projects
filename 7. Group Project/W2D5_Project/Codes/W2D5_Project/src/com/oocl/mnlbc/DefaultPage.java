@@ -6,6 +6,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.transactions.LoginClient;
+import com.oocl.mnlbc.transactions.RegisterClient;
 
 public class DefaultPage {
 

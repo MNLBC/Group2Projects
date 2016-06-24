@@ -1,13 +1,10 @@
-package com.oocl.mnlbc;
+package com.oocl.mnlbc.transactions;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
-import com.oocl.mnlbc.transactions.ChatClient;
-import com.oocl.mnlbc.transactions.ChatServer;
-import com.oocl.mnlbc.transactions.DatabaseTransactions;
 
 public class RegisterClient {
 
