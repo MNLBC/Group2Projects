@@ -82,16 +82,10 @@ public class DatabaseTransactions {
   public static int createSession(Session session){
      Connection conn = getConn();
      int result = 0;
-     List<Client> clients = session.getClientList();
-     String clientNames = "";
-     for(int i = 0; i < clients.size(); i++){
-        clientNames = clientNames + clients.get(i).getFname() + " " + clients.get(i).getLname() + "(" + clients.get(i).getUsername() + ")";
-        if(i != clients.size() - 1){
-           clientNames = clientNames + " | ";
-        }
-     }
-     String dateTime = session.getTimestamp();
-     String sql = "INSERT INTO CHAT_SESSION(INVOLVED_CLIENTS,CREATE_DT,ACTIVE) VALUES('"+ clientNames +"','" + dateTime + "','1')";
+     
+     String startDT = session.getStart();
+     String endDT = session.getEnd();
+     String sql = "INSERT INTO CHAT_SESSION(START_DT,END_DT,ACTIVE) VALUES('"+ startDT +"','" + endDT + "','1')";
      PreparedStatement pStmt;
      try {
       pStmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -152,7 +146,7 @@ public class DatabaseTransactions {
   public static long getActiveSessionID(){
      Connection conn = getConn();
      long sessionID = 0;
-     String sql = "SELECT * FROM CHAT_SESSION WHERE ACTIVE='1'";
+     String sql = "SELECT SESSION_ID FROM CHAT_SESSION WHERE ACTIVE='1'";
      PreparedStatement pstmt;
      try {
          pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -168,57 +162,6 @@ public class DatabaseTransactions {
          e.printStackTrace();
      }
      return sessionID;
-  }
-  
-  public static int updateActiveSession(List<Client> clients){
-     Connection conn = getConn();
-     int result = 0;    
-     
-     String clientNames = "";
-     for(int i = 0; i < clients.size(); i++){
-        clientNames = clientNames + clients.get(i).getFname() + " " + clients.get(i).getLname() + "(" + clients.get(i).getUsername() + ")";
-        if(i != clients.size() - 1){
-           clientNames = clientNames + " | ";
-        }
-     }
-     
-     String sql = "UPDATE CHAT_SESSION SET INVOLVED_CLIENTS = '" + clientNames + "' WHERE ACTIVE ='1'";
-     PreparedStatement pStmt;
-     try {
-      pStmt = (PreparedStatement)conn.prepareStatement(sql);
-      result = pStmt.executeUpdate();
-      pStmt.close();
-      conn.close();
-      return result;
-   } catch (SQLException e) {
-      e.printStackTrace();
-   }
-     
-     return result;
-  }
-  
-  public static String showClientsInSession(){
-     Connection conn = getConn();
-     String clientNames = "";
-     
-     String sql = "SELECT INVOLVED_CLIENTS FROM CHAT_SESSION WHERE ACTIVE='1'";
-     PreparedStatement pstmt;
-     try {
-         pstmt = (PreparedStatement)conn.prepareStatement(sql);
-         ResultSet rs = pstmt.executeQuery();
-         while (rs.next()) {
-             clientNames = rs.getString("INVOLVED_CLIENTS");
-             if(!clientNames.equals("")){ 
-                pstmt.close();
-                conn.close();
-                return clientNames;
-             }
-         }
-     } catch (SQLException e) {
-         e.printStackTrace();
-     }
-     
-     return clientNames;
   }
 
 }
