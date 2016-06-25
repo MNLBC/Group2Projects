@@ -39,7 +39,7 @@ public class SendMessage extends Thread{
 					0L, Long.parseLong(this.client.getId()), null, date.toString());
          while (true) {
         	 message.setMessage(input.readLine().trim());
-            if (message.equals("bye")) {
+            if (message.equals("-bye")) {
                break;
             }
         

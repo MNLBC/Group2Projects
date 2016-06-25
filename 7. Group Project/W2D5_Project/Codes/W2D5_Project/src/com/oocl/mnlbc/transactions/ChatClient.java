@@ -38,7 +38,7 @@ public class ChatClient {
     * @throws IOException
     */
    public void startWork() throws UnknownHostException, IOException {
-      Socket socket = new Socket(ipAdd, 7777);
+      Socket socket = new Socket(ipAdd, Integer.parseInt(FileTransactions.getPort()));
       DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
       new ReadMessage(socket, client,session).start();
       new SendMessage(socket, client, session).start();
