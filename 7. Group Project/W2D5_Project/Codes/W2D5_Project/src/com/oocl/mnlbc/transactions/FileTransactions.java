@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.oocl.mnlbc.models.Message;
@@ -52,15 +53,17 @@ public class FileTransactions {
    }
 
    public static String getPort() {
-      File configFile = new File("config//config.properties");
+      System.out.println("test");
       String port = "";
 
       try {
-         FileReader reader = new FileReader(configFile);
+         // FileReader reader = new FileReader(configFile);
+         InputStream stream = FileTransactions.class.getClassLoader().getResourceAsStream("config.properties");
          Properties props = new Properties();
-         props.load(reader);
+         props.load(stream);
          port = props.getProperty("port");
-         reader.close();
+         stream.close();
+         // reader.close();
       } catch (FileNotFoundException ex) {
          System.out.println("File not found");
       } catch (IOException ex) {
