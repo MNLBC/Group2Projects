@@ -3,7 +3,6 @@ package com.oocl.mnlbc.transactions;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,35 +36,31 @@ public class ChatServer {
     * @throws IOException
     */
    public void startWork() throws IOException {
-//      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
       serverSocket = new ServerSocket(7777);
       while (true) {
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
          clientList = DatabaseTransactions.getOnlineUsers();
-         if (clientList.size() == 2) {
+         if (clientList.size() > 1) {
+<<<<<<< Updated upstream
             session = new Session((long) 0, Timestamp.getTimestamp(), "");
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
+=======
+               session = new Session((long) 0, timestamp.getTimestamp(), "");
+                DatabaseTransactions.createSession(timestamp.getTimestamp());
+>>>>>>> Stashed changes
          }
          System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
          socketList.add(socket);
-         
-         for (int i = 0; i < socketList.size(); i++) {
-           System.out.println("Testing:" + socketList.get(i));
-          }
-         clientSocketMap.put(clientList.get(socketList.size()-1).getId(), socketList.size());
+         clientSocketMap.put(client.getId(), socketList.size());
          int index = 0;
          for (int i = 0; i < socketList.size(); i++) {
             if (socketList.get(i) == socket) {
                index = i;
             }
+            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).run();
          }
-            System.out.println("Count:" + count);
-            System.out.println("Socket" + socket);
-            System.out.println("clientlist: " +clientList.get(index));
-            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).start();
-         
       }
    }
 
