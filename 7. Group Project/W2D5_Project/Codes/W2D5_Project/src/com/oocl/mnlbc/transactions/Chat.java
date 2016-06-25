@@ -51,7 +51,7 @@ public class Chat {
 		
 		presClientName=this.client.getFname() + " " + this.client.getLname();
 		presUsername = this.client.getUsername();
-		screenName = presClientName + " <" + presUsername +"> ";
+		screenName = presClientName + " <" + presUsername +">";
 		
 		try {
 			reader = new BufferedReader(new InputStreamReader(
