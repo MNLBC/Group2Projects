@@ -11,7 +11,13 @@ import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
 
 import oracle.sql.DATE;
-
+import com.oocl.mnlbc.utils.Timestamp;
+/**
+ * ReadMessage class
+ * 
+ * @author denoyme
+ *
+ */
 public class ReadMessage extends Thread {
 
 	private Socket socket;
@@ -36,6 +42,7 @@ public class ReadMessage extends Thread {
 
 				if (message.equals("bye")) {
 					System.out.println(client.getUsername() + " has left");
+               DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
 					break;
 				}
 			}

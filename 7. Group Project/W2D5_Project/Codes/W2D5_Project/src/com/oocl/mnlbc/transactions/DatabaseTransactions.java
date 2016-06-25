@@ -62,7 +62,7 @@ public class DatabaseTransactions {
 	      ResultSet rs = null;
 	      List<Client> clients = new ArrayList<Client>();
 
-	      String sql = "SELECT * FROM CHAT_USERS WHERE CONN_TIMESTAMP IS NOT NULL";
+	      String sql = "SELECT * FROM CHAT_USERS WHERE CONN_TIMESTAMP IS NOT NULL ORDER BY CONN_TIMESTAMP";
 	      PreparedStatement pstmt;
 	      try {
 	         pstmt = (PreparedStatement) conn.prepareStatement(sql);
