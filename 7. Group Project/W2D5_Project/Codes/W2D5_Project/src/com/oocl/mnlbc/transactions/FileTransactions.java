@@ -5,8 +5,11 @@ package com.oocl.mnlbc.transactions;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Properties;
 
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
@@ -26,7 +29,7 @@ public class FileTransactions {
       try {
          String putData = "";
          BufferedWriter bw;
-         File file = new File("history//"+session.getSessionId() + ".log");
+         File file = new File("history//" + session.getSessionId() + ".log");
          if (!file.exists()) {
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
@@ -46,6 +49,25 @@ public class FileTransactions {
          e.printStackTrace();
       }
       return false;
+   }
+
+   public static String getPort() {
+      File configFile = new File("config//config.properties");
+      String port = "";
+
+      try {
+         FileReader reader = new FileReader(configFile);
+         Properties props = new Properties();
+         props.load(reader);
+         port = props.getProperty("port");
+         reader.close();
+      } catch (FileNotFoundException ex) {
+         System.out.println("File not found");
+      } catch (IOException ex) {
+         System.out.println("Invalid input");
+      }
+      return port;
+
    }
 
    public static Session generateTestSession() {

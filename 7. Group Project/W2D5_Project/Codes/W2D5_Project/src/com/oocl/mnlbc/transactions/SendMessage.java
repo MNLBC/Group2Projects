@@ -40,7 +40,7 @@ public class SendMessage extends Thread{
         	 Message message = new Message(this.presSesh.getSessionId(), 
  					0L, Long.parseLong(this.client.getId()), null, date.toString());
         	 message.setMessage(input.readLine().trim());
-            if (message.equals("bye")) {
+            if (message.equals("-bye")) {
                break;
             }
         

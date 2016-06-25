@@ -3,6 +3,7 @@ package com.oocl.mnlbc.transactions;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,9 +37,8 @@ public class ChatServer {
     * @throws IOException
     */
    public void startWork() throws IOException {
-      serverSocket = new ServerSocket(7777);
+      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
       while (true) {
-         System.out.println("dumaan sa server");
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
