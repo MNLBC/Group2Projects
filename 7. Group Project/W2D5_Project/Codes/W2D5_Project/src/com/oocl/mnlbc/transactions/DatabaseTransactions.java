@@ -54,6 +54,50 @@ public class DatabaseTransactions {
       }
       return client;
    }
+   
+   public static ResultSet getOnlineUsers() {
+	      Connection conn = getConn();
+	      ResultSet rs = null;
+
+	      String sql = "SELECT * FROM CHAT_USERS WHERE CONN_TIMESTAMP IS NOT NULL";
+	      PreparedStatement pstmt;
+	      try {
+	         pstmt = (PreparedStatement) conn.prepareStatement(sql);
+	         rs = pstmt.executeQuery();
+	         while (rs.next()) {
+	            String id = rs.getString("USER_ID");
+	            String firstName = rs.getString("FIRST_NAME");
+	            String lastName = rs.getString("LAST_NAME");
+	            if (!id.equals("")) {
+	               pstmt.close();
+	               conn.close();
+	               return rs;
+	            }
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      }
+	      return rs;
+	}
+   
+   public static int declareOnline(Client client, String connTimestamp){
+	   Connection conn = getConn();
+	   int result = 0;
+	   String userID = client.getId();
+	   String sql = "UPDATE CHAT_USERS SET CONN_TIMESTAMP='" + connTimestamp + "' WHERE USER_ID ='" + userID + "'";
+	   PreparedStatement pstmt;
+	   try {
+		pstmt = (PreparedStatement)conn.prepareStatement(sql);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		conn.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	   
+	   return result;
+   }
 
    public static boolean verifyChatUser(String username) {
       Connection conn = getConn();
