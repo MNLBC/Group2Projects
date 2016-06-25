@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.utils.Timestamp;
 
 /**
  * Client class
@@ -35,8 +36,10 @@ public class ChatClient {
     */
    public void startWork() throws UnknownHostException, IOException {
       Socket socket = new Socket(ipAdd, 7777);
+      DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
       new ReadMessage(socket, client).start();
       new SendMessage(socket, client).start();
+      
 
    }
 
