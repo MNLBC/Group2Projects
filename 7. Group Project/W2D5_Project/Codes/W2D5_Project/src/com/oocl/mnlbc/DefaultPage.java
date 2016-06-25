@@ -1,11 +1,10 @@
 package com.oocl.mnlbc;
 
 import java.io.IOException;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.transactions.ChatClient;
 import com.oocl.mnlbc.transactions.LoginClient;
 import com.oocl.mnlbc.transactions.RegisterClient;
 
@@ -42,7 +41,9 @@ public class DefaultPage {
             form2.login();
             validChoice = true;
          } else if (choice.equals("3")) {
-            // enter chat
+            client = new Client("","", "", "Stranger", "");
+            ChatClient cc = new ChatClient("127.0.0.1", client);
+            cc.connectClient();
             validChoice = true;
          } else {
             System.out.println("Please select the right choice");
