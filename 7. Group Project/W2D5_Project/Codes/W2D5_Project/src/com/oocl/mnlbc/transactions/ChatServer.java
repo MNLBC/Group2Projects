@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.oocl.mnlbc.models.Client;
@@ -39,22 +40,22 @@ public class ChatServer {
          socket = serverSocket.accept();
          //long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
-         clientList.add(client);
-         if (count > 1) {
-            //if (sessid == 0) {
+         clientList = DatabaseTransactions.getOnlineUsers();
+         if (clientList.size() > 1) {
                session = new Session((long) 0, timestamp.getTimestamp(), "");
                 DatabaseTransactions.createSession(session);
-            //} // else
-              // DatabaseTransactions.updateActiveSession(clientList);
          }
-         // Session s = new Session
-         // clients.setCount(clients.getCount() + 1);
          System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
          socketList.add(socket);
-         new Chat(count, socket, socketList, client, clientList).run();
+         int index=0;
+         for (int i=0; i < socketList.size(); i ++){
+            if (socketList.get(i)==socket){
+            index=i;
+         }        
+         new Chat(count, socket, socketList, clientList.get(index), clientList).run();
       }
    }
-
+ }
    /**
     * Main method that creates server instance and starts it
     * 
