@@ -39,7 +39,6 @@ public class ChatServer {
    public void startWork() throws IOException {
       serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
       while (true) {
-         System.out.println("dumaan sa server");
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
