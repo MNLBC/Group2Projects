@@ -37,14 +37,14 @@ public class ChatServer {
       serverSocket = new ServerSocket(7777);
       while (true) {
          socket = serverSocket.accept();
-         long sessid = DatabaseTransactions.getActiveSessionID();
+         //long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
          clientList.add(client);
          if (count > 1) {
-            if (sessid == 0) {
+            //if (sessid == 0) {
                session = new Session((long) 0, timestamp.getTimestamp(), "");
-               // DatabaseTransactions.createSession(session);
-            } // else
+                DatabaseTransactions.createSession(session);
+            //} // else
               // DatabaseTransactions.updateActiveSession(clientList);
          }
          // Session s = new Session
