@@ -37,8 +37,8 @@ public class ChatServer {
     * @throws IOException
     */
    public void startWork() throws IOException {
-//      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
-      serverSocket = new ServerSocket(7777);
+      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
+      // serverSocket = new ServerSocket(7777);
       while (true) {
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();
@@ -50,11 +50,11 @@ public class ChatServer {
          }
          System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
          socketList.add(socket);
-         
+
          for (int i = 0; i < socketList.size(); i++) {
-           System.out.println("Testing:" + socketList.get(i));
-          }
-         int temp = socketList.size()-1;
+            System.out.println("Testing:" + socketList.get(i));
+         }
+         int temp = socketList.size() - 1;
          String clientId = clientList.get(temp).getId();
          int listsize = socketList.size();
          clientSocketMap.put(clientId, listsize);
@@ -64,11 +64,11 @@ public class ChatServer {
                index = i;
             }
          }
-            System.out.println("Count:" + count);
-            System.out.println("Socket" + socket);
-            System.out.println("clientlist: " +clientList.get(index));
-            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).start();
-         
+         System.out.println("Count:" + count);
+         System.out.println("Socket" + socket);
+         System.out.println("clientlist: " + clientList.get(index));
+         new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).start();
+
       }
    }
 
