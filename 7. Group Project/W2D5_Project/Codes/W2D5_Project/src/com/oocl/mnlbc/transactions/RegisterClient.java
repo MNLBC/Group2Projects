@@ -34,7 +34,7 @@ public class RegisterClient {
       System.out.print("Username: ");
       userName = scanner.nextLine();
 
-      char [] password = console.readPassword("Password");
+      char [] password = console.readPassword("Password: ");
       
       StringBuilder strBuilder = new StringBuilder();
       for (int i = 0; i <  password.length; i++) {
