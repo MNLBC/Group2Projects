@@ -54,7 +54,10 @@ public class ChatServer {
          for (int i = 0; i < socketList.size(); i++) {
            System.out.println("Testing:" + socketList.get(i));
           }
-         clientSocketMap.put(clientList.get(socketList.size()-1).getId(), socketList.size());
+         int temp = socketList.size()-1;
+         String clientId = clientList.get(temp).getId();
+         int listsize = socketList.size();
+         clientSocketMap.put(clientId, listsize);
          int index = 0;
          for (int i = 0; i < socketList.size(); i++) {
             if (socketList.get(i) == socket) {

@@ -57,9 +57,16 @@ public class Chat extends Thread{
 		try {
 			reader = new BufferedReader(new InputStreamReader(
 					socket.getInputStream()));
-			writer = new PrintWriter(socket.getOutputStream());
-			writer.println(screenName + " is now in the room.");
-			writer.flush();
+//			writer = new PrintWriter(socket.getOutputStream());
+//			writer.println(screenName + " is now in the room.");
+//			writer.flush();
+			
+			for (int i = 0; i < socketList.size(); i++) {
+            writer = new PrintWriter(socketList.get(i)
+                  .getOutputStream());
+            writer.println(screenName + " is now in the room.");
+            writer.flush();
+         }
 			
 			Date date = new Date();
 			//static session id still for change

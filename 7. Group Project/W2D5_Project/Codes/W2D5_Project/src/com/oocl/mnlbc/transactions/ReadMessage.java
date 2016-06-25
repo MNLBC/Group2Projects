@@ -29,7 +29,7 @@ public class ReadMessage extends Thread {
       this.presSesh = session;
    }
 
-   public void run() {
+   public synchronized void run() {
       BufferedReader reader = null;
       try {
          reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -39,8 +39,8 @@ public class ReadMessage extends Thread {
         	 Message message =
         	            new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null, date.toString());
             message.setMessage(reader.readLine().trim());
-            System.out.println(reader.readLine().trim());
-            FileTransactions.write(message, presSesh);
+            System.out.println(message.getMessage());
+//            FileTransactions.write(message, presSesh);
             if (message.equals("-bye")) {
                System.out.println(client.getUsername() + " has left");
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());

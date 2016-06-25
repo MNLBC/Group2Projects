@@ -62,6 +62,7 @@ public class LoginClient {
          } else {
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }
+         DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
          ChatClient cc = new ChatClient("127.0.0.1", client, session);
          cc.connectClient();
       }

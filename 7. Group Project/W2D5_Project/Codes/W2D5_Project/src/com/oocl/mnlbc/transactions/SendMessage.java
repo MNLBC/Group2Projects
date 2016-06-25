@@ -29,7 +29,7 @@ public class SendMessage extends Thread{
       this.presSesh = session;
    }
    
-   public void run(){
+   public synchronized void run(){
       BufferedReader input = null;
       PrintWriter writer = null;
       try {
