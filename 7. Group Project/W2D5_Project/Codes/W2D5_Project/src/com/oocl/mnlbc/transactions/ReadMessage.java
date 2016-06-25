@@ -37,8 +37,8 @@ public class ReadMessage extends Thread {
 					0L, Long.parseLong(this.client.getId()), null, date.toString());
 			while (true) {
 				message.setMessage(reader.readLine().trim());
-
-				if (message.equals("bye")) {
+				System.out.println(reader.readLine().trim());
+				if (message.equals("-bye")) {
 					System.out.println(client.getUsername() + " has left");
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
 					break;
