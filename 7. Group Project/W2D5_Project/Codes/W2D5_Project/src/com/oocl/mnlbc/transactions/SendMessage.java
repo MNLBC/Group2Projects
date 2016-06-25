@@ -35,9 +35,10 @@ public class SendMessage extends Thread{
     	 Date date = new Date();
          input = new BufferedReader(new InputStreamReader(System.in));
          writer = new PrintWriter(socket.getOutputStream());
-         Message message = new Message(this.presSesh.getSessionId(), 
-					0L, Long.parseLong(this.client.getId()), null, date.toString());
+        
          while (true) {
+        	 Message message = new Message(this.presSesh.getSessionId(), 
+ 					0L, Long.parseLong(this.client.getId()), null, date.toString());
         	 message.setMessage(input.readLine().trim());
             if (message.equals("bye")) {
                break;
