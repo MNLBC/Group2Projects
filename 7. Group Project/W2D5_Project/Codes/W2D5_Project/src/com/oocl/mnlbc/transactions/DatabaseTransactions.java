@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
@@ -55,9 +57,10 @@ public class DatabaseTransactions {
       return client;
    }
    
-   public static ResultSet getOnlineUsers() {
+   public static List<Client> getOnlineUsers() {
 	      Connection conn = getConn();
 	      ResultSet rs = null;
+	      List<Client> clients = new ArrayList<Client>();
 
 	      String sql = "SELECT * FROM CHAT_USERS WHERE CONN_TIMESTAMP IS NOT NULL";
 	      PreparedStatement pstmt;
@@ -68,16 +71,20 @@ public class DatabaseTransactions {
 	            String id = rs.getString("USER_ID");
 	            String firstName = rs.getString("FIRST_NAME");
 	            String lastName = rs.getString("LAST_NAME");
+	            String username = rs.getString("USERNAME");
+	            String password = rs.getString("PASSWORD");
 	            if (!id.equals("")) {
+	            	Client client = new Client(id,username,password,firstName,lastName);
+	            	clients.add(client);
 	               pstmt.close();
 	               conn.close();
-	               return rs;
 	            }
 	         }
+	         return clients;
 	      } catch (SQLException e) {
 	         e.printStackTrace();
 	      }
-	      return rs;
+	      return clients;
 	}
    
    public static int declareOnline(Client client, String connTimestamp){
@@ -85,6 +92,25 @@ public class DatabaseTransactions {
 	   int result = 0;
 	   String userID = client.getId();
 	   String sql = "UPDATE CHAT_USERS SET CONN_TIMESTAMP='" + connTimestamp + "' WHERE USER_ID ='" + userID + "'";
+	   PreparedStatement pstmt;
+	   try {
+		pstmt = (PreparedStatement)conn.prepareStatement(sql);
+		result = pstmt.executeUpdate();
+		pstmt.close();
+		conn.close();
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	   
+	   return result;
+   }
+   
+   public static int declareOffline(Client client, String connTimestamp){
+	   Connection conn = getConn();
+	   int result = 0;
+	   String userID = client.getId();
+	   String sql = "UPDATE CHAT_USERS SET CONN_TIMESTAMP = NULL WHERE USER_ID ='" + userID + "'";
 	   PreparedStatement pstmt;
 	   try {
 		pstmt = (PreparedStatement)conn.prepareStatement(sql);
