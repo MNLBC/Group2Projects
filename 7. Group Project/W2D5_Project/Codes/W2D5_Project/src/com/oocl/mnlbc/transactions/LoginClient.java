@@ -1,6 +1,8 @@
 package com.oocl.mnlbc.transactions;
 
+import java.io.Console;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
@@ -17,14 +19,21 @@ public class LoginClient {
       int choice;
       RegisterClient register = new RegisterClient();
       Scanner scanner = new Scanner(System.in);
-
+      Console console = System.console();
+      
       System.out.println("-------------------------User Log-In-------------------------");
 
       System.out.print("Username: ");
       userName = scanner.nextLine();
 
-      System.out.print("Password: ");
-      userPassword = scanner.nextLine();
+      char[] password = console.readPassword("Password:");
+
+      StringBuilder strBuilder = new StringBuilder();
+      for (int i = 0; i < password.length; i++) {
+         strBuilder.append(password[i]);
+      }
+      userPassword = strBuilder.toString();
+      Arrays.fill(password, ' ');
 
       System.out.println("Validating account...");
 
@@ -46,7 +55,7 @@ public class LoginClient {
          Session session = new Session(0l, "", "");
          if (DatabaseTransactions.getOnlineUsers().size() > 0) {
             session.setSessionId(DatabaseTransactions.getActiveSessionID());
-         }else{
+         } else {
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }
          ChatClient cc = new ChatClient("127.0.0.1", client, session);
