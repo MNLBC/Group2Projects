@@ -48,7 +48,7 @@ public class ChatServer {
          }
          System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
          socketList.add(socket);
-         clientSocketMap.put(client.getId(), socketList.size());
+         clientSocketMap.put(clientList.get(socketList.size()-1).getId(), socketList.size());
          int index = 0;
          for (int i = 0; i < socketList.size(); i++) {
             if (socketList.get(i) == socket) {
