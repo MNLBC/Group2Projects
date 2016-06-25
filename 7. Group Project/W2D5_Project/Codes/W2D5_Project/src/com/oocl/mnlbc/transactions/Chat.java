@@ -21,7 +21,7 @@ import com.oocl.mnlbc.models.Session;
  *
  * 06-24-2016
  */
-public class Chat {
+public class Chat extends Thread{
 	private Socket socket;
 	private List<Socket> socketList;
 	private int count;

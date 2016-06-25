@@ -38,6 +38,7 @@ public class ChatServer {
    public void startWork() throws IOException {
       serverSocket = new ServerSocket(7777);
       while (true) {
+         System.out.println("dumaan sa server");
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
@@ -54,7 +55,7 @@ public class ChatServer {
             if (socketList.get(i) == socket) {
                index = i;
             }
-            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).run();
+            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).start();
          }
       }
    }
