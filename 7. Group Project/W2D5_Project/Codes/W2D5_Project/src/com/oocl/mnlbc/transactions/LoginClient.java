@@ -26,21 +26,21 @@ public class LoginClient {
 
       System.out.println("Validating account...");
 
-      if (DatabaseTransactions.getChatUser(userName, userPassword) == null) {
+      if (userName.equals("admin") && userPassword.equals("admin")) {
+         System.out.println("Starting server...");
+         ChatServer cs = new ChatServer(client);
+         cs.startWork();
+      } else if (DatabaseTransactions.getChatUser(userName, userPassword) == null) {
          System.out.println("Account is invalid. Please log-in again.");
          System.out.print("For users who have not registered yet: enter '0'. To continue: enter '1'");
          choice = scanner.nextInt();
-
          if (choice == 0) {
             register.signUp();
          } else if (choice == 1) {
             login();
          }
-      }
-      else {
+      } else {
          client = DatabaseTransactions.getChatUser(userName, userPassword);
-         ChatServer cs = new ChatServer(client); 
-         cs.startWork();
          ChatClient cc = new ChatClient("127.0.0.1", client);
          cc.connectClient();
       }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.oocl.mnlbc.DefaultPage;
 import com.oocl.mnlbc.models.Client;
 
 public class RegisterClient {
@@ -14,8 +15,9 @@ public class RegisterClient {
    public static String userPassword;
    public static boolean success;
    private Client client;
+
    @SuppressWarnings("resource")
-   public void  signUp() throws IOException {
+   public void signUp() throws IOException {
       Scanner scanner = new Scanner(System.in);
       LoginClient form3 = new LoginClient();
       System.out.println("---------------------Registration Form---------------------");
@@ -31,35 +33,29 @@ public class RegisterClient {
 
       System.out.print("Password: ");
       userPassword = scanner.nextLine();
-      
-      if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
-         while ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))){
-            System.out.println("Please fill all fields");
-            signUp();
+
+      if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))) {
+         System.out.println("Please fill all fields");
+         signUp();
+      } else {
+         if (DatabaseTransactions.verifyChatUser(userName) == false) {
+            DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
             success = true;
+            System.out.println("Registration successful!");
+            DefaultPage dp = new DefaultPage();
+            dp.displayDefaultPage();
+         } else {
+            System.out.println("Username taken. Please choose another");
+            signUp();
+            success = false;
          }
       }
-         else{
-            if (DatabaseTransactions.verifyChatUser(userName) == false){
-               DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
-               success = true;
-            }
-            else{
-               System.out.println("Username taken. Please choose another");
-               signUp();
-               success=false;
-            }
-      }
-//      Go to chat
-      client = DatabaseTransactions.getChatUser(userName, userPassword);
-      ChatServer cs = new ChatServer(client); 
-      cs.startWork();
-      ChatClient cc = new ChatClient("127.0.0.1", client);
-      cc.connectClient();
-      
-      if (success=true){
-         System.out.println("Registration successful!");
-      }
-         
+      // Go to chat
+      // client = DatabaseTransactions.getChatUser(userName, userPassword);
+      // ChatServer cs = new ChatServer(client);
+      // cs.startWork();
+      // ChatClient cc = new ChatClient("127.0.0.1", client);
+      // cc.connectClient();
+
    }
 }
