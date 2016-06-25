@@ -26,22 +26,27 @@ public class RegisterClient {
       System.out.println("---------------------Registration Form---------------------");
 
       System.out.print("First Name: ");
-      firstName = scanner.nextLine();
+      firstName = scanner.next();
 
       System.out.print("Last Name: ");
-      lastName = scanner.nextLine();
+      lastName = scanner.next();
 
       System.out.print("Username: ");
-      userName = scanner.nextLine();
-
-      char [] password = console.readPassword("Password: ");
+      userName = scanner.next();
       
-      StringBuilder strBuilder = new StringBuilder();
-      for (int i = 0; i <  password.length; i++) {
-         strBuilder.append(password[i]);
-      }
-      userPassword = strBuilder.toString();
-      Arrays.fill(password,' ');
+      System.out.print("Password: ");
+      userPassword = scanner.next();
+
+//        Using console
+//      char [] password = console.readPassword("Password: ");
+//      
+//      StringBuilder strBuilder = new StringBuilder();
+//      for (int i = 0; i <  password.length; i++) {
+//         strBuilder.append(password[i]);
+//      }
+//      userPassword = strBuilder.toString();
+//      Arrays.fill(password,' ');
+      
 
       if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))) {
          System.out.println("Please fill all fields");

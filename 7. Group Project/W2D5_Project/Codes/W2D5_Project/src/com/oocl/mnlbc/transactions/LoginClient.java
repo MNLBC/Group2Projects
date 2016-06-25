@@ -24,16 +24,20 @@ public class LoginClient {
       System.out.println("-------------------------User Log-In-------------------------");
 
       System.out.print("Username: ");
-      userName = scanner.nextLine();
+      userName = scanner.next();
 
-      char[] password = console.readPassword("Password: ");
-
-      StringBuilder strBuilder = new StringBuilder();
-      for (int i = 0; i < password.length; i++) {
-         strBuilder.append(password[i]);
-      }
-      userPassword = strBuilder.toString();
-      Arrays.fill(password, ' ');
+      System.out.print("Password: ");
+      userPassword = scanner.next();
+      
+//      Using console
+//      char[] password = console.readPassword("Password: ");
+//
+//      StringBuilder strBuilder = new StringBuilder();
+//      for (int i = 0; i < password.length; i++) {
+//         strBuilder.append(password[i]);
+//      }
+//      userPassword = strBuilder.toString();
+//      Arrays.fill(password, ' ');
 
       System.out.println("Validating account...");
 
