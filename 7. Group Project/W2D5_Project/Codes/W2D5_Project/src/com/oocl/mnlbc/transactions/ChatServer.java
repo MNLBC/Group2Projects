@@ -44,7 +44,7 @@ public class ChatServer {
          // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
          clientList = DatabaseTransactions.getOnlineUsers();
-         if (clientList.size() > 1) {
+         if (clientList.size() == 2) {
             session = new Session((long) 0, Timestamp.getTimestamp(), "");
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }

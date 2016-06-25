@@ -10,6 +10,7 @@ import java.util.Date;
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
+import com.oocl.mnlbc.utils.Timestamp;
 /**
  * SendMessage class
  * 

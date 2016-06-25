@@ -12,6 +12,7 @@ import java.util.Map;
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
+import com.oocl.mnlbc.utils.Timestamp;
 
 
 /**
@@ -72,6 +73,7 @@ public class Chat extends Thread{
 				
 				// Client will quit if client send "bye", and print "bye" to in the client
 				if (message.getMessage().equals("-bye")) {
+					DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
 				   clientSocketMap.remove(client.getId());
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("Closing");
