@@ -37,7 +37,8 @@ public class ChatServer {
     * @throws IOException
     */
    public void startWork() throws IOException {
-      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
+//      serverSocket = new ServerSocket(Integer.parseInt(FileTransactions.getPort()));
+      serverSocket = new ServerSocket(7777);
       while (true) {
          socket = serverSocket.accept();
          // long sessid = DatabaseTransactions.getActiveSessionID();

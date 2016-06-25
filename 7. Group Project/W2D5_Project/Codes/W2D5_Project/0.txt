@@ -1,4 +1,0 @@
-Message Id: 0 Timestamp: 20160624214903.509 ClientId: 0 MessageBody: Hello World
-Message Id: 0 Timestamp: 20160624215602.406 ClientId: 0 MessageBody: Hello World
-Message Id: 0 Timestamp: 20160624215623.305 ClientId: 0 MessageBody: Hello World
-Message Id: 0 Timestamp: 20160624215825.575 ClientId: 0 MessageBody: Hello World
