@@ -26,16 +26,16 @@ public class RegisterClient {
       System.out.println("---------------------Registration Form---------------------");
 
       System.out.print("First Name: ");
-      firstName = scanner.next();
+      firstName = scanner.nextLine();
 
       System.out.print("Last Name: ");
-      lastName = scanner.next();
+      lastName = scanner.nextLine();
 
       System.out.print("Username: ");
-      userName = scanner.next();
+      userName = scanner.nextLine();
       
       System.out.print("Password: ");
-      userPassword = scanner.next();
+      userPassword = scanner.nextLine();
 
 //        Using console
 //      char [] password = console.readPassword("Password: ");

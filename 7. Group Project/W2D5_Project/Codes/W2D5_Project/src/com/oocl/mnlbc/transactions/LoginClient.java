@@ -24,10 +24,10 @@ public class LoginClient {
       System.out.println("-------------------------User Log-In-------------------------");
 
       System.out.print("Username: ");
-      userName = scanner.next();
+      userName = scanner.nextLine();
 
       System.out.print("Password: ");
-      userPassword = scanner.next();
+      userPassword = scanner.nextLine();
       
 //      Using console
 //      char[] password = console.readPassword("Password: ");
