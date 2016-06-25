@@ -6,7 +6,13 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 import com.oocl.mnlbc.models.Client;
-
+import com.oocl.mnlbc.utils.Timestamp;
+/**
+ * ReadMessage class
+ * 
+ * @author denoyme
+ *
+ */
 public class ReadMessage extends Thread {
 
    private Socket socket;
@@ -26,6 +32,7 @@ public class ReadMessage extends Thread {
             message = reader.readLine();
             
             if (message.equals("bye")) {
+               DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
                break;
             }
          }

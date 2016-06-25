@@ -7,7 +7,12 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import com.oocl.mnlbc.models.Client;
-
+/**
+ * SendMessage class
+ * 
+ * @author denoyme
+ *
+ */
 public class SendMessage extends Thread{
    
    private Socket socket;
