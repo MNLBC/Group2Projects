@@ -6,7 +6,6 @@ package com.oocl.mnlbc.transactions;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +29,7 @@ public class FileTransactions {
       try {
          String putData = "";
          BufferedWriter bw;
+         new File("history").mkdirs();
          File file = new File("history//" + session.getSessionId() + ".log");
          if (!file.exists()) {
             file.createNewFile();
@@ -37,6 +37,7 @@ public class FileTransactions {
             bw = new BufferedWriter(fw);
             bw.write("Message Id: " + message.getMessageId() + " Timestamp: " + message.getTimestamp() + " ClientId: "
                + message.getClientId() + " MessageBody: " + message.getMessage());
+            bw.flush();
          } else {
             FileWriter fw = new FileWriter(file, true);
             bw = new BufferedWriter(fw);
@@ -44,7 +45,6 @@ public class FileTransactions {
                + " ClientId: " + message.getClientId() + " MessageBody: " + message.getMessage();
             bw.write(putData);
          }
-         bw.flush();
          bw.close();
       } catch (IOException e) {
          e.printStackTrace();
@@ -53,7 +53,6 @@ public class FileTransactions {
    }
 
    public static String getPort() {
-      System.out.println("test");
       String port = "";
 
       try {

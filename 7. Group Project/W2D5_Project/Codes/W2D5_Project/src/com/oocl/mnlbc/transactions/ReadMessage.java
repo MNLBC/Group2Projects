@@ -40,7 +40,7 @@ public class ReadMessage extends Thread {
         	            new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null, date.toString());
             message.setMessage(reader.readLine().trim());
             System.out.println(message.getMessage());
-//            FileTransactions.write(message, presSesh);
+            FileTransactions.write(message, presSesh);
             if (message.equals("-bye")) {
                System.out.println(client.getUsername() + " has left");
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
