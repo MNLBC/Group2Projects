@@ -177,12 +177,11 @@ public class DatabaseTransactions {
       return result;
    }
 
-   public static int createSession(Session session) {
+   public static int createSession(String timestamp) {
       Connection conn = getConn();
       int result = 0;
 
-      String startDT = session.getStart();
-      String sql = "INSERT INTO CHAT_SESSION(START_DT,ACTIVE) VALUES('" + startDT + "','1')";
+      String sql = "INSERT INTO CHAT_SESSION(START_DT,ACTIVE) VALUES('" + timestamp + "','1')";
       PreparedStatement pStmt;
       try {
          pStmt = (PreparedStatement) conn.prepareStatement(sql);
