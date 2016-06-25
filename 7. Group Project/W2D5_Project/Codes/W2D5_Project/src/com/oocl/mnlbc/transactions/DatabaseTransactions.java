@@ -10,7 +10,6 @@ import java.util.List;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
-import com.oocl.mnlbc.models.Session;
 
 public class DatabaseTransactions {
 
@@ -21,7 +20,7 @@ public class DatabaseTransactions {
       String password = "admin123"; // change password of your database system
       Connection conn = null;
       try {
-         Class.forName(driver); // classLoader,加载对应驱动
+         Class.forName(driver);
          conn = (Connection) DriverManager.getConnection(url, username, password);
       } catch (ClassNotFoundException e) {
          e.printStackTrace();

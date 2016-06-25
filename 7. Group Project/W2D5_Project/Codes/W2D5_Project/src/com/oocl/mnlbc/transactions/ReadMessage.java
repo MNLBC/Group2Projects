@@ -10,6 +10,7 @@ import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.utils.Timestamp;
+
 /**
  * ReadMessage class
  * 
@@ -18,42 +19,43 @@ import com.oocl.mnlbc.utils.Timestamp;
  */
 public class ReadMessage extends Thread {
 
-	private Socket socket;
-	private Client client;
-	private Session presSesh;
+   private Socket socket;
+   private Client client;
+   private Session presSesh;
 
-	public ReadMessage(Socket socket, Client client, Session session) {
-		this.socket = socket;
-		this.client = client;
-		this.presSesh = session;
-	}
+   public ReadMessage(Socket socket, Client client, Session session) {
+      this.socket = socket;
+      this.client = client;
+      this.presSesh = session;
+   }
 
-	public void run() {
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			Date date = new Date();
-			Message message = new Message(this.presSesh.getSessionId(), 
-					0L, Long.parseLong(this.client.getId()), null, date.toString());
-			while (true) {
-				message.setMessage(reader.readLine().trim());
-				System.out.println(reader.readLine().trim());
-				if (message.equals("-bye")) {
-					System.out.println(client.getUsername() + " has left");
+   public void run() {
+      BufferedReader reader = null;
+      try {
+         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+         Date date = new Date();
+         Message message =
+            new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null, date.toString());
+         while (true) {
+            message.setMessage(reader.readLine().trim());
+            System.out.println(reader.readLine().trim());
+            FileTransactions.write(message, presSesh);
+            if (message.equals("-bye")) {
+               System.out.println(client.getUsername() + " has left");
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
-					break;
-				}
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (reader != null) {
-					reader.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+               break;
+            }
+         }
+      } catch (IOException e) {
+         e.printStackTrace();
+      } finally {
+         try {
+            if (reader != null) {
+               reader.close();
+            }
+         } catch (IOException e) {
+            e.printStackTrace();
+         }
+      }
+   }
 }
