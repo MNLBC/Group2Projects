@@ -2,6 +2,7 @@ package com.oocl.mnlbc.models;
 
 /**
  * Base Client class
+ * 
  * @author FLAMEZI2 Group 2
  *
  */
@@ -15,6 +16,7 @@ public class Client {
 
    /**
     * new Client Constructor
+    * 
     * @param fname
     * @param lname
     * @param username

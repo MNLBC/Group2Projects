@@ -3,7 +3,7 @@ package com.oocl.mnlbc.models;
 /**
  * Base Session Class
  * 
- * @author Danna  Group 2
+ * @author Danna Group 2
  *
  */
 public class Session {
