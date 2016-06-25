@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.models.Session;
+import com.oocl.mnlbc.utils.Timestamp;
 
 public class LoginClient {
 
@@ -41,7 +43,13 @@ public class LoginClient {
          }
       } else {
          client = DatabaseTransactions.getChatUser(userName, userPassword);
-         ChatClient cc = new ChatClient("127.0.0.1", client);
+         Session session = new Session(0l, "", "");
+         if (DatabaseTransactions.getOnlineUsers().size() > 0) {
+            session.setSessionId(DatabaseTransactions.getActiveSessionID());
+         }else{
+            DatabaseTransactions.createSession(Timestamp.getTimestamp());
+         }
+         ChatClient cc = new ChatClient("127.0.0.1", client, session);
          cc.connectClient();
       }
    }

@@ -4,8 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.Date;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.models.Message;
+import com.oocl.mnlbc.models.Session;
+
+import oracle.sql.DATE;
 import com.oocl.mnlbc.utils.Timestamp;
 /**
  * ReadMessage class
@@ -15,37 +20,42 @@ import com.oocl.mnlbc.utils.Timestamp;
  */
 public class ReadMessage extends Thread {
 
-   private Socket socket;
-   private Client client;
+	private Socket socket;
+	private Client client;
+	private Session presSesh;
 
-   public ReadMessage(Socket socket, Client client) {
-      this.socket = socket;
-      this.client = client;
-   }
+	public ReadMessage(Socket socket, Client client, Session session) {
+		this.socket = socket;
+		this.client = client;
+		this.presSesh = session;
+	}
 
-   public void run() {
-      BufferedReader reader = null;
-      try {
-         reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         String message = null;
-         while (true) {
-            message = reader.readLine();
-            
-            if (message.equals("bye")) {
+	public void run() {
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			Date date = new Date();
+			Message message = new Message(this.presSesh.getSessionId(), 
+					0L, Long.parseLong(this.client.getId()), null, date.toString());
+			while (true) {
+				message.setMessage(reader.readLine().trim());
+
+				if (message.equals("bye")) {
+					System.out.println(client.getUsername() + " has left");
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
-               break;
-            }
-         }
-      } catch (IOException e) {
-         System.out.println(client.getUsername() + " has left");
-      } finally {
-         try {
-            if (reader != null) {
-               reader.close();
-            }
-         } catch (IOException e) {
-            e.printStackTrace();
-         }
-      }
-   }
+					break;
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (reader != null) {
+					reader.close();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

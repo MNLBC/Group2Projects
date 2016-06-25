@@ -18,7 +18,7 @@ public class DatabaseTransactions {
       String driver = "oracle.jdbc.driver.OracleDriver";
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
       String username = "system";
-      String password = "august22"; // change password of your database system
+      String password = "admin123"; // change password of your database system
       Connection conn = null;
       try {
          Class.forName(driver); // classLoader,加载对应驱动
@@ -177,12 +177,11 @@ public class DatabaseTransactions {
       return result;
    }
 
-   public static int createSession(Session session) {
+   public static int createSession(String timestamp) {
       Connection conn = getConn();
       int result = 0;
 
-      String startDT = session.getStart();
-      String sql = "INSERT INTO CHAT_SESSION(START_DT,ACTIVE) VALUES('" + startDT + "','1')";
+      String sql = "INSERT INTO CHAT_SESSION(START_DT,ACTIVE) VALUES('" + timestamp + "','1')";
       PreparedStatement pStmt;
       try {
          pStmt = (PreparedStatement) conn.prepareStatement(sql);

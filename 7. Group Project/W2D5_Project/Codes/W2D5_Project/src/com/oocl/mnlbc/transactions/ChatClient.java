@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.utils.Timestamp;
 
 /**
@@ -17,15 +18,17 @@ public class ChatClient {
 
    private String ipAdd;
    private Client client;
+   private Session session;
 
    /**
     * Constructor
     * 
     * @param ipAdd
     */
-   public ChatClient(String ipAdd, Client client) {
+   public ChatClient(String ipAdd, Client client, Session sesh) {
       this.ipAdd = ipAdd;
       this.client = client;
+      this.session = sesh;
    }
 
    /**
@@ -37,7 +40,7 @@ public class ChatClient {
    public void startWork() throws UnknownHostException, IOException {
       Socket socket = new Socket(ipAdd, 7777);
       DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
-      new ReadMessage(socket, client).start();
+      new ReadMessage(socket, client,session).start();
       new SendMessage(socket, client).start();
       
 

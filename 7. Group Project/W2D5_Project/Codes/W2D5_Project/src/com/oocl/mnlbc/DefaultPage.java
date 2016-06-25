@@ -4,15 +4,17 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.transactions.ChatClient;
+import com.oocl.mnlbc.transactions.DatabaseTransactions;
 import com.oocl.mnlbc.transactions.LoginClient;
 import com.oocl.mnlbc.transactions.RegisterClient;
+import com.oocl.mnlbc.utils.Timestamp;
 
 public class DefaultPage {
 
    public static Client client;
 
-   @SuppressWarnings("resource")
    public static void main(String[] args) throws IOException {
       displayDefaultPage();
    }
@@ -41,8 +43,14 @@ public class DefaultPage {
             form2.login();
             validChoice = true;
          } else if (choice.equals("3")) {
-            client = new Client("","", "", "Stranger", "");
-            ChatClient cc = new ChatClient("127.0.0.1", client);
+            Session session = new Session(0l, "", "");
+            client = new Client("", "", "", "Stranger", "");
+            if (DatabaseTransactions.getOnlineUsers().size() > 0) {
+               session.setSessionId(DatabaseTransactions.getActiveSessionID());
+            }else{
+               DatabaseTransactions.createSession(Timestamp.getTimestamp());
+            }
+            ChatClient cc = new ChatClient("127.0.0.1", client, session);
             cc.connectClient();
             validChoice = true;
          } else {
