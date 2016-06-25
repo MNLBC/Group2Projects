@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
@@ -27,35 +28,37 @@ public class ChatServer {
    Socket socket = null;
    Timestamp timestamp;
    Session session;
+   private Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
 
    /**
     * method to start server
     * 
     * @throws IOException
     */
-   @SuppressWarnings("resource")
    public void startWork() throws IOException {
       serverSocket = new ServerSocket(7777);
       while (true) {
          socket = serverSocket.accept();
-         //long sessid = DatabaseTransactions.getActiveSessionID();
+         // long sessid = DatabaseTransactions.getActiveSessionID();
          count++;
          clientList = DatabaseTransactions.getOnlineUsers();
          if (clientList.size() > 1) {
-               session = new Session((long) 0, timestamp.getTimestamp(), "");
-                DatabaseTransactions.createSession(session);
+            session = new Session((long) 0, Timestamp.getTimestamp(), "");
+            DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }
          System.out.println(count + " client" + (count > 1 ? "s" : "") + " connected to the server.");
          socketList.add(socket);
-         int index=0;
-         for (int i=0; i < socketList.size(); i ++){
-            if (socketList.get(i)==socket){
-            index=i;
-         }        
-         new Chat(count, socket, socketList, clientList.get(index), clientList).run();
+         clientSocketMap.put(client.getId(), socketList.size());
+         int index = 0;
+         for (int i = 0; i < socketList.size(); i++) {
+            if (socketList.get(i) == socket) {
+               index = i;
+            }
+            new Chat(count, socket, socketList, clientList.get(index), clientList, clientSocketMap).run();
+         }
       }
    }
- }
+
    /**
     * Main method that creates server instance and starts it
     * 
@@ -70,5 +73,13 @@ public class ChatServer {
    public void StartServer() throws IOException {
       System.out.println("Server started!");
       this.startWork();
+   }
+
+   public Map<String, Integer> getClientSocketMap() {
+      return clientSocketMap;
+   }
+
+   public void setClientSocketMap(Map<String, Integer> clientSocketMap) {
+      this.clientSocketMap = clientSocketMap;
    }
 }

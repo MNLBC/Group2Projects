@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Map;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
@@ -30,7 +30,7 @@ public class Chat {
 	private List<Client> presClients;
 	
 	
-	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList) {
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList, Map<String, Integer> clientSocketMap) {
 		this.count = count;
 		this.socket = socket;
 		this.socketList = socketList;
