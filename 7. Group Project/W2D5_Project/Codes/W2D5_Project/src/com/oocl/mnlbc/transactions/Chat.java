@@ -62,7 +62,7 @@ public class Chat {
 			
 			Date date = new Date();
 			//static session id still for change
-			long presClientId = Long.getLong(this.client.getId());
+			long presClientId = Long.parseLong(this.client.getId());
 			
 		
 			while (true) {
