@@ -28,7 +28,7 @@ public class ChatServer {
    Socket socket = null;
    Timestamp timestamp;
    Session session;
-   private Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
+   Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
 
    /**
     * method to start server
@@ -73,13 +73,5 @@ public class ChatServer {
    public void StartServer() throws IOException {
       System.out.println("Server started!");
       this.startWork();
-   }
-
-   public Map<String, Integer> getClientSocketMap() {
-      return clientSocketMap;
-   }
-
-   public void setClientSocketMap(Map<String, Integer> clientSocketMap) {
-      this.clientSocketMap = clientSocketMap;
    }
 }

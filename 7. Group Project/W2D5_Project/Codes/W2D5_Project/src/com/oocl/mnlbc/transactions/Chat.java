@@ -25,9 +25,9 @@ public class Chat {
 	private Socket socket;
 	private List<Socket> socketList;
 	private int count;
-
 	private Client client;
 	private List<Client> presClients;
+	private Map<String, Integer> clientSocketMap;
 	
 	
 	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList, Map<String, Integer> clientSocketMap) {
@@ -35,8 +35,8 @@ public class Chat {
 		this.socket = socket;
 		this.socketList = socketList;
 		this.client = client;
-		
 		this.presClients = clientList;
+		this.clientSocketMap = clientSocketMap;
 		
 	}
 	
@@ -72,6 +72,7 @@ public class Chat {
 				
 				// Client will quit if client send "bye", and print "bye" to in the client
 				if (message.getMessage().equals("-bye")) {
+				   clientSocketMap.remove(client.getId());
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("Closing");
 					writer.flush();
