@@ -1,0 +1,74 @@
+DefaultPage.java
+
+-displayDefaultPage()
+
+Client.java
+Client Constructor
+Parameters:
+fname
+lname
+username
+password
+
+Message.java
+Message Constructor
+Parameters:
+sessionId
+messageId
+clientId
+message
+timestamp
+
+Session.java
+Session constructor
+Parameters:
+sessionId
+start
+end
+
+Chat.java
+this class extends Thread
+-run()
+
+ChatClient.java
+-startWork()
+throws UnknownHostException & IOexception
+
+-connectClient()
+throws UnkownHostException & IOException
+
+ChatServer.java
+-startWork()
+throws IOException
+
+-StartServer()
+throws IOException
+
+
+LoginClient.java
+-login()
+throws IOException
+
+-testLogin()
+Parameters:
+uName
+uPassword
+
+ReadMessage.java
+this class extends Thread
+-run()
+
+RegisterClient.java
+-signUp()
+throws IOException
+
+-testSignup()
+Parameters:
+fname
+lname
+uName
+uPass
+
+SendMessage.java
+this class extends Thread
+run()
