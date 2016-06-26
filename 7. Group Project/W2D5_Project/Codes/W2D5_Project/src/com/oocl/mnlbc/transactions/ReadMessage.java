@@ -42,13 +42,12 @@ public class ReadMessage extends Thread {
             System.out.println(message.getMessage());
             FileTransactions.write(message, presSesh);
             if (message.equals("-bye")) {
-               System.out.println(client.getUsername() + " has left");
-               DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
                break;
             }
          }
       } catch (IOException e) {
-         e.printStackTrace();
+         System.out.println(client.getUsername() + " has left");
+         DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
       } finally {
          try {
             if (reader != null) {

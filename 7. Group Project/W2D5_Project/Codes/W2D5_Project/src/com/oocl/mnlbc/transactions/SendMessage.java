@@ -50,6 +50,7 @@ public class SendMessage extends Thread{
          }
       } catch (IOException e) {
          System.out.println(client.getUsername() + " has left");
+         DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
       } finally {
          if (input != null) {
             try {

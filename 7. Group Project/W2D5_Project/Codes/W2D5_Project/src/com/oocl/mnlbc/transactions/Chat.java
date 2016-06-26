@@ -83,6 +83,7 @@ public class Chat extends Thread {
 					writer.println("Closing");
 					writer.flush();
 					System.exit(0);
+//					continue;
 
 				} else if (message.getMessage().equals("-list")) {
 					List<Client> clients = DatabaseTransactions.getOnlineUsers();
@@ -93,13 +94,15 @@ public class Chat extends Thread {
 						writer.flush();
 					}
 
-				}
+				}else{
 				// Print all the message to all clients, Group chat
-				for (int i = 0; i < socketList.size(); i++) {
-					writer = new PrintWriter(socketList.get(i).getOutputStream());
-					writer.println(screenName + " says: " + message.getMessage());
-					writer.flush();
+	            for (int i = 0; i < socketList.size(); i++) {
+	               writer = new PrintWriter(socketList.get(i).getOutputStream());
+	               writer.println(screenName + " says: " + message.getMessage());
+	               writer.flush();
+	            }
 				}
+				
 
 			}
 		} catch (Exception e) {
