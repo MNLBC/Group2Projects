@@ -31,7 +31,7 @@ public class ReadMessage extends Thread {
       this.presSesh = session;
    }
 
-   public synchronized void run() {
+   public void run() {
       BufferedReader reader = null;
       try {
          reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -43,12 +43,14 @@ public class ReadMessage extends Thread {
             message.setMessage(reader.readLine().trim());
             System.out.println(message.getMessage());
             FileTransactions.write(message, presSesh);
-            if (message.equals("-bye")) {
+            if (message.getMessage().equals("-bye")) {
+               System.exit(0);
                break;
             }
          }
       } catch (IOException e) {
          System.out.println(client.getUsername() + " has left");
+         Thread.currentThread().interrupt();
          DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
       } finally {
          try {

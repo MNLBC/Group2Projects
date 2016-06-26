@@ -41,7 +41,7 @@ public class Chat extends Thread {
 
    }
 
-   public synchronized void run() {
+   public void run() {
       BufferedReader reader = null;
       PrintWriter writer = null;
       String presClientName = "";
@@ -81,8 +81,12 @@ public class Chat extends Thread {
                writer = new PrintWriter(socket.getOutputStream());
                writer.println("Closing");
                writer.flush();
-               // System.exit(0);
-               // continue;
+               socket.close();
+               yield();
+//               break;
+//               this.wait(1000);
+//                System.exit(0);
+                continue;
 
             } else if (message.getMessage().equals("-list")) {
                List<Client> clients = DatabaseTransactions.getOnlineUsers();
@@ -104,7 +108,8 @@ public class Chat extends Thread {
 
          }
       } catch (Exception e) {
-         e.printStackTrace();
+         Thread.currentThread().interrupt();
+         System.out.println("1 client has left the chat room");
       }
    }
 }

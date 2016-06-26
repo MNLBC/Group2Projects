@@ -31,7 +31,7 @@ public class SendMessage extends Thread {
       this.presSesh = session;
    }
 
-   public synchronized void run() {
+   public void run() {
       BufferedReader input = null;
       PrintWriter writer = null;
       try {
@@ -43,7 +43,8 @@ public class SendMessage extends Thread {
             Message message = new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null,
                date.toString());
             message.setMessage(input.readLine().trim());
-            if (message.equals("-bye")) {
+            if (message.getMessage().equals("-bye")) {
+               System.exit(0);
                break;
             }
 
