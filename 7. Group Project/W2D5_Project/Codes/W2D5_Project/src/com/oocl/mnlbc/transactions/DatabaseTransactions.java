@@ -24,7 +24,7 @@ public class DatabaseTransactions {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String username = "system";
-		String password = "admin"; // change password of your database system
+		String password = "august22"; // change password of your database system
 		Connection conn = null;
 		try {
 			Class.forName(driver);
@@ -92,7 +92,7 @@ public class DatabaseTransactions {
 				String username = rs.getString("USERNAME");
 				String password = rs.getString("PASSWORD");
 				if (!id.equals("")) {
-					Client client = new Client(id, username, password, firstName, lastName);
+					Client client = new Client(id, firstName, lastName, username, password);
 					clients.add(client);
 
 				}
