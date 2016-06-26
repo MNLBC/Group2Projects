@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
+import com.oocl.mnlbc.utils.FileTransactions;
 
 /**
  * Client class
@@ -37,7 +38,7 @@ public class ChatClient {
     * @throws IOException
     */
    public void startWork() throws UnknownHostException, IOException {
-      Socket socket = new Socket(ipAdd, Integer.parseInt(FileTransactions.getPort()));
+      Socket socket = new Socket(ipAdd, Integer.parseInt(FileTransactions.getConfigValue("port")));
       // Socket socket = new Socket(ipAdd, 7777);
       // DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
       new ReadMessage(socket, client, session).start();

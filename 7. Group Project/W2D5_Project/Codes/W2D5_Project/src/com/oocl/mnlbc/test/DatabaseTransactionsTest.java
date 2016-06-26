@@ -1,16 +1,12 @@
 package com.oocl.mnlbc.test;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
-import com.oocl.mnlbc.transactions.DatabaseTransactions;
+import com.oocl.mnlbc.utils.DatabaseTransactions;
 import com.oocl.mnlbc.utils.Timestamp;
 
 public class DatabaseTransactionsTest {

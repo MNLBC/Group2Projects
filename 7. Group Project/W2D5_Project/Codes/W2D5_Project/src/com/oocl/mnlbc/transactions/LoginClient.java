@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
+import com.oocl.mnlbc.utils.DatabaseTransactions;
 import com.oocl.mnlbc.utils.Timestamp;
 
 /**

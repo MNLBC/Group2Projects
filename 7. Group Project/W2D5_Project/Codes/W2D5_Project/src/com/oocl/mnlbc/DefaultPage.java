@@ -6,9 +6,9 @@ import java.util.Scanner;
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.transactions.ChatClient;
-import com.oocl.mnlbc.transactions.DatabaseTransactions;
 import com.oocl.mnlbc.transactions.LoginClient;
 import com.oocl.mnlbc.transactions.RegisterClient;
+import com.oocl.mnlbc.utils.DatabaseTransactions;
 import com.oocl.mnlbc.utils.Timestamp;
 
 /**

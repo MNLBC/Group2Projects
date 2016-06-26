@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.transactions;
+package com.oocl.mnlbc.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,8 +23,8 @@ public class DatabaseTransactions {
    private static Connection getConn() {
       String driver = "oracle.jdbc.driver.OracleDriver";
       String url = "jdbc:oracle:thin:@localhost:1521:xe";
-      String username = "system";
-      String password = "august22"; // change password of your database system
+      String username = FileTransactions.getConfigValue("user");
+      String password = FileTransactions.getConfigValue("pass"); // change password of your database system
       Connection conn = null;
       try {
          Class.forName(driver);

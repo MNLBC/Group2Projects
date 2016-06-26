@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.transactions;
 
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -10,6 +11,7 @@ import java.util.Map;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
+import com.oocl.mnlbc.utils.DatabaseTransactions;
 import com.oocl.mnlbc.utils.Timestamp;
 
 /**
@@ -79,7 +81,7 @@ public class Chat extends Thread {
                writer = new PrintWriter(socket.getOutputStream());
                writer.println("Closing");
                writer.flush();
-               System.exit(0);
+               // System.exit(0);
                // continue;
 
             } else if (message.getMessage().equals("-list")) {

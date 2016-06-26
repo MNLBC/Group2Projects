@@ -6,11 +6,12 @@ import java.util.Scanner;
 
 import com.oocl.mnlbc.DefaultPage;
 import com.oocl.mnlbc.models.Client;
+import com.oocl.mnlbc.utils.DatabaseTransactions;
 
 /**
  * 
  * @author Kassandra
- *@date 2016-06-25
+ * @date 2016-06-25
  */
 public class RegisterClient {
 

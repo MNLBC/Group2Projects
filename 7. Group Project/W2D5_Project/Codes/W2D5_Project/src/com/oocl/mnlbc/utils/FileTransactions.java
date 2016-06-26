@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.oocl.mnlbc.transactions;
+package com.oocl.mnlbc.utils;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,7 +13,6 @@ import java.util.Properties;
 
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
-import com.oocl.mnlbc.utils.Timestamp;
 
 /**
  * @author FLAMEZI2 File Transactions Class 2016-06-26
@@ -52,6 +51,7 @@ public class FileTransactions {
             bw.write(putData);
          }
          bw.close();
+         return true;
       } catch (IOException e) {
          e.printStackTrace();
       }
@@ -63,14 +63,14 @@ public class FileTransactions {
     * 
     * @return String
     */
-   public static String getPort() {
-      String port = "";
+   public static String getConfigValue(String property) {
+      String value = "";
       try {
          // FileReader reader = new FileReader(configFile);
          InputStream stream = FileTransactions.class.getClassLoader().getResourceAsStream("config.properties");
          Properties props = new Properties();
          props.load(stream);
-         port = props.getProperty("port");
+         value = props.getProperty(property);
          stream.close();
          // reader.close();
       } catch (FileNotFoundException ex) {
@@ -78,7 +78,7 @@ public class FileTransactions {
       } catch (IOException ex) {
          System.out.println("Invalid input");
       }
-      return port;
+      return value;
 
    }
 
