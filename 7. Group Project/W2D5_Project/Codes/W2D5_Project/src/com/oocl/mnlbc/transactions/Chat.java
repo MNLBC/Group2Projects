@@ -6,109 +6,103 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.utils.Timestamp;
 
-
 /**
  * Chat
  * 
  * @author LOPEZLA
  *
- * 06-24-2016
+ *         06-24-2016
  */
-public class Chat extends Thread{
+public class Chat extends Thread {
 	private Socket socket;
 	private List<Socket> socketList;
 	private int count;
 	private Client client;
 	private List<Client> presClients;
 	private Map<String, Integer> clientSocketMap;
-	
-	
-	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList, Map<String, Integer> clientSocketMap) {
+
+	public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList,
+			Map<String, Integer> clientSocketMap) {
 		this.count = count;
 		this.socket = socket;
 		this.socketList = socketList;
 		this.client = client;
 		this.presClients = clientList;
 		this.clientSocketMap = clientSocketMap;
-		
+
 	}
-	
+
 	public synchronized void run() {
 		BufferedReader reader = null;
 		PrintWriter writer = null;
-		String presClientName ="";
-		String presUsername="";
+		String presClientName = "";
+		String presUsername = "";
 		String screenName = "";
-		
-		
-		
-		presClientName=this.client.getFname() + " " + this.client.getLname();
+
+		presClientName = this.client.getFname() + " " + this.client.getLname();
 		presUsername = this.client.getUsername();
-		screenName = presClientName + " <" + presUsername +">";
-		
+		screenName = presClientName + " <" + presUsername + ">";
+
 		try {
-			reader = new BufferedReader(new InputStreamReader(
-					socket.getInputStream()));
-//			writer = new PrintWriter(socket.getOutputStream());
-//			writer.println(screenName + " is now in the room.");
-//			writer.flush();
-			
+			reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			// writer = new PrintWriter(socket.getOutputStream());
+			// writer.println(screenName + " is now in the room.");
+			// writer.flush();
+
 			for (int i = 0; i < socketList.size(); i++) {
-            writer = new PrintWriter(socketList.get(i)
-                  .getOutputStream());
-            writer.println(screenName + " is now in the room.");
-            writer.flush();
-         }
-			
+				writer = new PrintWriter(socketList.get(i).getOutputStream());
+				writer.println(screenName + " is now in the room.");
+				writer.flush();
+			}
+
 			Date date = new Date();
-			//static session id still for change
+			// static session id still for change
 			long presClientId = Long.parseLong(this.client.getId());
-			
-		
+
 			while (true) {
 				Message message = new Message(1L, 1L, presClientId, screenName, date.toString());
 				message.setMessage("");
 				message.setMessage(reader.readLine().trim());
-				
-				// Client will quit if client send "bye", and print "bye" to in the client
+
+				// Client will quit if client send "bye", and print "bye" to in
+				// the client
 				if (message.getMessage().equals("-bye")) {
 					DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
-				   clientSocketMap.remove(client.getId());
+					clientSocketMap.remove(client.getId());
 					writer = new PrintWriter(socket.getOutputStream());
 					writer.println("Closing");
 					writer.flush();
 					System.exit(0);
-				
-				}
-				else if(message.getMessage().equals("-list")){
-					for(Client client : this.presClients){
+
+				} else if (message.getMessage().equals("-list")) {
+					List<Client> clients = DatabaseTransactions.getOnlineUsers();
+					for (Client client : clients) {
 						writer = new PrintWriter(socket.getOutputStream());
-						writer.println(client.getUsername() + ":" +client.getFname() + " " + client.getLname() + " is online");
+						writer.println(client.getUsername() + ":" + client.getFname() + " " + client.getLname()
+								+ " is online");
 						writer.flush();
 					}
+
 				}
-		
-				
-			
-				
 				// Print all the message to all clients, Group chat
 				for (int i = 0; i < socketList.size(); i++) {
-					writer = new PrintWriter(socketList.get(i)
-							.getOutputStream());
+					writer = new PrintWriter(socketList.get(i).getOutputStream());
 					writer.println(screenName + " says: " + message.getMessage());
 					writer.flush();
 				}
 
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

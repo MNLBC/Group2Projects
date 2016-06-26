@@ -29,7 +29,7 @@ public class ChatServer {
    Socket socket = null;
    Timestamp timestamp;
    Session session;
-   Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
+   protected Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
 
    /**
     * method to start server
