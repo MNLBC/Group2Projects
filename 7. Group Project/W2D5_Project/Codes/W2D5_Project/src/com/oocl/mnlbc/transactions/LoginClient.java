@@ -78,5 +78,25 @@ public class LoginClient {
          cc.connectClient();
       }
    }
+   
+   /**
+    * 
+    * Method to test Login
+    * @param uName
+    * @param uPassword
+    * @return
+    */
+   public boolean testLogin(String uName, String uPassword) {
+      this.userName=uName;
+      this.userPassword=uPassword;
+      boolean success;
+      
+      if (DatabaseTransactions.getChatUser(uName, uPassword) != null) {
+         success = true;
+      }else {
+         success = false;
+      }
+      return success;
+   }
 
 }

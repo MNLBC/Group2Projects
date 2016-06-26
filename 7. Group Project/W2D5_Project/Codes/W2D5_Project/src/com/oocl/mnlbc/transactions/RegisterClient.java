@@ -79,4 +79,28 @@ public class RegisterClient {
       // cc.connectClient();
 
    }
+   
+   /**
+    * 
+    * Method for jUnit
+    * @param fName
+    * @param lName
+    * @param uName
+    * @param uPass
+    * @return
+    */
+   public boolean testSignUp(String fName, String lName, String uName, String uPass) {
+      this.firstName=fName;
+      this.lastName=lName;
+      this.userName=uName;
+      this.userPassword=uPass;
+      
+      if (DatabaseTransactions.verifyChatUser(userName) == false) {
+         DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
+         success = true;
+      } else {
+         success = false;
+      }
+      return success;
+   }
 }
