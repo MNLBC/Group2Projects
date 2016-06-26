@@ -91,7 +91,7 @@ public class FileTransactions {
     * @return
     */
    public static Session generateTestSession() {
-      return new Session(0l, "", "");
+      return new Session(99l, "", "");
    }
 
    /**
@@ -100,7 +100,7 @@ public class FileTransactions {
     * @return Message
     */
    public static Message generateTestMessage() {
-      return new Message(0l, 0l, 0l, "Hello World", Timestamp.getTimestamp());
+      return new Message(99l, 99l, 99l, "Hello World", Timestamp.getTimestamp());
    }
 
 }
