@@ -18,7 +18,7 @@ import com.oocl.mnlbc.utils.Timestamp;
  * Server class
  * 
  * @author Danna
- *
+ * @since 2016-06-25
  */
 public class ChatServer {
 
@@ -31,6 +31,12 @@ public class ChatServer {
    Session session;
    protected Map<String, Integer> clientSocketMap = new HashMap<String, Integer>();
 
+   /**
+    * SocketList InnerClass
+    * 
+    * @author Ziggy
+    * @since 2016-06-26
+    */
    class SocketList {
 
       private List<Socket> socketList;
@@ -102,9 +108,9 @@ public class ChatServer {
    }
 
    /**
-    * Main method that creates server instance and starts it
+    * Main Constructor
     * 
-    * @param args
+    * @param client
     * @throws IOException
     */
    public ChatServer(Client client) throws IOException {
@@ -112,8 +118,14 @@ public class ChatServer {
 
    }
 
+   /**
+    * Method to start the server
+    * 
+    * @throws IOException
+    */
    public void StartServer() throws IOException {
       System.out.println("Server started!");
+      System.out.println("====================\n");
       this.startWork();
    }
 }

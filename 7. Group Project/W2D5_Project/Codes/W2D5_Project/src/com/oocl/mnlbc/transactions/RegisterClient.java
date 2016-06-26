@@ -11,7 +11,7 @@ import com.oocl.mnlbc.utils.DatabaseTransactions;
 /**
  * 
  * @author Kassandra
- * @date 2016-06-25
+ * @since 2016-06-25
  */
 public class RegisterClient {
 
@@ -63,8 +63,7 @@ public class RegisterClient {
             DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
             success = true;
             System.out.println("Registration successful!");
-            DefaultPage dp = new DefaultPage();
-            dp.displayDefaultPage();
+            DefaultPage.displayDefaultPage();
          } else {
             System.out.println("Username taken. Please choose another");
             signUp();

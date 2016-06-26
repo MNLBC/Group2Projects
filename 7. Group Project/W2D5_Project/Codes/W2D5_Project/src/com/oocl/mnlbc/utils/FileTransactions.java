@@ -15,7 +15,10 @@ import com.oocl.mnlbc.models.Message;
 import com.oocl.mnlbc.models.Session;
 
 /**
- * @author FLAMEZI2 File Transactions Class 2016-06-26
+ * File Transactions Class
+ * 
+ * @author Ziggy
+ * @since 2016-06-26
  */
 public class FileTransactions {
 

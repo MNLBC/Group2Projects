@@ -16,8 +16,8 @@ import com.oocl.mnlbc.utils.Timestamp;
 /**
  * SendMessage class
  * 
- * @author denoyme
- *
+ * @author Meynard
+ * @since 2016-06-25
  */
 public class SendMessage extends Thread {
 

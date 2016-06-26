@@ -3,8 +3,6 @@
  */
 package com.oocl.mnlbc.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import com.oocl.mnlbc.transactions.RegisterClient;
@@ -12,7 +10,7 @@ import com.oocl.mnlbc.transactions.RegisterClient;
 
 /**
  * @author Kassandra
- *@date 2016-06-25
+ * @since 2016-06-25
  *
  */
 public class RegisterClientTest {

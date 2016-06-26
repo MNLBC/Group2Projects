@@ -2,6 +2,7 @@ package com.oocl.mnlbc.transactions;
 
 import java.io.Console;
 import java.io.IOException;
+import java.net.InetAddress;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
@@ -12,7 +13,7 @@ import com.oocl.mnlbc.utils.Timestamp;
 /**
  * 
  * @author Kassandra
- * @date 2016-06-25
+ * @since 2016-06-25
  *
  */
 public class LoginClient {
@@ -33,8 +34,9 @@ public class LoginClient {
       Scanner scanner = new Scanner(System.in);
       Console console = System.console();
 
-      System.out.println("-------------------------User Log-In-------------------------");
-
+      System.out.println("\n====================");
+      System.out.println("User Login");
+      System.out.println("====================\n");
       System.out.print("Username: ");
       userName = scanner.nextLine();
 
@@ -51,6 +53,7 @@ public class LoginClient {
       // userPassword = strBuilder.toString();
       // Arrays.fill(password, ' ');
 
+      System.out.println("\n====================");
       System.out.println("Validating account...");
 
       if (userName.equals("admin") && userPassword.equals("admin")) {
@@ -59,14 +62,16 @@ public class LoginClient {
          cs.StartServer();
       } else if (DatabaseTransactions.getChatUser(userName, userPassword) == null) {
          System.out.println("Account is invalid. Please log-in again.");
-         System.out.print("For users who have not registered yet: enter '0'. To continue: enter '1'");
+         System.out.print("For users who have not registered yet: enter '0'. To continue: enter '1': ");
          choice = scanner.nextInt();
+         System.out.println("====================\n");
          if (choice == 0) {
             register.signUp();
          } else if (choice == 1) {
             login();
          }
       } else {
+         System.out.println("Logging in...");
          client = DatabaseTransactions.getChatUser(userName, userPassword);
          Session session = new Session(0l, "", "");
          if (DatabaseTransactions.getOnlineUsers().size() > 0) {
@@ -75,7 +80,7 @@ public class LoginClient {
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }
          DatabaseTransactions.declareOnline(client, Timestamp.getTimestamp());
-         ChatClient cc = new ChatClient("127.0.0.1", client, session);
+         ChatClient cc = new ChatClient(InetAddress.getLocalHost().getHostAddress(), client, session);
          cc.connectClient();
       }
    }

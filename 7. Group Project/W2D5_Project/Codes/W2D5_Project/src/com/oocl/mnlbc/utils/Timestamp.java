@@ -7,13 +7,13 @@ import java.util.Calendar;
 /**
  * Timestamp util class
  * 
- * @author FLAMEZI2
- * @date 2016-06-26
+ * @author Ziggy
+ * @since 2016-06-26
  */
 public class Timestamp {
 
    /**
-    * get Timestamp
+    * get Timestamp in OOCL Format
     * 
     * @return
     */

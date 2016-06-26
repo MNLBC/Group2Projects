@@ -1,13 +1,15 @@
 package com.oocl.mnlbc.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import com.oocl.mnlbc.transactions.LoginClient;
-import com.oocl.mnlbc.utils.DatabaseTransactions;
 
-
+/**
+ * Log in Test Class
+ * @author Kassandra 
+ * @since 2016-06-26
+ *
+ */
 public class LoginClientTest {
 
    @Test

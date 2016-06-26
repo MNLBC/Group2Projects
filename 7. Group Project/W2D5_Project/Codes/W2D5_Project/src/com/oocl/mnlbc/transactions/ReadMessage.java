@@ -16,7 +16,7 @@ import com.oocl.mnlbc.utils.Timestamp;
 /**
  * ReadMessage class
  * 
- * @author denoyme
+ * @author Meynard
  *
  */
 public class ReadMessage extends Thread {
@@ -48,7 +48,7 @@ public class ReadMessage extends Thread {
             }
          }
       } catch (IOException e) {
-         System.out.println(client.getUsername() + " has left");
+         System.out.println("You have logged out");
          Thread.currentThread().interrupt();
          DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
       } finally {

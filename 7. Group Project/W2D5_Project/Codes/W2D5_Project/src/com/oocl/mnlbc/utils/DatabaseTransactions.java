@@ -13,8 +13,8 @@ import com.oocl.mnlbc.models.Message;
 
 /**
  * 
- * @author KALINWI2
- *
+ * @author William
+ * @since 2016-06-25
  */
 
 public class DatabaseTransactions {
@@ -70,8 +70,8 @@ public class DatabaseTransactions {
    }
 
    /**
-    * 
-    * @return List<Client> getOnlineUsers selects all users that are online in the session
+    * getOnlineUsers selects all users that are online in the session
+    * @return List
     */
    public static List<Client> getOnlineUsers() {
       Connection conn = getConn();

@@ -1,7 +1,6 @@
 package com.oocl.mnlbc.transactions;
 
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -20,8 +19,7 @@ import com.oocl.mnlbc.utils.Timestamp;
  * Chat
  * 
  * @author LOPEZLA
- *
- *         06-24-2016
+ * @since 2016-06-24
  */
 public class Chat extends Thread {
 
