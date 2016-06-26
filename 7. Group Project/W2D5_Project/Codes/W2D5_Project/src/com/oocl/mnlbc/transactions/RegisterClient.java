@@ -2,8 +2,6 @@ package com.oocl.mnlbc.transactions;
 
 import java.io.Console;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.DefaultPage;
@@ -33,20 +31,19 @@ public class RegisterClient {
 
       System.out.print("Username: ");
       userName = scanner.nextLine();
-      
+
       System.out.print("Password: ");
       userPassword = scanner.nextLine();
 
-//        Using console
-//      char [] password = console.readPassword("Password: ");
-//      
-//      StringBuilder strBuilder = new StringBuilder();
-//      for (int i = 0; i <  password.length; i++) {
-//         strBuilder.append(password[i]);
-//      }
-//      userPassword = strBuilder.toString();
-//      Arrays.fill(password,' ');
-      
+      // Using console
+      // char [] password = console.readPassword("Password: ");
+      //
+      // StringBuilder strBuilder = new StringBuilder();
+      // for (int i = 0; i < password.length; i++) {
+      // strBuilder.append(password[i]);
+      // }
+      // userPassword = strBuilder.toString();
+      // Arrays.fill(password,' ');
 
       if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))) {
          System.out.println("Please fill all fields");

@@ -6,7 +6,6 @@ import java.net.UnknownHostException;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
-import com.oocl.mnlbc.utils.Timestamp;
 
 /**
  * Client class

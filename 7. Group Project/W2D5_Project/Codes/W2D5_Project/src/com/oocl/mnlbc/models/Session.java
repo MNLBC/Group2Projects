@@ -4,7 +4,7 @@ package com.oocl.mnlbc.models;
  * Base Session Class
  * 
  * @author Danna Group 2
- *
+ * @date 2016-06-26
  */
 public class Session {
 
@@ -12,6 +12,13 @@ public class Session {
    private String start;
    private String end;
 
+   /**
+    * Main session constructor
+    * 
+    * @param sessionId
+    * @param start
+    * @param end
+    */
    public Session(Long sessionId, String start, String end) {
       super();
       this.sessionId = sessionId;

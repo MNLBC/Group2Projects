@@ -11,14 +11,29 @@ import com.oocl.mnlbc.transactions.LoginClient;
 import com.oocl.mnlbc.transactions.RegisterClient;
 import com.oocl.mnlbc.utils.Timestamp;
 
+/**
+ * Default Page
+ * @author Kassandra
+ * @date 2016-06-25
+ */
 public class DefaultPage {
 
    public static Client client;
 
+   /**
+    * Main method
+    * @param args
+    * @throws IOException
+    */
    public static void main(String[] args) throws IOException {
       displayDefaultPage();
    }
 
+   /**
+    * Method to display default page
+    * @return
+    * @throws IOException
+    */
    @SuppressWarnings("resource")
    public static Client displayDefaultPage() throws IOException {
 
@@ -47,7 +62,7 @@ public class DefaultPage {
             client = new Client("", "", "", "Stranger", "");
             if (DatabaseTransactions.getOnlineUsers().size() > 0) {
                session.setSessionId(DatabaseTransactions.getActiveSessionID());
-            }else{
+            } else {
                DatabaseTransactions.createSession(Timestamp.getTimestamp());
             }
             ChatClient cc = new ChatClient("127.0.0.1", client, session);

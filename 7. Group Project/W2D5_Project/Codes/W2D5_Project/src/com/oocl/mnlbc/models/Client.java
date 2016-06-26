@@ -4,7 +4,7 @@ package com.oocl.mnlbc.models;
  * Base Client class
  * 
  * @author FLAMEZI2 Group 2
- *
+ * @date 2016-06-26
  */
 public class Client {
 
