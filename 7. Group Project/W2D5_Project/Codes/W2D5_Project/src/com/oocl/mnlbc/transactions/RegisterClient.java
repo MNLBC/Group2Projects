@@ -7,6 +7,11 @@ import java.util.Scanner;
 import com.oocl.mnlbc.DefaultPage;
 import com.oocl.mnlbc.models.Client;
 
+/**
+ * 
+ * @author Kassandra
+ *@date 2016-06-25
+ */
 public class RegisterClient {
 
    public static String firstName;
@@ -16,7 +21,11 @@ public class RegisterClient {
    public static boolean success;
    private Client client;
 
-   @SuppressWarnings("resource")
+   /**
+    * Method for signup client
+    * @throws IOException
+    */
+   @SuppressWarnings({ "resource", "unused" })
    public void signUp() throws IOException {
       Scanner scanner = new Scanner(System.in);
       LoginClient form3 = new LoginClient();

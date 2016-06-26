@@ -8,12 +8,23 @@ import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Session;
 import com.oocl.mnlbc.utils.Timestamp;
 
+/**
+ * 
+ * @author Kassandra
+ * @date 2016-06-25
+ *
+ */
 public class LoginClient {
 
    public static String userName;
    public static String userPassword;
    private Client client;
 
+   /**
+    * Method for login client
+    * @throws IOException
+    */
+   @SuppressWarnings("resource")
    public void login() throws IOException {
       int choice;
       RegisterClient register = new RegisterClient();
