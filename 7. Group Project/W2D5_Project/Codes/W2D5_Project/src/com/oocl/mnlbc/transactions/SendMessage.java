@@ -44,7 +44,6 @@ public class SendMessage extends Thread {
                date.toString());
             message.setMessage(input.readLine().trim());
             if (message.getMessage().equals("-bye")) {
-               System.exit(0);
                break;
             }
 
@@ -52,7 +51,8 @@ public class SendMessage extends Thread {
             writer.flush();
          }
       } catch (IOException e) {
-         System.out.println(client.getUsername() + " has left");
+         System.out.println("You have logged out");
+         // System.out.println(client.getUsername() + " has left");
          DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
       } finally {
          if (input != null) {

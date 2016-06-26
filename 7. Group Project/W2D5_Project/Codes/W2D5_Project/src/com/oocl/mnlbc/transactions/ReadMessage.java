@@ -44,7 +44,6 @@ public class ReadMessage extends Thread {
             System.out.println(message.getMessage());
             FileTransactions.write(message, presSesh);
             if (message.getMessage().equals("-bye")) {
-               System.exit(0);
                break;
             }
          }

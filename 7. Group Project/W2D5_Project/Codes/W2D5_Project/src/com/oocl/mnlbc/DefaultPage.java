@@ -13,6 +13,7 @@ import com.oocl.mnlbc.utils.Timestamp;
 
 /**
  * Default Page
+ * 
  * @author Kassandra
  * @date 2016-06-25
  */
@@ -22,6 +23,7 @@ public class DefaultPage {
 
    /**
     * Main method
+    * 
     * @param args
     * @throws IOException
     */
@@ -31,6 +33,7 @@ public class DefaultPage {
 
    /**
     * Method to display default page
+    * 
     * @return
     * @throws IOException
     */

@@ -2,6 +2,7 @@ package com.oocl.mnlbc.transactions;
 
 import java.io.BufferedReader;
 import java.io.Console;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -11,6 +12,7 @@ import java.util.Map;
 
 import com.oocl.mnlbc.models.Client;
 import com.oocl.mnlbc.models.Message;
+import com.oocl.mnlbc.transactions.ChatServer.SocketList;
 import com.oocl.mnlbc.utils.DatabaseTransactions;
 import com.oocl.mnlbc.utils.Timestamp;
 
@@ -24,13 +26,13 @@ import com.oocl.mnlbc.utils.Timestamp;
 public class Chat extends Thread {
 
    private Socket socket;
-   private List<Socket> socketList;
+   private SocketList socketList;
    private int count;
    private Client client;
    private List<Client> presClients;
    private Map<String, Integer> clientSocketMap;
 
-   public Chat(int count, Socket socket, List<Socket> socketList, Client client, List<Client> clientList,
+   public Chat(int count, Socket socket, SocketList socketList, Client client, List<Client> clientList,
       Map<String, Integer> clientSocketMap) {
       this.count = count;
       this.socket = socket;
@@ -58,8 +60,8 @@ public class Chat extends Thread {
          // writer.println(screenName + " is now in the room.");
          // writer.flush();
 
-         for (int i = 0; i < socketList.size(); i++) {
-            writer = new PrintWriter(socketList.get(i).getOutputStream());
+         for (int i = 0; i < socketList.getSocketList().size(); i++) {
+            writer = new PrintWriter(socketList.getSocketList().get(i).getOutputStream());
             writer.println(screenName + " is now in the room.");
             writer.flush();
          }
@@ -77,16 +79,14 @@ public class Chat extends Thread {
             // the client
             if (message.getMessage().equals("-bye")) {
                DatabaseTransactions.declareOffline(client, Timestamp.getTimestamp());
+               socketList.removeSocket(clientSocketMap.get(client.getId()));
                clientSocketMap.remove(client.getId());
                writer = new PrintWriter(socket.getOutputStream());
                writer.println("Closing");
                writer.flush();
                socket.close();
                yield();
-//               break;
-//               this.wait(1000);
-//                System.exit(0);
-                continue;
+               continue;
 
             } else if (message.getMessage().equals("-list")) {
                List<Client> clients = DatabaseTransactions.getOnlineUsers();
@@ -99,8 +99,8 @@ public class Chat extends Thread {
 
             } else {
                // Print all the message to all clients, Group chat
-               for (int i = 0; i < socketList.size(); i++) {
-                  writer = new PrintWriter(socketList.get(i).getOutputStream());
+               for (int i = 0; i < socketList.getSocketList().size(); i++) {
+                  writer = new PrintWriter(socketList.getSocketList().get(i).getOutputStream());
                   writer.println(screenName + " says: " + message.getMessage());
                   writer.flush();
                }
@@ -108,6 +108,17 @@ public class Chat extends Thread {
 
          }
       } catch (Exception e) {
+         for (int i = 0; i < socketList.getSocketList().size(); i++) {
+            try {
+               writer = new PrintWriter(socketList.getSocketList().get(i).getOutputStream());
+               if (socketList.getSocketList().get(i) == socket) {
+                  writer.println(screenName + " has left the room");
+               }
+               writer.flush();
+            } catch (IOException e1) {
+               e1.printStackTrace();
+            }
+         }
          Thread.currentThread().interrupt();
          System.out.println("1 client has left the chat room");
       }
