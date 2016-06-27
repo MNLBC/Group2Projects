@@ -1,0 +1,44 @@
+<DOCTYPE !html>
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="clockstyle.css"/>
+<title>My Clock</title>
+</head>
+<body>
+<div id="box">
+<div id="today">Today is:</div>
+<div id="day"></div>
+<div id="month"></div>
+<div id="date"></div>
+<div id="year"></div>
+<div id="time"></div>
+</div>
+
+
+<script type="text/javascript">
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+if(nyear<1000) nyear+=1900;
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+if(nmin<=9) nmin="0"+nmin
+if(nsec<=9) nsec="0"+nsec;
+
+document.getElementById('day').innerHTML=""+tday[nday]+"";
+document.getElementById('month').innerHTML=""+tmonth[nmonth]+"";
+document.getElementById('date').innerHTML=""+ndate+"";
+document.getElementById('year').innerHTML=""+nyear+"";
+document.getElementById('time').innerHTML=""+nhour+":"+nmin+":"+nsec+"";
+
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+</script>
+</body>
+</html>

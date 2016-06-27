@@ -1,0 +1,177 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+	//1. Validate email regex
+	$("#validateEmailRegexCheck").click(function(){
+
+		 var email = $("#emailRegexCheck").val();
+  		 var isvalid = true;
+
+  		 if( email.indexOf("@") == -1 ){ //has @ symbol
+  		 	isvalid = false;
+  		 }
+
+  		 if( email.split("@")[1].indexOf(".") == -1 ){ //has dot on second part of email
+  		 	isvalid = false;
+  		 }
+
+  		 if( email.split("@")[0].length <= 0 ){ //has no email first half part
+  		 	isvalid = false;
+  		 }
+
+  		 if(isvalid){
+  		 	alert("IS an email!");
+  		 }else{
+  		 	alert("Not valid email");
+  		 }
+
+
+	});
+
+
+	//2. Validate date regex
+	$("#validateDateRegexCheck").click(function(){
+
+		 var dateStr = $("#dateRegexCheck").val();
+  		 
+  		 var dateArr = dateStr.split("-");
+
+  		 var isvalid = true;
+
+  		 if( dateArr[0].length != 4 ){ //YYYY
+  		 	isvalid = false;
+  		 }
+
+  		 if( dateArr[1].length != 2 ){ //MM
+  		 	isvalid = false;
+  		 }
+
+  		 if( dateArr[2].length != 2 ){ //DD
+  		 	isvalid = false;
+  		 }
+
+  		 if(isvalid){
+  		 	alert("IS a date YYYY-MM-DD!");
+  		 }else{
+  		 	alert("Not valid date YYYY-MM-DD");
+  		 }
+
+	});
+
+
+
+	//3. Validate date regex
+	$("#validateEmptyRegexCheck").click(function(){
+
+		 var dateStr = $("#emptyRegexCheck").val();
+  			if ( dateStr.trim().length <= 0 ){
+
+  				alert("Empty string!");
+  			}else{
+  				alert("Non empty string");
+  			}
+
+	});
+
+
+	//4. Replace string thru regex ignore casing
+	$("#doReplaceStrRegex").click(function(){
+
+		 var strvar = $("#replaceStrRegex").val();
+		 var strvar1 = strvar.replace("*e","-");
+		 var strvar2 = strvar1.replace("*E","-");
+
+		 $("#replaceStrRegex").val(strvar2)
+
+	});
+
+
+
+	//5. Remove Spaces
+	$("#doRemoveSpaces").click(function(){
+
+		 var strvar = $("#removeSpacesText").val();
+		 $("#removeSpacesText").val( strvar.trim() );
+
+	});
+
+
+	//6. Exchange Strings
+	$("#doExString").click(function(){
+
+		 var strvar = $("#exStringStr").val();
+
+		 var firstword = strvar.split("--")[0];
+		 var secondword = strvar.split("--")[1];
+
+		 $("#exStringStr").val( secondword + "--" + firstword );
+
+	});
+
+
+});
+
+</script>
+
+
+
+
+
+</head>
+<body>
+
+<h4>Email Check</h4>
+
+<input type="text" id="emailRegexCheck" /><br/>
+<button type='submit' id='validateEmailRegexCheck'>Validate!</button>
+
+
+<hr/>
+
+<h4>Date Check (YYYY-MM-DD)</h4>
+
+<input type="text" id="dateRegexCheck" /><br/>
+<button type='submit' id='validateDateRegexCheck'>Validate!</button>
+
+<hr/>
+
+<h4>Empty String Check</h4>
+<br/><i>try spaces or no input</i><br/>
+
+<input type="text" id="emptyRegexCheck" /><br/>
+<button type='submit' id='validateEmptyRegexCheck'>Validate!</button>
+
+
+<hr/>
+
+<h4>Replace string ignore casing</h4>
+<br/><i>For a given string "abc *ec *Eab", to replace the string "*e" with "-", and ignore case;</i><br/>
+
+<input type="text" id="replaceStrRegex" value="abc *ec *Eab" /><br/>
+<button type='submit' id='doReplaceStrRegex'>Replace *e (ignore casing)</button>
+
+
+<hr/>
+
+<h4>Remove spaces on both ends of string</h4>
+
+<input type="text" id="removeSpacesText" value=" space " /><br/>
+<button type='submit' id='doRemoveSpaces'>Remove spaces</button>
+
+
+<hr/>
+
+<h4>Exchange position of 2 strings using regex</h4>
+<br/><i>Referencing matches using $1 and $2</i><br/>
+
+<input type="text" id="exStringStr" value="java--script" /><br/>
+<button type='submit' id='doExString'>Exchange Strings</button>
+
+
+
+</body>
+</html>

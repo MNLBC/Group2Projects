@@ -1,0 +1,65 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+class Car{
+  constructor() {
+    console.log("super-VROOM")
+  }
+}
+
+class Sedan extends Car{
+  constructor() {
+    super();
+    console.log("car-brom")
+  }
+}
+
+console.log("Invoke super class constructor only")
+var newCar = new Car(); //will print only super-VROOM
+
+
+console.log("Invoke sub class constructor - will also pass super class constructor using super()")
+var newSedan = new Sedan(); //will print both car-bro and super-VROOM
+
+});
+
+</script>
+
+
+
+
+
+</head>
+<body>
+
+<h1>Check console logs</h1>
+
+<textarea rows=10000 cols=123123>
+class Car{
+  constructor() {
+    console.log("super-VROOM")
+  }
+}
+
+class Sedan extends Car{
+  constructor() {
+    super();
+    console.log("car-brom")
+  }
+}
+
+console.log("Invoke super class constructor only")
+var newCar = new Car(); //will print only super-VROOM
+
+
+console.log("Invoke sub class constructor - will also pass super class constructor using super()")
+var newSedan = new Sedan(); //will print both car-bro and super-VROOM
+
+</textarea>
+
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+	//1. Validate email regex
+	$("#validateEmailRegexCheck").click(function(){
+
+		 var email = $("#emailRegexCheck").val();
+  			if ( /^.+@.+\..+$/.test(email) ) {
+				alert("Valid Email!")
+  			}else{
+  				alert("Not Valid Email!")
+  			}
+
+	});
+
+
+	//2. Validate date regex
+	$("#validateDateRegexCheck").click(function(){
+
+		 var dateStr = $("#dateRegexCheck").val();
+  			if ( /^\d{4}-\d{1,2}-\d{1,2}$/.test(dateStr) ) {
+				alert("Valid Date!")
+  			}else{
+  				alert("Not Valid Date!")
+  			}
+
+	});
+
+
+
+	//3. Validate date regex
+	$("#validateEmptyRegexCheck").click(function(){
+
+		 var dateStr = $("#emptyRegexCheck").val();
+  			if ( /^\s*$/.test(dateStr) ) {
+				alert("Empty String!")
+  			}else{
+  				alert("Not Empty String!")
+  			}
+
+	});
+
+
+	//4. Replace string thru regex ignore casing
+	$("#doReplaceStrRegex").click(function(){
+
+		 var strvar = $("#replaceStrRegex").val();
+		 alert(strvar.replace(/\*e/ig, '-'));
+
+	});
+
+
+
+	//5. Remove Spaces
+	$("#doRemoveSpaces").click(function(){
+
+		 var strvar = $("#removeSpacesText").val();
+		 $("#removeSpacesText").val( strvar.replace(/^\s+|\s+$/g, '') );
+
+	});
+
+
+	//6. Exchange Strings
+	$("#doExString").click(function(){
+
+		 var strvar = $("#exStringStr").val();
+
+		 $("#exStringStr").val( strvar.replace(/([\w ]+)--([\w ]+)/g, "$2--$1") ); //regex for swap
+
+	});
+
+
+});
+
+</script>
+
+
+
+
+
+</head>
+<body>
+
+<h4>Email Regex Check</h4>
+
+<input type="text" id="emailRegexCheck" /><br/>
+<button type='submit' id='validateEmailRegexCheck'>Validate!</button>
+
+
+<hr/>
+
+<h4>Date Regex Check (YYYY-MM-DD)</h4>
+
+<input type="text" id="dateRegexCheck" /><br/>
+<button type='submit' id='validateDateRegexCheck'>Validate!</button>
+
+<hr/>
+
+<h4>Empty String Regex Check</h4>
+<br/><i>try spaces or no input</i><br/>
+
+<input type="text" id="emptyRegexCheck" /><br/>
+<button type='submit' id='validateEmptyRegexCheck'>Validate!</button>
+
+
+<hr/>
+
+<h4>Replace string by Regex ignore casing</h4>
+<br/><i>For a given string "abc *ec *Eab", to replace the string "*e" with "-", and ignore case;</i><br/>
+
+<input type="text" id="replaceStrRegex" value="abc *ec *Eab" /><br/>
+<button type='submit' id='doReplaceStrRegex'>Replace *e (ignore casing)</button>
+
+
+<hr/>
+
+<h4>Remove spaces on both ends of string</h4>
+
+<input type="text" id="removeSpacesText" value=" space " /><br/>
+<button type='submit' id='doRemoveSpaces'>Remove spaces</button>
+
+
+<hr/>
+
+<h4>Exchange position of 2 strings using regex</h4>
+<br/><i>Referencing matches using $1 and $2</i><br/>
+
+<input type="text" id="exStringStr" value="java--script" /><br/>
+<button type='submit' id='doExString'>Exchange Strings</button>
+
+
+
+</body>
+</html>
