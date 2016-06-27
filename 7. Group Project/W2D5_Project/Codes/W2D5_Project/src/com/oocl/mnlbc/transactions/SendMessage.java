@@ -55,6 +55,8 @@ public class SendMessage extends Thread {
                date.toString());
             message.setMessage(input.readLine().trim());
             if (message.getMessage().equals("-bye")) {
+            	   writer.println(client.getUsername() + " has left the room");
+                   writer.flush();
                break;
             }
 
