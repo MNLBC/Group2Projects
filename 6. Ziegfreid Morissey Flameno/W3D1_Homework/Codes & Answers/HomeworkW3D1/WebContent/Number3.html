@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="Ziggy">
+<meta charset="ISO-8859-1">
+<title>W3D1_Homework Number 3</title>
+<style>
+body {
+	background-color: #000;
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+}
+
+.clock {
+	color: lightgreen;
+	font-size: 34px;
+}
+</style>
+</head>
+<h2>DIGITAL CLOCK</h2>
+<div id="clock" class="clock"></div>
+<script>
+   function renderTime() {
+      var currTime = new Date();
+      var clock = document.getElementById('clock');
+      var ampm = "AM";
+      var hrs = currTime.getHours();
+      var mins = currTime.getMinutes();
+      var secs = currTime.getSeconds();
+      setTimeout('renderTime()', 1000);
+      if (hrs == 0) {
+         hrs = 12;
+      } else if (hrs > 12) {
+         hrs = hrs - 12;
+         ampm = "PM";
+      }
+      if (hrs < 10) {
+         hrs = "0" + hrs;
+      }
+      if (mins < 10) {
+         mins = "0" + mins;
+      }
+      if (secs < 10) {
+         secs = "0" + secs;
+      }
+      clock.textContent = hrs + ":" + mins + ":" + secs + " " + ampm;
+      clock.innerText = hrs + ":" + mins + ":" + secs + " " + ampm;
+   }
+   renderTime();
+</script>
+</body>
+</html>
