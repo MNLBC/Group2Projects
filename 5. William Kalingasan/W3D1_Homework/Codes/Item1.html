@@ -1,0 +1,139 @@
+<html>
+	<head>
+		<title>Email Checker</title>
+	</head>
+	<body>
+		<label for="email">Enter an email address:</label><br>
+		<input type="email" id="email" name="email"><br>
+		<p id="regexemail">Regex result will display here</p>
+		<p id="otheremail">Other result will display here</p>
+		<button onclick="ValidateEmail()">Validate!</button><br><br>
+		
+		<label for="date">Enter a MM/DD/YYYY date</label><br>
+		<input type="text" id="date" name="date"><br>
+		<p id="regexdate">Regex result will display here</p>
+		<p id="otherdate">Other result will display here</p>
+		<button onclick="ValidateDate()">Validate!</button><br><br>
+		
+		<label for="date">Enter a string</label><br>
+		<input type="text" id="string" name="string"><br>
+		<p id="regexstring">Regex result will display here</p>
+		<p id="otherstring">Other way result will display here</p>
+		<button onclick="ValidateEmpty()">Validate!</button><br><br>
+		
+		<p id="regexstring2">Regex: abc*ec*Eab</p>
+		<p id="otherstring2">Other: abc*ec*Eab</p>
+		<button onclick="ReplaceE()">Replace!</button><br><br>
+		
+		<label for="spacestring">Enter a string</label><br>
+		<input type="text" id="spacestring" name="spacestring"><br>
+		<p id="regexspace">Regex result will display here</p>
+		<p id="otherspace">Other way result will display here</p>
+		<button onclick="TrimSpace()">Trim Space!</button><br><br>
+		
+		<label for="regexstring3">Regex:</label>
+		<p id="regexstring3">java--script</p>
+		<label for="otherstring3">Other:</label>
+		<p id="otherstring3">Other: java--script</p>
+		<button onclick="SwitchString()">Switch!</button><br><br>
+		
+		<script style = "text/javascript">
+			function ValidateEmail(){
+				var email = document.getElementById('email').value;
+				var re = new RegExp("[a-zA-Z0-9._%+-]+@[a-zA-Z]+\\.+[a-zA-Z]{2}");
+				if(re.test(email)){
+					document.getElementById('regexemail').innerHTML = email + " is a valid email";
+				}
+				else{
+					document.getElementById('regexemail').innerHTML = email + " is not a valid email";
+				}
+				
+				if(email.indexOf("@") < 0){
+					document.getElementById('otheremail').innerHTML = email + " is not a valid email";
+				}
+				
+				var string1 = email.split("@")[0];
+				var string2 = email.split("@")[1];
+				
+				if(string1.length > 1){
+					if(string2.indexOf(".") != -1){
+						document.getElementById('otheremail').innerHTML = email + " is a valid email";
+					}
+					else{
+						document.getElementById('otheremail').innerHTML = email + " is not a valid email";
+					}
+				}
+				else{
+					document.getElementById('otheremail').innerHTML = email + " is not a valid email";
+				}
+			}
+			function ValidateDate(){
+				var date = document.getElementById('date').value;
+				console.log(typeof date);
+				console.log(typeof document.getElementById('date').value);
+				var re = new RegExp("[0-1][0-9][/][0-3][0-9][/][0-9]{4}^");
+				if(re.test(date)){
+					document.getElementById('regexdate').innerHTML = date + " is a valid date format";
+				}
+				else{
+					document.getElementById('regexdate').innerHTML = date + " is not a valid date format";
+				}
+				var string1 = date.split("/")[0];
+				var string2 = date.split("/")[1];
+				var string3 = date.split("/")[2];
+				if(string1.length ==2){
+					if(string2.length == 2){
+						if(string3.length == 4){
+							document.getElementById('otherdate').innerHTML = date + " is a valid date format";
+						}
+						else{
+							document.getElementById('otherdate').innerHTML = date + " is not a valid date format";
+						}
+					}
+					else{
+						document.getElementById('otherdate').innerHTML = date + " is not a valid date format";
+					}
+				}
+				else{
+					document.getElementById('otherdate').innerHTML = date + " is not a valid date format";
+				}
+			}
+			function ValidateEmpty(){
+				var string = document.getElementById('string').value;
+				var re = new RegExp("[a-zA-Z0-9._%+-]+");
+				if(re.test(string)){
+					document.getElementById('regexstring').innerHTML = string + " is not null";
+				}
+				else{
+					document.getElementById('regexstring').innerHTML = string + " is null";
+				}
+				
+				if(string==""){
+					document.getElementById('otherstring').innerHTML = string + " is null";
+				}
+				else{
+					document.getElementById('otherstring').innerHTML = string + " is not null";
+				}
+				
+			}
+			function ReplaceE(){
+				var string = document.getElementById('regexstring2').innerHTML;
+				var re = new RegExp(/\*[eE]{1}/g);
+				if(re.test(string)){
+					string = string.replace(/\*[eE]{1}/g,'-');
+					document.getElementById('regexstring2').innerHTML = string;
+				}
+				
+				string = document.getElementById('otherstring2').innerHTML;
+				
+				if(string.indexOf("*e") != -1){
+					string = string.replace('*e','-');
+				}
+				if(string.indexOf("*E") != -1){
+					string = string.replace('*E','-');
+				}
+			}
+
+		</script>
+	</body>
+</html>
