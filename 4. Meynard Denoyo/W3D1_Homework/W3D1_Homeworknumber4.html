@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>
+W3D1_Homework number 4
+</title>
+</head>
+
+<body onload='sample()'>
+<span style="font-family:Arial">split(): Splits a string into an array of substrings</span><br>
+<span id='split'>How are you doing today?</span>: <br><span id='split1'>How are you doing today?</span><br><br>
+<span style="font-family:Arial">slice(): Extracts a part of a string and returns a new string</span><br>
+<span id='slice'>Hello world!</span>: <br><span id='slice1'>Hello world!</span><br><br>
+<span style="font-family:Arial">replace(): Searches a string for a specified value, or a regular expression, and returns a new string where the specified values are replaced</span><br>
+<span id='replace'>Visit Microsoft!</span>: <br><span id='replace1'>Visit Microsoft!</span><br><br>
+<span style="font-family:Arial">indexOf(): Returns the position of the first found occurrence of a specified value in a string</span><br>
+<span id='indexof'>Hello world, welcome to the universe.</span>: <br><span id='indexof1'>Visit Microsoft!</span><br><br>
+<span style="font-family:Arial">lastIndexOf(): Returns the position of the last found occurrence of a specified value in a string</span><br>
+<span id='lastindexof'>Hello planet earth, you are a great planet.</span>: <br><span id='lastindexof1'>Hello planet earth, you are a great planet.</span><br><br>
+<span style="font-family:Arial">startsWith(): Checks whether a string begins with specified characters</span><br>
+<span id='startsWith'>Hello world, welcome to the universe.</span>: <br><span id='startsWith1'>Hello world, welcome to the universe.</span><br><br>
+<script type='text/javascript'>
+	//split,startsWith
+	function sample(){
+		var sample1 = document.getElementById('split').innerHTML.split(' ');
+		document.getElementById('split1').innerHTML = sample1;
+		
+		var sample2 = document.getElementById('slice').innerHTML.slice(1, 5);
+		document.getElementById('slice1').innerHTML = sample2;
+		
+		var sample3 = document.getElementById('replace').innerHTML.replace('Microsoft', 'W3Schools');
+		document.getElementById('replace1').innerHTML = sample3;
+		
+		var sample4 = document.getElementById('indexof').innerHTML.indexOf('welcome');
+		document.getElementById('indexof1').innerHTML = sample4;
+		
+		var sample5 = document.getElementById('lastindexof').innerHTML.lastIndexOf('planet');
+		document.getElementById('lastindexof1').innerHTML = sample5;
+		
+		var sample6 = document.getElementById('startsWith').innerHTML.startsWith('Hello');
+		document.getElementById('startsWith1').innerHTML = sample6;
+	}
+</script>
+
+</body>
+</html>

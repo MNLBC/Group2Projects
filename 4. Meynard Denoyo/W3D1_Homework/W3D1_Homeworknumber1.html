@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+W3D1_Homework number 1
+</title>
+</head>
+
+<body>
+<table border="2px">
+<tr>
+<td>
+Regex
+</td>
+<td>
+Not Regex
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+Email Address: <input type="text" id="email"><br><span id="resultemail" style="color:red"></span>
+</td>
+<td>
+Email Address 2: <input type="text" id="email2"><br><span id="resultemail2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testemail()">Test</button>
+</td>
+</tr>
+<tr>
+<td>
+Date: <input type="date" id="date"><br><span id="resultdate" style="color:red"></span>
+</td>
+<td>
+Date: <input type="date" id="date2"><br><span id="resultdate2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testdate()">Test</button>
+</td>
+</tr>
+<tr>
+<td>
+Empty Text: <input type="text" id="empty"><br><span id="resultempty" style="color:red"></span>
+</td>
+<td>
+Empty Text 2: <input type="text" id="empty2"><br><span id="resultempty2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testempty()">Test</button>
+</td>
+</tr>
+<tr>
+<td>
+Replace Text: <input type="text" id="replace"><br><span id="resultreplace" style="color:red"></span>
+</td>
+<td>
+Replace Text 2: <input type="text" id="replace2"><br><span id="resultreplace2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testreplace()">Test</button>
+</td>
+</tr>
+<tr>
+<td>
+Space: <input type="text" id="space"><br><span id="resultspace" style="color:red"></span>
+</td>
+<td>
+Space 2: <input type="text" id="space2"><br><span id="resultspace2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testspace()">Test</button>
+</td>
+</tr>
+<tr>
+<td>
+Java: <input type="text" id="java"><br><span id="resultjava" style="color:red"></span>
+</td>
+<td>
+Java 2: <input type="text" id="java2"><br><span id="resultjava2" style="color:red"></span>
+</td>
+<td>
+<button onclick="testjava()">Test</button>
+</td>
+</tr>
+</table>
+<!--<input type="submit" onclick="test()" name="GO">-->
+<script type="text/javascript">
+function testemail(){
+	
+	var regexemail = new RegExp(/^([A-Za-z0-9_.]+)@([A-Za-z0-9]+).([A-Za-z0-9]+)$/);
+	if(regexemail.test(document.getElementById('email').value)){
+		document.getElementById('resultemail').innerHTML="Valid Email Address";
+	}else{
+		document.getElementById('resultemail').innerHTML="Invalid Email Address";
+	}
+	
+	var validation = isvalidemail(document.getElementById('email2').value);
+	if(validation){
+		document.getElementById('resultemail2').innerHTML = 'Valid Email Address';
+	}else{
+		document.getElementById('resultemail2').innerHTML = 'Invalid Email Address';
+	}
+}
+
+function isvalidemail(email){
+    var emailParts = email.split('@');
+    if(emailParts.length !== 2) {
+        return false;   
+    }
+    var emailName = emailParts[0];
+    var emailDomain = emailParts[1];
+
+    if(emailName.length < 1 || emailDomain.length < 3) {
+        return false;
+    }
+
+    var validChars = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','.','0','1','2','3','4','5','6','7','8','9','_','-'];
+
+    for(var i = 0; i < emailName.length; i += 1) {
+        if(validChars.indexOf(emailName.charAt(i)) < 0 ) {
+            return false;   
+        }
+    }
+    for(var j = 0; j < emailDomain.length; j += 1) {
+        if(validChars.indexOf(emailDomain.charAt(j)) < 0) {
+            return false;   
+        }
+    }
+    if(emailDomain.indexOf('.') <= 0) {
+        return false;
+    }
+
+    var emailDomainParts = emailDomain.split('.');
+    if(emailDomainParts[emailDomainParts.length - 1].length < 2) {
+        return false;   
+    }
+    return true;
+}
+
+function testdate(){
+	
+	var regexdate = new RegExp(/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/m);
+	if(regexdate.test(document.getElementById('date').value)){
+		document.getElementById('resultdate').innerHTML="Valid Date";
+	}else{
+		document.getElementById('resultdate').innerHTML="Invalid Date";
+	}
+	
+	var datearr = document.getElementById('date2').value.split('/');
+	var valid = false;
+	if(datearr[0] > 0 && datearr[0] < 31){
+		if(datearr[1] > 0 && datearr[1] < 13){
+			if(datearr[2] < 2017){
+				valid = true;
+			}
+		}
+	}
+	if(valid){
+		document.getElementById('resultdate2').innerHTML="Valid Date";
+	}else{
+		document.getElementById('resultdate2').innerHTML="Invalid Date";
+	}
+}
+function testempty(){
+	
+	var regexempty = new RegExp(/^$/);
+	if(regexempty.test(document.getElementById('empty').value)){
+		document.getElementById('resultempty').innerHTML="Empty Value";
+	}else{
+		document.getElementById('resultempty').innerHTML="Not Empty Value";
+	}
+	
+	if(document.getElementById('empty2').value == ''){
+		document.getElementById('resultempty2').innerHTML="Empty Value";
+	}else{
+		document.getElementById('resultempty2').innerHTML="Not Empty Value";
+	}
+}
+function testreplace(){
+
+	var regexreplace = new RegExp(/\*[e]{1}/);
+	if(regexreplace.test(document.getElementById('replace').value)){
+		document.getElementById('replace').value = document.getElementById('replace').value.replace(/\*[eE]{1}/g, '-');
+	}
+	
+	if(document.getElementById('replace2').value.contains('*e') && document.getElementById('replace2').value.contains('*E')){
+		document.getElementById('replace2').value = document.getElementById('replace2').value.replace('*e', '-');
+		document.getElementById('replace2').value = document.getElementById('replace2').value.replace('*E', '-');
+	}
+}
+function testspace(){
+	
+	var regexspace = new RegExp(/\s+/g)
+	if(regexspace.test(document.getElementById('space').value)){
+		document.getElementById('space').value = document.getElementById('space').value.replace(/\s+/g, '');
+	}
+	
+	document.getElementById('space2').value = document.getElementById('space2').value.trim();
+}
+function testjava(){
+	
+	var regexjava = new RegExp(/^[a-z]{1,}?--[a-z]{1,}?$/g);
+	var regexfirst = new RegExp(/^[a-z]{1,}?--/g);
+	var regexsecond = new RegExp(/--[a-z]{1,}?$/g);
+	if(regexjava.test(document.getElementById('java').value)){
+		//document.getElementById('java').value = document.getElementById('java').value.replace(/\s+/g, '');
+		var firstmatch = regexfirst.exec(document.getElementById('java').value)[0].replace('--','');
+		var secondmatch = regexsecond.exec(document.getElementById('java').value)[0].replace('--','');
+		document.getElementById('java').value = secondmatch + '--' + firstmatch;
+	}
+	
+	var java2arr = document.getElementById('java2').value.split('--');
+	document.getElementById('java2').value = java2arr[1] + '--' + java2arr[0];
+}
+</script>
+
+</body>
+
+</html>
