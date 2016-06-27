@@ -47,7 +47,7 @@ public class DatabaseTransactions {
       Connection conn = getConn();
       Client client = null;
 
-      String sql = "SELECT * FROM CHAT_USERS WHERE USERNAME='" + username + "' AND PASSWORD='" + password + "'";
+      String sql = "SELECT * FROM CHAT_USERS WHERE USERNAME='" + username + "' AND PASSWORD='" + password + "' AND CONN_TIMESTAMP IS NULL";
       PreparedStatement pstmt;
       try {
          pstmt = (PreparedStatement) conn.prepareStatement(sql);
