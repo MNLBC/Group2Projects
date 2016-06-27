@@ -3,6 +3,7 @@ package com.oocl.mnlbc.transactions;
 import java.io.Console;
 import java.io.IOException;
 import java.net.InetAddress;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.models.Client;
@@ -40,18 +41,18 @@ public class LoginClient {
       System.out.print("Username: ");
       userName = scanner.nextLine();
 
-      System.out.print("Password: ");
-      userPassword = scanner.nextLine();
+      // System.out.print("Password: ");
+      // userPassword = scanner.nextLine();
 
       // Using console
-      // char[] password = console.readPassword("Password: ");
-      //
-      // StringBuilder strBuilder = new StringBuilder();
-      // for (int i = 0; i < password.length; i++) {
-      // strBuilder.append(password[i]);
-      // }
-      // userPassword = strBuilder.toString();
-      // Arrays.fill(password, ' ');
+      char[] password = console.readPassword("Password: ");
+
+      StringBuilder strBuilder = new StringBuilder();
+      for (int i = 0; i < password.length; i++) {
+         strBuilder.append(password[i]);
+      }
+      userPassword = strBuilder.toString();
+      Arrays.fill(password, ' ');
 
       System.out.println("\n====================");
       System.out.println("Validating account...");

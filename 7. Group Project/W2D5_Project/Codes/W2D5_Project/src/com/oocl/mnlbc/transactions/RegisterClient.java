@@ -2,6 +2,7 @@ package com.oocl.mnlbc.transactions;
 
 import java.io.Console;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.oocl.mnlbc.DefaultPage;
@@ -24,6 +25,7 @@ public class RegisterClient {
 
    /**
     * Method for signup client
+    * 
     * @throws IOException
     */
    @SuppressWarnings({ "resource", "unused" })
@@ -42,18 +44,18 @@ public class RegisterClient {
       System.out.print("Username: ");
       userName = scanner.nextLine();
 
-      System.out.print("Password: ");
-      userPassword = scanner.nextLine();
+      // System.out.print("Password: ");
+      // userPassword = scanner.nextLine();
 
       // Using console
-      // char [] password = console.readPassword("Password: ");
-      //
-      // StringBuilder strBuilder = new StringBuilder();
-      // for (int i = 0; i < password.length; i++) {
-      // strBuilder.append(password[i]);
-      // }
-      // userPassword = strBuilder.toString();
-      // Arrays.fill(password,' ');
+      char[] password = console.readPassword("Password: ");
+
+      StringBuilder strBuilder = new StringBuilder();
+      for (int i = 0; i < password.length; i++) {
+         strBuilder.append(password[i]);
+      }
+      userPassword = strBuilder.toString();
+      Arrays.fill(password, ' ');
 
       if ((firstName.equals("")) || (lastName.equals("")) || (userName.equals("")) || (userPassword.equals(""))) {
          System.out.println("Please fill all fields");
@@ -78,10 +80,11 @@ public class RegisterClient {
       // cc.connectClient();
 
    }
-   
+
    /**
     * 
     * Method for jUnit
+    * 
     * @param fName
     * @param lName
     * @param uName
@@ -89,11 +92,11 @@ public class RegisterClient {
     * @return
     */
    public boolean testSignUp(String fName, String lName, String uName, String uPass) {
-      this.firstName=fName;
-      this.lastName=lName;
-      this.userName=uName;
-      this.userPassword=uPass;
-      
+      this.firstName = fName;
+      this.lastName = lName;
+      this.userName = uName;
+      this.userPassword = uPass;
+
       if (DatabaseTransactions.verifyChatUser(userName) == false) {
          DatabaseTransactions.createUser(new Client(userName, userPassword, firstName, lastName));
          success = true;
