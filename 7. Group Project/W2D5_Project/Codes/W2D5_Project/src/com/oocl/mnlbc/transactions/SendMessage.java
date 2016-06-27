@@ -25,12 +25,23 @@ public class SendMessage extends Thread {
    private Client client;
    private Session presSesh;
 
+   /**
+    * Constructor for SendMessage
+    * 
+    * @param socket
+    * @param client
+    * @param session
+    */
    public SendMessage(Socket socket, Client client, Session session) {
       this.socket = socket;
       this.client = client;
       this.presSesh = session;
    }
-
+   /**
+    * Thread method in order to run SendMessage
+    * 
+    * 
+    */
    public void run() {
       BufferedReader input = null;
       PrintWriter writer = null;

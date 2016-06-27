@@ -25,12 +25,24 @@ public class ReadMessage extends Thread {
    private Client client;
    private Session presSesh;
 
+   
+   /**
+    * Constructor for ReadMessage
+    * 
+    * @param socket
+    * @param client
+    * @param session
+    */
    public ReadMessage(Socket socket, Client client, Session session) {
       this.socket = socket;
       this.client = client;
       this.presSesh = session;
    }
-
+   /**
+    * Thread method in order to run ReadMessage
+    * 
+    * 
+    */
    public void run() {
       BufferedReader reader = null;
       try {
