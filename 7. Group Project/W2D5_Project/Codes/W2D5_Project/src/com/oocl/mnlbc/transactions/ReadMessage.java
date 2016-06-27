@@ -55,6 +55,7 @@ public class ReadMessage extends Thread {
             message.setMessage(reader.readLine().trim());
             System.out.println(message.getMessage());
             FileTransactions.write(message, presSesh);
+            DatabaseTransactions.saveMessage(message);
             if (message.getMessage().equals("-bye")) {
                break;
             }
