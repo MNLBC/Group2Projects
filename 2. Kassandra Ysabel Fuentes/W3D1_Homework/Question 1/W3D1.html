@@ -49,7 +49,7 @@
 	</div>
 	<script>
 		function numberOne1() {
-			var email = document.getElementById("number1").value;
+			var email = document.getElementById('number1').value;
 			var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 			if (reg.test(email)) {
 				alert("Valid email");
@@ -57,21 +57,22 @@
 				alert("Invalid email");
 			}
 		}
-		
-		function numberOne2() {
-			var t = document.getElementById("number1").value;
-			var x = t.indexOf("@");
-			var y = t.lastIndexOf(".");
 
-			if (x == -1 || y == -1 || (x + 2) >= y) {
-				alert("Email address is not valid");
+		function numberOne2() {
+			var email = document.getElementById('number2').value;
+			var check1 = email.indexOf("@");
+			var check2 = email.lastIndexOf(".");
+
+			if (check1 == -1 || check2 == -1 ) {
+			alert('Invalid email');
 			} else {
-				alert("Email is valid");
+			alert('Valid email!');
 			}
+
 		}
 
 		function numberTwo1() {
-			var date = document.getElementById("number2").value;
+			var date = document.getElementById('number2').value;
 			var dateSplit = date.split("/");
 			var testDate = new Date(dateSplit[2], dateSplit[0] - 1,
 					dateSplit[1]);
@@ -88,12 +89,19 @@
 			}
 		}
 
-		//	function numberTwo2() {
+		function numberTwo2() {
+			var date = document.getElementById('number2').value;
+			var reg = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
+			if (!reg.test(date)) {
+				alert("Incorrect format");
+			} else {
+				alert("Correct format");
+			}
 
-		//}
+		}
 
 		function numberThree1() {
-			var check = document.getElementById("number3").value.length;
+			var check = document.getElementById('number3').value.length;
 			if (check == 0) {
 				alert("Empty String");
 			} else {
@@ -102,7 +110,7 @@
 		}
 
 		function numberThree2() {
-			var check = document.getElementById("number3").value;
+			var check = document.getElementById('number3').value;
 			if (check == "") {
 				alert("Empty String");
 			} else {
@@ -111,7 +119,7 @@
 		}
 
 		function numberFour1() {
-			var getString = document.getElementById("number4").value.replace(
+			var getString = document.getElementById('number4').value.replace(
 					"E", "-");
 			var editString = getString.replace("e", "-");
 			var newString = editString.split("*");
@@ -125,24 +133,24 @@
 		}
 
 		function numberFour2() {
-			var getString = document.getElementById("number4").value;
+			var getString = document.getElementById('number4').value;
 			var reg = /[*](e)|[*](E)/g;
 			var finalString = abc.replace(reg, '-');
 			alert(finalString);
 		}
 
 		function numberFive1() {
-			alert(document.getElementById("number5").value.trim());
+			alert(document.getElementById('number5').value.trim());
 		}
 
 		function numberFive2() {
-			var newString = document.getElementById("number5").value.replace(
+			var newString = document.getElementById('number5').value.replace(
 					" ", "");
 			alert(newString);
 		}
 
 		function numberSix1() {
-			var getString = document.getElementById("number6").value;
+			var getString = document.getElementById('number6').value;
 			var startString = getString
 					.substring(getString.lastIndexOf("-") + 1);
 			var endString = getString.substring(0, getString.indexOf("--"));
@@ -151,7 +159,7 @@
 		}
 
 		function numberSix2() {
-			var getString = document.getElementById("number6").value
+			var getString = document.getElementById('number6').value
 					.split("--");
 			getString.push(getString.shift());
 			var finalString = getString.join("--");
