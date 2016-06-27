@@ -34,7 +34,7 @@ public class FileTransactionsTest {
    public void testWrite() {
       System.out.println("Testing file writing");
       Message message = FileTransactions.generateTestMessage();
-      Session session = FileTransactions.generateTestSession();
+      Long session = FileTransactions.generateTestSession();
       assertTrue(FileTransactions.write(message, session));
    }
 

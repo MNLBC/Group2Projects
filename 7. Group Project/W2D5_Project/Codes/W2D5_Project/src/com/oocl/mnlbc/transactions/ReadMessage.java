@@ -49,11 +49,11 @@ public class ReadMessage extends Thread {
          reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
          while (true) {
             Date date = new Date();
-            Message message = new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null,
+            Message message = new Message(DatabaseTransactions.getActiveSessionID(), 0L, Long.parseLong(this.client.getId()), null,
                date.toString());
             message.setMessage(reader.readLine().trim());
             System.out.println(message.getMessage());
-            FileTransactions.write(message, presSesh);
+            FileTransactions.write(message, DatabaseTransactions.getActiveSessionID());
             DatabaseTransactions.saveMessage(message);
             if (message.getMessage().equals("-bye")) {
                break;
