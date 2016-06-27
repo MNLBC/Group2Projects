@@ -81,8 +81,7 @@ public class ChatServer {
             session = new Session((long) 0, Timestamp.getTimestamp(), "");
             DatabaseTransactions.createSession(Timestamp.getTimestamp());
          }
-         System.out
-            .println(clientList.size() + " client" + (clientList.size() > 1 ? "s" : "") + " connected to the server.");
+         System.out.println(clientList.size() + " client" + (clientList.size() > 1 ? "s" : "") + " connected to the server.");
          socketList.addSocket(socket);
 
          for (int i = 0; i < socketList.getSocketList().size(); i++) {

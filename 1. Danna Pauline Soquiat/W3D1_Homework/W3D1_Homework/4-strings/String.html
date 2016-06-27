@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type=text/css rel=stylesheet href="stringstyle.css">
+<meta name="Danna">
+<meta charset="ISO-8859-1">
+<title>JavaScript String Object</title>
+</head>
+<body>
+	<table>
+		<tr>
+			<td id="first">1. split(): Splits a string into an array of substrings</td>
+		</tr>
+		<tr>
+			<td>var str = "Where are you going later?"; <br /> var res =
+				str.split("");
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: Where,are,you,going,later?</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td id="first">2. charAt(): Returns the character at the specified index
+				(position)</td>
+		</tr>
+		<tr>
+			<td>var str = "I'm Danna";<br /> var res = str.charAt(0);
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: I</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td id="first">3. indexOf(): Returns the position of the first found
+				occurrence of a specified value in a string (position)</td>
+		</tr>
+		<tr>
+			<td>var str = "Hello I'm Dory, I suffer short-term memory loss";<br />
+				var n = str.indexOf("memory");
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: 35</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td id="first">4. replace(): Searches a string for a specified value, or a
+				regular expression, and returns a new string where the specified
+				values are replaced occurrence of a specified value in a string
+				(position)</td>
+		</tr>
+		<tr>
+			<td>var str = "Eat Barbecue";<br /> var res =
+				str.replace("Barbecue", "Chicken");
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: Eat Barbecue!</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td id="first">5. substring(): Extracts the characters from a string,
+				between two specified indices</td>
+		</tr>
+		<tr>
+			<td>var str = "What a beautiful day";<br /> var res = str.substring(0,
+				3);
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: What</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td id="first">6. startsWith(): Checks whether a string begins with
+				specified characters</td>
+		</tr>
+		<tr>
+			<td>var str = "How may I help you?";<br />
+				var n = str.startsWith("How");
+			</td>
+		</tr>
+		<tr>
+			<td>Expected Output: true</td>
+		</tr>
+	</table>
+</body>
+</html>
