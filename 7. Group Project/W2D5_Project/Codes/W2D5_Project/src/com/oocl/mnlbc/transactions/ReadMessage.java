@@ -25,24 +25,36 @@ public class ReadMessage extends Thread {
    private Client client;
    private Session presSesh;
 
+   
+   /**
+    * Constructor for ReadMessage
+    * 
+    * @param socket
+    * @param client
+    * @param session
+    */
    public ReadMessage(Socket socket, Client client, Session session) {
       this.socket = socket;
       this.client = client;
       this.presSesh = session;
    }
-
+   /**
+    * Thread method in order to run ReadMessage
+    * 
+    * 
+    */
    public void run() {
       BufferedReader reader = null;
       try {
          reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         Date date = new Date();
-
          while (true) {
-            Message message = new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null,
+            Date date = new Date();
+            Message message = new Message(DatabaseTransactions.getActiveSessionID(), 0L, Long.parseLong(this.client.getId()), null,
                date.toString());
             message.setMessage(reader.readLine().trim());
             System.out.println(message.getMessage());
-            FileTransactions.write(message, presSesh);
+            FileTransactions.write(message, DatabaseTransactions.getActiveSessionID());
+            DatabaseTransactions.saveMessage(message);
             if (message.getMessage().equals("-bye")) {
                break;
             }

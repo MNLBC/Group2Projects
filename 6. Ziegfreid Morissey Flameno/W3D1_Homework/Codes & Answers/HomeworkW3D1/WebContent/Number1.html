@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="Ziggy">
+<meta charset="ISO-8859-1">
+<title>W3D1_Homework Number 1</title>
+<head>
+<meta http-equiv="Content Type" content="text/html; charset=utf-8" />
+<title>Example for JS closure</title>
+<script type="text/javascript">
+   function validate(id, valid, empty) {
+      if (empty) {
+         if (valid) {
+            document.getElementById(id).innerHTML = 'Not Empty';
+         } else {
+            document.getElementById(id).innerHTML = 'Empty';
+         }
+      } else {
+         if (valid) {
+            document.getElementById(id).innerHTML = 'Valid';
+         } else {
+            document.getElementById(id).innerHTML = 'Invalid';
+         }
+      }
+   }
+
+   function replace(id, newVal) {
+      document.getElementById(id).innerHTML = newVal;
+   }
+
+   function validateEmail1() {
+      var re = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+      var valid = false;
+
+      if (document.getElementById('email').value.search(re) == 0) {
+         valid = true;
+      }
+
+      validate('validEmail1', valid, false);
+   }
+
+   function validateEmail2() {
+      var val = document.getElementById('email').value;
+      var atIndex = val.indexOf("@");
+      var valid = true;
+
+      if (atIndex < 1)
+         valid = false;
+      var dot = val.indexOf(".");
+      if (dot <= atIndex + 2)
+         valid = false;
+      if (dot === val.length - 1)
+         valid = false;
+
+      validate('validEmail2', valid, false);
+   }
+
+   function validateDate1() {
+      var s = document.getElementById('date').value;
+      var dateFormat = /^\d{2}[\.|\/|-]\d{2}[\.|\/|-]\d{4}$/;
+      var valid = false;
+
+      if (dateFormat.test(s)) {
+         s = s.replace(/0*(\d*)/gi, "$1");
+         var dateArray = s.split(/[\.|\/|-]/);
+         dateArray[1] = dateArray[1] - 1;
+         if (dateArray[2].length < 4) {
+            dateArray[2] =
+               (parseInt(dateArray[2]) < 50) ? 2000 + parseInt(dateArray[2]) : 1900 + parseInt(dateArray[2]);
+         }
+
+         var testDate = new Date(dateArray[2], dateArray[1], dateArray[0]);
+         if (testDate.getDate() != dateArray[0] || testDate.getMonth() != dateArray[1]
+            || testDate.getFullYear() != dateArray[2]) {
+            valid = false;
+         } else {
+            valid = true;
+         }
+      } else {
+         valid = false;
+      }
+
+      validate('validDate1', valid, false);
+   }
+
+   function validateDate2() {
+      var d = document.getElementById('date').value;
+      var splitVal = d.split('/');
+      var valid = false;
+      if (splitVal.length == 3) {
+         if (splitVal[0].length == 2 && splitVal[1].length == 2 && splitVal[2].length == 4) {
+            d = new Date(d);
+            if (Object.prototype.toString.call(d) === "[object Date]") {
+               if (isNaN(d.getTime())) {
+                  valid = false;
+               } else {
+                  valid = true;
+               }
+            } else {
+               valid = false;
+            }
+         }
+      }
+
+      validate('validDate2', valid, false);
+   }
+
+   function validateString1() {
+      var val = document.getElementById('str').value;
+      var strFormat = /^.+$/;
+      var valid = false;
+
+      if (strFormat.test(val)) {
+         valid = true;
+      }
+
+      validate('validString1', valid, true);
+   }
+
+   function validateString2() {
+      var val = document.getElementById('str').value;
+      var valid = false;
+
+      if (val.length > 0) {
+         valid = true;
+      }
+
+      validate('validString2', valid, true);
+   }
+
+   function replaceString1() {
+      var val = document.getElementById('replace').value;
+      var newVal = val.replace("*e", "-");
+      newVal = newVal.replace("*E", "-");
+
+      replace('replacedStr1', newVal);
+   }
+
+   function replaceString2() {
+      var val = document.getElementById('replace').value;
+      var splitVal = val.split('*e');
+      splitVal = splitVal.join('-');
+      splitVal = splitVal.split('*E');
+      splitVal = splitVal.join('-');
+
+      replace('replacedStr2', splitVal);
+   }
+
+   function removeSpaces1() {
+      var val = document.getElementById('remove').value;
+      val = val.replace(/^\s+|\s+$/gm, '');
+
+      replace('removedSpc1', val);
+   }
+
+   function removeSpaces2() {
+      var val = document.getElementById('remove').value;
+      val = val.trim();
+
+      replace('removedSpc2', val);
+   }
+
+   function switchStrings1() {
+      var val = document.getElementById('switch').value;
+      var tempVal = '';
+      if (val.split('--').length == 2) {
+         val = val.split('--');
+         tempVal = val[0];
+         val[0] = val[1];
+         val[1] = tempVal;
+         val = val.join('--');
+      }
+
+      replace('switchedStr1', val);
+   }
+
+   function switchStrings2() {
+      var val = document.getElementById('switch').value;
+      var tempVal1 = '';
+      var tempVal2 = '';
+      var index = val.indexOf('--');
+      if (index != -1) {
+         tempVal1 = val.substring(0, index);
+         tempVal2 = val.substring(index + 2);
+         val = tempVal2 + "--" + tempVal1;
+      }
+
+      replace('switchedStr2', val);
+   }
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>1. EMAIL VALIDATIONS</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					E-mail: <input type="text" id="email" name="email">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="validateEmail1()">Validate</button>
+			</td>
+			<td>
+				<button onclick="validateEmail2()">Validate</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="validEmail1">Invalid</p>
+			</td>
+			<td>
+				<p id="validEmail2">Invalid</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>2. DATE VALIDATIONS</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					Date (DD/MM/YYYY): <input type="text" id="date" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="validateDate1()">Validate</button>
+			</td>
+			<td>
+				<button onclick="validateDate2()">Validate</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="validDate1">Invalid</p>
+			</td>
+			<td>
+				<p id="validDate2">Invalid</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>3. Empty String Validation</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					String: <input type="text" id="str" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="validateString1()">Validate</button>
+			</td>
+			<td>
+				<button onclick="validateString2()">Validate</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="validString1">Empty</p>
+			</td>
+			<td>
+				<p id="validString2">Empty</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>4. String Replace</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					String: <input type="text" id="replace" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="replaceString1()">Replace</button>
+			</td>
+			<td>
+				<button onclick="replaceString2()">Replace</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="replacedStr1">-</p>
+			</td>
+			<td>
+				<p id="replacedStr2">-</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>5. Remove Trailing Spaces</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					String: <input type="text" id="remove" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="removeSpaces1()">Replace</button>
+			</td>
+			<td>
+				<button onclick="removeSpaces2()">Replace</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="removedSpc1">-</p>
+			</td>
+			<td>
+				<p id="removedSpc2">-</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>5. Remove Trailing Spaces</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					String: <input type="text" id="remove" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="removeSpaces1()">Replace</button>
+			</td>
+			<td>
+				<button onclick="removeSpaces2()">Replace</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="removedSpc1">-</p>
+			</td>
+			<td>
+				<p id="removedSpc2">-</p>
+			</td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td colspan=2>
+				<p>6. Switch Strings</p>
+			</td>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<p>
+					String: <input type="text" id="switch" name="date">
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button onclick="switchStrings1()">Switch</button>
+			</td>
+			<td>
+				<button onclick="switchStrings2()">Switch</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p id="switchedStr1">-</p>
+			</td>
+			<td>
+				<p id="switchedStr2">-</p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

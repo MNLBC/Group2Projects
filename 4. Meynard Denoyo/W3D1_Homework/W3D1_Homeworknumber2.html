@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>
+W2D3_Homework number 2
+</title>
+</head>
+
+<body>
+
+
+
+<script type='text/javascript'>
+function superClass() {
+this.first = function() {
+alert("super class");
+}
+}
+function subClass() {
+this.inheritFrom = superClass;
+this.inheritFrom();
+this.second = function() {
+alert("sub class");
+}
+}
+
+var message = new subClass();
+message.first();
+message.second();
+</script>
+
+</body>
+
+</html>

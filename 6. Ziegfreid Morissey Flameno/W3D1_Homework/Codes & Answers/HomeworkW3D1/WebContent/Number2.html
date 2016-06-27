@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="Ziggy">
+<meta charset="ISO-8859-1">
+<title>W3D1_Homework Number 2</title>
+<script>
+   /**
+    * Bird Super Class
+    * this has color, name, getWings, getFlight 
+    */
+   function Bird(color) {
+      this.color = color;
+      this.name = 'bird';
+      this.getWings = function() {
+         return 'This ' + this.color + ' ' + this.name + ' has wings';
+      }
+      this.getFlight = function() {
+         return 'This ' + this.color + ' ' + this.name + this.canFly;
+      };
+   }
+   /**
+    * Setting bird class can fly through prototype
+    */
+   Bird.prototype.canFly = " can fly";
+
+   /**
+    * Penguin Sub class
+    * should also have color, name, getWings, getFlight via inheritance
+    */
+   function Penguin(color) {
+      Bird.apply(this, arguments);
+   }
+
+   /**
+    * Override the canFly since penguins can't fly :D
+    */
+   Penguin.prototype = new Bird();
+   Penguin.prototype.canFly = " can't fly";
+</script>
+</head>
+<body>
+	<script>
+      var bird = new Bird('blue');
+      var penguin = new Penguin('black');
+      /**
+       * Override the name of Penguin class through direct assignment
+       */
+      penguin.name = 'penguin'
+      function runProgram() {
+         document.getElementById('bird1').innerHTML = bird.getWings();
+         document.getElementById('bird2').innerHTML = bird.getFlight();
+         document.getElementById('penguin1').innerHTML = penguin.getWings();
+         document.getElementById('penguin2').innerHTML = penguin.getFlight();
+      }
+   </script>
+	<table>
+		<tr>
+			<td>BIRD super class</td>
+		</tr>
+		<tr>
+			<td><p id='bird1'>-</p></td>
+		</tr>
+		<tr>
+			<td><p id='bird2'>-</p></td>
+		</tr>
+	</table>
+	<hr width='25%' align=left>
+	<table>
+		<tr>
+			<td>PENGUIN sub class</td>
+		</tr>
+		<tr>
+			<td><p id='penguin1'>-</p></td>
+		</tr>
+		<tr>
+			<td><p id='penguin2'>-</p></td>
+		</tr>
+	</table>
+	<button onclick="runProgram()">Run Program</button>
+</body>
+</html>

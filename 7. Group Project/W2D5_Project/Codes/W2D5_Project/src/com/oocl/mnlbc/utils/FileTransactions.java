@@ -30,26 +30,26 @@ public class FileTransactions {
     * Write to file
     * 
     * @param message
-    * @param session
+    * @param l
     * @return boolean
     */
-   public static boolean write(Message message, Session session) {
+   public static boolean write(Message message, long l) {
       try {
          String putData = "";
          BufferedWriter bw;
          new File("history").mkdirs();
-         File file = new File("history//" + session.getSessionId() + ".log");
+         File file = new File("history//" + l + ".log");
          if (!file.exists()) {
             file.createNewFile();
             FileWriter fw = new FileWriter(file);
             bw = new BufferedWriter(fw);
-            bw.write("Message Id: " + message.getMessageId() + " Timestamp: " + message.getTimestamp() + " ClientId: "
+            bw.write("Timestamp: " + message.getTimestamp() + " ClientId: "
                + message.getClientId() + " MessageBody: " + message.getMessage());
             bw.flush();
          } else {
             FileWriter fw = new FileWriter(file, true);
             bw = new BufferedWriter(fw);
-            putData = "\n" + "Message Id: " + message.getMessageId() + " Timestamp: " + message.getTimestamp()
+            putData = "\n" + "Timestamp: " + message.getTimestamp()
                + " ClientId: " + message.getClientId() + " MessageBody: " + message.getMessage();
             bw.write(putData);
          }
@@ -90,8 +90,8 @@ public class FileTransactions {
     * 
     * @return
     */
-   public static Session generateTestSession() {
-      return new Session(99l, "", "");
+   public static long generateTestSession() {
+      return 99l;
    }
 
    /**

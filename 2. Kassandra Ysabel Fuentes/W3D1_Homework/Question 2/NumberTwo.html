@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<script>
+		function superClass() {
+			this.first = function() {
+				alert("This is the super class");
+			}
+		}
+		function subClass() {
+			this.inheritFrom = superClass;
+			this.inheritFrom();
+			this.second = function() {
+				alert("This is the sub class");
+			}
+		}
+
+		var message = new subClass();
+		message.first();
+		message.second();
+	</script>
+</body>
+</html>

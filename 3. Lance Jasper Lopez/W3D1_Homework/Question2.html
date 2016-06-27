@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>W3D1 Exercise-2</title>
+
+	
+
+	
+</head>
+<script type='text/javascript'>
+function building() {
+this.first = function() {
+alert("This is a building");
+}
+}
+function empireState() {
+this.inheritFrom = building;
+this.inheritFrom();
+this.second = function() {
+alert("This is the Empire State");
+}
+}
+
+var message = new empireState();
+message.first();
+message.second();
+</script>
+<body id="body">
+	
+</body>
+
+</html>

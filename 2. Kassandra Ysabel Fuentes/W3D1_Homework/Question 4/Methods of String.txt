@@ -1,0 +1,30 @@
+
+1. indexOf() 	
+	- position of the first occurrence of the string in the argument.
+Example:
+	getString.indexOf("--");
+	
+2. lastIndexOf() 	
+	- position of the last occurrence of the string in the argument.
+Example:
+	getString.lastIndexOf("-")
+
+3. replace() 	
+	- Searches string for the specified value, and replaces it with the specified new value;
+Example:
+	getString.replace("e", "-");
+
+4. trim() 	
+	- Removes trailing white spaces.
+Example:
+	getString.trim();
+	
+5. substring()
+	- Returns string from specified index to end or to specified end.
+Example: 
+	getString.substring(0, getString.indexOf("--"))
+
+6. toLowerCase()
+	- transforms string into lowercase
+Example:
+	getString.toLowerCase();

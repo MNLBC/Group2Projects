@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="w3d1.css" media="screen" />
+<title>Welcome to Amazon!</title>
+</head>
+<body id="amazon">
+	<div class="container-fluid">
+		<form id="signAccount" method=POST>
+
+			<p class="label">
+				Number 1: <br /> <input type="text" id="number1" value="" size="45">
+			</p>
+			<button onclick="numberOne1()">Start 1</button>
+			<button onclick="numberOne2()">Start 2</button>
+
+			<p class="label">
+				Number 2: <br /> <input type="text" id="number2" size="45">
+			</p>
+			<button onclick="numberTwo1()">Start 1</button>
+			<button onclick="numberTwo2()">Start 2</button>
+
+			<p class="label">
+				Number 3: <br /> <input type="text" id="number3" size="45">
+			</p>
+			<button onclick="numberThree1()">Start 1</button>
+			<button onclick="numberThree2()">Start 2</button>
+
+			<p class="label">
+				Number 4: <br /> <input type="text" id="number4" size="45">
+			</p>
+			<button onclick="numberFour1()">Start 1</button>
+			<button onclick="numberFour2()">Start 2</button>
+
+			<p class="label">
+				Number 5: <br /> <input type="text" id="number5" size="45">
+			</p>
+			<button onclick="numberFive1()">Start 1</button>
+			<button onclick="numberFive2()">Start 2</button>
+
+			<p class="label">
+				Number 6: <br /> <input type="text" id="number6" size="45">
+			</p>
+			<button onclick="numberSix1()">Start 1</button>
+			<button onclick="numberSix2()">Start 2</button>
+		</form>
+	</div>
+	<script>
+		function numberOne1() {
+			var email = document.getElementById('number1').value;
+			var reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+			if (reg.test(email)) {
+				alert("Valid email");
+			} else {
+				alert("Invalid email");
+			}
+		}
+
+		function numberOne2() {
+			var email = document.getElementById('number2').value;
+			var check1 = email.indexOf("@");
+			var check2 = email.lastIndexOf(".");
+
+			if (check1 == -1 || check2 == -1 ) {
+			alert('Invalid email');
+			} else {
+			alert('Valid email!');
+			}
+
+		}
+
+		function numberTwo1() {
+			var date = document.getElementById('number2').value;
+			var dateSplit = date.split("/");
+			var testDate = new Date(dateSplit[2], dateSplit[0] - 1,
+					dateSplit[1]);
+
+			var year = testDate.getFullYear();
+			var month = testDate.getMonth() + 1;
+			var day = testDate.getDate();
+
+			if (day != dateSplit[1] || month != dateSplit[0]
+					|| year != dateSplit[2]) {
+				alert('Incorrect format!');
+			} else {
+				alert('Valid format');
+			}
+		}
+
+		function numberTwo2() {
+			var date = document.getElementById('number2').value;
+			var reg = /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/;
+			if (!reg.test(date)) {
+				alert("Incorrect format");
+			} else {
+				alert("Correct format");
+			}
+
+		}
+
+		function numberThree1() {
+			var check = document.getElementById('number3').value.length;
+			if (check == 0) {
+				alert("Empty String");
+			} else {
+				alert("String is not empty");
+			}
+		}
+
+		function numberThree2() {
+			var check = document.getElementById('number3').value;
+			if (check == "") {
+				alert("Empty String");
+			} else {
+				alert("String is not empty");
+			}
+		}
+
+		function numberFour1() {
+			var getString = document.getElementById('number4').value.replace(
+					"E", "-");
+			var editString = getString.replace("e", "-");
+			var newString = editString.split("*");
+			var finalString = "";
+			var k = 0;
+			for (; k < newString.length;) {
+				finalString += newString[k];
+				k++;
+			}
+			alert(finalString);
+		}
+
+		function numberFour2() {
+			var getString = document.getElementById('number4').value;
+			var reg = /[*](e)|[*](E)/g;
+			var finalString = abc.replace(reg, '-');
+			alert(finalString);
+		}
+
+		function numberFive1() {
+			alert(document.getElementById('number5').value.trim());
+		}
+
+		function numberFive2() {
+			var newString = document.getElementById('number5').value.replace(
+					" ", "");
+			alert(newString);
+		}
+
+		function numberSix1() {
+			var getString = document.getElementById('number6').value;
+			var startString = getString
+					.substring(getString.lastIndexOf("-") + 1);
+			var endString = getString.substring(0, getString.indexOf("--"));
+
+			alert(startString + "--" + endString);
+		}
+
+		function numberSix2() {
+			var getString = document.getElementById('number6').value
+					.split("--");
+			getString.push(getString.shift());
+			var finalString = getString.join("--");
+
+			alert(finalString);
+		}
+	</script>
+</body>
+</html>

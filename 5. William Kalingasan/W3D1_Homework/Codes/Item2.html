@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Item 2</title>
+	</head>
+	<body>
+		<p>Item 2</p>
+		<script style ="text/javascript">
+			function Car(){
+				this.getColor = function(){
+					return 'This car is a ' + this.color + ' car';
+				}
+			}
+			Car.prototype.color = "Black";
+			var car = new Car();
+			alert("Superclass " + car.getColor());
+			
+			function Dodge(){
+				
+			}
+			
+			Dodge.prototype = new Car();
+			var dodge = new Dodge();
+			alert("Subclass " + dodge.getColor());
+		</script>
+	</body>
+</html>
