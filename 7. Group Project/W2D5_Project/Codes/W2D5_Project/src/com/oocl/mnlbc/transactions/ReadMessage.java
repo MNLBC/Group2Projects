@@ -47,9 +47,8 @@ public class ReadMessage extends Thread {
       BufferedReader reader = null;
       try {
          reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-         Date date = new Date();
-
          while (true) {
+            Date date = new Date();
             Message message = new Message(this.presSesh.getSessionId(), 0L, Long.parseLong(this.client.getId()), null,
                date.toString());
             message.setMessage(reader.readLine().trim());
