@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Item 2</title>
+		<style>
+			table, td {
+				border: 1px solid black;
+			}
+</style>
+	</head>
+	<body>
+		<button onclick="Click()">Generate Table</button>
+		<br><br><br>
+		<script style="text/javascript">
+			function Click(){
+				var tbl = document.createElement("TABLE");
+				var trow = document.createElement("TR");
+				var td1 = document.createElement("TD");
+				var td2 = document.createElement("TD");
+				var t1 = document.createTextNode("DATA 1");
+				var t2 = document.createTextNode("DATA 2");
+				td1.appendChild(t1);
+				td2.appendChild(t2);
+				trow.appendChild(td1);
+				trow.appendChild(td2);
+				tbl.appendChild(trow);
+				document.body.appendChild(tbl);
+			}
+		</script>
+	</body>
+</html>
