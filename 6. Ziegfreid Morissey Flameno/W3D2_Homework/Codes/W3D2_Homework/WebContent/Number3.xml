@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?xml-stylesheet type="text/xsl" href="trans1 (2).xsl" ?>
+<?xml-stylesheet type="text/xsl" href="Number3.xsl" ?>
 <rpc-reply-converter-input>
   <device-specific-rpc-reply-list>
     <device-specific-rpc-reply>
