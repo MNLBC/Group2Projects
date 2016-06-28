@@ -8,21 +8,25 @@
 <body>
     <p>2. Create a table dynamically by XML DOM / HTML DOM</p>
     <button onclick="createTable()">Create Table</button>
+    <button onclick="deleteTable()">Delete Table</button>
     <script>
                function createTable() {
                   var table = document.createElement("table");
+                  var row = document.createElement("tr");
+                  var def = document.createElement("td");
+                  var cell = document.createTextNode("Dynamic Cell");
+
                   table.setAttribute("id", "dynamicTable");
                   table.setAttribute("border", 1);
                   document.body.appendChild(table);
-
-                  var row = document.createElement("tr");
                   row.setAttribute("id", "dynamicRow");
                   document.getElementById("dynamicTable").appendChild(row);
-
-                  var def = document.createElement("td");
-                  var cell = document.createTextNode("Dynamic Cell");
                   def.appendChild(cell);
                   document.getElementById("dynamicRow").appendChild(def);
+               }
+               
+               function deleteTable() {
+                  document.getElementById("dynamicTable").remove();
                }
             </script>
 </body>
