@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+<body onload="loadTable()">
+
+<script>
+function loadTable() {
+    var table = document.createElement("TABLE");
+    table.setAttribute("id", "myTable");
+    document.body.appendChild(table);
+
+    var tableRow1 = document.createElement("TR");
+    tableRow1.setAttribute("id", "myTr");
+    document.getElementById("myTable").appendChild(tableRow1);
+
+    var tableData1 = document.createElement("TD");
+	var tableData2 = document.createElement("TD");
+    var cell1 = document.createTextNode("cell 1");
+	var cell2 = document.createTextNode("cell 2");
+	
+    tableData1.appendChild(cell1);
+	tableData2.appendChild(cell2);
+    document.getElementById("myTr").appendChild(tableData1);
+	document.getElementById("myTr").appendChild(tableData2);
+}
+</script>
+
+</body>
+</html>
