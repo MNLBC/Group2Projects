@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>W3D2_Homework Number 2</title>
+</head>
+<body>
+    <h2>Create a table dynamically by XML DOM / HTML DOM</h2>
+    <button type="button" onclick="loadDynamicTable()">Load
+        Table</button>
+    <button type="button" onclick="removeTable()">Delete
+        Table</button>
+    <p id="table"></p>
+    <script>
+               function loadDynamicTable() {
+                  var xmlhttp;
+                  if (window.XMLHttpRequest) {
+                     xmlhttp = new XMLHttpRequest();
+                  } else {
+                     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                  }
+                  xmlhttp.onreadystatechange = function() {
+                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("table").innerHTML = xmlhttp.responseText;
+                     }
+                  };
+                  xmlhttp.open("GET", "Number2.txt", true);
+                  xmlhttp.send();
+               }
+               function removeTable() {
+                  document.getElementById("table").innerHTML='';
+               }
+            </script>
+</body>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="ziggy">
+<meta charset="ISO-8859-1">
+<title>W3D2_Homework Number2</title>
+</head>
+<body>
+    <p>2. Create a table dynamically by XML DOM / HTML DOM</p>
+    <button onclick="createTable()">Create Table</button>
+    <script>
+               function createTable() {
+                  var table = document.createElement("table");
+                  table.setAttribute("id", "dynamicTable");
+                  table.setAttribute("border", 1);
+                  document.body.appendChild(table);
+
+                  var row = document.createElement("tr");
+                  row.setAttribute("id", "dynamicRow");
+                  document.getElementById("dynamicTable").appendChild(row);
+
+                  var def = document.createElement("td");
+                  var cell = document.createTextNode("Dynamic Cell");
+                  def.appendChild(cell);
+                  document.getElementById("dynamicRow").appendChild(def);
+               }
+            </script>
+</body>
+</html>

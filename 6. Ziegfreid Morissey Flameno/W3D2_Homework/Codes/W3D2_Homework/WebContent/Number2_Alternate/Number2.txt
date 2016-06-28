@@ -1,0 +1,8 @@
+    <table border=1>
+        <tr>
+            <th>This is a dynamic table</th>
+        </tr>
+        <tr>
+            <td>This is the text inside the dynamic table</td>
+        </tr>
+    </table>
