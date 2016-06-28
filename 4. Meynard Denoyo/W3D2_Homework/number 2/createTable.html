@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>W3D2_Homework number 2</title>
+	</head>
+	
+	<body>
+	
+	<button onclick="createTable()">Create Table</button>
+	
+	<script type="text/javascript">
+		function createTable(){
+			var t = document.createElement("table");
+			var row1 = document.createElement("tr");
+			var row2 = document.createElement("tr");
+			var header1 = document.createElement("th");
+			var header2 = document.createElement("th");
+			var cell1 = document.createElement("td");
+			var cell2 = document.createElement("td");
+			var text1 = document.createTextNode("sample");
+			var text2 = document.createTextNode("sample");
+			var text3 = document.createTextNode("sample");
+			var text4 = document.createTextNode("sample");
+			
+			t.setAttribute('border', '1px');
+			document.body.appendChild(t);
+			t.appendChild(row1);
+			t.appendChild(row2);
+			header1.appendChild(text1);
+			header2.appendChild(text2);
+			cell1.appendChild(text3);
+			cell2.appendChild(text4);
+			row1.appendChild(header1);
+			row1.appendChild(header2);
+			row2.appendChild(cell1);
+			row2.appendChild(cell2);
+		}
+	</script>
+	</body>
+</html>
