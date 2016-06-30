@@ -57,6 +57,33 @@ Ext.application({
             								} ]
             							});
             						}
+                                },
+                                {
+                                    xtype: 'tbspacer',
+                                    height: 40,
+                                    width: 503
+                                },
+                                {
+                                xtype : 'button',
+                                id: 'btn3',
+            					text : 'Go to Page 3',
+            					handler: function(btn) {
+            						 Ext.create('Ext.container.Viewport', {
+             							layout : 'fit',
+             							items : [ {
+             								 xtype: 'grid',
+             			                  title: 'Dynamic Table',
+             			                  columns: [
+             								 { text: 'First Name', dataIndex: 'fname' },
+             								 { text: 'Last Name', dataIndex: 'lname' },
+             			                     { date: 'Birthdate', dataIndex: 'bdate' },
+             								 { text: 'Address', dataIndex: 'address' },
+             			                     { text: 'Email', dataIndex: 'email', flex: 1 },
+             			                     { text: 'Phone', dataIndex: 'phone' }
+             			                  ]
+             								} ]
+             							});
+            			            }
                                 }]
                     	}
                     ]
