@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Item 1</title>
+	</head>
+	<body>
+		<center>
+			<h2>Check what these buttons do</h2><br>
+			<button id="btn1" onclick="window.open('file:///D:/Homeworks/Week3/form/index.html')">Button 1</button>     <button id="btn2" onclick="window.open('file:///D:/Homeworks/Week3/grid/index.html')">Button 2</button>     <button id="btn3" onclick="btn3Click()">Button 3</button>
+			<div id="div1">Table Here</div>
+		</center>
+		<script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-all.js"></script>
+		<script src="http://cdn.sencha.com/ext/gpl/4.2.1/ext-theme-neptune.js"></script>
+		<script>
+			function btn3Click(){
+				Ext.create('Ext.panel.Panel', {
+					title: 'Table Layout',
+					width: 300,
+					height: 150,
+					region : 'center',
+					flex : 0,
+					layout: {
+						type: 'table',
+						// The total column count must be specified here
+						columns: 3
+					},
+					defaults: {
+						// applied to each contained panel
+						bodyStyle: 'padding:20px'
+					},
+					items: [{
+						html: 'This occupies 2 rows',
+						rowspan: 2
+					},{
+						html: 'This occupies 2 columns',
+						colspan: 2
+					},{
+						html: 'Normal Cell'
+					},{
+						html: 'Normal Cell'
+					}],
+					renderTo: Ext.getBody()
+				});
+			}
+		</script>
+	</body>
+</html>
