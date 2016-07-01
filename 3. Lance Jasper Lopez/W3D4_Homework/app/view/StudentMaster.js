@@ -1,10 +1,11 @@
 Ext.define('School.view.StudentMaster', 
 {
     extend : 'Ext.form.Panel',
+   
     alias : 'widget.StudentMaster',
     config : {},
     id:'studentInfo',
-   layout:vbox,
+
   
     constructor : function(config){
         this.initConfig(config);
@@ -25,6 +26,8 @@ Ext.define('School.view.StudentMaster',
         {
             id : 'StudentMasterId',
             hidden:true,
+            height:1080,
+            width:1920,
             title : 'Employee Information',
             resizable : false,
             collapsible : true,

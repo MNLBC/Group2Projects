@@ -2,8 +2,9 @@
 
 Ext.define('School.view.MenuView', {
     extend: 'Ext.container.Container',
+
     alias : 'widget.MenuView',
-    layout: 'vbox',
+    layout: {type:'vbox'},
 
   
     initComponent: function() {
@@ -13,7 +14,8 @@ Ext.define('School.view.MenuView', {
             items: [
                 {
                     xtype: 'form',
-                    height: 258,
+                    height: 600,
+                    width: 800,
                     bodyPadding: 10,
                     title: 'Main Menu',
                     items: [
@@ -78,7 +80,7 @@ Ext.define('School.view.MenuView', {
 //  	  this.getView().destroy();
 		var viewport = button.up('form');
 	   	viewport.destroy();	
-		Ext.getCmp('studentInfo').show();
+		Ext.getCmp('studentsGrid').show();
 //    var window =   Ext.widget('StudentGrid2');
 //    window.show();
     
