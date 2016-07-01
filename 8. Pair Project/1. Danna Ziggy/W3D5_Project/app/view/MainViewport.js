@@ -17,12 +17,21 @@ Ext.define('W3D5_Project.view.MainViewport', {
     extend: 'Ext.container.Viewport',
 
     requires: [
+        'Ext.toolbar.Spacer',
+        'Ext.menu.Menu',
+        'Ext.menu.Item',
         'Ext.tab.Panel',
-        'Ext.tab.Tab'
+        'Ext.tab.Tab',
+        'Ext.form.Panel'
     ],
 
     id: 'MainViewport',
     itemId: 'MainViewport',
+
+    layout: {
+        type: 'hbox',
+        align: 'stretch'
+    },
 
     initComponent: function() {
         var me = this;
@@ -30,22 +39,82 @@ Ext.define('W3D5_Project.view.MainViewport', {
         Ext.applyIf(me, {
             items: [
                 {
-                    xtype: 'tabpanel',
-                    id: 'MenuPanel',
-                    itemId: 'MenuPanel',
-                    activeTab: 0,
+                    xtype: 'container',
+                    flex: 0,
+                    width: 121,
+                    layout: {
+                        type: 'vbox',
+                        align: 'center'
+                    },
                     items: [
                         {
-                            xtype: 'panel',
-                            title: 'Tab 1'
+                            xtype: 'tbspacer',
+                            height: 35,
+                            width: 99
                         },
                         {
-                            xtype: 'panel',
-                            title: 'Tab 2'
-                        },
+                            xtype: 'menu',
+                            floating: false,
+                            id: 'CategoriesMenu',
+                            itemId: 'CategoriesMenu',
+                            width: 120,
+                            title: 'Categories',
+                            items: [
+                                {
+                                    xtype: 'menuitem',
+                                    text: 'Menu Item'
+                                },
+                                {
+                                    xtype: 'menuitem',
+                                    text: 'Menu Item'
+                                },
+                                {
+                                    xtype: 'menuitem',
+                                    height: 522,
+                                    text: 'Menu Item'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    xtype: 'container',
+                    flex: 1,
+                    items: [
                         {
-                            xtype: 'panel',
-                            title: 'Tab 3'
+                            xtype: 'tabpanel',
+                            id: 'MenuPanel',
+                            itemId: 'MenuPanel',
+                            activeTab: 0,
+                            items: [
+                                {
+                                    xtype: 'panel',
+                                    height: 547,
+                                    id: 'MenuTab1',
+                                    itemId: 'MenuTab1',
+                                    layout: 'fit',
+                                    title: 'All Books',
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            bodyPadding: 10,
+                                            title: 'My Form'
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'panel',
+                                    id: 'MenuTab2',
+                                    itemId: 'MenuTab2',
+                                    title: 'Best Seller'
+                                },
+                                {
+                                    xtype: 'panel',
+                                    id: 'MenuTab3',
+                                    itemId: 'MenuTab3',
+                                    title: 'On Sale'
+                                }
+                            ]
                         }
                     ]
                 }
