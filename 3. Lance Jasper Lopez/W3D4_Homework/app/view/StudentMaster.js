@@ -26,7 +26,7 @@ Ext.define('School.view.StudentMaster',
         {
             id : 'StudentMasterId',
             hidden:true,
-            height:1080,
+            height:800,
             width:1920,
             title : 'Employee Information',
             resizable : false,

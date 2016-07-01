@@ -14,8 +14,8 @@ Ext.define('School.view.MenuView', {
             items: [
                 {
                     xtype: 'form',
-                    height: 600,
-                    width: 800,
+                    height: 1080,
+                    width: 1920,
                     bodyPadding: 10,
                     title: 'Main Menu',
                     items: [
