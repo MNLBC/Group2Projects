@@ -90,7 +90,7 @@ Ext.define('School.view.MenuView', {
 //  	  this.getView().destroy();
 		var viewport = button.up('form');
 	   	viewport.destroy();	
-      
+	   	Ext.getCmp('tableForm').show();
       // Ext.widget('app-main');
   }
 });
