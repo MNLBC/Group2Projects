@@ -1,0 +1,16 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "name": "W3D5_Project",
+        "views": [
+            "MainViewport"
+        ]
+    },
+    "name": "Application",
+    "designerId": "application"
+}

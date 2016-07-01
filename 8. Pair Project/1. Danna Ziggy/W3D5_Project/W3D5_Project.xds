@@ -1,0 +1,48 @@
+{
+    "name": "W3D5_Project",
+    "settings": {
+        "cmd": {
+            "license": "commercial"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "",
+        "exportPath": "D:/gitvob/Group2Projects/8. Pair Project/1. Danna Ziggy/Publish",
+        "projectHasEnabledWebServer": false,
+        "lockUrlPrefix": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "displayfield-ExtBox1-1109-inputEl": "a new version of the framework is available"
+    },
+    "xdsVersion": "3.1.0",
+    "xdsBuild": 1943,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000007,
+    "framework": "ext42",
+    "viewOrderMap": {
+        "view": [
+            "4af0b98c-4635-4833-9709-0a7fa9502faa"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "2e4adf16-d785-4d01-b7f4-822fe946c4c2",
+            "111c0748-df05-4694-b593-2e2ca32d6c41"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

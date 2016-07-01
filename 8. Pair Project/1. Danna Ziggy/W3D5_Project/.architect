@@ -1,0 +1,65 @@
+{
+    "expandedState": {
+        "view": true,
+        "4af0b98c-4635-4833-9709-0a7fa9502faa": {
+            "id": "4af0b98c-4635-4833-9709-0a7fa9502faa",
+            "cn": [
+                {
+                    "id": "83d5c5fe-d081-484b-ad5d-7af0d1809c9f",
+                    "cn": [
+                        {
+                            "id": "3dafb468-b2ca-4114-8cf8-4b1dcb1a5262",
+                            "cn": [
+                                {
+                                    "id": "4f96b5a2-8380-4d52-94c9-94b06a842adf"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "ddb1780c-1c6e-43f0-99d3-e304928b44d5",
+                            "cn": [
+                                {
+                                    "id": "a71c36cc-8acd-41ce-b598-0457bb0d1b30"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "cd58eadb-02db-4b3e-9a68-d0c863fa4fa3",
+                            "cn": [
+                                {
+                                    "id": "dcedeaec-64a1-49bc-842a-d60fb3c8031b"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "store": true,
+        "model": true,
+        "controller": true,
+        "resource": true,
+        "2e4adf16-d785-4d01-b7f4-822fe946c4c2": {
+            "id": "2e4adf16-d785-4d01-b7f4-822fe946c4c2"
+        },
+        "111c0748-df05-4694-b593-2e2ca32d6c41": {
+            "id": "111c0748-df05-4694-b593-2e2ca32d6c41"
+        }
+    },
+    "tabState": {
+        "openTabs": [
+            "4af0b98c-4635-4833-9709-0a7fa9502faa"
+        ]
+    },
+    "canvasState": {
+        "topInstance": "4af0b98c-4635-4833-9709-0a7fa9502faa"
+    },
+    "inspectorState": {
+        "topInstance": "4af0b98c-4635-4833-9709-0a7fa9502faa",
+        "selectedInstance": "3dafb468-b2ca-4114-8cf8-4b1dcb1a5262"
+    },
+    "editMode": "design",
+    "userSettings": {
+        "no-cmd": true
+    }
+}
