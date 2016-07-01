@@ -1,0 +1,54 @@
+{
+    "name": "Demo",
+    "settings": {
+        "cmd": {
+            "license": "commercial"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "",
+        "exportPath": "C:/Users/flamezi2/Desktop/Demo/Publish",
+        "projectHasEnabledWebServer": false,
+        "lockUrlPrefix": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "displayfield-ExtBox1-1742-inputEl": "a new version of the framework is available"
+    },
+    "xdsVersion": "3.1.0",
+    "xdsBuild": 1943,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000007,
+    "framework": "ext42",
+    "viewOrderMap": {
+        "view": [
+            "e0f6a32d-935e-440a-b3ce-7cbd3fb5770e"
+        ],
+        "store": [
+            "647024fe-78e6-4e9b-bb7e-8e662acbb70c"
+        ],
+        "controller": [
+            "958de2ab-4863-4dab-84e8-df23a856a7e7"
+        ],
+        "model": [
+            "397b3b12-b3f4-44bd-bf50-7588db463faa"
+        ],
+        "resource": [
+            "1a01f5f4-c71e-473a-b7be-ee1c00af7e68",
+            "f752d53a-aea0-40cf-bc9e-be38d2951808"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[",
+            "    {",
+            "        \"userName\": \"nesciunt\",",
+            "        \"passWord\": \"ghh8KVfTeH\"",
+            "    },",
+            "    {",
+            "        \"userName\": \"rerum\",",
+            "        \"passWord\": \"1KIET7u\"",
+            "    },",
+            "    {",
+            "        \"userName\": \"ea\",",
+            "        \"passWord\": \"EooIznYIay\"",
+            "    },",
+            "    {",
+            "        \"userName\": \"odit\",",
+            "        \"passWord\": \"O0tsGFMDPdf\"",
+            "    },",
+            "    {",
+            "        \"userName\": \"magnam\",",
+            "        \"passWord\": \"Vr4yIiUFUft\"",
+            "    }",
+            "]"
+        ],
+        "designer|userClassName": "UserStore",
+        "model": "UserModel",
+        "storeId": "UserStore"
+    },
+    "name": "MyStore",
+    "designerId": "647024fe-78e6-4e9b-bb7e-8e662acbb70c"
+}

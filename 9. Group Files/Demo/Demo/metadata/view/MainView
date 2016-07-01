@@ -1,0 +1,184 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": true,
+        "designer|userClassName": "MainView",
+        "id": "MainView",
+        "itemId": "MainView"
+    },
+    "name": "MyViewport",
+    "designerId": "e0f6a32d-935e-440a-b3ce-7cbd3fb5770e",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyPadding": 10,
+                "designer|displayName": "MainForm",
+                "height": 411,
+                "id": "MainForm",
+                "itemId": "MainForm",
+                "title": "My Form"
+            },
+            "name": "MyForm",
+            "designerId": "36d6dc80-6614-4e15-a962-398328f83380",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "UserName",
+                        "fieldLabel": "Username",
+                        "id": "UserName",
+                        "itemId": "UserName",
+                        "layout|anchor": "100%"
+                    },
+                    "name": "MyTextField",
+                    "designerId": "98996850-8ccd-4a48-920d-a2e734e04962"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Password",
+                        "id": "PassWord",
+                        "itemId": "PassWord",
+                        "layout|anchor": "100%"
+                    },
+                    "name": "MyTextField1",
+                    "designerId": "1d436f29-de95-44c9-9502-4334630adb2e"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "Create",
+                        "id": "Create",
+                        "itemId": "Create",
+                        "text": "Create"
+                    },
+                    "name": "MyButton",
+                    "designerId": "16936320-2cde-4c29-937d-fe37ef2a3bfc"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "Read",
+                        "itemId": "Read",
+                        "text": "Read"
+                    },
+                    "name": "MyButton1",
+                    "designerId": "ec5c9a61-026e-4209-a288-726c95fbdc87"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "Update",
+                        "id": "Update",
+                        "itemId": "Update",
+                        "text": "Update"
+                    },
+                    "name": "MyButton2",
+                    "designerId": "c5b03ee1-7fd5-46a9-b33d-ac8227cf1438"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|displayName": "Delete",
+                        "id": "Delete",
+                        "itemId": "Delete",
+                        "text": "Delete"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "83aa1f8e-96f2-4632-9d83-d05f869f9b00"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "id": "GridPanel",
+                "itemId": "GridPanel",
+                "store": "UserStore",
+                "title": "My Grid Panel"
+            },
+            "name": "MyGridPanel",
+            "designerId": "318069d5-83c5-42f6-ab7d-a2c8f3be6e32",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "userName",
+                        "id": "UserCol",
+                        "itemId": "UserCol",
+                        "text": "User"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "fc4b3898-019a-4f20-b711-ca47164d60d2"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "passWord",
+                        "id": "PassCol",
+                        "itemId": "PassCol",
+                        "text": "Pass"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "a1895d69-327f-4752-bba1-07bc51c493f5"
+                }
+            ]
+        }
+    ]
+}

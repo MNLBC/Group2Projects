@@ -1,0 +1,165 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainController",
+        "id": "MainController"
+    },
+    "name": "MyController",
+    "designerId": "958de2ab-4863-4dab-84e8-df23a856a7e7",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#Create",
+                "designer|targetType": "MyButton",
+                "fn": "onCreateClick",
+                "implHandler": [
+                    "var user, pass, userObj, store;",
+                    "",
+                    "user = Ext.getCmp('UserName').getValue();",
+                    "pass = Ext.getCmp('PassWord').getValue();",
+                    "userObj = {",
+                    "    userName: user,",
+                    "    passWord: pass",
+                    "};",
+                    "",
+                    "",
+                    "store = Ext.getStore('UserStore');",
+                    "store.add(userObj);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCreateClick",
+            "designerId": "52272a40-7822-4c9a-949d-a0676208bcbb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#Read",
+                "designer|targetType": "MyButton1",
+                "fn": "onReadClick",
+                "implHandler": [
+                    "var user, store;",
+                    "",
+                    "        user = Ext.getCmp('UserName').getValue();",
+                    "store = Ext.getStore('UserStore');",
+                    "",
+                    "if(Ext.isEmpty(user)){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "store.filter('userName', user);",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onReadClick",
+            "designerId": "85f10636-cfeb-42a8-9f35-a4589c88a2e5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#Update",
+                "designer|targetType": "MyButton2",
+                "fn": "onUpdateClick",
+                "implHandler": [
+                    "var user, pass, store;",
+                    "",
+                    "                user = Ext.getCmp('UserName').getValue();",
+                    "pass = Ext.getCmp('PassWord').getValue();",
+                    "        store = Ext.getStore('UserStore');",
+                    "",
+                    "        Ext.each(store.data.items, function(rec){",
+                    "           if(rec.data.userName == user){",
+                    "               rec.data.passWord = pass;",
+                    "           }",
+                    "        });",
+                    "",
+                    "Ext.getCmp('GridPanel').getView().refresh();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUpdateClick",
+            "designerId": "4240cf9c-f2fb-4ae7-b5d5-eeac3d150a7a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#GridPanel",
+                "designer|params": [
+                    "model, selected, eOpts"
+                ],
+                "designer|targetType": "MyGridPanel",
+                "fn": "onGridPanelSelectionChange",
+                "implHandler": [
+                    "var select, user, pass;",
+                    "",
+                    "select = selected;",
+                    "Ext.getCmp('UserName').setValue(select[0].data.userName);",
+                    "Ext.getCmp('PassWord').setValue(select[0].data.passWord);"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onGridPanelSelectionChange",
+            "designerId": "6df6379a-9028-49c1-ae85-3362fb77af39"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#Delete",
+                "designer|targetType": "MyButton3",
+                "fn": "onDeleteClick",
+                "implHandler": [
+                    "var user, store;",
+                    "",
+                    "                        user = Ext.getCmp('UserName').getValue();",
+                    "                store = Ext.getStore('UserStore');",
+                    "",
+                    "                Ext.each(store.data.items, function(rec){",
+                    "                   if(rec.data.userName == user){",
+                    "                       store.remove(rec);",
+                    "                   }",
+                    "                });",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onDeleteClick",
+            "designerId": "1d848718-31ca-496f-a87a-1538ce26f449"
+        }
+    ]
+}
