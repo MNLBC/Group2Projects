@@ -20,6 +20,14 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
+    models: [
+        'BookModel',
+        'SearchModel'
+    ],
+    stores: [
+        'BookStore',
+        'SearchStore'
+    ],
     views: [
         'MainViewport'
     ],

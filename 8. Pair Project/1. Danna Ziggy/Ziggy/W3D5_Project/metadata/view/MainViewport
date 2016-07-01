@@ -172,8 +172,13 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "displayField": "bookName",
                                                 "emptyText": "Search Title",
                                                 "fieldLabel": "",
+                                                "id": "SearchBox",
+                                                "itemId": "SearchBox",
+                                                "store": "SearchStore",
+                                                "valueField": "bookId",
                                                 "width": 434
                                             },
                                             "name": "MyComboBox",
@@ -209,6 +214,7 @@
                                             "userConfig": {
                                                 "id": "BooksGrid",
                                                 "itemId": "BooksGrid",
+                                                "store": "BookStore",
                                                 "title": ""
                                             },
                                             "name": "MyGridPanel",
@@ -223,9 +229,28 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "align": "center",
-                                                        "dataIndex": "number",
-                                                        "text": "Book Cover",
-                                                        "width": 209
+                                                        "dataIndex": "bookTitle",
+                                                        "text": "Title",
+                                                        "width": 242
+                                                    },
+                                                    "name": "MyColumn1",
+                                                    "designerId": "8ef8ad1d-b01a-4885-961d-05e67f2ae17e"
+                                                },
+                                                {
+                                                    "type": "Ext.grid.column.Column",
+                                                    "reference": {
+                                                        "name": "columns",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "align": "center",
+                                                        "dataIndex": "bookImg",
+                                                        "flex": null,
+                                                        "height": null,
+                                                        "resizable": false,
+                                                        "text": "Cover",
+                                                        "width": 189
                                                     },
                                                     "name": "MyColumn",
                                                     "designerId": "e20cfdfa-fbbc-47ff-81f9-663504b4b3a0",
@@ -249,7 +274,7 @@
                                                                 ],
                                                                 "fn": "renderer",
                                                                 "implHandler": [
-                                                                    "return '<img src=\"resources/img/' + value + '\" />';"
+                                                                    "return '<img src=\"resources/img/' + value + '\" align=\"center\"/>';"
                                                                 ]
                                                             },
                                                             "name": "renderer",
@@ -266,23 +291,7 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "align": "center",
-                                                        "dataIndex": "date",
-                                                        "text": "Name",
-                                                        "width": 242
-                                                    },
-                                                    "name": "MyColumn1",
-                                                    "designerId": "8ef8ad1d-b01a-4885-961d-05e67f2ae17e"
-                                                },
-                                                {
-                                                    "type": "Ext.grid.column.Column",
-                                                    "reference": {
-                                                        "name": "columns",
-                                                        "type": "array"
-                                                    },
-                                                    "codeClass": null,
-                                                    "userConfig": {
-                                                        "align": "center",
-                                                        "dataIndex": "bool",
+                                                        "dataIndex": "bookAuthor",
                                                         "text": "Author",
                                                         "width": 209
                                                     },
@@ -296,6 +305,10 @@
                                                         "type": "object"
                                                     },
                                                     "codeClass": null,
+                                                    "userConfig": {
+                                                        "enableTextSelection": true,
+                                                        "formBind": false
+                                                    },
                                                     "name": "MyGridView",
                                                     "designerId": "cb3357da-686f-4b1c-a6be-fb23601315c5"
                                                 }

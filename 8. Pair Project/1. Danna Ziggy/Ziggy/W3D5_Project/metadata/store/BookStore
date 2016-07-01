@@ -1,0 +1,37 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[",
+            "    {",
+            "        \"bookId\": \"atsd\",",
+            "        \"bookImg\": \"9781594746031.jpg\",",
+            "        \"bookTitle\": \"Ea Aut Non Nesciunt\",",
+            "        \"bookAuthor\": \"enim\"",
+            "    },",
+            "    {",
+            "        \"bookId\": \"sunt\",",
+            "        \"bookImg\": \"9781509800698.jpg\",",
+            "        \"bookTitle\": \"Ea Aut Non Nesciunt\",",
+            "        \"bookAuthor\": \"enim\"",
+            "    },",
+            "    {",
+            "        \"bookId\": \"possimus\",",
+            "        \"bookImg\": \"9781509800667.jpg\",",
+            "        \"bookTitle\": \"Quasi Et Doloremque Nihil In\",",
+            "        \"bookAuthor\": \"quia\"",
+            "    }",
+            "]"
+        ],
+        "designer|userClassName": "BookStore",
+        "model": "BookModel",
+        "storeId": "BookStore"
+    },
+    "name": "MyStore",
+    "designerId": "5b9469a3-c800-4cc2-b681-5db3b31a5e8b"
+}

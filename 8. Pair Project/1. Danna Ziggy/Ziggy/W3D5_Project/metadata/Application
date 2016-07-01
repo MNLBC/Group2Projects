@@ -6,7 +6,15 @@
     },
     "codeClass": null,
     "userConfig": {
+        "models": [
+            "BookModel",
+            "SearchModel"
+        ],
         "name": "W3D5_Project",
+        "stores": [
+            "BookStore",
+            "SearchStore"
+        ],
         "views": [
             "MainViewport"
         ]

@@ -35,9 +35,15 @@
         "view": [
             "4af0b98c-4635-4833-9709-0a7fa9502faa"
         ],
-        "store": [],
+        "store": [
+            "5b9469a3-c800-4cc2-b681-5db3b31a5e8b",
+            "4b9517c0-bd22-4bf3-991c-62a9fa4ffce4"
+        ],
         "controller": [],
-        "model": [],
+        "model": [
+            "b1b86a5c-3e49-4618-8293-69478ff47570",
+            "cc8114ac-9a40-4ae9-8c17-6df69d730e44"
+        ],
         "resource": [
             "2e4adf16-d785-4d01-b7f4-822fe946c4c2"
         ],

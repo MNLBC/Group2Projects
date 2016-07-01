@@ -1,0 +1,41 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "SearchModel"
+    },
+    "name": "MyModel",
+    "designerId": "cc8114ac-9a40-4ae9-8c17-6df69d730e44",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "bookId"
+            },
+            "name": "MyField4",
+            "designerId": "0aca494f-d360-4629-98cf-94a387c51d7c"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "bookName"
+            },
+            "name": "MyField5",
+            "designerId": "43877dc1-4c2e-4b76-b2ac-402be74dbcd5"
+        }
+    ]
+}

@@ -110,9 +110,14 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                             items: [
                                                 {
                                                     xtype: 'combobox',
+                                                    id: 'SearchBox',
+                                                    itemId: 'SearchBox',
                                                     width: 434,
                                                     fieldLabel: '',
-                                                    emptyText: 'Search Title'
+                                                    emptyText: 'Search Title',
+                                                    displayField: 'bookName',
+                                                    store: 'SearchStore',
+                                                    valueField: 'bookId'
                                                 }
                                             ]
                                         }
@@ -132,32 +137,38 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                     id: 'BooksGrid',
                                                     itemId: 'BooksGrid',
                                                     title: '',
+                                                    store: 'BookStore',
                                                     columns: [
-                                                        {
-                                                            xtype: 'gridcolumn',
-                                                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                                                return '<img src="resources/img/' + value + '" />';
-                                                            },
-                                                            width: 209,
-                                                            align: 'center',
-                                                            dataIndex: 'number',
-                                                            text: 'Book Cover'
-                                                        },
                                                         {
                                                             xtype: 'gridcolumn',
                                                             width: 242,
                                                             align: 'center',
-                                                            dataIndex: 'date',
-                                                            text: 'Name'
+                                                            dataIndex: 'bookTitle',
+                                                            text: 'Title'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                return '<img src="resources/img/' + value + '" align="center"/>';
+                                                            },
+                                                            width: 189,
+                                                            resizable: false,
+                                                            align: 'center',
+                                                            dataIndex: 'bookImg',
+                                                            text: 'Cover'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
                                                             width: 209,
                                                             align: 'center',
-                                                            dataIndex: 'bool',
+                                                            dataIndex: 'bookAuthor',
                                                             text: 'Author'
                                                         }
-                                                    ]
+                                                    ],
+                                                    viewConfig: {
+                                                        formBind: false,
+                                                        enableTextSelection: true
+                                                    }
                                                 }
                                             ]
                                         }
