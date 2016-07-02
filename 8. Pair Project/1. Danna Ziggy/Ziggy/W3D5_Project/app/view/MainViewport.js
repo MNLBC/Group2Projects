@@ -24,8 +24,15 @@ Ext.define('W3D5_Project.view.MainViewport', {
         'Ext.form.Panel',
         'Ext.form.field.ComboBox',
         'Ext.grid.Panel',
-        'Ext.grid.column.Column',
-        'Ext.grid.View'
+        'Ext.grid.View',
+        'Ext.grid.column.Number',
+        'Ext.grid.column.Date',
+        'Ext.grid.column.Boolean',
+        'Ext.form.FieldContainer',
+        'Ext.form.field.Display',
+        'Ext.form.field.TextArea',
+        'Ext.toolbar.Spacer',
+        'Ext.form.field.Checkbox'
     ],
 
     id: 'MainViewport',
@@ -112,12 +119,13 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                     xtype: 'combobox',
                                                     id: 'SearchBox',
                                                     itemId: 'SearchBox',
-                                                    width: 434,
+                                                    width: 599,
                                                     fieldLabel: '',
                                                     emptyText: 'Search Title',
-                                                    displayField: 'bookName',
+                                                    displayField: 'title',
+                                                    queryMode: 'local',
                                                     store: 'SearchStore',
-                                                    valueField: 'bookId'
+                                                    valueField: 'id'
                                                 }
                                             ]
                                         }
@@ -143,7 +151,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             xtype: 'gridcolumn',
                                                             width: 242,
                                                             align: 'center',
-                                                            dataIndex: 'bookTitle',
+                                                            dataIndex: 'title',
                                                             text: 'Title'
                                                         },
                                                         {
@@ -154,15 +162,48 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             width: 189,
                                                             resizable: false,
                                                             align: 'center',
-                                                            dataIndex: 'bookImg',
+                                                            dataIndex: 'img',
                                                             text: 'Cover'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
                                                             width: 209,
                                                             align: 'center',
-                                                            dataIndex: 'bookAuthor',
+                                                            dataIndex: 'author',
                                                             text: 'Author'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Desc',
+                                                            itemId: 'Desc',
+                                                            width: 171,
+                                                            align: 'center',
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Date',
+                                                            itemId: 'Date',
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Publish Date'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail',
+                                                            itemId: 'Avail',
+                                                            align: 'center',
+                                                            dataIndex: 'avail',
+                                                            text: '# of Available Copies'
                                                         }
                                                     ],
                                                     viewConfig: {
@@ -178,13 +219,616 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                     xtype: 'panel',
                                     id: 'MenuTab2',
                                     itemId: 'MenuTab2',
-                                    title: 'Best Seller'
+                                    title: 'Best Seller',
+                                    layout: {
+                                        type: 'hbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            height: 397,
+                                            id: 'BestBooks',
+                                            itemId: 'BestBooks',
+                                            bodyPadding: 10,
+                                            title: 'Best Selling Books',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'gridpanel',
+                                                    flex: 1,
+                                                    height: 290,
+                                                    id: 'BestBooksGrid',
+                                                    itemId: 'BestBooksGrid',
+                                                    title: '',
+                                                    store: 'BookStore',
+                                                    columns: [
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 242,
+                                                            align: 'center',
+                                                            dataIndex: 'title',
+                                                            text: 'Title'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                return '<img src="resources/img/' + value + '" align="center"/>';
+                                                            },
+                                                            width: 189,
+                                                            resizable: false,
+                                                            align: 'center',
+                                                            dataIndex: 'img',
+                                                            text: 'Cover'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 209,
+                                                            align: 'center',
+                                                            dataIndex: 'author',
+                                                            text: 'Author'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Desc1',
+                                                            itemId: 'Desc',
+                                                            width: 171,
+                                                            align: 'center',
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Date1',
+                                                            itemId: 'Date',
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Publish Date'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price1',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail1',
+                                                            itemId: 'Avail',
+                                                            align: 'center',
+                                                            dataIndex: 'avail',
+                                                            text: '# of Available Copies'
+                                                        }
+                                                    ],
+                                                    viewConfig: {
+                                                        formBind: false,
+                                                        enableTextSelection: true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     xtype: 'panel',
                                     id: 'MenuTab3',
                                     itemId: 'MenuTab3',
-                                    title: 'On Sale'
+                                    title: 'On Sale',
+                                    layout: {
+                                        type: 'hbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            id: 'SaleBooks',
+                                            itemId: 'SaleBooks',
+                                            bodyPadding: 10,
+                                            title: 'Books That Are On Sale',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'gridpanel',
+                                                    flex: 1,
+                                                    height: 290,
+                                                    id: 'SaleBooksGrid',
+                                                    itemId: 'SaleBooksGrid',
+                                                    title: '',
+                                                    store: 'BookStore',
+                                                    columns: [
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 242,
+                                                            align: 'center',
+                                                            dataIndex: 'title',
+                                                            text: 'Title'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                return '<img src="resources/img/' + value + '" align="center"/>';
+                                                            },
+                                                            width: 189,
+                                                            resizable: false,
+                                                            align: 'center',
+                                                            dataIndex: 'img',
+                                                            text: 'Cover'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 209,
+                                                            align: 'center',
+                                                            dataIndex: 'author',
+                                                            text: 'Author'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Desc2',
+                                                            itemId: 'Desc',
+                                                            width: 171,
+                                                            align: 'center',
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Date2',
+                                                            itemId: 'Date',
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Publish Date'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Perc',
+                                                            itemId: 'Perc',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: '% Off'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price2',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Original Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'SalePrice',
+                                                            itemId: 'SalePrice',
+                                                            align: 'center',
+                                                            dataIndex: 'sprice',
+                                                            text: 'Sale Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail2',
+                                                            itemId: 'Avail',
+                                                            align: 'center',
+                                                            dataIndex: 'avail',
+                                                            text: '# of Available Copies'
+                                                        }
+                                                    ],
+                                                    viewConfig: {
+                                                        formBind: false,
+                                                        enableTextSelection: true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'panel',
+                                    id: 'MenuTab4',
+                                    itemId: 'MenuTab4',
+                                    title: 'Manage Users',
+                                    layout: {
+                                        type: 'vbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            height: 263,
+                                            id: 'UsersForm',
+                                            itemId: 'UsersForm',
+                                            bodyPadding: 10,
+                                            title: 'Manage Users'
+                                        },
+                                        {
+                                            xtype: 'gridpanel',
+                                            flex: 2,
+                                            title: 'User Information',
+                                            columns: [
+                                                {
+                                                    xtype: 'gridcolumn',
+                                                    dataIndex: 'string',
+                                                    text: 'String'
+                                                },
+                                                {
+                                                    xtype: 'numbercolumn',
+                                                    dataIndex: 'number',
+                                                    text: 'Number'
+                                                },
+                                                {
+                                                    xtype: 'datecolumn',
+                                                    dataIndex: 'date',
+                                                    text: 'Date'
+                                                },
+                                                {
+                                                    xtype: 'booleancolumn',
+                                                    dataIndex: 'bool',
+                                                    text: 'Boolean'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'panel',
+                                    id: 'MenuTab5',
+                                    itemId: 'MenuTab5',
+                                    title: 'Manage Books',
+                                    layout: {
+                                        type: 'vbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            height: 381,
+                                            id: 'BooksForm',
+                                            itemId: 'BooksForm',
+                                            bodyPadding: 10,
+                                            title: 'Manage Books',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'fieldcontainer',
+                                                    flex: 6,
+                                                    height: 212,
+                                                    width: 262,
+                                                    fieldLabel: 'Book Info',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'container',
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    flex: 0,
+                                                                    id: 'BookId',
+                                                                    itemId: 'BookId',
+                                                                    fieldLabel: 'Id'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    flex: 0,
+                                                                    id: 'BookTitle',
+                                                                    itemId: 'BookTitle',
+                                                                    fieldLabel: 'Title'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookCover',
+                                                                    itemId: 'BookCover',
+                                                                    fieldLabel: 'Cover'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    flex: 0,
+                                                                    id: 'BookAuthor',
+                                                                    itemId: 'BookAuthor',
+                                                                    fieldLabel: 'Author'
+                                                                },
+                                                                {
+                                                                    xtype: 'textareafield',
+                                                                    id: 'BookDesc',
+                                                                    itemId: 'BookDesc',
+                                                                    fieldLabel: 'Description'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            flex: 0,
+                                                            width: 26
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    flex: 0,
+                                                                    id: 'BookDate',
+                                                                    itemId: 'BookDate',
+                                                                    fieldLabel: 'Publish Date'
+                                                                },
+                                                                {
+                                                                    xtype: 'checkboxfield',
+                                                                    flex: 0,
+                                                                    id: 'BookBest',
+                                                                    itemId: 'BookBest',
+                                                                    fieldLabel: 'Best Seller',
+                                                                    boxLabel: ''
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookPerc',
+                                                                    itemId: 'BookPerc',
+                                                                    fieldLabel: '% Off'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookOPrice',
+                                                                    itemId: 'BookOPrice',
+                                                                    fieldLabel: 'Original Price'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookSPrice',
+                                                                    itemId: 'BookSPrice',
+                                                                    fieldLabel: 'Sale Price'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookAvail',
+                                                                    itemId: 'BookAvail',
+                                                                    fieldLabel: 'Available'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'BookCheck',
+                                                                    itemId: 'BookCheck',
+                                                                    fieldLabel: 'Checked-out'
+                                                                },
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    id: 'BookStatus',
+                                                                    itemId: 'BookStatus',
+                                                                    fieldLabel: 'Status'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    flex: 1,
+                                                    height: 60,
+                                                    layout: 'hbox',
+                                                    items: [
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'BookReset',
+                                                            itemId: 'BookReset',
+                                                            width: 100,
+                                                            text: 'Reset'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            height: 38,
+                                                            width: 291
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'BookCreate',
+                                                            itemId: 'BookCreate',
+                                                            width: 100,
+                                                            text: 'Create'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 14
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'BookUpdate',
+                                                            itemId: 'BookUpdate',
+                                                            width: 100,
+                                                            text: 'Update'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 14
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'BookDelete',
+                                                            itemId: 'BookDelete',
+                                                            width: 100,
+                                                            text: 'Delete'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 10
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    flex: 1,
+                                                    height: 31,
+                                                    layout: 'hbox',
+                                                    items: [
+                                                        {
+                                                            xtype: 'textfield',
+                                                            id: 'BookSearch',
+                                                            itemId: 'BookSearch',
+                                                            width: 522,
+                                                            fieldLabel: '',
+                                                            emptyText: 'Search Title'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 10
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 27,
+                                                            id: 'ResetBtn',
+                                                            itemId: 'ResetBtn',
+                                                            width: 89,
+                                                            text: 'Reset'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 10
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 27,
+                                                            id: 'SearchBtn',
+                                                            itemId: 'SearchBtn',
+                                                            width: 89,
+                                                            text: 'Search'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            height: 508,
+                                            id: 'ConfigBooks',
+                                            itemId: 'ConfigBooks',
+                                            layout: 'fit',
+                                            bodyPadding: 10,
+                                            title: 'Books Information',
+                                            items: [
+                                                {
+                                                    xtype: 'gridpanel',
+                                                    height: 290,
+                                                    id: 'ConfigBooksGrid',
+                                                    itemId: 'ConfigBooksGrid',
+                                                    title: '',
+                                                    store: 'BookStore',
+                                                    columns: [
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 242,
+                                                            align: 'center',
+                                                            dataIndex: 'title',
+                                                            text: 'Title'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                return '<img src="resources/img/' + value + '" align="center"/>';
+                                                            },
+                                                            width: 189,
+                                                            resizable: false,
+                                                            align: 'center',
+                                                            dataIndex: 'img',
+                                                            text: 'Cover'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 209,
+                                                            align: 'center',
+                                                            dataIndex: 'author',
+                                                            text: 'Author'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Desc3',
+                                                            itemId: 'Desc',
+                                                            width: 171,
+                                                            align: 'center',
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Date3',
+                                                            itemId: 'Date',
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Publish Date'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Perc1',
+                                                            itemId: 'Perc',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: '% Off'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price3',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Original Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'SalePrice1',
+                                                            itemId: 'SalePrice',
+                                                            align: 'center',
+                                                            dataIndex: 'sprice',
+                                                            text: 'Sale Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail3',
+                                                            itemId: 'Avail',
+                                                            align: 'center',
+                                                            dataIndex: 'avail',
+                                                            text: '# of Available Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Check',
+                                                            itemId: 'Check',
+                                                            align: 'center',
+                                                            dataIndex: 'avail',
+                                                            text: '# of Checked-out Copies'
+                                                        }
+                                                    ],
+                                                    viewConfig: {
+                                                        formBind: false,
+                                                        enableTextSelection: true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 }
                             ]
                         }

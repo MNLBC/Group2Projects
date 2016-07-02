@@ -6,6 +6,9 @@
     },
     "codeClass": null,
     "userConfig": {
+        "controllers": [
+            "MainController"
+        ],
         "models": [
             "BookModel",
             "SearchModel"

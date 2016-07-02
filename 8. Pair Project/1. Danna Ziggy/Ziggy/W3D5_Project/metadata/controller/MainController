@@ -1,0 +1,367 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainController",
+        "id": "MainController"
+    },
+    "name": "MyController",
+    "designerId": "54fd7f6b-5dad-4f44-a138-925ce01e0b8c",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookCreate",
+                "designer|targetType": "MyButton",
+                "fn": "onBookCreateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('BookStore');",
+                    "var book = controller.getFormValues();",
+                    "store.add(book);",
+                    "controller.resetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookCreateClick",
+            "designerId": "5dffc869-c4f6-4a8c-98c7-ace513cd3539"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookUpdate",
+                "designer|targetType": "MyButton1",
+                "fn": "onBookUpdateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('BookStore');",
+                    "var book = controller.getFormValues();",
+                    "var id = Ext.getCmp('BookId').getValue();",
+                    "var grid = Ext.getCmp('ConfigBooksGrid');",
+                    "",
+                    "if(Ext.isEmpty(id)){",
+                    "    Ext.Msg.show({",
+                    "    title:'Status',",
+                    "    msg: 'Please select a record to update.',",
+                    "    buttons: Ext.Msg.OK,",
+                    "    icon: Ext.Msg.WARNING",
+                    "});",
+                    "}else{",
+                    "   Ext.each(store.data.items, function(rec){",
+                    "    if(rec.data.id == id){",
+                    "        rec.data.title = book.title;",
+                    "        rec.data.img = book.img;",
+                    "        rec.data.author = book.author;",
+                    "        rec.data.desc = book.desc;",
+                    "        rec.data.date = book.date;",
+                    "        rec.data.percent = book.percent;",
+                    "        rec.data.oprice = book.oprice;",
+                    "        rec.data.sprice = book.sprice;",
+                    "        rec.data.avail = book.avail;",
+                    "        rec.data.checked = book.checked;",
+                    "        rec.data.bestseller = book.bestseller;",
+                    "        rec.data.status = book.status;",
+                    "        rec.data.onsale = book.onsale;",
+                    "    }",
+                    "});",
+                    "}",
+                    "",
+                    "grid.getView().refresh();",
+                    "controller.resetFormValues();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookUpdateClick",
+            "designerId": "69714099-b0f7-4e61-b2ed-944884ee97da"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookDelete",
+                "designer|targetType": "MyButton2",
+                "fn": "onBookDeleteClick",
+                "implHandler": [
+                    "        var controller = W3D5_Project.app.getController('MainController');",
+                    "        var store = Ext.getStore('BookStore');",
+                    "        var id = Ext.getCmp('BookId').getValue();",
+                    "",
+                    "        if(Ext.isEmpty(id)){",
+                    "            Ext.Msg.show({",
+                    "            title:'Status',",
+                    "            msg: 'Please select a record to delete.',",
+                    "            buttons: Ext.Msg.OK,",
+                    "            icon: Ext.Msg.WARNING",
+                    "        });",
+                    "        }else{",
+                    "           Ext.each(store.data.items, function(rec){",
+                    "            if(rec.data.id == id){",
+                    "                controller.resetFormValues();",
+                    "                store.remove(rec);",
+                    "            }",
+                    "          });",
+                    "        }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookDeleteClick",
+            "designerId": "1af8c1f2-f7d0-404d-977a-c0d3dc8a2e6a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#ConfigBooksGrid",
+                "designer|targetType": "MyGridPanel4",
+                "fn": "onConfigBooksGridSelectionChange",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var grid = Ext.getCmp('ConfigBooksGrid');",
+                    "var selected = grid.getSelectionModel().selected.items[0].data;",
+                    "controller.setFormValues(selected);"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onConfigBooksGridSelectionChange",
+            "designerId": "efe46a60-dbc0-43c0-93dc-823a8fbaf6bd"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFormValues",
+                "implHandler": [
+                    "var store = Ext.getStore('BookStore');",
+                    "var title = Ext.getCmp('BookTitle').getValue();",
+                    "var img = Ext.getCmp('BookCover').getValue();",
+                    "var author = Ext.getCmp('BookAuthor').getValue();",
+                    "var desc = Ext.getCmp('BookDesc').getValue();",
+                    "var date = Ext.getCmp('BookDate').getValue();",
+                    "var percent = Ext.getCmp('BookPerc').getValue();",
+                    "var oprice = Ext.getCmp('BookOPrice').getValue();",
+                    "var sprice = Ext.getCmp('BookSPrice').getValue();",
+                    "var avail = Ext.getCmp('BookAvail').getValue();",
+                    "var checked = Ext.getCmp('BookCheck').getValue();",
+                    "var bestseller = Ext.getCmp('BookBest').getValue();",
+                    "var status,id,onsale;",
+                    "",
+                    "",
+                    "if (store.getCount() > 0)",
+                    "{",
+                    "    var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.",
+                    "    store.each(function(rec) // go through all the records",
+                    "               {",
+                    "                   maxId = Math.max(maxId, rec.get('id'));",
+                    "               });",
+                    "}",
+                    "",
+                    "id = maxId + 1;",
+                    "",
+                    "if((Ext.isEmpty(avail)||avail==='0')&&(Ext.isEmpty(checked)||checked==='0')){",
+                    "    status = 'Out of stock';",
+                    "}else if((Ext.isEmpty(avail)||avail==='0')&&!(Ext.isEmpty(checked)||checked==='0')){",
+                    "    status = 'Checked out';",
+                    "}else{",
+                    "    status = 'Available';",
+                    "}",
+                    "",
+                    "if(bestseller){",
+                    "    bestseller = '1';",
+                    "}else{",
+                    "    bestseller = '0';",
+                    "}",
+                    "",
+                    "if(Ext.isEmpty(sprice)){",
+                    "    onsale = '0';",
+                    "}else{",
+                    "    onsale = '1';",
+                    "}",
+                    "",
+                    "",
+                    "var book = {",
+                    "    id: id,",
+                    "    img: img,",
+                    "    title: title,",
+                    "    author: author,",
+                    "    desc: desc,",
+                    "    date: date,",
+                    "    oprice: oprice,",
+                    "    sprice: sprice,",
+                    "    percent: percent,",
+                    "    onsale: onsale,",
+                    "    bestseller: bestseller,",
+                    "    avail: avail,",
+                    "    checked: checked,",
+                    "    status: status",
+                    "};",
+                    "",
+                    "return book;",
+                    ""
+                ]
+            },
+            "name": "getFormValues",
+            "designerId": "3366ad55-5913-4af1-a285-e35c1aba4e30"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "book"
+                ],
+                "fn": "setFormValues",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('BookTitle').setValue(book.title);",
+                    "Ext.getCmp('BookCover').setValue(book.img);",
+                    "Ext.getCmp('BookAuthor').setValue(book.author);",
+                    "Ext.getCmp('BookDesc').setValue(book.desc);",
+                    "Ext.getCmp('BookDate').setValue(book.date);",
+                    "Ext.getCmp('BookPerc').setValue(book.percent);",
+                    "Ext.getCmp('BookOPrice').setValue(book.oprice);",
+                    "Ext.getCmp('BookSPrice').setValue(book.sprice);",
+                    "Ext.getCmp('BookAvail').setValue(book.avail);",
+                    "Ext.getCmp('BookCheck').setValue(book.checked);",
+                    "Ext.getCmp('BookBest').setValue(book.bestseller);",
+                    "Ext.getCmp('BookId').setValue(book.id);",
+                    "Ext.getCmp('BookStatus').setValue(book.status);",
+                    ""
+                ]
+            },
+            "name": "setFormValues",
+            "designerId": "8fe19cc6-71a4-4d83-95e4-a758b44d9967"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetFormValues",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('BookTitle').setValue('');",
+                    "Ext.getCmp('BookCover').setValue('');",
+                    "Ext.getCmp('BookAuthor').setValue('');",
+                    "Ext.getCmp('BookDesc').setValue('');",
+                    "Ext.getCmp('BookDate').setValue('');",
+                    "Ext.getCmp('BookPerc').setValue('');",
+                    "Ext.getCmp('BookOPrice').setValue('');",
+                    "Ext.getCmp('BookSPrice').setValue('');",
+                    "Ext.getCmp('BookAvail').setValue('');",
+                    "Ext.getCmp('BookCheck').setValue('');",
+                    "Ext.getCmp('BookBest').setValue(0);",
+                    "Ext.getCmp('BookId').setValue('');",
+                    "Ext.getCmp('BookStatus').setValue('');",
+                    ""
+                ]
+            },
+            "name": "resetFormValues",
+            "designerId": "93927a9d-78cc-4fb6-9b34-5593d9daa0b1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#SearchBtn",
+                "designer|targetType": "MyButton3",
+                "fn": "onSearchBtnClick",
+                "implHandler": [
+                    "var searchVal = Ext.getCmp('BookSearch').getValue();",
+                    " var store = Ext.getStore('BookStore');",
+                    "if(Ext.isEmpty(searchVal)){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "    store.filter('title', searchVal);",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onSearchBtnClick",
+            "designerId": "3527e95f-bb7c-422c-b80e-a3af6c230626"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookReset",
+                "designer|targetType": "MyButton4",
+                "fn": "onBookResetClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.resetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookResetClick",
+            "designerId": "32e7c613-20d4-4618-8401-e007d6742a8e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#ResetBtn",
+                "designer|targetType": "MyButton5",
+                "fn": "onResetBtnClick",
+                "implHandler": [
+                    "Ext.getCmp('BookSearch').setValue('');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onResetBtnClick",
+            "designerId": "53f81ea6-770a-4685-96d5-444c65761c31"
+        }
+    ]
+}

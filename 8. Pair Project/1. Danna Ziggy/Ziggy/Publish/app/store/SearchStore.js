@@ -17,55 +17,95 @@ Ext.define('W3D5_Project.store.SearchStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W3D5_Project.model.SearchModel'
+        'W3D5_Project.model.BookModel'
     ],
 
     constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            model: 'W3D5_Project.model.SearchModel',
+            model: 'W3D5_Project.model.BookModel',
             storeId: 'SearchStore',
             data: [
                 {
-                    bookId: 'id',
-                    bookName: 'ad'
+                    id: 985,
+                    img: 'deleniti',
+                    title: 'Neque Totam Ut Qui Dolores',
+                    author: 'fugiat',
+                    desc: 'odio',
+                    date: '10/13/2008',
+                    oprice: 'et',
+                    sprice: 'minima',
+                    percent: 'sed',
+                    onsale: 'ut',
+                    bestseller: 'aperiam',
+                    avail: 'repellendus',
+                    checked: 'ipsum',
+                    status: 'quos'
                 },
                 {
-                    bookId: 'facere',
-                    bookName: 'qui'
+                    id: 205,
+                    img: 'autem',
+                    title: 'Quam Tenetur Voluptatem Non Sint',
+                    author: 'nam',
+                    desc: 'corporis',
+                    date: '7/24/2013',
+                    oprice: 'sit',
+                    sprice: 'in',
+                    percent: 'numquam',
+                    onsale: 'aliquid',
+                    bestseller: 'consequatur',
+                    avail: 'non',
+                    checked: 'ut',
+                    status: 'aut'
                 },
                 {
-                    bookId: 'dolor',
-                    bookName: 'odit'
+                    id: 9,
+                    img: 'aspernatur',
+                    title: 'Nihil Ad Ducimus Voluptas Quidem',
+                    author: 'laborum',
+                    desc: 'et',
+                    date: '2/22/2001',
+                    oprice: 'qui',
+                    sprice: 'nemo',
+                    percent: 'veniam',
+                    onsale: 'hic',
+                    bestseller: 'voluptatem',
+                    avail: 'fugiat',
+                    checked: 'repellat',
+                    status: 'dicta'
                 },
                 {
-                    bookId: 'rerum',
-                    bookName: 'consectetur'
+                    id: 78,
+                    img: 'aspernatur',
+                    title: 'Impedit Neque Est Quo',
+                    author: 'mollitia',
+                    desc: 'voluptas',
+                    date: '1/4/2006',
+                    oprice: 'quo',
+                    sprice: 'qui',
+                    percent: 'odit',
+                    onsale: 'id',
+                    bestseller: 'id',
+                    avail: 'in',
+                    checked: 'aperiam',
+                    status: 'voluptas'
                 },
                 {
-                    bookId: 'sit',
-                    bookName: 'quis'
-                },
-                {
-                    bookId: 'earum',
-                    bookName: 'veritatis'
-                },
-                {
-                    bookId: 'dolor',
-                    bookName: 'sunt'
-                },
-                {
-                    bookId: 'est',
-                    bookName: 'pariatur'
-                },
-                {
-                    bookId: 'consequatur',
-                    bookName: 'cum'
-                },
-                {
-                    bookId: 'repellendus',
-                    bookName: 'dolor'
+                    id: 703,
+                    img: 'libero',
+                    title: 'Et Rem Qui Eum',
+                    author: 'eum',
+                    desc: 'deserunt',
+                    date: '1/25/2012',
+                    oprice: 'autem',
+                    sprice: 'possimus',
+                    percent: 'amet',
+                    onsale: 'eaque',
+                    bestseller: 'in',
+                    avail: 'exercitationem',
+                    checked: 'quibusdam',
+                    status: 'harum'
                 }
             ]
         }, cfg)]);

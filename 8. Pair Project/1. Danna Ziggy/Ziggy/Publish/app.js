@@ -31,6 +31,9 @@ Ext.application({
     views: [
         'MainViewport'
     ],
+    controllers: [
+        'MainController'
+    ],
     name: 'W3D5_Project',
 
     launch: function() {

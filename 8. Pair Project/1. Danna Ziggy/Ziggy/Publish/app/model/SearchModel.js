@@ -22,10 +22,46 @@ Ext.define('W3D5_Project.model.SearchModel', {
 
     fields: [
         {
-            name: 'bookId'
+            name: 'id'
         },
         {
-            name: 'bookName'
+            name: 'img'
+        },
+        {
+            name: 'title'
+        },
+        {
+            name: 'author'
+        },
+        {
+            name: 'desc'
+        },
+        {
+            name: 'date'
+        },
+        {
+            name: 'oprice'
+        },
+        {
+            name: 'sprice'
+        },
+        {
+            name: 'percent'
+        },
+        {
+            name: 'onsale'
+        },
+        {
+            name: 'bestseller'
+        },
+        {
+            name: 'avail'
+        },
+        {
+            name: 'checked'
+        },
+        {
+            name: 'status'
         }
     ]
 });

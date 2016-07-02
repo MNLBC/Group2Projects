@@ -22,16 +22,46 @@ Ext.define('W3D5_Project.model.BookModel', {
 
     fields: [
         {
-            name: 'bookId'
+            name: 'id'
         },
         {
-            name: 'bookImg'
+            name: 'img'
         },
         {
-            name: 'bookTitle'
+            name: 'title'
         },
         {
-            name: 'bookAuthor'
+            name: 'author'
+        },
+        {
+            name: 'desc'
+        },
+        {
+            name: 'date'
+        },
+        {
+            name: 'oprice'
+        },
+        {
+            name: 'sprice'
+        },
+        {
+            name: 'percent'
+        },
+        {
+            name: 'onsale'
+        },
+        {
+            name: 'bestseller'
+        },
+        {
+            name: 'avail'
+        },
+        {
+            name: 'checked'
+        },
+        {
+            name: 'status'
         }
     ]
 });

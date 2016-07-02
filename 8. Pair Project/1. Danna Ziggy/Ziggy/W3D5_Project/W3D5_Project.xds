@@ -37,12 +37,14 @@
         ],
         "store": [
             "5b9469a3-c800-4cc2-b681-5db3b31a5e8b",
-            "4b9517c0-bd22-4bf3-991c-62a9fa4ffce4"
+            "f1af51f0-7b80-4140-945d-783026ecaab0"
         ],
-        "controller": [],
+        "controller": [
+            "54fd7f6b-5dad-4f44-a138-925ce01e0b8c"
+        ],
         "model": [
             "b1b86a5c-3e49-4618-8293-69478ff47570",
-            "cc8114ac-9a40-4ae9-8c17-6df69d730e44"
+            "c78a9268-dd51-4799-be8a-b8d5d9c51e4c"
         ],
         "resource": [
             "2e4adf16-d785-4d01-b7f4-822fe946c4c2"
