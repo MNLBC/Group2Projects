@@ -6,10 +6,10 @@
         },
         "canvasControls": {
             "viewportSize": {
-                "name": "Auto Expand",
+                "name": "Small",
                 "builtIn": true,
-                "height": null,
-                "width": null
+                "height": 600,
+                "width": 800
             }
         },
         "urlPrefix": "",
@@ -33,18 +33,29 @@
     "framework": "ext42",
     "viewOrderMap": {
         "view": [
-            "4af0b98c-4635-4833-9709-0a7fa9502faa"
+            "4af0b98c-4635-4833-9709-0a7fa9502faa",
+            "780cda5a-c9ab-4188-b9b9-525c0b4e6111",
+            "afd41a78-1506-44e4-8a64-b1c71cb53477"
         ],
         "store": [
             "5b9469a3-c800-4cc2-b681-5db3b31a5e8b",
-            "f1af51f0-7b80-4140-945d-783026ecaab0"
+            "f1af51f0-7b80-4140-945d-783026ecaab0",
+            "eef6ddd5-8a84-47e1-ba38-a0b5ed59f8f6",
+            "03a5caec-a2fe-43bf-ab4b-c290640619ec",
+            "11e298ac-30ff-4c17-933c-b46b2519f84c"
         ],
         "controller": [
-            "54fd7f6b-5dad-4f44-a138-925ce01e0b8c"
+            "54fd7f6b-5dad-4f44-a138-925ce01e0b8c",
+            "9b20a8ab-e45e-40db-8c79-a22b26d80c7e",
+            "e26ec29d-49eb-4d05-9239-e92c1f2a8465",
+            "58089c53-7c2e-419c-81f4-2d28d7cda6a6"
         ],
         "model": [
             "b1b86a5c-3e49-4618-8293-69478ff47570",
-            "c78a9268-dd51-4799-be8a-b8d5d9c51e4c"
+            "c78a9268-dd51-4799-be8a-b8d5d9c51e4c",
+            "bb519b5e-1112-4e50-990a-decbd71e16e3",
+            "dff93384-3cab-4087-9862-b0cff455d54c",
+            "b3daf89f-bbc8-4a72-9eac-2f547e26aaef"
         ],
         "resource": [
             "2e4adf16-d785-4d01-b7f4-822fe946c4c2"

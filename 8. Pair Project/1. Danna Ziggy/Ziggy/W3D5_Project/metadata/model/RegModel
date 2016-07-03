@@ -1,0 +1,93 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RegModel"
+    },
+    "name": "MyModel",
+    "designerId": "b3daf89f-bbc8-4a72-9eac-2f547e26aaef",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "regfname"
+            },
+            "name": "MyField27",
+            "designerId": "4b00cf0e-504b-4205-9c14-3c676bc66181"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "reglname"
+            },
+            "name": "MyField28",
+            "designerId": "4ececb9d-8e78-48a4-b096-3cdc4f3a91ef"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "regemail"
+            },
+            "name": "MyField29",
+            "designerId": "81328a58-a691-425f-8825-fcaa72c87085"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "regusername"
+            },
+            "name": "MyField30",
+            "designerId": "5ff5a13b-903e-4c7a-b4f0-013ae8f860de"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "regpassword"
+            },
+            "name": "MyField31",
+            "designerId": "e86f7417-3c28-4d7b-9fbc-7848e5c47b9e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "regaddress"
+            },
+            "name": "MyField32",
+            "designerId": "d393be67-3f67-47ea-83d7-af75151a4535"
+        }
+    ]
+}

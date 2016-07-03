@@ -22,22 +22,33 @@ Ext.Loader.setConfig({
 Ext.application({
     models: [
         'BookModel',
-        'SearchModel'
+        'SearchModel',
+        'UserModel',
+        'UserSearchModel',
+        'RegModel'
     ],
     stores: [
         'BookStore',
-        'SearchStore'
+        'SearchStore',
+        'UserStore',
+        'MyStore',
+        'RegStore'
     ],
     views: [
-        'MainViewport'
+        'MainViewport',
+        'RegisterViewPort',
+        'LoginViewPort'
     ],
     controllers: [
-        'MainController'
+        'MainController',
+        'ManageUser',
+        'Login',
+        'Register'
     ],
     name: 'W3D5_Project',
 
     launch: function() {
-        Ext.create('W3D5_Project.view.MainViewport');
+        Ext.create('W3D5_Project.view.LoginViewPort');
     }
 
 });

@@ -24,14 +24,12 @@ Ext.define('W3D5_Project.view.MainViewport', {
         'Ext.form.Panel',
         'Ext.form.field.ComboBox',
         'Ext.grid.Panel',
+        'Ext.grid.column.Column',
         'Ext.grid.View',
-        'Ext.grid.column.Number',
-        'Ext.grid.column.Date',
-        'Ext.grid.column.Boolean',
         'Ext.form.FieldContainer',
         'Ext.form.field.Display',
-        'Ext.form.field.TextArea',
         'Ext.toolbar.Spacer',
+        'Ext.form.field.TextArea',
         'Ext.form.field.Checkbox'
     ],
 
@@ -441,37 +439,341 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                     },
                                     items: [
                                         {
-                                            xtype: 'form',
-                                            height: 263,
-                                            id: 'UsersForm',
-                                            itemId: 'UsersForm',
-                                            bodyPadding: 10,
-                                            title: 'Manage Users'
+                                            xtype: 'container',
+                                            flex: 0,
+                                            height: 303,
+                                            items: [
+                                                {
+                                                    xtype: 'container',
+                                                    height: 253,
+                                                    width: 848,
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'form',
+                                                            flex: 0,
+                                                            height: 253,
+                                                            id: 'UsersForm',
+                                                            itemId: 'UsersForm',
+                                                            width: 1012,
+                                                            bodyPadding: 10,
+                                                            title: 'Manage Users',
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'fieldcontainer',
+                                                                    flex: 0,
+                                                                    height: 245,
+                                                                    width: 792,
+                                                                    fieldLabel: 'User Info',
+                                                                    layout: {
+                                                                        type: 'hbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            flex: 0,
+                                                                            height: 212,
+                                                                            width: 268,
+                                                                            layout: 'vbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'displayfield',
+                                                                                    flex: 0,
+                                                                                    id: 'id',
+                                                                                    itemId: 'id',
+                                                                                    width: 527,
+                                                                                    fieldLabel: 'id',
+                                                                                    value: ''
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    id: 'fname',
+                                                                                    itemId: 'fname',
+                                                                                    width: 267,
+                                                                                    fieldLabel: 'First Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    id: 'lname',
+                                                                                    itemId: 'lname',
+                                                                                    width: 266,
+                                                                                    fieldLabel: 'Last Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    id: 'email',
+                                                                                    itemId: 'email',
+                                                                                    width: 266,
+                                                                                    fieldLabel: 'Email'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'container',
+                                                                                    flex: 0,
+                                                                                    width: 275,
+                                                                                    layout: {
+                                                                                        type: 'hbox',
+                                                                                        align: 'middle'
+                                                                                    },
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'container',
+                                                                                            flex: 0,
+                                                                                            height: 89,
+                                                                                            width: 106,
+                                                                                            layout: 'vbox',
+                                                                                            items: [
+                                                                                                {
+                                                                                                    xtype: 'container',
+                                                                                                    flex: 0,
+                                                                                                    height: 30,
+                                                                                                    items: [
+                                                                                                        {
+                                                                                                            xtype: 'button',
+                                                                                                            height: 22,
+                                                                                                            id: 'UserCreate',
+                                                                                                            itemId: 'UserCreate',
+                                                                                                            width: 91,
+                                                                                                            text: 'Create'
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'container',
+                                                                                                    flex: 0,
+                                                                                                    height: 24,
+                                                                                                    width: 93,
+                                                                                                    items: [
+                                                                                                        {
+                                                                                                            xtype: 'button',
+                                                                                                            id: 'UserUpdate',
+                                                                                                            width: 92,
+                                                                                                            text: 'Update'
+                                                                                                        }
+                                                                                                    ]
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'container',
+                                                                                                    flex: 1,
+                                                                                                    items: [
+                                                                                                        {
+                                                                                                            xtype: 'button',
+                                                                                                            id: 'UserDelete',
+                                                                                                            itemId: 'UserDelete',
+                                                                                                            width: 93,
+                                                                                                            text: 'Delete'
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'container',
+                                                                                            width: 13,
+                                                                                            items: [
+                                                                                                {
+                                                                                                    xtype: 'tbspacer',
+                                                                                                    height: 73,
+                                                                                                    width: 21
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'container',
+                                                                                            flex: 0,
+                                                                                            layout: 'fit',
+                                                                                            items: [
+                                                                                                {
+                                                                                                    xtype: 'container',
+                                                                                                    items: [
+                                                                                                        {
+                                                                                                            xtype: 'button',
+                                                                                                            id: 'UserResetForm',
+                                                                                                            itemId: 'UserResetForm',
+                                                                                                            width: 97,
+                                                                                                            text: 'Reset Form'
+                                                                                                        }
+                                                                                                    ]
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            flex: 0,
+                                                                            height: 238,
+                                                                            width: 22
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            flex: 0,
+                                                                            height: 186,
+                                                                            width: 567,
+                                                                            layout: 'vbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    id: 'username',
+                                                                                    itemId: 'username',
+                                                                                    width: 301,
+                                                                                    fieldLabel: 'User Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    id: 'password',
+                                                                                    itemId: 'password',
+                                                                                    width: 299,
+                                                                                    fieldLabel: 'Password'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    flex: 0,
+                                                                                    height: 106,
+                                                                                    id: 'address',
+                                                                                    itemId: 'address',
+                                                                                    width: 300,
+                                                                                    fieldLabel: 'Billing Address'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    height: 56,
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 0,
+                                                            width: 110,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'button',
+                                                                    id: 'UserSearch',
+                                                                    width: 92,
+                                                                    text: 'Search'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 0,
+                                                            width: 422,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'UserSearchBar',
+                                                                    itemId: 'UserSearchBar',
+                                                                    width: 387,
+                                                                    fieldLabel: '',
+                                                                    emptyText: 'Search User'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 0,
+                                                            width: 126,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'button',
+                                                                    id: 'UserResetSearch',
+                                                                    itemId: 'UserResetSearch',
+                                                                    width: 102,
+                                                                    text: 'Reset'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         {
                                             xtype: 'gridpanel',
-                                            flex: 2,
+                                            flex: 0,
+                                            height: 199,
+                                            id: 'userinfogrid',
+                                            itemId: 'userinfogrid',
                                             title: 'User Information',
+                                            store: 'UserStore',
                                             columns: [
                                                 {
                                                     xtype: 'gridcolumn',
-                                                    dataIndex: 'string',
-                                                    text: 'String'
+                                                    id: 'userid',
+                                                    itemId: 'userid',
+                                                    dataIndex: 'id',
+                                                    text: 'ID'
                                                 },
                                                 {
-                                                    xtype: 'numbercolumn',
-                                                    dataIndex: 'number',
-                                                    text: 'Number'
+                                                    xtype: 'gridcolumn',
+                                                    id: 'userfname',
+                                                    itemId: 'userfname',
+                                                    width: 125,
+                                                    dataIndex: 'fname',
+                                                    text: 'First Name'
                                                 },
                                                 {
-                                                    xtype: 'datecolumn',
-                                                    dataIndex: 'date',
-                                                    text: 'Date'
+                                                    xtype: 'gridcolumn',
+                                                    id: 'userlname',
+                                                    itemId: 'userlname',
+                                                    width: 139,
+                                                    dataIndex: 'lname',
+                                                    text: 'Last Name'
                                                 },
                                                 {
-                                                    xtype: 'booleancolumn',
-                                                    dataIndex: 'bool',
-                                                    text: 'Boolean'
+                                                    xtype: 'gridcolumn',
+                                                    id: 'useremail',
+                                                    itemId: 'useremail',
+                                                    width: 131,
+                                                    dataIndex: 'email',
+                                                    text: 'Email'
+                                                },
+                                                {
+                                                    xtype: 'gridcolumn',
+                                                    id: 'userusername',
+                                                    itemId: 'userusername',
+                                                    width: 121,
+                                                    dataIndex: 'username',
+                                                    text: 'User Name'
+                                                },
+                                                {
+                                                    xtype: 'gridcolumn',
+                                                    id: 'userpassword',
+                                                    itemId: 'userpassword',
+                                                    dataIndex: 'password',
+                                                    text: 'Password'
+                                                },
+                                                {
+                                                    xtype: 'gridcolumn',
+                                                    id: 'useraddress',
+                                                    itemId: 'useraddress',
+                                                    width: 179,
+                                                    dataIndex: 'address',
+                                                    text: 'Billing Address'
                                                 }
                                             ]
                                         }

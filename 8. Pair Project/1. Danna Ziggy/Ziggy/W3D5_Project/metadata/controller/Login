@@ -1,0 +1,64 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Login",
+        "id": "Login"
+    },
+    "name": "MyController",
+    "designerId": "e26ec29d-49eb-4d05-9239-e92c1f2a8465",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#loginbutton",
+                "designer|targetType": "MyButton13",
+                "fn": "onLoginbuttonClick",
+                "implHandler": [
+                    "if(Ext.isEmpty(this.gridWin)){",
+                    "    this.gridWin = Ext.create('W3D5_Project.view.MainViewport', {});",
+                    "}",
+                    "this.gridWin.show();",
+                    "this.gridWin.unmask();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onLoginbuttonClick",
+            "designerId": "bc5ddee8-2bce-4c89-8ce4-503eae00a2e1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#registerbutton",
+                "designer|targetType": "MyButton14",
+                "fn": "onRegisterbuttonClick",
+                "implHandler": [
+                    "if(Ext.isEmpty(this.gridWin)){",
+                    "    this.gridWin = Ext.create('W3D5_Project.view.RegisterViewPort', {});",
+                    "}",
+                    "this.gridWin.show();",
+                    "this.gridWin.unmask();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onRegisterbuttonClick",
+            "designerId": "a5f461c5-c6e6-44b9-a61a-dc561d564a9e"
+        }
+    ]
+}

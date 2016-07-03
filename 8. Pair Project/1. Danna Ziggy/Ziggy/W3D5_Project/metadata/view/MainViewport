@@ -7,7 +7,6 @@
     "codeClass": null,
     "userConfig": {
         "container|align": "stretch",
-        "designer|initialView": true,
         "designer|userClassName": "MainViewport",
         "id": "MainViewport",
         "itemId": "MainViewport",
@@ -913,21 +912,573 @@
                                     "designerId": "38bfe88e-1824-41d8-a62b-cb238d2c09ca"
                                 },
                                 {
-                                    "type": "Ext.form.Panel",
+                                    "type": "Ext.container.Container",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "bodyPadding": 10,
-                                        "height": 263,
-                                        "id": "UsersForm",
-                                        "itemId": "UsersForm",
-                                        "title": "Manage Users"
+                                        "height": 303,
+                                        "layout|flex": 0
                                     },
-                                    "name": "MyForm6",
-                                    "designerId": "0d647b83-b1dc-4970-bd1e-8d1e80c51cb9"
+                                    "name": "MyContainer8",
+                                    "designerId": "d44cfe7f-dfcb-489c-bf62-37326aeb0589",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.container.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "stretch",
+                                                "height": 253,
+                                                "layout": "hbox",
+                                                "width": 848
+                                            },
+                                            "name": "MyContainer5",
+                                            "designerId": "1cca8dea-2ce9-4430-a9d8-9c3eceaafbe7",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.form.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "bodyPadding": 10,
+                                                        "container|align": "stretch",
+                                                        "height": 253,
+                                                        "id": "UsersForm",
+                                                        "itemId": "UsersForm",
+                                                        "layout": "hbox",
+                                                        "layout|flex": 0,
+                                                        "title": "Manage Users",
+                                                        "width": 1012
+                                                    },
+                                                    "name": "MyForm6",
+                                                    "designerId": "0d647b83-b1dc-4970-bd1e-8d1e80c51cb9",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.FieldContainer",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "container|align": "stretch",
+                                                                "dock": null,
+                                                                "fieldLabel": "User Info",
+                                                                "height": 245,
+                                                                "layout": "hbox",
+                                                                "layout|flex": 0,
+                                                                "width": 792
+                                                            },
+                                                            "name": "MyFieldContainer1",
+                                                            "designerId": "4eee394a-d577-4551-909e-bc0155922a65",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.container.Container",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": 212,
+                                                                        "layout": "vbox",
+                                                                        "layout|flex": 0,
+                                                                        "width": 268
+                                                                    },
+                                                                    "name": "MyContainer6",
+                                                                    "designerId": "a010599c-0530-4ef4-8795-01bccd3f9566",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.form.field.Display",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "id",
+                                                                                "id": "id",
+                                                                                "itemId": "id",
+                                                                                "layout|flex": 0,
+                                                                                "value": "",
+                                                                                "width": 527
+                                                                            },
+                                                                            "name": "MyDisplayField2",
+                                                                            "designerId": "679d6ff1-dea7-4630-b010-eb218b2a36c4"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "First Name",
+                                                                                "id": "fname",
+                                                                                "itemId": "fname",
+                                                                                "layout|flex": 0,
+                                                                                "width": 267
+                                                                            },
+                                                                            "name": "MyTextField3",
+                                                                            "designerId": "4f93da00-39c1-4a01-8908-313dda400c57"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "Last Name",
+                                                                                "id": "lname",
+                                                                                "itemId": "lname",
+                                                                                "layout|flex": 0,
+                                                                                "width": 266
+                                                                            },
+                                                                            "name": "MyTextField8",
+                                                                            "designerId": "22ae43bf-4463-4d6e-b3d7-3a6f8ea44427"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "Email",
+                                                                                "id": "email",
+                                                                                "itemId": "email",
+                                                                                "layout|flex": 0,
+                                                                                "width": 266
+                                                                            },
+                                                                            "name": "MyTextField9",
+                                                                            "designerId": "e17d2652-f6f2-4ea7-bbe2-5895d5535072"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.container.Container",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "container|align": "middle",
+                                                                                "layout": "hbox",
+                                                                                "layout|flex": 0,
+                                                                                "width": 275
+                                                                            },
+                                                                            "name": "MyContainer16",
+                                                                            "designerId": "8adfcfac-fc85-44fd-9f75-09f6668da18a",
+                                                                            "cn": [
+                                                                                {
+                                                                                    "type": "Ext.container.Container",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "height": 89,
+                                                                                        "layout": "vbox",
+                                                                                        "layout|flex": 0,
+                                                                                        "width": 106
+                                                                                    },
+                                                                                    "name": "MyContainer15",
+                                                                                    "designerId": "e9055797-0e14-486b-891d-8db1ce07d385",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "type": "Ext.container.Container",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "height": 30,
+                                                                                                "layout|flex": 0
+                                                                                            },
+                                                                                            "name": "MyContainer12",
+                                                                                            "designerId": "4a99f907-b637-466b-b8b3-3645f1113962",
+                                                                                            "cn": [
+                                                                                                {
+                                                                                                    "type": "Ext.button.Button",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "height": 22,
+                                                                                                        "id": "UserCreate",
+                                                                                                        "itemId": "UserCreate",
+                                                                                                        "text": "Create",
+                                                                                                        "width": 91
+                                                                                                    },
+                                                                                                    "name": "MyButton7",
+                                                                                                    "designerId": "7e927ef0-6f57-4dcc-ba05-88e5af441b79"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.container.Container",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "height": 24,
+                                                                                                "layout|flex": 0,
+                                                                                                "width": 93
+                                                                                            },
+                                                                                            "name": "MyContainer13",
+                                                                                            "designerId": "1a1909b5-02a8-414d-a7e7-aa80ad3dcb93",
+                                                                                            "cn": [
+                                                                                                {
+                                                                                                    "type": "Ext.button.Button",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "id": "UserUpdate",
+                                                                                                        "text": "Update",
+                                                                                                        "width": 92
+                                                                                                    },
+                                                                                                    "name": "MyButton9",
+                                                                                                    "designerId": "8ceba4e9-0108-4652-ab4a-0c8ab65fd296"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.container.Container",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "layout|flex": 1
+                                                                                            },
+                                                                                            "name": "MyContainer14",
+                                                                                            "designerId": "5de67e83-1471-4212-a9eb-cedcbc269252",
+                                                                                            "cn": [
+                                                                                                {
+                                                                                                    "type": "Ext.button.Button",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "id": "UserDelete",
+                                                                                                        "itemId": "UserDelete",
+                                                                                                        "text": "Delete",
+                                                                                                        "width": 93
+                                                                                                    },
+                                                                                                    "name": "MyButton10",
+                                                                                                    "designerId": "41e499fe-838a-46d8-a97a-c853f70f1853"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "Ext.container.Container",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "width": 13
+                                                                                    },
+                                                                                    "name": "MyContainer17",
+                                                                                    "designerId": "86cc14c9-9e99-4b55-8157-83fdc0e61bae",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "type": "Ext.toolbar.Spacer",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "height": 73,
+                                                                                                "width": 21
+                                                                                            },
+                                                                                            "name": "MySpacer8",
+                                                                                            "designerId": "5ac9ddbe-3482-43a7-b852-df011075fb52"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "Ext.container.Container",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "layout": "fit",
+                                                                                        "layout|flex": 0
+                                                                                    },
+                                                                                    "name": "MyContainer18",
+                                                                                    "designerId": "9f463c33-1ec2-446b-9c8e-80e9726251b7",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "type": "Ext.container.Container",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "name": "MyContainer19",
+                                                                                            "designerId": "13dfad11-073d-4c76-9eed-5947a6c24121",
+                                                                                            "cn": [
+                                                                                                {
+                                                                                                    "type": "Ext.button.Button",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "id": "UserResetForm",
+                                                                                                        "itemId": "UserResetForm",
+                                                                                                        "text": "Reset Form",
+                                                                                                        "width": 97
+                                                                                                    },
+                                                                                                    "name": "MyButton11",
+                                                                                                    "designerId": "b7c8fa9f-6498-4778-9a70-0924e4b6cd18"
+                                                                                                }
+                                                                                            ]
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "Ext.toolbar.Spacer",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": 238,
+                                                                        "layout|flex": 0,
+                                                                        "width": 22
+                                                                    },
+                                                                    "name": "MySpacer6",
+                                                                    "designerId": "9792eaf3-7cba-43af-a0dd-e1291f75fcc9"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.container.Container",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": 186,
+                                                                        "layout": "vbox",
+                                                                        "layout|flex": 0,
+                                                                        "width": 567
+                                                                    },
+                                                                    "name": "MyContainer7",
+                                                                    "designerId": "4d8a5aa1-3e69-4540-9a39-f947484f6432",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "User Name",
+                                                                                "id": "username",
+                                                                                "itemId": "username",
+                                                                                "layout|flex": 0,
+                                                                                "width": 301
+                                                                            },
+                                                                            "name": "MyTextField11",
+                                                                            "designerId": "681e1c0d-4606-48ea-bdc3-b429cbbd4b7f"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "Password",
+                                                                                "id": "password",
+                                                                                "itemId": "password",
+                                                                                "layout|flex": 0,
+                                                                                "width": 299
+                                                                            },
+                                                                            "name": "MyTextField12",
+                                                                            "designerId": "718ed2ab-7384-4692-895d-e16eedc8b788"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Text",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "fieldLabel": "Billing Address",
+                                                                                "height": 106,
+                                                                                "id": "address",
+                                                                                "itemId": "address",
+                                                                                "layout|flex": 0,
+                                                                                "width": 300
+                                                                            },
+                                                                            "name": "MyTextField10",
+                                                                            "designerId": "23d889e8-be9e-4bf0-b5d0-44623b340c5d"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.container.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "middle",
+                                                "container|pack": "center",
+                                                "height": 56,
+                                                "layout": "hbox"
+                                            },
+                                            "name": "MyContainer9",
+                                            "designerId": "bf46155f-32a2-405d-b7d7-acf2043af4f1",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.container.Container",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 0,
+                                                        "width": 110
+                                                    },
+                                                    "name": "MyContainer11",
+                                                    "designerId": "75ef9a4d-f4b5-4d0b-a25e-23274485a88c",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "id": "UserSearch",
+                                                                "text": "Search",
+                                                                "width": 92
+                                                            },
+                                                            "name": "MyButton8",
+                                                            "designerId": "6265e348-4c48-4ee6-91c7-52801f349582"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.container.Container",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 0,
+                                                        "width": 422
+                                                    },
+                                                    "name": "MyContainer20",
+                                                    "designerId": "476230e0-eebc-47a7-89e4-a472e4005d88",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.field.Text",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "emptyText": "Search User",
+                                                                "fieldLabel": "",
+                                                                "id": "UserSearchBar",
+                                                                "itemId": "UserSearchBar",
+                                                                "width": 387
+                                                            },
+                                                            "name": "MyTextField13",
+                                                            "designerId": "80bedb01-2493-4971-84e5-cf79b669fd03"
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.container.Container",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 0,
+                                                        "width": 126
+                                                    },
+                                                    "name": "MyContainer10",
+                                                    "designerId": "e1440274-58f2-4a40-a5eb-047c33e817af",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.button.Button",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "id": "UserResetSearch",
+                                                                "itemId": "UserResetSearch",
+                                                                "text": "Reset",
+                                                                "width": 102
+                                                            },
+                                                            "name": "MyButton6",
+                                                            "designerId": "61d44460-9a16-4cde-bd73-dbca2d19e4d4"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "Ext.grid.Panel",
@@ -937,7 +1488,11 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "layout|flex": 2,
+                                        "height": 199,
+                                        "id": "userinfogrid",
+                                        "itemId": "userinfogrid",
+                                        "layout|flex": 0,
+                                        "store": "UserStore",
                                         "title": "User Information"
                                     },
                                     "name": "MyGridPanel1",
@@ -951,53 +1506,114 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "dataIndex": "string",
-                                                "text": "String"
+                                                "dataIndex": "id",
+                                                "id": "userid",
+                                                "itemId": "userid",
+                                                "text": "ID"
+                                            },
+                                            "name": "MyColumn16",
+                                            "designerId": "8ed01480-6317-4c93-a8b4-4af7491b767f"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Column",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "fname",
+                                                "id": "userfname",
+                                                "itemId": "userfname",
+                                                "text": "First Name",
+                                                "width": 125
                                             },
                                             "name": "MyColumn3",
                                             "designerId": "95ec5dfa-55f3-4144-8ca3-d7302963aca7"
                                         },
                                         {
-                                            "type": "Ext.grid.column.Number",
+                                            "type": "Ext.grid.column.Column",
                                             "reference": {
                                                 "name": "columns",
                                                 "type": "array"
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "dataIndex": "number",
-                                                "text": "Number"
+                                                "dataIndex": "lname",
+                                                "id": "userlname",
+                                                "itemId": "userlname",
+                                                "text": "Last Name",
+                                                "width": 139
                                             },
-                                            "name": "MyNumberColumn",
+                                            "name": "MyColumn11",
                                             "designerId": "ebc97129-92f1-4974-a55b-d6bf77eee55c"
                                         },
                                         {
-                                            "type": "Ext.grid.column.Date",
+                                            "type": "Ext.grid.column.Column",
                                             "reference": {
                                                 "name": "columns",
                                                 "type": "array"
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "dataIndex": "date",
-                                                "text": "Date"
+                                                "dataIndex": "email",
+                                                "id": "useremail",
+                                                "itemId": "useremail",
+                                                "text": "Email",
+                                                "width": 131
                                             },
-                                            "name": "MyDateColumn",
+                                            "name": "MyColumn12",
                                             "designerId": "36a704b2-97fc-4607-9b3c-ab780d819529"
                                         },
                                         {
-                                            "type": "Ext.grid.column.Boolean",
+                                            "type": "Ext.grid.column.Column",
                                             "reference": {
                                                 "name": "columns",
                                                 "type": "array"
                                             },
                                             "codeClass": null,
                                             "userConfig": {
-                                                "dataIndex": "bool",
-                                                "text": "Boolean"
+                                                "dataIndex": "username",
+                                                "id": "userusername",
+                                                "itemId": "userusername",
+                                                "text": "User Name",
+                                                "width": 121
                                             },
-                                            "name": "MyBooleanColumn",
+                                            "name": "MyColumn13",
                                             "designerId": "2e440393-8455-4899-9b3d-4f6102b0e535"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Column",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "password",
+                                                "id": "userpassword",
+                                                "itemId": "userpassword",
+                                                "text": "Password"
+                                            },
+                                            "name": "MyColumn14",
+                                            "designerId": "92719631-4754-4639-82df-a47f170b6e78"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Column",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "address",
+                                                "id": "useraddress",
+                                                "itemId": "useraddress",
+                                                "text": "Billing Address",
+                                                "width": 179
+                                            },
+                                            "name": "MyColumn15",
+                                            "designerId": "7094f950-50d9-4138-9991-f1be1fcbb9aa"
                                         },
                                         {
                                             "type": "Ext.grid.View",
