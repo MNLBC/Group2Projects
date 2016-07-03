@@ -37,7 +37,7 @@ Ext.define('MedicineInvoicingSystem.store.userStore', {
                 {
                     fullName: 'Meynard Denoyo',
                     email: 'mjohnston@vimbo.com',
-                    accountType: 'error',
+                    accountType: 'Pharmacist',
                     username: 'mrdenoyo',
                     password: 'password'
                 }

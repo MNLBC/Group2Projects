@@ -44,6 +44,8 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
             items: [
                 {
                     xtype: 'textfield',
+                    id: 'famacissearch',
+                    itemId: 'famacissearch',
                     fieldLabel: '',
                     emptyText: 'Search'
                 }
@@ -51,6 +53,8 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
         },
         {
             xtype: 'gridpanel',
+            id: 'pharmacistGrid',
+            itemId: 'pharmacistGrid',
             title: 'Pharmacist View - Medicine Inventory',
             store: 'medicineStore',
             columns: [
@@ -105,6 +109,8 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
                 },
                 {
                     xtype: 'button',
+                    id: 'btnupdatemed',
+                    itemId: 'btnupdatemed',
                     text: 'Update'
                 },
                 {
@@ -113,6 +119,8 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
                 },
                 {
                     xtype: 'button',
+                    id: 'deletemed',
+                    itemId: 'deletemed',
                     text: 'Delete'
                 }
             ]

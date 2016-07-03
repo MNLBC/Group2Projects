@@ -20,13 +20,13 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
     requires: [
         'MedicineInvoicingSystem.view.customerViewportViewModel',
         'Ext.form.field.Text',
+        'Ext.button.Button',
         'Ext.grid.Panel',
         'Ext.grid.column.Number',
         'Ext.grid.column.Date',
         'Ext.grid.View',
         'Ext.selection.RowModel',
         'Ext.toolbar.Spacer',
-        'Ext.button.Button',
         'Ext.form.Label'
     ],
 
@@ -52,10 +52,26 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                 {
                     xtype: 'textfield',
                     flex: 0,
+                    id: 'cutomersearch',
+                    itemId: 'cutomersearch',
                     emptyText: 'Search',
                     bind: {
                         width: '50%'
                     }
+                },
+                {
+                    xtype: 'container',
+                    flex: 0,
+                    layout: {
+                        type: 'hbox',
+                        align: 'middle'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            text: 'MyButton'
+                        }
+                    ]
                 }
             ]
         },
@@ -81,8 +97,8 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                             xtype: 'gridpanel',
                             flex: 1,
                             height: 225,
-                            id: 'GridPanel',
-                            itemId: 'GridPanel',
+                            id: 'cutomerGrid1',
+                            itemId: 'cutomerGrid1',
                             collapsible: false,
                             title: 'Cutomer View - Medicine Inventory',
                             allowDeselect: true,
@@ -113,6 +129,9 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                                     text: 'Expiry Date'
                                 }
                             ],
+                            viewConfig: {
+                                itemId: 'mygridview'
+                            },
                             selModel: {
                                 selType: 'rowmodel',
                                 allowDeselect: true,
@@ -152,32 +171,67 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                     ]
                 },
                 {
-                    xtype: 'gridpanel',
+                    xtype: 'container',
                     flex: 1,
-                    animCollapse: true,
-                    collapseDirection: 'right',
-                    collapseFirst: false,
-                    collapsed: false,
-                    collapsible: false,
-                    title: 'Order Summary',
-                    columns: [
+                    items: [
                         {
-                            xtype: 'gridcolumn',
-                            dataIndex: 'string',
-                            text: 'Medicine'
+                            xtype: 'gridpanel',
+                            height: 179,
+                            id: 'orderSummaryPanel',
+                            itemId: 'orderSummaryPanel',
+                            animCollapse: true,
+                            collapseDirection: 'right',
+                            collapseFirst: false,
+                            collapsed: false,
+                            collapsible: false,
+                            title: 'Order Summary',
+                            store: 'orderStore',
+                            columns: [
+                                {
+                                    xtype: 'gridcolumn',
+                                    dataIndex: 'medicine',
+                                    text: 'Medicine'
+                                },
+                                {
+                                    xtype: 'numbercolumn',
+                                    dataIndex: 'price',
+                                    text: 'Price'
+                                },
+                                {
+                                    xtype: 'numbercolumn',
+                                    dataIndex: 'quantity',
+                                    text: 'Quantity'
+                                },
+                                {
+                                    xtype: 'numbercolumn',
+                                    dataIndex: 'subtotal',
+                                    text: 'Subtotal'
+                                }
+                            ]
                         },
                         {
-                            xtype: 'numbercolumn',
-                            dataIndex: 'number',
-                            text: 'Price'
-                        },
-                        {
-                            xtype: 'numbercolumn',
-                            text: 'Quantity'
-                        },
-                        {
-                            xtype: 'numbercolumn',
-                            text: 'Subtotal'
+                            xtype: 'container',
+                            layout: {
+                                type: 'hbox',
+                                pack: 'end'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    id: 'btnBuy',
+                                    itemId: 'btnBuy',
+                                    width: 73,
+                                    text: 'Buy'
+                                },
+                                {
+                                    xtype: 'button',
+                                    flex: 0,
+                                    id: 'btnremove',
+                                    itemId: 'btnremove',
+                                    width: 129,
+                                    text: 'Remove From Cart'
+                                }
+                            ]
                         }
                     ]
                 }
@@ -208,14 +262,14 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                                     xtype: 'label',
                                     height: 16,
                                     width: 53,
-                                    text: 'Something Something Pharmacy'
+                                    text: 'Something Something Famasi'
                                 },
                                 {
                                     xtype: 'label',
                                     flex: 1,
                                     id: 'labelDateTime',
                                     itemId: 'labelDateTime',
-                                    text: 'Date Time'
+                                    text: 'July 3, 2016'
                                 },
                                 {
                                     xtype: 'label',

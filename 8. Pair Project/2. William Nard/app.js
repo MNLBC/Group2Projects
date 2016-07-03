@@ -22,12 +22,14 @@ Ext.Loader.setConfig({
 Ext.application({
     models: [
         'medicineModel',
-        'userModel'
+        'userModel',
+        'OdrerModel'
     ],
     stores: [
         'accountTypeStore',
         'medicineStore',
-        'userStore'
+        'userStore',
+        'orderStore'
     ],
     views: [
         'loginViewport',
