@@ -1,0 +1,207 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "center",
+        "container|pack": "center",
+        "designer|userClassName": "RegisterViewport",
+        "layout": "vbox"
+    },
+    "name": "MyViewport",
+    "designerId": "a74bc42c-5222-4680-93f7-cdcd99aac8cc",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "height": 557,
+                "layout": "vbox"
+            },
+            "name": "MyContainer21",
+            "designerId": "22b64a03-377a-476c-bf00-3381b70ba320",
+            "cn": [
+                {
+                    "type": "Ext.form.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "container|align": "center",
+                        "container|pack": "center",
+                        "height": 382,
+                        "layout": "vbox",
+                        "title": "Register",
+                        "width": 424
+                    },
+                    "name": "MyForm7",
+                    "designerId": "014b309a-7032-43a8-87d6-340f5532ee68",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "First Name",
+                                "id": "RegFname",
+                                "itemId": "RegFname",
+                                "width": null
+                            },
+                            "name": "MyTextField14",
+                            "designerId": "5c8c78a4-6a95-4e28-a1fe-2d8926fd9b54"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Last Name",
+                                "id": "RegLname",
+                                "itemId": "RegLname",
+                                "layout|flex": 0,
+                                "width": null
+                            },
+                            "name": "MyTextField15",
+                            "designerId": "308a8a12-d644-478f-b992-dffecf8dd32e"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Email",
+                                "id": "RegEmail",
+                                "itemId": "RegEmail",
+                                "layout|flex": 0,
+                                "width": null
+                            },
+                            "name": "MyTextField16",
+                            "designerId": "acdfc33a-f7da-41b8-80d6-aa80e7c90a55"
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Billing Address",
+                                "id": "RegAddress",
+                                "itemId": "regaddress",
+                                "layout|flex": 0,
+                                "width": 285
+                            },
+                            "name": "MyTextArea1",
+                            "designerId": "04f76a0b-5812-41be-95f8-a11129f9a575"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "User Name",
+                                "id": "RegUsername",
+                                "itemId": "RegUsername",
+                                "layout|flex": 0
+                            },
+                            "name": "MyTextField17",
+                            "designerId": "af6beec8-eba8-4830-92d7-3438ae9f5501"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Password",
+                                "id": "RegPassword",
+                                "inputType": "password",
+                                "itemId": "RegPassword",
+                                "layout|flex": 0
+                            },
+                            "name": "MyTextField18",
+                            "designerId": "11870467-a201-48fa-84e0-c428d69792da"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 14,
+                                "layout|flex": null,
+                                "width": 10
+                            },
+                            "name": "MySpacer13",
+                            "designerId": "8fc0cc42-5bad-4240-842a-9049ddc84c47"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "height": 31,
+                                "layout": "hbox",
+                                "layout|flex": 0,
+                                "width": 280
+                            },
+                            "name": "MyContainer22",
+                            "designerId": "fbe33cc9-aed2-49fe-acae-6cfac5c114fb",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "id": "RegBtn",
+                                        "itemId": "RegBtn",
+                                        "layout|flex": 1,
+                                        "text": "Register Now!",
+                                        "width": 280
+                                    },
+                                    "name": "MyButton12",
+                                    "designerId": "c69ea00b-8ecb-4078-ad96-821d3d68542b"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

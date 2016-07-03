@@ -24,25 +24,32 @@ Ext.application({
         'BookModel',
         'SearchModel',
         'GenreModel',
-        'OrderModel'
+        'OrderModel',
+        'UserModel'
     ],
     stores: [
         'BookStore',
         'SearchStore',
         'GenreStore',
-        'OrderStore'
+        'OrderStore',
+        'UserStore'
     ],
     views: [
         'MainViewport',
-        'OrderWin'
+        'OrderWin',
+        'LoginViewport',
+        'RegisterViewport'
     ],
     controllers: [
-        'MainController'
+        'MainController',
+        'LoginController',
+        'ManageUserController',
+        'RegisterController'
     ],
     name: 'W3D5_Project',
 
     launch: function() {
-        Ext.create('W3D5_Project.view.MainViewport');
+        Ext.create('W3D5_Project.view.LoginViewport');
     }
 
 });

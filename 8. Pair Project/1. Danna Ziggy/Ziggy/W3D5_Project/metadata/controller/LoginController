@@ -1,0 +1,115 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "LoginController",
+        "id": "Login"
+    },
+    "name": "MyController",
+    "designerId": "cd8cb6ee-2070-4186-b3d5-d18578c2ce89",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#LoginBtn",
+                "designer|targetType": "MyButton13",
+                "fn": "onLoginBtnClick",
+                "implHandler": [
+                    "var store =Ext.getStore('UserStore');",
+                    "var valid = false;",
+                    "var id;",
+                    "var username = Ext.getCmp('loginusername').getValue();",
+                    "var password = Ext.getCmp('loginpassword').getValue();",
+                    "Ext.each(store.data.items, function(rec){",
+                    "    if(rec.data.username==username && rec.data.password==password){",
+                    "        valid = true;",
+                    "    }",
+                    "",
+                    "});",
+                    "if(valid){",
+                    "    if(Ext.isEmpty(this.mainWin)){",
+                    "        this.mainWin = Ext.create('W3D5_Project.view.MainViewport', {});",
+                    "    }",
+                    "    this.mainWin.show();",
+                    "    this.mainWin.unmask();",
+                    "    Ext.getCmp('UserNameField').setValue('Welcome! ' + username);",
+                    "    Ext.getCmp('UserNameId').setValue(id);",
+                    "    ",
+                    "    if(username=='admin'){",
+                    "        Ext.getCmp('MenuPanel').items.items[3].enable();",
+                    "        Ext.getCmp('MenuPanel').items.items[4].enable();",
+                    "        Ext.getCmp('MenuPanel').items.items[5].enable();",
+                    "    }else{",
+                    "        Ext.getCmp('MenuPanel').items.items[3].disable();",
+                    "        Ext.getCmp('MenuPanel').items.items[4].disable();",
+                    "        Ext.getCmp('MenuPanel').items.items[5].disable();",
+                    "    }",
+                    "    ",
+                    "         if(Ext.isEmpty(this.loginWin)){",
+                    "         this.loginWin.hide();",
+                    "         this.loginWin.mask();",
+                    "     }",
+                    "    if(Ext.isEmpty(this.registerWin)){",
+                    "         this.registerWin.hide();",
+                    "         this.registerWin.mask();",
+                    "     }",
+                    "}else{",
+                    "    Ext.MessageBox.show({",
+                    "        title: 'Failed Login',",
+                    "        msg: 'Please enter a registered account',",
+                    "        buttons: Ext.Msg.OK,",
+                    "        icon: Ext.Msg.WARNING",
+                    "",
+                    "    });",
+                    "",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onLoginBtnClick",
+            "designerId": "58db548c-4324-4008-a1bc-5d62d4ccc4bb"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#RegisterBtn",
+                "designer|targetType": "MyButton14",
+                "fn": "onRegisterBtnClick",
+                "implHandler": [
+                    "if(Ext.isEmpty(this.registerWin)){",
+                    "    this.registerWin = Ext.create('W3D5_Project.view.RegisterViewport', {});",
+                    "}",
+                    "this.registerWin.show();",
+                    "this.registerWin.unmask();",
+                    "if(Ext.isEmpty(this.loginWin)){",
+                    "                 this.loginWin.hide();",
+                    "                 this.loginWin.mask();",
+                    "             }",
+                    "            if(Ext.isEmpty(this.mainWin)){",
+                    "                 this.mainWin.hide();",
+                    "                 this.mainWin.mask();",
+                    "             }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onRegisterBtnClick",
+            "designerId": "2e857f0e-ce09-44f0-a858-d225a3699f5d"
+        }
+    ]
+}

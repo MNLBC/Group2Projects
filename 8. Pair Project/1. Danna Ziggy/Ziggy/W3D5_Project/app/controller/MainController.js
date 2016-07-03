@@ -369,7 +369,11 @@ Ext.define('W3D5_Project.controller.MainController', {
                     icon: Ext.Msg.Question,
                     fn: function(btn) {
                         if (btn === 'yes') {
-                            alert('Logged Out!')
+                                        if(Ext.isEmpty(this.loginWin)){
+                        this.loginWin = Ext.create('W3D5_Project.view.LoginViewport', {});
+                    }
+                    this.loginWin.show();
+                    this.loginWin.unmask();
                         }
                     }
                 });

@@ -7,24 +7,31 @@
     "codeClass": null,
     "userConfig": {
         "controllers": [
-            "MainController"
+            "MainController",
+            "LoginController",
+            "ManageUserController",
+            "RegisterController"
         ],
         "models": [
             "BookModel",
             "SearchModel",
             "GenreModel",
-            "OrderModel"
+            "OrderModel",
+            "UserModel"
         ],
         "name": "W3D5_Project",
         "stores": [
             "BookStore",
             "SearchStore",
             "GenreStore",
-            "OrderStore"
+            "OrderStore",
+            "UserStore"
         ],
         "views": [
             "MainViewport",
-            "OrderWin"
+            "OrderWin",
+            "LoginViewport",
+            "RegisterViewport"
         ]
     },
     "name": "Application",
