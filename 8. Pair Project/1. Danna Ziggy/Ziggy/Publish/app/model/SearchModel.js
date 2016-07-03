@@ -40,6 +40,9 @@ Ext.define('W3D5_Project.model.SearchModel', {
             name: 'date'
         },
         {
+            name: 'genre'
+        },
+        {
             name: 'oprice'
         },
         {

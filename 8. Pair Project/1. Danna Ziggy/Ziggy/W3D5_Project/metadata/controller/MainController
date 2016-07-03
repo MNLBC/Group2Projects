@@ -69,6 +69,7 @@
                     "        rec.data.author = book.author;",
                     "        rec.data.desc = book.desc;",
                     "        rec.data.date = book.date;",
+                    "        rec.data.genre = book.genre;",
                     "        rec.data.percent = book.percent;",
                     "        rec.data.oprice = book.oprice;",
                     "        rec.data.sprice = book.sprice;",
@@ -168,6 +169,7 @@
                     "var author = Ext.getCmp('BookAuthor').getValue();",
                     "var desc = Ext.getCmp('BookDesc').getValue();",
                     "var date = Ext.getCmp('BookDate').getValue();",
+                    "var genre = Ext.getCmp('BookGenre').getValue();",
                     "var percent = Ext.getCmp('BookPerc').getValue();",
                     "var oprice = Ext.getCmp('BookOPrice').getValue();",
                     "var sprice = Ext.getCmp('BookSPrice').getValue();",
@@ -188,9 +190,9 @@
                     "",
                     "id = maxId + 1;",
                     "",
-                    "if((Ext.isEmpty(avail)||avail==='0')&&(Ext.isEmpty(checked)||checked==='0')){",
+                    "if((Ext.isEmpty(avail)||avail=='0')&&(Ext.isEmpty(checked)||checked=='0')){",
                     "    status = 'Out of stock';",
-                    "}else if((Ext.isEmpty(avail)||avail==='0')&&!(Ext.isEmpty(checked)||checked==='0')){",
+                    "}else if((Ext.isEmpty(avail)||avail=='0')&&!(Ext.isEmpty(checked)||checked=='0')){",
                     "    status = 'Checked out';",
                     "}else{",
                     "    status = 'Available';",
@@ -216,6 +218,7 @@
                     "    author: author,",
                     "    desc: desc,",
                     "    date: date,",
+                    "    genre: genre,",
                     "    oprice: oprice,",
                     "    sprice: sprice,",
                     "    percent: percent,",
@@ -252,6 +255,7 @@
                     "Ext.getCmp('BookAuthor').setValue(book.author);",
                     "Ext.getCmp('BookDesc').setValue(book.desc);",
                     "Ext.getCmp('BookDate').setValue(book.date);",
+                    "Ext.getCmp('BookGenre').setValue(book.genre);",
                     "Ext.getCmp('BookPerc').setValue(book.percent);",
                     "Ext.getCmp('BookOPrice').setValue(book.oprice);",
                     "Ext.getCmp('BookSPrice').setValue(book.sprice);",
@@ -282,6 +286,7 @@
                     "Ext.getCmp('BookAuthor').setValue('');",
                     "Ext.getCmp('BookDesc').setValue('');",
                     "Ext.getCmp('BookDate').setValue('');",
+                    "Ext.getCmp('BookGenre').setValue('');",
                     "Ext.getCmp('BookPerc').setValue('');",
                     "Ext.getCmp('BookOPrice').setValue('');",
                     "Ext.getCmp('BookSPrice').setValue('');",
@@ -362,6 +367,37 @@
             },
             "name": "onResetBtnClick",
             "designerId": "53f81ea6-770a-4685-96d5-444c65761c31"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#MenuPanel",
+                "designer|params": [
+                    "tabPanel, newCard, oldCard, eOpts"
+                ],
+                "designer|targetType": "MyTabPanel",
+                "fn": "onMenuPanelTabChange",
+                "implHandler": [
+                    "var store = Ext.getStore('BookStore');",
+                    "var grid = Ext.getCmp('BooksGrid');",
+                    "store.clearFilter();",
+                    "grid.getView().refresh();",
+                    "if(newCard.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "}else if(newCard.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "}"
+                ],
+                "name": "tabchange",
+                "scope": "me"
+            },
+            "name": "onMenuPanelTabChange",
+            "designerId": "3fee6b03-09c4-4cc5-b258-e84e56f2b1e4"
         }
     ]
 }

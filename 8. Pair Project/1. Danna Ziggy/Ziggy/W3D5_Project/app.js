@@ -22,11 +22,13 @@ Ext.Loader.setConfig({
 Ext.application({
     models: [
         'BookModel',
-        'SearchModel'
+        'SearchModel',
+        'GenreModel'
     ],
     stores: [
         'BookStore',
-        'SearchStore'
+        'SearchStore',
+        'GenreStore'
     ],
     views: [
         'MainViewport'

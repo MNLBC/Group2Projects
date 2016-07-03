@@ -40,6 +40,9 @@ Ext.define('W3D5_Project.model.BookModel', {
             name: 'date'
         },
         {
+            name: 'genre'
+        },
+        {
             name: 'oprice'
         },
         {

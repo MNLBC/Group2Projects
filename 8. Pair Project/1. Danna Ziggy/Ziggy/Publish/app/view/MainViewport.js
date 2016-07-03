@@ -32,7 +32,8 @@ Ext.define('W3D5_Project.view.MainViewport', {
         'Ext.form.field.Display',
         'Ext.form.field.TextArea',
         'Ext.toolbar.Spacer',
-        'Ext.form.field.Checkbox'
+        'Ext.form.field.Checkbox',
+        'Ext.form.field.Number'
     ],
 
     id: 'MainViewport',
@@ -61,15 +62,21 @@ Ext.define('W3D5_Project.view.MainViewport', {
                     items: [
                         {
                             xtype: 'menuitem',
-                            text: 'Menu Item'
+                            id: 'RomanceCat',
+                            itemId: 'RomanceCat',
+                            text: 'Romance'
                         },
                         {
                             xtype: 'menuitem',
-                            text: 'Menu Item'
+                            id: 'MysteryCat',
+                            itemId: 'MysteryCat',
+                            text: 'Mystery'
                         },
                         {
                             xtype: 'menuitem',
-                            text: 'Menu Item'
+                            id: 'HorrorCat',
+                            itemId: 'HorrorCat',
+                            text: 'Horror'
                         }
                     ]
                 },
@@ -142,9 +149,11 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                             items: [
                                                 {
                                                     xtype: 'gridpanel',
+                                                    height: 290,
                                                     id: 'BooksGrid',
                                                     itemId: 'BooksGrid',
                                                     title: '',
+                                                    allowDeselect: true,
                                                     store: 'BookStore',
                                                     columns: [
                                                         {
@@ -174,16 +183,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Desc',
-                                                            itemId: 'Desc',
-                                                            width: 171,
-                                                            align: 'center',
-                                                            dataIndex: 'desc',
-                                                            text: 'Book Description'
-                                                        },
-                                                        {
-                                                            xtype: 'gridcolumn',
-                                                            id: 'Date',
+                                                            id: 'Date4',
                                                             itemId: 'Date',
                                                             align: 'center',
                                                             dataIndex: 'date',
@@ -191,19 +191,71 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Price',
-                                                            itemId: 'Price',
+                                                            id: 'Desc4',
+                                                            itemId: 'Desc',
+                                                            width: 272,
                                                             align: 'center',
-                                                            dataIndex: 'oprice',
-                                                            text: 'Price'
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Avail',
+                                                            id: 'Genre1',
+                                                            itemId: 'Genre',
+                                                            align: 'center',
+                                                            dataIndex: 'genre',
+                                                            text: 'Genre'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Perc2',
+                                                            itemId: 'Perc',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: '% Off'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price4',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Original Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'SalePrice2',
+                                                            itemId: 'SalePrice',
+                                                            align: 'center',
+                                                            dataIndex: 'sprice',
+                                                            text: 'Sale Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail4',
                                                             itemId: 'Avail',
+                                                            width: 170,
                                                             align: 'center',
                                                             dataIndex: 'avail',
                                                             text: '# of Available Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Check1',
+                                                            itemId: 'Check',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'checked',
+                                                            text: '# of Checked-out Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Status1',
+                                                            itemId: 'Status',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'status',
+                                                            text: 'Status'
                                                         }
                                                     ],
                                                     viewConfig: {
@@ -274,16 +326,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Desc1',
-                                                            itemId: 'Desc',
-                                                            width: 171,
-                                                            align: 'center',
-                                                            dataIndex: 'desc',
-                                                            text: 'Book Description'
-                                                        },
-                                                        {
-                                                            xtype: 'gridcolumn',
-                                                            id: 'Date1',
+                                                            id: 'Date5',
                                                             itemId: 'Date',
                                                             align: 'center',
                                                             dataIndex: 'date',
@@ -291,19 +334,71 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Price1',
-                                                            itemId: 'Price',
+                                                            id: 'Desc5',
+                                                            itemId: 'Desc',
+                                                            width: 272,
                                                             align: 'center',
-                                                            dataIndex: 'oprice',
-                                                            text: 'Price'
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Avail1',
+                                                            id: 'Genre2',
+                                                            itemId: 'Genre',
+                                                            align: 'center',
+                                                            dataIndex: 'genre',
+                                                            text: 'Genre'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Perc3',
+                                                            itemId: 'Perc',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: '% Off'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Price5',
+                                                            itemId: 'Price',
+                                                            align: 'center',
+                                                            dataIndex: 'oprice',
+                                                            text: 'Original Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'SalePrice3',
+                                                            itemId: 'SalePrice',
+                                                            align: 'center',
+                                                            dataIndex: 'sprice',
+                                                            text: 'Sale Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Avail5',
                                                             itemId: 'Avail',
+                                                            width: 170,
                                                             align: 'center',
                                                             dataIndex: 'avail',
                                                             text: '# of Available Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Check2',
+                                                            itemId: 'Check',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'checked',
+                                                            text: '# of Checked-out Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Status2',
+                                                            itemId: 'Status',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'status',
+                                                            text: 'Status'
                                                         }
                                                     ],
                                                     viewConfig: {
@@ -373,16 +468,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Desc2',
-                                                            itemId: 'Desc',
-                                                            width: 171,
-                                                            align: 'center',
-                                                            dataIndex: 'desc',
-                                                            text: 'Book Description'
-                                                        },
-                                                        {
-                                                            xtype: 'gridcolumn',
-                                                            id: 'Date2',
+                                                            id: 'Date6',
                                                             itemId: 'Date',
                                                             align: 'center',
                                                             dataIndex: 'date',
@@ -390,7 +476,24 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Perc',
+                                                            id: 'Desc6',
+                                                            itemId: 'Desc',
+                                                            width: 272,
+                                                            align: 'center',
+                                                            dataIndex: 'desc',
+                                                            text: 'Book Description'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Genre3',
+                                                            itemId: 'Genre',
+                                                            align: 'center',
+                                                            dataIndex: 'genre',
+                                                            text: 'Genre'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Perc4',
                                                             itemId: 'Perc',
                                                             align: 'center',
                                                             dataIndex: 'oprice',
@@ -398,7 +501,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Price2',
+                                                            id: 'Price6',
                                                             itemId: 'Price',
                                                             align: 'center',
                                                             dataIndex: 'oprice',
@@ -406,7 +509,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'SalePrice',
+                                                            id: 'SalePrice4',
                                                             itemId: 'SalePrice',
                                                             align: 'center',
                                                             dataIndex: 'sprice',
@@ -414,11 +517,30 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Avail2',
+                                                            id: 'Avail6',
                                                             itemId: 'Avail',
+                                                            width: 170,
                                                             align: 'center',
                                                             dataIndex: 'avail',
                                                             text: '# of Available Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Check3',
+                                                            itemId: 'Check',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'checked',
+                                                            text: '# of Checked-out Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Status3',
+                                                            itemId: 'Status',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'status',
+                                                            text: 'Status'
                                                         }
                                                     ],
                                                     viewConfig: {
@@ -546,6 +668,13 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     fieldLabel: 'Author'
                                                                 },
                                                                 {
+                                                                    xtype: 'textfield',
+                                                                    flex: 0,
+                                                                    id: 'BookDate',
+                                                                    itemId: 'BookDate',
+                                                                    fieldLabel: 'Publish Date'
+                                                                },
+                                                                {
                                                                     xtype: 'textareafield',
                                                                     id: 'BookDesc',
                                                                     itemId: 'BookDesc',
@@ -566,11 +695,14 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             },
                                                             items: [
                                                                 {
-                                                                    xtype: 'textfield',
-                                                                    flex: 0,
-                                                                    id: 'BookDate',
-                                                                    itemId: 'BookDate',
-                                                                    fieldLabel: 'Publish Date'
+                                                                    xtype: 'combobox',
+                                                                    id: 'BookGenre',
+                                                                    itemId: 'BookGenre',
+                                                                    fieldLabel: 'Genre',
+                                                                    displayField: 'name',
+                                                                    queryMode: 'local',
+                                                                    store: 'GenreStore',
+                                                                    valueField: 'name'
                                                                 },
                                                                 {
                                                                     xtype: 'checkboxfield',
@@ -599,13 +731,13 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     fieldLabel: 'Sale Price'
                                                                 },
                                                                 {
-                                                                    xtype: 'textfield',
+                                                                    xtype: 'numberfield',
                                                                     id: 'BookAvail',
                                                                     itemId: 'BookAvail',
                                                                     fieldLabel: 'Available'
                                                                 },
                                                                 {
-                                                                    xtype: 'textfield',
+                                                                    xtype: 'numberfield',
                                                                     id: 'BookCheck',
                                                                     itemId: 'BookCheck',
                                                                     fieldLabel: 'Checked-out'
@@ -765,20 +897,36 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
+                                                            id: 'Date3',
+                                                            itemId: 'Date',
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Publish Date'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
                                                             id: 'Desc3',
                                                             itemId: 'Desc',
-                                                            width: 171,
+                                                            width: 272,
                                                             align: 'center',
                                                             dataIndex: 'desc',
                                                             text: 'Book Description'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
-                                                            id: 'Date3',
-                                                            itemId: 'Date',
+                                                            id: 'Genre',
+                                                            itemId: 'Genre',
                                                             align: 'center',
-                                                            dataIndex: 'date',
-                                                            text: 'Publish Date'
+                                                            dataIndex: 'genre',
+                                                            text: 'Genre'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'BestSeller',
+                                                            itemId: 'BestSeller',
+                                                            align: 'center',
+                                                            dataIndex: 'bestseller',
+                                                            text: 'Best Seller'
                                                         },
                                                         {
                                                             xtype: 'gridcolumn',
@@ -808,6 +956,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             xtype: 'gridcolumn',
                                                             id: 'Avail3',
                                                             itemId: 'Avail',
+                                                            width: 170,
                                                             align: 'center',
                                                             dataIndex: 'avail',
                                                             text: '# of Available Copies'
@@ -816,9 +965,19 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             xtype: 'gridcolumn',
                                                             id: 'Check',
                                                             itemId: 'Check',
+                                                            width: 173,
                                                             align: 'center',
-                                                            dataIndex: 'avail',
+                                                            dataIndex: 'checked',
                                                             text: '# of Checked-out Copies'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            id: 'Status',
+                                                            itemId: 'Status',
+                                                            width: 173,
+                                                            align: 'center',
+                                                            dataIndex: 'status',
+                                                            text: 'Status'
                                                         }
                                                     ],
                                                     viewConfig: {

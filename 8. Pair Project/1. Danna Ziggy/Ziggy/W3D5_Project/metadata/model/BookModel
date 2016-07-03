@@ -98,6 +98,19 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "genre"
+            },
+            "name": "MyField4",
+            "designerId": "3d58e456-dec7-4942-91e9-5ba22243adb6"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "oprice"
             },
             "name": "MyField8",

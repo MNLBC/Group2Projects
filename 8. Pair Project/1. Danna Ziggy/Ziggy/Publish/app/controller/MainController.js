@@ -48,6 +48,7 @@ Ext.define('W3D5_Project.controller.MainController', {
                 rec.data.author = book.author;
                 rec.data.desc = book.desc;
                 rec.data.date = book.date;
+                rec.data.genre = book.genre;
                 rec.data.percent = book.percent;
                 rec.data.oprice = book.oprice;
                 rec.data.sprice = book.sprice;
@@ -113,6 +114,18 @@ Ext.define('W3D5_Project.controller.MainController', {
         Ext.getCmp('BookSearch').setValue('');
     },
 
+    onMenuPanelTabChange: function(tabPanel, newCard, oldCard, eOpts) {
+        var store = Ext.getStore('BookStore');
+        var grid = Ext.getCmp('BooksGrid');
+        store.clearFilter();
+        grid.getView().refresh();
+        if(newCard.title=='Best Seller'){
+            store.filter('bestseller','1');
+        }else if(newCard.title=='On Sale'){
+            store.filter('onsale','1');
+        }
+    },
+
     getFormValues: function() {
         var store = Ext.getStore('BookStore');
         var title = Ext.getCmp('BookTitle').getValue();
@@ -120,6 +133,7 @@ Ext.define('W3D5_Project.controller.MainController', {
         var author = Ext.getCmp('BookAuthor').getValue();
         var desc = Ext.getCmp('BookDesc').getValue();
         var date = Ext.getCmp('BookDate').getValue();
+        var genre = Ext.getCmp('BookGenre').getValue();
         var percent = Ext.getCmp('BookPerc').getValue();
         var oprice = Ext.getCmp('BookOPrice').getValue();
         var sprice = Ext.getCmp('BookSPrice').getValue();
@@ -140,9 +154,9 @@ Ext.define('W3D5_Project.controller.MainController', {
 
         id = maxId + 1;
 
-        if((Ext.isEmpty(avail)||avail==='0')&&(Ext.isEmpty(checked)||checked==='0')){
+        if((Ext.isEmpty(avail)||avail=='0')&&(Ext.isEmpty(checked)||checked=='0')){
             status = 'Out of stock';
-        }else if((Ext.isEmpty(avail)||avail==='0')&&!(Ext.isEmpty(checked)||checked==='0')){
+        }else if((Ext.isEmpty(avail)||avail=='0')&&!(Ext.isEmpty(checked)||checked=='0')){
             status = 'Checked out';
         }else{
             status = 'Available';
@@ -168,6 +182,7 @@ Ext.define('W3D5_Project.controller.MainController', {
             author: author,
             desc: desc,
             date: date,
+            genre: genre,
             oprice: oprice,
             sprice: sprice,
             percent: percent,
@@ -189,6 +204,7 @@ Ext.define('W3D5_Project.controller.MainController', {
         Ext.getCmp('BookAuthor').setValue(book.author);
         Ext.getCmp('BookDesc').setValue(book.desc);
         Ext.getCmp('BookDate').setValue(book.date);
+        Ext.getCmp('BookGenre').setValue(book.genre);
         Ext.getCmp('BookPerc').setValue(book.percent);
         Ext.getCmp('BookOPrice').setValue(book.oprice);
         Ext.getCmp('BookSPrice').setValue(book.sprice);
@@ -207,6 +223,7 @@ Ext.define('W3D5_Project.controller.MainController', {
         Ext.getCmp('BookAuthor').setValue('');
         Ext.getCmp('BookDesc').setValue('');
         Ext.getCmp('BookDate').setValue('');
+        Ext.getCmp('BookGenre').setValue('');
         Ext.getCmp('BookPerc').setValue('');
         Ext.getCmp('BookOPrice').setValue('');
         Ext.getCmp('BookSPrice').setValue('');
@@ -240,6 +257,9 @@ Ext.define('W3D5_Project.controller.MainController', {
             },
             "#ResetBtn": {
                 click: this.onResetBtnClick
+            },
+            "#MenuPanel": {
+                tabchange: this.onMenuPanelTabChange
             }
         });
     }

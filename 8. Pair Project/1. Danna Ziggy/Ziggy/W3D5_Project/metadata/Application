@@ -11,12 +11,14 @@
         ],
         "models": [
             "BookModel",
-            "SearchModel"
+            "SearchModel",
+            "GenreModel"
         ],
         "name": "W3D5_Project",
         "stores": [
             "BookStore",
-            "SearchStore"
+            "SearchStore",
+            "GenreStore"
         ],
         "views": [
             "MainViewport"
