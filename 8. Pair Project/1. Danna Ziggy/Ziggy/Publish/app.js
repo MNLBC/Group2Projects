@@ -33,7 +33,8 @@ Ext.application({
         'OrderStore'
     ],
     views: [
-        'MainViewport'
+        'MainViewport',
+        'OrderWin'
     ],
     controllers: [
         'MainController'

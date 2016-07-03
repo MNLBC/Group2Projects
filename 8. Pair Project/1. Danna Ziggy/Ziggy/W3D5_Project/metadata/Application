@@ -23,7 +23,8 @@
             "OrderStore"
         ],
         "views": [
-            "MainViewport"
+            "MainViewport",
+            "OrderWin"
         ]
     },
     "name": "Application",

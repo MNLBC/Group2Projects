@@ -115,6 +115,10 @@ Ext.define('W3D5_Project.controller.MainController', {
     },
 
     onResetBtnClick: function() {
+
+        var store = Ext.getStore('BookStore');
+        store.clearFilter();
+
         Ext.getCmp('BookSearch').setValue('');
     },
 
@@ -245,7 +249,130 @@ Ext.define('W3D5_Project.controller.MainController', {
     },
 
     onBooksGridCellDblClick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {
-        console.log(record);
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.openOrderWin(record);
+    },
+
+    onOSearchBtnClick: function() {
+        var searchVal = Ext.getCmp('OrderSearch').getValue();
+         var store = Ext.getStore('OrderStore');
+        if(Ext.isEmpty(searchVal)){
+            store.clearFilter();
+        }else{
+            store.filter('booktitle', searchVal);
+        }
+    },
+
+    onOResetBtnClick: function() {
+
+        var store = Ext.getStore('OrderStore');
+        store.clearFilter();
+
+        Ext.getCmp('OrderSearch').setValue('');
+    },
+
+    onBuyBtnClick: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        var store = Ext.getStore('OrderStore');
+        var bookStore = Ext.getStore('BookStore');
+        var order = controller.getOrderInfo(false);
+        var activeTab = Ext.getCmp('MenuPanel').activeTab.title;
+        var scope = this;
+        var grid;
+        store.add(order);
+        Ext.each(bookStore.data.items,function(rec){
+            if(rec.data.id==order.bookid){
+                rec.data.avail = rec.data.avail - order.bookquantity;
+            }
+        });
+
+        Ext.Msg.show({
+            title:'Order Successful',
+            msg: 'Your purchase is on its way. Please prepare cash on delivery. Thank you.',
+            buttons: Ext.Msg.OK,
+            icon: Ext.Msg.Info,
+            fn: function(btn) {
+                if (btn === 'ok') {
+                    scope.orderWin.hide();
+                    scope.orderWin.mask();
+                    if(activeTab=='All Books'){
+                        grid = Ext.getCmp('BooksGrid');
+                    }else if(activeTab=='Best Seller'){
+                        grid = Ext.getCmp('BestBooksGrid');
+                    }else{
+                        grid = Ext.getCmp('SaleBooksGrid');
+                    }
+                    grid.getView().refresh();
+                }
+            }
+        });
+    },
+
+    onCancelBtnClick: function() {
+        this.orderWin.hide();
+        this.orderWin.mask();
+    },
+
+    onCheckBtnClick: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        var store = Ext.getStore('OrderStore');
+        var bookStore = Ext.getStore('BookStore');
+        var order = controller.getOrderInfo(true);
+        var activeTab = Ext.getCmp('MenuPanel').activeTab.title;
+        var scope = this;
+        var grid;
+        store.add(order);
+        Ext.each(bookStore.data.items,function(rec){
+            if(rec.data.id==order.bookid){
+                rec.data.check = rec.data.check + order.bookquantity;
+            }
+        });
+
+        Ext.Msg.show({
+            title:'Order Successful',
+            msg: 'The borrowed book is on its way. Please return after 7 days. Thank you.',
+            buttons: Ext.Msg.OK,
+            icon: Ext.Msg.Info,
+            fn: function(btn) {
+                if (btn === 'ok') {
+                    scope.orderWin.hide();
+                    scope.orderWin.mask();
+                    if(activeTab=='All Books'){
+                        grid = Ext.getCmp('BooksGrid');
+                    }else if(activeTab=='Best Seller'){
+                        grid = Ext.getCmp('BestBooksGrid');
+                    }else{
+                        grid = Ext.getCmp('SaleBooksGrid');
+                    }
+                    grid.getView().refresh();
+                }
+            }
+        });
+    },
+
+    onBestBooksGridCellDblClick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.openOrderWin(record);
+    },
+
+    onSaleBooksGridCellDblClick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+                controller.openOrderWin(record);
+    },
+
+    onLogOutBtnClick: function() {
+
+                Ext.Msg.show({
+                    title:'Log Out',
+                    msg: 'Are you sure you want to log out?',
+                    buttons: Ext.Msg.YESNO,
+                    icon: Ext.Msg.Question,
+                    fn: function(btn) {
+                        if (btn === 'yes') {
+                            alert('Logged Out!')
+                        }
+                    }
+                });
     },
 
     getFormValues: function() {
@@ -465,6 +592,87 @@ Ext.define('W3D5_Project.controller.MainController', {
 
     },
 
+    getOrderInfo: function(checkout) {
+        var store = Ext.getStore('OrderStore');
+        var userid = 0;
+        var username = 'Test';
+        var bookid = Ext.getCmp('BookWinId').getValue();
+        var booktitle = Ext.getCmp('BookWinTitle').getValue();
+        var bookprice = Ext.getCmp('BookWinPrice').getValue();
+        var bookquantity = 1;
+        var booktotal = Ext.getCmp('BookWinPrice').getValue();
+        var remarks = 'Default';
+        var date = (new Date()).toDateString();
+
+        if(checkout){
+            renarks = 'Check-out';
+        }
+        if (store.getCount() > 0)
+        {
+            var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.
+            store.each(function(rec) // go through all the records
+                       {
+                           maxId = Math.max(maxId, rec.get('id'));
+                       });
+        }
+
+        id = maxId + 1;
+
+        var order = {
+                            id: id,
+                            userid: userid,
+                            username: username,
+                            bookid: bookid,
+                            booktitle: booktitle,
+                            bookprice: bookprice,
+                            bookquantity: bookquantity,
+                            booktotal: booktotal,
+                            remarks: remarks,
+                            date: date
+                  };
+
+        return order;
+    },
+
+    openOrderWin: function(record) {
+        var price, bestseller;
+        if(Ext.isEmpty(this.orderWin)){
+            this.orderWin = Ext.create('W3D5_Project.view.OrderWin', {});
+        }
+        this.orderWin.show();
+        this.orderWin.unmask();
+        if(record.data.avail>0){
+            if(record.data.onsale){
+            price = record.data.sprice;
+            }else{
+            price = record.data.oprice;
+            }
+            Ext.getCmp('BuyBtn').enable();
+            Ext.getCmp('CheckBtn').enable();
+        }else if(record.data.check>0){
+            price = 'Checked-out';
+            Ext.getCmp('BuyBtn').disable();
+            Ext.getCmp('CheckBtn').disable();
+        }else{
+            price = 'Out of stock';
+            Ext.getCmp('BuyBtn').disable();
+            Ext.getCmp('CheckBtn').disable();
+        }
+        if(record.data.bestseller){
+            bestseller = 'Best Seller';
+        }else{
+            bestseller = '';
+        }
+        Ext.getCmp('BookWinImg').setSrc('resources/img/' + record.data.img +'.jpg');
+        Ext.getCmp('BookWinId').setValue(record.data.id);
+        Ext.getCmp('BookWinTitle').setValue(record.data.title);
+        Ext.getCmp('BookWinAuthor').setValue(record.data.author);
+        Ext.getCmp('BookWinDate').setValue(record.data.date);
+        Ext.getCmp('BookWinDesc').setValue(record.data.desc);
+        Ext.getCmp('BookWinPrice').setValue(price);
+        Ext.getCmp('BookWinBest').setValue(bestseller);
+    },
+
     init: function(application) {
         this.control({
             "#BookCreate": {
@@ -520,6 +728,30 @@ Ext.define('W3D5_Project.controller.MainController', {
             },
             "#BooksGrid": {
                 celldblclick: this.onBooksGridCellDblClick
+            },
+            "#OSearchBtn": {
+                click: this.onOSearchBtnClick
+            },
+            "#OResetBtn": {
+                click: this.onOResetBtnClick
+            },
+            "#BuyBtn": {
+                click: this.onBuyBtnClick
+            },
+            "#CancelBtn": {
+                click: this.onCancelBtnClick
+            },
+            "#CheckBtn": {
+                click: this.onCheckBtnClick
+            },
+            "#BestBooksGrid": {
+                celldblclick: this.onBestBooksGridCellDblClick
+            },
+            "#SaleBooksGrid": {
+                celldblclick: this.onSaleBooksGridCellDblClick
+            },
+            "#LogOutBtn": {
+                click: this.onLogOutBtnClick
             }
         });
     }

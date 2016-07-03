@@ -33,7 +33,8 @@
     "framework": "ext42",
     "viewOrderMap": {
         "view": [
-            "4af0b98c-4635-4833-9709-0a7fa9502faa"
+            "4af0b98c-4635-4833-9709-0a7fa9502faa",
+            "03fd20e2-894f-4491-a016-6194c8006bc7"
         ],
         "store": [
             "5b9469a3-c800-4cc2-b681-5db3b31a5e8b",
