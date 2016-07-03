@@ -92,7 +92,8 @@ Ext.define('W3D5_Project.controller.MainController', {
         var controller = W3D5_Project.app.getController('MainController');
         var grid = Ext.getCmp('ConfigBooksGrid');
         var selected;
-        if(!Ext.isEmpty(grid.getSelectionModel().selected)){
+
+        if(!Ext.isEmpty(grid.getSelectionModel().selected.items[0])){
             selected = grid.getSelectionModel().selected.items[0].data;
             controller.setFormValues(selected);
         }
@@ -118,8 +119,13 @@ Ext.define('W3D5_Project.controller.MainController', {
     },
 
     onMenuPanelTabChange: function(tabPanel, newCard, oldCard, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
         var store = Ext.getStore('BookStore');
         var grid = Ext.getCmp('BooksGrid');
+        var gridPanel = Ext.getCmp('GenreAll');
+
+        gridPanel.setTitle('All Books');
+        controller.enableCategories();
         store.clearFilter();
         grid.getView().refresh();
         if(newCard.title=='Best Seller'){
@@ -132,16 +138,114 @@ Ext.define('W3D5_Project.controller.MainController', {
     onRomanceCatClick: function(item, e, eOpts) {
         var controller = W3D5_Project.app.getController('MainController');
         controller.changeCategory(item);
+        controller.enableCategories();
+        item.disable();
     },
 
     onMysteryCatClick: function(item, e, eOpts) {
         var controller = W3D5_Project.app.getController('MainController');
         controller.changeCategory(item);
+        controller.enableCategories();
+        item.disable();
     },
 
     onHorrorCatClick: function(item, e, eOpts) {
         var controller = W3D5_Project.app.getController('MainController');
         controller.changeCategory(item);
+        controller.enableCategories();
+        item.disable();
+    },
+
+    onAllBooksCatClick: function(item, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.changeCategory(item);
+        controller.enableCategories();
+        item.disable();
+    },
+
+    onConfigOrderGridSelectionChange: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        var grid = Ext.getCmp('ConfigOrderGrid');
+        var selected;
+
+        if(!Ext.isEmpty(grid.getSelectionModel().selected.items[0])){
+            selected = grid.getSelectionModel().selected.items[0].data;
+            controller.setOrderValues(selected);
+        }
+    },
+
+    onOrderResetClick: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.resetOrderValues();
+    },
+
+    onOrderCreateClick: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        var store = Ext.getStore('OrderStore');
+        var order = controller.getOrderValues();
+        store.add(order);
+        controller.resetOrderValues();
+    },
+
+    onOrderUpdateClick: function() {
+        var controller = W3D5_Project.app.getController('MainController');
+        var store = Ext.getStore('OrderStore');
+        var order = controller.getOrderValues();
+        var id = Ext.getCmp('OrderId').getValue();
+        var grid = Ext.getCmp('ConfigOrderGrid');
+
+        if(Ext.isEmpty(id)){
+            Ext.Msg.show({
+            title:'Status',
+            msg: 'Please select a record to update.',
+            buttons: Ext.Msg.OK,
+            icon: Ext.Msg.WARNING
+        });
+        }else{
+           Ext.each(store.data.items, function(rec){
+            if(rec.data.id == id){
+                rec.data.userid = order.userid;
+                rec.data.username = order.username;
+                rec.data.bookid = order.bookid;
+                rec.data.booktitle = order.booktitle;
+                rec.data.bookprice = order.bookprice;
+                rec.data.bookquantity = order.bookquantity;
+                rec.data.booktotal = order.booktotal;
+                rec.data.remarks = order.remarks;
+                rec.data.date = order.date;
+            }
+        });
+        }
+
+        grid.getView().refresh();
+        controller.resetOrderValues();
+
+    },
+
+    onOrderDeleteClick: function() {
+                var controller = W3D5_Project.app.getController('MainController');
+                var store = Ext.getStore('OrderStore');
+                var id = Ext.getCmp('OrderId').getValue();
+
+                if(Ext.isEmpty(id)){
+                    Ext.Msg.show({
+                    title:'Status',
+                    msg: 'Please select a record to delete.',
+                    buttons: Ext.Msg.OK,
+                    icon: Ext.Msg.WARNING
+                });
+                }else{
+                   Ext.each(store.data.items, function(rec){
+                    if(rec.data.id == id){
+                        controller.resetOrderValues();
+                        store.remove(rec);
+                    }
+                  });
+                }
+    },
+
+    onBooksGridCellDblClick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {
+        console.log(record);
     },
 
     getFormValues: function() {
@@ -258,9 +362,12 @@ Ext.define('W3D5_Project.controller.MainController', {
         var grid = Ext.getCmp('BooksGrid');
         var menu = Ext.getCmp('MenuPanel');
         var tab = menu.activeTab;
+        var gridPanel = Ext.getCmp('GenreAll');
+
+        gridPanel.setTitle(cat.text);
         store.clearFilter();
         grid.getView().refresh();
-        if(cat.title == 'All Books'){
+        if(cat.text == 'All Books'){
              if(tab.title=='Best Seller'){
             store.filter('bestseller','1');
         }else if(tab.title=='On Sale'){
@@ -277,6 +384,84 @@ Ext.define('W3D5_Project.controller.MainController', {
             store.filter('genre',cat.text);
         }
         }
+
+    },
+
+    enableCategories: function() {
+        var menu = Ext.getCmp('CategoriesMenu');
+        Ext.each(menu.items.items,function(item){
+           if(item.xtype=='menuitem'){
+               item.enable();
+           }
+        });
+    },
+
+    getOrderValues: function() {
+        var store = Ext.getStore('OrderStore');
+        var userid = Ext.getCmp('OrderUId').getValue();
+        var username = Ext.getCmp('OrderUName').getValue();
+        var bookid = Ext.getCmp('OrderBId').getValue();
+        var booktitle = Ext.getCmp('OrderBTitle').getValue();
+        var bookprice = Ext.getCmp('OrderBPrice').getValue();
+        var bookquantity = Ext.getCmp('OrderBQty').getValue();
+        var booktotal = Ext.getCmp('OrderBTotal').getValue();
+        var remarks = Ext.getCmp('OrderRemarks').getValue();
+        var date = Ext.getCmp('OrderDate').getValue();
+
+
+        if (store.getCount() > 0)
+        {
+            var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.
+            store.each(function(rec) // go through all the records
+                       {
+                           maxId = Math.max(maxId, rec.get('id'));
+                       });
+        }
+
+        id = maxId + 1;
+
+        var order = {
+                            id: id,
+                            userid: userid,
+                            username: username,
+                            bookid: bookid,
+                            booktitle: booktitle,
+                            bookprice: bookprice,
+                            bookquantity: bookquantity,
+                            booktotal: booktotal,
+                            remarks: remarks,
+                            date: date
+                  };
+
+        return order;
+    },
+
+    setOrderValues: function(order) {
+
+                Ext.getCmp('OrderId').setValue(order.id);
+                Ext.getCmp('OrderUId').setValue(order.userid);
+                Ext.getCmp('OrderUName').setValue(order.username);
+                Ext.getCmp('OrderBId').setValue(order.bookid);
+                Ext.getCmp('OrderBTitle').setValue(order.booktitle);
+                Ext.getCmp('OrderBPrice').setValue(order.bookprice);
+                Ext.getCmp('OrderBQty').setValue(order.bookquantity);
+                Ext.getCmp('OrderBTotal').setValue(order.booktotal);
+                Ext.getCmp('OrderRemarks').setValue(order.remarks);
+                Ext.getCmp('OrderDate').setValue(order.date);
+    },
+
+    resetOrderValues: function() {
+
+        Ext.getCmp('OrderId').setValue('');
+        Ext.getCmp('OrderUId').setValue('');
+        Ext.getCmp('OrderUName').setValue('');
+        Ext.getCmp('OrderBId').setValue('');
+        Ext.getCmp('OrderBTitle').setValue('');
+        Ext.getCmp('OrderBPrice').setValue('');
+        Ext.getCmp('OrderBQty').setValue('');
+        Ext.getCmp('OrderBTotal').setValue('');
+        Ext.getCmp('OrderRemarks').setValue('');
+        Ext.getCmp('OrderDate').setValue('');
 
     },
 
@@ -314,6 +499,27 @@ Ext.define('W3D5_Project.controller.MainController', {
             },
             "#HorrorCat": {
                 click: this.onHorrorCatClick
+            },
+            "#AllBooksCat": {
+                click: this.onAllBooksCatClick
+            },
+            "#ConfigOrderGrid": {
+                selectionchange: this.onConfigOrderGridSelectionChange
+            },
+            "#OrderReset": {
+                click: this.onOrderResetClick
+            },
+            "#OrderCreate": {
+                click: this.onOrderCreateClick
+            },
+            "#OrderUpdate": {
+                click: this.onOrderUpdateClick
+            },
+            "#OrderDelete": {
+                click: this.onOrderDeleteClick
+            },
+            "#BooksGrid": {
+                celldblclick: this.onBooksGridCellDblClick
             }
         });
     }

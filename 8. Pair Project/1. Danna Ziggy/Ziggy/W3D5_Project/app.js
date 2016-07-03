@@ -23,12 +23,14 @@ Ext.application({
     models: [
         'BookModel',
         'SearchModel',
-        'GenreModel'
+        'GenreModel',
+        'OrderModel'
     ],
     stores: [
         'BookStore',
         'SearchStore',
-        'GenreStore'
+        'GenreStore',
+        'OrderStore'
     ],
     views: [
         'MainViewport'

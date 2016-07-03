@@ -19,6 +19,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
     requires: [
         'Ext.menu.Menu',
         'Ext.menu.Item',
+        'Ext.toolbar.Spacer',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
         'Ext.form.Panel',
@@ -31,7 +32,6 @@ Ext.define('W3D5_Project.view.MainViewport', {
         'Ext.form.FieldContainer',
         'Ext.form.field.Display',
         'Ext.form.field.TextArea',
-        'Ext.toolbar.Spacer',
         'Ext.form.field.Checkbox',
         'Ext.form.field.Number'
     ],
@@ -60,6 +60,16 @@ Ext.define('W3D5_Project.view.MainViewport', {
                     collapsible: true,
                     title: 'Categories',
                     items: [
+                        {
+                            xtype: 'menuitem',
+                            id: 'AllBooksCat',
+                            itemId: 'AllBooksCat',
+                            text: 'All Books'
+                        },
+                        {
+                            xtype: 'tbspacer',
+                            height: 14
+                        },
                         {
                             xtype: 'menuitem',
                             id: 'RomanceCat',
@@ -131,7 +141,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                     emptyText: 'Search Title',
                                                     displayField: 'title',
                                                     queryMode: 'local',
-                                                    store: 'SearchStore',
+                                                    store: 'BookStore',
                                                     valueField: 'id'
                                                 }
                                             ]
@@ -978,6 +988,334 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                             align: 'center',
                                                             dataIndex: 'status',
                                                             text: 'Status'
+                                                        }
+                                                    ],
+                                                    viewConfig: {
+                                                        formBind: false,
+                                                        enableTextSelection: true
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    xtype: 'panel',
+                                    id: 'MenuTab6',
+                                    itemId: 'MenuTab6',
+                                    title: 'Manage Orders',
+                                    layout: {
+                                        type: 'vbox',
+                                        align: 'stretch'
+                                    },
+                                    items: [
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            height: 381,
+                                            id: 'OrdersForm',
+                                            itemId: 'OrdersForm',
+                                            bodyPadding: 10,
+                                            title: 'Manage Orders',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'fieldcontainer',
+                                                    flex: 6,
+                                                    height: 212,
+                                                    width: 262,
+                                                    fieldLabel: 'Order Info',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'container',
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    flex: 0,
+                                                                    id: 'OrderId',
+                                                                    itemId: 'OrderId',
+                                                                    fieldLabel: 'Id'
+                                                                },
+                                                                {
+                                                                    xtype: 'combobox',
+                                                                    flex: 0,
+                                                                    id: 'OrderUId',
+                                                                    itemId: 'OrderUId',
+                                                                    fieldLabel: 'User Id'
+                                                                },
+                                                                {
+                                                                    xtype: 'combobox',
+                                                                    id: 'OrderUName',
+                                                                    itemId: 'OrderUName',
+                                                                    fieldLabel: 'User Name:'
+                                                                },
+                                                                {
+                                                                    xtype: 'combobox',
+                                                                    flex: 0,
+                                                                    id: 'OrderBId',
+                                                                    itemId: 'OrderBId',
+                                                                    fieldLabel: 'Book Id',
+                                                                    displayField: 'id',
+                                                                    queryMode: 'local',
+                                                                    store: 'BookStore',
+                                                                    valueField: 'id'
+                                                                },
+                                                                {
+                                                                    xtype: 'combobox',
+                                                                    flex: 0,
+                                                                    id: 'OrderBTitle',
+                                                                    itemId: 'OrderBTitle',
+                                                                    fieldLabel: 'Book Title',
+                                                                    displayField: 'title',
+                                                                    queryMode: 'local',
+                                                                    store: 'BookStore',
+                                                                    valueField: 'title'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            flex: 0,
+                                                            width: 26
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'OrderBPrice',
+                                                                    itemId: 'OrderBPrice',
+                                                                    fieldLabel: 'Book Price'
+                                                                },
+                                                                {
+                                                                    xtype: 'numberfield',
+                                                                    id: 'OrderBQty',
+                                                                    itemId: 'OrderBQty',
+                                                                    fieldLabel: 'Quantity'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'OrderBTotal',
+                                                                    itemId: 'OrderBTotal',
+                                                                    fieldLabel: 'Total Price'
+                                                                },
+                                                                {
+                                                                    xtype: 'textareafield',
+                                                                    id: 'OrderRemarks',
+                                                                    itemId: 'OrderRemarks',
+                                                                    fieldLabel: 'Remarks'
+                                                                },
+                                                                {
+                                                                    xtype: 'textfield',
+                                                                    id: 'OrderDate',
+                                                                    itemId: 'OrderDate',
+                                                                    fieldLabel: 'Date'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    flex: 1,
+                                                    height: 60,
+                                                    layout: 'hbox',
+                                                    items: [
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'OrderReset',
+                                                            itemId: 'OrderReset',
+                                                            width: 100,
+                                                            text: 'Reset'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            height: 38,
+                                                            width: 291
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'OrderCreate',
+                                                            itemId: 'OrderCreate',
+                                                            width: 100,
+                                                            text: 'Create'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 14
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'OrderUpdate',
+                                                            itemId: 'OrderUpdate',
+                                                            width: 100,
+                                                            text: 'Update'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 14
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 38,
+                                                            id: 'OrderDelete',
+                                                            itemId: 'OrderDelete',
+                                                            width: 100,
+                                                            text: 'Delete'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 10
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    flex: 1,
+                                                    height: 31,
+                                                    layout: 'hbox',
+                                                    items: [
+                                                        {
+                                                            xtype: 'textfield',
+                                                            id: 'OrderSearch',
+                                                            itemId: 'OrderSearch',
+                                                            width: 522,
+                                                            fieldLabel: '',
+                                                            emptyText: 'Search Title'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 10
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 27,
+                                                            id: 'OResetBtn',
+                                                            itemId: 'OResetBtn',
+                                                            width: 89,
+                                                            text: 'Reset'
+                                                        },
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            width: 10
+                                                        },
+                                                        {
+                                                            xtype: 'button',
+                                                            height: 27,
+                                                            id: 'OSearchBtn',
+                                                            itemId: 'OSearchBtn',
+                                                            width: 89,
+                                                            text: 'Search'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'form',
+                                            flex: 1,
+                                            height: 508,
+                                            id: 'ConfigOrder',
+                                            itemId: 'ConfigOrder',
+                                            layout: 'fit',
+                                            bodyPadding: 10,
+                                            title: 'Orders Information',
+                                            items: [
+                                                {
+                                                    xtype: 'gridpanel',
+                                                    height: 290,
+                                                    id: 'ConfigOrderGrid',
+                                                    itemId: 'ConfigOrderGrid',
+                                                    title: '',
+                                                    store: 'OrderStore',
+                                                    columns: [
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 111,
+                                                            align: 'center',
+                                                            dataIndex: 'id',
+                                                            text: 'Id'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 130,
+                                                            resizable: false,
+                                                            align: 'center',
+                                                            dataIndex: 'userid',
+                                                            text: 'User Id'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 209,
+                                                            align: 'center',
+                                                            dataIndex: 'username',
+                                                            text: 'User Name'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 133,
+                                                            align: 'center',
+                                                            dataIndex: 'bookid',
+                                                            text: 'Book Id'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 272,
+                                                            align: 'center',
+                                                            dataIndex: 'booktitle',
+                                                            text: 'Book Title'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 0,
+                                                            align: 'center',
+                                                            dataIndex: 'bookprice',
+                                                            text: 'Book Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            align: 'center',
+                                                            dataIndex: 'bookquantity',
+                                                            text: 'Quantity'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            align: 'center',
+                                                            dataIndex: 'booktotal',
+                                                            text: 'Total Price'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 203,
+                                                            align: 'center',
+                                                            dataIndex: 'remarks',
+                                                            text: 'Remarks'
+                                                        },
+                                                        {
+                                                            xtype: 'gridcolumn',
+                                                            width: 170,
+                                                            align: 'center',
+                                                            dataIndex: 'date',
+                                                            text: 'Date'
                                                         }
                                                     ],
                                                     viewConfig: {

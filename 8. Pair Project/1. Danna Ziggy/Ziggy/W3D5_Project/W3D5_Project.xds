@@ -38,7 +38,8 @@
         "store": [
             "5b9469a3-c800-4cc2-b681-5db3b31a5e8b",
             "f1af51f0-7b80-4140-945d-783026ecaab0",
-            "8caa35e4-360a-436d-ae6d-001e4d654258"
+            "8caa35e4-360a-436d-ae6d-001e4d654258",
+            "d638337f-176c-451e-ab4a-dd8dfa8c5e0b"
         ],
         "controller": [
             "54fd7f6b-5dad-4f44-a138-925ce01e0b8c"
@@ -46,7 +47,8 @@
         "model": [
             "b1b86a5c-3e49-4618-8293-69478ff47570",
             "c78a9268-dd51-4799-be8a-b8d5d9c51e4c",
-            "67300351-91d6-4f26-a05e-fd996b6a4a95"
+            "67300351-91d6-4f26-a05e-fd996b6a4a95",
+            "aefd26b6-8899-4218-9b9a-afb7cbdd2254"
         ],
         "resource": [
             "2e4adf16-d785-4d01-b7f4-822fe946c4c2"
