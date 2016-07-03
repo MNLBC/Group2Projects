@@ -100,8 +100,8 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                 {
                                     xtype: 'hiddenfield',
                                     flex: 1,
-                                    id: 'UserIdFIeld',
-                                    itemId: 'UserIdFIeld',
+                                    id: 'UserIdField',
+                                    itemId: 'UserIdField',
                                     fieldLabel: 'Label'
                                 },
                                 {

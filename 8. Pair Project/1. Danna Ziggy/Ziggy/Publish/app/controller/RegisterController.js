@@ -80,14 +80,6 @@ Ext.define('W3D5_Project.controller.RegisterController', {
                     }
                     this.loginWin.show();
                     this.loginWin.unmask();
-                         if(Ext.isEmpty(this.mainWin)){
-                 this.mainWin.hide();
-                 this.mainWin.mask();
-             }
-            if(Ext.isEmpty(this.registerWin)){
-                 this.registerWin.hide();
-                 this.registerWin.mask();
-             }
                 }
             }
         });

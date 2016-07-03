@@ -121,8 +121,8 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fieldLabel": "Label",
-                                "id": "UserIdFIeld",
-                                "itemId": "UserIdFIeld",
+                                "id": "UserIdField",
+                                "itemId": "UserIdField",
                                 "layout|flex": 1
                             },
                             "name": "MyHiddenField1",

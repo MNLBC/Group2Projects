@@ -37,7 +37,7 @@ Ext.define('W3D5_Project.controller.LoginController', {
             this.mainWin.show();
             this.mainWin.unmask();
             Ext.getCmp('UserNameField').setValue('Welcome! ' + username);
-            Ext.getCmp('UserNameId').setValue(id);
+            Ext.getCmp('UserIdField').setValue(id);
 
             if(username=='admin'){
                 Ext.getCmp('MenuPanel').items.items[3].enable();
@@ -49,14 +49,6 @@ Ext.define('W3D5_Project.controller.LoginController', {
                 Ext.getCmp('MenuPanel').items.items[5].disable();
             }
 
-                 if(Ext.isEmpty(this.loginWin)){
-                 this.loginWin.hide();
-                 this.loginWin.mask();
-             }
-            if(Ext.isEmpty(this.registerWin)){
-                 this.registerWin.hide();
-                 this.registerWin.mask();
-             }
         }else{
             Ext.MessageBox.show({
                 title: 'Failed Login',
@@ -75,14 +67,6 @@ Ext.define('W3D5_Project.controller.LoginController', {
         }
         this.registerWin.show();
         this.registerWin.unmask();
-        if(Ext.isEmpty(this.loginWin)){
-                         this.loginWin.hide();
-                         this.loginWin.mask();
-                     }
-                    if(Ext.isEmpty(this.mainWin)){
-                         this.mainWin.hide();
-                         this.mainWin.mask();
-                     }
     },
 
     init: function(application) {
