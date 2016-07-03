@@ -19,6 +19,8 @@ Ext.define('MedicineInvoicingSystem.view.loginViewport', {
 
     requires: [
         'MedicineInvoicingSystem.view.loginViewportViewModel',
+        'Ext.form.Label',
+        'Ext.toolbar.Spacer',
         'Ext.form.Panel',
         'Ext.form.field.Text',
         'Ext.button.Button'
@@ -27,6 +29,8 @@ Ext.define('MedicineInvoicingSystem.view.loginViewport', {
     viewModel: {
         type: 'loginviewport'
     },
+    id: 'loginview',
+    itemId: 'loginview',
 
     layout: {
         type: 'vbox',
@@ -34,6 +38,22 @@ Ext.define('MedicineInvoicingSystem.view.loginViewport', {
         pack: 'center'
     },
     items: [
+        {
+            xtype: 'label',
+            flex: 0,
+            style: 'font: normal 50px calibri;',
+            text: '藥店進銷存管理系統'
+        },
+        {
+            xtype: 'label',
+            style: 'font: normal 15px calibri;',
+            text: 'Pharmacy Invoicing Management System'
+        },
+        {
+            xtype: 'tbspacer',
+            height: 66,
+            width: 62
+        },
         {
             xtype: 'form',
             id: 'loginForm',

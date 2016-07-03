@@ -58,6 +58,12 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
         },
         "#btnremove": {
             click: 'onRemoveClick'
+        },
+        "#cutomerlogout": {
+            click: 'onCutomerLogoutClick'
+        },
+        "#pharmacistlogout": {
+            click: 'onPharmacistLogoutClick'
         }
     },
 
@@ -117,13 +123,20 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
             password: password
         }];
 
-        if(form.isValid()){
-        store.add(userObj);
-        Ext.getCmp('registerwin').close();
-        Ext.Msg.alert('Succes', 'Register Successful!');
+        var regexemail = new RegExp('/^([A-Za-z0-9_.]+)@([A-Za-z0-9]+).([A-Za-z0-9]+)$/');
+        if(regexemail.test(email)){
+            if(form.isValid()){
+            store.add(userObj);
+            Ext.getCmp('registerwin').close();
+            Ext.Msg.alert('Succes', 'Register Successful!');
+            }else{
+                Ext.Msg.alert('Warning', 'Please input required fields');
+            }
         }else{
-            Ext.Msg.alert('Warning', 'Please input required fields');
+            Ext.getCmp('email').markInvalid('Invalid email');
         }
+
+
 
     },
 
@@ -244,7 +257,14 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
         var sub = price * qty;
         var id = selectedrec.data.id;
 
-        var exists = true;
+        if(qty > selectedrec.data.quantity || qty <= 0){
+            if(selectedrec.data.quantity == 0){
+                Ext.Msg.alert('Warning', 'Medicine out of stock');
+            }else{
+                    Ext.Msg.alert('Warning', 'Please input a value not exceeding ' + selectedrec.data.quantity);
+            }
+        }else{
+            var exists = true;
         if(Ext.isEmpty(store.data.items)){
             medObj = [{id:id,medicine: med,price: price,quantity : qty,subtotal: sub}];
             store.add(medObj);
@@ -265,6 +285,9 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
             store.add(medObj);
         }
         }
+        }
+
+
 
 
 
@@ -341,6 +364,14 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
                store.remove(record);
            }
         });
+    },
+
+    onCutomerLogoutClick: function(button, e, eOpts) {
+        Ext.getCmp('cutomerview').destroy();
+    },
+
+    onPharmacistLogoutClick: function(button, e, eOpts) {
+        Ext.getCmp('pharmacistview1').destroy();
     }
 
 });

@@ -33,6 +33,8 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
     viewModel: {
         type: 'customerviewport'
     },
+    id: 'cutomerview',
+    itemId: 'cutomerview',
 
     layout: {
         type: 'vbox',
@@ -50,26 +52,42 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
             },
             items: [
                 {
-                    xtype: 'textfield',
+                    xtype: 'container',
                     flex: 0,
-                    id: 'cutomersearch',
-                    itemId: 'cutomersearch',
-                    emptyText: 'Search',
-                    bind: {
-                        width: '50%'
-                    }
+                    width: '50%',
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch',
+                        pack: 'end'
+                    },
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            flex: 0,
+                            id: 'cutomersearch',
+                            itemId: 'cutomersearch',
+                            emptyText: 'Search',
+                            bind: {
+                                width: '50%'
+                            }
+                        }
+                    ]
                 },
                 {
                     xtype: 'container',
                     flex: 0,
+                    width: '50%',
                     layout: {
                         type: 'hbox',
-                        align: 'middle'
+                        align: 'middle',
+                        pack: 'end'
                     },
                     items: [
                         {
                             xtype: 'button',
-                            text: 'MyButton'
+                            id: 'cutomerlogout',
+                            itemId: 'cutomerlogout',
+                            text: 'Logout'
                         }
                     ]
                 }

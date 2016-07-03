@@ -33,7 +33,7 @@ Ext.define('MedicineInvoicingSystem.store.medicineStore', {
                     brandName: 'Biogesic',
                     price: 5.00,
                     expiryDate: '10/25/2018',
-                    quantity: 153
+                    quantity: 500
                 },
                 {
                     id: 2,
@@ -41,7 +41,7 @@ Ext.define('MedicineInvoicingSystem.store.medicineStore', {
                     brandName: 'Generic',
                     price: 2.50,
                     expiryDate: '6/24/2018',
-                    quantity: 38
+                    quantity: 500
                 },
                 {
                     id: 3,
@@ -57,7 +57,7 @@ Ext.define('MedicineInvoicingSystem.store.medicineStore', {
                     brandName: 'Advil',
                     price: 10.00,
                     expiryDate: '9/6/2017',
-                    quantity: 357
+                    quantity: 500
                 },
                 {
                     id: 5,

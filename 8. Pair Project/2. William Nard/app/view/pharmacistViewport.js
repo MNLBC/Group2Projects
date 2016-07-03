@@ -19,35 +19,64 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
 
     requires: [
         'MedicineInvoicingSystem.view.pharmacistViewportViewModel',
-        'Ext.form.field.Text',
+        'Ext.button.Button',
         'Ext.grid.Panel',
         'Ext.grid.column.Number',
         'Ext.grid.column.Date',
         'Ext.grid.View',
-        'Ext.button.Button',
         'Ext.toolbar.Spacer',
-        'Ext.form.Panel'
+        'Ext.form.Panel',
+        'Ext.form.field.Date'
     ],
 
     viewModel: {
         type: 'pharmacistviewport'
     },
+    id: 'pharmacistview1',
+    itemId: 'pharmacistview1',
 
     items: [
         {
             xtype: 'container',
             layout: {
                 type: 'hbox',
-                align: 'stretch',
-                pack: 'center'
+                align: 'stretch'
             },
             items: [
                 {
-                    xtype: 'textfield',
-                    id: 'famacissearch',
-                    itemId: 'famacissearch',
-                    fieldLabel: '',
-                    emptyText: 'Search'
+                    xtype: 'container',
+                    width: '50%',
+                    layout: {
+                        type: 'hbox',
+                        align: 'stretch',
+                        pack: 'end'
+                    },
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            id: 'famacissearch',
+                            itemId: 'famacissearch',
+                            fieldLabel: '',
+                            emptyText: 'Search'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'container',
+                    width: '50%',
+                    layout: {
+                        type: 'hbox',
+                        align: 'middle',
+                        pack: 'end'
+                    },
+                    items: [
+                        {
+                            xtype: 'button',
+                            id: 'pharmacistlogout',
+                            itemId: 'pharmacistlogout',
+                            text: 'Logout'
+                        }
+                    ]
                 }
             ]
         },
@@ -60,33 +89,35 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
             columns: [
                 {
                     xtype: 'numbercolumn',
+                    id: 'pharmacistview',
+                    itemId: 'pharmacistview',
                     dataIndex: 'id',
-                    text: 'Number'
+                    text: 'ID'
                 },
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'medicineName',
-                    text: 'Date'
+                    text: 'Medicine Name'
                 },
                 {
                     xtype: 'gridcolumn',
                     dataIndex: 'brandName',
-                    text: 'Boolean'
+                    text: 'Brand Name'
                 },
                 {
                     xtype: 'numbercolumn',
                     dataIndex: 'price',
-                    text: 'Number'
+                    text: 'Price'
                 },
                 {
                     xtype: 'numbercolumn',
                     dataIndex: 'quantity',
-                    text: 'Number'
+                    text: 'Quantity'
                 },
                 {
                     xtype: 'datecolumn',
                     dataIndex: 'expiryDate',
-                    text: 'Date'
+                    text: 'Expiration Date'
                 }
             ]
         },
@@ -163,12 +194,11 @@ Ext.define('MedicineInvoicingSystem.view.pharmacistViewport', {
                     inputType: 'number'
                 },
                 {
-                    xtype: 'textfield',
+                    xtype: 'datefield',
                     anchor: '100%',
                     id: 'textexpdate',
                     itemId: 'textexpdate',
-                    fieldLabel: 'Expiry Date',
-                    inputType: 'date'
+                    fieldLabel: 'Expiry Date'
                 }
             ]
         },
