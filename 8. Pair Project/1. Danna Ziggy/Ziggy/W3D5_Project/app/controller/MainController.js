@@ -91,8 +91,11 @@ Ext.define('W3D5_Project.controller.MainController', {
     onConfigBooksGridSelectionChange: function() {
         var controller = W3D5_Project.app.getController('MainController');
         var grid = Ext.getCmp('ConfigBooksGrid');
-        var selected = grid.getSelectionModel().selected.items[0].data;
-        controller.setFormValues(selected);
+        var selected;
+        if(!Ext.isEmpty(grid.getSelectionModel().selected)){
+            selected = grid.getSelectionModel().selected.items[0].data;
+            controller.setFormValues(selected);
+        }
     },
 
     onSearchBtnClick: function() {
@@ -124,6 +127,21 @@ Ext.define('W3D5_Project.controller.MainController', {
         }else if(newCard.title=='On Sale'){
             store.filter('onsale','1');
         }
+    },
+
+    onRomanceCatClick: function(item, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.changeCategory(item);
+    },
+
+    onMysteryCatClick: function(item, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.changeCategory(item);
+    },
+
+    onHorrorCatClick: function(item, e, eOpts) {
+        var controller = W3D5_Project.app.getController('MainController');
+        controller.changeCategory(item);
     },
 
     getFormValues: function() {
@@ -235,6 +253,33 @@ Ext.define('W3D5_Project.controller.MainController', {
 
     },
 
+    changeCategory: function(cat) {
+        var store = Ext.getStore('BookStore');
+        var grid = Ext.getCmp('BooksGrid');
+        var menu = Ext.getCmp('MenuPanel');
+        var tab = menu.activeTab;
+        store.clearFilter();
+        grid.getView().refresh();
+        if(cat.title == 'All Books'){
+             if(tab.title=='Best Seller'){
+            store.filter('bestseller','1');
+        }else if(tab.title=='On Sale'){
+            store.filter('onsale','1');
+        }
+        }else{
+           if(tab.title=='Best Seller'){
+            store.filter('bestseller','1');
+            store.filter('genre',cat.text);
+        }else if(tab.title=='On Sale'){
+            store.filter('onsale','1');
+            store.filter('genre',cat.text);
+        }else{
+            store.filter('genre',cat.text);
+        }
+        }
+
+    },
+
     init: function(application) {
         this.control({
             "#BookCreate": {
@@ -260,6 +305,15 @@ Ext.define('W3D5_Project.controller.MainController', {
             },
             "#MenuPanel": {
                 tabchange: this.onMenuPanelTabChange
+            },
+            "#RomanceCat": {
+                click: this.onRomanceCatClick
+            },
+            "#MysteryCat": {
+                click: this.onMysteryCatClick
+            },
+            "#HorrorCat": {
+                click: this.onHorrorCatClick
             }
         });
     }

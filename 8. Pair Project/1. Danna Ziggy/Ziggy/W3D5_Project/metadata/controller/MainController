@@ -144,8 +144,11 @@
                 "implHandler": [
                     "var controller = W3D5_Project.app.getController('MainController');",
                     "var grid = Ext.getCmp('ConfigBooksGrid');",
-                    "var selected = grid.getSelectionModel().selected.items[0].data;",
-                    "controller.setFormValues(selected);"
+                    "var selected;",
+                    "if(!Ext.isEmpty(grid.getSelectionModel().selected)){",
+                    "    selected = grid.getSelectionModel().selected.items[0].data;",
+                    "    controller.setFormValues(selected);",
+                    "}"
                 ],
                 "name": "selectionchange",
                 "scope": "me"
@@ -398,6 +401,120 @@
             },
             "name": "onMenuPanelTabChange",
             "designerId": "3fee6b03-09c4-4cc5-b258-e84e56f2b1e4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#RomanceCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem",
+                "fn": "onRomanceCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onRomanceCatClick",
+            "designerId": "76743211-c1c1-4abe-8859-574ee464c484"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#MysteryCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem1",
+                "fn": "onMysteryCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onMysteryCatClick",
+            "designerId": "77635d7b-644a-46c2-a5eb-1d3b3ad4cac3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#HorrorCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem2",
+                "fn": "onHorrorCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onHorrorCatClick",
+            "designerId": "f12a6eb1-196e-447e-ac26-15cc65f15e11"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "cat"
+                ],
+                "fn": "changeCategory",
+                "implHandler": [
+                    "var store = Ext.getStore('BookStore');",
+                    "var grid = Ext.getCmp('BooksGrid');",
+                    "var menu = Ext.getCmp('MenuPanel');",
+                    "var tab = menu.activeTab;",
+                    "store.clearFilter();",
+                    "grid.getView().refresh();",
+                    "if(cat.title == 'All Books'){",
+                    "     if(tab.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "}else if(tab.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "}",
+                    "}else{",
+                    "   if(tab.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "    store.filter('genre',cat.text);",
+                    "}else if(tab.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "    store.filter('genre',cat.text);",
+                    "}else{",
+                    "    store.filter('genre',cat.text);",
+                    "}",
+                    "}",
+                    ""
+                ]
+            },
+            "name": "changeCategory",
+            "designerId": "2ef4697c-a740-4655-9fe5-966936f9b4d5"
         }
     ]
 }
