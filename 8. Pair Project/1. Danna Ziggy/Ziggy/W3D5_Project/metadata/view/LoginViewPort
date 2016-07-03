@@ -76,6 +76,7 @@
                                         "emptyText": "User Name",
                                         "fieldLabel": "",
                                         "id": "loginusername",
+                                        "itemId": "loginusername",
                                         "layout|flex": 0,
                                         "width": 263
                                     },

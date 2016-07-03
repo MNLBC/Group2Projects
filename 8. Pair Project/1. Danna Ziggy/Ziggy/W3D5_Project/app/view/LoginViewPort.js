@@ -65,6 +65,7 @@ Ext.define('W3D5_Project.view.LoginViewPort', {
                                             xtype: 'textfield',
                                             flex: 0,
                                             id: 'loginusername',
+                                            itemId: 'loginusername',
                                             width: 263,
                                             fieldLabel: '',
                                             emptyText: 'User Name'

@@ -21,7 +21,7 @@ Ext.define('W3D5_Project.controller.ManageUser', {
     onUserCreateClick: function() {
         var controller = W3D5_Project.app.getController('ManageUser');
         var store = Ext.getStore('UserStore');
-        var book = controller.getUserFormValues();
+        var user = controller.getUserFormValues();
         store.add(user);
         controller.resetFormValues();
     },
@@ -29,7 +29,7 @@ Ext.define('W3D5_Project.controller.ManageUser', {
     onUserUpdateClick: function() {
         var controller = W3D5_Project.app.getController('ManageUser');
         var store = Ext.getStore('UserStore');
-        var book = controller.getUserFormValues();
+        var user = controller.getUserFormValues();
         var id = Ext.getCmp('id').getValue();
         var grid = Ext.getCmp('userinfogrid');
 
@@ -46,7 +46,7 @@ Ext.define('W3D5_Project.controller.ManageUser', {
                 rec.data.fname = user.fname;
                 rec.data.lname = user.lname;
                 rec.data.email = user.email;
-                rec.data.address = user.add;
+                rec.data.address = user.address;
                 rec.data.username = user.username;
                 rec.data.password = user.password;
             }
@@ -90,12 +90,14 @@ Ext.define('W3D5_Project.controller.ManageUser', {
         if(Ext.isEmpty(searchVal)){
             store.clearFilter();
         }else{
-            store.filter('userfname', searchVal);
+            store.filter('fname', searchVal);
         }
     },
 
     onUserResetSearchClick: function() {
-
+        Ext.getCmp('UserSearchBar').setValue('');
+        var store = Ext.getStore('UserStore');
+        store.clearFilter();
     },
 
     onUserinfogridSelectionChange: function() {
@@ -128,12 +130,13 @@ Ext.define('W3D5_Project.controller.ManageUser', {
 
 
         var user = {
-            "fname":"fname",
-            "lname":"lname",
-            "email":"email",
-            "address":"address",
-            "username":"username",
-            "password":"password"
+            "id":id,
+            "fname":fname,
+            "lname":lname,
+            "email":email,
+            "address":address,
+            "username":username,
+            "password":password
         };
 
         return user;
@@ -141,18 +144,19 @@ Ext.define('W3D5_Project.controller.ManageUser', {
     },
 
     setUserFormValues: function(user) {
-
-        Ext.getCmp('userfname').setValue(user.fname);
-        Ext.getCmp('userlname').setValue(user.lname);
-        Ext.getCmp('useremail').setValue(user.email);
-        Ext.getCmp('userusername').setValue(user.userName);
-        Ext.getCmp('userpassword').setValue(user.password);
-        Ext.getCmp('useraddress').setValue(user.add);
+        Ext.getCmp('id').setValue(user.id);
+        Ext.getCmp('fname').setValue(user.fname);
+        Ext.getCmp('lname').setValue(user.lname);
+        Ext.getCmp('email').setValue(user.email);
+        Ext.getCmp('username').setValue(user.username);
+        Ext.getCmp('password').setValue(user.password);
+        Ext.getCmp('address').setValue(user.address);
 
 
     },
 
     UserResetFormValues: function() {
+        Ext.getCmp('id').setValue('');
         Ext.getCmp('fname').setValue('');
         Ext.getCmp('lname').setValue('');
         Ext.getCmp('email').setValue('');
@@ -177,8 +181,10 @@ Ext.define('W3D5_Project.controller.ManageUser', {
             "#UserResetForm": {
                 click: this.onUserResetFormClick
             },
+            "#UserSearch": {
+                click: this.onUserSearchClick
+            },
             "#UserResetSearch": {
-                click: this.onUserSearchClick,
                 click: this.onUserResetSearchClick
             },
             "#userinfogrid": {
