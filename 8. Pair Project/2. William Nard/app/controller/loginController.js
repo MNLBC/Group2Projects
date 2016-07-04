@@ -102,7 +102,7 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
     onCancelClick: function(button, e, eOpts) {
         // var loginview = Ext.create('MedicineInvoicingSystem.view.loginViewport');
         // loginview.show();
-        Ext.getCmp('registerwin').close();
+        Ext.getCmp('registerwin').destroy();
 
     },
 
@@ -123,7 +123,7 @@ Ext.define('MedicineInvoicingSystem.controller.loginController', {
             password: password
         }];
 
-        var regexemail = new RegExp('/^([A-Za-z0-9_.]+)@([A-Za-z0-9]+).([A-Za-z0-9]+)$/');
+        var regexemail = new RegExp("^([A-Za-z0-9_.]+)@([A-Za-z0-9]+).([A-Za-z0-9]+)$");
         if(regexemail.test(email)){
             if(form.isValid()){
             store.add(userObj);

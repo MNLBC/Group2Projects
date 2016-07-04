@@ -278,16 +278,17 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                             items: [
                                 {
                                     xtype: 'label',
-                                    height: 16,
+                                    height: 37,
+                                    style: 'font-size: 30px;\nmargin-top: 20px;',
                                     width: 53,
-                                    text: 'Something Something Famasi'
+                                    text: 'Pharmacy Invoicing Management System'
                                 },
                                 {
                                     xtype: 'label',
                                     flex: 1,
                                     id: 'labelDateTime',
                                     itemId: 'labelDateTime',
-                                    text: 'July 3, 2016'
+                                    text: 'July 4, 2016'
                                 },
                                 {
                                     xtype: 'label',
@@ -309,6 +310,7 @@ Ext.define('MedicineInvoicingSystem.view.customerViewport', {
                         },
                         {
                             xtype: 'container',
+                            style: 'margin-top: 20px;\nfont-size: 25px;',
                             width: '50%',
                             items: [
                                 {

@@ -41,7 +41,7 @@ Ext.define('MedicineInvoicingSystem.view.loginViewport', {
         {
             xtype: 'label',
             flex: 0,
-            style: 'font: normal 50px calibri;',
+            style: 'font: normal 50px calibri;\ncolor: blue;',
             text: '藥店進銷存管理系統'
         },
         {
