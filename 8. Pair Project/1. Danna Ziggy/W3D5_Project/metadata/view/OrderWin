@@ -1,0 +1,310 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "closeAction": "hide",
+        "container|align": "stretch",
+        "designer|userClassName": "OrderWin",
+        "height": 536,
+        "layout": "vbox",
+        "modal": true,
+        "title": "Order",
+        "width": 462
+    },
+    "name": "MyWindow",
+    "designerId": "03fd20e2-894f-4491-a016-6194c8006bc7",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer5",
+            "designerId": "a8a843c7-2917-4ba0-a040-8b36a9b5b3e6",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 244,
+                        "id": "BookWinImg",
+                        "itemId": "BookWinImg",
+                        "width": 201
+                    },
+                    "name": "MyImg",
+                    "designerId": "3bd01f94-a61b-40cf-b73c-87bce85360e4"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "layout": "vbox",
+                "layout|flex": 1
+            },
+            "name": "MyContainer6",
+            "designerId": "d8b3ba93-65b3-47cf-a32a-9688cb6a645b",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "autoScroll": true,
+                        "layout|flex": 1,
+                        "width": 314
+                    },
+                    "name": "MyContainer8",
+                    "designerId": "eaa1c28e-6216-4473-9ef2-1d212a682945",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Hidden",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Title",
+                                "id": "BookWinId",
+                                "itemId": "BookWinId",
+                                "value": [
+                                    "Book Title"
+                                ]
+                            },
+                            "name": "MyHiddenField",
+                            "designerId": "94af7b38-b200-4511-916e-8562815da6d5"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Title",
+                                "id": "BookWinTitle",
+                                "itemId": "BookWinTitle",
+                                "value": "Book Title"
+                            },
+                            "name": "MyDisplayField2",
+                            "designerId": "0994c474-d6a1-4899-89c7-1a690d7fe743"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Author",
+                                "id": "BookWinAuthor",
+                                "itemId": "BookWinAuthor",
+                                "value": "Book Author"
+                            },
+                            "name": "MyDisplayField3",
+                            "designerId": "960ebc25-104d-4f7a-8ae3-f438869892e4"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Publish Date",
+                                "id": "BookWinDate",
+                                "itemId": "BookWinDate",
+                                "value": "01/01/2001"
+                            },
+                            "name": "MyDisplayField4",
+                            "designerId": "4e67202c-3a23-4d14-9311-bd8bf46997d9"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Description",
+                                "id": "BookWinDesc",
+                                "itemId": "BookWinDesc",
+                                "value": "This is a book"
+                            },
+                            "name": "MyDisplayField5",
+                            "designerId": "06cad2fc-3aad-4586-8cd6-577aa7d57aa8"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Price",
+                                "id": "BookWinPrice",
+                                "itemId": "BookWinPrice",
+                                "value": "USD 50.00"
+                            },
+                            "name": "MyDisplayField6",
+                            "designerId": "b34ee6f3-8e8c-438a-b3ac-365863f9de00"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.Display",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "",
+                        "id": "BookWinBest",
+                        "itemId": "BookWinBest",
+                        "layout|flex": 0,
+                        "value": "Best Seller"
+                    },
+                    "name": "MyDisplayField7",
+                    "designerId": "7cd16af6-b87e-4ba0-84fa-2d6f901140ad"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "height": 51,
+                        "layout": "hbox",
+                        "layout|flex": 0
+                    },
+                    "name": "MyContainer7",
+                    "designerId": "2951846e-9d21-4d4c-8bcb-c44831c87da3",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "CheckBtn",
+                                "text": "Check-out",
+                                "width": 100
+                            },
+                            "name": "MyButton8",
+                            "designerId": "62b7edf2-8da9-47cf-b151-414d823a9b02"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1,
+                                "width": 45
+                            },
+                            "name": "MySpacer12",
+                            "designerId": "77e66d08-6605-47e5-9c6a-1a52206c61c3"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "BuyBtn",
+                                "text": "Buy",
+                                "width": 100
+                            },
+                            "name": "MyButton6",
+                            "designerId": "ce7a7329-bb94-4c5e-8227-9f89bb1a1a03"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1,
+                                "width": 45
+                            },
+                            "name": "MySpacer8",
+                            "designerId": "03b137c6-1013-427b-ae77-0c04dae2f54d"
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "id": "CancelBtn",
+                                "text": "Cancel",
+                                "width": 100
+                            },
+                            "name": "MyButton7",
+                            "designerId": "8a9b2d68-0ed8-49eb-b688-ef1744c4d49f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 10,
+                        "layout|flex": 0,
+                        "width": 10
+                    },
+                    "name": "MySpacer9",
+                    "designerId": "c91c5fc8-14f3-42ab-a456-f49dd7cccb88"
+                }
+            ]
+        }
+    ]
+}

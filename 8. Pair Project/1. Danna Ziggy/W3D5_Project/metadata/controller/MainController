@@ -1,0 +1,1250 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainController",
+        "id": "MainController"
+    },
+    "name": "MyController",
+    "designerId": "54fd7f6b-5dad-4f44-a138-925ce01e0b8c",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookCreate",
+                "designer|targetType": "MyButton",
+                "fn": "onBookCreateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('BookStore');",
+                    "var book = controller.getFormValues();",
+                    "store.add(book);",
+                    "controller.resetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookCreateClick",
+            "designerId": "5dffc869-c4f6-4a8c-98c7-ace513cd3539"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookUpdate",
+                "designer|targetType": "MyButton1",
+                "fn": "onBookUpdateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('BookStore');",
+                    "var book = controller.getFormValues();",
+                    "var id = Ext.getCmp('BookId').getValue();",
+                    "var grid = Ext.getCmp('ConfigBooksGrid');",
+                    "",
+                    "if(Ext.isEmpty(id)){",
+                    "    Ext.Msg.show({",
+                    "    title:'Status',",
+                    "    msg: 'Please select a record to update.',",
+                    "    buttons: Ext.Msg.OK,",
+                    "    icon: Ext.Msg.WARNING",
+                    "});",
+                    "}else{",
+                    "   Ext.each(store.data.items, function(rec){",
+                    "    if(rec.data.id == id){",
+                    "        rec.data.title = book.title;",
+                    "        rec.data.img = book.img;",
+                    "        rec.data.author = book.author;",
+                    "        rec.data.desc = book.desc;",
+                    "        rec.data.date = book.date;",
+                    "        rec.data.genre = book.genre;",
+                    "        rec.data.percent = book.percent;",
+                    "        rec.data.oprice = book.oprice;",
+                    "        rec.data.sprice = book.sprice;",
+                    "        rec.data.avail = book.avail;",
+                    "        rec.data.checked = book.checked;",
+                    "        rec.data.bestseller = book.bestseller;",
+                    "        rec.data.status = book.status;",
+                    "        rec.data.onsale = book.onsale;",
+                    "    }",
+                    "});",
+                    "}",
+                    "",
+                    "grid.getView().refresh();",
+                    "controller.resetFormValues();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookUpdateClick",
+            "designerId": "69714099-b0f7-4e61-b2ed-944884ee97da"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookDelete",
+                "designer|targetType": "MyButton2",
+                "fn": "onBookDeleteClick",
+                "implHandler": [
+                    "        var controller = W3D5_Project.app.getController('MainController');",
+                    "        var store = Ext.getStore('BookStore');",
+                    "        var id = Ext.getCmp('BookId').getValue();",
+                    "",
+                    "        if(Ext.isEmpty(id)){",
+                    "            Ext.Msg.show({",
+                    "            title:'Status',",
+                    "            msg: 'Please select a record to delete.',",
+                    "            buttons: Ext.Msg.OK,",
+                    "            icon: Ext.Msg.WARNING",
+                    "        });",
+                    "        }else{",
+                    "           Ext.each(store.data.items, function(rec){",
+                    "            if(rec.data.id == id){",
+                    "                controller.resetFormValues();",
+                    "                store.remove(rec);",
+                    "            }",
+                    "          });",
+                    "        }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookDeleteClick",
+            "designerId": "1af8c1f2-f7d0-404d-977a-c0d3dc8a2e6a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#ConfigBooksGrid",
+                "designer|targetType": "MyGridPanel4",
+                "fn": "onConfigBooksGridSelectionChange",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var grid = Ext.getCmp('ConfigBooksGrid');",
+                    "var selected;",
+                    "",
+                    "if(!Ext.isEmpty(grid.getSelectionModel().selected.items[0])){",
+                    "    selected = grid.getSelectionModel().selected.items[0].data;",
+                    "    controller.setFormValues(selected);",
+                    "}"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onConfigBooksGridSelectionChange",
+            "designerId": "efe46a60-dbc0-43c0-93dc-823a8fbaf6bd"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getFormValues",
+                "implHandler": [
+                    "var store = Ext.getStore('BookStore');",
+                    "var title = Ext.getCmp('BookTitle').getValue();",
+                    "var img = Ext.getCmp('BookCover').getValue();",
+                    "var author = Ext.getCmp('BookAuthor').getValue();",
+                    "var desc = Ext.getCmp('BookDesc').getValue();",
+                    "var date = Ext.getCmp('BookDate').getValue();",
+                    "var genre = Ext.getCmp('BookGenre').getValue();",
+                    "var percent = Ext.getCmp('BookPerc').getValue();",
+                    "var oprice = Ext.getCmp('BookOPrice').getValue();",
+                    "var sprice = Ext.getCmp('BookSPrice').getValue();",
+                    "var avail = Ext.getCmp('BookAvail').getValue();",
+                    "var checked = Ext.getCmp('BookCheck').getValue();",
+                    "var bestseller = Ext.getCmp('BookBest').getValue();",
+                    "var status,id,onsale;",
+                    "",
+                    "",
+                    "if (store.getCount() > 0)",
+                    "{",
+                    "    var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.",
+                    "    store.each(function(rec) // go through all the records",
+                    "               {",
+                    "                   maxId = Math.max(maxId, rec.get('id'));",
+                    "               });",
+                    "}",
+                    "",
+                    "id = maxId + 1;",
+                    "",
+                    "if((Ext.isEmpty(avail)||avail=='0')&&(Ext.isEmpty(checked)||checked=='0')){",
+                    "    status = 'Out of stock';",
+                    "}else if((Ext.isEmpty(avail)||avail=='0')&&!(Ext.isEmpty(checked)||checked=='0')){",
+                    "    status = 'Checked out';",
+                    "}else{",
+                    "    status = 'Available';",
+                    "}",
+                    "",
+                    "if(bestseller){",
+                    "    bestseller = '1';",
+                    "}else{",
+                    "    bestseller = '0';",
+                    "}",
+                    "",
+                    "if(Ext.isEmpty(sprice)){",
+                    "    onsale = '0';",
+                    "}else{",
+                    "    onsale = '1';",
+                    "}",
+                    "",
+                    "",
+                    "var book = {",
+                    "    id: id,",
+                    "    img: img,",
+                    "    title: title,",
+                    "    author: author,",
+                    "    desc: desc,",
+                    "    date: date,",
+                    "    genre: genre,",
+                    "    oprice: oprice,",
+                    "    sprice: sprice,",
+                    "    percent: percent,",
+                    "    onsale: onsale,",
+                    "    bestseller: bestseller,",
+                    "    avail: avail,",
+                    "    checked: checked,",
+                    "    status: status",
+                    "};",
+                    "",
+                    "return book;",
+                    ""
+                ]
+            },
+            "name": "getFormValues",
+            "designerId": "3366ad55-5913-4af1-a285-e35c1aba4e30"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "book"
+                ],
+                "fn": "setFormValues",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('BookTitle').setValue(book.title);",
+                    "Ext.getCmp('BookCover').setValue(book.img);",
+                    "Ext.getCmp('BookAuthor').setValue(book.author);",
+                    "Ext.getCmp('BookDesc').setValue(book.desc);",
+                    "Ext.getCmp('BookDate').setValue(book.date);",
+                    "Ext.getCmp('BookGenre').setValue(book.genre);",
+                    "Ext.getCmp('BookPerc').setValue(book.percent);",
+                    "Ext.getCmp('BookOPrice').setValue(book.oprice);",
+                    "Ext.getCmp('BookSPrice').setValue(book.sprice);",
+                    "Ext.getCmp('BookAvail').setValue(book.avail);",
+                    "Ext.getCmp('BookCheck').setValue(book.checked);",
+                    "Ext.getCmp('BookBest').setValue(book.bestseller);",
+                    "Ext.getCmp('BookId').setValue(book.id);",
+                    "Ext.getCmp('BookStatus').setValue(book.status);",
+                    ""
+                ]
+            },
+            "name": "setFormValues",
+            "designerId": "8fe19cc6-71a4-4d83-95e4-a758b44d9967"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetFormValues",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('BookTitle').setValue('');",
+                    "Ext.getCmp('BookCover').setValue('');",
+                    "Ext.getCmp('BookAuthor').setValue('');",
+                    "Ext.getCmp('BookDesc').setValue('');",
+                    "Ext.getCmp('BookDate').setValue('');",
+                    "Ext.getCmp('BookGenre').setValue('');",
+                    "Ext.getCmp('BookPerc').setValue('');",
+                    "Ext.getCmp('BookOPrice').setValue('');",
+                    "Ext.getCmp('BookSPrice').setValue('');",
+                    "Ext.getCmp('BookAvail').setValue('');",
+                    "Ext.getCmp('BookCheck').setValue('');",
+                    "Ext.getCmp('BookBest').setValue(0);",
+                    "Ext.getCmp('BookId').setValue('');",
+                    "Ext.getCmp('BookStatus').setValue('');",
+                    ""
+                ]
+            },
+            "name": "resetFormValues",
+            "designerId": "93927a9d-78cc-4fb6-9b34-5593d9daa0b1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "cat"
+                ],
+                "fn": "changeCategory",
+                "implHandler": [
+                    "var store = Ext.getStore('BookStore');",
+                    "var grid = Ext.getCmp('BooksGrid');",
+                    "var menu = Ext.getCmp('MenuPanel');",
+                    "var tab = menu.activeTab;",
+                    "var gridPanel = Ext.getCmp('GenreAll');",
+                    "",
+                    "gridPanel.setTitle(cat.text);",
+                    "store.clearFilter();",
+                    "grid.getView().refresh();",
+                    "if(cat.text == 'All Books'){",
+                    "     if(tab.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "}else if(tab.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "}",
+                    "}else{",
+                    "   if(tab.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "    store.filter('genre',cat.text);",
+                    "}else if(tab.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "    store.filter('genre',cat.text);",
+                    "}else{",
+                    "    store.filter('genre',cat.text);",
+                    "}",
+                    "}",
+                    ""
+                ]
+            },
+            "name": "changeCategory",
+            "designerId": "2ef4697c-a740-4655-9fe5-966936f9b4d5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "enableCategories",
+                "implHandler": [
+                    "var menu = Ext.getCmp('CategoriesMenu');",
+                    "Ext.each(menu.items.items,function(item){",
+                    "   if(item.xtype=='menuitem'){",
+                    "       item.enable();",
+                    "   }",
+                    "});"
+                ]
+            },
+            "name": "enableCategories",
+            "designerId": "ac4f6125-47ab-4720-b7f6-89c73c8ea156"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#SearchBtn",
+                "designer|targetType": "MyButton3",
+                "fn": "onSearchBtnClick",
+                "implHandler": [
+                    "var searchVal = Ext.getCmp('BookSearch').getValue();",
+                    " var store = Ext.getStore('BookStore');",
+                    "if(Ext.isEmpty(searchVal)){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "    store.filter('title', searchVal);",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onSearchBtnClick",
+            "designerId": "3527e95f-bb7c-422c-b80e-a3af6c230626"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BookReset",
+                "designer|targetType": "MyButton4",
+                "fn": "onBookResetClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.resetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBookResetClick",
+            "designerId": "32e7c613-20d4-4618-8401-e007d6742a8e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#ResetBtn",
+                "designer|targetType": "MyButton5",
+                "fn": "onResetBtnClick",
+                "implHandler": [
+                    "",
+                    "var store = Ext.getStore('BookStore');",
+                    "store.clearFilter();",
+                    "",
+                    "Ext.getCmp('BookSearch').setValue('');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onResetBtnClick",
+            "designerId": "53f81ea6-770a-4685-96d5-444c65761c31"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#MenuPanel",
+                "designer|params": [
+                    "tabPanel, newCard, oldCard, eOpts"
+                ],
+                "designer|targetType": "MyTabPanel",
+                "fn": "onMenuPanelTabChange",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('BookStore');",
+                    "var grid = Ext.getCmp('BooksGrid');",
+                    "var gridPanel = Ext.getCmp('GenreAll');",
+                    "",
+                    "gridPanel.setTitle('All Books');",
+                    "controller.enableCategories();",
+                    "store.clearFilter();",
+                    "grid.getView().refresh();",
+                    "if(newCard.title=='Best Seller'){",
+                    "    store.filter('bestseller','1');",
+                    "}else if(newCard.title=='On Sale'){",
+                    "    store.filter('onsale','1');",
+                    "}"
+                ],
+                "name": "tabchange",
+                "scope": "me"
+            },
+            "name": "onMenuPanelTabChange",
+            "designerId": "3fee6b03-09c4-4cc5-b258-e84e56f2b1e4"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#RomanceCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem",
+                "fn": "onRomanceCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);",
+                    "controller.enableCategories();",
+                    "item.disable();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onRomanceCatClick",
+            "designerId": "76743211-c1c1-4abe-8859-574ee464c484"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#MysteryCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem1",
+                "fn": "onMysteryCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);",
+                    "controller.enableCategories();",
+                    "item.disable();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onMysteryCatClick",
+            "designerId": "77635d7b-644a-46c2-a5eb-1d3b3ad4cac3"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#HorrorCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem2",
+                "fn": "onHorrorCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);",
+                    "controller.enableCategories();",
+                    "item.disable();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onHorrorCatClick",
+            "designerId": "f12a6eb1-196e-447e-ac26-15cc65f15e11"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#AllBooksCat",
+                "designer|params": [
+                    "item, e, eOpts"
+                ],
+                "designer|targetType": "MyMenuItem3",
+                "fn": "onAllBooksCatClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.changeCategory(item);",
+                    "controller.enableCategories();",
+                    "item.disable();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAllBooksCatClick",
+            "designerId": "ab4c1dbf-c7b2-46d8-93af-fee019833b46"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#ConfigOrderGrid",
+                "designer|targetType": "MyGridPanel4",
+                "fn": "onConfigOrderGridSelectionChange",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var grid = Ext.getCmp('ConfigOrderGrid');",
+                    "var selected;",
+                    "",
+                    "if(!Ext.isEmpty(grid.getSelectionModel().selected.items[0])){",
+                    "    selected = grid.getSelectionModel().selected.items[0].data;",
+                    "    controller.setOrderValues(selected);",
+                    "}"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onConfigOrderGridSelectionChange",
+            "designerId": "1168a1b8-c5d8-4c95-825c-8aeb3346b9f6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getOrderValues",
+                "implHandler": [
+                    "var store = Ext.getStore('OrderStore');",
+                    "var userid = Ext.getCmp('OrderUId').getValue();",
+                    "var username = Ext.getCmp('OrderUName').getValue();",
+                    "var bookid = Ext.getCmp('OrderBId').getValue();",
+                    "var booktitle = Ext.getCmp('OrderBTitle').getValue();",
+                    "var bookprice = Ext.getCmp('OrderBPrice').getValue();",
+                    "var bookquantity = Ext.getCmp('OrderBQty').getValue();",
+                    "var booktotal = Ext.getCmp('OrderBTotal').getValue();",
+                    "var remarks = Ext.getCmp('OrderRemarks').getValue();",
+                    "var date = Ext.getCmp('OrderDate').getValue();",
+                    "",
+                    "",
+                    "if (store.getCount() > 0)",
+                    "{",
+                    "    var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.",
+                    "    store.each(function(rec) // go through all the records",
+                    "               {",
+                    "                   maxId = Math.max(maxId, rec.get('id'));",
+                    "               });",
+                    "}",
+                    "",
+                    "id = maxId + 1;",
+                    "",
+                    "var order = {",
+                    "                    id: id,",
+                    "                    userid: userid,",
+                    "                    username: username,",
+                    "                    bookid: bookid,",
+                    "                    booktitle: booktitle,",
+                    "                    bookprice: bookprice,",
+                    "                    bookquantity: bookquantity,",
+                    "                    booktotal: booktotal,",
+                    "                    remarks: remarks,",
+                    "                    date: date",
+                    "          };",
+                    "",
+                    "return order;"
+                ]
+            },
+            "name": "getOrderValues",
+            "designerId": "fe96a884-2cb7-4e1c-8ae4-2866a7eeb4bc"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "order"
+                ],
+                "fn": "setOrderValues",
+                "implHandler": [
+                    "",
+                    "        Ext.getCmp('OrderId').setValue(order.id);",
+                    "        Ext.getCmp('OrderUId').setValue(order.userid);",
+                    "        Ext.getCmp('OrderUName').setValue(order.username);",
+                    "        Ext.getCmp('OrderBId').setValue(order.bookid);",
+                    "        Ext.getCmp('OrderBTitle').setValue(order.booktitle);",
+                    "        Ext.getCmp('OrderBPrice').setValue(order.bookprice);",
+                    "        Ext.getCmp('OrderBQty').setValue(order.bookquantity);",
+                    "        Ext.getCmp('OrderBTotal').setValue(order.booktotal);",
+                    "        Ext.getCmp('OrderRemarks').setValue(order.remarks);",
+                    "        Ext.getCmp('OrderDate').setValue(order.date);"
+                ]
+            },
+            "name": "setOrderValues",
+            "designerId": "3fe2a6e5-11f5-4919-baba-88526f248890"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetOrderValues",
+                "implHandler": [
+                    "",
+                    "Ext.getCmp('OrderId').setValue('');",
+                    "Ext.getCmp('OrderUId').setValue('');",
+                    "Ext.getCmp('OrderUName').setValue('');",
+                    "Ext.getCmp('OrderBId').setValue('');",
+                    "Ext.getCmp('OrderBTitle').setValue('');",
+                    "Ext.getCmp('OrderBPrice').setValue('');",
+                    "Ext.getCmp('OrderBQty').setValue('');",
+                    "Ext.getCmp('OrderBTotal').setValue('');",
+                    "Ext.getCmp('OrderRemarks').setValue('');",
+                    "Ext.getCmp('OrderDate').setValue('');",
+                    ""
+                ]
+            },
+            "name": "resetOrderValues",
+            "designerId": "b3a5548e-729f-4685-8ab1-f0b50efca807"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OrderReset",
+                "designer|targetType": "MyButton4",
+                "fn": "onOrderResetClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.resetOrderValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderResetClick",
+            "designerId": "51b68cd5-23cd-42ca-88ab-49d4d6eccf76"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OrderCreate",
+                "designer|targetType": "MyButton",
+                "fn": "onOrderCreateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('OrderStore');",
+                    "var order = controller.getOrderValues();",
+                    "store.add(order);",
+                    "controller.resetOrderValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderCreateClick",
+            "designerId": "3016fbcb-63f3-4d74-9304-d370c6df6305"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OrderUpdate",
+                "designer|targetType": "MyButton1",
+                "fn": "onOrderUpdateClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('OrderStore');",
+                    "var order = controller.getOrderValues();",
+                    "var id = Ext.getCmp('OrderId').getValue();",
+                    "var grid = Ext.getCmp('ConfigOrderGrid');",
+                    "",
+                    "if(Ext.isEmpty(id)){",
+                    "    Ext.Msg.show({",
+                    "    title:'Status',",
+                    "    msg: 'Please select a record to update.',",
+                    "    buttons: Ext.Msg.OK,",
+                    "    icon: Ext.Msg.WARNING",
+                    "});",
+                    "}else{",
+                    "   Ext.each(store.data.items, function(rec){",
+                    "    if(rec.data.id == id){",
+                    "        rec.data.userid = order.userid;",
+                    "        rec.data.username = order.username;",
+                    "        rec.data.bookid = order.bookid;",
+                    "        rec.data.booktitle = order.booktitle;",
+                    "        rec.data.bookprice = order.bookprice;",
+                    "        rec.data.bookquantity = order.bookquantity;",
+                    "        rec.data.booktotal = order.booktotal;",
+                    "        rec.data.remarks = order.remarks;",
+                    "        rec.data.date = order.date;",
+                    "    }",
+                    "});",
+                    "}",
+                    "",
+                    "grid.getView().refresh();",
+                    "controller.resetOrderValues();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderUpdateClick",
+            "designerId": "b47eef3e-823a-4fce-b456-9dda4ca72874"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OrderDelete",
+                "designer|targetType": "MyButton2",
+                "fn": "onOrderDeleteClick",
+                "implHandler": [
+                    "        var controller = W3D5_Project.app.getController('MainController');",
+                    "        var store = Ext.getStore('OrderStore');",
+                    "        var id = Ext.getCmp('OrderId').getValue();",
+                    "",
+                    "        if(Ext.isEmpty(id)){",
+                    "            Ext.Msg.show({",
+                    "            title:'Status',",
+                    "            msg: 'Please select a record to delete.',",
+                    "            buttons: Ext.Msg.OK,",
+                    "            icon: Ext.Msg.WARNING",
+                    "        });",
+                    "        }else{",
+                    "           Ext.each(store.data.items, function(rec){",
+                    "            if(rec.data.id == id){",
+                    "                controller.resetOrderValues();",
+                    "                store.remove(rec);",
+                    "            }",
+                    "          });",
+                    "        }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderDeleteClick",
+            "designerId": "306c8604-7778-4170-aeae-79e83023e187"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BooksGrid",
+                "designer|params": [
+                    "tableview, td, cellIndex, record, tr, rowIndex, e, eOpts"
+                ],
+                "designer|targetType": "MyGridPanel5",
+                "fn": "onBooksGridCellDblClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.openOrderWin(record);"
+                ],
+                "name": "celldblclick",
+                "scope": "me"
+            },
+            "name": "onBooksGridCellDblClick",
+            "designerId": "1425593d-d4e2-4b46-bb62-2036f3f5bfa5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OSearchBtn",
+                "designer|targetType": "MyButton3",
+                "fn": "onOSearchBtnClick",
+                "implHandler": [
+                    "var searchVal = Ext.getCmp('OrderSearch').getValue();",
+                    " var store = Ext.getStore('OrderStore');",
+                    "if(Ext.isEmpty(searchVal)){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "    store.filter('booktitle', searchVal);",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOSearchBtnClick",
+            "designerId": "a0ae584b-7e99-456e-b653-2a877e495860"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#OResetBtn",
+                "designer|targetType": "MyButton5",
+                "fn": "onOResetBtnClick",
+                "implHandler": [
+                    "",
+                    "var store = Ext.getStore('OrderStore');",
+                    "store.clearFilter();",
+                    "",
+                    "Ext.getCmp('OrderSearch').setValue('');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOResetBtnClick",
+            "designerId": "cac19085-ff78-4f02-8178-f2fd67207ff2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BuyBtn",
+                "designer|targetType": "MyButton6",
+                "fn": "onBuyBtnClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('OrderStore');",
+                    "var bookStore = Ext.getStore('BookStore');",
+                    "var order = controller.getOrderInfo(false);",
+                    "var activeTab = Ext.getCmp('MenuPanel').activeTab.title;",
+                    "var scope = this;",
+                    "var grid;",
+                    "store.add(order);",
+                    "Ext.each(bookStore.data.items,function(rec){",
+                    "    if(rec.data.id==order.bookid){",
+                    "        rec.data.avail = rec.data.avail - order.bookquantity;",
+                    "    }",
+                    "});",
+                    "",
+                    "Ext.Msg.show({",
+                    "    title:'Order Successful',",
+                    "    msg: 'Your purchase is on its way. Please prepare cash on delivery. Thank you.',",
+                    "    buttons: Ext.Msg.OK,",
+                    "    icon: Ext.Msg.Info,",
+                    "    fn: function(btn) {",
+                    "        if (btn === 'ok') {",
+                    "            scope.orderWin.hide();",
+                    "            scope.orderWin.mask();",
+                    "            if(activeTab=='All Books'){",
+                    "                grid = Ext.getCmp('BooksGrid');",
+                    "            }else if(activeTab=='Best Seller'){",
+                    "                grid = Ext.getCmp('BestBooksGrid');",
+                    "            }else{",
+                    "                grid = Ext.getCmp('SaleBooksGrid');",
+                    "            }",
+                    "            grid.getView().refresh();",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBuyBtnClick",
+            "designerId": "44891149-89ba-44ee-b008-b5718c6d4c38"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#CancelBtn",
+                "designer|targetType": "MyButton7",
+                "fn": "onCancelBtnClick",
+                "implHandler": [
+                    "this.orderWin.hide();",
+                    "this.orderWin.mask();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCancelBtnClick",
+            "designerId": "bda1014f-aa80-475d-ad4d-bca46cac5bc8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#CheckBtn",
+                "designer|targetType": "MyButton8",
+                "fn": "onCheckBtnClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "var store = Ext.getStore('OrderStore');",
+                    "var bookStore = Ext.getStore('BookStore');",
+                    "var order = controller.getOrderInfo(true);",
+                    "var activeTab = Ext.getCmp('MenuPanel').activeTab.title;",
+                    "var scope = this;",
+                    "var grid;",
+                    "store.add(order);",
+                    "Ext.each(bookStore.data.items,function(rec){",
+                    "    if(rec.data.id==order.bookid){",
+                    "        rec.data.check = rec.data.check + order.bookquantity;",
+                    "    }",
+                    "});",
+                    "",
+                    "Ext.Msg.show({",
+                    "    title:'Order Successful',",
+                    "    msg: 'The borrowed book is on its way. Please return after 7 days. Thank you.',",
+                    "    buttons: Ext.Msg.OK,",
+                    "    icon: Ext.Msg.Info,",
+                    "    fn: function(btn) {",
+                    "        if (btn === 'ok') {",
+                    "            scope.orderWin.hide();",
+                    "            scope.orderWin.mask();",
+                    "            if(activeTab=='All Books'){",
+                    "                grid = Ext.getCmp('BooksGrid');",
+                    "            }else if(activeTab=='Best Seller'){",
+                    "                grid = Ext.getCmp('BestBooksGrid');",
+                    "            }else{",
+                    "                grid = Ext.getCmp('SaleBooksGrid');",
+                    "            }",
+                    "            grid.getView().refresh();",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCheckBtnClick",
+            "designerId": "970f946c-e16a-4ba2-90e1-42d1c57704ed"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "checkout"
+                ],
+                "fn": "getOrderInfo",
+                "implHandler": [
+                    "var store = Ext.getStore('OrderStore');",
+                    "var userid = 0;",
+                    "var username = 'Test';",
+                    "var bookid = Ext.getCmp('BookWinId').getValue();",
+                    "var booktitle = Ext.getCmp('BookWinTitle').getValue();",
+                    "var bookprice = Ext.getCmp('BookWinPrice').getValue();",
+                    "var bookquantity = 1;",
+                    "var booktotal = Ext.getCmp('BookWinPrice').getValue();",
+                    "var remarks = 'Default';",
+                    "var date = (new Date()).toDateString();",
+                    "",
+                    "if(checkout){",
+                    "    renarks = 'Check-out';",
+                    "}",
+                    "if (store.getCount() > 0)",
+                    "{",
+                    "    var maxId = store.getAt(0).get('id'); // initialise to the first record's id value.",
+                    "    store.each(function(rec) // go through all the records",
+                    "               {",
+                    "                   maxId = Math.max(maxId, rec.get('id'));",
+                    "               });",
+                    "}",
+                    "",
+                    "id = maxId + 1;",
+                    "",
+                    "var order = {",
+                    "                    id: id,",
+                    "                    userid: userid,",
+                    "                    username: username,",
+                    "                    bookid: bookid,",
+                    "                    booktitle: booktitle,",
+                    "                    bookprice: bookprice,",
+                    "                    bookquantity: bookquantity,",
+                    "                    booktotal: booktotal,",
+                    "                    remarks: remarks,",
+                    "                    date: date",
+                    "          };",
+                    "",
+                    "return order;"
+                ]
+            },
+            "name": "getOrderInfo",
+            "designerId": "3159ded4-7a80-47d4-9ccd-c8600f73466b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "openOrderWin",
+                "implHandler": [
+                    "var price, bestseller;",
+                    "if(Ext.isEmpty(this.orderWin)){",
+                    "    this.orderWin = Ext.create('W3D5_Project.view.OrderWin', {});",
+                    "}",
+                    "this.orderWin.show();",
+                    "this.orderWin.unmask();",
+                    "if(record.data.avail>0){",
+                    "    if(record.data.onsale){",
+                    "    price = record.data.sprice;",
+                    "    }else{",
+                    "    price = record.data.oprice;",
+                    "    }",
+                    "    Ext.getCmp('BuyBtn').enable();",
+                    "    Ext.getCmp('CheckBtn').enable();",
+                    "}else if(record.data.check>0){",
+                    "    price = 'Checked-out';",
+                    "    Ext.getCmp('BuyBtn').disable();",
+                    "    Ext.getCmp('CheckBtn').disable();",
+                    "}else{",
+                    "    price = 'Out of stock';",
+                    "    Ext.getCmp('BuyBtn').disable();",
+                    "    Ext.getCmp('CheckBtn').disable();",
+                    "}",
+                    "if(record.data.bestseller){",
+                    "    bestseller = 'Best Seller';",
+                    "}else{",
+                    "    bestseller = '';",
+                    "}",
+                    "Ext.getCmp('BookWinImg').setSrc('resources/img/' + record.data.img +'.jpg');",
+                    "Ext.getCmp('BookWinId').setValue(record.data.id);",
+                    "Ext.getCmp('BookWinTitle').setValue(record.data.title);",
+                    "Ext.getCmp('BookWinAuthor').setValue(record.data.author);",
+                    "Ext.getCmp('BookWinDate').setValue(record.data.date);",
+                    "Ext.getCmp('BookWinDesc').setValue(record.data.desc);",
+                    "Ext.getCmp('BookWinPrice').setValue(price);",
+                    "Ext.getCmp('BookWinBest').setValue(bestseller);"
+                ]
+            },
+            "name": "openOrderWin",
+            "designerId": "1e722e00-3420-454d-8a5d-b770ec5e4a8e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#BestBooksGrid",
+                "designer|params": [
+                    "tableview, td, cellIndex, record, tr, rowIndex, e, eOpts"
+                ],
+                "designer|targetType": "MyGridPanel",
+                "fn": "onBestBooksGridCellDblClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "controller.openOrderWin(record);"
+                ],
+                "name": "celldblclick",
+                "scope": "me"
+            },
+            "name": "onBestBooksGridCellDblClick",
+            "designerId": "4d1dc20a-4c41-478a-b0a1-6f54ee223418"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#SaleBooksGrid",
+                "designer|params": [
+                    "tableview, td, cellIndex, record, tr, rowIndex, e, eOpts"
+                ],
+                "designer|targetType": "MyGridPanel2",
+                "fn": "onSaleBooksGridCellDblClick",
+                "implHandler": [
+                    "var controller = W3D5_Project.app.getController('MainController');",
+                    "        controller.openOrderWin(record);"
+                ],
+                "name": "celldblclick",
+                "scope": "me"
+            },
+            "name": "onSaleBooksGridCellDblClick",
+            "designerId": "d231dbbf-d366-4be3-8bf0-e6fb910c13f5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#LogOutBtn",
+                "designer|targetType": "MyButton9",
+                "fn": "onLogOutBtnClick",
+                "implHandler": [
+                    "",
+                    "        Ext.Msg.show({",
+                    "            title:'Log Out',",
+                    "            msg: 'Are you sure you want to log out?',",
+                    "            buttons: Ext.Msg.YESNO,",
+                    "            icon: Ext.Msg.Question,",
+                    "            fn: function(btn) {",
+                    "                if (btn === 'yes') {",
+                    "                                if(Ext.isEmpty(this.loginWin)){",
+                    "                this.loginWin = Ext.create('W3D5_Project.view.LoginViewport', {});",
+                    "            }",
+                    "            this.loginWin.show();",
+                    "            this.loginWin.unmask();",
+                    "                }",
+                    "            }",
+                    "        });"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onLogOutBtnClick",
+            "designerId": "feacf1b6-91a8-446c-8644-9d3a6c352156"
+        }
+    ]
+}

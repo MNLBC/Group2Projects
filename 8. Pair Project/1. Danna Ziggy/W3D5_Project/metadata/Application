@@ -1,0 +1,39 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "controllers": [
+            "MainController",
+            "LoginController",
+            "ManageUserController",
+            "RegisterController"
+        ],
+        "models": [
+            "BookModel",
+            "SearchModel",
+            "GenreModel",
+            "OrderModel",
+            "UserModel"
+        ],
+        "name": "W3D5_Project",
+        "stores": [
+            "BookStore",
+            "SearchStore",
+            "GenreStore",
+            "OrderStore",
+            "UserStore"
+        ],
+        "views": [
+            "MainViewport",
+            "OrderWin",
+            "LoginViewport",
+            "RegisterViewport"
+        ]
+    },
+    "name": "Application",
+    "designerId": "application"
+}
