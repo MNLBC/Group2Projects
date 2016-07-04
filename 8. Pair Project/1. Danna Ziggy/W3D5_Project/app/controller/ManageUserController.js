@@ -16,32 +16,32 @@
 Ext.define('W3D5_Project.controller.ManageUserController', {
     extend: 'Ext.app.Controller',
 
-    id: 'ManageUser',
+    id: 'ManageUserController',
 
     onUserCreateClick: function() {
-        var controller = W3D5_Project.app.getController('ManageUser');
+        var controller = W3D5_Project.app.getController('ManageUserController');
         var store = Ext.getStore('UserStore');
         var user = controller.getUserFormValues();
         store.add(user);
-        controller.resetFormValues();
+        controller.UserResetFormValues();
     },
 
     onUserUpdateClick: function() {
-        var controller = W3D5_Project.app.getController('ManageUser');
+        var controller = W3D5_Project.app.getController('ManageUserController');
         var store = Ext.getStore('UserStore');
         var user = controller.getUserFormValues();
         var id = Ext.getCmp('id').getValue();
         var grid = Ext.getCmp('userinfogrid');
 
-        if(Ext.isEmpty(id)){
-            Ext.Msg.show({
-            title:'Status',
-            msg: 'Please select a record to update.',
-            buttons: Ext.Msg.OK,
-            icon: Ext.Msg.WARNING
-        });
-        }else{
-           Ext.each(store.data.items, function(rec){
+                        if(Ext.isEmpty(id)){
+                            Ext.Msg.show({
+                            title:'',
+                            msg: 'Please select a record to update.',
+                            buttons: Ext.Msg.OK,
+                            icon: Ext.Msg.WARNING
+                        });
+                        }else{
+                            Ext.each(store.data.items, function(rec){
             if(rec.data.id == id){
                 rec.data.fname = user.fname;
                 rec.data.lname = user.lname;
@@ -51,14 +51,17 @@ Ext.define('W3D5_Project.controller.ManageUserController', {
                 rec.data.password = user.password;
             }
         });
-        }
+                        }
 
-        grid.getView().refresh();
+
+
+
         controller.UserResetFormValues();
+        grid.getView().refresh();
     },
 
     onUserDeleteClick: function() {
-                var controller = W3D5_Project.app.getController('ManageUser');
+                var controller = W3D5_Project.app.getController('ManageUserController');
                 var store = Ext.getStore('UserStore');
                 var id = Ext.getCmp('id').getValue();
 
@@ -80,7 +83,7 @@ Ext.define('W3D5_Project.controller.ManageUserController', {
     },
 
     onUserResetFormClick: function() {
-        var controller = W3D5_Project.app.getController('ManageUser');
+        var controller = W3D5_Project.app.getController('ManageUserController');
         controller.UserResetFormValues();
     },
 
@@ -101,7 +104,7 @@ Ext.define('W3D5_Project.controller.ManageUserController', {
     },
 
     onUserinfogridSelectionChange: function() {
-        var controller = W3D5_Project.app.getController('ManageUser');
+        var controller = W3D5_Project.app.getController('ManageUserController');
         var grid = Ext.getCmp('userinfogrid');
         var selected = grid.getSelectionModel().selected.items[0].data;
         controller.setUserFormValues(selected);

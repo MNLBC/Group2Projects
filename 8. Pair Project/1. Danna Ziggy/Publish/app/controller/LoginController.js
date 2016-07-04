@@ -49,13 +49,6 @@ Ext.define('W3D5_Project.controller.LoginController', {
                 Ext.getCmp('MenuPanel').items.items[5].disable();
             }
 
-
-        if(!Ext.isEmpty(this.loginWin)){
-                this.loginWin.hide();
-            }
-            if(!Ext.isEmpty(this.registerWin)){
-                this.registerWin.hide();
-            }
         }else{
             Ext.MessageBox.show({
                 title: 'Failed Login',
@@ -74,12 +67,7 @@ Ext.define('W3D5_Project.controller.LoginController', {
         }
         this.registerWin.show();
         this.registerWin.unmask();
-        if(!Ext.isEmpty(this.loginWin)){
-                this.loginWin.hide();
-            }
-            if(!Ext.isEmpty(this.mainWin)){
-                this.mainWin.hide();
-            }
+
     },
 
     init: function(application) {

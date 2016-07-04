@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "designer|userClassName": "ManageUserController",
-        "id": "ManageUser"
+        "id": "ManageUserController"
     },
     "name": "MyController",
     "designerId": "916b31d2-a9d3-49e2-961f-84796c88ab8f",
@@ -24,11 +24,11 @@
                 "designer|targetType": "MyButton7",
                 "fn": "onUserCreateClick",
                 "implHandler": [
-                    "var controller = W3D5_Project.app.getController('ManageUser');",
+                    "var controller = W3D5_Project.app.getController('ManageUserController');",
                     "var store = Ext.getStore('UserStore');",
                     "var user = controller.getUserFormValues();",
                     "store.add(user);",
-                    "controller.resetFormValues();"
+                    "controller.UserResetFormValues();"
                 ],
                 "name": "click",
                 "scope": "me"
@@ -48,21 +48,21 @@
                 "designer|targetType": "MyButton9",
                 "fn": "onUserUpdateClick",
                 "implHandler": [
-                    "var controller = W3D5_Project.app.getController('ManageUser');",
+                    "var controller = W3D5_Project.app.getController('ManageUserController');",
                     "var store = Ext.getStore('UserStore');",
                     "var user = controller.getUserFormValues();",
                     "var id = Ext.getCmp('id').getValue();",
                     "var grid = Ext.getCmp('userinfogrid');",
                     "",
-                    "if(Ext.isEmpty(id)){",
-                    "    Ext.Msg.show({",
-                    "    title:'Status',",
-                    "    msg: 'Please select a record to update.',",
-                    "    buttons: Ext.Msg.OK,",
-                    "    icon: Ext.Msg.WARNING",
-                    "});",
-                    "}else{",
-                    "   Ext.each(store.data.items, function(rec){",
+                    "                if(Ext.isEmpty(id)){",
+                    "                    Ext.Msg.show({",
+                    "                    title:'',",
+                    "                    msg: 'Please select a record to update.',",
+                    "                    buttons: Ext.Msg.OK,",
+                    "                    icon: Ext.Msg.WARNING",
+                    "                });",
+                    "                }else{",
+                    "                    Ext.each(store.data.items, function(rec){",
                     "    if(rec.data.id == id){",
                     "        rec.data.fname = user.fname;",
                     "        rec.data.lname = user.lname;",
@@ -72,16 +72,19 @@
                     "        rec.data.password = user.password;",
                     "    }",
                     "});",
-                    "}",
+                    "                }",
                     "",
-                    "grid.getView().refresh();",
-                    "controller.UserResetFormValues();"
+                    "",
+                    "",
+                    "",
+                    "controller.UserResetFormValues();",
+                    "grid.getView().refresh();"
                 ],
                 "name": "click",
                 "scope": "me"
             },
             "name": "onUserUpdateClick",
-            "designerId": "1cd816a4-df52-4f65-9363-841b5df95e38"
+            "designerId": "5aa3604a-7b2a-4f06-ad24-efa8582902a6"
         },
         {
             "type": "controlleraction",
@@ -95,7 +98,7 @@
                 "designer|targetType": "MyButton10",
                 "fn": "onUserDeleteClick",
                 "implHandler": [
-                    "        var controller = W3D5_Project.app.getController('ManageUser');",
+                    "        var controller = W3D5_Project.app.getController('ManageUserController');",
                     "        var store = Ext.getStore('UserStore');",
                     "        var id = Ext.getCmp('id').getValue();",
                     "",
@@ -133,7 +136,7 @@
                 "designer|targetType": "MyButton11",
                 "fn": "onUserResetFormClick",
                 "implHandler": [
-                    "var controller = W3D5_Project.app.getController('ManageUser');",
+                    "var controller = W3D5_Project.app.getController('ManageUserController');",
                     "controller.UserResetFormValues();"
                 ],
                 "name": "click",
@@ -301,7 +304,7 @@
                 "designer|targetType": "MyGridPanel1",
                 "fn": "onUserinfogridSelectionChange",
                 "implHandler": [
-                    "var controller = W3D5_Project.app.getController('ManageUser');",
+                    "var controller = W3D5_Project.app.getController('ManageUserController');",
                     "var grid = Ext.getCmp('userinfogrid');",
                     "var selected = grid.getSelectionModel().selected.items[0].data;",
                     "controller.setUserFormValues(selected);"
