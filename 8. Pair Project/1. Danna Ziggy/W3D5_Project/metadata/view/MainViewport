@@ -2744,7 +2744,7 @@
                                                                         ],
                                                                         "fn": "renderer",
                                                                         "implHandler": [
-                                                                            "return '<img src=\"resources/img/' + value + '\" align=\"center\"/>';"
+                                                                            "return '<img src=\"resources/img/' + value + '.jpg\" align=\"center\"/>';"
                                                                         ]
                                                                     },
                                                                     "name": "renderer",

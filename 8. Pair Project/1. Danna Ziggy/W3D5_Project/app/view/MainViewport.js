@@ -1288,7 +1288,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                 {
                                                                     xtype: 'gridcolumn',
                                                                     renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
-                                                                        return '<img src="resources/img/' + value + '" align="center"/>';
+                                                                        return '<img src="resources/img/' + value + '.jpg" align="center"/>';
                                                                     },
                                                                     width: 189,
                                                                     resizable: false,
