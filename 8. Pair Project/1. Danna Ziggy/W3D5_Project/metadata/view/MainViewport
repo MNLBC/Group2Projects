@@ -557,7 +557,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "align": "center",
-                                                                "dataIndex": "oprice",
+                                                                "dataIndex": "percent",
                                                                 "id": "Perc2",
                                                                 "itemId": "Perc",
                                                                 "text": "% Off"
@@ -877,7 +877,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "align": "center",
-                                                                "dataIndex": "oprice",
+                                                                "dataIndex": "percent",
                                                                 "id": "Perc3",
                                                                 "itemId": "Perc",
                                                                 "text": "% Off"
@@ -1196,7 +1196,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "align": "center",
-                                                                "dataIndex": "oprice",
+                                                                "dataIndex": "percent",
                                                                 "id": "Perc4",
                                                                 "itemId": "Perc",
                                                                 "text": "% Off"
@@ -2846,7 +2846,7 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "align": "center",
-                                                                "dataIndex": "oprice",
+                                                                "dataIndex": "percent",
                                                                 "id": "Perc1",
                                                                 "itemId": "Perc",
                                                                 "text": "% Off"

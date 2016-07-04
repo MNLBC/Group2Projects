@@ -300,7 +300,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     id: 'Perc2',
                                                                     itemId: 'Perc',
                                                                     align: 'center',
-                                                                    dataIndex: 'oprice',
+                                                                    dataIndex: 'percent',
                                                                     text: '% Off'
                                                                 },
                                                                 {
@@ -443,7 +443,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     id: 'Perc3',
                                                                     itemId: 'Perc',
                                                                     align: 'center',
-                                                                    dataIndex: 'oprice',
+                                                                    dataIndex: 'percent',
                                                                     text: '% Off'
                                                                 },
                                                                 {
@@ -585,7 +585,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     id: 'Perc4',
                                                                     itemId: 'Perc',
                                                                     align: 'center',
-                                                                    dataIndex: 'oprice',
+                                                                    dataIndex: 'percent',
                                                                     text: '% Off'
                                                                 },
                                                                 {
@@ -1341,7 +1341,7 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                                                     id: 'Perc1',
                                                                     itemId: 'Perc',
                                                                     align: 'center',
-                                                                    dataIndex: 'oprice',
+                                                                    dataIndex: 'percent',
                                                                     text: '% Off'
                                                                 },
                                                                 {
