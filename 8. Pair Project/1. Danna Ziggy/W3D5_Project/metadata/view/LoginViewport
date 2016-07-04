@@ -74,7 +74,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "emptyText": "User Name",
+                                        "emptyText": "Username",
                                         "fieldLabel": "",
                                         "id": "loginusername",
                                         "itemId": "loginusername",
