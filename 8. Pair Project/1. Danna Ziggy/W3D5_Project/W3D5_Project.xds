@@ -13,7 +13,7 @@
             }
         },
         "urlPrefix": "",
-        "exportPath": "D:/gitvob/Group2Projects/8. Pair Project/1. Danna Ziggy/Ziggy/Publish",
+        "exportPath": "D:/gitvob/Group2Projects/8. Pair Project/1. Danna Ziggy/Publish",
         "projectHasEnabledWebServer": false,
         "lockUrlPrefix": false,
         "buildShouldOverwriteIndex": true,
@@ -24,7 +24,8 @@
         "cacheBust": false,
         "installStatus": "Not Installed",
         "displayfield-ExtBox1-1109-inputEl": "a new version of the framework is available",
-        "displayfield-ExtBox1-1202-inputEl": "a new version of the framework is available"
+        "displayfield-ExtBox1-1202-inputEl": "a new version of the framework is available",
+        "displayfield-ExtBox1-1118-inputEl": "a new version of the framework is available"
     },
     "xdsVersion": "3.1.0",
     "xdsBuild": 1943,

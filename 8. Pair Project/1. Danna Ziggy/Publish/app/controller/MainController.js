@@ -375,6 +375,12 @@ Ext.define('W3D5_Project.controller.MainController', {
                     this.loginWin.show();
                     this.loginWin.unmask();
                         }
+                        if(!Ext.isEmpty(this.mainWin)){
+                this.mainWin.hide();
+            }
+            if(!Ext.isEmpty(this.registerWin)){
+                this.registerWin.hide();
+            }
                     }
                 });
     },

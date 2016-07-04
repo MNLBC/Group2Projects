@@ -472,7 +472,7 @@
                                                                         ],
                                                                         "fn": "renderer",
                                                                         "implHandler": [
-                                                                            "return '<img src=\"resources/img/' + value + '\" align=\"center\"/>';"
+                                                                            "return '<img src=\"resources/img/' + value + '.jpg\" align=\"center\"/>';"
                                                                         ]
                                                                     },
                                                                     "name": "renderer",
@@ -792,7 +792,7 @@
                                                                         ],
                                                                         "fn": "renderer",
                                                                         "implHandler": [
-                                                                            "return '<img src=\"resources/img/' + value + '\" align=\"center\"/>';"
+                                                                            "return '<img src=\"resources/img/' + value + '.jpg\" align=\"center\"/>';"
                                                                         ]
                                                                     },
                                                                     "name": "renderer",
@@ -1111,7 +1111,7 @@
                                                                         ],
                                                                         "fn": "renderer",
                                                                         "implHandler": [
-                                                                            "return '<img src=\"resources/img/' + value + '\" align=\"center\"/>';"
+                                                                            "return '<img src=\"resources/img/' + value + '.jpg\" align=\"center\"/>';"
                                                                         ]
                                                                     },
                                                                     "name": "renderer",
@@ -1759,7 +1759,7 @@
                                                                                     "designerId": "1f678eca-8c29-4c5f-b259-386c8d5a4a7a"
                                                                                 },
                                                                                 {
-                                                                                    "type": "Ext.form.field.Text",
+                                                                                    "type": "Ext.form.field.TextArea",
                                                                                     "reference": {
                                                                                         "name": "items",
                                                                                         "type": "array"
@@ -1773,7 +1773,7 @@
                                                                                         "layout|flex": 0,
                                                                                         "width": 300
                                                                                     },
-                                                                                    "name": "MyTextField10",
+                                                                                    "name": "MyTextArea2",
                                                                                     "designerId": "fdca2d9d-b562-4898-9cb6-299a7e4b9a7c"
                                                                                 }
                                                                             ]
