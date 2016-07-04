@@ -26,6 +26,7 @@ Ext.define('W3D5_Project.controller.LoginController', {
         var password = Ext.getCmp('loginpassword').getValue();
         Ext.each(store.data.items, function(rec){
             if(rec.data.username==username && rec.data.password==password){
+                id = rec.data.id;
                 valid = true;
             }
 

@@ -599,8 +599,9 @@ Ext.define('W3D5_Project.controller.MainController', {
 
     getOrderInfo: function(checkout) {
         var store = Ext.getStore('OrderStore');
-        var userid = 0;
-        var username = 'Test';
+        var userid = Ext.getCmp('UserIdField').getValue();
+        var username = Ext.getCmp('UserNameField').getValue();
+        username = username.replace('Welcome! ','');
         var bookid = Ext.getCmp('BookWinId').getValue();
         var booktitle = Ext.getCmp('BookWinTitle').getValue();
         var bookprice = Ext.getCmp('BookWinPrice').getValue();

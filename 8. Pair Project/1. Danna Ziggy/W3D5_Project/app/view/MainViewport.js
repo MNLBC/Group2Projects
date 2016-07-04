@@ -19,7 +19,6 @@ Ext.define('W3D5_Project.view.MainViewport', {
     requires: [
         'Ext.toolbar.Spacer',
         'Ext.form.field.Display',
-        'Ext.form.field.Hidden',
         'Ext.menu.Menu',
         'Ext.menu.Item',
         'Ext.tab.Panel',
@@ -98,11 +97,11 @@ Ext.define('W3D5_Project.view.MainViewport', {
                                     value: 'Welcome! Test User'
                                 },
                                 {
-                                    xtype: 'hiddenfield',
+                                    xtype: 'textfield',
                                     flex: 1,
+                                    hidden: true,
                                     id: 'UserIdField',
-                                    itemId: 'UserIdField',
-                                    fieldLabel: 'Label'
+                                    itemId: 'UserIdField'
                                 },
                                 {
                                     xtype: 'tbspacer',

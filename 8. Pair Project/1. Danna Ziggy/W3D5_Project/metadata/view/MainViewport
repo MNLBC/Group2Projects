@@ -113,19 +113,22 @@
                             "designerId": "63219673-146b-487f-91fb-b164d4a42762"
                         },
                         {
-                            "type": "Ext.form.field.Hidden",
+                            "type": "Ext.form.field.Text",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fieldLabel": "Label",
+                                "designer|displayName": null,
+                                "fieldLabel": null,
+                                "hidden": true,
                                 "id": "UserIdField",
                                 "itemId": "UserIdField",
-                                "layout|flex": 1
+                                "layout|flex": 1,
+                                "value": null
                             },
-                            "name": "MyHiddenField1",
+                            "name": "MyTextField4",
                             "designerId": "06441d33-b98f-4d8a-98b1-0bb8e205ee11"
                         },
                         {
