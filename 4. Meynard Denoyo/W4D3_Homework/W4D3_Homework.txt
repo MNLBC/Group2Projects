@@ -1,0 +1,10 @@
+1. C
+2. D
+3. D 
+4. C 
+5. C
+6. The init() method will create the ServletRequest, ServletResponse, Servlet and ServletContext while destryoy() method will destroy it
+7. B 
+8. C 
+9. B 
+10. B 
