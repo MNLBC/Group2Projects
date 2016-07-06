@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Amazon - Create Account</title>
+
+<link rel="stylesheet" href="css/foundation.css">
+<link rel="stylesheet" href="css/app.css">
+<script type="text/javascript" src="js/vendor/jquery.js"></script>
+<script type="text/javascript" src="js/vendor/foundation.js"></script>
+<script type="text/javascript" src="js/vendor/what-input.js"></script>
+
+
+
+
+</head>
+
+<body id="body">
+	<div class="row">
+		<div class="medium-12 medium-centered columns">
+			<div class="row">
+				<div class="medium-4 medium-centered columns">
+					<img id="comp-logo" src="img/amazon-logo.png">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="medium-4 medium-centered columns" id="box1">
+					<h3>Create account</h3>
+					<div data-abide-error class="alert callout" style="display: none;">
+					    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+					  </div>
+
+					<form  method="post" action="createUser" data-abide>
+					
+						<label>Your Name(Alphabet only) <input required id="name" name="name" type="text" placeholder="Name"
+							aria-describedby="example" >
+						
+       					 </label>
+       					  <p class="help-text" id="nameInput">Alphabet only</p>
+				
+					
+						 <label for = "mail">Email <input id="email" name="email" type="email" placeholder="Email"
+							aria-describedby="Email" required>
+						
+						
+						 <l	abel>Password <input type="password" id="password" name="pass"
+							placeholder="Password" aria-describedby="exampleHelpText" required>
+						</label> <label>Password again <input type="password"
+							id="confirmPass" name="confirmPass"
+							placeholder="Confirm Password"
+							aria-describedby="exampleHelpText2" required data-equalto="password">
+						</label>
+
+						<button type="submit" class="expanded button" id="create-btn">Create
+							your Amazon Account</button>
+
+						<p>
+							By creating an account, you agree to Amazon's <a>Conditions
+								of Use</a> and <a>Privacy Notice.</a>
+						</p>
+					</form>
+					<hr />
+					<div class="row">
+						<div class="medium-12 medium-centered columns" id="low-box">
+							<p>
+								Already have an account? <a>Sign In</a>
+							</p>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+			<br /> <br />
+			<hr />
+			<div class="row" id="footer">
+
+				<div class="medium-4 medium-centered columns">
+					<ul class="menu">
+						<li><a href="#">Conditions of Use</a></li>
+						<li><a href="#">Privacy Notice</a></li>
+						<li><a href="#">Help</a></li>
+
+					</ul>
+					<h6 id="footnote">
+						&copy 1996-2016, Amazon.com, Inc. or its affiliates
+						<h6>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+	</div>
+</body>
+
+</html>
