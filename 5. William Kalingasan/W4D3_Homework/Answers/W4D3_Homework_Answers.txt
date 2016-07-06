@@ -1,0 +1,10 @@
+1. C
+2. D
+3. D
+4. C
+5. C
+6. They will be created in the init() method and be destroyed in the destroy() method
+7. B
+8. C
+9. B
+10 B
