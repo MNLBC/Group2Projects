@@ -1,11 +1,14 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.oocl.mnlbc.bean.User;
 
 /**
  * Servlet implementation class LoginServlet
@@ -28,7 +31,21 @@ public class LoginServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       // TODO Auto-generated method stub
-      response.getWriter().append("Served at: ").append(request.getContextPath());
+      String email = request.getParameter("email");
+      String password = request.getParameter("password");
+      User user = new User();
+      String msg = "failed";
+      if (email != null && password != null) {
+         user.setEmail(email);
+         user.setPassword(password);
+         // if (!DbTransact.checkExisting(user)) {
+         // if (result != 0) {
+         // msg = "success";
+         // }
+         // }
+      }
+      response.getWriter().append(msg);
+
    }
 
    /**
