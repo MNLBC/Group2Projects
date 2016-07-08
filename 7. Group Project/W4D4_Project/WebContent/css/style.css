@@ -12,6 +12,19 @@ p {margin: 0;}
     font-family: ptsansnarrow;
     src: url(font/pt-sans.narrow.ttf);
 }
+#modalfname{
+	width: 100%;
+}
+#modallname{
+	width: 100%;
+}
+#modaluname{
+	width: 100%;
+}
+#loginheader{
+	background-color: #ffffff;
+	font-family: arial;
+}
 #testDiv{
 	border: solid white;
 }
@@ -19,7 +32,7 @@ p {margin: 0;}
 	margin-top: 0;
 	padding: 2px 5px 2px 5px;
 }
-#modalregister{
+#btnregister{
 	margin-top: 0;
 	padding: 2px 5px 2px 5px;
 }
@@ -2796,4 +2809,5 @@ a.b-home {
 .grid_1 {
   margin-bottom: 1em;
 }
+
 }
