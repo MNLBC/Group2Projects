@@ -6,9 +6,9 @@ import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.bean.User;
 
 /**
- * 
+ * JSON PARSER UTIL
  * @author FLAMEZI2
- * @since 2016-07-08 JSON PARSER UTIL
+ * @since 2016-07-08
  */
 public class JsonParser {
 
