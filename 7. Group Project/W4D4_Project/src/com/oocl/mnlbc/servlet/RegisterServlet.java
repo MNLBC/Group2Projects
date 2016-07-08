@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,6 +47,8 @@ public class RegisterServlet extends HttpServlet {
       throws ServletException, IOException {
       UserDAO dao = new UserDAOImpl();
       User usr = new User();
+      PrintWriter out = response.getWriter();
+
       String fname = request.getParameter("fname");
       String lname = request.getParameter("lname");
       String email = request.getParameter("email");
@@ -55,26 +58,27 @@ public class RegisterServlet extends HttpServlet {
       String password = request.getParameter("password");
       String type = request.getParameter("type");
       User user = new User();
-      String msg = "failed";
-      if (fname != null && lname != null && email != null && street != null && city != null && country != null
-         && password != null && type != null) {
-         user.setUserFname(fname);
-         user.setUserLname(lname);
-         user.setUserEmail(email);
-         user.setUserStreet(street);
-         user.setUserCity(city);
-         user.setUserCountry(country);
-         user.setUserPassword(password);
-         user.setUserType(type);
-         user.setUserPassword(password);
-         // if (!DbTransact.checkExisting(user)) {
-         // int result = DbTransact.createUser(user);
-         // if (result != 0) {
-         // msg = "success";
-         // }
-         // }
+
+      user.setUserFname(fname);
+      user.setUserLname(lname);
+      user.setUserEmail(email);
+      user.setUserStreet(street);
+      user.setUserCity(city);
+      user.setUserCountry(country);
+      user.setUserPassword(password);
+      user.setUserType(type);
+      user.setUserPassword(password);
+
+      if (!dao.validateUser(email)) {
+         out.println("<script type=\"text/javascript\">");
+         out.println("alert('User already registered');");
+         out.println("</script>");
+         out.println("<a href='AddUser'>Register</a>"); // if email is already in db
+      } else {
+         dao.createUser(usr);
+         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
       }
-      response.getWriter().append(msg);
+
    }
 
 }
