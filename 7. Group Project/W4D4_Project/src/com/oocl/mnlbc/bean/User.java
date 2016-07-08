@@ -16,7 +16,7 @@ public class User {
    private String userStreet;
    private String userCity;
    private String userCountry;
-   private String userPassword;
+   private String userPass;
    private String userType;
 
    /**
@@ -125,18 +125,18 @@ public class User {
    }
 
    /**
-    * @return the userPassword
+    * @return the userPass
     */
-   public String getUserPassword() {
-      return userPassword;
+   public String getUserPass() {
+      return userPass;
    }
 
    /**
-    * @param userPassword
-    *           the userPassword to set
+    * @param userPass
+    *           the userPass to set
     */
-   public void setUserPassword(String userPassword) {
-      this.userPassword = userPassword;
+   public void setUserPass(String userPass) {
+      this.userPass = userPass;
    }
 
    /**

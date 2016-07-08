@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.oocl.mnlbc.utils;
+package com.oocl.mnlbc.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
