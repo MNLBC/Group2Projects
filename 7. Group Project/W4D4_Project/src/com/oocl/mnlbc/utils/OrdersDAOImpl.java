@@ -37,7 +37,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getId());
+			pStmt.setLong(1, user.getUserId());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();

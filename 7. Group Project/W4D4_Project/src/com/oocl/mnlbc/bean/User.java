@@ -4,99 +4,154 @@
 package com.oocl.mnlbc.bean;
 
 /**
- * @author FLAMEZI2
+ * @author Kassandra Fuentes
  *
  */
 public class User {
 
-   private Long id;
-   private String fname;
-   private String lname;
-   private String email;
-   private String street;
-   private String city;
+   private long userId;
+   private String userFname;
+   private String userLname;
+   private String userEmail;
+   private String userStreet;
+   private String userCity;
+   private String userCountry;
+   private String userPassword;
+   private String userType;
 
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
-
-   public String getStreet() {
-      return street;
-   }
-
-   public void setStreet(String street) {
-      this.street = street;
-   }
-
-   public String getCity() {
-      return city;
-   }
-
-   public void setCity(String city) {
-      this.city = city;
-   }
-
-   public String getCountry() {
-      return country;
-   }
-
-   public void setCountry(String country) {
-      this.country = country;
-   }
-
-   public String getType() {
-      return type;
-   }
-
-   public void setType(String type) {
-      this.type = type;
-   }
-
-   private String country;
-   private String password;
-   private String type;
-
-   public String getFname() {
-      return fname;
-   }
-
-   public void setFname(String fname) {
-      this.fname = fname;
-   }
-
-   public String getLname() {
-      return lname;
-   }
-
-   public void setLname(String lname) {
-      this.lname = lname;
-   }
-
-   public String getEmail() {
-      return email;
-   }
-
-   public void setEmail(String email) {
-      this.email = email;
-   }
-
-   public String getPassword() {
-      return password;
-   }
-
-   public void setPassword(String password) {
-      this.password = password;
+   /**
+    * @return the userId
+    */
+   public long getUserId() {
+      return userId;
    }
 
    /**
-    * 
+    * @param userId
+    *           the userId to set
     */
-   public User() {
-      // TODO Auto-generated constructor stub
+   public void setUserId(long userId) {
+      this.userId = userId;
+   }
+
+   /**
+    * @return the userFname
+    */
+   public String getUserFname() {
+      return userFname;
+   }
+
+   /**
+    * @param userFname
+    *           the userFname to set
+    */
+   public void setUserFname(String userFname) {
+      this.userFname = userFname;
+   }
+
+   /**
+    * @return the userLname
+    */
+   public String getUserLname() {
+      return userLname;
+   }
+
+   /**
+    * @param userLname
+    *           the userLname to set
+    */
+   public void setUserLname(String userLname) {
+      this.userLname = userLname;
+   }
+
+   /**
+    * @return the userEmail
+    */
+   public String getUserEmail() {
+      return userEmail;
+   }
+
+   /**
+    * @param userEmail
+    *           the userEmail to set
+    */
+   public void setUserEmail(String userEmail) {
+      this.userEmail = userEmail;
+   }
+
+   /**
+    * @return the userStreet
+    */
+   public String getUserStreet() {
+      return userStreet;
+   }
+
+   /**
+    * @param userStreet
+    *           the userStreet to set
+    */
+   public void setUserStreet(String userStreet) {
+      this.userStreet = userStreet;
+   }
+
+   /**
+    * @return the userCity
+    */
+   public String getUserCity() {
+      return userCity;
+   }
+
+   /**
+    * @param userCity
+    *           the userCity to set
+    */
+   public void setUserCity(String userCity) {
+      this.userCity = userCity;
+   }
+
+   /**
+    * @return the userCountry
+    */
+   public String getUserCountry() {
+      return userCountry;
+   }
+
+   /**
+    * @param userCountry
+    *           the userCountry to set
+    */
+   public void setUserCountry(String userCountry) {
+      this.userCountry = userCountry;
+   }
+
+   /**
+    * @return the userPassword
+    */
+   public String getUserPassword() {
+      return userPassword;
+   }
+
+   /**
+    * @param userPassword
+    *           the userPassword to set
+    */
+   public void setUserPassword(String userPassword) {
+      this.userPassword = userPassword;
+   }
+
+   /**
+    * @return the userType
+    */
+   public String getUserType() {
+      return userType;
+   }
+
+   /**
+    * @param userType
+    *           the userType to set
+    */
+   public void setUserType(String userType) {
+      this.userType = userType;
    }
 
 }

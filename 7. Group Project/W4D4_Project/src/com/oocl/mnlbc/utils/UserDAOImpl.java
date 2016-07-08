@@ -65,15 +65,15 @@ public class UserDAOImpl implements UserDAO {
 			while(rs.next()){
 				if(!rs.getString("USERID").equals("")){
 					int id = Integer.parseInt(rs.getString("USERID"));
-					user.setId((long) id);
-					user.setFname(rs.getString("FNAME"));
-					user.setLname(rs.getString("LNAME"));
-					user.setEmail(rs.getString("EMAIL"));
-					user.setPassword(rs.getString("PASSWORD"));
-					user.setStreet(rs.getString("STREET"));
-					user.setCity(rs.getString("CITY"));
-					user.setCountry(rs.getString("COUNTRY"));
-					user.setType(rs.getString("TYPE"));
+					user.setUserId((long) id);
+					user.setUserFname(rs.getString("FNAME"));
+					user.setUserLname(rs.getString("LNAME"));
+					user.setUserEmail(rs.getString("EMAIL"));
+					user.setUserPassword(rs.getString("PASSWORD"));
+					user.setUserStreet(rs.getString("STREET"));
+					user.setUserCity(rs.getString("CITY"));
+					user.setUserCountry(rs.getString("COUNTRY"));
+					user.setUserType(rs.getString("TYPE"));
 					return user;
 				}
 			}
@@ -93,14 +93,14 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setString(1, user.getFname());
-			pStmt.setString(2, user.getLname());
-			pStmt.setString(3, user.getEmail());
-			pStmt.setString(4, user.getPassword());
-			pStmt.setString(5, user.getStreet());
-			pStmt.setString(6, user.getCity());
-			pStmt.setString(7, user.getCountry());
-			pStmt.setString(8, user.getType());
+			pStmt.setString(1, user.getUserFname());
+			pStmt.setString(2, user.getUserLname());
+			pStmt.setString(3, user.getUserEmail());
+			pStmt.setString(4, user.getUserPassword());
+			pStmt.setString(5, user.getUserStreet());
+			pStmt.setString(6, user.getUserCity());
+			pStmt.setString(7, user.getUserCountry());
+			pStmt.setString(8, user.getUserType());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();
@@ -128,7 +128,7 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getId());
+			pStmt.setLong(1, user.getUserId());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();
@@ -148,7 +148,7 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getId());
+			pStmt.setLong(1, user.getUserId());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();

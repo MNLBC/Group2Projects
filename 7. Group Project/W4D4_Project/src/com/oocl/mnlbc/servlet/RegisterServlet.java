@@ -9,9 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.dao.UserDao;
+import com.oocl.mnlbc.dao.UserDaoImpl;
+import com.oocl.mnlbc.utils.UserDAO;
+import com.oocl.mnlbc.utils.UserDAOImpl;
 
 /**
- * Servlet implementation class RegisterServlet
+ * 
+ * @author Kassandra Fuentes
+ * 
+ *         Servlet implementation class RegisterServlet
  */
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
@@ -30,7 +37,17 @@ public class RegisterServlet extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // TODO Auto-generated method stub
+      doPost(request, response);
+
+   }
+
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+      UserDAO dao = new UserDAOImpl();
+      User usr = new User();
       String fname = request.getParameter("fname");
       String lname = request.getParameter("lname");
       String email = request.getParameter("email");
@@ -43,15 +60,15 @@ public class RegisterServlet extends HttpServlet {
       String msg = "failed";
       if (fname != null && lname != null && email != null && street != null && city != null && country != null
          && password != null && type != null) {
-         user.setFname(fname);
-         user.setLname(lname);
-         user.setEmail(email);
-         user.setStreet(street);
-         user.setCity(city);
-         user.setCountry(country);
-         user.setPassword(password);
-         user.setType(type);
-         user.setPassword(password);
+         user.setUserFname(fname);
+         user.setUserLname(lname);
+         user.setUserEmail(email);
+         user.setUserStreet(street);
+         user.setUserCity(city);
+         user.setUserCountry(country);
+         user.setUserPassword(password);
+         user.setUserType(type);
+         user.setUserPassword(password);
          // if (!DbTransact.checkExisting(user)) {
          // int result = DbTransact.createUser(user);
          // if (result != 0) {
@@ -60,15 +77,6 @@ public class RegisterServlet extends HttpServlet {
          // }
       }
       response.getWriter().append(msg);
-   }
-
-   /**
-    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-    */
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-      // TODO Auto-generated method stub
-      doGet(request, response);
    }
 
 }
