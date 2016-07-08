@@ -28,12 +28,13 @@ public class ProductDAOImpl implements ProductDAO {
          while (rs.next()) {
             if (!(rs.getString("PRODID") == null)) {
                Product prod = new Product();
-               prod.setProductId(rs.getLong("PRODID"));
-               prod.setProductName("PRODNAME");
-               prod.setProductCategory("CATEGORY");
-               prod.setProductPrice(Double.parseDouble(rs.getString("PRICE")));
-               prod.setProductStock(Integer.parseInt(rs.getString("STOCK")));
-               prod.setProductImg(rs.getString("IMG"));
+               prod.setProdId(rs.getLong("PRODID"));
+               prod.setProdName("PRODNAME");
+               prod.setProdCat("PRODCAT");
+               prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
+               prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
+               prod.setProdImg(rs.getString("PRODIMG"));
+               prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
                result.add(prod);
             }
 
@@ -48,13 +49,13 @@ public class ProductDAOImpl implements ProductDAO {
    public int updateStock(Product product, int qty) {
       int result = 0;
       Connection conn = dbConnect.getConn();
-      String sql = "UPDATE PRODUCT SET STOCK = STOCK - ? WHERE PRODID = ?";
+      String sql = "UPDATE PRODUCT SET PRODSTOCK = PRODSTOCK - ? WHERE PRODID = ?";
 
       PreparedStatement pStmt;
       try {
          pStmt = (PreparedStatement) conn.prepareStatement(sql);
          pStmt.setInt(1, qty);
-         pStmt.setLong(2, product.getProductId());
+         pStmt.setLong(2, product.getProdId());
          result = pStmt.executeUpdate();
          pStmt.close();
          conn.close();

@@ -18,13 +18,13 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	public int addProduct(Order order, Product prod, int qty) {
 		int result = 0;
 		Connection conn = dbConnect.getConn();
-		String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,QTY) VALUES(?,?,?)";
+		String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES(?,?,?)";
 		
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
 			pStmt.setLong(1, order.getOrderId());
-			pStmt.setLong(2, prod.getProductId());
+			pStmt.setLong(2, prod.getProdId());
 			pStmt.setInt(3, qty);
 			result = pStmt.executeUpdate();
 			pStmt.close();
@@ -40,7 +40,7 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	public int removeProduct(long orderProductId) {
 		int result = 0;
 		Connection conn = dbConnect.getConn();
-		String sql = "DELETE FROM ORDERPRODUCT WHERE ORDERPRODUCTID = ?";
+		String sql = "DELETE FROM ORDERPRODUCT WHERE ORDERPRODID = ?";
 		
 		PreparedStatement pStmt;
 		try {
@@ -71,12 +71,13 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 			ResultSet rs = pStmt.executeQuery();
 			while(rs.next()){
 				Product prod = new Product();
-				prod.setProductId(rs.getLong("PRODID"));
-				prod.setProductName("PRODNAME");
-				prod.setProductCategory("CATEGORY");
-				prod.setProductPrice(Double.parseDouble(rs.getString("PRICE")));
-				prod.setProductStock(Integer.parseInt(rs.getString("STOCK")));
-				prod.setProductImg(rs.getString("IMG"));
+				prod.setProdId(rs.getLong("PRODID"));
+				prod.setProdName("PRODNAME");
+				prod.setProdCat("PRODCAT");
+				prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
+				prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
+				prod.setProdImg(rs.getString("PRODIMG"));
+				prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
 				result.add(prod);
 			}
 		} catch (SQLException e) {

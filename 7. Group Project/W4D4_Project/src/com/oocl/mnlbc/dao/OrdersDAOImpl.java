@@ -60,7 +60,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		Connection conn = dbConnect.getConn();
 		String sql;
 		
-		sql = "SELECT SUM(A.PRICE * B.QTY) AS TOTAL, A.PRODID "
+		sql = "SELECT SUM((A.PRODPRICE*A.PRODSALE) * B.ORDERPRODQTY) AS TOTAL, A.PRODID "
 				+ "FROM PRODUCT A, ORDERPRODUCT B "
 				+ "WHERE A.PRODID = B.PRODID "
 				+ "AND B.ORDERID = ? "
@@ -73,7 +73,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 			while(rs.next()){
 				total =  total + rs.getDouble(1);
 			}
-			sql = "UPDATE ORDERS SET TOTAL = ?, ORDER_DT = ?";
+			sql = "UPDATE ORDERS SET ORDERTOTAL = ?, ORDERDATE = ?";
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
 			pStmt.setString(1,total);
 			pStmt.setString(2,timestamp);

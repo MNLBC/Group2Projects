@@ -53,14 +53,14 @@ public class UserDAOImpl implements UserDAO {
 				if(!rs.getString("USERID").equals("")){
 					int id = Integer.parseInt(rs.getString("USERID"));
 					user.setUserId((long) id);
-					user.setUserFname(rs.getString("FNAME"));
-					user.setUserLname(rs.getString("LNAME"));
-					user.setUserEmail(rs.getString("EMAIL"));
-					user.setUserPassword(rs.getString("PASSWORD"));
-					user.setUserStreet(rs.getString("STREET"));
-					user.setUserCity(rs.getString("CITY"));
-					user.setUserCountry(rs.getString("COUNTRY"));
-					user.setUserType(rs.getString("TYPE"));
+					user.setUserFname(rs.getString("USERFNAME"));
+					user.setUserLname(rs.getString("USERLNAME"));
+					user.setUserEmail(rs.getString("USEREMAIL"));
+					user.setUserPass(rs.getString("USERPASS"));
+					user.setUserStreet(rs.getString("USERSTREET"));
+					user.setUserCity(rs.getString("USERCITY"));
+					user.setUserCountry(rs.getString("USERCOUNTRY"));
+					user.setUserType(rs.getString("USERTYPE"));
 					return user;
 				}
 			}
@@ -74,7 +74,7 @@ public class UserDAOImpl implements UserDAO {
 	public int createUser(User user) {
 		int result = 0;
 		Connection conn = dbConnect.getConn();
-		String sql = "INSERT INTO USERS(FNAME,LNAME,EMAIL,PASSWORD,STREET,CITY,COUNTRY,TYPE)"
+		String sql = "INSERT INTO USERS(USERFNAME,USERLNAME,USEREMAIL,USERPASS,USERSTREET,USERCITY,USERCOUNTRY,USERTYPE)"
 				+ "VALUES(?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement pStmt;
@@ -83,7 +83,7 @@ public class UserDAOImpl implements UserDAO {
 			pStmt.setString(1, user.getUserFname());
 			pStmt.setString(2, user.getUserLname());
 			pStmt.setString(3, user.getUserEmail());
-			pStmt.setString(4, user.getUserPassword());
+			pStmt.setString(4, user.getUserPass());
 			pStmt.setString(5, user.getUserStreet());
 			pStmt.setString(6, user.getUserCity());
 			pStmt.setString(7, user.getUserCountry());
@@ -102,7 +102,7 @@ public class UserDAOImpl implements UserDAO {
 	public int updateUserType(User user,String type) {
 		int result = 0;
 		Connection conn = dbConnect.getConn();
-		String sql = "UPDATE USERS SET TYPE = ? WHERE USERID = ?";
+		String sql = "UPDATE USERS SET USERTYPE = ? WHERE USERID = ?";
 		
 		PreparedStatement pStmt;
 		try {
@@ -119,84 +119,12 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-	@Override
-	public int setActive(User user) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "UPDATE USERS SET ACTIVE = 1 WHERE USERID = ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getUserId());
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
-	}
-
-	@Override
-	public int setInactive(User user) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "UPDATE USERS SET ACTIVE = 0 WHERE USERID = ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getUserId());
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
-	}
-
-	@Override
-	public List<User> getActiveUser() {
-		List<User> result = new ArrayList<User>();		
-		Connection conn = dbConnect.getConn();
-		String sql = "SELECT * FROM USERS WHERE ACTIVE = 1";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				if(!rs.getString("USERID").equals("")){
-					User user = new User();
-					int id = Integer.parseInt(rs.getString("USERID"));
-					user.setUserId((long) id);
-					user.setUserFname(rs.getString("FNAME"));
-					user.setUserLname(rs.getString("LNAME"));
-					user.setUserEmail(rs.getString("EMAIL"));
-					user.setUserPassword(rs.getString("PASSWORD"));
-					user.setUserStreet(rs.getString("STREET"));
-					user.setUserCity(rs.getString("CITY"));
-					user.setUserCountry(rs.getString("COUNTRY"));
-					user.setUserType(rs.getString("TYPE"));
-					result.add(user);
-				}
-			}
-		}
-		catch(SQLException e){
-			
-		}
-		return result;
-	}
 
 	@Override
 	public List<User> getBlackList() {
 		List<User> result = new ArrayList<User>();		
 		Connection conn = dbConnect.getConn();
-		String sql = "SELECT * FROM USERS WHERE TYPE = 'BLACKLIST'";
+		String sql = "SELECT * FROM USERS WHERE USERTYPE = 'BLACKLIST'";
 		
 		PreparedStatement pStmt;
 		try {
@@ -207,14 +135,14 @@ public class UserDAOImpl implements UserDAO {
 					User user = new User();
 					int id = Integer.parseInt(rs.getString("USERID"));
 					user.setUserId((long) id);
-					user.setUserFname(rs.getString("FNAME"));
-					user.setUserLname(rs.getString("LNAME"));
-					user.setUserEmail(rs.getString("EMAIL"));
-					user.setUserPassword(rs.getString("PASSWORD"));
-					user.setUserStreet(rs.getString("STREET"));
-					user.setUserCity(rs.getString("CITY"));
-					user.setUserCountry(rs.getString("COUNTRY"));
-					user.setUserType(rs.getString("TYPE"));
+					user.setUserFname(rs.getString("USERFNAME"));
+					user.setUserLname(rs.getString("USERLNAME"));
+					user.setUserEmail(rs.getString("USEREMAIL"));
+					user.setUserPass(rs.getString("USERPASS"));
+					user.setUserStreet(rs.getString("USERSTREET"));
+					user.setUserCity(rs.getString("USERCITY"));
+					user.setUserCountry(rs.getString("USERCOUNTRY"));
+					user.setUserType(rs.getString("USERTYPE"));
 					result.add(user);
 				}
 			}

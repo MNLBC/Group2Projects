@@ -55,17 +55,17 @@ public class RegisterServlet extends HttpServlet {
       String userStreet = request.getParameter("userStreet");
       String userCity = request.getParameter("userCity");
       String userCountry = request.getParameter("userCountry");
-      String userPassword = request.getParameter("userPassword");
+      String userPass = request.getParameter("userPass");
       String userType = request.getParameter("userType");
       if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
-         && userCountry != null && userPassword != null && userType != null) {
+         && userCountry != null && userPass != null && userType != null) {
          user.setUserFname(userFname);
          user.setUserLname(userLname);
          user.setUserEmail(userEmail);
          user.setUserStreet(userStreet);
          user.setUserCity(userCity);
          user.setUserCountry(userCountry);
-         user.setUserPassword(userPassword);
+         user.setUserPass(userPass);
          user.setUserType(userType);
          if (!dao.validateUser(user.getUserEmail())) {
             int result = dao.createUser(user);

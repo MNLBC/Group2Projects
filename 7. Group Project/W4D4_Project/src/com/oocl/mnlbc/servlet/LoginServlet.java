@@ -53,13 +53,13 @@ public class LoginServlet extends HttpServlet {
          User user = new User();
          PrintWriter out = response.getWriter();
          String userEmail = request.getParameter("userEmail");
-         String userPassword = request.getParameter("userPassword");
+         String userPass = request.getParameter("userPass");
          user.setUserEmail(userEmail);
-         user.setUserPassword(userPassword);
+         user.setUserPass(userPass);
          HttpSession session = request.getSession(true);
          session.setAttribute("username", userEmail);
 
-         if (dao.getUser(userEmail, userPassword) != null) {
+         if (dao.getUser(userEmail, userPass) != null) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");

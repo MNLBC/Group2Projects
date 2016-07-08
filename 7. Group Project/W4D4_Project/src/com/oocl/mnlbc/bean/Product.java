@@ -9,117 +9,133 @@ package com.oocl.mnlbc.bean;
  */
 public class Product {
 
-   private long productId;
-   private String productName;
-   private String productDesc;
-   private double productPrice;
-   private String productImg;
-   private String productCategory;
-   private int productStock;
+   private long prodId;
+   private String prodName;
+   private String prodDesc;
+   private String prodCat;
+   private String prodImg;
+   private double prodPrice;
+   private double prodSale;
+   private int prodStock;
 
    /**
-    * @return the productId
+    * @return the prodId
     */
-   public long getProductId() {
-      return productId;
+   public long getProdId() {
+      return prodId;
    }
 
    /**
-    * @param productId
-    *           the productId to set
+    * @param prodId
+    *           the prodId to set
     */
-   public void setProductId(long productId) {
-      this.productId = productId;
+   public void setProdId(long prodId) {
+      this.prodId = prodId;
    }
 
    /**
-    * @return the productName
+    * @return the prodName
     */
-   public String getProductName() {
-      return productName;
+   public String getProdName() {
+      return prodName;
    }
 
    /**
-    * @param productName
-    *           the productName to set
+    * @param prodName
+    *           the prodName to set
     */
-   public void setProductName(String productName) {
-      this.productName = productName;
+   public void setProdName(String prodName) {
+      this.prodName = prodName;
    }
 
    /**
-    * @return the productDesc
+    * @return the prodDesc
     */
-   public String getProductDesc() {
-      return productDesc;
+   public String getProdDesc() {
+      return prodDesc;
    }
 
    /**
-    * @param productDesc
-    *           the productDesc to set
+    * @param prodDesc
+    *           the prodDesc to set
     */
-   public void setProductDesc(String productDesc) {
-      this.productDesc = productDesc;
+   public void setProdDesc(String prodDesc) {
+      this.prodDesc = prodDesc;
    }
 
    /**
-    * @return the productPrice
+    * @return the prodCat
     */
-   public double getProductPrice() {
-      return productPrice;
+   public String getProdCat() {
+      return prodCat;
    }
 
    /**
-    * @param productPrice
-    *           the productPrice to set
+    * @param prodCat
+    *           the prodCat to set
     */
-   public void setProductPrice(double productPrice) {
-      this.productPrice = productPrice;
+   public void setProdCat(String prodCat) {
+      this.prodCat = prodCat;
    }
 
    /**
-    * @return the productImg
+    * @return the prodImg
     */
-   public String getProductImg() {
-      return productImg;
+   public String getProdImg() {
+      return prodImg;
    }
 
    /**
-    * @param productImg
-    *           the productImg to set
+    * @param prodImg
+    *           the prodImg to set
     */
-   public void setProductImg(String productImg) {
-      this.productImg = productImg;
+   public void setProdImg(String prodImg) {
+      this.prodImg = prodImg;
    }
 
    /**
-    * @return the productCategory
+    * @return the prodPrice
     */
-   public String getProductCategory() {
-      return productCategory;
+   public double getProdPrice() {
+      return prodPrice;
    }
 
    /**
-    * @param productCategory
-    *           the productCategory to set
+    * @param prodPrice
+    *           the prodPrice to set
     */
-   public void setProductCategory(String productCategory) {
-      this.productCategory = productCategory;
+   public void setProdPrice(double prodPrice) {
+      this.prodPrice = prodPrice;
    }
 
    /**
-    * @return the productStock
+    * @return the prodSale
     */
-   public int getProductStock() {
-      return productStock;
+   public double getProdSale() {
+      return prodSale;
    }
 
    /**
-    * @param productStock
-    *           the productStock to set
+    * @param prodSale
+    *           the prodSale to set
     */
-   public void setProductStock(int productStock) {
-      this.productStock = productStock;
+   public void setProdSale(double prodSale) {
+      this.prodSale = prodSale;
+   }
+
+   /**
+    * @return the prodStock
+    */
+   public int getProdStock() {
+      return prodStock;
+   }
+
+   /**
+    * @param prodStock
+    *           the prodStock to set
+    */
+   public void setProdStock(int prodStock) {
+      this.prodStock = prodStock;
    }
 
 }
