@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.utils.DbConnection;
@@ -157,4 +159,89 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
+	@Override
+	public List<User> getActiveUser() {
+		List<User> result = new ArrayList<User>();		
+		Connection conn = dbConnect.getConn();
+		String sql = "SELECT * FROM USERS WHERE ACTIVE = 1";
+		
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()){
+				if(!rs.getString("USERID").equals("")){
+					User user = new User();
+					int id = Integer.parseInt(rs.getString("USERID"));
+					user.setUserId((long) id);
+					user.setUserFname(rs.getString("FNAME"));
+					user.setUserLname(rs.getString("LNAME"));
+					user.setUserEmail(rs.getString("EMAIL"));
+					user.setUserPassword(rs.getString("PASSWORD"));
+					user.setUserStreet(rs.getString("STREET"));
+					user.setUserCity(rs.getString("CITY"));
+					user.setUserCountry(rs.getString("COUNTRY"));
+					user.setUserType(rs.getString("TYPE"));
+					result.add(user);
+				}
+			}
+		}
+		catch(SQLException e){
+			
+		}
+		return result;
+	}
+
+	@Override
+	public List<User> getBlackList() {
+		List<User> result = new ArrayList<User>();		
+		Connection conn = dbConnect.getConn();
+		String sql = "SELECT * FROM USERS WHERE TYPE = 'BLACKLIST'";
+		
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()){
+				if(!rs.getString("USERID").equals("")){
+					User user = new User();
+					int id = Integer.parseInt(rs.getString("USERID"));
+					user.setUserId((long) id);
+					user.setUserFname(rs.getString("FNAME"));
+					user.setUserLname(rs.getString("LNAME"));
+					user.setUserEmail(rs.getString("EMAIL"));
+					user.setUserPassword(rs.getString("PASSWORD"));
+					user.setUserStreet(rs.getString("STREET"));
+					user.setUserCity(rs.getString("CITY"));
+					user.setUserCountry(rs.getString("COUNTRY"));
+					user.setUserType(rs.getString("TYPE"));
+					result.add(user);
+				}
+			}
+		}
+		catch(SQLException e){
+			
+		}
+		return result;
+	}
+
+	@Override
+	public int deleteUser(User user) {
+		int result = 0;
+		Connection conn = dbConnect.getConn();
+		String sql = "DELETE FROM USERS WHERE USERID = ?";
+		
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			pStmt.setLong(1, user.getUserId());
+			result = pStmt.executeUpdate();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return result;
+	}
 }
