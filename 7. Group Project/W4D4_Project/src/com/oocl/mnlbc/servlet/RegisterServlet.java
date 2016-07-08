@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,7 +46,9 @@ public class RegisterServlet extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
       UserDAO dao = new UserDAOImpl();
+
       User user = new User();
+      String msg = "failed";
       String userFname = request.getParameter("userFname");
       String userLname = request.getParameter("userLname");
       String userEmail = request.getParameter("userEmail");
@@ -54,7 +57,6 @@ public class RegisterServlet extends HttpServlet {
       String userCountry = request.getParameter("userCountry");
       String userPassword = request.getParameter("userPassword");
       String userType = request.getParameter("userType");
-      String msg = "failed";
       if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
          && userCountry != null && userPassword != null && userType != null) {
          user.setUserFname(userFname);
@@ -73,6 +75,9 @@ public class RegisterServlet extends HttpServlet {
          }
       }
       response.getWriter().append(msg);
+      if(msg=="success"){
+         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
+      }
    }
 
 }
