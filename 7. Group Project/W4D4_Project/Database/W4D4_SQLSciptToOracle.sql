@@ -16,11 +16,11 @@ CREATE TABLE W4D4DB.User (
   userId NUMBER(10) NOT NULL,
   userFname VARCHAR2(25) NOT NULL,
   userLname VARCHAR2(25) NOT NULL,
-  userEmail VARCHAR2(15) NOT NULL,
+  userEmail VARCHAR2(50) NOT NULL,
   userStreet VARCHAR2(25) NOT NULL,
   userCity VARCHAR2(25) NOT NULL,
   userCountry VARCHAR2(25) NOT NULL,
-  userPassword VARCHAR2(15) NOT NULL,
+  userPass VARCHAR2(15) NOT NULL,
   userType VARCHAR2(12) NOT NULL,
   PRIMARY KEY (userId))
 ;
@@ -41,14 +41,15 @@ END;
 -- Table `W4D4DB`.`Product`
 -- -----------------------------------------------------
 CREATE TABLE W4D4DB.Product (
-  productId NUMBER(10) NOT NULL,
-  productName VARCHAR2(25) NOT NULL,
-  productDesc VARCHAR2(45) NULL,
-  productCategory VARCHAR2(25) NOT NULL,
-  productImg VARCHAR2(45) NOT NULL,
-  productPrice NUMBER(9,2) NOT NULL,
-  productStock NUMBER(10) NOT NULL,
-  PRIMARY KEY (productId))
+  prodId NUMBER(10) NOT NULL,
+  prodName VARCHAR2(25) NOT NULL,
+  prodDesc VARCHAR2(45) NULL,
+  prodCat VARCHAR2(25) NOT NULL,
+  prodImg VARCHAR2(45) NOT NULL,
+  prodPrice NUMBER(9,2) NOT NULL,
+  prodSale NUMBER(1,2) DEFAULT 1 NOT NULL,
+  prodStock NUMBER(10) NOT NULL,
+  PRIMARY KEY (prodId))
 ;
 
 -- Generate ID using sequence and trigger
@@ -56,9 +57,9 @@ CREATE SEQUENCE W4D4DB.Product_seq START WITH 1 INCREMENT BY 1;
 
 CREATE OR REPLACE TRIGGER W4D4DB.Product_seq_tr
  BEFORE INSERT ON W4D4DB.Product FOR EACH ROW
- WHEN (NEW.productId IS NULL)
+ WHEN (NEW.prodId IS NULL)
 BEGIN
- SELECT W4D4DB.Product_seq.NEXTVAL INTO :NEW.productId FROM DUAL;
+ SELECT W4D4DB.Product_seq.NEXTVAL INTO :NEW.prodId FROM DUAL;
 END;
 /
 
@@ -109,7 +110,7 @@ CREATE TABLE W4D4DB.OrderProduct (
    ,
   CONSTRAINT productId
     FOREIGN KEY (prodId)
-    REFERENCES W4D4DB.Product (productId)
+    REFERENCES W4D4DB.Product (prodId)
    )
 ;
 
