@@ -50,9 +50,9 @@ public class AcctTypeFilter implements Filter {
 		String userPass = req.getParameter("userPass");
 		User user = userDAO.getUser(userEmail, userPass);
 		
-		if(user.getUserType()=="Cutomer"){
+		if(user.getUserType().equals("Cutomer")){
 			// redirect to Customer page
-			RequestDispatcher rd = req.getRequestDispatcher("products.jsp"); //something.jsp
+			RequestDispatcher rd = req.getRequestDispatcher("products.html"); //something.jsp
 		      rd.forward(req,res);
 		}
 		else{
