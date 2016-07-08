@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
       UserDAO dao = new UserDAOImpl();
-      User usr = new User();
+
       PrintWriter out = response.getWriter();
 
       String fname = request.getParameter("fname");
@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet {
       String password = request.getParameter("password");
       String type = request.getParameter("type");
       User user = new User();
-
+      String msg = "failed";
       user.setUserFname(fname);
       user.setUserLname(lname);
       user.setUserEmail(email);
@@ -67,7 +67,6 @@ public class RegisterServlet extends HttpServlet {
       user.setUserCountry(country);
       user.setUserPassword(password);
       user.setUserType(type);
-      user.setUserPassword(password);
 
       if (!dao.validateUser(email)) {
          out.println("<script type=\"text/javascript\">");
@@ -79,6 +78,9 @@ public class RegisterServlet extends HttpServlet {
          response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
       }
 
+      if(msg=="success"){
+         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
+      }
    }
 
 }
