@@ -35,17 +35,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="banner">
    	  <div class="container">
 	  <div class="header-top">
-		<form class="form-inline">
-		</form>
+		<form class="form-inline" action="login" method="post">
+		
 		<div class="col-md-6 col-md-offset-6">
-			<input type="email" placeholder="Email Address" aria-describedby="basic-addon1" id="email">
-			<input type="password" placeholder="Password" aria-describedby="basic-addon1" id="pword">		
-			<button type="button" class="btn btn-primary" id="btnlogin">Login</button>
+			<input type="email" placeholder="Email Address" aria-describedby="basic-addon1" id="email" name="userEmail">
+			<input type="password" placeholder="Password" aria-describedby="basic-addon1" id="pword" name="userPass">		
+			<button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
 			<a href="modal.html" class="btn btn-primary" data-toggle="modal" data-target="#modalregister" id="btnregister">Register</a>
 			<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="modalregister">Register</button>-->
 			
 			
         </div>
+		</form>
 		<div class="col-md-4 col-md-offset-8" hidden="true">
 			 <ul class="header_user_info">
 			  <a class="login" href="login.html">
