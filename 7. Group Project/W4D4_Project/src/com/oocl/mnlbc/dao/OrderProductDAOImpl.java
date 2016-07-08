@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.utils.DbConnection;
+import com.oocl.mnlbc.util.DbConnection;
 
 public class OrderProductDAOImpl implements OrderProductDAO {
 	DbConnection dbConnect = new DbConnection();

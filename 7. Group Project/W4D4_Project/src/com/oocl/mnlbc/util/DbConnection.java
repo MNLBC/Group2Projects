@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.utils;
+package com.oocl.mnlbc.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,10 +6,10 @@ import java.sql.SQLException;
 
 public class DbConnection {
 	public Connection getConn() {
-		String driver = "oracle.jdbc.driver.OracleDriver";
-	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	      String username = "GROUP2";
-	      String password = "GROUP2";
+		String driver = Config.getConfigValue("driver");
+	      String url = Config.getConfigValue("url");
+	      String username = Config.getConfigValue("user");
+	      String password = Config.getConfigValue("pass");
 	      Connection conn = null;
 	      try {
 	         Class.forName(driver);

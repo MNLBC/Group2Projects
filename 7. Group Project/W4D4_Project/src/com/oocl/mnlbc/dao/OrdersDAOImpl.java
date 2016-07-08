@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.User;
-import com.oocl.mnlbc.utils.DbConnection;
+import com.oocl.mnlbc.util.DbConnection;
 
 public class OrdersDAOImpl implements OrdersDAO {
 
