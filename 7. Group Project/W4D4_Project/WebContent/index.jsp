@@ -79,8 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    	   <div class="menu">
 	     <ul class="megamenu skyblue">
 			<li><a class="color2" href="index.jsp">Home</a></li>
-			<li><a class="color4" href="">Products</a></li>				
-			<li><a class="color10" href="">Contact Us</a></li>
+			<li><a class="color4" href="">Products</a></li>
 			<li><a class="color3" href="">About</a></li>
 			</ul>
 			</div>
@@ -89,14 +88,79 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    </div>
    </div>
    <div class="main">
-    
+   <br>
+   <br>
     <div class="middle_content">
     	<div class="container">
     		<h2>Welcome</h2>
     		<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.</p>
     	</div>
     </div>
-   	
+   	<div class="container">
+    	<ul class="content-home" id="listcategories">
+           <li class="col-sm-4">
+              <a href="single.html" class="item-link" title="">
+                <div class="bannerBox">
+                   <img src="watchimages/w1.jpg" class="item-img" title="" alt="" width="100%" height="100%">
+                   <div class="item-html">
+                      <h3>Luxury</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <button>Shop now!</button>
+                   </div>
+                </div>
+              </a>
+           </li>
+           <li class="col-sm-4">
+              <a href="single.html" class="item-link" title="">
+                <div class="bannerBox">
+                   <img src="watchimages/w2.png" class="item-img" title="" alt="" width="100%" height="100%">
+                   <div class="item-html">
+                      <h3>Dress</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <button>Shop now!</button>
+                   </div>
+                </div>
+              </a>
+           </li>
+           <li class="col-sm-4">
+              <a href="single.html" class="item-link" title="">
+                <div class="bannerBox">
+                   <img src="watchimages/w3.jpg" class="item-img" title="" alt="" width="100%" height="100%">
+                   <div class="item-html">
+                      <h3>Sports</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <button>Shop now!</button>
+                   </div>
+                </div>
+              </a>
+           </li>
+		   <li class="col-sm-4 col-sm-offset-2">
+              <a href="single.html" class="item-link" title="">
+                <div class="bannerBox">
+                   <img src="watchimages/w4.png" class="item-img" title="" alt="" width="100%" height="100%">
+                   <div class="item-html">
+                      <h3>Casual</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <button>Shop now!</button>
+                   </div>
+                </div>
+              </a>
+           </li>
+		   <li class="col-sm-4">
+              <a href="single.html" class="item-link" title="">
+                <div class="bannerBox">
+                   <img src="watchimages/w5.png" class="item-img" title="" alt="" width="100%" height="100%">
+                   <div class="item-html">
+                      <h3>Digital</h3>
+                      <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                      <button>Shop now!</button>
+                   </div>
+                </div>
+              </a>
+           </li>
+           <div class="clearfix"> </div>         
+       </ul>
+    </div>
    
    </div>
 	<script
