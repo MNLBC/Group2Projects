@@ -48,10 +48,10 @@ public class BlacklistFilter implements Filter {
 		if(blacklist.contains(user)){
 			showWarning(response);
 		}
+		else{
+			chain.doFilter(request, response);
+		}
 		
-
-		// pass the request along the filter chain
-		chain.doFilter(request, response);
 	}
 
 	/**

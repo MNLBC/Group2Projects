@@ -9,4 +9,10 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <filter>
+    <filter-name>BlackList</filter-name>
+    <filter-class>
+      com.oocl.mnlbc.filter.BlacklistFilter
+    </filter-class>
+  </filter>
 </web-app>
