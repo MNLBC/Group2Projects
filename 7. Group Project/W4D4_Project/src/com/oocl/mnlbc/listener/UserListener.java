@@ -2,6 +2,7 @@ package com.oocl.mnlbc.listener;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -30,15 +31,16 @@ public class UserListener implements HttpSessionListener {
      */
     public void sessionCreated(HttpSessionEvent event)  { 
     	HttpSession session = event.getSession();
-    	session.setMaxInactiveInterval(100);
-    	User user = (User) session.getAttribute("user");
-        userDAO.setActive(user);
-        List<User> userList = userDAO.getActiveUser();
-        int userCount = userList.size();
-        
-        
-    	session.setAttribute("userCount", userCount);
-    	System.out.println("Total : " + userCount);
+        ServletContext ctx = session.getServletContext();
+        Integer ctr = (Integer) ctx.getAttribute("ctr");
+        if (ctr == null) {
+           ctr = new Integer(1);
+        } else {
+           ctr = new Integer(ctr + 1);
+        }
+        ctx.setAttribute("ctr", ctr);
+        session.setMaxInactiveInterval(60);
+        System.out.println("Session Created:: ID=" + event.getSession().getId());
     }
 
 	/**
@@ -46,14 +48,14 @@ public class UserListener implements HttpSessionListener {
      */
     public void sessionDestroyed(HttpSessionEvent event)  {
     	HttpSession session = event.getSession();
-    	User user = (User) session.getAttribute("user");
-        userDAO.setInactive(user);
-        List<User> userList = userDAO.getActiveUser();
-        int userCount = userList.size();
-        
-        
-    	session.setAttribute("userCount", userCount);
-    	System.out.println("Total : " + userCount);
+        ServletContext ctx = session.getServletContext();
+        Integer ctr = (Integer) ctx.getAttribute("ctr");
+        if (ctr != null && ctr != 0) {
+           ctr = new Integer(ctr - 1);
+        }
+        ctx.setAttribute("ctr", ctr);
+        session.setMaxInactiveInterval(60);
+        System.out.println("Session Destroyed:: ID=" + event.getSession().getId());
     }
 	
 }
