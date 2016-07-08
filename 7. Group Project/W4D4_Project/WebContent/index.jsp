@@ -45,6 +45,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			
         </div>
+		</form>
 		<div class="modal fade" id="modalregister" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
         	<div class="modal-dialog">
         		<div class="modal-content">
@@ -55,12 +56,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         	</div>
 
 		</div>
-		</form>
 		
 	  </div>
 	  <div class="header_bottom">
 	   <div class="logo">
-		  <h1><a href="index.html" id="title"><span class="m_1">W</span>atches</a></h1>
+		  <h1><a href="index.jsp" id="title"><span class="m_1">W</span>atchmewhip</a></h1>
 	   </div>
    	   <div class="menu">
 	     <ul class="megamenu skyblue">

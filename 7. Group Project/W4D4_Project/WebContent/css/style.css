@@ -12,13 +12,14 @@ p {margin: 0;}
     font-family: ptsansnarrow;
     src: url(font/pt-sans.narrow.ttf);
 }
-#modalfname{
-	width: 100%;
+#close{
+	color: white;
 }
-#modallname{
-	width: 100%;
+#modalheader{
+	color: white;
+	background-color: gray;
 }
-#modaluname{
+#btnsignup{
 	width: 100%;
 }
 #loginheader{
@@ -26,7 +27,7 @@ p {margin: 0;}
 	font-family: arial;
 }
 #testDiv{
-	border: solid white;
+	border: solid black;
 }
 #btnlogin{
 	margin-top: 0;
@@ -404,7 +405,7 @@ ul.header_user_info li.user_desc{
 	padding: 2em 0;
 }
 .logo h1{
-    font-size:7em;
+    font-size:5em;
     text-transform: uppercase;
     margin-bottom: 0;
     font-family: 'Dorsa', sans-serif;

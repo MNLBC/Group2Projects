@@ -1,20 +1,43 @@
-<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal">
+<div class="modal-header" id="modalheader">
+        				<button type="button" class="close" data-dismiss="modal" id="close">
         					<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
         				</button>
         				<h3 class="modal-title" id="myModalLabel">Sign up now</h3>
         				<p>Fill in the form below to get instant access:</p>
         			</div>
         			
-        			<div class="modal-body">
+        			<div class="modal-body" id="modalheader">
         				
-	                    <form role="form" action="" method="post" class="registration-form">
-	                    	<div class="form-group">
-	                        	<input type="text" placeholder="First name..." id="modalfname">
-	                        	<input type="text" placeholder="Last name..." id="modallname">
-	                        	<input type="text" placeholder="Email..." id="modaluname">
-								<button type="submit" class="btn">Sign me up!</button>
-	                        </div>
+	                    <form action="" method="post">
+								<div class="form-group">
+										<input type="text" placeholder="First name..." id="modalfname" class="form-control"/>
+								</div>
+								<div class="form-group">
+	                        	<input type="text" placeholder="Last name..." id="modallname" class="form-control"/>
+	                        	</div>
+								<div class="form-group">
+								<div class="row">
+								<div class="col-md-3">
+								<input type="text" placeholder="Street..." id="modaluname" class="form-control"/>
+								</div>
+								<div class="col-md-4">
+								<input type="text" placeholder="City..." id="modaluname" class="form-control"/>
+								</div>
+								<div class="col-md-5">
+								<input type="text" placeholder="Country..." id="modaluname" class="form-control"/>
+								</div>
+								</div>
+								</div>
+								<div class="form-group">
+								<input type="email" placeholder="Email..." id="modaluname" class="form-control"/>
+								</div>
+								<div class="form-group">
+								<input type="password" placeholder="Password..." id="modaluname" class="form-control"/>
+								</div>
+								<div class="form-group">
+								<button type="submit" class="btn btn-primary" id="btnsignup">Sign me up!</button>
+								</div>
 	                    </form>
+						
 	                    
         			</div>
