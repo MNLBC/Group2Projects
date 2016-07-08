@@ -1,0 +1,17 @@
+@font-face {
+    font-family: adidas;
+    src: url(adidas/adineue-bold-webfont.woff);
+}
+
+#testDiv{
+	border: solid;
+}
+
+#header{
+	background-color: white;
+	color: black;
+}
+
+#title{
+	font-family: adidas;
+}
