@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oocl.mnlbc.bean.User;
-import com.oocl.mnlbc.dao.UserDao;
-import com.oocl.mnlbc.dao.UserDaoImpl;
-import com.oocl.mnlbc.utils.UserDAO;
-import com.oocl.mnlbc.utils.UserDAOImpl;
+import com.oocl.mnlbc.dao.UserDAO;
+import com.oocl.mnlbc.dao.UserDAOImpl;
 
 /**
  * 

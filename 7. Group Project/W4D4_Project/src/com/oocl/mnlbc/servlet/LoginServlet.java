@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.User;
-import com.oocl.mnlbc.utils.UserDAO;
-import com.oocl.mnlbc.utils.UserDAOImpl;
+import com.oocl.mnlbc.dao.UserDAO;
+import com.oocl.mnlbc.dao.UserDAOImpl;
 
 /**
  * @author Kassandra Fuentes

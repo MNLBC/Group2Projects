@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.utils.OrdersDAOImpl;
+import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.utils.Timestamp;
 
 /**
