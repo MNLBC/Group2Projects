@@ -40,13 +40,15 @@ public class BlacklistFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		HttpServletRequest req = (HttpServletRequest)request;
+		HttpServletRequest req = (HttpServletRequest)request;	
 		UserDAOImpl userDAO = new UserDAOImpl();
-		List<User> blacklist = userDAO.getBlackList();
-		User user = (User) req.getAttribute("user");
+		List<Long> blacklist = userDAO.getBlackList();
+		String userEmail = req.getParameter("userEmail");
+		String userPass = req.getParameter("userPass");
+		User user = userDAO.getUser(userEmail, userPass);
 
-		if(blacklist.contains(user)){
-			showWarning(response);
+		if(blacklist.contains(user.getUserId())){
+			showWarning(response);	
 		}
 		else{
 			chain.doFilter(request, response);

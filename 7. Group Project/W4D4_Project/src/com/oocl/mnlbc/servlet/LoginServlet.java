@@ -3,6 +3,8 @@ package com.oocl.mnlbc.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,22 +52,22 @@ public class LoginServlet extends HttpServlet {
       try {
 
          UserDAO dao = new UserDAOImpl();
-         User user = new User();
          PrintWriter out = response.getWriter();
          String userEmail = request.getParameter("userEmail");
          String userPass = request.getParameter("userPass");
-         user.setUserEmail(userEmail);
-         user.setUserPass(userPass);
          HttpSession session = request.getSession(true);
-         session.setAttribute("username", userEmail);
+         
 
-         if (dao.getUser(userEmail, userPass) != null) {
+         if (dao.getUser(userEmail, userPass).getUserId() == 0) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");
             out.println("<a href='index.jsp'>Login</a>"); // if email/password does not match
          } else {
-            response.sendRedirect("ShowUser"); // if login successful
+        	 session.setAttribute("username", userEmail);
+        	 ServletContext sc = this.getServletContext();
+        	 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+        	 rd.forward(request, response);
          }
 
       } catch (Throwable theException) {

@@ -14,14 +14,14 @@
 
   			Integer counter = (Integer) session.getAttribute("userCounter");
   %>
-  <form method="post" action="LoginServlet">
+  <form method="post" action="login">
     <div class="box">
       <p style="margin-top: 50px; margin-left: 100px;">
-        Username: &nbsp<input type="text" name="username" value=""
+        Username: &nbsp<input type="text" name="userEmail" value=""
           >
       </p>
       <p style="margin-left: 100px;">
-        Password: &nbsp<input type="password" name="password" value=""
+        Password: &nbsp<input type="password" name="userPass" value=""
           style="margin-left: 4px;" >
       </p>
       <br>

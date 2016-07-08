@@ -37,11 +37,14 @@
     <filter>
         <filter-name>BlackList</filter-name>
         <filter-class>
-      com.oocl.mnlbc.filter.BlacklistFilter
+     		com.oocl.mnlbc.filter.BlacklistFilter
         </filter-class>
     </filter>
     <filter-mapping>
         <filter-name>BlackList</filter-name>
-        <url-pattern>/test/testfilter</url-pattern>
+        <url-pattern>/login</url-pattern>
     </filter-mapping>
+    <listener>
+    	<listener-class>com.oocl.mnlbc.listener.UserListener</listener-class>
+  	</listener>
 </web-app>

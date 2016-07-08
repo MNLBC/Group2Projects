@@ -3,6 +3,8 @@ package com.oocl.mnlbc.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -76,7 +78,9 @@ public class RegisterServlet extends HttpServlet {
       }
       response.getWriter().append(msg);
       if(msg=="success"){
-         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
+    	  ServletContext sc = this.getServletContext();
+     	 RequestDispatcher rd = sc.getRequestDispatcher("/views/edit_user.jsp"); // edit here
+     	 rd.forward(request, response);
       }
    }
 

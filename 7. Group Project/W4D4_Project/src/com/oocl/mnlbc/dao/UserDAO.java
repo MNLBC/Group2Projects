@@ -11,5 +11,5 @@ public interface UserDAO {
 	public int createUser(User user);
 	public int deleteUser(User user);
 	public int updateUserType(User user,String type);
-	public List<User> getBlackList();
+	public List<Long> getBlackList();
 }

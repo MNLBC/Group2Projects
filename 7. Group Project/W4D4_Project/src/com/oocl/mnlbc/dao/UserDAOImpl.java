@@ -121,8 +121,8 @@ public class UserDAOImpl implements UserDAO {
 
 
 	@Override
-	public List<User> getBlackList() {
-		List<User> result = new ArrayList<User>();		
+	public List<Long> getBlackList() {
+		List<Long> result = new ArrayList<Long>();		
 		Connection conn = dbConnect.getConn();
 		String sql = "SELECT * FROM USERS WHERE USERTYPE = 'BLACKLIST'";
 		
@@ -132,18 +132,7 @@ public class UserDAOImpl implements UserDAO {
 			ResultSet rs = pStmt.executeQuery();
 			while(rs.next()){
 				if(!rs.getString("USERID").equals("")){
-					User user = new User();
-					int id = Integer.parseInt(rs.getString("USERID"));
-					user.setUserId((long) id);
-					user.setUserFname(rs.getString("USERFNAME"));
-					user.setUserLname(rs.getString("USERLNAME"));
-					user.setUserEmail(rs.getString("USEREMAIL"));
-					user.setUserPass(rs.getString("USERPASS"));
-					user.setUserStreet(rs.getString("USERSTREET"));
-					user.setUserCity(rs.getString("USERCITY"));
-					user.setUserCountry(rs.getString("USERCOUNTRY"));
-					user.setUserType(rs.getString("USERTYPE"));
-					result.add(user);
+					result.add(rs.getLong("USERID"));
 				}
 			}
 		}
