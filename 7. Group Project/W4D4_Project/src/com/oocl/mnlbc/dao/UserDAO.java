@@ -10,5 +10,5 @@ public interface UserDAO {
 	public int createUser(User user);
 	public int setActive(User user);
 	public int setInactive(User user);
-	public int updateUser(User user);
+	public int updateUserType(User user,String type);
 }

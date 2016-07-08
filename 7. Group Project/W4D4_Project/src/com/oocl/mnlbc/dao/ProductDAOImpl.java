@@ -45,15 +45,15 @@ public class ProductDAOImpl implements ProductDAO {
    }
 
    @Override
-   public int updateStock(Product product, int newStock) {
+   public int updateStock(Product product, int qty) {
       int result = 0;
       Connection conn = dbConnect.getConn();
-      String sql = "UPDATE PRODUCT SET STOCK = ? WHERE PRODID = ?";
+      String sql = "UPDATE PRODUCT SET STOCK = STOCK - ? WHERE PRODID = ?";
 
       PreparedStatement pStmt;
       try {
          pStmt = (PreparedStatement) conn.prepareStatement(sql);
-         pStmt.setInt(1, newStock);
+         pStmt.setInt(1, qty);
          pStmt.setLong(2, product.getProductId());
          result = pStmt.executeUpdate();
          pStmt.close();
