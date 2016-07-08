@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
 	public boolean validateUser(String email) {
 		Connection conn = dbConnect.getConn();
 		boolean result = false;
-		String sql = "SELECT USERID FROM USERS WHERE EMAIL = ?";
+		String sql = "SELECT USERID FROM USERS WHERE USEREMAIL = ?";
 		
 		PreparedStatement pStmt;
 		try {
@@ -41,7 +41,7 @@ public class UserDAOImpl implements UserDAO {
 	public User getUser(String email, String password) {
 		User user = new User();
 		Connection conn = dbConnect.getConn();
-		String sql = "SELECT * FROM USERS WHERE EMAIL = ? AND PASSWORD = ?";
+		String sql = "SELECT * FROM USERS WHERE USEREMAIL = ? AND USERPASS = ?";
 		
 		PreparedStatement pStmt;
 		try {
