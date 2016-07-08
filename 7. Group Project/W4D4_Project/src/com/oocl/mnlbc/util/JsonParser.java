@@ -2,11 +2,13 @@ package com.oocl.mnlbc.util;
 
 import com.google.gson.Gson;
 import com.oocl.mnlbc.bean.Order;
+import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.bean.User;
 
 /**
  * JSON PARSER UTIL
+ * 
  * @author FLAMEZI2
  * @since 2016-07-08
  */
@@ -49,6 +51,18 @@ public class JsonParser {
    }
 
    /**
+    * parse OrderProduct to Json
+    * 
+    * @param orderprod
+    * @return
+    */
+   public String toOrderProductJson(OrderProduct orderprod) {
+      Gson gson = new Gson();
+      String json = gson.toJson(orderprod);
+      return json;
+   }
+
+   /**
     * parse Json to User
     * 
     * @param str
@@ -82,5 +96,17 @@ public class JsonParser {
       Gson gson = new Gson();
       Order order = gson.fromJson(str, Order.class);
       return order;
+   }
+
+   /**
+    * parse Json to OrderProduct
+    * 
+    * @param str
+    * @return
+    */
+   public OrderProduct toOrderProductObject(String str) {
+      Gson gson = new Gson();
+      OrderProduct orderprod = gson.fromJson(str, OrderProduct.class);
+      return orderprod;
    }
 }
