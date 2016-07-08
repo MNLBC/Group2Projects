@@ -36,6 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
    	  <div class="container">
 	  <div class="header-top">
 		<form class="form-inline">
+		</form>
 		<div class="col-md-6 col-md-offset-6">
 			<input type="email" placeholder="Email Address" aria-describedby="basic-addon1" id="email">
 			<input type="password" placeholder="Password" aria-describedby="basic-addon1" id="pword">		
@@ -45,7 +46,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			
 			
         </div>
-		</form>
+		<div class="col-md-4 col-md-offset-8" hidden="true">
+			 <ul class="header_user_info">
+			  <a class="login" href="login.html">
+				<i class="user"> </i>My Account
+			  </a>
+		     </ul>
+			 <ul class="header_user_info">
+			  <a class="login" href="#">Cart <span class="badge">47</span></a>
+		     </ul>
+			 <ul class="header_user_info">
+			  <a class="login" href="login.html">Logout
+			  </a>
+		     </ul>
+		</div>
 		<div class="modal fade" id="modalregister" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
         	<div class="modal-dialog">
         		<div class="modal-content">

@@ -27,7 +27,7 @@ p {margin: 0;}
 	font-family: arial;
 }
 #testDiv{
-	border: solid black;
+	border: solid white
 }
 #btnlogin{
 	margin-top: 0;
@@ -287,8 +287,7 @@ p.empty a {
 }
 ul.header_user_info {
 	float: left;
-	border-right: 1px solid #555;
-	width:50%;
+	width:33%;
 	padding:0;
 	min-height: 30px;
 }
