@@ -1,7 +1,6 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,41 +45,34 @@ public class RegisterServlet extends HttpServlet {
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
       UserDAO dao = new UserDAOImpl();
-
-      PrintWriter out = response.getWriter();
-
-      String fname = request.getParameter("fname");
-      String lname = request.getParameter("lname");
-      String email = request.getParameter("email");
-      String street = request.getParameter("street");
-      String city = request.getParameter("city");
-      String country = request.getParameter("country");
-      String password = request.getParameter("password");
-      String type = request.getParameter("type");
       User user = new User();
+      String userFname = request.getParameter("userFname");
+      String userLname = request.getParameter("userLname");
+      String userEmail = request.getParameter("userEmail");
+      String userStreet = request.getParameter("userStreet");
+      String userCity = request.getParameter("userCity");
+      String userCountry = request.getParameter("userCountry");
+      String userPassword = request.getParameter("userPassword");
+      String userType = request.getParameter("userType");
       String msg = "failed";
-      user.setUserFname(fname);
-      user.setUserLname(lname);
-      user.setUserEmail(email);
-      user.setUserStreet(street);
-      user.setUserCity(city);
-      user.setUserCountry(country);
-      user.setUserPassword(password);
-      user.setUserType(type);
-
-      if (!dao.validateUser(email)) {
-         out.println("<script type=\"text/javascript\">");
-         out.println("alert('User already registered');");
-         out.println("</script>");
-         out.println("<a href='AddUser'>Register</a>"); // if email is already in db
-      } else {
-         dao.createUser(usr);
-         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
+      if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
+         && userCountry != null && userPassword != null && userType != null) {
+         user.setUserFname(userFname);
+         user.setUserLname(userLname);
+         user.setUserEmail(userEmail);
+         user.setUserStreet(userStreet);
+         user.setUserCity(userCity);
+         user.setUserCountry(userCountry);
+         user.setUserPassword(userPassword);
+         user.setUserType(userType);
+         if (!dao.validateUser(user.getUserEmail())) {
+            int result = dao.createUser(user);
+            if (result != 0) {
+               msg = "success";
+            }
+         }
       }
-
-      if(msg=="success"){
-         response.sendRedirect("ShowUser?addsuccess=true"); // if registration successful
-      }
+      response.getWriter().append(msg);
    }
 
 }

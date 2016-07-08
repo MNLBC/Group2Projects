@@ -3,7 +3,6 @@ package com.oocl.mnlbc.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,17 +52,14 @@ public class LoginServlet extends HttpServlet {
          UserDAO dao = new UserDAOImpl();
          User user = new User();
          PrintWriter out = response.getWriter();
-         String email = request.getParameter("email");
-         String password = request.getParameter("password");
-         user.setUserEmail(email);
-         user.setUserPassword(password);
+         String userEmail = request.getParameter("userEmail");
+         String userPassword = request.getParameter("userPassword");
+         user.setUserEmail(userEmail);
+         user.setUserPassword(userPassword);
          HttpSession session = request.getSession(true);
-         ServletContext context = session.getServletContext();
-         session.setAttribute("username", email);
+         session.setAttribute("username", userEmail);
 
-         String msg = "failed";
-
-         if (dao.getUser(email, password) != null) {
+         if (dao.getUser(userEmail, userPassword) != null) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");
