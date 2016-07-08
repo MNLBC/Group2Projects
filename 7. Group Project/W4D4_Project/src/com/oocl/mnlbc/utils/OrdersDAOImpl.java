@@ -6,6 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.oocl.mnlbc.bean.Order;
+import com.oocl.mnlbc.bean.User;
+
 public class OrdersDAOImpl implements OrdersDAO {
 
 	private Connection getConn() {
@@ -26,7 +29,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 	
 	@Override
-	public int createOrder(long userId) {
+	public int createOrder(User user) {
 		int result = 0;
 		Connection conn = getConn();
 		String sql = "INSERT INTO ORDERS(USERID) VALUES(?)";
@@ -34,7 +37,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, userId);
+			pStmt.setLong(1, user.getId());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();
@@ -46,7 +49,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 	@Override
-	public int cancelOrder(long orderId) {
+	public int cancelOrder(Order order) {
 		int result = 0;
 		Connection conn = getConn();
 		String sql = "DELETE FROM ORDERS WHERE ORDERID = ?";
@@ -54,7 +57,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, orderId);
+			pStmt.setLong(1, order.getOrderId());
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();
@@ -66,7 +69,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 	@Override
-	public int finalOrder(long orderId) {
+	public int finalOrder(Order order) {
 		int result = 0;
 		String total = "";
 		Connection conn = getConn();
@@ -80,7 +83,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, orderId);
+			pStmt.setLong(1, order.getOrderId());
 			ResultSet rs = pStmt.executeQuery();
 			while(rs.next()){
 				total = rs.getString(1);
