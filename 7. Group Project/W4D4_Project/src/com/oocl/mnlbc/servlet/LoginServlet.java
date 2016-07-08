@@ -1,17 +1,25 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.utils.UserDAO;
+import com.oocl.mnlbc.utils.UserDAOImpl;
 
 /**
- * Servlet implementation class LoginServlet
+ * @author Kassandra Fuentes
+ * 
+ *         Servlet implementation class LoginServlet
+ * 
  */
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -30,21 +38,7 @@ public class LoginServlet extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // TODO Auto-generated method stub
-      String email = request.getParameter("email");
-      String password = request.getParameter("password");
-      User user = new User();
-      String msg = "failed";
-      if (email != null && password != null) {
-         user.setEmail(email);
-         user.setPassword(password);
-         // if (!DbTransact.checkExisting(user)) {
-         // if (result != 0) {
-         // msg = "success";
-         // }
-         // }
-      }
-      response.getWriter().append(msg);
+      doPost(request, response);
 
    }
 
@@ -53,8 +47,33 @@ public class LoginServlet extends HttpServlet {
     */
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      // TODO Auto-generated method stub
-      doGet(request, response);
-   }
 
+      try {
+
+         UserDAO dao = new UserDAOImpl();
+         User user = new User();
+         PrintWriter out = response.getWriter();
+         String email = request.getParameter("email");
+         String password = request.getParameter("password");
+         user.setUserEmail(email);
+         user.setUserPassword(password);
+         HttpSession session = request.getSession(true);
+         ServletContext context = session.getServletContext();
+         session.setAttribute("username", email);
+
+         String msg = "failed";
+
+         if (dao.getUser(email, password) != null) {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Wrong username/password');");
+            out.println("</script>");
+            out.println("<a href='index.jsp'>Login</a>"); // if email/password does not match
+         } else {
+            response.sendRedirect("ShowUser"); // if login successful
+         }
+
+      } catch (Throwable theException) {
+         System.out.println(theException);
+      }
+   }
 }
