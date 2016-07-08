@@ -12,7 +12,6 @@ p {margin: 0;}
     font-family: ptsansnarrow;
     src: url(font/pt-sans.narrow.ttf);
 }
-<<<<<<< origin/master
 #listcategories{
 	list-style-type: none;
 }
@@ -29,25 +28,15 @@ p {margin: 0;}
 #loginheader{
 	background-color: #ffffff;
 	font-family: arial;
-=======
-
-#desc{
-	font-size:1em;	
->>>>>>> local
 }
-
 #testDiv{
-<<<<<<< origin/master
 	border: solid white
-=======
-	border: solid white;
->>>>>>> local
 }
 #btnlogin{
 	margin-top: 0;
 	padding: 2px 5px 2px 5px;
 }
-#modalregister{
+#btnregister{
 	margin-top: 0;
 	padding: 2px 5px 2px 5px;
 }
@@ -418,7 +407,7 @@ ul.header_user_info li.user_desc{
 	padding: 2em 0;
 }
 .logo h1{
-    font-size:7em;
+    font-size:5em;
     text-transform: uppercase;
     margin-bottom: 0;
     font-family: 'Dorsa', sans-serif;
@@ -1252,13 +1241,13 @@ ul.women_pagenation li a:hover{
 }
 .product_container p{
 	text-transform:uppercase;
-	font-size:0.8em;
+	font-size:0.9em;
 	color:#999;
 }
 
 .product_container .desc {
 	text-transform:uppercase;
-	font-size:0.5em;
+	font-size:0.7em;
 	color:#999;
 }
 
@@ -2831,4 +2820,5 @@ a.b-home {
 .grid_1 {
   margin-bottom: 1em;
 }
+
 }
