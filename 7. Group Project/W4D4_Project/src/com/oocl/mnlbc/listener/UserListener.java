@@ -38,6 +38,7 @@ public class UserListener implements HttpSessionListener {
         
         
     	session.setAttribute("userCount", userCount);
+    	System.out.println("Total : " + userCount);
     }
 
 	/**
@@ -52,6 +53,7 @@ public class UserListener implements HttpSessionListener {
         
         
     	session.setAttribute("userCount", userCount);
+    	System.out.println("Total : " + userCount);
     }
 	
 }
