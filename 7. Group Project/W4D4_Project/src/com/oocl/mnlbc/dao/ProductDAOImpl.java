@@ -66,4 +66,36 @@ public class ProductDAOImpl implements ProductDAO {
       return result;
    }
 
+@Override
+public List<Product> getProductsByCategory(String category) {
+	List<Product> result = new ArrayList<Product>();
+    Connection conn = dbConnect.getConn();
+
+    String sql = "SELECT * FROM PRODUCT WHERE PRODCAT = ?";
+
+    PreparedStatement pStmt;
+    try {
+       pStmt = (PreparedStatement) conn.prepareStatement(sql);
+       pStmt.setString(1, category);
+       ResultSet rs = pStmt.executeQuery();
+       while (rs.next()) {
+          if (!(rs.getString("PRODID") == null)) {
+             Product prod = new Product();
+             prod.setProdId(rs.getLong("PRODID"));
+             prod.setProdName("PRODNAME");
+             prod.setProdCat("PRODCAT");
+             prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
+             prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
+             prod.setProdImg(rs.getString("PRODIMG"));
+             prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
+             result.add(prod);
+          }
+
+       }
+    } catch (SQLException e) {
+       e.printStackTrace();
+    }
+    return result;
+}
+
 }
