@@ -19,7 +19,25 @@ public class User {
    private String userPass;
    private String userType;
 
-   /**
+   public User(long userId, String userFname, String userLname, String userEmail, String userStreet, String userCity,
+		String userCountry, String userPass, String userType) {
+	super();
+	this.userId = userId;
+	this.userFname = userFname;
+	this.userLname = userLname;
+	this.userEmail = userEmail;
+	this.userStreet = userStreet;
+	this.userCity = userCity;
+	this.userCountry = userCountry;
+	this.userPass = userPass;
+	this.userType = userType;
+}
+   
+   public User(){
+	   
+   }
+
+/**
     * @return the userId
     */
    public long getUserId() {
