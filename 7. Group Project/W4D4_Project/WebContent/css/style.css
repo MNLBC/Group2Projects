@@ -12,6 +12,9 @@ p {margin: 0;}
     font-family: ptsansnarrow;
     src: url(font/pt-sans.narrow.ttf);
 }
+#listcategories{
+	list-style-type: none;
+}
 #close{
 	color: white;
 }
@@ -465,7 +468,7 @@ span.m_1 {
 	color: #f84545;
 }
 ul.content-home{
-  padding:5em 0;
+  padding:1em 0;
   margin-bottom: 0;
 }
 ul.content-home li {
