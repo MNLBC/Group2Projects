@@ -36,6 +36,16 @@
     <filter-name>BlackList</filter-name>
     <url-pattern>/login</url-pattern>
   </filter-mapping>
+  <filter>
+    <filter-name>AcctType</filter-name>
+    <filter-class>
+     		com.oocl.mnlbc.filter.AcctTypeFilter
+        </filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AcctType</filter-name>
+    <url-pattern>/login</url-pattern>
+  </filter-mapping>
   <listener>
     <listener-class>com.oocl.mnlbc.listener.UserListener</listener-class>
   </listener>
