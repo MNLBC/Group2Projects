@@ -10,26 +10,11 @@ import com.oocl.mnlbc.bean.User;
 
 public class UserDAOImpl implements UserDAO {
 
-	private Connection getConn() {
-		String driver = "oracle.jdbc.driver.OracleDriver";
-	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	      String username = "GROUP2";
-	      String password = "GROUP2";
-	      Connection conn = null;
-	      try {
-	         Class.forName(driver);
-	         conn = (Connection) DriverManager.getConnection(url, username, password);
-	      } catch (ClassNotFoundException e) {
-	         e.printStackTrace();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-	      return conn;
-	}
+	DatabaseConnection dbConnect = new DatabaseConnection();
 
 	@Override
 	public boolean validateUser(String email) {
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		boolean result = false;
 		String sql = "SELECT USERID FROM USERS WHERE EMAIL = ?";
 		
@@ -53,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUser(String email, String password) {
 		User user = new User();
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "SELECT * FROM USERS WHERE EMAIL = ? AND PASSWORD = ?";
 		
 		PreparedStatement pStmt;
@@ -86,7 +71,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int createUser(User user) {
 		int result = 0;
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "INSERT INTO USERS(FNAME,LNAME,EMAIL,PASSWORD,STREET,CITY,COUNTRY,TYPE)"
 				+ "VALUES(?,?,?,?,?,?,?,?)";
 		
@@ -114,7 +99,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int updateUser(User user) {
 		int result = 0;
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "";
 		return 0;
 	}
@@ -122,7 +107,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int setActive(User user) {
 		int result = 0;
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "UPDATE USERS SET ACTIVE = 1 WHERE USERID = ?";
 		
 		PreparedStatement pStmt;
@@ -142,7 +127,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public int setInactive(User user) {
 		int result = 0;
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "UPDATE USERS SET ACTIVE = 0 WHERE USERID = ?";
 		
 		PreparedStatement pStmt;

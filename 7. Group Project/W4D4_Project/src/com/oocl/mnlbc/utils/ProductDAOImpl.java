@@ -12,27 +12,12 @@ import com.oocl.mnlbc.bean.Product;
 
 public class ProductDAOImpl implements ProductDAO {
 	
-	private Connection getConn() {
-		String driver = "oracle.jdbc.driver.OracleDriver";
-	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	      String username = "GROUP2";
-	      String password = "GROUP2";
-	      Connection conn = null;
-	      try {
-	         Class.forName(driver);
-	         conn = (Connection) DriverManager.getConnection(url, username, password);
-	      } catch (ClassNotFoundException e) {
-	         e.printStackTrace();
-	      } catch (SQLException e) {
-	         e.printStackTrace();
-	      }
-	      return conn;
-	}
+	DatabaseConnection dbConnect = new DatabaseConnection();
 
 	@Override
 	public List<Product> getProducts() {
 		List<Product> result = new ArrayList<Product>();
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		
 		String sql = "SELECT * FROM PRODUCT";
 		
@@ -62,7 +47,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public int updateStock(Product product, int newStock) {
 		int result = 0;
-		Connection conn = getConn();
+		Connection conn = dbConnect.getConn();
 		String sql = "UPDATE PRODUCT SET STOCK = ? WHERE PRODID = ?";
 		
 		PreparedStatement pStmt;

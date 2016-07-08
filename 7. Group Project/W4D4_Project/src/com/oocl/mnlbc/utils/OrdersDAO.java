@@ -6,5 +6,5 @@ import com.oocl.mnlbc.bean.User;
 public interface OrdersDAO {
 	public int createOrder(User user);
 	public int cancelOrder(Order order);
-	public int finalOrder(Order order);
+	public int finalOrder(Order order, String timestamp);
 }
