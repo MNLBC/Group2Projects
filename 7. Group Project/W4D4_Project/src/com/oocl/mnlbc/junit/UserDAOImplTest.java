@@ -28,13 +28,13 @@ public class UserDAOImplTest {
 	@Test
 	public void testCreateUser() {
 		int result = userDAO.createUser(testUser);
-		assert(result >= 0);
+		assert(result > 0);
 	}
 
 	@Test
 	public void testUpdateUserType() {
-		int result = userDAO.updateUserType(testUser,"BLACKLIST");
-		assert(result >= 0);
+		int result = userDAO.updateUserType(userDAO.getUser("test", "test"),"BLACKLIST");
+		assert(result > 0);
 	}
 
 	@Test
@@ -45,8 +45,8 @@ public class UserDAOImplTest {
 
 	@Test
 	public void testDeleteUser() {
-		int result = userDAO.deleteUser(testUser);
-		assert(result >= 0);
+		int result = userDAO.deleteUser(userDAO.getUser("test", "test"));
+		assert(result > 0);
 	}
 
 }
