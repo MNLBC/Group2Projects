@@ -78,6 +78,7 @@ public class RegisterServlet extends HttpServlet {
       }
       response.getWriter().append(msg);
       if(msg=="success"){
+    	  System.out.println("Created User");
     	  ServletContext sc = this.getServletContext();
      	 RequestDispatcher rd = sc.getRequestDispatcher("/views/edit_user.jsp"); // edit here
      	 rd.forward(request, response);

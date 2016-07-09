@@ -43,7 +43,7 @@ public class ShowCartServlet extends HttpServlet {
 		Order order = ordersDAO.getOrderId(user);
 		List<Product> productList= ordersProdDAO.getRelatedProducts(order);
 		
-		session.setAttribute("productList", productList);
+		session.setAttribute("orderProductList", productList);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("checkout.html"); //something.jsp
 	    rd.forward(request,response);
