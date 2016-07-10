@@ -46,7 +46,10 @@ public class RegisterFilter implements Filter {
       throws IOException, ServletException {
       HttpServletRequest req = (HttpServletRequest) request;
       String userFname = req.getParameter("userFname");
-
+      String names = Config.getConfigValue("names");
+      for (String name : names.split(";")) {
+         bannedNames.add(name);
+      }
       if (bannedNames.contains(userFname)) {
          showWarning(response);
       } else {
@@ -60,10 +63,6 @@ public class RegisterFilter implements Filter {
     */
    public void init(FilterConfig fConfig) throws ServletException {
       // TODO Auto-generated method stub
-      String names = Config.getConfigValue("names");
-      for (String name : names.split(";")) {
-         this.bannedNames.add(name);
-      }
    }
 
    private void showWarning(ServletResponse response) throws ServletException, IOException {
