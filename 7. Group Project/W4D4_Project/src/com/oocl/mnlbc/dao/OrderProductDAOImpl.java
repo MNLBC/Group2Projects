@@ -11,6 +11,11 @@ import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.util.DbConnection;
 
+/**
+ * 
+ * @author kalinwi2
+ * DAO Implementation for ORDERPRODUCT TABLE
+ */
 public class OrderProductDAOImpl implements OrderProductDAO {
 	DbConnection dbConnect = new DbConnection();
 

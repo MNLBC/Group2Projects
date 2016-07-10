@@ -9,6 +9,11 @@ import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.util.DbConnection;
 
+/**
+ * 
+ * @author kalinwi2
+ * DAO Implementation for ORDERS TABLE
+ */
 public class OrdersDAOImpl implements OrdersDAO {
 
    DbConnection dbConnect = new DbConnection();
