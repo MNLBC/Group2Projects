@@ -1,6 +1,9 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +46,14 @@ public class AddToCart extends HttpServlet {
 		Product prod = prodDAO.getProduct(id);
 		OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
 		opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
+		
+		List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
+		String[] array = {id,"1"};
+		for(int i = 0; i < cartList.size();i++){
+			if(cartList.get(i).equals(array)){
+				
+			}
+		}
 		
 		String msg = "";
 		msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));
