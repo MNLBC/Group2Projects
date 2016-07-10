@@ -98,4 +98,34 @@ public List<Product> getProductsByCategory(String category) {
     return result;
 }
 
+@Override
+public Product getProduct(String id) {
+    Connection conn = dbConnect.getConn();
+    Product prod = new Product();
+    String sql = "SELECT * FROM PRODUCT WHERE PRODID = ?";
+
+    PreparedStatement pStmt;
+    try {
+       pStmt = (PreparedStatement) conn.prepareStatement(sql);
+       pStmt.setString(1, id);
+       ResultSet rs = pStmt.executeQuery();
+       while (rs.next()) {
+          if (!(rs.getString("PRODID") == null)) {
+            
+             prod.setProdId(rs.getLong("PRODID"));
+             prod.setProdName(rs.getString("PRODNAME"));
+             prod.setProdCat(rs.getString("PRODCAT"));
+             prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
+             prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
+             prod.setProdImg(rs.getString("PRODIMG"));
+             prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
+             return prod;
+          }
+       }
+    } catch (SQLException e) {
+       e.printStackTrace();
+    }
+    return prod;
+}
+
 }
