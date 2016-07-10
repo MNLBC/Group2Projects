@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,11 @@ import java.util.List;
 import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.util.DbConnection;
 
+/**
+ * 
+ * @author kalinwi2
+ * DAO Implementation for PRODUCT TABLE
+ */
 public class ProductDAOImpl implements ProductDAO {
 
    DbConnection dbConnect = new DbConnection();
@@ -31,6 +37,7 @@ public class ProductDAOImpl implements ProductDAO {
                prod.setProdId(rs.getLong("PRODID"));
                prod.setProdName(rs.getString("PRODNAME"));
                prod.setProdCat(rs.getString("PRODCAT"));
+               prod.setProdDesc("PRODDESC");
                prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
                prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
                prod.setProdImg(rs.getString("PRODIMG"));
@@ -84,6 +91,7 @@ public List<Product> getProductsByCategory(String category) {
              prod.setProdId(rs.getLong("PRODID"));
              prod.setProdName(rs.getString("PRODNAME"));
              prod.setProdCat(rs.getString("PRODCAT"));
+             prod.setProdDesc("PRODDESC");
              prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
              prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
              prod.setProdImg(rs.getString("PRODIMG"));
@@ -96,6 +104,37 @@ public List<Product> getProductsByCategory(String category) {
        e.printStackTrace();
     }
     return result;
+}
+
+@Override
+public Product getProduct(String id) {
+    Connection conn = dbConnect.getConn();
+    Product prod = new Product();
+    String sql = "SELECT * FROM PRODUCT WHERE PRODID = ?";
+
+    PreparedStatement pStmt;
+    try {
+       pStmt = (PreparedStatement) conn.prepareStatement(sql);
+       pStmt.setString(1, id);
+       ResultSet rs = pStmt.executeQuery();
+       while (rs.next()) {
+          if (!(rs.getString("PRODID") == null)) {
+            
+             prod.setProdId(rs.getLong("PRODID"));
+             prod.setProdName(rs.getString("PRODNAME"));
+             prod.setProdCat(rs.getString("PRODCAT"));
+             prod.setProdDesc("PRODDESC");
+             prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
+             prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
+             prod.setProdImg(rs.getString("PRODIMG"));
+             prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
+             return prod;
+          }
+       }
+    } catch (SQLException e) {
+       e.printStackTrace();
+    }
+    return prod;
 }
 
 }

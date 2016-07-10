@@ -95,7 +95,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="header_bottom">
         <div class="logo">
           <h1>
-            <a href="index.jsp" id="title"><span class="m_1">W</span>atchmewhip</a>
+            <a href="index.jsp" id="title"><span class="m_1"></span></a>
+            <!--<a href="index.jsp" id="title"><span class="m_1">W</span>atchmewhip</a>-->
           </h1>
         </div>
         <div class="menu">
@@ -131,10 +132,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="container">
       <ul class="content-home" id="listcategories">
-        <li class="col-sm-4"><a href="single.html"
+        <li class="col-sm-4"><a href="luxury.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="watchimages/w1.jpg" class="item-img" title=""
+              <img src="watchimages/w1.png" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Luxury</h3>
@@ -144,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="single.html"
+        <li class="col-sm-4"><a href="dress.html"
           class="item-link" title="">
             <div class="bannerBox">
               <img src="watchimages/w2.png" class="item-img" title=""
@@ -157,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="single.html"
+        <li class="col-sm-4"><a href="sports.html"
           class="item-link" title="">
             <div class="bannerBox">
               <img src="watchimages/w3.jpg" class="item-img" title=""
@@ -170,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4 col-sm-offset-2"><a href="single.html"
+        <li class="col-sm-4 col-sm-offset-2"><a href="casual.html"
           class="item-link" title="">
             <div class="bannerBox">
               <img src="watchimages/w4.png" class="item-img" title=""
@@ -183,7 +184,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="single.html"
+        <li class="col-sm-4"><a href="digital.html"
           class="item-link" title="">
             <div class="bannerBox">
               <img src="watchimages/w5.png" class="item-img" title=""
@@ -199,7 +200,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="clearfix"></div>
       </ul>
     </div>
-
+	<div class="footer">
+    <div class="container">
+      <div class="copy">
+        <p>
+          &copy; Design by <a href="about.html" target="_blank">ITA 2016
+            GROUP 2</a>
+        </p>
+      </div>
+    </div>
+  </div>
   </div>
   <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

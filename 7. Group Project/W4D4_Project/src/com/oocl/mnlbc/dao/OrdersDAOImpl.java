@@ -9,6 +9,11 @@ import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.util.DbConnection;
 
+/**
+ * 
+ * @author kalinwi2
+ * DAO Implementation for ORDERS TABLE
+ */
 public class OrdersDAOImpl implements OrdersDAO {
 
    DbConnection dbConnect = new DbConnection();
@@ -100,6 +105,31 @@ public class OrdersDAOImpl implements OrdersDAO {
 				if(!rs.getString(1).equals("")){
 					order.setOrderId(rs.getLong(1));
 					order.setUserId(rs.getLong(2));
+				}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return order;
+	}
+	
+	public Order getOrder(User user) {
+		Order order = new Order();
+		Connection conn = dbConnect.getConn();
+		String sql = "SELECT * FROM ORDERS WHERE USERID = ? "
+				+ "AND ORDERDATE IS NULL AND ORDERTOTAL IS NULL";
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			pStmt.setLong(1, user.getUserId());
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()){
+				if(!rs.getString(1).equals("")){
+					order.setOrderId(rs.getLong(1));
+					order.setUserId(rs.getLong(2));
+					order.setOrderTotal(rs.getDouble(3));
+					order.setOrderDate(rs.getString(4));
 				}
 			}
 		} catch (SQLException e) {

@@ -56,9 +56,10 @@ public class LoginServlet extends HttpServlet {
          String userEmail = request.getParameter("userEmail");
          String userPass = request.getParameter("userPass");
          HttpSession session = request.getSession(true);
+         User user = dao.getUser(userEmail, userPass);
          
 
-         if (dao.getUser(userEmail, userPass).getUserId() == 0) {
+         if (dao.getUser(userEmail, userPass).getUserId() == 0 || dao.getUser(userEmail, userPass).getUserCity() == null) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");
@@ -67,8 +68,14 @@ public class LoginServlet extends HttpServlet {
         	 session.setAttribute("user", dao.getUser(userEmail, userPass));
         	 session.setAttribute("username", userEmail);
         	 ServletContext sc = this.getServletContext();
-        	 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
-        	 rd.forward(request, response);
+        	 if(user.getUserType().equals("Cutomer")){
+        		 RequestDispatcher rd = sc.getRequestDispatcher("/products.html"); // edit here
+            	 rd.forward(request, response);
+        	 }
+        	 else if(user.getUserType().equals("Admin")){
+        		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+            	 rd.forward(request, response);
+        	 }
          }
 
       } catch (Throwable theException) {

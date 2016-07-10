@@ -9,11 +9,16 @@ import java.util.List;
 
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.util.DbConnection;
-
+/**
+ * 
+ * @author kalinwi2
+ * DAO Implementation for USER TABLE
+ *
+ */
 public class UserDAOImpl implements UserDAO {
 
    DbConnection dbConnect = new DbConnection();
-
+   
 	@Override
 	public boolean validateUser(String email) {
 		Connection conn = dbConnect.getConn();
