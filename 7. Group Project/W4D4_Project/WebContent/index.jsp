@@ -51,10 +51,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               placeholder="Password" aria-describedby="basic-addon1"
               id="pword" name="userPass">
             <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-            <a href="modalregister.html" class="btn btn-primary"
+            <a href="app/modalregister.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalregister"
               id="btnregister">Register</a>
-			  <a href="modalpay.html" class="btn btn-primary"
+			  <a href="app/modalpay.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalpay"
               id="btnregister">Pay</a>
 
