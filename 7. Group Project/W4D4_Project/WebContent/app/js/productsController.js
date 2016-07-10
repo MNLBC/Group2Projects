@@ -53,7 +53,24 @@ myApp.controller('productsController', function MyController($scope, $http) {
 					console.log('Add to Cart Error');
 				});
 	};
+	
+	$scope.getCountPerCategory = function() {
+		$http({
+					method : 'GET',
+					url : 'CategoryCount'
+				}).success(function(data, status, headers, config) {
+					
+					$scope.catCount = data;
+					console.log($scope.catCount);
+				}).error(function(data, status, headers, config) {
+					console.log('Cannot get category count');
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+				});
+	
+	};
 
 	$scope.getDataFromServer();
+	$scope.getCountPerCategory();
 
 });
