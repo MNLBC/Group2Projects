@@ -54,6 +54,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				method : 'GET',
 				url : 'getProducts'
 			}).success(function(data, status, headers, config) {
+				angular.forEach(data, function(value, key) {
+					//console.log(value);
+				
+					
+						  if(value.prodSale < 1){
+							
+							 var oldVal = value.prodSale;
+							 var newVal = 0;
+							   newVal = 100 - (oldVal*100) ;
+							  value.prodSale = newVal;
+							  data[key] = value;
+						  }
+						  else{
+							 //console.log('no discount')
+							  value.prodSale = null;
+							  data[key] = value;
+						  }
+					  
+					});
 				$scope.products = data;
 				console.log($scope.products);
 			}).error(function(data, status, headers, config) {
@@ -197,7 +216,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 													class="img-responsive zoom-img">
 											</div>
 											<div class="mask">
-												<div class="info">{{product.prodSale}}</div>
+												<div class="info"  ng-if="product.prodSale != null">{{product.prodSale}}% Off</div>
 											</div>
 											<div class="product_container">
 												<h4>{{product.prodName}}</h4>
