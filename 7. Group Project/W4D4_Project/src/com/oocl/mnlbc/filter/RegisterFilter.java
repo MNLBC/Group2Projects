@@ -47,13 +47,25 @@ public class RegisterFilter implements Filter {
       HttpServletRequest req = (HttpServletRequest) request;
       String userFname = req.getParameter("userFname");
       String names = Config.getConfigValue("names");
-      for (String name : names.split(";")) {
+      /*for (String name : names.split(";")) {
          bannedNames.add(name);
       }
       if (bannedNames.contains(userFname)) {
          showWarning(response);
       } else {
          chain.doFilter(request, response);
+      }*/
+      boolean valid = true;
+      for(int i = 0; i < names.split(";").length;i++){
+    	  if(names.split(";")[i].contains(userFname)){
+    		  valid = false;
+    	  }
+      }
+      if(valid == true){
+    	  chain.doFilter(request, response);
+      }
+      else{
+    	  showWarning(response);
       }
 
    }
