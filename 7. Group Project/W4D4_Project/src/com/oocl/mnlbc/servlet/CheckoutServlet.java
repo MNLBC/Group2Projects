@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
@@ -34,14 +36,20 @@ public class CheckoutServlet extends HttpServlet {
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      Order order = new Order();
+      HttpSession session = request.getSession();
+	   Order order = new Order();
       order = (Order) request.getAttribute("order");
 	  
 	  OrdersDAOImpl db = new OrdersDAOImpl();
       int status = db.finalOrder(order,Timestamp.getTimestamp());
       
       ProductDAOImpl prodDAO = new ProductDAOImpl();
-      //int status2 = prodDAO
+      
+      List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
+      
+      for(int i = 0; i < cartList.size();i++){
+    	  prodDAO.updateStock(cartList.get(i));
+      }
       
       String msg = "";
       if(status == 1)
