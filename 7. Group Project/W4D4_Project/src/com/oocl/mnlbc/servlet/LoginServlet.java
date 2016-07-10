@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
         	 session.setAttribute("username", userEmail);
         	 ServletContext sc = this.getServletContext();
         	 if(user.getUserType().equals("Cutomer")){
-        		 RequestDispatcher rd = sc.getRequestDispatcher("app/products.html"); // edit here
+        		 RequestDispatcher rd = sc.getRequestDispatcher("/app/products.html"); // edit here
             	 rd.forward(request, response);
         	 }
         	 else if(user.getUserType().equals("Admin")){

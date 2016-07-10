@@ -80,7 +80,7 @@ public class RegisterServlet extends HttpServlet {
       if(msg=="success"){
     	  System.out.println("Created User");
     	  ServletContext sc = this.getServletContext();
-     	 RequestDispatcher rd = sc.getRequestDispatcher("../index.jsp"); // edit here
+     	 RequestDispatcher rd = sc.getRequestDispatcher("/../index.jsp"); // edit here
      	 rd.forward(request, response);
       }
    }
