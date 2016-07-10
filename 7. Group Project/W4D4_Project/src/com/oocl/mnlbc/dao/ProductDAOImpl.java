@@ -137,4 +137,27 @@ public Product getProduct(String id) {
     return prod;
 }
 
+public String countProductByCat(){
+	String result = "{";
+	Connection conn = dbConnect.getConn();
+    String sql = "SELECT * FROM PRODUCT WHERE PRODID = ?";
+
+    PreparedStatement pStmt;
+    try {
+       pStmt = (PreparedStatement) conn.prepareStatement(sql);
+       ResultSet rs = pStmt.executeQuery();
+       while (rs.next()) {
+          if (!(rs.getString(1) == null)) {
+             result = result + "["+rs.getString(1)+":"+rs.getString(2)+"]";
+          }
+       }
+       result = result + "}";
+       result = result.replace("][","],[");
+    } catch (SQLException e) {
+       e.printStackTrace();
+    }
+	
+	return result;
+}
+
 }

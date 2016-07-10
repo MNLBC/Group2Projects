@@ -36,7 +36,7 @@ public class ProductServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       // TODO Auto-generated method stub
-      ProductDAO prodDao = new ProductDAOImpl();
+	   ProductDAOImpl prodDao = new ProductDAOImpl();
       String category = request.getParameter("category");
       String msg = "";
       List<Product> prodList = new ArrayList<Product>();
@@ -47,6 +47,7 @@ public class ProductServlet extends HttpServlet {
       }
       msg = JsonParser.toProductJson(prodList);
       response.getWriter().append(msg);
+      response.getWriter().append(prodDao.countProductByCat());
    }
 
    /**
