@@ -1,9 +1,3 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -47,7 +41,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 </head>
 <body>
-  <div class="banner">
+  <div class="men_banner">
     <div class="container">
       <div class="header-top">
         <form class="form-inline" action="login" method="post">
@@ -74,7 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </a>
           </ul>
           <ul class="header_user_info">
-            <a class="login" href="#">Cart <span class="badge">47</span></a>
+            <a class="login" href="checkout.jsp">Cart <span class="badge">47</span></a>
           </ul>
           <ul class="header_user_info">
             <a class="login" href="login.html">Logout </a>
@@ -95,8 +89,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="menu">
           <ul class="megamenu skyblue">
             <li><a class="color2" href="index.jsp">Home</a></li>
-            <li><a class="color4" href="">Products</a></li>
-            <li><a class="color3" href="">About</a></li>
+			<li><a class="color4" href="products.html">Products</a></li>
+			<li><a class="color3" href="about.html">About</a></li>
           </ul>
         </div>
         <div class="clearfix"></div>
