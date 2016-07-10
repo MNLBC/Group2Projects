@@ -1,7 +1,8 @@
 var myApp = angular.module('myApp', []);
 
 myApp.controller('productsController', function MyController($scope, $http) {
-
+	$scope.totalPrice = 0;
+	$scope.quantity = 0;
 	$scope.getDataFromServer = function() {
 		$http({
 					method : 'GET',
@@ -67,7 +68,7 @@ myApp.controller('productsController', function MyController($scope, $http) {
 
 	};
 
-	$scope.addToCart = function(id) {
+	$scope.addToCart = function(id, price) {
 		// use $.param jQuery function to serialize data from JSON
 		var data = $.param({
 					prodId : id
@@ -82,6 +83,8 @@ myApp.controller('productsController', function MyController($scope, $http) {
 
 		$http.post('AddToCart', data, config).success(
 				function(data, status, headers, config) {
+					$scope.totalPrice = $scope.totalPrice + price
+					$scope.quantity = $scope.quantity +1;
 					alert('Successfully added to cart');
 					$scope.PostDataResponse = data;
 				}).error(function(data, status, header, config) {
@@ -89,6 +92,8 @@ myApp.controller('productsController', function MyController($scope, $http) {
 				});
 	};
 
+	
+	
 	$scope.getCountPerCategory = function() {
 		$http({
 					method : 'GET',
@@ -106,6 +111,14 @@ myApp.controller('productsController', function MyController($scope, $http) {
 				// called asynchronously if an error occurs
 				// or server returns response with an error status.
 			});
+
+	};
+	
+	$scope.checkOut = function() {
+		alert("Billing Summary\n" +
+				"Total Items :" + $scope.quantity +"\n" +
+						"Total Price :" + $scope.totalPrice +"\n" +
+								"Please prepare cash on delivery"); 
 
 	};
 
