@@ -54,7 +54,7 @@ public class AddToCart extends HttpServlet {
 		List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
 		String[] array = {id,"1"};
 		for(int i = 0; i < cartList.size();i++){
-			if(cartList.get(i).equals(array)){
+			if(cartList.get(i)[0].equals(array[0])){
 				cartList.get(i)[1] = String.valueOf(Integer.parseInt(cartList.get(i)[1]) + 1);
 			}
 			else{
