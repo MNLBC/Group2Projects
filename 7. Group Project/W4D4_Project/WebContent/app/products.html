@@ -8,7 +8,9 @@
 	
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 
@@ -35,7 +37,7 @@
 </script>
 <script src="app/js/angular.min.js"></script>
 
-<script src = "js/productsController.js">
+<script src="app/js/productsController.js">
 	
 </script>
 </head>
@@ -59,21 +61,21 @@
 					</div>
 				</form>
 				<div class="col-md-5 col-md-offset-7" hidden="true">
-          <ul class="header_user_info">
-            <a class="login" href="login.html"> <i class="user">
-            </i>My Account
-            </a>
-          </ul>
-          <ul class="header_user_info">
-            <a class="login" href="#">Cart <span class="badge">47</span></a>
-          </ul>
-		  <ul class="header_user_info">
-            <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
-          </ul>
-          <ul class="header_user_info">
-            <a class="login" href="login.html">Logout </a>
-          </ul>
-        </div>
+					<ul class="header_user_info">
+						<a class="login" href="login.html"> <i class="user"> </i>My
+							Account
+						</a>
+					</ul>
+					<ul class="header_user_info">
+						<a class="login" href="#">Cart <span class="badge">47</span></a>
+					</ul>
+					<ul class="header_user_info">
+						<a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
+					</ul>
+					<ul class="header_user_info">
+						<a class="login" href="login.html">Logout </a>
+					</ul>
+				</div>
 				<div class="modal fade" id="modalregister" tabindex="-1"
 					role="dialog" aria-labelledby="modal-register-label"
 					aria-hidden="true">
@@ -85,9 +87,7 @@
 
 			</div>
 			<div class="header_bottom">
-				<div class="logo">
-				
-				</div>
+				<div class="logo"></div>
 				<div class="menu">
 					<ul class="megamenu skyblue">
 						<li><a class="color2" href="../index.jsp">Home</a></li>
@@ -105,58 +105,36 @@
 			<div class="col-md-4 sidebar_men">
 				<h3>Categories</h3>
 				<ul class="product-categories color">
-					<li class="cat-item cat-item-60"><a href="products.html">ALL</a>
-            <span class="count">(26)</span></li>
-          <li class="cat-item cat-item-60"><a href="luxury.html">LUXURY</a>
-            <span class="count">(4)</span></li>
-          <li class="cat-item cat-item-63"><a href="dress.html">DRESS</a>
-            <span class="count">(3)</span></li>
-          <li class="cat-item cat-item-54"><a href="sports.html">SPORTS</a>
-            <span class="count">(8)</span></li>
-          <li class="cat-item cat-item-55"><a href="casual.html">CASUAL</a>
-            <span class="count">(13)</span></li>
-          <li class="cat-item cat-item-64"><a href="digital.html">DIGITAL</a>
-            <span class="count">(2)</span></li>
+					<li class="cat-item cat-item-60"><a href="#"
+						ng-click="getDataFromServer()">ALL</a> <span class="count">({{catCount.All}})</span></li>
+					<li class="cat-item cat-item-60"><a href="#"
+						ng-click="getDataFromServerByCat('Luxury')">LUXURY</a> <span
+						class="count">({{catCount.Luxury}})</span></li>
+					<li class="cat-item cat-item-63"><a href="#"
+						ng-click="getDataFromServerByCat('Dress')">DRESS</a> <span
+						class="count">({{catCount.Dress}})</span></li>
+					<li class="cat-item cat-item-55"><a href="#"
+						ng-click="getDataFromServerByCat('Casual')">CASUAL</a> <span
+						class="count">({{catCount.Casual}})</span></li>
+					<li class="cat-item cat-item-64"><a href="#"
+						ng-click="getDataFromServerByCat('Digital')">DIGITAL</a> <span
+						class="count">({{catCount.Digital}})</span></li>
 			</div>
 			<div class="col-md-8 mens_right">
 				<div class="dreamcrub">
-					<ul class="breadcrumbs">
-						<li class="home"><a href="index.html" title="Go to Home Page">Home</a>&nbsp;
-							<span>&gt;</span></li>
-					</ul>
+
 					<ul class="previous">
 						<li><a href="index.html">Back to Previous Page</a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>
 				<div class="mens-toolbar">
-					<div class="sort">
-						<div class="sort-by">
-							<label>Sort By</label> <select>
-								<option value="">Position</option>
-								<option value="">Name</option>
-								<option value="">Price</option>
-							</select> <a href=""><img src="images/arrow2.gif" alt=""
-								class="v-middle"></a>
-						</div>
-					</div>
-					<ul class="women_pagenation dc_paginationA dc_paginationA06">
-						<li><a href="#" class="previous">Page : </a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-					</ul>
+
+
 					<div class="clearfix"></div>
 				</div>
 				<div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
-					<div class="pages">
-						<div class="limiter visible-desktop">
-							<label>Show</label> <select>
-								<option value="" selected="selected">9</option>
-								<option value="">15</option>
-								<option value="">30</option>
-							</select> per page
-						</div>
-					</div>
+
 					<div class="clearfix"></div>
 					<ul id="listcategories">
 
@@ -167,7 +145,7 @@
 										<div class="product_image">
 											<div class="mask1">
 												<img
-													src="images/{{product.prodCat}}/{{product.prodImg}}"
+													src="app/images/{{product.prodCat}}/{{product.prodImg}}"
 													alt="image" class="img-responsive zoom-img">
 											</div>
 											<div class="mask">
@@ -179,8 +157,8 @@
 												<p>{{product.prodCat}}</p>
 												<p class="desc">{{product.prodDesc}}</p>
 												<div class="price mount item_price">¥{{product.prodPrice}}</div>
-												<a class="button item_add cbp-vm-icon cbp-vm-add" ng-click="addToCart(product.prodId)">Add
-													to cart</a>
+												<a class="button item_add cbp-vm-icon cbp-vm-add"
+													ng-click="addToCart(product.prodId)">Add to cart</a>
 											</div>
 										</div>
 									</div>

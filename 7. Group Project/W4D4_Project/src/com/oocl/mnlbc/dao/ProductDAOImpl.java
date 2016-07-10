@@ -138,7 +138,7 @@ public Product getProduct(String id) {
 }
 
 public String countProductByCat(){
-	String result = "{[";
+	String result = "{";
 	Connection conn = dbConnect.getConn();
     String sql = "select count(prodid), prodcat from product group by prodcat";
 
@@ -148,10 +148,10 @@ public String countProductByCat(){
        ResultSet rs = pStmt.executeQuery();
        while (rs.next()) {
           if (!(rs.getString(1) == null)) {
-             result = result + rs.getString(2)+":"+rs.getString(1)+" ";
+             result = result + '"' + rs.getString(2)+ '"' +":"+rs.getString(1)+" ";
           }
        }
-       result = result + "]}";
+       result = result + "}";
        result = result.replace(" ",",");
        result = result.replace(result.substring(result.length()-4, result.length()),
     		   result.substring(result.length()-4, result.length()).replace(",", ""));
