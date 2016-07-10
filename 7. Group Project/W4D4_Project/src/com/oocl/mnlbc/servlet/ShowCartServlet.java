@@ -16,6 +16,7 @@ import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
+import com.oocl.mnlbc.util.JsonParser;
 
 /**
  * Servlet implementation class ShowCartServlet
@@ -40,13 +41,11 @@ public class ShowCartServlet extends HttpServlet {
 		OrdersDAOImpl ordersDAO = new OrdersDAOImpl();
 		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
 		User user = (User) session.getAttribute("user");
-		Order order = ordersDAO.getOrderId(user);
+		Order order = ordersDAO.getOrder(user);
 		List<Product> productList= ordersProdDAO.getRelatedProducts(order);
 		
-		session.setAttribute("orderProductList", productList);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("checkout.html"); //something.jsp
-	    rd.forward(request,response);
+		String msg = JsonParser.toProductJson(productList);
+	    response.getWriter().append(msg);
 	}
 
 	/**
