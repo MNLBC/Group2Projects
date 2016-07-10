@@ -29,8 +29,8 @@ public class ProductDAOImpl implements ProductDAO {
             if (!(rs.getString("PRODID") == null)) {
                Product prod = new Product();
                prod.setProdId(rs.getLong("PRODID"));
-               prod.setProdName("PRODNAME");
-               prod.setProdCat("PRODCAT");
+               prod.setProdName(rs.getString("PRODNAME"));
+               prod.setProdCat(rs.getString("PRODCAT"));
                prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
                prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
                prod.setProdImg(rs.getString("PRODIMG"));
