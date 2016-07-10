@@ -42,7 +42,7 @@ public class AddToCart extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 		Product prod = prodDAO.getProduct(id);
 		OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
-		opDAO.addProduct(orderDAO.getOrderId(user), prod, Integer.parseInt(qty));
+		opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
 		
 		String msg = "";
 		msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));
