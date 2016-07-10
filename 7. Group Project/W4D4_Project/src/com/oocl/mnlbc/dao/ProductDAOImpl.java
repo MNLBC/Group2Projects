@@ -153,8 +153,8 @@ public String countProductByCat(){
        }
        result = result + "]}";
        result = result.replace(" ",",");
-       result = result.replace(result.substring(result.length(), result.length()-4),
-    		   result.substring(result.length(), result.length()-4).replace(",", ""));
+       result = result.replace(result.substring(result.length()-4, result.length()),
+    		   result.substring(result.length()-4, result.length()).replace(",", ""));
     } catch (SQLException e) {
        e.printStackTrace();
     }
