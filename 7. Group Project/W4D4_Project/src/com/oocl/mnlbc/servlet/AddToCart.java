@@ -47,11 +47,18 @@ public class AddToCart extends HttpServlet {
 		OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
 		opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
 		
+		if(session.getAttribute("cartList")==null){
+			session.setAttribute("cartList", new ArrayList<String[]>());
+		}
+		
 		List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
 		String[] array = {id,"1"};
 		for(int i = 0; i < cartList.size();i++){
 			if(cartList.get(i).equals(array)){
-				
+				cartList.get(i)[1] = String.valueOf(Integer.parseInt(cartList.get(i)[1]) + 1);
+			}
+			else{
+				cartList.add(array);
 			}
 		}
 		

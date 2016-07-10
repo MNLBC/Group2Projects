@@ -50,7 +50,7 @@ public class EditServlet extends HttpServlet {
 		Product product = (Product) request.getAttribute("product");
 		if(action.equals("updatestock")){
 			int qty = (int) request.getAttribute("qty");
-			result = prodDAO.updateStock(product, qty);
+			//result = prodDAO.updateStock(product, qty);
 		}
 		
 		if(result == 1)

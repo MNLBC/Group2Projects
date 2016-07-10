@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
+import com.oocl.mnlbc.dao.ProductDAOImpl;
 import com.oocl.mnlbc.util.Timestamp;
 
 /**
@@ -38,6 +39,9 @@ public class CheckoutServlet extends HttpServlet {
 	  
 	  OrdersDAOImpl db = new OrdersDAOImpl();
       int status = db.finalOrder(order,Timestamp.getTimestamp());
+      
+      ProductDAOImpl prodDAO = new ProductDAOImpl();
+      //int status2 = prodDAO
       
       String msg = "";
       if(status == 1)

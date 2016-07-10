@@ -53,7 +53,7 @@ public class ProductDAOImpl implements ProductDAO {
    }
 
    @Override
-   public int updateStock(Product product, int qty) {
+   public int updateStock(String[] array) {
       int result = 0;
       Connection conn = dbConnect.getConn();
       String sql = "UPDATE PRODUCT SET PRODSTOCK = PRODSTOCK - ? WHERE PRODID = ?";
@@ -61,8 +61,8 @@ public class ProductDAOImpl implements ProductDAO {
       PreparedStatement pStmt;
       try {
          pStmt = (PreparedStatement) conn.prepareStatement(sql);
-         pStmt.setInt(1, qty);
-         pStmt.setLong(2, product.getProdId());
+         pStmt.setString(1, array[1]);
+         pStmt.setString(2, array[0]);
          result = pStmt.executeUpdate();
          pStmt.close();
          conn.close();
@@ -140,7 +140,7 @@ public Product getProduct(String id) {
 public String countProductByCat(){
 	String result = "{";
 	Connection conn = dbConnect.getConn();
-    String sql = "SELECT * FROM PRODUCT WHERE PRODID = ?";
+    String sql = "select count(prodid), prodcat from product group by prodcat";
 
     PreparedStatement pStmt;
     try {
