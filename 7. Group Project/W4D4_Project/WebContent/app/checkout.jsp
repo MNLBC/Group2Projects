@@ -15,23 +15,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="app/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="app/css/style.css" rel='stylesheet' type='text/css' />
 <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700'
   rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Dorsa' rel='stylesheet'
   type='text/css'>
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<link href="css/megamenu.css" rel="stylesheet" type="text/css"
+<script type="text/javascript" src="app/js/jquery-1.11.1.min.js"></script>
+<link href="app/css/megamenu.css" rel="stylesheet" type="text/css"
   media="all" />
-<script type="text/javascript" src="js/megamenu.js"></script>
+<script type="text/javascript" src="app/js/megamenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script src="js/jquery.easydropdown.js"></script>
-<script src="js/simpleCart.min.js">
+<script src="app/js/jquery.easydropdown.js"></script>
+<script src="app/js/simpleCart.min.js">
 	
 </script>
 </head>
