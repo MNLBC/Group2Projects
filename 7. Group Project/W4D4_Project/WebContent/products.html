@@ -27,8 +27,32 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
 <script src="js/jquery.easydropdown.js"></script>
 <script src="js/simpleCart.min.js"> </script>
+<script src="js/angular.min.js"></script>
+
+<script>
+	var myApp = angular.module('myApp', []);
+
+	myApp.controller('MyController',function  MyController($scope, $http) {
+
+		$scope.getDataFromServer = function() {
+			$http({
+				method : 'GET',
+				url : 'getProducts'
+			}).success(function(data, status, headers, config) {
+				$scope.products = data;
+				console.log($scope.products);
+			}).error(function(data, status, headers, config) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			});
+
+		};
+		
+		$scope.getDataFromServer();
+	});
+</script> 
 </head>
-<body>
+<body ng-app="myApp" ng-controller="MyController">
 	<div class="men_banner">
    	  <div class="container">
 	  <div class="header-top">
@@ -153,6 +177,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 					<div class="clearfix"></div>
 					<ul id="listcategories">
+					
+					  <li ng-repeat="product in products" class="simpleCart_shelfItem">
+							<a class="cbp-vm-image" href="single.html">
+							 <div class="view view-first">
+					   		  <div class="inner_content clearfix">
+								<div class="product_image">
+									<div class="mask1"><img src="watchimages/casual/casual1.png" alt="image" class="img-responsive zoom-img"></div>
+									<div class="mask">
+					                 </div>
+					                 <div class="product_container">
+									   <h4>IWC SCHAFFHAUSEN</h4>
+									   <p>Casual</p>
+									   <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod leo et odio luctus blandit. Donec eu velit a erat pulvinar volutpat. Nulla facilisi. Mauris turpis justo, porta id efficitur vitae, mattis at diam. </p>
+									   <div class="price mount item_price">$99.00</div>
+									   <a class="button item_add cbp-vm-icon cbp-vm-add" href="#">Add to cart</a>
+									 </div>		
+								  </div>
+			                     </div>
+		                      </div>
+		                    </a>
+						</li>
 					  <li class="simpleCart_shelfItem">
 							<a class="cbp-vm-image" href="single.html">
 							 <div class="view view-first">

@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
       String userPass = request.getParameter("userPass");
       String userType = request.getParameter("userType");
       if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
-         && userCountry != null && userPass != null && userType != null) {
+         && userCountry != null && userPass != null) {
          user.setUserFname(userFname);
          user.setUserLname(userLname);
          user.setUserEmail(userEmail);
@@ -68,7 +68,7 @@ public class RegisterServlet extends HttpServlet {
          user.setUserCity(userCity);
          user.setUserCountry(userCountry);
          user.setUserPass(userPass);
-         user.setUserType(userType);
+         user.setUserType("Cutomer");
          if (!dao.validateUser(user.getUserEmail())) {
             int result = dao.createUser(user);
             if (result != 0) {
@@ -78,8 +78,9 @@ public class RegisterServlet extends HttpServlet {
       }
       response.getWriter().append(msg);
       if(msg=="success"){
+    	  System.out.println("Created User");
     	  ServletContext sc = this.getServletContext();
-     	 RequestDispatcher rd = sc.getRequestDispatcher("/views/edit_user.jsp"); // edit here
+     	 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
      	 rd.forward(request, response);
       }
    }

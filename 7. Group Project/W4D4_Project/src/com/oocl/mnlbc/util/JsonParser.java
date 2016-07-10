@@ -1,5 +1,7 @@
 package com.oocl.mnlbc.util;
 
+import java.util.List;
+
 import com.google.gson.Gson;
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.OrderProduct;
@@ -20,7 +22,7 @@ public class JsonParser {
     * @param user
     * @return
     */
-   public String toUserJson(User user) {
+   public static String toUserJson(User user) {
       Gson gson = new Gson();
       String json = gson.toJson(user);
       return json;
@@ -32,9 +34,21 @@ public class JsonParser {
     * @param prod
     * @return
     */
-   public String toProductJson(Product prod) {
+   public static String toProductJson(Product prod) {
       Gson gson = new Gson();
       String json = gson.toJson(prod);
+      return json;
+   }
+
+   /**
+    * parse ProductList to Json
+    * 
+    * @param prod
+    * @return
+    */
+   public static String toProductJson(List<Product> prodList) {
+      Gson gson = new Gson();
+      String json = gson.toJson(prodList);
       return json;
    }
 
@@ -44,7 +58,7 @@ public class JsonParser {
     * @param order
     * @return
     */
-   public String toOrderJson(Order order) {
+   public static String toOrderJson(Order order) {
       Gson gson = new Gson();
       String json = gson.toJson(order);
       return json;
@@ -56,7 +70,7 @@ public class JsonParser {
     * @param orderprod
     * @return
     */
-   public String toOrderProductJson(OrderProduct orderprod) {
+   public static String toOrderProductJson(OrderProduct orderprod) {
       Gson gson = new Gson();
       String json = gson.toJson(orderprod);
       return json;
@@ -68,7 +82,7 @@ public class JsonParser {
     * @param str
     * @return
     */
-   public User toUserObject(String str) {
+   public static User toUserObject(String str) {
       Gson gson = new Gson();
       User user = gson.fromJson(str, User.class);
       return user;
@@ -80,7 +94,7 @@ public class JsonParser {
     * @param str
     * @return
     */
-   public Product toProductObject(String str) {
+   public static Product toProductObject(String str) {
       Gson gson = new Gson();
       Product prod = gson.fromJson(str, Product.class);
       return prod;
@@ -92,7 +106,7 @@ public class JsonParser {
     * @param str
     * @return
     */
-   public Order toOrderObject(String str) {
+   public static Order toOrderObject(String str) {
       Gson gson = new Gson();
       Order order = gson.fromJson(str, Order.class);
       return order;
@@ -104,7 +118,7 @@ public class JsonParser {
     * @param str
     * @return
     */
-   public OrderProduct toOrderProductObject(String str) {
+   public static OrderProduct toOrderProductObject(String str) {
       Gson gson = new Gson();
       OrderProduct orderprod = gson.fromJson(str, OrderProduct.class);
       return orderprod;

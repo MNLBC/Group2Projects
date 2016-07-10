@@ -64,6 +64,7 @@ public class LoginServlet extends HttpServlet {
             out.println("</script>");
             out.println("<a href='index.jsp'>Login</a>"); // if email/password does not match
          } else {
+        	 session.setAttribute("user", dao.getUser(userEmail, userPass));
         	 session.setAttribute("username", userEmail);
         	 ServletContext sc = this.getServletContext();
         	 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
