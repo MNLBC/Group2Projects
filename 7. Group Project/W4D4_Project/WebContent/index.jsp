@@ -61,15 +61,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               placeholder="Password" aria-describedby="basic-addon1"
               id="pword" name="userPass">
             <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-            <a href="modal.html" class="btn btn-primary"
+            <a href="modalregister.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalregister"
               id="btnregister">Register</a>
-            <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="modalregister">Register</button>-->
+			  <a href="modalpay.html" class="btn btn-primary"
+              data-toggle="modal" data-target="#modalpay"
+              id="btnregister">Pay</a>
 
 
           </div>
         </form>
-        <div class="col-md-4 col-md-offset-8" hidden="true">
+        <div class="col-md-5 col-md-offset-7" hidden="true">
           <ul class="header_user_info">
             <a class="login" href="login.html"> <i class="user">
             </i>My Account
@@ -78,11 +80,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <ul class="header_user_info">
             <a class="login" href="#">Cart <span class="badge">47</span></a>
           </ul>
+		  <ul class="header_user_info">
+            <a class="login" href="#">Users <span class="badge">47</span></a>
+          </ul>
           <ul class="header_user_info">
             <a class="login" href="login.html">Logout </a>
           </ul>
         </div>
         <div class="modal fade" id="modalregister" tabindex="-1"
+          role="dialog" aria-labelledby="modal-register-label"
+          aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content"></div>
+          </div>
+
+        </div>
+		<div class="modal fade" id="modalpay" tabindex="-1"
           role="dialog" aria-labelledby="modal-register-label"
           aria-hidden="true">
           <div class="modal-dialog">
