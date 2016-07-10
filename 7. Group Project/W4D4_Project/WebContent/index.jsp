@@ -95,7 +95,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <div class="header_bottom">
         <div class="logo">
           <h1>
-            <a href="index.jsp" id="title"><span class="m_1">W</span>atchmewhip</a>
+            <a href="index.jsp" id="title"><span class="m_1"></span></a>
+            <!--<a href="index.jsp" id="title"><span class="m_1">W</span>atchmewhip</a>-->
           </h1>
         </div>
         <div class="menu">
