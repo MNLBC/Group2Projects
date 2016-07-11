@@ -88,6 +88,18 @@ public class JsonParser {
       String json = gson.toJson(cartProduct);
       return json;
    }
+   
+   /**
+    * parse CartProduct List to Json
+    * 
+    * @param cartProductList
+    * @return
+    */
+   public static String toCartProductListJson(List<CartProduct> cartProductList) {
+      Gson gson = new Gson();
+      String json = gson.toJson(cartProductList);
+      return json;
+   }
 
    /**
     * parse Json to User
@@ -148,4 +160,5 @@ public class JsonParser {
       CartProduct cartProduct = gson.fromJson(str, CartProduct.class);
       return cartProduct;
    }
+   
 }
