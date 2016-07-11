@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
           </ul>
 		  <ul class="header_user_info">
-            <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
+            <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")==null? 0 : application.getAttribute("ctr")%></span></a>
           </ul>
           <ul class="header_user_info">
             <a class="login" href="login.html">Logout </a>
