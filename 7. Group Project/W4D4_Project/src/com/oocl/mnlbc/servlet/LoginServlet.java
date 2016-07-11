@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
             rd.forward(request, response);
          } else {
-        	 session.setAttribute("user", dao.getUser(userEmail, userPass));
+        	 session.setAttribute("user", dao.getUserByEmail(userEmail));
         	 session.setAttribute("username", userEmail);
         	LogUtil.logMsg(LogType.INFO, "Logged In: " + userEmail);
         	 if(user.getUserType().equals("Cutomer")){

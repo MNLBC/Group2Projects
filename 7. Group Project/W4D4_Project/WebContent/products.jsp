@@ -53,7 +53,6 @@
 			<div class="header-top">
 				<%@ page import="com.oocl.mnlbc.bean.User"  %>
 		<%
-			
 			User user = (User)session.getAttribute("user");
 			
 			if(user == null){
@@ -79,7 +78,7 @@
           <div class="col-md-5 col-md-offset-7">
           <ul class="header_user_info">
             <a class="login" href="login.html"> <i class="user">
-            </i>My Account
+            </i><%= user.getUserFname()%>
             </a>
           </ul>
           <ul class="header_user_info">
@@ -89,7 +88,7 @@
             <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")==null? 0 : application.getAttribute("ctr")%></span></a>
           </ul>
           <ul class="header_user_info">
-            <a class="login" href="index.jsp">Logout </a>
+            <a class="login" href="http://localhost:8080/W4D4_Project/logout">Logout </a>
           </ul>
         </div>
         
