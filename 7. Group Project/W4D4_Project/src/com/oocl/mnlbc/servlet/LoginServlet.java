@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
             	 rd.forward(request, response);
             	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
             	 orderDAO.createOrder(user);
-            	 session.setAttribute("orderId", orderDAO.getOrderId(user));
+            	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
         	 }
         	 else if(user.getUserType().equals("Admin")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
