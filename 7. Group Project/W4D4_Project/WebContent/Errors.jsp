@@ -12,7 +12,7 @@
 <script type=text/javascript>
 swal({
 	  title: "Error!",
-	  text: "Captcha Mismatch.",
+	  text: "Contact Support: Meynard Denoyo (09123456789).",
 	  type: "error",
 	  timer: 3000,
 	  showConfirmButton: false
