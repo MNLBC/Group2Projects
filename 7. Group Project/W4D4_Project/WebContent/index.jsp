@@ -12,24 +12,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
-<link href="app/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="app/css/style.css" rel='stylesheet' type='text/css' />
-<link rel="stylesheet" href="app/css/form-elements.css" type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="css/form-elements.css" type='text/css' />
 <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700'
   rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Dorsa' rel='stylesheet'
   type='text/css'>
-<script type="text/javascript" src="app/js/jquery-1.11.1.min.js"></script>
-<link href="app/css/megamenu.css" rel="stylesheet" type="text/css"
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="css/megamenu.css" rel="stylesheet" type="text/css"
   media="all" />
-<script type="text/javascript" src="app/js/megamenu.js"></script>
+<script type="text/javascript" src="js/megamenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script src="app/js/jquery.easydropdown.js"></script>
-<script src="app/js/simpleCart.min.js">
+<script src="js/jquery.easydropdown.js"></script>
+<script src="js/simpleCart.min.js">
 	
 </script>
 <script>
@@ -51,10 +51,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               placeholder="Password" aria-describedby="basic-addon1"
               id="pword" name="userPass">
             <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-            <a href="app/modalregister.html" class="btn btn-primary"
+            <a href="modalregister.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalregister"
               id="btnregister">Register</a>
-			  <a href="app/modalpay.html" class="btn btn-primary"
+			  <a href="modalpay.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalpay"
               id="btnregister">Pay</a>
 
@@ -104,8 +104,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="menu">
           <ul class="megamenu skyblue">
             <li><a class="color2" href="index.jsp">Home</a></li>
-			<li><a class="color4" href="app/products.html">Products</a></li>
-			<li><a class="color3" href="app/about.html">About</a></li>
+			<li><a class="color4" href="products.html">Products</a></li>
+			<li><a class="color3" href="about.html">About</a></li>
           </ul>
         </div>
         <div class="clearfix"></div>
@@ -134,10 +134,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="container">
       <ul class="content-home" id="listcategories">
-        <li class="col-sm-4"><a href="app/luxury.html"
+        <li class="col-sm-4"><a href="luxury.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="app/images/w1.png" class="item-img" title=""
+              <img src="images/w1.png" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Luxury</h3>
@@ -147,10 +147,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="app/dress.html"
+        <li class="col-sm-4"><a href="dress.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="app/images/w2.png" class="item-img" title=""
+              <img src="images/w2.png" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Dress</h3>
@@ -160,10 +160,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="app/sports.html"
+        <li class="col-sm-4"><a href="sports.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="app/images/w3.jpg" class="item-img" title=""
+              <img src="images/w3.jpg" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Sports</h3>
@@ -173,10 +173,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4 col-sm-offset-2"><a href="app/casual.html"
+        <li class="col-sm-4 col-sm-offset-2"><a href="casual.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="app/images/w4.png" class="item-img" title=""
+              <img src="images/w4.png" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Casual</h3>
@@ -186,10 +186,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
               </div>
             </div>
         </a></li>
-        <li class="col-sm-4"><a href="app/digital.html"
+        <li class="col-sm-4"><a href="digital.html"
           class="item-link" title="">
             <div class="bannerBox">
-              <img src="app/images/w5.png" class="item-img" title=""
+              <img src="images/w5.png" class="item-img" title=""
                 alt="" width="100%" height="100%">
               <div class="item-html">
                 <h3>Digital</h3>
@@ -206,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
       <div class="copy">
         <p>
-          &copy; Design by <a href="app/about.html" target="_blank">ITA 2016
+          &copy; Design by <a href="about.html" target="_blank">ITA 2016
             GROUP 2</a>
         </p>
       </div>
@@ -215,6 +215,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   </div>
   <script
     src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="app/js/bootstrap.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
