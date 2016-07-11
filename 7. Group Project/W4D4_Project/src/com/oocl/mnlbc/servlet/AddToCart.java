@@ -49,9 +49,11 @@ public class AddToCart extends HttpServlet {
 		
 		if(session.getAttribute("cartList")==null){
 			session.setAttribute("cartList", new ArrayList<String[]>());
+			session.setAttribute("cartItems", new Integer(0));
 		}
 		
 		List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
+		Integer cartItems = (Integer) session.getAttribute("cartItems");
 		String[] array = {id,"1"};
 		for(int i = 0; i < cartList.size();i++){
 			if(cartList.get(i)[0].equals(array[0])){
@@ -59,8 +61,11 @@ public class AddToCart extends HttpServlet {
 			}
 			else{
 				cartList.add(array);
+		      cartItems = cartItems + 1;
 			}
 		}
+		session.setAttribute("cartItems", cartItems);
+		session.setAttribute("cartList", cartList);
 		
 		String msg = "";
 		msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));

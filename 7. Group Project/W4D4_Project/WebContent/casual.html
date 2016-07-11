@@ -7,24 +7,24 @@
 <script type="application/x-javascript">
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 </script>
-<link href="app/css/bootstrap.css" rel='stylesheet' type='text/css' />
-<link href="app/css/style.css" rel='stylesheet' type='text/css' />
-<link href="app/css/component.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+<link href="css/component.css" rel='stylesheet' type='text/css' />
 <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700'
   rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Dorsa' rel='stylesheet'
   type='text/css'>
-<script type="text/javascript" src="app/js/jquery-1.11.1.min.js"></script>
-<link href="app/css/megamenu.css" rel="stylesheet" type="text/css"
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link href="css/megamenu.css" rel="stylesheet" type="text/css"
   media="all" />
-<script type="text/javascript" src="app/js/megamenu.js"></script>
+<script type="text/javascript" src="js/megamenu.js"></script>
 <script>
 	$(document).ready(function() {
 		$(".megamenu").megamenu();
 	});
 </script>
-<script src="app/js/jquery.easydropdown.js"></script>
-<script src="app/js/simpleCart.min.js">
+<script src="js/jquery.easydropdown.js"></script>
+<script src="js/simpleCart.min.js">
 	
 </script>
 </head>
@@ -56,7 +56,7 @@
             </a>
           </ul>
           <ul class="header_user_info">
-            <a class="login" href="#">Cart <span class="badge">47</span></a>
+            <a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
           </ul>
 		  <ul class="header_user_info">
             <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
@@ -516,28 +516,13 @@
             </a></li>
           </ul>
         </div>
-        <script src="app/js/cbpViewModeSwitch.js" type="text/javascript"></script>
-        <script src="app/js/classie.js" type="text/javascript"></script>
+        <script src="js/cbpViewModeSwitch.js" type="text/javascript"></script>
+        <script src="js/classie.js" type="text/javascript"></script>
       </div>
     </div>
   </div>
   <div class="footer">
     <div class="container">
-      <div class="cssmenu">
-        <ul>
-          <li class="active"><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <ul class="social">
-        <li><a href=""> <i class="instagram"> </i>
-        </a></li>
-        <li><a href=""><i class="fb"> </i> </a></li>
-        <li><a href=""><i class="tw"> </i> </a></li>
-      </ul>
       <div class="clearfix"></div>
       <div class="copy">
         <p>
