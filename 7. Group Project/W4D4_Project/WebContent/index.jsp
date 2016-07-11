@@ -136,71 +136,147 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="container">
       <ul class="content-home" id="listcategories">
-        <li class="col-sm-4"><a href="luxury.html"
-          class="item-link" title="">
-            <div class="bannerBox">
-              <img src="images/w1.png" class="item-img" title=""
-                alt="" width="100%" height="100%">
-              <div class="item-html">
-                <h3>Luxury</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing.</p>
-                <button>Shop now!</button>
-              </div>
-            </div>
-        </a></li>
-        <li class="col-sm-4"><a href="dress.html"
-          class="item-link" title="">
-            <div class="bannerBox">
-              <img src="images/w2.png" class="item-img" title=""
-                alt="" width="100%" height="100%">
-              <div class="item-html">
-                <h3>Dress</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing.</p>
-                <button>Shop now!</button>
-              </div>
-            </div>
-        </a></li>
-        <li class="col-sm-4"><a href="sports.html"
-          class="item-link" title="">
-            <div class="bannerBox">
-              <img src="images/w3.jpg" class="item-img" title=""
-                alt="" width="100%" height="100%">
-              <div class="item-html">
-                <h3>Sports</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing.</p>
-                <button>Shop now!</button>
-              </div>
-            </div>
-        </a></li>
-        <li class="col-sm-4 col-sm-offset-2"><a href="casual.html"
-          class="item-link" title="">
-            <div class="bannerBox">
-              <img src="images/w4.png" class="item-img" title=""
-                alt="" width="100%" height="100%">
-              <div class="item-html">
-                <h3>Casual</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing.</p>
-                <button>Shop now!</button>
-              </div>
-            </div>
-        </a></li>
-        <li class="col-sm-4"><a href="digital.html"
-          class="item-link" title="">
-            <div class="bannerBox">
-              <img src="images/w5.png" class="item-img" title=""
-                alt="" width="100%" height="100%">
-              <div class="item-html">
-                <h3>Digital</h3>
-                <p>Lorem ipsum dolor sit amet consectetur
-                  adipisicing.</p>
-                <button>Shop now!</button>
-              </div>
-            </div>
-        </a></li>
+        <%
+				if(user == null){
+			%>
+				<li class="col-sm-4"><a href="modallogin.html" class="item-link" title=""
+					data-toggle="modal" data-target="#modallogin">
+						<div class="bannerBox">
+							<img src="images/w1.png" class="item-img" title="" alt=""
+								width="100%" height="100%">
+							<div class="item-html">
+								<h3>Luxury</h3>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<button>Shop Now!</button>
+							</div>
+						</div>
+		
+		</a>
+		</li>
+		<li class="col-sm-4"><a href="modallogin.html" class="item-link"
+			title="" data-toggle="modal" data-target="#modallogin">
+				<div class="bannerBox">
+					<img src="images/w2.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Dress</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4"><a href="modallogin.html" class="item-link"
+			title="" data-toggle="modal" data-target="#modallogin">
+				<div class="bannerBox">
+					<img src="images/w3.jpg" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Sports</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4 col-sm-offset-2"><a href="modallogin.html"
+			class="item-link" title="" data-toggle="modal" data-target="#modallogin">
+				<div class="bannerBox">
+					<img src="images/w4.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Casual</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4"><a href="modallogin.html" class="item-link"
+			title="" data-toggle="modal" data-target="#modallogin">
+				<div class="bannerBox">
+					<img src="images/w5.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Digital</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+			<%
+				}else{
+			%>
+				<li class="col-sm-4"><a href="luxury.html"
+					ng-click="getDataFromServer()" class="item-link" title=""
+					hidden="true">
+						<div class="bannerBox">
+							<img src="images/w1.png" class="item-img" title="" alt=""
+								width="100%" height="100%">
+							<div class="item-html">
+								<h3>Luxury</h3>
+								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<button>Shop Now!</button>
+							</div>
+						</div>
+				</a></li>
+				
+		
+		<li class="col-sm-4"><a href="dress.html" class="item-link"
+			title="">
+				<div class="bannerBox">
+					<img src="images/w2.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Dress</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4"><a href="sports.html" class="item-link"
+			title="">
+				<div class="bannerBox">
+					<img src="images/w3.jpg" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Sports</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4 col-sm-offset-2"><a href="casual.html"
+			class="item-link" title="">
+				<div class="bannerBox">
+					<img src="images/w4.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Casual</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<li class="col-sm-4"><a href="digital.html" class="item-link"
+			title="">
+				<div class="bannerBox">
+					<img src="images/w5.png" class="item-img" title="" alt=""
+						width="100%" height="100%">
+					<div class="item-html">
+						<h3>Digital</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+						<button>Shop now!</button>
+					</div>
+				</div>
+		</a></li>
+		<% } %>
+		<div class="modal fade" id="modallogin" tabindex="-1" role="dialog"
+			aria-labelledby="modal-register-label" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		</ul>
+	</div>
         <div class="clearfix"></div>
       </ul>
     </div>
