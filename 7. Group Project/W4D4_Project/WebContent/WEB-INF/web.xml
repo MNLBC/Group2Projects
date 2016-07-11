@@ -49,19 +49,19 @@
   <listener>
     <listener-class>com.oocl.mnlbc.listener.UserListener</listener-class>
   </listener>
-  	<servlet>
-		<description></description>
-		<display-name>safe</display-name>
-		<servlet-name>safe</servlet-name>
-		<servlet-class>com.oocl.mnlbc.listener.CaptchaGenerate</servlet-class>
-		<init-param>
-			<description>description1</description>
-			<param-name>name1</param-name>
-			<param-value>value1</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>safe</servlet-name>
-		<url-pattern>/safe.jpg</url-pattern>
-	</servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>safe</display-name>
+    <servlet-name>safe</servlet-name>
+    <servlet-class>com.oocl.mnlbc.listener.CaptchaGenerate</servlet-class>
+    <init-param>
+      <description>description1</description>
+      <param-name>name1</param-name>
+      <param-value>value1</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>safe</servlet-name>
+    <url-pattern>/safe.jpg</url-pattern>
+  </servlet-mapping>
 </web-app>

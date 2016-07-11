@@ -99,7 +99,7 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	public List<CartProduct> getCartProducts(String orderId) {
 		List<CartProduct> result = new ArrayList<CartProduct>();
 		Connection conn = dbConnect.getConn();
-		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY FROM PRODUCT A, ORDERPRODUCT B "
+		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY, A.PRODPRICE*A.PRODSALE*SUM(B.ORDERPRODQTY) AS SUBTOTAL FROM PRODUCT A, ORDERPRODUCT B "
 				+ "WHERE A.PRODID = B.PRODID AND B.ORDERID = ? "
 				+ "GROUP BY A.PRODID,A.PRODNAME,A.PRODCAT,A.PRODDESC,A.PRODPRICE,A.PRODSALE,A.PRODSTOCK,A.PRODIMG;";
 		
@@ -118,6 +118,7 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 				cartProd.setProdSale(rs.getDouble("PRODPRICE"));
 				cartProd.setProdStock(rs.getInt("PRODSTOCK"));
 				cartProd.setProdQty(rs.getInt("QTY"));
+				cartProd.setProdSubtotal(rs.getDouble("SUBTOTAL"));
 				result.add(cartProd);
 			}
 		} catch (SQLException e) {
@@ -125,6 +126,12 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	@Override
+	public int updateProduct(String orderId, String productId) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

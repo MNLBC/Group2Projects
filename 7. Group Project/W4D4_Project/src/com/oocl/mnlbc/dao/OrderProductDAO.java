@@ -11,4 +11,5 @@ public interface OrderProductDAO {
 	public int removeProduct(long orderProductId);
 	public List<Product> getRelatedProducts(Order order);
 	public List<CartProduct> getCartProducts(String orderId);
+	public int updateProduct(String orderId, String productId);
 }
