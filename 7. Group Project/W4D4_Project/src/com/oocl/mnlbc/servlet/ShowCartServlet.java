@@ -43,8 +43,8 @@ public class ShowCartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ProductDAOImpl prodDAO = new ProductDAOImpl();
 		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
-		String orderId = (String) session.getAttribute("orderId");
-		List<CartProduct> cart = ordersProdDAO.getCartProducts(orderId);
+		Long orderId = (Long) session.getAttribute("orderId");
+		List<CartProduct> cart = ordersProdDAO.getCartProducts(String.valueOf(orderId));
 		
 		String msg = JsonParser.toCartProductListJson(cart);
 	    response.getWriter().append(msg);
