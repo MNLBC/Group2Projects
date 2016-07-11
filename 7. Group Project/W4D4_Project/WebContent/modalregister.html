@@ -96,6 +96,11 @@
 														},
 														userPass : {
 															validators : {
+																stringLength : {
+																	min : 8,
+																	max : 20,
+																	message : 'The password must be more than 8 and less than 20 characters long'
+																},
 																notEmpty : {
 																	message : 'The password is required and can\'t be empty'
 																},
@@ -111,6 +116,11 @@
 														},
 														userPassCheck : {
 															validators : {
+																stringLength : {
+																	min : 8,
+																	max : 20,
+																	message : 'The password must be more than 8 and less than 20 characters long'
+																},
 																notEmpty : {
 																	message : 'The confirm password is required and can\'t be empty'
 																},
