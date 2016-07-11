@@ -3,6 +3,7 @@ package com.oocl.mnlbc.util;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.oocl.mnlbc.bean.CartProduct;
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
@@ -77,6 +78,18 @@ public class JsonParser {
    }
 
    /**
+    * parse CartProduct to Json
+    * 
+    * @param cartProduct
+    * @return
+    */
+   public static String toCartProductJson(CartProduct cartProduct) {
+      Gson gson = new Gson();
+      String json = gson.toJson(cartProduct);
+      return json;
+   }
+
+   /**
     * parse Json to User
     * 
     * @param str
@@ -122,5 +135,17 @@ public class JsonParser {
       Gson gson = new Gson();
       OrderProduct orderprod = gson.fromJson(str, OrderProduct.class);
       return orderprod;
+   }
+
+   /**
+    * parse Json to CartProduct
+    * 
+    * @param str
+    * @return
+    */
+   public static CartProduct toCartProductObject(String str) {
+      Gson gson = new Gson();
+      CartProduct cartProduct = gson.fromJson(str, CartProduct.class);
+      return cartProduct;
    }
 }
