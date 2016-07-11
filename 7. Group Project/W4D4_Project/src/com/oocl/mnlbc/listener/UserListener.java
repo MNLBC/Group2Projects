@@ -39,7 +39,7 @@ public class UserListener implements HttpSessionListener {
            ctr = new Integer(ctr + 1);
         }
         ctx.setAttribute("ctr", ctr);
-        session.setMaxInactiveInterval(60);
+        //session.setMaxInactiveInterval(60);
         System.out.println("Session Created:: ID=" + event.getSession().getId());
         System.out.println("User Count: " + ctr);
     }
