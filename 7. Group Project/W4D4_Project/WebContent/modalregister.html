@@ -4,6 +4,8 @@
   </button>
   <h3 class="modal-title" id="myModalLabel">Sign up now</h3>
   <script type="text/javascript" src="js/countries.js"></script>
+  <script type="text/javascript" src="js/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/sweetalert.css">
   <p>Fill in the form below to get instant access:</p>
 </div>
 <div class="modal-body" id="modalheader">
@@ -11,23 +13,25 @@
   <form action="register" method="post">
     <div class="form-group">
       <input type="text" placeholder="First name..." id="fname"
-        name="userFname" class="form-control" />
+        name="userFname" class="form-control" required />
     </div>
     <div class="form-group">
       <input type="text" placeholder="Last name..." id="lname"
-        name="userLname" class="form-control" />
+        name="userLname" class="form-control" required />
     </div>
     <div class="form-group">
       <div class="row">
         <div class="col-md-5">
-          <select class="form-control" id="country"
-            name="userCountry"></select>
+          <select class="form-control" id="country" name="userCountry"
+            required></select>
         </div>
         <div class="col-md-4">
-          <select class="form-control" id="state" name="userCity"></select>
+          <select class="form-control" id="state" name="userCity"
+            required></select>
           <script language="javascript">
-      populateCountries("country", "state");
-    </script>
+											populateCountries("country",
+													"state");
+										</script>
         </div>
         <div class="col-md-3">
           <input type="text" placeholder="Street..." id="street"
@@ -37,15 +41,26 @@
     </div>
     <div class="form-group">
       <input type="email" placeholder="Email..." id="email"
-        name="userEmail" class="form-control" />
+        name="userEmail" class="form-control" data-match-error="Please enter a valid email" required />
     </div>
     <div class="form-group">
-      <input type="password" placeholder="Password..." id="password"
-        name="userPass" class="form-control" />
+      <input type="password" data-minlength="8"
+        placeholder="Password..." id="password" name="userPass"
+        class="form-control"
+        data-match-error="Please enter password with minimum of 8 characters"
+        required />
+      <div class="help-block">Minimum of 8 characters</div>
     </div>
-     <div class="form-group">
+    <div class="form-group">
+      <input type="password" data-minlength="8"
+        placeholder="Confirm Password" id="passwordCheck"
+        data-match="#password"
+        data-match-error="Oops, password don't match"
+        name="userPassCheck" class="form-control" required />
+    </div>
+    <div class="form-group">
       <input type="text" placeholder="Enter Captcha" id="captcha"
-        name="safe" class="form-control" />
+        name="safe" class="form-control" required />
     </div>
     <img id="safe" src=""><br>
     <div class="form-group">
@@ -54,6 +69,7 @@
     </div>
   </form>
   <script type="text/javascript">
-    document.getElementById("safe").setAttribute("src", "safe.jpg?" + new Date().getMilliseconds());
-  </script>
+			document.getElementById("safe").setAttribute("src",
+					"safe.jpg?" + new Date().getMilliseconds());
+		</script>
 </div>
