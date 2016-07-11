@@ -12,9 +12,9 @@
 <script type=text/javascript>
 swal({
 	  title: "Error!",
-	  text: "Captcha Mismatch.",
+	  text: "Redirecting in 5 seconds.......Contact Support: Meynard Denoyo (09123456789).",
 	  type: "error",
-	  timer: 3000,
+	  timer: 6000,
 	  showConfirmButton: false
 	}, function(){
 	      window.location.href = "index.jsp";

@@ -60,23 +60,21 @@ public class LoginServlet extends HttpServlet {
          String userPass = request.getParameter("userPass");
          HttpSession session = request.getSession(true);
          User user = dao.getUserByEmail(userEmail);
-
+         ServletContext sc = this.getServletContext();
          if (user==null || user.getUserId() == 0 || !PasswordHash.validatePassword(userPass, user.getUserPass())) {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Wrong username/password');");
-            out.println("</script>");
-            out.println("<a href='index.jsp'>Login</a>"); // if email/password does not match
+            RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
+            rd.forward(request, response);
          } else {
         	 session.setAttribute("user", dao.getUser(userEmail, userPass));
         	 session.setAttribute("username", userEmail);
         	LogUtil.logMsg(LogType.INFO, "Logged In: " + userEmail);
-        	 ServletContext sc = this.getServletContext();
         	 if(user.getUserType().equals("Cutomer")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
             	 rd.forward(request, response);
             	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
             	 orderDAO.createOrder(user);
             	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
+            	 session.setAttribute("order", orderDAO.getOrderId(user));
             	 LogUtil.logMsg(LogType.INFO, "Create Order: " + user);
         	 }
         	 else if(user.getUserType().equals("Admin")){

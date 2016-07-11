@@ -66,7 +66,6 @@ public class RegisterServlet extends HttpServlet {
       String userType = request.getParameter("userType");
       String safe = request.getParameter("safe");
       ServletContext sc = this.getServletContext();
-      PrintWriter out = response.getWriter();
 
       if (safe.equalsIgnoreCase(request.getSession().getAttribute("safecode").toString())) {
          if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
@@ -94,26 +93,16 @@ public class RegisterServlet extends HttpServlet {
                   msg = "success";
                   LogUtil.logMsg(LogType.INFO, "Create User: " + user);
                }
-            } else {
-               out.println("<script type=\"text/javascript\">");
-               out.println("alert('User already registered');");
-               out.println("</script>");
-            }
-         } else {
-            out.println("<script type=\"text/javascript\">");
-            out.println("alert('Captcha mismatch');");
-            out.println("</script>");
-         }
-
+            } 
+         } 
       }
-
       response.getWriter().append(msg);
       if (msg == "success") {
          System.out.println("Created User");
          RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
          rd.forward(request, response);
       }else {
-         RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+         RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
          rd.forward(request, response);
       }
    }

@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -65,7 +67,7 @@ public class RegisterFilter implements Filter {
     	  chain.doFilter(request, response);
       }
       else{
-    	  showWarning(response);
+         showWarning(response, req); 
       }
 
    }
@@ -77,12 +79,10 @@ public class RegisterFilter implements Filter {
       // TODO Auto-generated method stub
    }
 
-   private void showWarning(ServletResponse response) throws ServletException, IOException {
+   private void showWarning(ServletResponse response,  HttpServletRequest req) throws ServletException, IOException {
       response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
-      String docType = "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 " + "Transitional//EN\">\n";
-      out.println(
-         docType + "<HTML>\n" + "<HEAD><TITLE>Access Prohibited</TITLE></HEAD>\n" + "<BODY BGCOLOR=\"WHITE\">\n"
-            + "<H1>Access Prohibited</H1>\n" + "Sorry, you are not authorized" + "</BODY></HTML>");
+      ServletContext sc = req.getServletContext();
+      RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
+      rd.forward(req, response);
    }
 }
