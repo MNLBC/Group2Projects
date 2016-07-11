@@ -91,8 +91,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 	}
 
 	@Override
-	public Order getOrderId(User user) {
-		Order order = new Order();
+	public String getOrderId(User user) {
+		String order = "";
 		Connection conn = dbConnect.getConn();
 		String sql = "SELECT ORDERID, USERID FROM ORDERS WHERE USERID = ? "
 				+ "AND ORDERDATE IS NULL AND ORDERTOTAL IS NULL";
@@ -103,8 +103,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 			ResultSet rs = pStmt.executeQuery();
 			while(rs.next()){
 				if(!rs.getString(1).equals("")){
-					order.setOrderId(rs.getLong(1));
-					order.setUserId(rs.getLong(2));
+					order = rs.getString(1);
 				}
 			}
 		} catch (SQLException e) {
