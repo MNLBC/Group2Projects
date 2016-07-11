@@ -43,9 +43,17 @@
       <input type="password" placeholder="Password..." id="password"
         name="userPass" class="form-control" />
     </div>
+     <div class="form-group">
+      <input type="text" placeholder="Enter Captcha" id="captcha"
+        name="safe" class="form-control" />
+    </div>
+    <img id="safe" src=""><br>
     <div class="form-group">
       <button type="submit" class="btn btn-primary" id="btnsignup">Sign
         me up!</button>
     </div>
   </form>
+  <script type="text/javascript">
+    document.getElementById("safe").setAttribute("src", "safe.jpg?" + new Date().getMilliseconds());
+  </script>
 </div>
