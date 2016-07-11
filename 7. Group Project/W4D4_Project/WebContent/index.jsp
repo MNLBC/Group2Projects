@@ -42,9 +42,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="banner">
     <div class="container">
       <div class="header-top">
+        
+		<%
+			String sess = (String)session.getAttribute("user");
+			if(sess == null){
+		%>
         <form class="form-inline" action="login" method="post">
-
-          <div class="col-md-6 col-md-offset-6">
+			<div class="col-md-6 col-md-offset-6">
             <input type="email" placeholder="Email Address"
               aria-describedby="basic-addon1" id="email"
               name="userEmail"> <input type="password"
@@ -54,14 +58,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a href="modalregister.html" class="btn btn-primary"
               data-toggle="modal" data-target="#modalregister"
               id="btnregister">Register</a>
-			  <a href="modalpay.html" class="btn btn-primary"
-              data-toggle="modal" data-target="#modalpay"
-              id="btnregister">Pay</a>
 
 
           </div>
         </form>
-        <div class="col-md-5 col-md-offset-7" hidden="true">
+		<%
+			}else{
+		%>
+          <div class="col-md-5 col-md-offset-7">
           <ul class="header_user_info">
             <a class="login" href="login.html"> <i class="user">
             </i>My Account
@@ -77,6 +81,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a class="login" href="login.html">Logout </a>
           </ul>
         </div>
+        
+        <% }%>
         <div class="modal fade" id="modalregister" tabindex="-1"
           role="dialog" aria-labelledby="modal-register-label"
           aria-hidden="true">
@@ -85,14 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           </div>
 
         </div>
-		<div class="modal fade" id="modalpay" tabindex="-1"
-          role="dialog" aria-labelledby="modal-register-label"
-          aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content"></div>
-          </div>
-
-        </div>
+		
 
       </div>
       <div class="header_bottom">
