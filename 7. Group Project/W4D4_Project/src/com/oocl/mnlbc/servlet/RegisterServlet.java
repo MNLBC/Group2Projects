@@ -83,8 +83,9 @@ public class RegisterServlet extends HttpServlet {
          }
       } else {
          out.println("<script type=\"text/javascript\">");
-         out.println("$('#mymodal').on('hidden.bs.modal', function() {");
-         out.println("this.modal('show');});");
+         out.println("alert('Captcha mismatch');");
+         out.println("</script>");
+         out.println("<a href='index.jsp'>Go back to Watch Me Whip</a>");
       }
 
       response.getWriter().append(msg);
