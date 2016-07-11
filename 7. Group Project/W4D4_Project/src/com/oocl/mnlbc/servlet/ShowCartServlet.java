@@ -43,7 +43,7 @@ public class ShowCartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ProductDAOImpl prodDAO = new ProductDAOImpl();
 		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
-		String orderId = (String) request.getAttribute("orderId");
+		String orderId = (String) session.getAttribute("orderId");
 		List<CartProduct> cart = ordersProdDAO.getCartProducts(orderId);
 		
 		String msg = JsonParser.toCartProductListJson(cart);
