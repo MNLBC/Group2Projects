@@ -8,8 +8,8 @@ import com.oocl.mnlbc.bean.Product;
 
 public interface OrderProductDAO {
 	public int addProduct(Order order,Product prod,int qty);
-	public int removeProduct(long orderProductId);
+	public int removeProduct(String orderId, String productId, int qty);
 	public List<Product> getRelatedProducts(Order order);
 	public List<CartProduct> getCartProducts(String orderId);
-	public int updateProduct(String orderId, String productId);
+	public int updateProduct(String orderId, String productId, int qty);
 }

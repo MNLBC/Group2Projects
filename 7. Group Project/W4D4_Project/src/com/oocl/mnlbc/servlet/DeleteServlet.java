@@ -57,7 +57,7 @@ public class DeleteServlet extends HttpServlet {
       }else if(action.equals("deleteproduct")){
          OrderProductDAOImpl orderProductDao = new OrderProductDAOImpl();
          long orderProduct = Long.parseLong(request.getParameter("orderProdId"));
-         result = orderProductDao.removeProduct(orderProduct);
+         //result = orderProductDao.removeProduct(orderProduct);
    }
       if(result == 1)
          msg = "success";

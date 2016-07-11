@@ -45,15 +45,17 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	}
 
 	@Override
-	public int removeProduct(long orderProductId) {
+	public int removeProduct(String orderId, String prodId, int qty) {
 		int result = 0;
 		Connection conn = dbConnect.getConn();
-		String sql = "DELETE FROM ORDERPRODUCT WHERE ORDERPRODID = ?";
+		String sql = "DELETE FROM ORDERPRODUCT WHERE ORDERID = ? AND PRODID = ? AND ROWNUM > ?";
 		
 		PreparedStatement pStmt;
 		try {
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, orderProductId);
+			pStmt.setString(1, orderId);
+			pStmt.setString(2, prodId);
+			pStmt.setInt(3, qty + 1);
 			result = pStmt.executeUpdate();
 			pStmt.close();
 			conn.close();
@@ -129,9 +131,25 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	}
 
 	@Override
-	public int updateProduct(String orderId, String productId) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateProduct(String orderId, String productId, int qty) {
+		int result = 0;
+		Connection conn = dbConnect.getConn();
+		String sql = "UPDATE ORDERPRODUCT SET ORDERPRODQTY = ORDERPRODQTY - ? WHERE ORDERID= ? AND PRODID = ?";
+		
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			pStmt.setInt(1, qty);
+			pStmt.setString(2, orderId);
+			pStmt.setString(3, productId);
+			result = pStmt.executeUpdate();
+			pStmt.close();
+			conn.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return result;
 	}
 
 }
