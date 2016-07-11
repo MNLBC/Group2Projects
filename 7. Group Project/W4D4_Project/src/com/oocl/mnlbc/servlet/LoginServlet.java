@@ -13,8 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.util.PasswordHash;
 
 /**
  * @author Kassandra Fuentes
@@ -56,10 +58,9 @@ public class LoginServlet extends HttpServlet {
          String userEmail = request.getParameter("userEmail");
          String userPass = request.getParameter("userPass");
          HttpSession session = request.getSession(true);
-         User user = dao.getUser(userEmail, userPass);
-         
+         User user = dao.getUserByEmail(userEmail);
 
-         if (dao.getUser(userEmail, userPass).getUserId() == 0 || dao.getUser(userEmail, userPass).getUserCity() == null) {
+         if (user==null || user.getUserId() == 0 || !PasswordHash.validatePassword(userPass, user.getUserPass())) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");
@@ -71,6 +72,9 @@ public class LoginServlet extends HttpServlet {
         	 if(user.getUserType().equals("Cutomer")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
             	 rd.forward(request, response);
+            	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
+            	 orderDAO.createOrder(user);
+            	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
         	 }
         	 else if(user.getUserType().equals("Admin")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here

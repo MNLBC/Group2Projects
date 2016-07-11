@@ -2,6 +2,8 @@ package com.oocl.mnlbc.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.util.PasswordHash;
 
 /**
  * 
@@ -72,6 +75,15 @@ public class RegisterServlet extends HttpServlet {
             user.setUserStreet(userStreet);
             user.setUserCity(userCity);
             user.setUserCountry(userCountry);
+            try {
+               userPass = PasswordHash.createHash(userPass);
+            } catch (NoSuchAlgorithmException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            } catch (InvalidKeySpecException e) {
+               // TODO Auto-generated catch block
+               e.printStackTrace();
+            }
             user.setUserPass(userPass);
             user.setUserType("Cutomer");
             if (!dao.validateUser(user.getUserEmail())) {

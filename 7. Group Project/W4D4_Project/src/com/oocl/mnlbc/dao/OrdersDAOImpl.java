@@ -61,7 +61,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	@Override
 	public int finalOrder(Order order, String timestamp) {
 		int result = 0;
-		String total = "";
+		double total = 0;
 		Connection conn = dbConnect.getConn();
 		String sql;
 		
@@ -80,7 +80,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 			}
 			sql = "UPDATE ORDERS SET ORDERTOTAL = ?, ORDERDATE = ?";
 			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setString(1,total);
+			pStmt.setDouble(1,total);
 			pStmt.setString(2,timestamp);
 			result = pStmt.executeUpdate();
 		} catch (SQLException e) {
