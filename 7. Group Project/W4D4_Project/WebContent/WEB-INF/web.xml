@@ -53,7 +53,7 @@
 		<description></description>
 		<display-name>safe</display-name>
 		<servlet-name>safe</servlet-name>
-		<servlet-class>com.oocl.mnlbc.listener.SafeServlet</servlet-class>
+		<servlet-class>com.oocl.mnlbc.listener.CaptchaGenerate</servlet-class>
 		<init-param>
 			<description>description1</description>
 			<param-name>name1</param-name>

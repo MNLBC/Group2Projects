@@ -59,29 +59,39 @@ public class RegisterServlet extends HttpServlet {
       String userCountry = request.getParameter("userCountry");
       String userPass = request.getParameter("userPass");
       String userType = request.getParameter("userType");
-      if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
-         && userCountry != null && userPass != null) {
-         user.setUserFname(userFname);
-         user.setUserLname(userLname);
-         user.setUserEmail(userEmail);
-         user.setUserStreet(userStreet);
-         user.setUserCity(userCity);
-         user.setUserCountry(userCountry);
-         user.setUserPass(userPass);
-         user.setUserType("Cutomer");
-         if (!dao.validateUser(user.getUserEmail())) {
-            int result = dao.createUser(user);
-            if (result != 0) {
-               msg = "success";
+      String safe = request.getParameter("safe");
+      ServletContext sc = this.getServletContext();
+      PrintWriter out = response.getWriter();
+      
+      if (safe.equalsIgnoreCase(request.getSession().getAttribute("safecode").toString())) {
+         if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
+            && userCountry != null && userPass != null) {
+            user.setUserFname(userFname);
+            user.setUserLname(userLname);
+            user.setUserEmail(userEmail);
+            user.setUserStreet(userStreet);
+            user.setUserCity(userCity);
+            user.setUserCountry(userCountry);
+            user.setUserPass(userPass);
+            user.setUserType("Cutomer");
+            if (!dao.validateUser(user.getUserEmail())) {
+               int result = dao.createUser(user);
+               if (result != 0) {
+                  msg = "success";
+               }
             }
          }
+      } else {
+         out.println("<script type=\"text/javascript\">");
+         out.println("$('#mymodal').on('hidden.bs.modal', function() {");
+         out.println("this.modal('show');});");
       }
+
       response.getWriter().append(msg);
-      if(msg=="success"){
-    	  System.out.println("Created User");
-    	  ServletContext sc = this.getServletContext();
-     	 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
-     	 rd.forward(request, response);
+      if (msg == "success") {
+         System.out.println("Created User");
+         RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+         rd.forward(request, response);
       }
    }
 

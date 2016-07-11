@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SafeServlet extends HttpServlet {
+public class CaptchaGenerate extends HttpServlet {
 
 	// Generate the Font randomly
 	private Font getFont() {
