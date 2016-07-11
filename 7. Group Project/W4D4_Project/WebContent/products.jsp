@@ -174,7 +174,7 @@
 												<h4>{{product.prodName}}</h4>
 												<p>{{product.prodCat}}</p>
 												<p class="desc">{{product.prodDesc}}</p>
-												<div class="price mount item_price">Â¥{{product.prodPrice}}</div>
+												<div class="price mount item_price">¥{{product.prodPrice}}</div>
 												<a class="button item_add cbp-vm-icon cbp-vm-add"
 													ng-click="addToCart(product.prodId , product.prodPrice)">Add to cart</a>
 											</div>
