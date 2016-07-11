@@ -51,37 +51,49 @@
 	<div class="men_banner">
 		<div class="container">
 			<div class="header-top">
-				<form class="form-inline" action="login" method="post">
+				<%@ page import="com.oocl.mnlbc.bean.User"  %>
+		<%
+			
+			User user = (User)session.getAttribute("user");
+			
+			if(user == null){
+		%>
+        <form class="form-inline" action="login" method="post">
+			<div class="col-md-6 col-md-offset-6">
+            <input type="email" placeholder="Email Address"
+              aria-describedby="basic-addon1" id="email"
+              name="userEmail"> <input type="password"
+              placeholder="Password" aria-describedby="basic-addon1"
+              id="pword" name="userPass">
+            <button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
+            <a href="modalregister.html" class="btn btn-primary"
+              data-toggle="modal" data-target="#modalregister"
+              id="btnregister">Register</a>
 
-					<div class="col-md-6 col-md-offset-6">
-						<input type="email" placeholder="Email Address"
-							aria-describedby="basic-addon1" id="email" name="userEmail">
-						<input type="password" placeholder="Password"
-							aria-describedby="basic-addon1" id="pword" name="userPass">
-						<button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-						<a href="modal.html" class="btn btn-primary" data-toggle="modal"
-							data-target="#modalregister" id="btnregister">Register</a>
-						<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" id="modalregister">Register</button>-->
 
-
-					</div>
-				</form>
-				<div class="col-md-5 col-md-offset-7" hidden="true">
-					<ul class="header_user_info">
-						<a class="login" href="login.html"> <i class="user"> </i>My
-							Account
-						</a>
-					</ul>
-					<ul class="header_user_info">
-						<a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
-					</ul>
-					<ul class="header_user_info">
-						<a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
-					</ul>
-					<ul class="header_user_info">
-						<a class="login" href="login.html">Logout </a>
-					</ul>
-				</div>
+          </div>
+        </form>
+		<%
+			}else{
+		%>
+          <div class="col-md-5 col-md-offset-7">
+          <ul class="header_user_info">
+            <a class="login" href="login.html"> <i class="user">
+            </i>My Account
+            </a>
+          </ul>
+          <ul class="header_user_info">
+            <a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
+          </ul>
+		  <ul class="header_user_info">
+            <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
+          </ul>
+          <ul class="header_user_info">
+            <a class="login" href="login.html">Logout </a>
+          </ul>
+        </div>
+        
+        <% }%>
 				<div class="modal fade" id="modalregister" tabindex="-1"
 					role="dialog" aria-labelledby="modal-register-label"
 					aria-hidden="true">
@@ -96,7 +108,7 @@
 				<div class="logo"></div>
 				<div class="menu">
 					<ul class="megamenu skyblue">
-						<li><a class="color2" href="../index.jsp">Home</a></li>
+						<li><a class="color2" href="index.jsp">Home</a></li>
 						<li><a class="color4" href="products.html">Products</a></li>
 						<li><a class="color3" href="about.html">About</a></li>
 					</ul>

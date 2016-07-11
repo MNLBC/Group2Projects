@@ -43,9 +43,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
       <div class="header-top">
         
+        <%@ page import="com.oocl.mnlbc.bean.User"  %>
 		<%
-			String sess = (String)session.getAttribute("user");
-			if(sess == null){
+			
+			User user = (User)session.getAttribute("user");
+			
+			if(user == null){
 		%>
         <form class="form-inline" action="login" method="post">
 			<div class="col-md-6 col-md-offset-6">
