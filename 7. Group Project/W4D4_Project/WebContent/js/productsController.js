@@ -3,6 +3,7 @@ var myApp = angular.module('myApp', []);
 myApp.controller('productsController', function MyController($scope, $http) {
 	// $scope.totalPrice = 0;
 	// $scope.quantity = 0;
+	$scope.totalCartItems = 0;
 	$scope.getDataFromServer = function() {
 		$http({
 					method : 'GET',
@@ -86,6 +87,7 @@ myApp.controller('productsController', function MyController($scope, $http) {
 //					$scope.totalPrice = $scope.totalPrice + price
 //					$scope.quantity = $scope.quantity +1;
 					alert('Successfully added to cart');
+					$scope.getCartCount();
 					$scope.PostDataResponse = data;
 				}).error(function(data, status, header, config) {
 					console.log('Add to Cart Error');
@@ -121,8 +123,28 @@ myApp.controller('productsController', function MyController($scope, $http) {
 //								"Please prepare cash on delivery"); 
 //
 //	};
+		$scope.getCartCount = function() {
+		$http({
+					method : 'GET',
+					url : 'ShowCartServlet'
+				}).success(function(data, status, headers, config) {
+					var ctr = 0;
+					angular.forEach(data, function(value, key) {
+								ctr = ctr +1;
+
+							});
+					$scope.totalCartItems= ctr;
+					
+				}).error(function(data, status, headers, config) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+					console.log('Cannot get cart');
+				});
+
+	};
 
 	$scope.getDataFromServer();
 	$scope.getCountPerCategory();
+	$scope.getCartCount();
 
 });

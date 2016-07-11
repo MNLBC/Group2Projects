@@ -84,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</a>
 					</ul>
 					<ul class="header_user_info">
-						<a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems") == null ? 0 : session.getAttribute("cartItems")%></span></a>
+						<a class="login" href="#">Cart <span class="badge">{{totalCartItems}}</span></a>
 					</ul>
 					<ul class="header_user_info">
 						<a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>

@@ -19,7 +19,7 @@ import com.oocl.mnlbc.util.Timestamp;
 /**
  * Servlet implementation class CheckoutServlet
  */
-@WebServlet("/checkout")
+@WebServlet("/checkoutServlet")
 public class CheckoutServlet extends HttpServlet {
 
    private static final long serialVersionUID = 1L;
