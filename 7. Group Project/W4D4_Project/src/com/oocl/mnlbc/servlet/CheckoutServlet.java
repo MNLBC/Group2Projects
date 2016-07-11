@@ -38,7 +38,7 @@ public class CheckoutServlet extends HttpServlet {
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       HttpSession session = request.getSession();
 	   Order order = new Order();
-      order = (Order) request.getAttribute("order");
+      order = (Order) session.getAttribute("order");
 	  
 	  OrdersDAOImpl db = new OrdersDAOImpl();
       int status = db.finalOrder(order,Timestamp.getTimestamp());
