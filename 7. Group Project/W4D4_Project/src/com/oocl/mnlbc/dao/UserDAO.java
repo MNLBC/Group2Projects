@@ -12,4 +12,5 @@ public interface UserDAO {
 	public int deleteUser(User user);
 	public int updateUserType(User user,String type);
 	public List<Long> getBlackList();
+   public User getUserByEmail(String email);
 }

@@ -16,6 +16,7 @@ import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.util.PasswordHash;
 
 /**
  * @author Kassandra Fuentes
@@ -57,10 +58,9 @@ public class LoginServlet extends HttpServlet {
          String userEmail = request.getParameter("userEmail");
          String userPass = request.getParameter("userPass");
          HttpSession session = request.getSession(true);
-         User user = dao.getUser(userEmail, userPass);
-         
+         User user = dao.getUserByEmail(userEmail);
 
-         if (dao.getUser(userEmail, userPass).getUserId() == 0 || dao.getUser(userEmail, userPass).getUserCity() == null) {
+         if (user==null || user.getUserId() == 0 || !PasswordHash.validatePassword(userPass, user.getUserPass())) {
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Wrong username/password');");
             out.println("</script>");
