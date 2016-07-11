@@ -83,7 +83,7 @@
             </a>
           </ul>
           <ul class="header_user_info">
-            <a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
+            <a class="login" href="checkout.jsp">Cart <span class="badge"><%=session.getAttribute("cartItems")==null? 0 : session.getAttribute("cartItems")%></span></a>
           </ul>
 		  <ul class="header_user_info">
             <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")==null? 0 : application.getAttribute("ctr")%></span></a>
@@ -176,7 +176,7 @@
 												<p class="desc">{{product.prodDesc}}</p>
 												<div class="price mount item_price">¥{{product.prodPrice}}</div>
 												<a class="button item_add cbp-vm-icon cbp-vm-add"
-													ng-click="addToCart(product.prodId , product.prodPrice)">Add to cart</a>
+													ng-click="addToCart(product.prodId)">Add to cart</a>
 											</div>
 										</div>
 									</div>
