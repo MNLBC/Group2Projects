@@ -5,12 +5,18 @@
   <h3 class="modal-title" id="myModalLabel">Sign up now</h3>
   <script type="text/javascript" src="js/countries.js"></script>
   <script type="text/javascript" src="js/sweetalert.min.js"></script>
+  <script type="text/javascript" src="js/bootstrapValidator.min.js">
+			
+		</script>
+  <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="css/sweetalert.css">
   <p>Fill in the form below to get instant access:</p>
 </div>
 <div class="modal-body" id="modalheader">
 
-  <form action="register" method="post">
+  <form action="register" method="post" data-toggle="validator"
+    role="form" id="registerForm">
     <div class="form-group">
       <input type="text" placeholder="First name..." id="fname"
         name="userFname" class="form-control" required />
@@ -41,22 +47,19 @@
     </div>
     <div class="form-group">
       <input type="email" placeholder="Email..." id="email"
-        name="userEmail" class="form-control" data-match-error="Please enter a valid email" required />
+        name="userEmail" class="form-control"
+        data-error="Please enter a valid email" required />
     </div>
     <div class="form-group">
-      <input type="password" data-minlength="8"
-        placeholder="Password..." id="password" name="userPass"
-        class="form-control"
-        data-match-error="Please enter password with minimum of 8 characters"
-        required />
+      <input type="password" placeholder="Password..." id="password"
+        name="userPass" data-minlength="8" class="form-control" required />
       <div class="help-block">Minimum of 8 characters</div>
     </div>
     <div class="form-group">
-      <input type="password" data-minlength="8"
-        placeholder="Confirm Password" id="passwordCheck"
-        data-match="#password"
-        data-match-error="Oops, password don't match"
-        name="userPassCheck" class="form-control" required />
+      <input type="password" placeholder="Confirm Password"
+        id="passwordCheck" name="userPassCheck" data-minlength="8"
+        class="form-control" data-match="#userPass"
+        data-match-error="Oops, your password don't match" required />
     </div>
     <div class="form-group">
       <input type="text" placeholder="Enter Captcha" id="captcha"
@@ -71,5 +74,58 @@
   <script type="text/javascript">
 			document.getElementById("safe").setAttribute("src",
 					"safe.jpg?" + new Date().getMilliseconds());
+		</script>
+  <script type="text/javascript">
+			$(document)
+					.ready(
+							function() {
+								$('#registerForm')
+										.bootstrapValidator(
+												{
+													message : 'This value is not valid',
+													fields : {
+														userEmail : {
+															validators : {
+																notEmpty : {
+																	message : 'The email address is required and can\'t be empty'
+																},
+																emailAddress : {
+																	message : 'The input is not a valid email address'
+																}
+															}
+														},
+														userPass : {
+															validators : {
+																notEmpty : {
+																	message : 'The password is required and can\'t be empty'
+																},
+																identical : {
+																	field : 'userPassCheck',
+																	message : 'The password and its confirm are not the same'
+																},
+																different : {
+																	field : 'userEmail',
+																	message : 'The email can\'t be the same as username'
+																}
+															}
+														},
+														userPassCheck : {
+															validators : {
+																notEmpty : {
+																	message : 'The confirm password is required and can\'t be empty'
+																},
+																identical : {
+																	field : 'userPass',
+																	message : 'The password and its confirm are not the same'
+																},
+																different : {
+																	field : 'userEmail',
+																	message : 'The email can\'t be the same as username'
+																}
+															}
+														}
+													}
+												});
+							});
 		</script>
 </div>
