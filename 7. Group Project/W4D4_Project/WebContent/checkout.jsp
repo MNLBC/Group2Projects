@@ -195,7 +195,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"></div>
           </ul>
           <div class="clearfix"></div>
-			  <a href="modalpay.html" class="order"
+			  <a href="pay.jsp" class="order"
               data-toggle="modal" data-target="#modalpay">Pay</a>
         </div>
         <div class="modal fade" id="modalpay" tabindex="-1"
