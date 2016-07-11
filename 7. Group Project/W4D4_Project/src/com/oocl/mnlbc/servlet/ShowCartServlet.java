@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oocl.mnlbc.bean.CartProduct;
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
@@ -42,10 +43,10 @@ public class ShowCartServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ProductDAOImpl prodDAO = new ProductDAOImpl();
 		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
-		User user = (User) session.getAttribute("user");
-		List<OrderProduct> productList= prodDAO.getOrderProd(user);
+		String orderId = (String) request.getAttribute("orderId");
+		List<CartProduct> cart = ordersProdDAO.getCartProducts(orderId);
 		
-		String msg = JsonParser.toOrderProductJson(productList);
+		String msg = JsonParser.toCartProductListJson(cart);
 	    response.getWriter().append(msg);
 	}
 

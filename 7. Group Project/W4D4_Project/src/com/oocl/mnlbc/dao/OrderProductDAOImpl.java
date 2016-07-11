@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.oocl.mnlbc.bean.CartProduct;
 import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
@@ -86,6 +87,38 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 				prod.setProdImg(rs.getString("PRODIMG"));
 				prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
 				result.add(prod);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public List<CartProduct> getCartProducts(String orderId) {
+		List<CartProduct> result = new ArrayList<CartProduct>();
+		Connection conn = dbConnect.getConn();
+		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY FROM PRODUCT A, ORDERPRODUCT B "
+				+ "WHERE A.PRODID = B.PRODID AND B.ORDERID = ? "
+				+ "GROUP BY A.PRODID,A.PRODNAME,A.PRODCAT,A.PRODDESC,A.PRODPRICE,A.PRODSALE,A.PRODSTOCK,A.PRODIMG;";
+		
+		PreparedStatement pStmt;
+		try {
+			pStmt = (PreparedStatement) conn.prepareStatement(sql);
+			pStmt.setString(1, orderId);
+			ResultSet rs = pStmt.executeQuery();
+			while(rs.next()){
+				CartProduct cartProd = new CartProduct();
+				cartProd.setProdId(rs.getLong("PRODID"));
+				cartProd.setProdName(rs.getString("PRODNAME"));
+				cartProd.setProdDesc(rs.getString("PRODCAT"));
+				cartProd.setProdCat(rs.getString("PRODDESC"));
+				cartProd.setProdPrice(rs.getDouble("PRODPRICE"));
+				cartProd.setProdSale(rs.getDouble("PRODPRICE"));
+				cartProd.setProdStock(rs.getInt("PRODSTOCK"));
+				cartProd.setProdQty(rs.getInt("QTY"));
+				result.add(cartProd);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
