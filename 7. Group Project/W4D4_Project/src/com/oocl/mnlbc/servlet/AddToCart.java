@@ -45,7 +45,6 @@ public class AddToCart extends HttpServlet {
       String qty = request.getParameter("prodQty");
       User user = (User) session.getAttribute("user");
       Product prod = prodDAO.getProduct(id);
-      orderDAO.createOrder(user);
       OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
       opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
 

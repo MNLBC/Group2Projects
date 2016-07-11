@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
 
@@ -71,6 +72,8 @@ public class LoginServlet extends HttpServlet {
         	 if(user.getUserType().equals("Cutomer")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
             	 rd.forward(request, response);
+            	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
+            	 orderDAO.createOrder(user);
         	 }
         	 else if(user.getUserType().equals("Admin")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
