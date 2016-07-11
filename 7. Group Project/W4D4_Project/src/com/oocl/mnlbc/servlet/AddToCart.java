@@ -44,6 +44,7 @@ public class AddToCart extends HttpServlet {
 		String qty = request.getParameter("prodQty");
 		User user = (User) session.getAttribute("user");
 		Product prod = prodDAO.getProduct(id);
+		orderDAO.createOrder(user);
 		OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
 		opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
 		
@@ -55,6 +56,9 @@ public class AddToCart extends HttpServlet {
 		List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
 		Integer cartItems = (Integer) session.getAttribute("cartItems");
 		String[] array = {id,"1"};
+		if(cartItems.equals(0)){
+		   cartList.add(array);
+		}
 		for(int i = 0; i < cartList.size();i++){
 			if(cartList.get(i)[0].equals(array[0])){
 				cartList.get(i)[1] = String.valueOf(Integer.parseInt(cartList.get(i)[1]) + 1);
@@ -66,7 +70,9 @@ public class AddToCart extends HttpServlet {
 		}
 		session.setAttribute("cartItems", cartItems);
 		session.setAttribute("cartList", cartList);
-		
+
+      System.out.println("CartItems: " + cartItems);
+      
 		String msg = "";
 		msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));
 		response.getWriter().append(msg);
