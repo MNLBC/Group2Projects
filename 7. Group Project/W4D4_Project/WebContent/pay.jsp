@@ -13,7 +13,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="application/x-javascript">
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 </script>
@@ -54,34 +56,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="men_banner">
 		<div class="container">
 			<div class="header-top">
-				<form class="form-inline" action="login" method="post">
+				<%@ page import="com.oocl.mnlbc.bean.User"%>
+				<%
+				   User user = (User) session.getAttribute("user");
 
+				   if (user == null) {
+				%>
+				<form class="form-inline" action="login" method="post">
 					<div class="col-md-6 col-md-offset-6">
 						<input type="email" placeholder="Email Address"
 							aria-describedby="basic-addon1" id="email" name="userEmail">
 						<input type="password" placeholder="Password"
 							aria-describedby="basic-addon1" id="pword" name="userPass">
 						<button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-						<a href="modal.html" class="btn btn-primary" data-toggle="modal"
-							data-target="#modalregister" id="btnregister">Register</a>
+						<a href="modalregister.html" class="btn btn-primary"
+							data-toggle="modal" data-target="#modalregister" id="btnregister">Register</a>
+
+
 					</div>
 				</form>
-				<div class="col-md-5 col-md-offset-7" hidden="true">
+				<%
+				   } else {
+				%>
+				<div class="col-md-5 col-md-offset-7">
 					<ul class="header_user_info">
 						<a class="login" href="login.html"> <i class="user"> </i>My
 							Account
 						</a>
 					</ul>
 					<ul class="header_user_info">
-						<a class="login" href="#">Cart <span class="badge">{{totalCartItems}}</span></a>
+						<a class="login" href="#">Cart <span class="badge"><%=session.getAttribute("cartItems") == null ? 0 : session.getAttribute("cartItems")%></span></a>
 					</ul>
 					<ul class="header_user_info">
 						<a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr") == null ? 0 : application.getAttribute("ctr")%></span></a>
 					</ul>
 					<ul class="header_user_info">
-            <a class="login" href="http://localhost:8080/W4D4_Project/logout">Logout </a>
+						<a class="login" href="http://localhost:8080/W4D4_Project/logout">Logout
+						</a>
 					</ul>
 				</div>
+
+				<%
+				   }
+				%>
 				<div class="modal fade" id="modalregister" tabindex="-1"
 					role="dialog" aria-labelledby="modal-register-label"
 					aria-hidden="true">
@@ -119,16 +136,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<%@ page import="com.oocl.mnlbc.bean.User"%>
 
 					<%
-						User user = (User) session.getAttribute("user");
-						String name = user.getUserFname() + " " + user.getUserLname();
-						String address = user.getUserStreet() + " " + user.getUserCity() + " " + user.getUserCountry();
+					   User user = (User) session.getAttribute("user");
+					   String name = user.getUserFname() + " " + user.getUserLname();
+					   String address = user.getUserStreet() + " " + user.getUserCity() + " " + user.getUserCountry();
 					%>
 					<%=name%>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12" style="text-align: left; color: #BBB">
-					<h3><%= address %></h3>
+					<h3><%=address%></h3>
 				</div>
 			</div>
 		</div>
