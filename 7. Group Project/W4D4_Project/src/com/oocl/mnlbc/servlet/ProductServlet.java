@@ -47,7 +47,7 @@ public class ProductServlet extends HttpServlet {
       }
       msg = JsonParser.toProductJson(prodList);
       response.getWriter().append(msg);
-      response.getWriter().append(prodDao.countProductByCat());
+//      response.getWriter().append(prodDao.countProductByCat());
    }
 
    /**
