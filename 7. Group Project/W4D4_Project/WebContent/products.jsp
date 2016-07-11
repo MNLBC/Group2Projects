@@ -89,7 +89,7 @@
             <a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr")%></span></a>
           </ul>
           <ul class="header_user_info">
-            <a class="login" href="login.html">Logout </a>
+            <a class="login" href="index.jsp">Logout </a>
           </ul>
         </div>
         
@@ -110,7 +110,7 @@
 					<ul class="megamenu skyblue">
 						<li><a class="color2" href="index.jsp">Home</a></li>
 			<li><a class="color4" href="products.jsp">Products</a></li>
-			<li><a class="color3" href="about.html">About</a></li>
+			<li><a class="color3" href="about.jsp">About</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
