@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
       String safe = request.getParameter("safe");
       ServletContext sc = this.getServletContext();
       PrintWriter out = response.getWriter();
-      
+
       if (safe.equalsIgnoreCase(request.getSession().getAttribute("safecode").toString())) {
          if (userFname != null && userLname != null && userEmail != null && userStreet != null && userCity != null
             && userCountry != null && userPass != null) {
@@ -79,18 +79,25 @@ public class RegisterServlet extends HttpServlet {
                if (result != 0) {
                   msg = "success";
                }
+            } else {
+               out.println("<script type=\"text/javascript\">");
+               out.println("alert('User already registered');");
+               out.println("</script>");
             }
+         } else {
+            out.println("<script type=\"text/javascript\">");
+            out.println("alert('Captcha mismatch');");
+            out.println("</script>");
          }
-      } else {
-         out.println("<script type=\"text/javascript\">");
-         out.println("alert('Captcha mismatch');");
-         out.println("</script>");
-         out.println("<a href='index.jsp'>Go back to Watch Me Whip</a>");
+
       }
 
       response.getWriter().append(msg);
       if (msg == "success") {
          System.out.println("Created User");
+         RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+         rd.forward(request, response);
+      }else {
          RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
          rd.forward(request, response);
       }
