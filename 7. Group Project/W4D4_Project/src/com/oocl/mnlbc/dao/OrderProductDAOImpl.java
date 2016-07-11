@@ -114,11 +114,12 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 				CartProduct cartProd = new CartProduct();
 				cartProd.setProdId(rs.getLong("PRODID"));
 				cartProd.setProdName(rs.getString("PRODNAME"));
-				cartProd.setProdDesc(rs.getString("PRODCAT"));
-				cartProd.setProdCat(rs.getString("PRODDESC"));
+				cartProd.setProdCat(rs.getString("PRODCAT"));
+				cartProd.setProdDesc(rs.getString("PRODDESC"));
 				cartProd.setProdPrice(rs.getDouble("PRODPRICE"));
 				cartProd.setProdSale(rs.getDouble("PRODPRICE"));
 				cartProd.setProdStock(rs.getInt("PRODSTOCK"));
+				cartProd.setProdImg(rs.getString("PRODIMG"));
 				cartProd.setProdQty(rs.getInt("QTY"));
 				cartProd.setProdSubtotal(rs.getDouble("SUBTOTAL"));
 				result.add(cartProd);

@@ -14,7 +14,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 
@@ -52,13 +56,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="men_banner">
 		<div class="container">
 			<div class="header-top">
-			<%@ page import="com.oocl.mnlbc.bean.User"  %>
-		<%
-			
-			User user = (User)session.getAttribute("user");
-			
-			if(user == null){
-		%>
+				<%@ page import="com.oocl.mnlbc.bean.User"%>
+				<%
+					User user = (User) session.getAttribute("user");
+
+					if (user == null) {
+				%>
 				<form class="form-inline" action="login" method="post">
 
 					<div class="col-md-6 col-md-offset-6">
@@ -67,13 +70,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<input type="password" placeholder="Password"
 							aria-describedby="basic-addon1" id="pword" name="userPass">
 						<button type="submit" class="btn btn-primary" id="btnlogin">Login</button>
-						<a href="modalregister.html" class="btn btn-primary" data-toggle="modal"
-							data-target="#modalregister" id="btnregister">Register</a>
+						<a href="modalregister.html" class="btn btn-primary"
+							data-toggle="modal" data-target="#modalregister" id="btnregister">Register</a>
 					</div>
 				</form>
 				<%
-			}else{
-		%>
+					} else {
+				%>
 				<div class="col-md-5 col-md-offset-7">
 					<ul class="header_user_info">
 						<a class="login" href="login.html"> <i class="user"> </i>My
@@ -90,7 +93,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a class="login" href="login.html">Logout </a>
 					</ul>
 				</div>
-				<% }%>
+				<%
+					}
+				%>
 				<div class="modal fade" id="modalregister" tabindex="-1"
 					role="dialog" aria-labelledby="modal-register-label"
 					aria-hidden="true">
@@ -128,68 +133,41 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						});
 					</script>
-					<div class="cart-header">
-						<div class="close1"></div>
+					<div class="cart-header" ng-repeat="product in cart">
+
 						<div class="cart-sec simpleCart_shelfItem">
 							<div class="cart-item cyc">
-								<img src="images/m3.jpg" class="img-responsive" alt="" />
+								<img src="images/{{product.prodCat}}/{{product.prodImg}}"
+									class="img-responsive" alt="" />
 							</div>
 							<div class="cart-item-info">
 								<h3>
-									<a href="#">Mountain Hopper(XS R034)</a><span>Model No:
-										3578</span>
+									<a href="#">{{product.prodName}}</a><span>{{product.prodDesc}}</span>
+									<span>{{product.prodCat}}</span>
 								</h3>
 								<ul class="qty">
-									<li><p>Size : 5</p></li>
-									<li><p>Qty : 1</p></li>
+
+									<li><p>Quantity : {{product.prodQty}}</p></li>
+									<li><p>Price : {{product.prodPrice}}</p></li>
+									<li><p>Subtotal for Item : {{product.prodSubtotal}}</p></li>
 								</ul>
 							</div>
 							<div class="clearfix"></div>
 						</div>
 					</div>
-					<script>
-						$(document).ready(function(c) {
-							$('.close2').on('click', function(c) {
-								$('.cart-header2').fadeOut('slow', function(c) {
-									$('.cart-header2').remove();
-								});
-							});
-						});
-					</script>
-					<div class="cart-header2">
-						<div class="close2"></div>
-						<div class="cart-sec simpleCart_shelfItem">
-							<div class="cart-item cyc">
-								<img src="images/m4.jpg" class="img-responsive" alt="" />
-							</div>
-							<div class="cart-item-info">
-								<h3>
-									<a href="#">Mountain Hopper(XS R034)</a><span>Model No:
-										3578</span>
-								</h3>
-								<ul class="qty">
-									<li><p>Size : 5</p></li>
-									<li><p>Qty : 1</p></li>
-								</ul>
-							</div>
-							<div class="clearfix"></div>
-						</div>
-					</div>
+
 				</div>
 				<div class="col-md-3 cart-total">
 
-					<div class="price-details">
-						<h3>Price Details</h3>
-						<span>Total</span> <span class="total1">6200.00</span>
-						<div class="clearfix"></div>
-					</div>
+
 					<ul class="total_price">
 						<li class="last_price">
 							<h4>TOTAL</h4>
 						</li>
-						<li class="last_price"><span>6350.00</span></li>
+						<li class="last_price"><span>{{total}}</span></li>
 						<div class="clearfix"></div>
 					</ul>
+					<hr />
 					<div class="clearfix"></div>
 					<a href="pay.jsp" class="order" data-toggle="modal"
 						data-target="#modalpay">Pay</a>
