@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 
 /**
  * Servlet implementation class RemoveFromCartServlet
@@ -49,6 +51,7 @@ public class RemoveFromCartServlet extends HttpServlet {
 					}
 				}
 			}
+			LogUtil.logMsg(LogType.INFO, "Remove Item from Cart");
 		}
 		catch(Exception e){
 			System.out.println("Error");

@@ -8,7 +8,7 @@ public class LogUtil {
 
    final static Logger logger = Logger.getLogger(User.class);
 
-   public void logMsg(LogType type, String msg) {
+   public static void logMsg(LogType type, String msg) {
       switch (type) {
          case DEBUG:
             if (logger.isDebugEnabled()) {

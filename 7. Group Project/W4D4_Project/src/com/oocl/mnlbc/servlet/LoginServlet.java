@@ -16,6 +16,8 @@ import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 import com.oocl.mnlbc.util.PasswordHash;
 
 /**
@@ -28,7 +30,6 @@ import com.oocl.mnlbc.util.PasswordHash;
 public class LoginServlet extends HttpServlet {
 
    private static final long serialVersionUID = 1L;
-
    /**
     * @see HttpServlet#HttpServlet()
     */
@@ -68,6 +69,7 @@ public class LoginServlet extends HttpServlet {
          } else {
         	 session.setAttribute("user", dao.getUser(userEmail, userPass));
         	 session.setAttribute("username", userEmail);
+        	LogUtil.logMsg(LogType.INFO, "Logged In: " + userEmail);
         	 ServletContext sc = this.getServletContext();
         	 if(user.getUserType().equals("Cutomer")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
@@ -75,6 +77,7 @@ public class LoginServlet extends HttpServlet {
             	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
             	 orderDAO.createOrder(user);
             	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
+            	 LogUtil.logMsg(LogType.INFO, "Create Order: " + user);
         	 }
         	 else if(user.getUserType().equals("Admin")){
         		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
@@ -84,6 +87,7 @@ public class LoginServlet extends HttpServlet {
 
       } catch (Throwable theException) {
          System.out.println(theException);
+         LogUtil.logMsg(LogType.ERROR, "Exception: " + theException);
       }
    }
 }

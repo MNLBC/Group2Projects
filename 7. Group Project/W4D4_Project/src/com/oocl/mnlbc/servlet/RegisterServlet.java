@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.UserDAO;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 import com.oocl.mnlbc.util.PasswordHash;
 
 /**
@@ -28,7 +30,7 @@ import com.oocl.mnlbc.util.PasswordHash;
 public class RegisterServlet extends HttpServlet {
 
    private static final long serialVersionUID = 1L;
-
+   private LogUtil logUtil;
    /**
     * @see HttpServlet#HttpServlet()
     */
@@ -90,6 +92,7 @@ public class RegisterServlet extends HttpServlet {
                int result = dao.createUser(user);
                if (result != 0) {
                   msg = "success";
+                  LogUtil.logMsg(LogType.INFO, "Create User: " + user);
                }
             } else {
                out.println("<script type=\"text/javascript\">");

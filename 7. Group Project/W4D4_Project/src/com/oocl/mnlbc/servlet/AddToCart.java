@@ -17,6 +17,8 @@ import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
 import com.oocl.mnlbc.util.JsonParser;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 
 /**
  * Servlet implementation class AddToCart
@@ -37,6 +39,7 @@ public class AddToCart extends HttpServlet {
    /**
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
+   @SuppressWarnings("unchecked")
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       HttpSession session = request.getSession();
       ProductDAOImpl prodDAO = new ProductDAOImpl();
@@ -73,7 +76,7 @@ public class AddToCart extends HttpServlet {
       session.setAttribute("cartList", cartList);
 
       System.out.println("CartItems: " + cartItems);
-
+      LogUtil.logMsg(LogType.INFO, "CartItems: " + cartItems);
       String msg = "";
       msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));
       response.getWriter().append(msg);
