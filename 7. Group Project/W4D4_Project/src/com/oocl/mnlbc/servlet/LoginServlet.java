@@ -77,6 +77,7 @@ public class LoginServlet extends HttpServlet {
             	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
             	 orderDAO.createOrder(user);
             	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
+            	 session.setAttribute("order", orderDAO.getOrderId(user));
             	 LogUtil.logMsg(LogType.INFO, "Create Order: " + user);
         	 }
         	 else if(user.getUserType().equals("Admin")){

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oocl.mnlbc.bean.Order;
 import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
@@ -49,7 +50,12 @@ public class AddToCart extends HttpServlet {
       User user = (User) session.getAttribute("user");
       Product prod = prodDAO.getProduct(id);
       OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
-      opDAO.addProduct(orderDAO.getOrderId(user), prod, 1);
+      if(orderDAO.getOrderId(user)==null){
+    	  orderDAO.createOrder(user);
+      }
+      Order order = new Order();
+      order = (Order) session.getAttribute("order");
+      opDAO.addProduct(order, prod, 1);
 
       if (session.getAttribute("cartList") == null) {
          session.setAttribute("cartList", new ArrayList<String[]>());
