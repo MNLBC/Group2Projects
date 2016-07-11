@@ -67,12 +67,12 @@ public class JsonParser {
    /**
     * parse OrderProduct to Json
     * 
-    * @param orderprod
+    * @param productList
     * @return
     */
-   public static String toOrderProductJson(OrderProduct orderprod) {
+   public static String toOrderProductJson(List<OrderProduct> productList) {
       Gson gson = new Gson();
-      String json = gson.toJson(orderprod);
+      String json = gson.toJson(productList);
       return json;
    }
 

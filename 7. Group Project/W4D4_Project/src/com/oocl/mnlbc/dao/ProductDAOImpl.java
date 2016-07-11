@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
+import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.util.DbConnection;
 
 /**
@@ -160,6 +162,31 @@ public String countProductByCat(){
     }
 	
 	return result;
+}
+
+public List<OrderProduct> getOrderProd(User user){
+	List<OrderProduct> orderProdList = new ArrayList<OrderProduct>();
+	Connection conn = dbConnect.getConn();
+	String sql = "SELECT A.ORDERID, A.PRODID,SUM(A.ORDERPRODQTY) AS QTY FROM ORDERPRODUCT A, ORDERS B, USERS C "
+			+ "WHERE C.USERID = 1 AND C.USERID = B.USERID AND B.ORDERDATE IS NULL "
+			+ "AND B.ORDERID = A.ORDERID GROUP BY A.ORDERID,A.PRODID";
+	PreparedStatement pStmt;
+	try {
+		pStmt = (PreparedStatement) conn.prepareStatement(sql);
+		pStmt.setLong(1, user.getUserId());
+		ResultSet rs = pStmt.executeQuery();
+		while(rs.next()){
+			OrderProduct orderProd = new OrderProduct();
+			orderProd.setOrderProdId(rs.getLong("PRODID"));
+			orderProd.setOrderId(rs.getLong("ORDERID"));
+			orderProd.setOrderProdQty(rs.getInt("QTY"));
+			orderProdList.add(orderProd);
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return orderProdList;
 }
 
 }

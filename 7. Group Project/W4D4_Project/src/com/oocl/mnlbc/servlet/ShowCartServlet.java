@@ -12,10 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.oocl.mnlbc.bean.Order;
+import com.oocl.mnlbc.bean.OrderProduct;
 import com.oocl.mnlbc.bean.Product;
 import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
+import com.oocl.mnlbc.dao.ProductDAOImpl;
 import com.oocl.mnlbc.util.JsonParser;
 
 /**
@@ -38,13 +40,12 @@ public class ShowCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		OrdersDAOImpl ordersDAO = new OrdersDAOImpl();
+		ProductDAOImpl prodDAO = new ProductDAOImpl();
 		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
 		User user = (User) session.getAttribute("user");
-		Order order = ordersDAO.getOrder(user);
-		List<Product> productList= ordersProdDAO.getRelatedProducts(order);
+		List<OrderProduct> productList= prodDAO.getOrderProd(user);
 		
-		String msg = JsonParser.toProductJson(productList);
+		String msg = JsonParser.toOrderProductJson(productList);
 	    response.getWriter().append(msg);
 	}
 
