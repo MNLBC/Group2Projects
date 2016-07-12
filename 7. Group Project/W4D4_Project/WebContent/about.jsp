@@ -74,7 +74,7 @@
           <div class="col-md-5 col-md-offset-7">
           <ul class="header_user_info">
             <a class="login" href="login.html"> <i class="user">
-            </i>My Account
+            </i><%= user.getUserFname()%>
             </a>
           </ul>
           <ul class="header_user_info">

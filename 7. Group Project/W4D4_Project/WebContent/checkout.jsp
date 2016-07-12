@@ -79,8 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				%>
 				<div class="col-md-5 col-md-offset-7">
 					<ul class="header_user_info">
-						<a class="login" href="login.html"> <i class="user"> </i>My
-							Account
+						<a class="login" href="login.html"> <i class="user"> </i><%= user.getUserFname()%>
 						</a>
 					</ul>
 					<ul class="header_user_info">
