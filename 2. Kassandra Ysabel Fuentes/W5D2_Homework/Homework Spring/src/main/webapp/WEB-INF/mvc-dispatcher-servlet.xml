@@ -11,9 +11,9 @@
     	<property name="pages">
 			<list>
 			<!-- follow sequence -->
-			<value>Page1Form</value> <!-- page1 -->
-			<value>Page2Form</value> <!-- page2 -->
-			<value>Page3Form</value> <!-- page3 -->
+			<value>UserDetailsForm</value> <!-- page1 -->
+			<value>AccountDetailsForm</value> <!-- page2 -->
+			<value>ProfileDetailsForm</value> <!-- page3 -->
 			</list>
 		</property>
 		<property name="validator">
