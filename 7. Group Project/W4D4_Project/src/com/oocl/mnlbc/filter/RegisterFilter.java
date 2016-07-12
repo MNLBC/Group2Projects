@@ -25,20 +25,16 @@ import com.oocl.mnlbc.util.Config;
 @WebFilter("/RegisterFilter")
 public class RegisterFilter implements Filter {
 
-   private List<String> bannedNames;
-
    /**
     * Default constructor.
     */
    public RegisterFilter() {
-      // TODO Auto-generated constructor stub
    }
 
    /**
     * @see Filter#destroy()
     */
    public void destroy() {
-      // TODO Auto-generated method stub
    }
 
    /**
@@ -49,25 +45,16 @@ public class RegisterFilter implements Filter {
       HttpServletRequest req = (HttpServletRequest) request;
       String userFname = req.getParameter("userFname");
       String names = Config.getConfigValue("names");
-      /*for (String name : names.split(";")) {
-         bannedNames.add(name);
-      }
-      if (bannedNames.contains(userFname)) {
-         showWarning(response);
-      } else {
-         chain.doFilter(request, response);
-      }*/
       boolean valid = true;
-      for(int i = 0; i < names.split(";").length;i++){
-    	  if(names.split(";")[i].contains(userFname)){
-    		  valid = false;
-    	  }
+      for (int i = 0; i < names.split(";").length; i++) {
+         if (names.split(";")[i].contains(userFname)) {
+            valid = false;
+         }
       }
-      if(valid == true){
-    	  chain.doFilter(request, response);
-      }
-      else{
-         showWarning(response, req); 
+      if (valid == true) {
+         chain.doFilter(request, response);
+      } else {
+         showWarning(response, req);
       }
 
    }
@@ -76,13 +63,12 @@ public class RegisterFilter implements Filter {
     * @see Filter#init(FilterConfig)
     */
    public void init(FilterConfig fConfig) throws ServletException {
-      // TODO Auto-generated method stub
    }
 
-   private void showWarning(ServletResponse response,  HttpServletRequest req) throws ServletException, IOException {
+   private void showWarning(ServletResponse response, HttpServletRequest req) throws ServletException, IOException {
       response.setContentType("text/html");
       ServletContext sc = req.getServletContext();
-      RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
+      RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp");
       rd.forward(req, response);
    }
 }
