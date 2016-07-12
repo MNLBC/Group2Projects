@@ -91,7 +91,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a class="login" href="#">Users <span class="badge"><%=application.getAttribute("ctr") == null ? 0 : application.getAttribute("ctr")%></span></a>
 					</ul>
 					<ul class="header_user_info">
-						<a class="login" href="http://localhost:8080/W4D4_Project/logout">Logout
+						<a class="login" href="/W4D4_Project/logout">Logout
 						</a>
 					</ul>
 				</div>
