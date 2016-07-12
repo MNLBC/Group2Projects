@@ -29,7 +29,6 @@ public class CheckoutServlet extends HttpServlet {
     */
    public CheckoutServlet() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
@@ -37,33 +36,31 @@ public class CheckoutServlet extends HttpServlet {
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       HttpSession session = request.getSession();
-	   Order order = new Order();
+      Order order = new Order();
       order = (Order) session.getAttribute("order");
-	  
-	  OrdersDAOImpl db = new OrdersDAOImpl();
-      int status = db.finalOrder(order,Timestamp.getTimestamp());
-      
+
+      OrdersDAOImpl db = new OrdersDAOImpl();
+      int status = db.finalOrder(order, Timestamp.getTimestamp());
+
       ProductDAOImpl prodDAO = new ProductDAOImpl();
-      
+
       List<String[]> cartList = (List<String[]>) session.getAttribute("cartList");
-      
-      for(int i = 0; i < cartList.size();i++){
-    	  prodDAO.updateStock(cartList.get(i));
+
+      for (int i = 0; i < cartList.size(); i++) {
+         prodDAO.updateStock(cartList.get(i));
       }
-      
+
       String msg = "";
-      if(status == 1)
-    	  msg = "success";
+      if (status == 1)
+         msg = "success";
       else
-    	  msg = "failed";
-      
+         msg = "failed";
+
       request.setAttribute("status", msg);
-      RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //something.jsp
-      rd.forward(request,response);
-      
-	  
-	   // TODO Auto-generated method stub
-      //response.getWriter().append("Served at: ").append(request.getContextPath());
+      RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+      rd.forward(request, response);
+
+      // response.getWriter().append("Served at: ").append(request.getContextPath());
    }
 
    /**
@@ -71,7 +68,6 @@ public class CheckoutServlet extends HttpServlet {
     */
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      // TODO Auto-generated method stub
       doGet(request, response);
    }
 

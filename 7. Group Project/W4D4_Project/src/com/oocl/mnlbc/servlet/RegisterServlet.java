@@ -31,12 +31,12 @@ public class RegisterServlet extends HttpServlet {
 
    private static final long serialVersionUID = 1L;
    private LogUtil logUtil;
+
    /**
     * @see HttpServlet#HttpServlet()
     */
    public RegisterServlet() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
@@ -79,11 +79,9 @@ public class RegisterServlet extends HttpServlet {
             try {
                userPass = PasswordHash.createHash(userPass);
             } catch (NoSuchAlgorithmException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
+               LogUtil.logMsg(LogType.ERROR, "Exception: " + e);
             } catch (InvalidKeySpecException e) {
-               // TODO Auto-generated catch block
-               e.printStackTrace();
+               LogUtil.logMsg(LogType.ERROR, "Exception: " + e);
             }
             user.setUserPass(userPass);
             user.setUserType("Cutomer");
@@ -93,15 +91,15 @@ public class RegisterServlet extends HttpServlet {
                   msg = "success";
                   LogUtil.logMsg(LogType.INFO, "Create User: " + user);
                }
-            } 
-         } 
+            }
+         }
       }
       response.getWriter().append(msg);
       if (msg == "success") {
-         System.out.println("Created User");
+         LogUtil.logMsg(LogType.INFO, "Created User!");
          RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
          rd.forward(request, response);
-      }else {
+      } else {
          RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
          rd.forward(request, response);
       }

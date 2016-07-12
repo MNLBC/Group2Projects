@@ -26,36 +26,36 @@ import com.oocl.mnlbc.util.JsonParser;
  */
 @WebServlet("/ShowCartServlet")
 public class ShowCartServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ShowCartServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		ProductDAOImpl prodDAO = new ProductDAOImpl();
-		OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
-		Long orderId = (Long) session.getAttribute("orderId");
-		List<CartProduct> cart = ordersProdDAO.getCartProducts(String.valueOf(orderId));
-		
-		String msg = JsonParser.toCartProductListJson(cart);
-	    response.getWriter().append(msg);
-	}
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public ShowCartServlet() {
+      super();
+   }
+
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      HttpSession session = request.getSession();
+      ProductDAOImpl prodDAO = new ProductDAOImpl();
+      OrderProductDAOImpl ordersProdDAO = new OrderProductDAOImpl();
+      Long orderId = (Long) session.getAttribute("orderId");
+      List<CartProduct> cart = ordersProdDAO.getCartProducts(String.valueOf(orderId));
+
+      String msg = JsonParser.toCartProductListJson(cart);
+      response.getWriter().append(msg);
+   }
+
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+      doGet(request, response);
+   }
 
 }

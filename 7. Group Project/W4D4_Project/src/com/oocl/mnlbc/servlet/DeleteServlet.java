@@ -33,41 +33,41 @@ public class DeleteServlet extends HttpServlet {
     */
    public DeleteServlet() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      HttpSession session = request.getSession(true);      
+      HttpSession session = request.getSession(true);
       String action = (String) request.getAttribute("action");
       String lastURL = (String) request.getAttribute("lastURL");
       int result = 0;
-      String msg = "";     
-      
-      if(action.equals("deleteuser")){
+      String msg = "";
+
+      if (action.equals("deleteuser")) {
          UserDAOImpl userDao = new UserDAOImpl();
          User user = (User) request.getAttribute("user");
-         result =   userDao.deleteUser(user);
-      }else if (action.equals("deleteorder")){
+         result = userDao.deleteUser(user);
+      } else if (action.equals("deleteorder")) {
          OrdersDAOImpl orderDao = new OrdersDAOImpl();
          Order order = (Order) request.getAttribute("order");
          result = orderDao.cancelOrder(order);
-      }else if(action.equals("deleteproduct")){
+      } else if (action.equals("deleteproduct")) {
          OrderProductDAOImpl orderProductDao = new OrderProductDAOImpl();
          long orderProduct = Long.parseLong(request.getParameter("orderProdId"));
-         //result = orderProductDao.removeProduct(orderProduct);
-   }
-      if(result == 1)
+         // result = orderProductDao.removeProduct(orderProduct);
+      }
+      if (result == 1)
          msg = "success";
       else
          msg = "failed";
-      
+
       request.setAttribute("status", msg);
-      RequestDispatcher rd = request.getRequestDispatcher(lastURL); //something.jsp
-      rd.forward(request,response);
+      RequestDispatcher rd = request.getRequestDispatcher(lastURL); // something.jsp
+      rd.forward(request, response);
    }
+
    /**
     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
     */

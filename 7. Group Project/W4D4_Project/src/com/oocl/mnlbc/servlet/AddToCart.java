@@ -34,7 +34,6 @@ public class AddToCart extends HttpServlet {
     */
    public AddToCart() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
@@ -50,8 +49,8 @@ public class AddToCart extends HttpServlet {
       User user = (User) session.getAttribute("user");
       Product prod = prodDAO.getProduct(id);
       OrderProductDAOImpl opDAO = new OrderProductDAOImpl();
-      if(orderDAO.getOrderId(user)==null){
-    	  orderDAO.createOrder(user);
+      if (orderDAO.getOrderId(user) == null) {
+         orderDAO.createOrder(user);
       }
       Order order = new Order();
       order = (Order) session.getAttribute("order");
@@ -81,7 +80,6 @@ public class AddToCart extends HttpServlet {
       session.setAttribute("cartItems", cartItems);
       session.setAttribute("cartList", cartList);
 
-      System.out.println("CartItems: " + cartItems);
       LogUtil.logMsg(LogType.INFO, "CartItems: " + cartItems);
       String msg = "";
       msg = JsonParser.toProductJson(opDAO.getRelatedProducts(orderDAO.getOrder(user)));
@@ -93,7 +91,6 @@ public class AddToCart extends HttpServlet {
     */
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      // TODO Auto-generated method stub
       doGet(request, response);
    }
 

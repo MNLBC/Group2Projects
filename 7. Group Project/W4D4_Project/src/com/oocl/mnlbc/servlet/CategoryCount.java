@@ -14,30 +14,30 @@ import com.oocl.mnlbc.dao.ProductDAOImpl;
  */
 @WebServlet("/CategoryCount")
 public class CategoryCount extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CategoryCount() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAOImpl prodDao = new ProductDAOImpl();
-		response.getWriter().append(prodDao.countProductByCat());
-	}
+   private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+   /**
+    * @see HttpServlet#HttpServlet()
+    */
+   public CategoryCount() {
+      super();
+   }
+
+   /**
+    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      ProductDAOImpl prodDao = new ProductDAOImpl();
+      response.getWriter().append(prodDao.countProductByCat());
+   }
+
+   /**
+    * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+    */
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+      doGet(request, response);
+   }
 
 }

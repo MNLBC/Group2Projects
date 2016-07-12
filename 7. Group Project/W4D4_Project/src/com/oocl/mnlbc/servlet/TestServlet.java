@@ -28,26 +28,18 @@ public class TestServlet extends HttpServlet {
     */
    public TestServlet() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
     */
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      // TODO Auto-generated method stub
       String account = request.getParameter("account");
       String pwd = request.getParameter("pwd");
       String type = request.getParameter("type");
       String msg = Config.getConfigValue("user");
-      // RequestDispatcher requestDispatcher = request.getRequestDispatcher("app/welcome.jsp");
-      // requestDispatcher.forward(request, response);
       response.getWriter().append(msg);
       response.getWriter().append("success");
-      // PrintWriter out = response.getWriter();
-      // out.append("<!DOCTYPE HTML>");
-      // out.append("<HTML>");
-      // out.append("</HTML>");
    }
 
    /**
@@ -55,7 +47,6 @@ public class TestServlet extends HttpServlet {
     */
    protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-      // TODO Auto-generated method stub
       doGet(request, response);
    }
 

@@ -30,12 +30,12 @@ import com.oocl.mnlbc.util.PasswordHash;
 public class LoginServlet extends HttpServlet {
 
    private static final long serialVersionUID = 1L;
+
    /**
     * @see HttpServlet#HttpServlet()
     */
    public LoginServlet() {
       super();
-      // TODO Auto-generated constructor stub
    }
 
    /**
@@ -61,30 +61,28 @@ public class LoginServlet extends HttpServlet {
          HttpSession session = request.getSession(true);
          User user = dao.getUserByEmail(userEmail);
          ServletContext sc = this.getServletContext();
-         if (user==null || user.getUserId() == 0 || !PasswordHash.validatePassword(userPass, user.getUserPass())) {
+         if (user == null || user.getUserId() == 0 || !PasswordHash.validatePassword(userPass, user.getUserPass())) {
             RequestDispatcher rd = sc.getRequestDispatcher("/Errors.jsp"); // edit here
             rd.forward(request, response);
          } else {
-        	 session.setAttribute("user", dao.getUserByEmail(userEmail));
-        	 session.setAttribute("username", userEmail);
-        	LogUtil.logMsg(LogType.INFO, "Logged In: " + userEmail);
-        	 if(user.getUserType().equals("Cutomer")){
-        		 RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
-            	 rd.forward(request, response);
-            	 OrdersDAOImpl orderDAO = new OrdersDAOImpl();
-            	 orderDAO.createOrder(user);
-            	 session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
-            	 session.setAttribute("order", orderDAO.getOrderId(user));
-            	 LogUtil.logMsg(LogType.INFO, "Create Order: " + user);
-        	 }
-        	 else if(user.getUserType().equals("Admin")){
-        		 RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
-            	 rd.forward(request, response);
-        	 }
+            session.setAttribute("user", dao.getUserByEmail(userEmail));
+            session.setAttribute("username", userEmail);
+            LogUtil.logMsg(LogType.INFO, "Logged In: " + userEmail);
+            if (user.getUserType().equals("Cutomer")) {
+               RequestDispatcher rd = sc.getRequestDispatcher("/products.jsp"); // edit here
+               rd.forward(request, response);
+               OrdersDAOImpl orderDAO = new OrdersDAOImpl();
+               orderDAO.createOrder(user);
+               session.setAttribute("orderId", orderDAO.getOrderId(user).getOrderId());
+               session.setAttribute("order", orderDAO.getOrderId(user));
+               LogUtil.logMsg(LogType.INFO, "Create Order: " + user);
+            } else if (user.getUserType().equals("Admin")) {
+               RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp"); // edit here
+               rd.forward(request, response);
+            }
          }
 
       } catch (Throwable theException) {
-         System.out.println(theException);
          LogUtil.logMsg(LogType.ERROR, "Exception: " + theException);
       }
    }
