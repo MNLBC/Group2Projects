@@ -128,18 +128,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="middle_content">
 			<div class="container">
 				<h2>Welcome</h2>
-				<p>There are many variations of passages of Lorem Ipsum
-					available, but the majority have suffered alteration in some form,
-					by injected humour, or randomised words which don't look even
-					slightly believable. If you are going to use a passage of Lorem
-					Ipsum, you need to be sure there isn't anything embarrassing hidden
-					in the middle of text. All the Lorem Ipsum generators on the
-					Internet tend to repeat predefined chunks as necessary, making this
-					the first true generator on the Internet. It uses a dictionary of
-					over 200 Latin words, combined with a handful of model sentence
-					structures, to generate Lorem Ipsum which looks reasonable. The
-					generated Lorem Ipsum is therefore always free from repetition,
-					injected humour, or non-characteristic words etc.</p>
+				 <p>Looking for a perfect watch to match your outfit? Or simply looking for a watch that will suit for a certain occassion? Or maybe looking for a watch to make someone happy. <br>
+		You're in the right place! <strong>Watch Me Whip</strong> is a perfect online shopping site for you to buy and view different kinds of watches from different top of the line brands. <br>
+		Below are the list of categories of watches you can choose from. Enjoy Shopping!</p>
 			</div>
 		</div>
 		<div class="container">
@@ -155,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Luxury</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Elegant and luxurious watches designed by top of the line brands perfect for formal occassions!</p>
 								<button>Shop Now!</button>
 							</div>
 						</div>
@@ -169,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Dress</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Lady watches that can be matched with different kind of dresses are also available here!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -182,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Sports</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Looking for a watch to use for outdoor activities? We also offer stylish sports watches from popular and expensive brands!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -195,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Casual</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Watches that are perfect for almost all occassions can also be purchased here!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -208,7 +199,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Digital</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Futuristic looking watches with a touch of elegance that is perfect for casual and outdoor outfit!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -224,7 +215,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Luxury</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Elegant and luxurious watches designed by top of the line brands perfect for formal occassions!</p>
 								<button>Shop Now!</button>
 							</div>
 						</div>
@@ -238,7 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Dress</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Lady watches that can be matched with different kind of dresses are also available here!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -250,7 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Sports</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Looking for a watch to use for outdoor activities? We also offer stylish sports watches from popular and expensive brands!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -262,7 +253,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Casual</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Watches that are perfect for almost all occassions can also be purchased here!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
@@ -274,7 +265,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								width="100%" height="100%">
 							<div class="item-html">
 								<h3>Digital</h3>
-								<p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+								<p>Futuristic looking watches with a touch of elegance that is perfect for casual and outdoor outfit!</p>
 								<button>Shop now!</button>
 							</div>
 						</div>
