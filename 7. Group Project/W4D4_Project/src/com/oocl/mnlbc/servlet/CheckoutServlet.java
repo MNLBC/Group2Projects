@@ -58,7 +58,7 @@ public class CheckoutServlet extends HttpServlet {
     	  msg = "failed";
       
       request.setAttribute("status", msg);
-      RequestDispatcher rd = request.getRequestDispatcher("index.jsp"); //something.jsp
+      RequestDispatcher rd = request.getRequestDispatcher("/index.jsp"); //something.jsp
       rd.forward(request,response);
       
 	  
