@@ -24,13 +24,13 @@ public class UserValidator implements Validator {
 		return User.class.isAssignableFrom(cls);
 	}
 
-	// validate page 1, userName
+	// validate page 1
 	public void validatePage1Form(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "required.username", "Field name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "required.password", "Field name is required.");
 	}
 
-	// validate page 2, password
+	// validate page 2
 	public void validatePage2Form(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fname", "required.fname", "Field name is required.");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lname", "required.lname", "Field name is required.");
@@ -38,7 +38,7 @@ public class UserValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "required.phone", "Field name is required.");
 	}
 
-	// validate page 3, remark
+	// validate page 3
 	public void validatePage3Form(Object target, Errors errors) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "required.address", "Field name is required.");
 	}
