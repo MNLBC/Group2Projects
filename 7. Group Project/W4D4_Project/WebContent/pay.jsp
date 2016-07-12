@@ -133,10 +133,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12" style="text-align: left;">
-					<%@ page import="com.oocl.mnlbc.bean.User"%>
 
 					<%
-					   User user = (User) session.getAttribute("user");
 					   String name = user.getUserFname() + " " + user.getUserLname();
 					   String address = user.getUserStreet() + " " + user.getUserCity() + " " + user.getUserCountry();
 					%>
