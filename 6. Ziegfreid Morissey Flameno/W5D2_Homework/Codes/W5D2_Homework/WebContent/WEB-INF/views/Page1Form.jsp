@@ -3,16 +3,15 @@
 <head>
 <link rel="stylesheet" href="css/w3.css">
 <style>
-
 .button {
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    background-color: #555555;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	background-color: #555555;
 }
 
 .error {
@@ -46,10 +45,14 @@
 				<td><form:errors path="password" cssClass="error" /></td>
 			</tr>
 			<tr>
+				<td>
+					<hr width="100%">
+				</td>
+			</tr>
 			<tr>
-				<td colspan="3"><input class="button" type="submit" value="Next"
-					name="_target1" /> <input class="button" type="submit" value="Cancel"
-					name="_cancel" /></td>
+				<td colspan="3"><input class="button" type="submit"
+					value="Next" name="_target1" /> <input class="button"
+					type="submit" value="Cancel" name="_cancel" /></td>
 			</tr>
 		</table>
 	</form:form>

@@ -56,6 +56,10 @@
 				<td><form:errors path="phone" cssClass="error" /></td>
 			</tr>
 			<tr>
+				<td>
+					<hr width="100%">
+				</td>
+			</tr>
 			<tr>
 				<td colspan="3"><input class="button" type="submit" value="Previous"
 					name="_target0" /> <input class="button" type="submit" value="Next"

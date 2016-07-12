@@ -8,9 +8,12 @@
 <title>W5D2_Homework</title>
 </head>
 <body>
-	<table>
+	<table align="center">
 		<tr>
 			<td align='center'><h2>W5D2_Homework</h2></td>
+		</tr>
+		<tr>
+			<td align='center'><hr width="50%"></td>
 		</tr>
 		<tr>
 			<td align='center'><a href="user.htm">Register!</a></td>

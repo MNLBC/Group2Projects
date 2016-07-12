@@ -41,6 +41,10 @@
 				<td><form:errors path="address" cssClass="error" /></td>
 			</tr>
 			<tr>
+				<td>
+					<hr width="100%">
+				</td>
+			</tr>
 			<tr>
 				<td colspan="3"><input class="button" type="submit" value="Previous"
 					name="_target1" /> <input class="button" type="submit" value="Finish"
