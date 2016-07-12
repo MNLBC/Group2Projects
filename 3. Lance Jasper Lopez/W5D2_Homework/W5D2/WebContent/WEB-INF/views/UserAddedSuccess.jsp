@@ -8,7 +8,7 @@
 </head>
 <body>
 	Hello ${user.name}
-	<br> Your Entered Details are...
+	<br> Your details are as follows:
 	<br>
 	<table>
 		<tr>

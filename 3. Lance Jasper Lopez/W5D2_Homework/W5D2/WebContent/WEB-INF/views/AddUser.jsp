@@ -12,7 +12,7 @@
 <title>Add User</title>
 </head>
 <body>
-
+<h2>User Registration</h2>
 	<form:form method="post" action="AddUser.html" name="user"
 		commandName="user">
 		<table>
