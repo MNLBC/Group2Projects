@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+    
+    <bean class="com.oocl.mnlbc.controller.WelcomeController" />
+    
+    <bean class="com.oocl.mnlbc.controller.UserController" >
+    	<property name="pages">
+			<list>
+			<value>Page1Form</value>
+			<value>Page2Form</value>
+			<value>Page3Form</value>
+			<value>Page4Form</value>
+			</list>
+		</property>
+		<property name="validator">
+			<bean class="com.oocl.mnlbc.validator.UserValidator" />
+		</property>
+    </bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="User" />
+	</bean>
+	
+	<bean id="viewResolver"
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+         <property name="prefix">
+             <value>/WEB-INF/views/</value>
+          </property>
+         <property name="suffix">
+            <value>.jsp</value>
+         </property>
+    </bean>
+</beans>
