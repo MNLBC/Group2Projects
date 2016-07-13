@@ -1,0 +1,21 @@
+<bean id="MyInterceptor"
+	class="com.oocl.mnlbc.homework.w3d1.aop.MethodTimeCostInterceptor"
+	/>
+<bean id="myAOPProxy"
+	class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="proxyInterfaces">
+		<value>com.oocl.mnlbc.homework.w3d1.aop.ITest</value>
+	</property>
+<!-- if use cglib in Compulsory
+	<property name="proxyTargetClass">
+		<value>true</value>
+	</property>
+-->
+	<property name="target">
+		<ref local="test" />
+	</property>
+	<property name="interceptorNames">
+		<value>myPointcutAdvisor</value>
+	</property>
+</bean>
+<bean id="test" class="com.oocl.mnlbc.homework.w3d1.aop.Test"/>

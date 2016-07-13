@@ -1,0 +1,16 @@
+com\oocl\mnlbc\aopJDK\ProxyPatternDemo.class
+com\oocl\mnlbc\aopJDK\ProxyBook.class
+com\oocl\mnlbc\aopCGLib\ProxyBook.class
+com\oocl\mnlbc\aopCGLib\Book.class
+com\oocl\mnlbc\aopJDK\RealBook.class
+com\oocl\mnlbc\aopJDK\Book.class
+com\oocl\mnlbc\aop\MethodTimeCostInterceptor.class
+com\oocl\mnlbc\aopCGLib\ProxyPatternDemo.class
+com\oocl\mnlbc\aop\Book.class
+com\oocl\mnlbc\aopCGLib\BookCglib.class
+com\oocl\mnlbc\aop\ITest.class
+com\oocl\mnlbc\aopCGLib\RealImage.class
+com\oocl\mnlbc\aop\RealBook.class
+com\oocl\mnlbc\aop\Test.class
+com\oocl\mnlbc\aop\ProxyBook.class
+com\oocl\mnlbc\aop\ProxyPatternDemo.class
