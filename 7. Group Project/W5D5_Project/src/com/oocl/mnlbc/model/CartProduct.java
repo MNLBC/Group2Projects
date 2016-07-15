@@ -6,11 +6,12 @@ package com.oocl.mnlbc.model;
 /**
  * Cart Product Model
  * 
- * @author Ziggy
- * @since 2016-07-11
+ * @author Danna Soquiat
+ * @since 2016-07-15
  *
  */
 public class CartProduct extends Product {
+
 
 	private int prodQty;
 	private double prodSubtotal;

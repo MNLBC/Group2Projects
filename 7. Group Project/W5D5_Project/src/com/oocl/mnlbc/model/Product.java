@@ -2,13 +2,21 @@
  * 
  */
 package com.oocl.mnlbc.model;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- * @author Kassandra Fuentes
- *
+ * @author Danna Soquiat
+ *@since 2016-07-15
  */
+@Entity
+@Table(name="PRODUCT")
 public class Product {
 
+	@Id
+	@Column(name="prodId")
    private long prodId;
    private String prodName;
    private String prodDesc;

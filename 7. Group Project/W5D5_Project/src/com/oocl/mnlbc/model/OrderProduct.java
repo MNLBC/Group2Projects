@@ -4,7 +4,7 @@
 package com.oocl.mnlbc.model;
 
 /**
- * @author Kassandra Fuentes
+ * @author Danna Soquiat
  *
  */
 public class OrderProduct {

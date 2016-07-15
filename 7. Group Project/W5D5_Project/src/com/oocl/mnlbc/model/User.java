@@ -3,12 +3,21 @@
  */
 package com.oocl.mnlbc.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
- * @author Kassandra Fuentes
+ * @author Danna Soquiat
  *
  */
+@Entity
+@Table(name="USER")
 public class User {
 
+	@Id
+	@Column(name="userId")
    private long userId;
    private String userFname;
    private String userLname;

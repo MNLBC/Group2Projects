@@ -3,13 +3,23 @@
  */
 package com.oocl.mnlbc.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * 
- * @author Kassandra Fuentes
- *
+ * @author Danna Soquiat
+ *@since 2016-07-15
  */
-public class Order {
 
+@Entity
+@Table(name="ORDER")
+public class Order {
+	
+   @Id	
+   @Column(name="orderId")
    private long orderId;
    private long userId;
    private String orderDate;
