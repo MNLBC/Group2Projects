@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oocl.mnlbc.bean.Order;
+import com.oocl.mnlbc.model.Order;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
 import com.oocl.mnlbc.util.Timestamp;

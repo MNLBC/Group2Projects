@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mnlbc.util.DbConnection;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.User;
 /**
  * 
  * @author kalinwi2

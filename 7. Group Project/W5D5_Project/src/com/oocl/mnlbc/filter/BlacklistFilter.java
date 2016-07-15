@@ -1,7 +1,6 @@
 package com.oocl.mnlbc.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -15,8 +14,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import com.oocl.mnlbc.bean.User;
 import com.oocl.mnlbc.dao.UserDAOImpl;
+import com.oocl.mnlbc.model.User;
 
 /**
  * Servlet Filter implementation class BlacklistFilter

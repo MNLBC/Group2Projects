@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mnlbc.util.DbConnection;
-import com.oocl.mnlbc.bean.CartProduct;
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.OrderProduct;
-import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.CartProduct;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.Product;
 
 /**
  * 

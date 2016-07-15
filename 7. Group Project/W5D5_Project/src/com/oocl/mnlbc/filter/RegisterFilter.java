@@ -1,8 +1,6 @@
 package com.oocl.mnlbc.filter;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -16,8 +14,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
 import com.mnlbc.util.Config;
-import com.oocl.mnlbc.bean.User;
-import com.oocl.mnlbc.dao.UserDAOImpl;
 
 /**
  * Servlet Filter implementation class RegisterFilter

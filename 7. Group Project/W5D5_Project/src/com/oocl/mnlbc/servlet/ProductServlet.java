@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oocl.mnlbc.bean.Product;
+import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.dao.ProductDAO;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
 import com.oocl.mnlbc.util.JsonParser;

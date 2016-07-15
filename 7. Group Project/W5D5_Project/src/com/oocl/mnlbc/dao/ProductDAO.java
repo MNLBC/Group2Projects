@@ -2,7 +2,7 @@ package com.oocl.mnlbc.dao;
 
 import java.util.List;
 
-import com.oocl.mnlbc.bean.Product;
+import com.oocl.mnlbc.model.Product;
 
 public interface ProductDAO {
 	public List<Product> getProducts();

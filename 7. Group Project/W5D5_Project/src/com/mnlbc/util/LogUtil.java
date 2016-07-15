@@ -2,7 +2,7 @@ package com.mnlbc.util;
 
 import org.apache.log4j.Logger;
 
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.User;
 
 /**
  * Log4J choosing log type

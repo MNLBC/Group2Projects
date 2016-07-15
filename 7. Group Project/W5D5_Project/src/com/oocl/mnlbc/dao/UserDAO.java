@@ -1,9 +1,8 @@
 package com.oocl.mnlbc.dao;
 
-import java.sql.Connection;
 import java.util.List;
 
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.User;
 
 public interface UserDAO {
 	public boolean validateUser(String email);

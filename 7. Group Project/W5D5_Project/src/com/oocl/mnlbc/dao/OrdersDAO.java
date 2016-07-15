@@ -1,7 +1,7 @@
 package com.oocl.mnlbc.dao;
 
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.User;
 
 public interface OrdersDAO {
 	public int createOrder(User user);

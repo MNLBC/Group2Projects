@@ -3,11 +3,11 @@ package com.mnlbc.util;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.oocl.mnlbc.bean.CartProduct;
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.OrderProduct;
-import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.CartProduct;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
+import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.model.User;
 
 /**
  * JSON PARSER UTIL

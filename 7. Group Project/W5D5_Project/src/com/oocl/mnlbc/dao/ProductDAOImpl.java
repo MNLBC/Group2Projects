@@ -1,7 +1,6 @@
 package com.oocl.mnlbc.dao;
 
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mnlbc.util.DbConnection;
-import com.oocl.mnlbc.bean.OrderProduct;
-import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.OrderProduct;
+import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.model.User;
 
 /**
  * 

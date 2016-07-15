@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oocl.mnlbc.bean.CartProduct;
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.OrderProduct;
-import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.CartProduct;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
+import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
