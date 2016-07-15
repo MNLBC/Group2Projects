@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.dao.UserDAOImpl;
 
 public class UserDAOImplTest {

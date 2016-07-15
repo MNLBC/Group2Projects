@@ -3,6 +3,7 @@ package com.mnlbc.util;
 import org.apache.log4j.Logger;
 
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.util.LogType;
 
 /**
  * Log4J choosing log type

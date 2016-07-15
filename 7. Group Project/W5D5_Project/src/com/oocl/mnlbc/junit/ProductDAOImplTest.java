@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
 
 public class ProductDAOImplTest {

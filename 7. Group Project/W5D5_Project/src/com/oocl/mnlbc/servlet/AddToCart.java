@@ -11,15 +11,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.Product;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.util.JsonParser;
+import com.oocl.mnlbc.util.LogUtil;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 import com.oocl.mnlbc.dao.ProductDAOImpl;
-import com.oocl.mnlbc.util.JsonParser;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.util.LogType;
-import com.oocl.mnlbc.util.LogUtil;
 
 /**
  * Servlet implementation class AddToCart

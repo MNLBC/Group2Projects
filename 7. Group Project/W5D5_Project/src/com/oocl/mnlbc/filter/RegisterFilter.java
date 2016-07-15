@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import com.mnlbc.util.Config;
+import com.oocl.mnlbc.util.Config;
 
 /**
  * Servlet Filter implementation class RegisterFilter

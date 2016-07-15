@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.mnlbc.util.Timestamp;
-import com.oocl.mnlbc.bean.User;
+import com.oocl.mnlbc.util.Timestamp;
+import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.dao.OrdersDAOImpl;
 
 public class OrdersDAOImplTest {

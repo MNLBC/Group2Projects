@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import com.oocl.mnlbc.bean.Order;
-import com.oocl.mnlbc.bean.Product;
+import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.dao.OrderProductDAOImpl;
 
 public class OrderProductDAOImplTest {
