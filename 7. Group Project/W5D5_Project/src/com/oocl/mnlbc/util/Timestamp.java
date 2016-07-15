@@ -1,4 +1,4 @@
-package com.mnlbc.util;
+package com.oocl.mnlbc.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

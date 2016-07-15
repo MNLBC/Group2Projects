@@ -1,4 +1,4 @@
-package com.mnlbc.util;
+package com.oocl.mnlbc.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

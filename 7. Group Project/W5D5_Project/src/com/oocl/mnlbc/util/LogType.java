@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.mnlbc.util;
+package com.oocl.mnlbc.util;
 
 /**
  * @author FLAMEZI2
