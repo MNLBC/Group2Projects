@@ -3,10 +3,19 @@
  */
 package com.oocl.mnlbc.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * @author Danna Soquiat
+ * @since 2016-07-15
  *
  */
+
+@Entity
+@Table(name="ORDERPRODUCT")
 public class OrderProduct {
 
    private long orderProdId;
@@ -17,6 +26,8 @@ public class OrderProduct {
    /**
     * @return the orderProdId
     */
+   @Id
+	@Column(name="oderprodId")
    public long getOrderProdId() {
       return orderProdId;
    }
