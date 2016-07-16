@@ -48,6 +48,13 @@
 		<url-pattern>/register</url-pattern>
 	</filter-mapping>
 	<listener>
+		<listener-class>
+            org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+	
+	<listener>
 		<listener-class>com.oocl.mnlbc.listener.UserListener</listener-class>
 	</listener>
 </web-app>
