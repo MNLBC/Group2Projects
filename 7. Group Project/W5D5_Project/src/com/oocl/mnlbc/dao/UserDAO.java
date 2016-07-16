@@ -7,9 +7,9 @@ import com.oocl.mnlbc.model.User;
 public interface UserDAO {
 	public boolean validateUser(String email);
 	public User getUser(String email, String password);
-	public int createUser(User user);
-	public int deleteUser(User user);
-	public int updateUserType(User user,String type);
-	public List<Long> getBlackList();
-   public User getUserByEmail(String email);
+	public void createUser(User user);  
+	public List<User> getUserByEmail(String email);
+	List<User> getUserBlackList(User user);
+    void updateUser(User user);
+	void deleteUser(int id);
 }
