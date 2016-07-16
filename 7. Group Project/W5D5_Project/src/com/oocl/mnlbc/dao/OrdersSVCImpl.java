@@ -21,14 +21,15 @@ public class OrdersSVCImpl implements OrdersSVC {
 
 	@Override
 	@Transactional
-	public int createOrder(User user) {
-		return this.orderDAO.createOrder(user);
+	public int createOrder(Order order) {
+		return this.orderDAO.createOrder(order);
 	}
 
 	@Override
 	@Transactional
 	public int cancelOrder(Order order) {
-		return this.orderDAO.cancelOrder(order);
+		int id = (int) order.getOrderId();
+		return this.orderDAO.cancelOrder(id);
 	}
 
 	@Override
