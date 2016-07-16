@@ -1,15 +1,15 @@
 package com.oocl.mnlbc.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import com.oocl.mnlbc.util.DbConnection;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.Product;
 
 /**
@@ -18,137 +18,69 @@ import com.oocl.mnlbc.model.Product;
  * DAO Implementation for ORDERPRODUCT TABLE
  */
 public class OrderProductDAOImpl implements OrderProductDAO {
-	DbConnection dbConnect = new DbConnection();
+	private static final Logger logger = LoggerFactory.getLogger(OrderProductDAOImpl.class);
 
+	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sf){
+		this.sessionFactory = sf;
+	}
+	
 	@Override
-	public int addProduct(Order order, Product prod, int qty) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES(?,?,?)";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, order.getOrderId());
-			pStmt.setLong(2, prod.getProdId());
-			pStmt.setInt(3, qty);
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
+	public int addOrderProduct(OrderProduct op) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(op);
+		logger.info("OrderProduct saved successfully, orderproduct details="+op);
+		return 1;
 	}
 
 	@Override
-	public int removeProduct(String orderId, String prodId, int qty) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "DELETE FROM ORDERPRODUCT WHERE ORDERID = ? AND PRODID = ? AND ROWNUM > ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setString(1, orderId);
-			pStmt.setString(2, prodId);
-			pStmt.setInt(3, qty + 1);
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
+	public int removeOrderProduct(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		OrderProduct op = (OrderProduct) session.load(OrderProduct.class, new Integer(id));
+		if(null != op){
+			session.delete(op);
+		}
+		logger.info("OrderProduct deleted successfully, OrderProduct details="+op);
+		return 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Product> getRelatedProducts(Order order) {
-		List<Product> result = new ArrayList<Product>();
-		Connection conn = dbConnect.getConn();
+		Session session = this.sessionFactory.getCurrentSession();
 		String sql = "SELECT A.* FROM PRODUCT A, ORDERPRODUCT B "
 				+ "WHERE A.PRODID = B.PRODID "
-				+ "AND B.ORDERID = ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, order.getOrderId());
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				Product prod = new Product();
-				prod.setProdId(rs.getLong("PRODID"));
-				prod.setProdName(rs.getString("PRODNAME"));
-				prod.setProdCat(rs.getString("PRODCAT"));
-				prod.setProdPrice(Double.parseDouble(rs.getString("PRODPRICE")));
-				prod.setProdStock(Integer.parseInt(rs.getString("PRODSTOCK")));
-				prod.setProdImg(rs.getString("PRODIMG"));
-				prod.setProdSale(Double.parseDouble(rs.getString("PRODSALE")));
-				result.add(prod);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				+ "AND B.ORDERID = "+order.getOrderId();
+		List<Product> productList = session.createQuery(sql).list();
+		logger.info("Order id :"+order.getOrderId());
+		for(Product p : productList){
+			logger.info("Product List :"+p);
 		}
-		return result;
+		return productList;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CartProduct> getCartProducts(String orderId) {
-		List<CartProduct> result = new ArrayList<CartProduct>();
-		Connection conn = dbConnect.getConn();
+		Session session = this.sessionFactory.getCurrentSession();
 		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY, A.PRODPRICE*A.PRODSALE*SUM(B.ORDERPRODQTY) AS SUBTOTAL FROM PRODUCT A, ORDERPRODUCT B "
-				+ "WHERE A.PRODID = B.PRODID AND B.ORDERID = ? "
+				+ "WHERE A.PRODID = B.PRODID AND B.ORDERID = " + orderId
 				+ "GROUP BY A.PRODID,A.PRODNAME,A.PRODCAT,A.PRODDESC,A.PRODPRICE,A.PRODSALE,A.PRODSTOCK,A.PRODIMG";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setString(1, orderId);
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				CartProduct cartProd = new CartProduct();
-				cartProd.setProdId(rs.getLong("PRODID"));
-				cartProd.setProdName(rs.getString("PRODNAME"));
-				cartProd.setProdCat(rs.getString("PRODCAT"));
-				cartProd.setProdDesc(rs.getString("PRODDESC"));
-				cartProd.setProdPrice(rs.getDouble("PRODPRICE"));
-				cartProd.setProdSale(rs.getDouble("PRODPRICE"));
-				cartProd.setProdStock(rs.getInt("PRODSTOCK"));
-				cartProd.setProdImg(rs.getString("PRODIMG"));
-				cartProd.setProdQty(rs.getInt("QTY"));
-				cartProd.setProdSubtotal(rs.getDouble("SUBTOTAL"));
-				result.add(cartProd);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		List<CartProduct> cartProductList = session.createQuery(sql).list();
+		logger.info("Order id :"+orderId);
+		for(CartProduct cp : cartProductList){
+			logger.info("Cart Product List :"+cp);
 		}
-		return result;
+		return cartProductList;
 	}
 
 	@Override
-	public int updateProduct(String orderId, String productId, int qty) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "UPDATE ORDERPRODUCT SET ORDERPRODQTY = ORDERPRODQTY - ? WHERE ORDERID= ? AND PRODID = ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setInt(1, qty);
-			pStmt.setString(2, orderId);
-			pStmt.setString(3, productId);
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
+	public int updateOrderProduct(OrderProduct op) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.update(op);
+		logger.info("OrderProduct updated successfully, Orderproduct details="+op);
+		return 1;
 	}
-
+	
 }

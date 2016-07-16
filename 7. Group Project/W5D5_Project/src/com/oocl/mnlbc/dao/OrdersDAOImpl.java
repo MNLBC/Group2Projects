@@ -5,7 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.util.DbConnection;
 
@@ -15,128 +21,42 @@ import com.oocl.mnlbc.util.DbConnection;
  * DAO Implementation for ORDERS TABLE
  */
 public class OrdersDAOImpl implements OrdersDAO {
+	private static final Logger logger = LoggerFactory.getLogger(OrdersDAOImpl.class);
 
-   DbConnection dbConnect = new DbConnection();
+	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sf){
+		this.sessionFactory = sf;
+	}
 	
 	@Override
-	public int createOrder(User user) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "INSERT INTO ORDERS(USERID) VALUES(?)";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getUserId());
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
+	public int createOrder(Order o) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.persist(o);
+		logger.info("Order saved successfully, Order details="+o);
+		return 1;
 	}
 
 	@Override
-	public int cancelOrder(Order order) {
-		int result = 0;
-		Connection conn = dbConnect.getConn();
-		String sql = "DELETE FROM ORDERS WHERE ORDERID = ?";
-		
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, order.getOrderId());
-			result = pStmt.executeUpdate();
-			pStmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		return result;
-	}
-
-	@Override
-	public int finalOrder(Order order, String timestamp) {
-		int result = 0;
-		double total = 0;
-		Connection conn = dbConnect.getConn();
-		String sql;
-		
-		sql = "SELECT SUM((A.PRODPRICE*A.PRODSALE) * B.ORDERPRODQTY) AS TOTAL, A.PRODID "
-				+ "FROM PRODUCT A, ORDERPRODUCT B "
-				+ "WHERE A.PRODID = B.PRODID "
-				+ "AND B.ORDERID = ? "
-				+ "GROUP BY A.PRODID";
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, order.getOrderId());
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				total =  total + rs.getDouble(1);
-			}
-			sql = "UPDATE ORDERS SET ORDERTOTAL = ?, ORDERDATE = ?";
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setDouble(1,total);
-			pStmt.setString(2,timestamp);
-			result = pStmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public int cancelOrder(int id) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Order o = (Order) session.load(Order.class, new Integer(id));
+		if(null != o){
+			session.delete(o);
 		}
-		return result;
+		logger.info("Order deleted successfully, Order details="+o);
+		return 1;
 	}
 
-	@Override
-	public Order getOrderId(User user) {
-		Order order = new Order();
-		Connection conn = dbConnect.getConn();
-		String sql = "SELECT ORDERID, USERID FROM ORDERS WHERE USERID = ? "
-				+ "AND ORDERDATE IS NULL AND ORDERTOTAL IS NULL";
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getUserId());
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				if(!rs.getString(1).equals("")){
-					order.setOrderId(rs.getLong(1));
-					order.setUserId(rs.getLong(2));
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return order;
-	}
+//	@Override
+//	public int finalOrder(Order order, String timestamp) {
+//		
+//	}
+//
+//	@Override
+//	public Order getOrderId(User user) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 	
-	public Order getOrder(User user) {
-		Order order = new Order();
-		Connection conn = dbConnect.getConn();
-		String sql = "SELECT * FROM ORDERS WHERE USERID = ? "
-				+ "AND ORDERDATE IS NULL AND ORDERTOTAL IS NULL";
-		PreparedStatement pStmt;
-		try {
-			pStmt = (PreparedStatement) conn.prepareStatement(sql);
-			pStmt.setLong(1, user.getUserId());
-			ResultSet rs = pStmt.executeQuery();
-			while(rs.next()){
-				if(!rs.getString(1).equals("")){
-					order.setOrderId(rs.getLong(1));
-					order.setUserId(rs.getLong(2));
-					order.setOrderTotal(rs.getDouble(3));
-					order.setOrderDate(rs.getString(4));
-				}
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return order;
-	}
-
 }
