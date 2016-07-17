@@ -40,6 +40,10 @@
 		<beans:property name="annotatedClasses">
 			<beans:list>
 				<beans:value>com.oocl.mnlbc.model.Product</beans:value>
+				<beans:value>com.oocl.mnlbc.model.Order</beans:value>
+				<beans:value>com.oocl.mnlbc.model.OrderProduct</beans:value>
+				<beans:value>com.oocl.mnlbc.model.User</beans:value>
+				<beans:value>com.oocl.mnlbc.model.CartProduct</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -57,6 +61,30 @@
 	</beans:bean>
 	<beans:bean id="productService" class="com.oocl.mnlbc.dao.ProductSVCImpl">
 		<beans:property name="productDAO" ref="productDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="orderProductDAO" class="com.oocl.mnlbc.dao.OrderProductDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="orderProductService" class="com.oocl.mnlbc.dao.OrderProductSVCImpl">
+		<beans:property name="orderProductDAO" ref="orderProductDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="orderDAO" class="com.oocl.mnlbc.dao.OrdersDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="ordersService" class="com.oocl.mnlbc.dao.OrdersSVCImpl">
+		<beans:property name="orderDAO" ref="orderDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="userDAO" class="com.oocl.mnlbc.dao.UserDAOImpl">
+		<beans:property name="sessionFactory"
+			ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="userService" class="com.oocl.mnlbc.dao.UserSVCImpl">
+		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="com.oocl.mnlbc" />
 
