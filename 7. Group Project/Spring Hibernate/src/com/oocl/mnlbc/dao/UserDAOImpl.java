@@ -35,8 +35,8 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUser(String email, String password) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = " SELECT * FROM USER" + " WHERE USEREMAIL=" + email + " AND USERPASS=" + password;
-		User user = (User) session.createQuery(sql);
+		String sql = "FROM USER" + " WHERE USEREMAIL='" + email + "' AND USERPASS='" + password +"'";
+		User user = (User) session.createQuery(sql).uniqueResult();
 
 		logger.info("User email and password" + email + password);
 		return user;
