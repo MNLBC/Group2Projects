@@ -57,6 +57,12 @@ Ext.define('W5D5_Project.controller.MainController', {
         },
         "#userMgmtBtn": {
             click: 'onUserMgmtBtnClick'
+        },
+        "#orderConfirm": {
+            click: 'onOrderConfirmClick'
+        },
+        "#orderCancel": {
+            click: 'onOrderCancelClick'
         }
     },
 
@@ -145,6 +151,15 @@ Ext.define('W5D5_Project.controller.MainController', {
     },
 
     onCheckOutBtnClick: function() {
+        var store = Ext.getStore('CartProductStore'),
+            total = 0, count = 0,
+            address = Ext.getCmp('addField'),
+            scope = this;
+        Ext.each(store.data.items, function(rec){
+            count = count + rec.data.prodQty;
+            total = total + rec.data.prodSubtotal;
+        });
+
         Ext.Msg.show({
             title:'Confirm Checkout',
             message: 'Are you sure you want to check out?',
@@ -153,6 +168,13 @@ Ext.define('W5D5_Project.controller.MainController', {
             fn: function(btn) {
                 if (btn === 'yes') {
                     console.log('Yes pressed');
+                    if(Ext.isEmpty(scope.orderWin)){
+                     scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
+                    }
+                    Ext.getCmp('sumAdd').setValue(address.getValue());
+                    Ext.getCmp('sumAmount').setValue(total);
+                    Ext.getCmp('sumProds').setValue(count);
+                    scope.orderWin.show();
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }
@@ -203,6 +225,21 @@ Ext.define('W5D5_Project.controller.MainController', {
         panel.setActiveTab(tab);
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
+    },
+
+    onOrderConfirmClick: function() {
+        if(!Ext.isEmpty(this.orderWin)){
+                             this.orderWin.hide();
+                            }
+        Ext.Msg.alert("Order Success!", "Your order has been processed! Please wait for your items to be delivered.");
+        var store = Ext.getStore('CartProductStore');
+        store.removeAll();
+    },
+
+    onOrderCancelClick: function() {
+        if(!Ext.isEmpty(this.orderWin)){
+                             this.orderWin.hide();
+                            }
     }
 
 });

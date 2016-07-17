@@ -53,6 +53,7 @@ Ext.define('W5D5_Project.controller.CartProductController', {
         Ext.each(prodStore.data.items,function(rec){
             if(prodId==rec.data.prodId){
                 rec.data.prodQty = prodQty;
+                rec.data.prodSubtotal = rec.data.prodPrice * rec.data.prodSale * rec.data.prodQty;
             }
         });
         Ext.getCmp('cartProductGrid').getView().refresh();

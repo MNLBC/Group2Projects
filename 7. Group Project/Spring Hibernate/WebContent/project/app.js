@@ -42,7 +42,7 @@ Ext.application({
         'MainView',
         'CartProductWindow',
         'ProductImageWindow',
-        'MyViewport1'
+        'OrderWin'
     ],
     controllers: [
         'MainController',

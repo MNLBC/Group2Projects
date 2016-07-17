@@ -89,7 +89,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             var tab = Ext.getCmp('digitalPanel');
             var userField = Ext.getCmp('userField');
             var countField = Ext.getCmp('countField'),
-                idField = Ext.getCmp('idField');
+                idField = Ext.getCmp('idField'),
+                addField = Ext.getCmp('addField');
             panel.setActiveTab(tab);
             var controller = W5D5_Project.app.getController('ShopController');
             controller.clearItems();
@@ -99,6 +100,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             home3.show();
             userField.setValue(record.data.userFname);
             idField.setValue(record.data.userId);
+            addField.setValue(record.data.userAddress1 + ', ' + record.data.userAddress2 + ', ' + record.data.userCity + ', ' + record.data.userSP + ', ' + record.data.userCountry);
         }else{
             Ext.Msg.alert("User", "Account does not exist. Login again or register");
         }

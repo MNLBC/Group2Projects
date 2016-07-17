@@ -288,6 +288,14 @@ Ext.define('W5D5_Project.view.MainView', {
                                     value: '0'
                                 },
                                 {
+                                    xtype: 'displayfield',
+                                    flex: 1,
+                                    hidden: true,
+                                    id: 'addField',
+                                    itemId: 'addField',
+                                    value: '0'
+                                },
+                                {
                                     xtype: 'button',
                                     cls: 'logoutBtnCls',
                                     height: 22,
@@ -544,6 +552,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                             items: [
                                                 {
                                                     xtype: 'panel',
+                                                    height: 700,
+                                                    id: 'digitalCover',
+                                                    itemId: 'digitalCover',
+                                                    width: 1920,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            flex: 1,
+                                                            height: 700,
+                                                            width: 1920,
+                                                            src: 'resources/img/digitalhead.png'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
                                                     height: 400,
                                                     id: 'digitalPage1',
                                                     itemId: 'digitalPage1',
@@ -591,6 +621,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 align: 'stretch'
                                             },
                                             items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    height: 700,
+                                                    id: 'luxuryCover',
+                                                    itemId: 'luxuryCover',
+                                                    width: 1920,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            flex: 1,
+                                                            height: 700,
+                                                            width: 1920,
+                                                            src: 'resources/img/luxuryhead.png'
+                                                        }
+                                                    ]
+                                                },
                                                 {
                                                     xtype: 'panel',
                                                     height: 400,
@@ -642,6 +694,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                             items: [
                                                 {
                                                     xtype: 'panel',
+                                                    height: 700,
+                                                    id: 'casualCover',
+                                                    itemId: 'casualCover',
+                                                    width: 1920,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            flex: 1,
+                                                            height: 700,
+                                                            width: 1920,
+                                                            src: 'resources/img/casualhead.png'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
                                                     height: 400,
                                                     id: 'casualPage1',
                                                     itemId: 'casualPage1',
@@ -687,6 +761,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                             items: [
                                                 {
                                                     xtype: 'panel',
+                                                    height: 700,
+                                                    id: 'sportsCover',
+                                                    itemId: 'sportsCover',
+                                                    width: 1920,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            flex: 1,
+                                                            height: 700,
+                                                            width: 1920,
+                                                            src: 'resources/img/sportshead.png'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'panel',
                                                     height: 400,
                                                     id: 'sportsPage1',
                                                     itemId: 'sportsPage1',
@@ -730,6 +826,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                             itemId: 'dressPanel',
                                             title: 'My Panel',
                                             items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    height: 700,
+                                                    id: 'dressCover',
+                                                    itemId: 'dressCover',
+                                                    width: 1920,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'middle',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'image',
+                                                            flex: 1,
+                                                            height: 700,
+                                                            width: 1920,
+                                                            src: 'resources/img/dresshead.png'
+                                                        }
+                                                    ]
+                                                },
                                                 {
                                                     xtype: 'panel',
                                                     height: 400,
