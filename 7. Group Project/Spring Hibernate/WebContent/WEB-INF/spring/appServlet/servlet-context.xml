@@ -17,6 +17,14 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<resources mapping="/projectview/**" location="/project/" />
+	<resources mapping="/app/**" location="/project/app/" />
+	<resources mapping="/controller/**" location="/project/app/controller/*.js" />
+	<resources mapping="/model/**" location="/project/app/model/*.js" />
+	<resources mapping="/store/**" location="/project/app/store.*js" />
+	<resources mapping="/view/**" location="/project/app/view/*.js" />
+	<resources mapping="/img/**" location="/project/resources/img/*.png" />
+
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
 	<beans:bean
@@ -24,6 +32,8 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+
+<context:component-scan base-package="com.oocl.mnlbc.controller" />
 
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
