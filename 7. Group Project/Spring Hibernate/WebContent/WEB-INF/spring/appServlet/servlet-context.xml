@@ -23,7 +23,7 @@
 	<resources mapping="/model/**" location="/project/app/model/*.js" />
 	<resources mapping="/store/**" location="/project/app/store.*js" />
 	<resources mapping="/view/**" location="/project/app/view/*.js" />
-	<resources mapping="/img/**" location="/project/resources/img/*.png" />
+	<resources mapping="/resources/img/**" location="/project/resources/img/*.png" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
