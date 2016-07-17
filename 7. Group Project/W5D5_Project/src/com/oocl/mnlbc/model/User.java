@@ -22,8 +22,34 @@ public class User {
    private String userFname;
    private String userLname;
    private String userEmail;
-   private String userStreet;
-   private String userCity;
+   private String userAddress1;
+   private String userAddress2;
+   private String userSp;
+   public String getUserAddress1() {
+	return userAddress1;
+}
+
+public void setUserAddress1(String userAddress1) {
+	this.userAddress1 = userAddress1;
+}
+
+public String getUserAddress2() {
+	return userAddress2;
+}
+
+public void setUserAddress2(String userAddress2) {
+	this.userAddress2 = userAddress2;
+}
+
+public String getUserSp() {
+	return userSp;
+}
+
+public void setUserSp(String userSp) {
+	this.userSp = userSp;
+}
+
+private String userCity;
    private String userCountry;
    private String userPass;
    private String userType;
@@ -35,7 +61,6 @@ public class User {
 	this.userFname = userFname;
 	this.userLname = userLname;
 	this.userEmail = userEmail;
-	this.userStreet = userStreet;
 	this.userCity = userCity;
 	this.userCountry = userCountry;
 	this.userPass = userPass;
@@ -106,20 +131,6 @@ public class User {
       this.userEmail = userEmail;
    }
 
-   /**
-    * @return the userStreet
-    */
-   public String getUserStreet() {
-      return userStreet;
-   }
-
-   /**
-    * @param userStreet
-    *           the userStreet to set
-    */
-   public void setUserStreet(String userStreet) {
-      this.userStreet = userStreet;
-   }
 
    /**
     * @return the userCity
