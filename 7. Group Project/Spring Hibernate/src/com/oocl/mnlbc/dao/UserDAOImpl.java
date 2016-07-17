@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User getUser(String email, String password) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM USER" + " WHERE USEREMAIL='" + email + "' AND USERPASS='" + password +"'";
+		String sql = "FROM User" + " WHERE USEREMAIL='" + email + "' AND USERPASS='" + password + "'";
 		User user = (User) session.createQuery(sql).uniqueResult();
 
 		logger.info("User email and password" + email + password);
@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getUserByEmail(String email) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM USER" + "WHERE USEREMAIL=" + email;
+		String sql = "FROM User" + "WHERE USEREMAIL='" + email + "'";
 		List<User> userEmailList = session.createQuery(sql).list();
 		logger.info("Email :" + email);
 		for (User userEmail : userEmailList) {
@@ -59,9 +59,9 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getUserBlackList() {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM USER" + "WHERE USERTYPE=" + "'BLACKLIST'";
+		String sql = "FROM User" + "WHERE USERTYPE=" + "'BLACKLIST'";
 		List<User> blackList = session.createQuery(sql).list();
-		
+
 		for (User userblacklist : blackList) {
 			logger.info("Blacklisted user:" + userblacklist);
 		}
@@ -94,7 +94,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public boolean validateUser(String email) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "SELECT * FROM USER" + "WHERE USEREMAIL=" + email;
+		String sql = "FROM User" + "WHERE USEREMAIL='" + email + "'";
 		List<User> userList = session.createQuery(sql).list();
 
 		if (userList.size() == 0) {
