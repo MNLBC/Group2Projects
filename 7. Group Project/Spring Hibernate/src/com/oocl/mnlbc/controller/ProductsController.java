@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oocl.mnlbc.dao.ProductSVC;
 import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.model.User;
 
 @Controller
 public class ProductsController {
@@ -33,6 +35,28 @@ public class ProductsController {
 	public @ResponseBody List<Product> listProductsByCat(@RequestParam("category") String cat) {
 		return this.prodSvc.getProductsByCategory(cat);
 	}
+	
+	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+	public @ResponseBody int createProd(@RequestBody Product product) {
+		return this.prodSvc.addProduct(product);
+	}
+
+	@RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
+	public @ResponseBody int updateProd(@RequestBody Product product) {
+		return this.prodSvc.updateProduct(product);
+	}
+	
+
+	@RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
+	public @ResponseBody int removeProd(@RequestParam int id) {
+		return this.prodSvc.removeProduct(id);
+	}
+	
+
+	
+//	public void addProduct(Product p);
+//
+//	public void updateProduct(Product p);
 
 	// For add and update person both
 	// @RequestMapping(value = "/addProduct", method = RequestMethod.POST)

@@ -28,10 +28,11 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void addProduct(Product p) {
+	public int addProduct(Product p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
 		logger.info("Product saved successfully, Product details=" + p);
+		return 1;
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
@@ -46,10 +47,11 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void updateProduct(Product p) {
+	public int updateProduct(Product p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
 		logger.info("Product updated successfully, Product details" + p);
+		return 1;
 	}
 
 	@Override
@@ -64,13 +66,14 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public void removeProduct(int prodId) {
+	public int removeProduct(int prodId) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Product p = (Product) session.load(Product.class, new Integer(prodId));
 		if (null != p) {
 			session.delete(p);
 		}
 		logger.info("Product deleted successfully!=" + p);
+		return 1;
 	}
 
 	// List<Product> result = new ArrayList<Product>();
