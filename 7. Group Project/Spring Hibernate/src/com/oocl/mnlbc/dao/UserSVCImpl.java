@@ -61,4 +61,10 @@ public class UserSVCImpl implements UserSVC {
 	public int deleteUser(long id) {
 		return this.userDAO.deleteUser(id);
 	}
+
+	@Override
+	public int updateUser(User user) {
+		return this.userDAO.updateUser(user);
+	
+	}
 }

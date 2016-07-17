@@ -13,9 +13,11 @@ public interface UserSVC {
 
 	public int deleteUser(long id);
 
-//	public int updateUserType(User user, String type);
+	// public int updateUserType(User user, String type);
 
 	public List<User> getBlackList();
 
 	public List<User> getUserByEmail(String email);
+
+	public int updateUser(User user);
 }
