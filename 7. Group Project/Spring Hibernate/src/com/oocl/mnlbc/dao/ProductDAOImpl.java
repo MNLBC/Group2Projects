@@ -55,7 +55,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductByCategory(String cat) {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql =  "SELECT * FROM PRODUCT WHERE PRODCAT = " + cat ;
+		String sql =  "FROM Product WHERE PRODCAT = '" + cat + "'";
 		List<Product> productList = session.createQuery(sql).list();
 		for (Product p : productList) {
 			logger.info("Product List::" + p);

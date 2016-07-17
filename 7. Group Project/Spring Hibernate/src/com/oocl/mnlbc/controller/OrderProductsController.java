@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +15,7 @@ import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.Order;
 import com.oocl.mnlbc.model.Product;
 
+@Controller
 public class OrderProductsController {
 
 	private OrderProductSVC orderprodSvc;
@@ -30,8 +31,8 @@ public class OrderProductsController {
 		return this.orderprodSvc.getRelatedProducts(order);
 	}
 
-	@RequestMapping(value = "/getCartProducts/{id}", method = RequestMethod.GET)
-	public @ResponseBody List<CartProduct> listCartProducts(@PathVariable("id") String id) {
+	@RequestMapping(value = "/getCartProducts", method = RequestMethod.GET)
+	public @ResponseBody List<CartProduct> listCartProducts(@RequestParam("orderid") String id) {
 		return this.orderprodSvc.getCartProducts(id);
 	}
 }
