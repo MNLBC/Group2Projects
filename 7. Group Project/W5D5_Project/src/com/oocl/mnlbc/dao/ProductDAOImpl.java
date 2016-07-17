@@ -53,11 +53,14 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 
 	@Override
-	public Product getProductByCategory(int prodId) {
+	public List<Product> getProductByCategory(String cat) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Product p = (Product) session.load(Product.class, new Integer(prodId));
-		logger.info("Product successfully loaded, Product deatils =" + p);
-		return p;
+		String sql =  "SELECT * FROM PRODUCT WHERE PRODCAT = " + cat ;
+		List<Product> productList = session.createQuery(sql).list();
+		for (Product p : productList) {
+			logger.info("Product List::" + p);
+		}
+		return productList;
 	}
 
 	@Override

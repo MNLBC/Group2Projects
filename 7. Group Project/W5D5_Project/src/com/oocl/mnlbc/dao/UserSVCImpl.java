@@ -34,7 +34,7 @@ public class UserSVCImpl implements UserSVC {
 
 	@Override
 	@Transactional
-	public User getUserByEmail(String email) {
+	public List<User> getUserByEmail(String email) {
 		return this.userDAO.getUserByEmail(email);
 	}
 
@@ -44,21 +44,21 @@ public class UserSVCImpl implements UserSVC {
 		return this.userDAO.createUser(user);
 	}
 
+//	@Override
+//	@Transactional
+//	public int updateUserType(User user, String type) {
+//		return this.userDAO.updateUserType(user, type);
+//	}
+
 	@Override
 	@Transactional
-	public int updateUserType(User user, String type) {
-		return this.userDAO.updateUserType(user, type);
+	public List<User> getBlackList() {
+		return this.userDAO.getUserBlackList();
 	}
 
 	@Override
 	@Transactional
-	public List<Long> getBlackList() {
-		return this.userDAO.getBlackList();
-	}
-
-	@Override
-	@Transactional
-	public int deleteUser(User user) {
-		return this.userDAO.deleteUser(user);
+	public int deleteUser(long id) {
+		return this.userDAO.deleteUser(id);
 	}
 }

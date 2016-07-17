@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.Product;
 
 /**
@@ -24,14 +25,22 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 	@Override
 	@Transactional
 	public int addProduct(Order order, Product prod, int qty) {
-		return this.orderProductDAO.addProduct(order, prod, qty);
+		OrderProduct orderProd = new OrderProduct();
+		orderProd.setOrderId(order.getOrderId());
+		orderProd.setProdId(prod.getProdId());
+		orderProd.setOrderProdQty(qty);
+		return this.orderProductDAO.addOrderProduct(orderProd);
 	}
 
-	@Override
-	@Transactional
-	public int removeProduct(String orderId, String prodId, int qty) {
-		return this.orderProductDAO.removeProduct(orderId, prodId, qty);
-	}
+//	@Override
+//	@Transactional
+//	public int removeProduct(String orderId, String prodId, int qty) {
+//		OrderProduct orderProd = new OrderProduct();
+//		orderProd.setOrderId(Long.parseLong(orderId));
+//		orderProd.setProdId(Long.parseLong(prodId));
+//		orderProd.setOrderProdQty(qty);
+//		return this.orderProductDAO.removeOrderProduct(orderProd);
+//	}
 
 	@Override
 	@Transactional
@@ -48,7 +57,12 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 	@Override
 	@Transactional
 	public int updateProduct(String orderId, String productId, int qty) {
-		return this.orderProductDAO.updateProduct(orderId, productId, qty);
+		OrderProduct orderProd = new OrderProduct();
+		orderProd.setOrderId(Long.parseLong(orderId));
+		orderProd.setProdId(Long.parseLong(productId));
+		orderProd.setOrderProdQty(qty);
+		
+		return this.orderProductDAO.updateOrderProduct(orderProd);
 	}
 
 }

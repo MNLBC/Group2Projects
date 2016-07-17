@@ -24,8 +24,6 @@ public class UserCount extends HttpServlet	 {
 	        count = (int) session.getServletContext().getAttribute("ctr");
 			return count; 
  
-
-			  
 	       
 			
 	   }

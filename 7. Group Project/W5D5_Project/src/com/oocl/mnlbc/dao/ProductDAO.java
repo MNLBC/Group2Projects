@@ -12,7 +12,7 @@ public interface ProductDAO {
 
 	public List<Product> listProduct();
 
-	public Product getProductByCategory(int id);
+	public List<Product> getProductByCategory(String cat);
 
 	public void removeProduct(int id);
 

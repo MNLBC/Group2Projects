@@ -29,30 +29,44 @@ public class ProductSVCImpl implements ProductSVC {
 	@Override
 	@Transactional
 	public List<Product> getProducts() {
-		return this.prodDAO.getProducts();
+		return this.prodDAO.listProduct();
 	}
 
-	@Override
-	@Transactional
-	public int updateStock(String[] array) {
-		return this.prodDAO.updateStock(array);
-	}
+
 
 	@Override
 	@Transactional
 	public List<Product> getProductsByCategory(String category) {
-		return this.prodDAO.getProductsByCategory(category);
+		return this.prodDAO.getProductByCategory(category);
 	}
 
-	@Override
-	@Transactional
-	public Product getProduct(String id) {
-		return this.prodDAO.getProduct(id);
-	}
+//	@Override
+//	@Transactional
+//	public Product getProduct(String id) {
+//		return this.prodDAO.getProduct(id);
+//	}
 
 	public String countProductByCat() {
 //		return this.prodDAO.countProductByCat();
 		return null;
+	}
+
+	@Override
+	public void addProduct(Product p) {
+		// TODO Auto-generated method stub
+	
+	}
+
+	@Override
+	public void updateProduct(Product p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeProduct(int id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 //	public List<OrderProduct> getOrderProd(User user) {
