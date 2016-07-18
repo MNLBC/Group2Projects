@@ -56,36 +56,44 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             record = '';
         var isExist = false;
 
+        if(email=='Scott'||email=='John'){
+            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+            return;
+        }
         Ext.Ajax.request({
-            url : "/getUser",
+            url : "getUser",
+            method : "GET",
+            async: 'false',
             params : {
                 email: email,
                 password: password
             },
             callback : function(options, success, response){
-                if(response.responseText=='failed'){
+                if(Ext.isEmpty(response.responseText)){
                     console.log('Failed :(');
+                     Ext.Msg.alert("User", "Account does not exist. Login again or register");
                 }else{
                     console.log('Success! :)');
-                }
-            }
-        });
-        Ext.each(store.data.items, function(x){
-            if (x.data.userEmail == email && x.data.userPass == password){
-                isExist = true;
-                var type = x.data.userType;
-                if (type == 'A') {
+                    record = Ext.decode(response.responseText);
+                    isExist = true;
+                    if (record[0].type == 'A') {
                     admin1.show();
                     admin2.show();
-                }
-                record = x;
-            }
-            else{
-
-            }
-        });
-        if(isExist){
-            var panel = Ext.getCmp('mainTabPanel');
+                    }
+                    store.add(record);
+                    Ext.Ajax.request({
+            url : "getProducts",
+            method: 'POST',
+                async: 'false',
+            callback : function(options, success, response){
+                if(Ext.isEmpty(response.responseText)){
+                    console.log('Failed ');
+                }else{
+                    console.log('Success! ');
+                    var prodStore = Ext.getStore('ProductStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    prodStore.loadData(jsonResponse);
+                     var panel = Ext.getCmp('mainTabPanel');
             var tab = Ext.getCmp('digitalPanel');
             var userField = Ext.getCmp('userField');
             var countField = Ext.getCmp('countField'),
@@ -98,12 +106,31 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             home1.show();
             home2.show();
             home3.show();
-            userField.setValue(record.data.userFname);
-            idField.setValue(record.data.userId);
-            addField.setValue(record.data.userAddress1 + ', ' + record.data.userAddress2 + ', ' + record.data.userCity + ', ' + record.data.userSP + ', ' + record.data.userCountry);
-        }else{
-            Ext.Msg.alert("User", "Account does not exist. Login again or register");
-        }
+            userField.setValue(record[0].userFname);
+            idField.setValue(record[0].userId);
+            addField.setValue(record[0].userAddress1 + ', ' + record[0].userAddress2 + ', ' + record[0].userCity + ', ' + record[0].userSp + ', ' + record[0].userCountry);
+            countField.setValue(parseInt(countField.getValue())+1);
+                }
+            }
+            });
+                }
+            }
+        });
+
+        // Ext.each(store.data.items, function(x){
+        //     if (x.data.userEmail == email && x.data.userPass == password){
+        //         isExist = true;
+        //         var type = x.data.userType;
+        //         if (type == 'A') {
+        //             admin1.show();
+        //             admin2.show();
+        //         }
+        //         record = x;
+        //     }
+        //     else{
+
+        //     }
+        // });
     },
 
     onRegisterBtnClick: function() {
@@ -116,35 +143,68 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var sp = Ext.getCmp('spRegCombo').getValue();
         var country = Ext.getCmp('countryRegCombo').getValue();
         var pass = Ext.getCmp('passRegField').getValue();
-        var captcha = Ext.getCmp('captchaRegField').getValue();
-        var main = Ext.getCmp('setPanel');
-        var admin = Ext.getCmp('userPanel');
-        var home1 = Ext.getCmp('headerPanel');
-        var home2 = Ext.getCmp('mainController');
 
-        Ext.MessageBox.show({
-            msg: 'Saving your data, please wait...',
-            progressText: 'Saving...',
-            width:300,
-            wait:true,
-            waitConfig: {interval:200},
-            icon:'ext-mb-download', //custom class in msg-box.html
-            iconHeight: 50,
-            animateTarget: 'register'
+        if(fname=='Scott'||fname=='John'){
+            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+            return;
+        }
+
+        var user = {
+            "userId":'',
+            "userFname":fname,
+            "userLname":lname,
+            "userEmail":email,
+            "userAddress1":address1,
+            "userAddress2":address2,
+            "userPass":pass,
+            "userCity":city,
+            "userSp":sp,
+            "userCountry":country,
+            "userType":'C'
+        };
+
+
+        Ext.Ajax.request({
+            url : "createUser",
+            method: 'POST',
+            params : {
+                user: Ext.encode(user)
+            },
+            jsonData: Ext.util.JSON.encode(user),
+            callback : function(options, success, response){
+                if(response.responseText===''){
+                    console.log('Failed :(');
+                }else{
+                    console.log('Success! :)');
+                    Ext.MessageBox.show({
+                        msg: 'Saving your data, please wait...',
+                        progressText: 'Saving...',
+                        width:300,
+                        wait:true,
+                        waitConfig: {interval:200},
+                        icon:'ext-mb-download', //custom class in msg-box.html
+                        iconHeight: 50,
+                        animateTarget: 'register'
+                    });
+
+                    setTimeout(function(){
+                        Ext.MessageBox.hide();
+                        Ext.MessageBox.show({
+                            title: 'User Registration',
+                            msg: 'User "' + email + '" successfully registered!',
+                            buttons: Ext.MessageBox.OK
+                        });
+                    }, 1000);
+
+                    main.hide();
+                    home1.show();
+                    home2.show();
+                }
+            }
         });
 
-        setTimeout(function(){
-            Ext.MessageBox.hide();
-            Ext.MessageBox.show({
-                title: 'User Registration',
-                msg: 'User "' + email + '" successfully registered!',
-                buttons: Ext.MessageBox.OK
-            });
-        }, 5000);
 
-        main.hide();
-        home1.show();
-        home2.show();
+
     },
 
     onContactSendBtnClick: function() {

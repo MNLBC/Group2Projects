@@ -209,7 +209,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                     focusCls: '(none)',
                                     cls: 'orderHistCls',
                                     height: 67,
-                                    hidden: true,
                                     id: 'userMgmtBtn',
                                     itemId: 'userMgmtBtn',
                                     overCls: '(none)',
@@ -1102,7 +1101,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             itemId: 'prodGrid',
                                                             title: '',
                                                             scroll: 'vertical',
-                                                            store: 'ProductStore',
+                                                            store: 'ProductStoreB',
                                                             columns: [
                                                                 {
                                                                     xtype: 'numbercolumn',
@@ -1496,7 +1495,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 {
                                                                     xtype: 'gridcolumn',
                                                                     id: 'uSPGrid',
-                                                                    dataIndex: 'userSP',
+                                                                    dataIndex: 'userSp',
                                                                     text: 'State/Province',
                                                                     flex: 1,
                                                                     editor: {
@@ -1865,7 +1864,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     width: '20%',
                                     align: 'center',
                                     dataIndex: 'prodPrice',
-                                    text: 'Price'
+                                    text: 'Price (RMB)'
                                 },
                                 {
                                     xtype: 'numbercolumn',
@@ -1880,7 +1879,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     width: '20%',
                                     align: 'center',
                                     dataIndex: 'prodSubtotal',
-                                    text: 'Subtotal'
+                                    text: 'Subtotal (RMB)'
                                 }
                             ]
                         },

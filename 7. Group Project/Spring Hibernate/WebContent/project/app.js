@@ -30,13 +30,14 @@ Ext.application({
         'UserTypeModel'
     ],
     stores: [
-        'ProductStore',
+        'ProductStoreB',
         'CategoryStore',
         'CartProductStore',
         'UserTypeStore',
         'CountryStore',
         'SPStore',
-        'UserStore'
+        'UserStore',
+        'ProductStore'
     ],
     views: [
         'MainView',

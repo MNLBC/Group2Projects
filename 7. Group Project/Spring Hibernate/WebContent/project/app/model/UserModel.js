@@ -43,7 +43,7 @@ Ext.define('W5D5_Project.model.UserModel', {
             name: 'userCity'
         },
         {
-            name: 'userSP'
+            name: 'userSp'
         },
         {
             name: 'userCountry'

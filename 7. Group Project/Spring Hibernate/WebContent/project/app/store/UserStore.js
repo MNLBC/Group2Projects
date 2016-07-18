@@ -28,47 +28,6 @@ Ext.define('W5D5_Project.store.UserStore', {
         me.callParent([Ext.apply({
             storeId: 'UserStore',
             model: 'W5D5_Project.model.UserModel',
-            data: [
-                {
-                    userId: 'iure',
-                    userFname: 'exercitationem',
-                    userLname: 'quam',
-                    userEmail: 'admin',
-                    userAddress1: 'exercitationem',
-                    userAddress2: 'accusantium',
-                    userCity: 'incidunt',
-                    userSP: 'libero',
-                    userCountry: 'aut',
-                    userPass: 'admin',
-                    userType: 'A'
-                },
-                {
-                    userId: 'aliquid',
-                    userFname: 'voluptatem',
-                    userLname: 'asperiores',
-                    userEmail: 'test',
-                    userAddress1: 'eum',
-                    userAddress2: 'itaque',
-                    userCity: 'impedit',
-                    userSP: 'nam',
-                    userCountry: 'id',
-                    userPass: 'test',
-                    userType: 'C'
-                },
-                {
-                    userId: 'laudantium',
-                    userFname: 'esse',
-                    userLname: 'et',
-                    userEmail: 'fugiat',
-                    userAddress1: 'velit',
-                    userAddress2: 'unde',
-                    userCity: 'non',
-                    userSP: 'recusandae',
-                    userCountry: 'est',
-                    userPass: 'et',
-                    userType: 'voluptas'
-                }
-            ],
             proxy: {
                 type: 'ajax',
                 reader: {

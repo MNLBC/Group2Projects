@@ -212,6 +212,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin2.hide();
                     userField.setValue('Visitor');
                     idField.setValue(0);
+                    countField.setValue(parseInt(countField.getValue())-1);
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }
@@ -228,12 +229,35 @@ Ext.define('W5D5_Project.controller.MainController', {
     },
 
     onOrderConfirmClick: function() {
+        var items =[];
+
         if(!Ext.isEmpty(this.orderWin)){
-                             this.orderWin.hide();
-                            }
+            this.orderWin.hide();
+        }
         Ext.Msg.alert("Order Success!", "Your order has been processed! Please wait for your items to be delivered.");
         var store = Ext.getStore('CartProductStore');
+        Ext.each(store.data.items,function(rec){
+            items.push(Ext.encode(rec.data));
+        });
+
         store.removeAll();
+
+        Ext.Ajax.request({
+            url : "checkout",
+            method : "GET",
+            params : {
+                userid: Ext.getCmp('idField').getValue(),
+                cartprod: Ext.util.JSON.encode(items)
+            },
+            jsonData: Ext.util.JSON.encode(items),
+            callback : function(options, success, response){
+                if(response.responseText===''){
+                    console.log('Failed :(');
+                }else{
+                    console.log('Success! :)');
+                }
+            }
+        });
     },
 
     onOrderCancelClick: function() {

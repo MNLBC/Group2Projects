@@ -26,30 +26,6 @@ Ext.define('W5D5_Project.store.CartProductStore', {
         me.callParent([Ext.apply({
             storeId: 'cartProductStore',
             model: 'W5D5_Project.model.CartProductModel',
-            data: [
-                {
-                    prodId: 1,
-                    prodName: 'Watch A',
-                    prodCat: 'Sports',
-                    prodDesc: 'earum',
-                    prodPrice: 1000,
-                    prodSale: 1,
-                    prodQty: 1,
-                    prodImg: 'A',
-                    prodSubtotal: 1000
-                },
-                {
-                    prodId: 3,
-                    prodName: 'Watch C',
-                    prodCat: 'Dress',
-                    prodDesc: 'dolorum',
-                    prodPrice: 599.75,
-                    prodSale: 0.5,
-                    prodQty: 2,
-                    prodImg: 'C',
-                    prodSubtotal: 599.75
-                }
-            ],
             listeners: {
                 datachanged: {
                     fn: me.onStoreDataChangeD,

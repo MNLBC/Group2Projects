@@ -17,47 +17,24 @@ Ext.define('W5D5_Project.store.ProductStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.ProductModel'
+        'W5D5_Project.model.ProductModel',
+        'Ext.data.proxy.Ajax',
+        'Ext.data.reader.Json'
     ],
 
     constructor: function(cfg) {
         var me = this;
         cfg = cfg || {};
         me.callParent([Ext.apply({
-            storeId: 'productStore',
+            storeId: 'ProductStore',
             model: 'W5D5_Project.model.ProductModel',
-            data: [
-                {
-                    prodId: 1,
-                    prodName: 'Watch A',
-                    prodCat: 'Sports',
-                    prodDesc: 'voluptatem',
-                    prodPrice: 739.76,
-                    prodSale: 1,
-                    prodStock: 814,
-                    prodImg: 'A'
-                },
-                {
-                    prodId: 2,
-                    prodName: 'Watch B',
-                    prodCat: 'Sports',
-                    prodDesc: 'rem',
-                    prodPrice: 255.16,
-                    prodSale: 0.5,
-                    prodStock: 496,
-                    prodImg: 'B'
-                },
-                {
-                    prodId: 3,
-                    prodName: 'Watch C',
-                    prodCat: 'Luxury',
-                    prodDesc: 'nulla',
-                    prodPrice: 871.02,
-                    prodSale: 1,
-                    prodStock: 371,
-                    prodImg: 'C'
+            proxy: {
+                type: 'ajax',
+                url: 'getProducts',
+                reader: {
+                    type: 'json'
                 }
-            ]
+            }
         }, cfg)]);
     }
 });
