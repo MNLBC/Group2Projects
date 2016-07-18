@@ -1,0 +1,1 @@
+Insert into USERS (USER_ID,FIRST_NAME,LAST_NAME) values (1,'User 1','User 1');

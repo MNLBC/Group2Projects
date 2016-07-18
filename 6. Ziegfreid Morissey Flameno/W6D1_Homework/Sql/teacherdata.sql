@@ -1,0 +1,2 @@
+Insert into TEACHER (TEACHER_ID,TEACHER_NAME,TEACHER_SCHOOL_NAME) values ('1','Teacher 1','School 1');
+Insert into TEACHER (TEACHER_ID,TEACHER_NAME,TEACHER_SCHOOL_NAME) values ('2','Teacher 2','School 1');
