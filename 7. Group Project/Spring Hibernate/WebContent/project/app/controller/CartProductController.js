@@ -19,7 +19,7 @@ Ext.define('W5D5_Project.controller.CartProductController', {
     id: 'cartProductController',
 
     control: {
-        "#CartProductGrid": {
+        "#cartProductGrid": {
             rowdblclick: 'onCartProductGridDblClick'
         },
         "#cartProductUpdateButton": {

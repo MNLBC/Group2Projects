@@ -16,7 +16,12 @@ import com.oocl.mnlbc.dao.UserSVC;
 import com.oocl.mnlbc.model.Order;
 import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.model.User;
-
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @desc User Controller
+ * @date 07-15-2016
+ */
 @Controller
 public class UserController {
 

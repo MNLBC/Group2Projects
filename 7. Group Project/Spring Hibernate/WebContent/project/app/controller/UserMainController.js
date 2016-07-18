@@ -76,7 +76,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                     console.log('Success! :)');
                     record = Ext.decode(response.responseText);
                     isExist = true;
-                    if (record[0].type == 'A') {
+                    if (record.userType == 'A') {
                     admin1.show();
                     admin2.show();
                     }
@@ -106,10 +106,10 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             home1.show();
             home2.show();
             home3.show();
-            userField.setValue(record[0].userFname);
-            idField.setValue(record[0].userId);
-            addField.setValue(record[0].userAddress1 + ', ' + record[0].userAddress2 + ', ' + record[0].userCity + ', ' + record[0].userSp + ', ' + record[0].userCountry);
-            countField.setValue(parseInt(countField.getValue())+1);
+            userField.setValue(record.userFname);
+            idField.setValue(record.userId);
+            addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+            countField.setValue(1);
                 }
             }
             });

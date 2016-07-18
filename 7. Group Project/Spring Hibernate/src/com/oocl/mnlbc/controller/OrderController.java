@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oocl.mnlbc.dao.OrdersSVC;
 import com.oocl.mnlbc.model.Order;
-
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @desc Order Controller
+ * @date 07-15-2016
+ */
 @Controller
 public class OrderController {
 

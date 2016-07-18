@@ -12,21 +12,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class UserCount extends HttpServlet	 {
-	
-	
+public class UserCount extends HttpServlet {
+
 	@RequestMapping("/userCount")
-	public @ResponseBody int getUserCount(HttpServletRequest request, HttpServletResponse response)
-	        throws IOException{
-			int count = 0;
-	        HttpSession session = request.getSession();
-	        
-	        count = (int) session.getServletContext().getAttribute("ctr");
-			return count; 
- 
-	       
-			
-	   }
-	
+	public @ResponseBody int getUserCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		int count = 0;
+		HttpSession session = request.getSession();
+
+		count = (int) session.getServletContext().getAttribute("ctr");
+		return count;
+
+	}
 
 }

@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.oocl.mnlbc.dao.ProductSVC;
 import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.model.User;
-
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @desc Products Controller
+ * @date 07-15-2016
+ */
 @Controller
 public class ProductsController {
 
@@ -26,12 +31,12 @@ public class ProductsController {
 		this.prodSvc = ps;
 	}
 
-	@RequestMapping(value = "/getProducts", method = RequestMethod.GET)
+	@RequestMapping(value = "/getProducts", method = RequestMethod.POST)
 	public @ResponseBody List<Product> listProducts() {
 		return this.prodSvc.getProducts();
 	}
 
-	@RequestMapping(value = "/getProductsByCategory", method = RequestMethod.GET)
+	@RequestMapping(value = "/getProductsByCategory", method = RequestMethod.POST)
 	public @ResponseBody List<Product> listProductsByCat(@RequestParam("category") String cat) {
 		if (!cat.isEmpty()) {
 			return this.prodSvc.getProductsByCategory(cat);
