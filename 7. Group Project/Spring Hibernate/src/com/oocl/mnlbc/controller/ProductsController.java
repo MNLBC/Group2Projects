@@ -33,30 +33,39 @@ public class ProductsController {
 
 	@RequestMapping(value = "/getProductsByCategory", method = RequestMethod.GET)
 	public @ResponseBody List<Product> listProductsByCat(@RequestParam("category") String cat) {
-		return this.prodSvc.getProductsByCategory(cat);
+		if (!cat.isEmpty()) {
+			return this.prodSvc.getProductsByCategory(cat);
+		}
+		return null;
 	}
-	
+
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public @ResponseBody int createProd(@RequestBody Product product) {
-		return this.prodSvc.addProduct(product);
+		if (product != null) {
+			return this.prodSvc.addProduct(product);
+		}
+		return 0;
 	}
 
 	@RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
 	public @ResponseBody int updateProd(@RequestBody Product product) {
-		return this.prodSvc.updateProduct(product);
+		if (product != null) {
+			return this.prodSvc.updateProduct(product);
+		}
+		return 0;
 	}
-	
 
 	@RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
 	public @ResponseBody int removeProd(@RequestParam int id) {
-		return this.prodSvc.removeProduct(id);
+		if (id > 0) {
+			return this.prodSvc.removeProduct(id);
+		}
+		return 0;
 	}
-	
 
-	
-//	public void addProduct(Product p);
-//
-//	public void updateProduct(Product p);
+	// public void addProduct(Product p);
+	//
+	// public void updateProduct(Product p);
 
 	// For add and update person both
 	// @RequestMapping(value = "/addProduct", method = RequestMethod.POST)

@@ -24,11 +24,17 @@ public class OrderController {
 
 	@RequestMapping(value = "/createOrder", method = RequestMethod.POST)
 	public @ResponseBody int createOrder(@RequestBody Order order) {
-		return this.orderSvc.createOrder(order);
+		if (order != null) {
+			return this.orderSvc.createOrder(order);
+		}
+		return 0;
 	}
 
 	@RequestMapping(value = "/cancelOrder", method = RequestMethod.POST)
 	public @ResponseBody int cancelOrder(@RequestBody Order order) {
-		return this.orderSvc.cancelOrder(order);
+		if (order != null) {
+			return this.orderSvc.cancelOrder(order);
+		}
+		return 0;
 	}
 }

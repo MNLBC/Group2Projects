@@ -30,12 +30,18 @@ public class UserController {
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.GET)
 	public @ResponseBody User getUser(@RequestParam String email, @RequestParam String password) {
-		return this.userSVC.getUser(email, password);
+		if (!email.isEmpty() && !password.isEmpty()) {
+			return this.userSVC.getUser(email, password);
+		}
+		return null;
 	}
 
 	@RequestMapping(value = "/getUserByEmail", method = RequestMethod.GET)
 	public @ResponseBody List<User> getUserByEmail(@RequestParam String email) {
-		return this.userSVC.getUserByEmail(email);
+		if (!email.isEmpty()) {
+			return this.userSVC.getUserByEmail(email);
+		}
+		return null;
 	}
 
 	@RequestMapping(value = "/getBlacklist", method = RequestMethod.GET)
@@ -45,22 +51,34 @@ public class UserController {
 
 	@RequestMapping(value = "/validateUser", method = RequestMethod.GET)
 	public @ResponseBody boolean validateUser(@RequestParam String email) {
-		return this.userSVC.validateUser(email);
+		if (!email.isEmpty()) {
+			return this.userSVC.validateUser(email);
+		}
+		return false;
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
 	public @ResponseBody int createUser(@RequestBody User user) {
-		return this.userSVC.createUser(user);
+		if (user != null) {
+			return this.userSVC.createUser(user);
+		}
+		return 0;
 	}
 
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public @ResponseBody int updateUser(@RequestBody User user) {
-		return this.userSVC.updateUser(user);
+		if (user != null) {
+			return this.userSVC.updateUser(user);
+		}
+		return 0;
 	}
 
 	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
 	public @ResponseBody int deleteUser(@RequestParam long id) {
-		return this.userSVC.deleteUser(id);
+		if (id > 0) {
+			return this.userSVC.deleteUser(id);
+		}
+		return 0;
 	}
 
 }

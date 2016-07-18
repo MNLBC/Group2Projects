@@ -25,14 +25,20 @@ public class OrderProductsController {
 	public void setOrderProdService(OrderProductSVC op) {
 		this.orderprodSvc = op;
 	}
-	
+
 	@RequestMapping(value = "/getRelatedProducts", method = RequestMethod.GET)
 	public @ResponseBody List<Product> listRelatedProducts(@RequestParam("order") Order order) {
-		return this.orderprodSvc.getRelatedProducts(order);
+		if (order != null) {
+			return this.orderprodSvc.getRelatedProducts(order);
+		}
+		return null;
 	}
 
 	@RequestMapping(value = "/getCartProducts", method = RequestMethod.GET)
 	public @ResponseBody List<CartProduct> listCartProducts(@RequestParam("orderid") String id) {
-		return this.orderprodSvc.getCartProducts(id);
+		if (id != null) {
+			return this.orderprodSvc.getCartProducts(id);
+		}
+		return null;
 	}
 }
