@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,5 +38,10 @@ public class ItemController {
       EntityManager em = is.getEntityManager();
       Item fromDb = is.getItemInfo(em, itemId);
       return fromDb;
+   }
+
+   @RequestMapping("/POST/item")
+   public @ResponseBody Item getItemInfo(@RequestBody Item item) {
+      return item;
    }
 }
