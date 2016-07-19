@@ -1,5 +1,6 @@
 package com.oocl.mnlbc.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -23,9 +24,7 @@ public class ItemService {
    @SuppressWarnings("rawtypes")
    public void init() {
       entityManagerFactory = Persistence.createEntityManagerFactory("unitEclipseLink", new java.util.HashMap());
-      System.out.println(entityManagerFactory.getClass().getSimpleName());
       entityManager = entityManagerFactory.createEntityManager();
-      System.out.println(entityManager.getClass().getSimpleName());
 
    }
 
@@ -34,10 +33,14 @@ public class ItemService {
       return item;
    }
 
-   @SuppressWarnings("unchecked")
    public List<Item> getAllItemInfo(EntityManager em) {
-      Query query = em.createNativeQuery("select * from items");
-      return query.getResultList();
+      List<Item> list = new ArrayList<Item>();
+      Query query = em.createQuery("select i from Item i");
+      for (Object object : query.getResultList()) {
+         Item item = (Item) object;
+         list.add(item);
+     }
+      return list;
    }
 
    public EntityManager getEntityManager() {
