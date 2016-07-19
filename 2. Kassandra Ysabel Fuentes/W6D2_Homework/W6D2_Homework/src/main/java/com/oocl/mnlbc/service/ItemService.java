@@ -29,6 +29,13 @@ public class ItemService {
 		return item;
 	}
 
+	public List<Item> getItems() {
+		entityManager.getTransaction().begin();
+		List<Item> listItems = entityManager.createQuery("SELECT i FROM Item i").getResultList();
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		return listItems;
+	}
 	public EntityManager getEntityManager() {
 		return entityManager;
 	}

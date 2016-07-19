@@ -1,5 +1,6 @@
 package com.oocl.mnlbc.controller;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import javax.persistence.EntityManager;
@@ -45,5 +46,13 @@ public class ItemController {
 		return item;
 	}
 	
+	@RequestMapping("/getItemsFromDB")
+	public List<Item> getItems() {
+		ItemService ts = new ItemService();
+		ts.init();
+		EntityManager em = ts.getEntityManager();
+		List<Item> item = ts.getItems();
+		return item;
+	}
 	
 }
