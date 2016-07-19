@@ -1,8 +1,11 @@
 package com.oocl.mnlbc.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.oocl.mnlbc.entity.Item;
 
@@ -29,6 +32,12 @@ public class ItemService {
    public Item getItemInfo(EntityManager em, String id) {
       Item item = em.find(Item.class, id);
       return item;
+   }
+
+   @SuppressWarnings("unchecked")
+   public List<Item> getAllItemInfo(EntityManager em) {
+      Query query = em.createNativeQuery("select * from items");
+      return query.getResultList();
    }
 
    public EntityManager getEntityManager() {
