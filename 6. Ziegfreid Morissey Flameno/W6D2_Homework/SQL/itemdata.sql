@@ -1,0 +1,2 @@
+Insert into ITEMS (ITEM_ID,ITEM_NAME,ITEM_CATEGORY,ITEM_STOCK,ITEM_PRICE) values ('1','Test Item','Test',1,20);
+Insert into ITEMS (ITEM_ID,ITEM_NAME,ITEM_CATEGORY,ITEM_STOCK,ITEM_PRICE) values ('2','Test Again','Test',5,10);
