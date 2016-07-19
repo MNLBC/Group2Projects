@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.oocl.mnlbc.entity.Item;
-import com.oocl.mnlbc.entity.User;
 
 /**
  * Item Service to get item info

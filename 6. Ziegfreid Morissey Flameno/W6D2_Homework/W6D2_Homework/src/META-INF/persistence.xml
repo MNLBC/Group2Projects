@@ -4,7 +4,6 @@
 
   <persistence-unit name="unitEclipseLink" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.oocl.mnlbc.entity.User</class>
     <class>com.oocl.mnlbc.entity.Item</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
