@@ -65,35 +65,35 @@
 		</beans:property>
 	</beans:bean>
 
-	<beans:bean id="productDAO" class="com.oocl.mnlbc.dao.ProductDAOImpl">
+	<beans:bean id="productDAO" class="com.oocl.mnlbc.dao.impl.ProductDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="productService" class="com.oocl.mnlbc.dao.ProductSVCImpl">
+	<beans:bean id="productService" class="com.oocl.mnlbc.svc.impl.ProductSVCImpl">
 		<beans:property name="productDAO" ref="productDAO"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="orderProductDAO" class="com.oocl.mnlbc.dao.OrderProductDAOImpl">
+	<beans:bean id="orderProductDAO" class="com.oocl.mnlbc.dao.impl.OrderProductDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="orderProductService" class="com.oocl.mnlbc.dao.OrderProductSVCImpl">
+	<beans:bean id="orderProductService" class="com.oocl.mnlbc.svc.impl.OrderProductSVCImpl">
 		<beans:property name="orderProductDAO" ref="orderProductDAO"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="orderDAO" class="com.oocl.mnlbc.dao.OrdersDAOImpl">
+	<beans:bean id="orderDAO" class="com.oocl.mnlbc.dao.impl.OrdersDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="ordersService" class="com.oocl.mnlbc.dao.OrdersSVCImpl">
+	<beans:bean id="ordersService" class="com.oocl.mnlbc.svc.impl.OrdersSVCImpl">
 		<beans:property name="orderDAO" ref="orderDAO"></beans:property>
 	</beans:bean>
 
-	<beans:bean id="userDAO" class="com.oocl.mnlbc.dao.UserDAOImpl">
+	<beans:bean id="userDAO" class="com.oocl.mnlbc.dao.impl.UserDAOImpl">
 		<beans:property name="sessionFactory"
 			ref="hibernate4AnnotatedSessionFactory" />
 	</beans:bean>
-	<beans:bean id="userService" class="com.oocl.mnlbc.dao.UserSVCImpl">
+	<beans:bean id="userService" class="com.oocl.mnlbc.svc.impl.UserSVCImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
 	<context:component-scan base-package="com.oocl.mnlbc" />

@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.dao;
+package com.oocl.mnlbc.svc.impl;
 
 
 import java.util.List;
@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.oocl.mnlbc.dao.inf.ProductDAO;
 import com.oocl.mnlbc.model.Product;
+import com.oocl.mnlbc.svc.inf.ProductSVC;
 
 
 /**

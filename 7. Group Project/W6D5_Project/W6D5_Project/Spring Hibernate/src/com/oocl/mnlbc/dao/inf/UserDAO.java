@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.dao;
+package com.oocl.mnlbc.dao.inf;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.dao;
+package com.oocl.mnlbc.dao.impl;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.oocl.mnlbc.dao.inf.OrderProductDAO;
 import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.Order;
 import com.oocl.mnlbc.model.OrderProduct;

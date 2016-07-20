@@ -1,4 +1,4 @@
-package com.oocl.mnlbc.dao;
+package com.oocl.mnlbc.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.oocl.mnlbc.dao.inf.OrdersDAO;
 import com.oocl.mnlbc.model.Order;
 import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.User;

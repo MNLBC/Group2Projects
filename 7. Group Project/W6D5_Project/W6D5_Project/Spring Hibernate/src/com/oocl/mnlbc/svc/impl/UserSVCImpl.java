@@ -1,10 +1,12 @@
-package com.oocl.mnlbc.dao;
+package com.oocl.mnlbc.svc.impl;
 
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.oocl.mnlbc.dao.inf.UserDAO;
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.svc.inf.UserSVC;
 
 /**
  * 

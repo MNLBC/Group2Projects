@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.oocl.mnlbc.dao.ProductSVC;
 import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.svc.inf.ProductSVC;
 /**
  * 
  * @author Lance Jasper Lopez

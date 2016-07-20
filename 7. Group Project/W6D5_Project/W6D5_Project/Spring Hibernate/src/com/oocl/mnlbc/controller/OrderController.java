@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.oocl.mnlbc.dao.OrdersSVC;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.svc.inf.OrdersSVC;
 /**
  * 
  * @author Lance Jasper Lopez
