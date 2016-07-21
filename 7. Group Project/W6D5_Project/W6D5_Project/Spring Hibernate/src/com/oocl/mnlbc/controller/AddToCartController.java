@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,37 +11,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.svc.inf.OrdersSVC;
 
 /**
- * Handles web services for Order
- * 
+ * Handles web services for AddToCart
  * @author DENOYME
- * @date 07-15-2016
+ * @since 2016-07-21
  */
 @RestController
 @ResponseBody
-public class OrderController {
+public class AddToCartController {
 
-   private OrdersSVC orderSVC;
-
+   private CartProductSVC cartprodSVC;
+   
    @Autowired(required = true)
-   @Qualifier(value = "ordersService")
-   public void setOrderService(OrdersSVC orderSVC) {
-      this.orderSVC = orderSVC;
+   @Qualifier(value = "cartProductService")
+   public void setProdService(CartProductSVC cartprodSVC) {
+      this.cartprodSVC = cartprodSVC;
    }
-
+   
    /**
-    * getOrdersByUser web service
+    * createOrder web service
     * 
-    * @return List<Order>
+    * @return boolean
     */
-   @RequestMapping(value = "/getOrdersByUser", method = RequestMethod.GET)
-   public List<Order> getOrdersByUser(@RequestParam int id) {
-      if (id > 0) {
-         return this.orderSVC.getOrdersByUser(id);
+   @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+   public boolean addToCart(@RequestBody Product product) {
+      int result = this.cartprodSVC.addToCart(product);
+      if (product != null) {
+         if (result != 1 || result == 0)
+            return false;
+         return true;
       }
-      return null;
+      return false;
    }
 }
