@@ -37,7 +37,7 @@
 		<spring.version>4.0.0.RELEASE</spring.version>
 	</properties>
 	<dependencies>
-	<dependency>
+		<dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>org.eclipse.persistence.jpa</artifactId>
 			<version>2.5.0</version>
@@ -211,9 +211,9 @@
 		</dependency>
 
 
-		</dependency>
-		
-			<!-- JMS -->
+
+
+		<!-- JMS -->
 		<dependency>
 			<groupId>javax.jms</groupId>
 			<artifactId>jms-api</artifactId>
@@ -230,5 +230,6 @@
 			<groupId>org.apache.activemq</groupId>
 			<artifactId>activemq-all</artifactId>
 			<version>${activemq.version}</version>
+		</dependency>
 	</dependencies>
 </project>
