@@ -2,8 +2,9 @@ package com.oocl.mnlbc.dao.impl;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -15,98 +16,118 @@ import com.oocl.mnlbc.model.User;
 /**
  * 
  * @author Danna Soquiat
- * @since 2016-07-16 DAO Implementation for USER TABLE
+ * @since 2016-07-16 
+ * 
+ * DAO Implementation for USER TABLE
  *
  */
+
 @Repository
 @Transactional
 public class UserDAOImpl implements UserDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
-	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory sf) {
-		this.sessionFactory = sf;
-	}
+	
+	@PersistenceContext
+	private EntityManager manager;
+	
 
 	@Override
 	public int createUser(User user) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(user);
+		manager.persist(user);
 		logger.info("User saved successfully! User Details=" + user);
 		return 1;
 	}
+	@Override
+	public List<User> getAllUser(long userId, String userFname, String userLname, String userEmail,String userAddress1, String userAddress2, String userSp, int userLevel,String userOccup) {
+	
+	String sql = "SELECT user FROM USERS user";
+	List<User> allUserList = manager.createQuery(sql).getResultList();
+	for (User allUser : allUserList) {
+		logger.info("User Email List:" + allUser);
+	}
+	return allUserList;
+}
+		
 
 	@Override
 	public User getUser(String email, String password) {
-		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM User" + " WHERE USEREMAIL='" + email + "' AND USERPASS='" + password + "'";
-		User user = (User) session.createQuery(sql).uniqueResult();
+		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM USERS user" + " WHERE user.USEREMAIL='" + email + "' AND user.USERPASS='" + password + "'";
+		User user = manager.createQuery(sql, User.class).getSingleResult();
+		
+//		User user = (User) session	.createQuery(sql).uniqueResult();
 
 		logger.info("User email and password" + email + password);
 		return user;
 	}
-
-	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public List<User> getUserByEmail(String email) {
-		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM User" + "WHERE USEREMAIL='" + email + "'";
-		List<User> userEmailList = session.createQuery(sql).list();
-		logger.info("Email :" + email);
+		String sql = "SELECT useremail FROM USERS useremail" + "WHERE useremail.USEREMAIL='" + email + "'";
+		List<User> userEmailList = manager.createQuery(sql).getResultList();
 		for (User userEmail : userEmailList) {
-			logger.info("User email list: " + userEmail);
+			logger.info("User Email List:" + userEmail);
 		}
 		return userEmailList;
 	}
-
-	@SuppressWarnings({ "unchecked", "deprecation", "unused" })
 	@Override
 	public List<User> getUserBlackList() {
-		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM User WHERE USERTYPE='BLACKLIST'";
-		List<User> blackList = session.createQuery(sql).list();
-
+		String sql = "SELECT user FROM USERS user WHERE user.USERTYPE='BLACKLIST'";
+		List<User> blackList = manager.createQuery(sql).getResultList();
 		for (User userblacklist : blackList) {
 			logger.info("Blacklisted user:" + userblacklist);
 		}
 		return blackList;
 	}
-
 	@Override
 	public int updateUser(User user) {
 
-		Session session = this.sessionFactory.getCurrentSession();
-		session.update(user);
-		logger.info("User updated successfully! User details:" + user);
+//		Session session = this.sessionFactory.getCurrentSession();
+//		session.update(user);
+//		logger.info("User updated successfully! User details:" + user);
+//		return 1;
+		
+		User newUser = manager.find(User.class, user.getUserId());
+		newUser = user;
+		logger.info("Product updated successfully!=" + newUser);
 		return 1;
 	}
-
 	@Override
 	public int deleteUser(long id) {
-		Session session = this.sessionFactory.getCurrentSession();
-		User user = (User) session.load(User.class, new Long(id));
+//		Session session = this.sessionFactory.getCurrentSession();
+//		User user = (User) session.load(User.class, new Long(id));
+//
+//		if (null != user) {
+//			session.delete(user);
+			
+			
+			User deletedUser = manager.find(User.class, id);
+			manager.remove(deletedUser);
+			logger.info("User deleted successfully!=" + deletedUser);
+			return 1;
 
-		if (null != user) {
-			session.delete(user);
-
-		}
-		logger.info("User deleted successfully, User detail:" + user);
-		return 1;
 	}
 
-	@SuppressWarnings({ "unchecked", "deprecation" })
 	@Override
 	public boolean validateUser(String email) {
-		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM User" + "WHERE USEREMAIL='" + email + "'";
-		List<User> userList = session.createQuery(sql).list();
+		String sql = "SELECT user FROM USERS user" + "WHERE user.USEREMAIL='" + email + "'";
+		User user = (User) manager.createQuery(sql).getSingleResult();
+		
 
-		if (userList.size() == 0) {
+		if (user != null) {
 			return true;
 		}
 
 		logger.info("User email address is:" + email);
 		return false;
 	}
+	
+	@Override
+	public List<User> getPremiumUser() {
+		String sql = "SELECT premiumuser FROM USERS premiumuser WHERE premiumuser.USERLEVEL=2";
+		List<User> premiumUserList = manager.createQuery(sql).getResultList();
+		for (User premiumUser : premiumUserList) {
+			logger.info("Premium User List:" + premiumUserList);
+		}
+		return premiumUserList;
+	}		
 }
