@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="ORDER")
+@Table(name="ORDERS")
 public class Order {
 	
    @Id	
@@ -23,7 +23,8 @@ public class Order {
    private long orderId;
    private long userId;
    private String orderDate;
-   private double orderTotal;
+   
+   private float orderTotal;
 
    /**
     * @return the orderId
@@ -81,7 +82,7 @@ public class Order {
     * @param orderTotal
     *           the orderTotal to set
     */
-   public void setOrderTotal(double orderTotal) {
+   public void setOrderTotal(float orderTotal) {
       this.orderTotal = orderTotal;
    }
 

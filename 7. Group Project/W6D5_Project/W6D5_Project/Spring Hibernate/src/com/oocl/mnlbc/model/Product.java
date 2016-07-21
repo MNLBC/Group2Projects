@@ -22,8 +22,8 @@ public class Product {
    private String prodDesc;
    private String prodCat;
    private String prodImg;
-   private double prodPrice;
-   private double prodSale;
+   private float prodPrice;
+   private float prodSale;
    private int prodStock;
 
    /**
@@ -112,7 +112,7 @@ public class Product {
     * @param prodPrice
     *           the prodPrice to set
     */
-   public void setProdPrice(double prodPrice) {
+   public void setProdPrice(float prodPrice) {
       this.prodPrice = prodPrice;
    }
 
@@ -127,7 +127,7 @@ public class Product {
     * @param prodSale
     *           the prodSale to set
     */
-   public void setProdSale(double prodSale) {
+   public void setProdSale(float prodSale) {
       this.prodSale = prodSale;
    }
 

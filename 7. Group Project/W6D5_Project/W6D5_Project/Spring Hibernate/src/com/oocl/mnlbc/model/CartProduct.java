@@ -14,7 +14,7 @@ public class CartProduct extends Product {
 
 
 	private int prodQty;
-	private double prodSubtotal;
+	private float prodSubtotal;
 
 	public int getProdQty() {
 		return prodQty;
@@ -28,7 +28,7 @@ public class CartProduct extends Product {
 		return prodSubtotal;
 	}
 
-	public void setProdSubtotal(double prodSubtotal) {
+	public void setProdSubtotal(float prodSubtotal) {
 		this.prodSubtotal = prodSubtotal;
 	}
 
