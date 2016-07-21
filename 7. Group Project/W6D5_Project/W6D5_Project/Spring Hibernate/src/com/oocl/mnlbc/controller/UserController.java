@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.UserSVC;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 import com.oocl.mnlbc.validator.ErrorMessage;
 import com.oocl.mnlbc.validator.LoginValidator;
 import com.oocl.mnlbc.validator.RegisterValidator;
@@ -92,7 +94,8 @@ public class UserController {
 				return 0;
 			}
 		}else {
-			LogUtil.logMsg(LogType.INFO, binding.getErrorCount());
+			LogUtil.logMsg(LogType.INFO, "Spring Validator Error - Error creating user");
+			return 0;
 		}
 
 	}
