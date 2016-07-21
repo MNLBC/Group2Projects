@@ -21,6 +21,7 @@ public class JmsListener implements MessageListener {
          try {
             TextMessage textMessage = (TextMessage) message;
             LogUtil.logMsg(LogType.INFO, textMessage.getText());
+            LogUtil.logMsg(LogType.INFO, message.getJMSDestination().toString());
          } catch (JMSException e) {
             e.printStackTrace();
          }

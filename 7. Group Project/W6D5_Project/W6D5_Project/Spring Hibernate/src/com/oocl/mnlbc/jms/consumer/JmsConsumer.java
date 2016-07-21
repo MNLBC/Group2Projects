@@ -31,7 +31,7 @@ public class JmsConsumer {
    /**
     * Starts admin consumer
     */
-   public static void startConsumer() {
+   public static void startConsumer(String topicType) {
       ConnectionFactory connectionFactory = null;
       Connection connection = null;
       Session session = null;

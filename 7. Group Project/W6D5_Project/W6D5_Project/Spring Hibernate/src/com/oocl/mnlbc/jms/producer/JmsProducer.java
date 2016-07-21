@@ -35,7 +35,7 @@ public class JmsProducer {
     * 
     * @param username
     */
-   public static void sendRequest(String username) {
+   public static void sendRequest(String topicType, String username) {
       ConnectionFactory connectionFactory = null;
       Connection connection = null;
       Session session = null;
@@ -47,7 +47,7 @@ public class JmsProducer {
          connection = connectionFactory.createConnection();
          connection.start();
          session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
-         destination = session.createTopic(Config.getConfigValue("adminTopic"));
+         destination = session.createTopic(Config.getConfigValue(topicType));
          messageProducer = session.createProducer(destination);
          Message textMessage = session.createTextMessage(username);
          messageProducer.send(textMessage);
