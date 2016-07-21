@@ -9,9 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * @author Danna Soquiat
- * @since 2016-07-15
- *
+ * @author Lance Jasper C. Lopez
+ * @since 07-21-2016
+ * @desc Hibernate Migration to JPA Order Products Model
+ * 
  */
 
 @Entity
@@ -21,8 +22,11 @@ public class OrderProduct {
 	@Id
 	@Column(name = "ORDERPRODID")
 	private long orderProdId;
+	@Column(name = "ORDERID")
 	private long orderId;
+	@Column(name = "PRODID")
 	private long prodId;
+	@Column(name = "ORDERPRODQTY")
 	private int orderProdQty;
 
 	/**

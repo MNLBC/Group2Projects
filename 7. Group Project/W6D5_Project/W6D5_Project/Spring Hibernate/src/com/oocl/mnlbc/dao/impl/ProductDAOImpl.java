@@ -33,52 +33,45 @@ public class ProductDAOImpl implements ProductDAO {
 	@PersistenceContext
 	private EntityManager manager;
 
+	public int addProduct(Product product) {
 
-	public int addProduct(Product p) {
-		// Session session = this.sessionFactory.getCurrentSession();
-		// session.persist(p);
-		// logger.info("Product saved successfully, Product details=" + p);
+		manager.persist(product);
+		logger.info("Product saved successfully, Product details=" + product);
 		return 1;
 	}
 
 	public List<Product> listProduct() {
 		List<Product> productList = new ArrayList<Product>();
-		productList = manager.createQuery("Select products From Product products", Product.class)
-				.getResultList();
-		for (Product p : productList) {
-			logger.info("Product List::" + p);
+		String query = "Select products From Product products";
+		productList = manager.createQuery(query, Product.class).getResultList();
+		for (Product product : productList) {
+			logger.info("Product List::" + product);
 		}
 		return productList;
 	}
 
-	public int updateProduct(Product p) {
-		// Session session = this.sessionFactory.getCurrentSession();
-		// session.update(p);
-		// logger.info("Product updated successfully, Product details" + p);
+	public int updateProduct(Product product) {
+
+		Product newProduct = manager.find(Product.class, product.getProdId());
+		newProduct = product;
+		logger.info("Product updated successfully!=" + newProduct);
 		return 1;
 	}
 
-
 	public List<Product> getProductByCategory(String cat) {
-		return null;
-		// Session session = this.sessionFactory.getCurrentSession();
-		// String sql = "FROM Product WHERE PRODCAT = '" + cat + "'";
-		// List<Product> productList = session.createQuery(sql).list();
-		// for (Product p : productList) {
-		// logger.info("Product List::" + p);
-		// }
-		// return productList;
+
+		String sql = "Select products From Product products where product.PRODCAT = '" + cat + "'";
+		List<Product> productList = manager.createQuery(sql).getResultList();
+		for (Product product : productList) {
+			logger.info("Product List:" + product);
+		}
+		return productList;
 	}
 
-	
 	public int removeProduct(int prodId) {
-		// Session session = this.sessionFactory.getCurrentSession();
-		// Product p = (Product) session.load(Product.class, new
-		// Integer(prodId));
-		// if (null != p) {
-		// session.delete(p);
-		// }
-		// logger.info("Product deleted successfully!=" + p);
+		Product removedProduct = manager.find(Product.class, prodId);
+		manager.remove(removedProduct);
+		logger.info("Product deleted successfully!=" + removedProduct);
 		return 1;
 	}
 
