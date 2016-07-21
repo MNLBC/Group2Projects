@@ -3777,6 +3777,80 @@
                                             ]
                                         },
                                         {
+                                            "type": "Ext.panel.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "container|align": "stretch",
+                                                "id": "accountPanel",
+                                                "itemId": "accountPanel",
+                                                "layout": "hbox",
+                                                "title": "My Panel"
+                                            },
+                                            "name": "MyPanel28",
+                                            "designerId": "5b75e7ab-b476-4919-a1bd-8ce5813ecc4a",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.tab.Tab",
+                                                    "reference": {
+                                                        "name": "tabConfig",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "name": "TabConfig6",
+                                                    "designerId": "1d95ab73-f0ce-4578-85ad-b13b16248afd"
+                                                },
+                                                {
+                                                    "type": "Ext.toolbar.Spacer",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 0,
+                                                        "width": 15
+                                                    },
+                                                    "name": "MySpacer34",
+                                                    "designerId": "b9fb4c31-2ad8-4b05-a4bb-c2bd5e31469a"
+                                                },
+                                                {
+                                                    "type": "Ext.panel.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "height": 25,
+                                                        "layout|flex": 0,
+                                                        "title": ""
+                                                    },
+                                                    "name": "MyPanel34",
+                                                    "designerId": "43e03917-f69e-4aca-9a4c-7abb1500f7e0",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.field.Display",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "fieldLabel": "",
+                                                                "value": "Account Info"
+                                                            },
+                                                            "name": "MyDisplayField12",
+                                                            "designerId": "b4a36749-23a4-43ca-86af-1d67f65f8503"
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
                                             "type": "Ext.tab.Bar",
                                             "reference": {
                                                 "name": "tabBar",

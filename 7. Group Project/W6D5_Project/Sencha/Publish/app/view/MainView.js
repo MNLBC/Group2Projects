@@ -1787,6 +1787,36 @@ Ext.define('W6D5_Project.view.MainView', {
                                                     ]
                                                 }
                                             ]
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            id: 'accountPanel',
+                                            itemId: 'accountPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'hbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    width: 15
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 25,
+                                                    title: '',
+                                                    items: [
+                                                        {
+                                                            xtype: 'displayfield',
+                                                            fieldLabel: '',
+                                                            value: 'Account Info'
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ],
                                     tabBar: {
