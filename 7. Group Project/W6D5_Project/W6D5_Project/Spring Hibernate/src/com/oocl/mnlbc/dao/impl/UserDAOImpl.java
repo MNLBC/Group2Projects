@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> getUserBlackList() {
 		Session session = this.sessionFactory.getCurrentSession();
-		String sql = "FROM User" + "WHERE USERTYPE=" + "'BLACKLIST'";
+		String sql = "FROM User WHERE USERTYPE='BLACKLIST'";
 		List<User> blackList = session.createQuery(sql).list();
 
 		for (User userblacklist : blackList) {
