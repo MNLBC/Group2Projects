@@ -1,63 +1,44 @@
 package com.oocl.mnlbc.dao.impl;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.OrdersDAO;
 import com.oocl.mnlbc.model.Order;
-import com.oocl.mnlbc.model.OrderProduct;
-import com.oocl.mnlbc.model.User;
-
 
 /**
  * 
- * @author kalinwi2
- * DAO Implementation for ORDERS TABLE
+ * @author Lance Jasper Lopez
+ * @desc Migration from Hibernate to JPA DAO Implementation for ORDERS TABLE
+ * @since 07/21/2016
  */
+@Repository
+@Transactional
 public class OrdersDAOImpl implements OrdersDAO {
 	private static final Logger logger = LoggerFactory.getLogger(OrdersDAOImpl.class);
 
-	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sf){
-		this.sessionFactory = sf;
-	}
-	
+	@PersistenceContext
+	private EntityManager manager;
+
 	@Override
-	public int createOrder(Order o) {
-		Session session = this.sessionFactory.getCurrentSession();
-		session.persist(o);
-		logger.info("Order saved successfully, Order details="+o);
+	public int createOrder(Order order) {
+		manager.persist(order);
+		logger.info("Order saved successfully, Order details=" + order);
 		return 1;
 	}
 
 	@Override
-	public int cancelOrder(int id) {
-		Session session = this.sessionFactory.getCurrentSession();
-		Order o = (Order) session.load(Order.class, new Integer(id));
-		if(null != o){
-			session.delete(o);
-		}
-		logger.info("Order deleted successfully, Order details="+o);
+	public int cancelOrder(long id) {
+
+		Order removeOrder = manager.find(Order.class, id);
+		manager.remove(removeOrder);
+		logger.info("Order deleted successfully, Order details=" + removeOrder);
 		return 1;
 	}
 
-//	@Override
-//	public int finalOrder(Order order, String timestamp) {
-//		
-//	}
-//
-//	@Override
-//	public Order getOrderId(User user) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
 }

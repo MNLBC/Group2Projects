@@ -6,13 +6,13 @@ import com.oocl.mnlbc.model.Product;
 
 public interface ProductDAO {
 
-	public int addProduct(Product p);
+	public int addProduct(Product product);
 
-	public int updateProduct(Product p);
+	public int updateProduct(Product product);
 
 	public List<Product> listProduct();
 
-	public List<Product> getProductByCategory(String cat);
+	public List<Product> getProductByCategory(String category);
 
 	public int removeProduct(long id);
 

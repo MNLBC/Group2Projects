@@ -6,9 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -33,6 +30,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@PersistenceContext
 	private EntityManager manager;
 
+	@Override
 	public int addProduct(Product product) {
 
 		manager.persist(product);
@@ -40,6 +38,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return 1;
 	}
 
+	@Override
 	public List<Product> listProduct() {
 		List<Product> productList = new ArrayList<Product>();
 		String query = "Select products From Product products";
@@ -50,6 +49,7 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList;
 	}
 
+	@Override
 	public int updateProduct(Product product) {
 
 		Product newProduct = manager.find(Product.class, product.getProdId());
@@ -58,9 +58,10 @@ public class ProductDAOImpl implements ProductDAO {
 		return 1;
 	}
 
-	public List<Product> getProductByCategory(String cat) {
+	@Override
+	public List<Product> getProductByCategory(String category) {
 
-		String sql = "Select products From Product products where product.PRODCAT = '" + cat + "'";
+		String sql = "Select products From Product products where product.PRODCAT = '" + category + "'";
 		List<Product> productList = manager.createQuery(sql).getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);
@@ -68,10 +69,11 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList;
 	}
 
-	public int removeProduct(int prodId) {
-		Product removedProduct = manager.find(Product.class, prodId);
-		manager.remove(removedProduct);
-		logger.info("Product deleted successfully!=" + removedProduct);
+	@Override
+	public int removeProduct(long prodId) {
+		Product removeProduct = manager.find(Product.class, prodId);
+		manager.remove(removeProduct);
+		logger.info("Product deleted successfully!=" + removeProduct);
 		return 1;
 	}
 
