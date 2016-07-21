@@ -1,0 +1,79 @@
+{
+    "name": "W6D5_Project",
+    "settings": {
+        "cmd": {
+            "license": "commercial"
+        },
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "urlPrefix": "",
+        "exportPath": "D:/gitvob/Group2Projects/7. Group Project/W6D5_Project/Sencha/Publish",
+        "projectHasEnabledWebServer": false,
+        "lockUrlPrefix": false,
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": true,
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed"
+    },
+    "xdsVersion": "3.1.0",
+    "xdsBuild": 1943,
+    "schemaVersion": 1,
+    "upgradeVersion": 300000000007,
+    "framework": "ext50",
+    "viewOrderMap": {
+        "view": [
+            "66b6c872-a53a-4014-8bd6-37b94d4bcc2a",
+            "cd25167e-4cea-4603-83dd-e94c948b16f5",
+            "18e7b1a6-d93e-4057-8278-887329f6ccec",
+            "1bd0c09f-5261-4645-9c70-d8c3f1cd0c5a",
+            "ec85b78c-4cb6-48a3-89e7-9e5481a8fa6e",
+            "4a233968-d775-4e3f-bb64-e9bf44a2485a",
+            "17fcea3b-6921-49dd-b8c7-67cd8386d4e5",
+            "fd93bca0-fbb3-4d73-8115-69efd8c67434"
+        ],
+        "store": [
+            "b2d81bc1-692b-4e00-b807-6a4dd8bf6a69",
+            "3ea1503a-c6ef-4c51-afaa-77b8259d3abd",
+            "a24597b9-7dd6-454d-8a56-0b691835f4ff",
+            "b4b699d2-d3f7-4792-b3a0-65d35336e0c4",
+            "24d33529-ff8b-4983-8003-f4730c78c424",
+            "6d853841-5a44-46d4-819f-06e0ca80a67a",
+            "a6dbe544-c2f3-4bf7-85a2-9ab512e8fd7b",
+            "2db812da-4759-4b3c-b973-b6404827c865"
+        ],
+        "controller": [
+            "6381b4e0-18f9-467d-b71c-8ab953a1507c",
+            "83c921ad-c0c9-4249-9ede-23c106f1a3c9",
+            "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
+            "3e2e9c5a-a66d-440a-97f6-51c69b24c11e",
+            "19c4cdf1-f966-4805-9519-99c396a5951b",
+            "989fc48a-7112-4705-ba58-0de4da28a18a"
+        ],
+        "model": [
+            "5b9170e7-337a-4c88-8137-d94bb4179a0f",
+            "02382c5c-35bc-4f45-b140-0da706beef8a",
+            "911c8c19-7afe-461e-840a-bc476c55debb",
+            "4197fc14-4e9a-4f4d-bb27-cb71be698108",
+            "c8f98e98-0441-41ce-9eec-3c7eb1c4ceb7",
+            "ad70bd3f-ec8f-46b0-9be9-15cfee3d6002",
+            "d8f0f29b-5c7f-45d0-b376-8d2317c09f6e"
+        ],
+        "resource": [
+            "65846231-4944-466d-baa2-bbf7c983571c",
+            "15bde66f-acb3-4975-a387-7ca4797d9847",
+            "bbb4289e-5cf1-45bc-9e6a-239c27576977"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

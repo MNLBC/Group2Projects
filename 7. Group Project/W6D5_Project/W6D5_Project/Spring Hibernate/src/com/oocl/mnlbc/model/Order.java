@@ -9,80 +9,85 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
+ * @author Lance Jasper C. Lopez
+ * @since 07-21-2016
+ * @desc Hibernate Migration to JPA Order Model
  * 
- * @author Danna Soquiat
- *@since 2016-07-15
  */
 
 @Entity
-@Table(name="ORDER")
+@Table(name = "ORDERS")
 public class Order {
-	
-   @Id	
-   @Column(name="orderId")
-   private long orderId;
-   private long userId;
-   private String orderDate;
-   private double orderTotal;
 
-   /**
-    * @return the orderId
-    */
-   public long getOrderId() {
-      return orderId;
-   }
+	@Id
+	@Column(name = "ORDERID")
+	private long orderId;
 
-   /**
-    * @param orderId
-    *           the orderId to set
-    */
-   public void setOrderId(long orderId) {
-      this.orderId = orderId;
-   }
+	@Column(name = "ORDERDATE")
+	private String orderDate;
+	@Column(name = "ORDERTOTAL")
+	private float orderTotal;
+	@Column(name = "USERID")
+	private long userId;
 
-   /**
-    * @return the userId
-    */
-   public long getUserId() {
-      return userId;
-   }
+	/**
+	 * @return the orderId
+	 */
+	public long getOrderId() {
+		return orderId;
+	}
 
-   /**
-    * @param userId
-    *           the userId to set
-    */
-   public void setUserId(long userId) {
-      this.userId = userId;
-   }
+	/**
+	 * @param orderId
+	 *            the orderId to set
+	 */
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
 
-   /**
-    * @return the orderDate
-    */
-   public String getOrderDate() {
-      return orderDate;
-   }
+	/**
+	 * @return the userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
 
-   /**
-    * @param orderDate
-    *           the orderDate to set
-    */
-   public void setOrderDate(String orderDate) {
-      this.orderDate = orderDate;
-   }
+	/**
+	 * @param userId
+	 *            the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
+	}
 
-   /**
-    * @return the orderTotal
-    */
-   public double getOrderTotal() {
-      return orderTotal;
-   }
+	/**
+	 * @return the orderDate
+	 */
+	public String getOrderDate() {
+		return orderDate;
+	}
 
-   /**
-    * @param orderTotal
-    *           the orderTotal to set
-    */
-   public void setOrderTotal(double orderTotal) {
-      this.orderTotal = orderTotal;
-   }
+	/**
+	 * @param orderDate
+	 *            the orderDate to set
+	 */
+	public void setOrderDate(String orderDate) {
+		this.orderDate = orderDate;
+	}
+
+	/**
+	 * @return the orderTotal
+	 */
+	public double getOrderTotal() {
+		return orderTotal;
+	}
+
+	/**
+	 * @param orderTotal
+	 *            the orderTotal to set
+	 */
+	public void setOrderTotal(float orderTotal) {
+		this.orderTotal = orderTotal;
+	}
 
 }
