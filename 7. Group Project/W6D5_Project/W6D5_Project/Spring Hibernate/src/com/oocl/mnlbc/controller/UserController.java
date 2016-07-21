@@ -1,21 +1,34 @@
 package com.oocl.mnlbc.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.oocl.mnlbc.model.Order;
-import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.model.User;
-import com.oocl.mnlbc.svc.inf.ProductSVC;
 import com.oocl.mnlbc.svc.inf.UserSVC;
+import com.oocl.mnlbc.validator.ErrorMessage;
+import com.oocl.mnlbc.validator.LoginValidator;
+import com.oocl.mnlbc.validator.RegisterValidator;
+
 /**
  * 
  * @author Lance Jasper Lopez
@@ -31,6 +44,12 @@ public class UserController {
 	@Qualifier(value = "userService")
 	public void setUserService(UserSVC us) {
 		this.userSVC = us;
+	}
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		binder.setValidator(new RegisterValidator());
+		binder.setValidator(new LoginValidator());
 	}
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.GET)
@@ -55,19 +74,27 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/validateUser", method = RequestMethod.GET)
-	public @ResponseBody boolean validateUser(@RequestParam String email) {
+	public @ResponseBody boolean validateUser(@Validated @RequestParam String email, @RequestParam String pass) {
 		if (!email.isEmpty()) {
 			return this.userSVC.validateUser(email);
+		} else {
+			return false;
 		}
-		return false;
 	}
 
 	@RequestMapping(value = "/createUser", method = RequestMethod.POST)
-	public @ResponseBody int createUser(@RequestBody User user) {
-		if (user != null) {
-			return this.userSVC.createUser(user);
+	public @ResponseBody int createUser(@Validated @RequestBody User user, BindingResult binding) {
+		if (!binding.hasErrors()) {
+			if (user != null) {
+				return this.userSVC.createUser(user);
+			} else {
+				LogUtil.logMsg(LogType.INFO, "Error creating user");
+				return 0;
+			}
+		}else {
+			LogUtil.logMsg(LogType.INFO, binding.getErrorCount());
 		}
-		return 0;
+
 	}
 
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
@@ -84,6 +111,25 @@ public class UserController {
 			return this.userSVC.deleteUser(id);
 		}
 		return 0;
+	}
+
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	ErrorMessage handleException(MethodArgumentNotValidException ex) {
+		List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
+		List<ObjectError> globalErrors = ex.getBindingResult().getGlobalErrors();
+		List<String> errors = new ArrayList<>(fieldErrors.size() + globalErrors.size());
+		String error;
+		for (FieldError fieldError : fieldErrors) {
+			error = fieldError.getField() + ", " + fieldError.getDefaultMessage();
+			errors.add(error);
+		}
+		for (ObjectError objectError : globalErrors) {
+			error = objectError.getObjectName() + ", " + objectError.getDefaultMessage();
+			errors.add(error);
+		}
+		return new ErrorMessage(errors);
 	}
 
 }
