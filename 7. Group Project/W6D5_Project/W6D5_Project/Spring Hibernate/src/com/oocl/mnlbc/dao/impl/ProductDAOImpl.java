@@ -44,7 +44,7 @@ public class ProductDAOImpl implements ProductDAO {
 		String query = "Select products From Product products";
 		productList = manager.createQuery(query, Product.class).getResultList();
 		for (Product product : productList) {
-			logger.info("Product List::" + product);
+			logger.info("Product List:" + product);
 		}
 		return productList;
 	}

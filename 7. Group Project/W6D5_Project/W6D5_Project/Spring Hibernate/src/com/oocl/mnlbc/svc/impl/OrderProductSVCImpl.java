@@ -24,15 +24,15 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 		this.orderProductDAO = orderProductDAO;
 	}
 
-//	@Override
-//	@Transactional
-//	public int removeProduct(String orderId, String prodId, int qty) {
-//		OrderProduct orderProd = new OrderProduct();
-//		orderProd.setOrderId(Long.parseLong(orderId));
-//		orderProd.setProdId(Long.parseLong(prodId));
-//		orderProd.setOrderProdQty(qty);
-//		return this.orderProductDAO.removeOrderProduct(orderProd);
-//	}
+	// @Override
+	// @Transactional
+	// public int removeProduct(String orderId, String prodId, int qty) {
+	// OrderProduct orderProd = new OrderProduct();
+	// orderProd.setOrderId(Long.parseLong(orderId));
+	// orderProd.setProdId(Long.parseLong(prodId));
+	// orderProd.setOrderProdQty(qty);
+	// return this.orderProductDAO.removeOrderProduct(orderProd);
+	// }
 
 	@Override
 	@Transactional
@@ -47,24 +47,24 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 	}
 
 	@Override
-   @Transactional
-   public int addOrderProducts(List<OrderProduct> orderproductlist) {
-      return this.orderProductDAO.addOrderProduct(orderproductlist);
-//	   return 0;
-   }
+	@Transactional
+	public int addOrderProducts(List<OrderProduct> orderproductlist) {
+		return this.orderProductDAO.addOrderProducts(orderproductlist);
+		// return 0;
+	}
 
 	@Override
-   @Transactional
-   public int updateOrderProduct(OrderProduct orderproduct) {
-       return this.orderProductDAO.updateOrderProduct(orderproduct);
-//      return 0;
-   }
+	@Transactional
+	public int updateOrderProduct(OrderProduct orderproduct) {
+		return this.orderProductDAO.updateOrderProduct(orderproduct);
+		// return 0;
+	}
 
-   @Override
-   @Transactional
-   public List<Product> getOrderProductsByOrder(long id) {
-      return null;
-//      return this.orderProductDAO.getOrderProductsByOrder(id);
-   }
+	@Override
+	@Transactional
+	public List<Product> getOrderProductsByOrder(long id) {
+		return null;
+		// return this.orderProductDAO.getOrderProductsByOrder(id);
+	}
 
 }

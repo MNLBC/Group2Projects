@@ -8,7 +8,7 @@ import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.Product;
 
 public interface OrderProductDAO {
-	public int addOrderProduct(OrderProduct orderProduct);
+	public int addOrderProducts(List<OrderProduct> orderProducts);
 	public int removeOrderProduct(long id);
 	public List<Product> getRelatedProducts(Order order);
 	public List<CartProduct> getCartProducts(String orderId);

@@ -31,9 +31,12 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	private EntityManager manager;
 
 	@Override
-	public int addOrderProduct(OrderProduct orderProduct) {
-		manager.persist(orderProduct);
-		logger.info("OrderProduct saved successfully, orderproduct details=" + orderProduct);
+	public int addOrderProducts(List<OrderProduct> orderProducts) {
+		for (OrderProduct orderProduct : orderProducts) {
+			manager.persist(orderProduct);
+			logger.info("OrderProducts saved successfully, orderproduct details=" + orderProduct);
+		}
+		
 		return 1;
 	}
 
