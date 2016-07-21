@@ -14,6 +14,6 @@ public interface ProductDAO {
 
 	public List<Product> getProductByCategory(String cat);
 
-	public int removeProduct(int id);
+	public int removeProduct(long id);
 
 }

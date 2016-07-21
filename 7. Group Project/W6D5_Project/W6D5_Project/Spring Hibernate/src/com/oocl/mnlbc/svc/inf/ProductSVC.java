@@ -13,7 +13,7 @@ public interface ProductSVC {
 
 	public List<Product> getProductsByCategory(String category);
 
-	public int removeProduct(int id);
+	public int removeProduct(long id);
 
 	// public int updateStock(String[] array);
 	// public Product getProduct(String id);

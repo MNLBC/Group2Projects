@@ -48,7 +48,7 @@ public class CheckoutController {
     * @return boolean
     */
    @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-   public boolean createOrder(@RequestParam("userid") int userid, @RequestParam("orderproductlist") List<OrderProduct> orderproductlist) {
+   public boolean createOrder(@RequestParam("userid") long userid, @RequestParam("orderproductlist") List<OrderProduct> orderproductlist) {
       int result = this.orderSVC.createOrder(userid, orderproductlist);
       this.addOrderProducts(orderproductlist);
       if (userid >= 0 && orderproductlist != null) {

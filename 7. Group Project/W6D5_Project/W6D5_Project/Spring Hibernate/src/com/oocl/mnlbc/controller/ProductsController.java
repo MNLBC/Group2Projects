@@ -95,7 +95,7 @@ public class ProductsController {
     * @return boolean
     */
    @RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
-   public boolean removeProduct(@RequestParam int id) {
+   public boolean removeProduct(@RequestParam long id) {
       int result = this.prodSVC.removeProduct(id);
       if (id >= 0) {
          if (result != 1 || result == 0)

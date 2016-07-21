@@ -1,11 +1,15 @@
 package com.oocl.mnlbc.svc.impl;
 
+import java.util.List;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.OrdersDAO;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.OrdersSVC;
+import com.oocl.mnlbc.util.Timestamp;
 
 /**
  * 
@@ -19,12 +23,6 @@ public class OrdersSVCImpl implements OrdersSVC {
 
 	public void setOrderDAO(OrdersDAO orderDAO) {
 		this.orderDAO = orderDAO;
-	}
-
-	@Override
-	@Transactional
-	public int createOrder(Order order) {
-		return this.orderDAO.createOrder(order);
 	}
 
 	@Override
@@ -52,5 +50,21 @@ public class OrdersSVCImpl implements OrdersSVC {
 		// return this.orderDAO.getOrder(user);
 		return null;
 	}
+
+   @Override
+   @Transactional
+   public int createOrder(long userid, List<OrderProduct> orderproductlist) {
+      Order order = new Order();
+      order.setOrderDate(Timestamp.getTimestamp());
+      order.setUserId(userid);
+      return this.orderDAO.createOrder(order);
+   }
+
+   @Override
+   @Transactional
+   public List<Order> getOrdersByUser(long userid) {
+      // TODO Auto-generated method stub
+      return this.orderDAO.getOrdersByUser(userid);
+   }
 
 }

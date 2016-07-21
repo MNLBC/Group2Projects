@@ -20,4 +20,6 @@ public interface UserSVC {
 	public List<User> getUserByEmail(String email);
 
 	public int updateUser(User user);
+
+   public List<User> getAllUsers();
 }

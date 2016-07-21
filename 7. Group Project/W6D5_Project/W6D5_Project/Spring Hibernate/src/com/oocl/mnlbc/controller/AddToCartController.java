@@ -23,27 +23,27 @@ import com.oocl.mnlbc.svc.inf.OrdersSVC;
 @ResponseBody
 public class AddToCartController {
 
-   private CartProductSVC cartprodSVC;
-   
-   @Autowired(required = true)
-   @Qualifier(value = "cartProductService")
-   public void setProdService(CartProductSVC cartprodSVC) {
-      this.cartprodSVC = cartprodSVC;
-   }
-   
-   /**
-    * createOrder web service
-    * 
-    * @return boolean
-    */
-   @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-   public boolean addToCart(@RequestBody Product product) {
-      int result = this.cartprodSVC.addToCart(product);
-      if (product != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+//   private CartProductSVC cartprodSVC;
+//   
+//   @Autowired(required = true)
+//   @Qualifier(value = "cartProductService")
+//   public void setProdService(CartProductSVC cartprodSVC) {
+//      this.cartprodSVC = cartprodSVC;
+//   }
+//   
+//   /**
+//    * createOrder web service
+//    * 
+//    * @return boolean
+//    */
+//   @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
+//   public boolean addToCart(@RequestBody Product product) {
+//      int result = this.cartprodSVC.addToCart(product);
+//      if (product != null) {
+//         if (result != 1 || result == 0)
+//            return false;
+//         return true;
+//      }
+//      return false;
+//   }
 }

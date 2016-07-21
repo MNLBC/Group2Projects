@@ -69,4 +69,9 @@ public class UserSVCImpl implements UserSVC {
 		return this.userDAO.updateUser(user);
 	
 	}
+
+   @Override
+   public List<User> getAllUsers() {
+      return this.userDAO.getAllUsers();
+   }
 }
