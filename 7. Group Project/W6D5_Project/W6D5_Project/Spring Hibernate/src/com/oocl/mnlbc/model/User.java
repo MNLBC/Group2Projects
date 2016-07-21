@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**
  * @author Danna Soquiat
- *
+ *	@since 2016-07-21
  */
 @Entity
 @Table(name = "USERS")
@@ -30,6 +30,27 @@ public class User {
 	private String userAddress1;
 	private String userAddress2;
 	private String userSp;
+	private int userLevel;
+	private String userOccup;
+	
+
+	
+	public int getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(int userLevel) {
+		this.userLevel = userLevel;
+	}
+
+	public String getUserOccup() {
+		return userOccup;
+	}
+
+	public void setUserOccup(String userOccup) {
+		this.userOccup = userOccup;
+	}
+
 
 	public String getUserAddress1() {
 		return userAddress1;
