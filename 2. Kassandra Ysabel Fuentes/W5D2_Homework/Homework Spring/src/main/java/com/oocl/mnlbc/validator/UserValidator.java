@@ -14,7 +14,6 @@ import com.oocl.mnlbc.model.User;
 
 public class UserValidator implements Validator{
 
-	@Override
 	public boolean supports(Class clazz) {
 	
 		return User.class.isAssignableFrom(clazz);
@@ -46,7 +45,6 @@ public class UserValidator implements Validator{
 				"required.remark", "Field name is required.");
 	}
 	
-	@Override
 	public void validate(Object target, Errors errors) {
 		
 		validateUserDetailsForm(target, errors);
