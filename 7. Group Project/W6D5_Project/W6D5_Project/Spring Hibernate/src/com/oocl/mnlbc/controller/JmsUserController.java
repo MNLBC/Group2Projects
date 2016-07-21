@@ -19,12 +19,12 @@ import com.oocl.mnlbc.util.LogUtil;
  * @since 2016-07-21
  */
 @RestController
-public class JmsAdminController {
+public class JmsUserController {
 
-   @RequestMapping("/runAdminConsumer")
-   public int runAdminConsumer() {
+   @RequestMapping("/runUserConsumer")
+   public int runUserConsumer() {
       try {
-         JmsConsumer.startConsumer("adminTopic");
+         JmsConsumer.startConsumer("userTopic");
          return 1;
       } catch (Exception e) {
          LogUtil.logMsg(LogType.ERROR, "Error: " + e);
@@ -32,10 +32,10 @@ public class JmsAdminController {
       }
    }
 
-   @RequestMapping("/sendAdminMessage")
-   public int sendAdminMessage(@RequestParam("username") String username, @RequestParam("message") String message) {
+   @RequestMapping("/sendUserMessage")
+   public int sendUserMessage(@RequestParam("username") String username, @RequestParam("message") String message) {
       try {
-         JmsProducer.sendRequest("adminTopic", username, message);
+         JmsProducer.sendRequest("userTopic", username, message);
          return 1;
       } catch (Exception e) {
          LogUtil.logMsg(LogType.ERROR, "Error: " + e);
