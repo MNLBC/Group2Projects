@@ -31,8 +31,8 @@ public class CheckoutController {
    private OrderProductSVC orderprodSVC;
 
    @Autowired(required = true)
-   @Qualifier(value = "orderService")
-   public void setProdService(OrdersSVC orderSVC) {
+   @Qualifier(value = "ordersService")
+   public void setOrdersService(OrdersSVC orderSVC) {
       this.orderSVC = orderSVC;
    }
 
@@ -41,14 +41,15 @@ public class CheckoutController {
    public void setOrderProdService(OrderProductSVC orderprodSVC) {
       this.orderprodSVC = orderprodSVC;
    }
-   
+
    /**
     * createOrder web service
     * 
     * @return boolean
     */
    @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-   public boolean createOrder(@RequestParam("userid") long userid, @RequestParam("orderproductlist") List<OrderProduct> orderproductlist) {
+   public boolean createOrder(@RequestParam("userid") long userid,
+      @RequestParam("orderproductlist") List<OrderProduct> orderproductlist) {
       int result = this.orderSVC.createOrder(userid, orderproductlist);
       this.addOrderProducts(orderproductlist);
       if (userid >= 0 && orderproductlist != null) {
@@ -58,7 +59,7 @@ public class CheckoutController {
       }
       return false;
    }
-   
+
    /**
     * calls OrderProductSVCImpl to add Order Products to OrderProduct table
     * 
