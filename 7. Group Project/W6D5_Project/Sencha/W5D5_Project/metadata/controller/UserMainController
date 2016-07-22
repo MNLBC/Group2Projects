@@ -86,6 +86,7 @@
                     "\t\t\t\tcallback : function(options, success, response) {",
                     "\t\t\t\t\tif (!Ext.isEmpty(response.responseText)) {",
                     "\t\t\t\t\t\trecord = Ext.decode(response.responseText);",
+                    "                        record = record[0];",
                     "\t\t\t\t\t\tisExist = true;",
                     "\t\t\t\t\t\tif (record.userType == 'A') {",
                     "\t\t\t\t\t\t\tadmin1.show();",

@@ -86,6 +86,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         				callback : function(options, success, response) {
         					if (!Ext.isEmpty(response.responseText)) {
         						record = Ext.decode(response.responseText);
+                                record = record[0];
         						isExist = true;
         						if (record.userType == 'A') {
         							admin1.show();
