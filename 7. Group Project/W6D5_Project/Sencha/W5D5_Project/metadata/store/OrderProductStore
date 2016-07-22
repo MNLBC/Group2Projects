@@ -1,0 +1,39 @@
+{
+    "type": "jsonstore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OrderProductStore",
+        "model": "OrderProductModel",
+        "storeId": "OrderProductStore"
+    },
+    "name": "MyJsonStore",
+    "designerId": "bcb1e148-267f-4889-b2f9-2f406495be83",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "name": "MyAjaxProxy3",
+            "designerId": "190da2fa-75ba-4b26-9dce-1e992da911a8",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyJsonReader3",
+                    "designerId": "20288063-48a6-4fa8-abc3-af437478dc92"
+                }
+            ]
+        }
+    ]
+}

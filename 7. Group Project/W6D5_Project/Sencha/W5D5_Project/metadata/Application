@@ -22,7 +22,10 @@
             "CountryModel",
             "SPModel",
             "UserModel",
-            "UserTypeModel"
+            "UserTypeModel",
+            "OrdersModel",
+            "OrderProductModel",
+            "FavoriteItemsModel"
         ],
         "name": "W5D5_Project",
         "stores": [
@@ -33,7 +36,10 @@
             "CountryStore",
             "SPStore",
             "UserStore",
-            "ProductStore"
+            "ProductStore",
+            "FavoriteItemsStore",
+            "OrdersStore",
+            "OrderProductStore"
         ],
         "views": [
             "MainView",

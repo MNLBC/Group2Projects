@@ -27,7 +27,10 @@ Ext.application({
         'CountryModel',
         'SPModel',
         'UserModel',
-        'UserTypeModel'
+        'UserTypeModel',
+        'OrdersModel',
+        'OrderProductModel',
+        'FavoriteItemsModel'
     ],
     stores: [
         'ProductStoreB',
@@ -37,7 +40,10 @@ Ext.application({
         'CountryStore',
         'SPStore',
         'UserStore',
-        'ProductStore'
+        'ProductStore',
+        'FavoriteItemsStore',
+        'OrdersStore',
+        'OrderProductStore'
     ],
     views: [
         'MainView',
