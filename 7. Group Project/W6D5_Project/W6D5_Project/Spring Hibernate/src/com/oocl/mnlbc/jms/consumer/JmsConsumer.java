@@ -24,7 +24,7 @@ import com.oocl.mnlbc.util.Config;
  */
 public class JmsConsumer {
 
-   private static final String BROKER_URL = ActiveMQConnection.DEFAULT_BROKER_URL;
+   private static final String BROKER_URL = Config.getConfigValue("brokerUrl");
    private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;
    private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;
 
