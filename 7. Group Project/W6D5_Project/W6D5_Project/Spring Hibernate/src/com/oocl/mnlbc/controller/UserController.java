@@ -1,36 +1,18 @@
 package com.oocl.mnlbc.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.UserSVC;
-import com.oocl.mnlbc.util.LogType;
-import com.oocl.mnlbc.util.LogUtil;
-import com.oocl.mnlbc.validator.LoginValidator;
-import com.oocl.mnlbc.validator.RegisterValidator;
-
 /**
  * Handles web services for User
  * 
@@ -101,6 +83,17 @@ public class UserController {
          return true;
       }
       return false;
+	}
+   
+   @RequestMapping(value = "/updateToPremium", method = RequestMethod.POST)
+   public boolean updateToPremium(@RequestParam String email) {
+	   int result = this.userSVC.updateToPremium(email);
+	   if(result == 1){
+		   return true;
+	   }
+	   else{
+		   return false;
+	   }
 	}
 
 

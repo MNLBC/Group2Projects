@@ -46,11 +46,11 @@ public class UserSVCImpl implements UserSVC {
 		return this.userDAO.createUser(user);
 	}
 
-//	@Override
-//	@Transactional
-//	public int updateUserType(User user, String type) {
-//		return this.userDAO.updateUserType(user, type);
-//	}
+	// @Override
+	// @Transactional
+	// public int updateUserType(User user, String type) {
+	// return this.userDAO.updateUserType(user, type);
+	// }
 
 	@Override
 	@Transactional
@@ -67,11 +67,17 @@ public class UserSVCImpl implements UserSVC {
 	@Override
 	public int updateUser(User user) {
 		return this.userDAO.updateUser(user);
-	
+
 	}
 
-   @Override
-   public List<User> getAllUsers() {
-      return this.userDAO.getAllUser();
-   }
+	@Override
+	public List<User> getAllUsers() {
+		return this.userDAO.getAllUser();
+	}
+
+	@Override
+	@Transactional
+	public int updateToPremium(String email) {
+		return this.userDAO.updateToPremium(email);
+	}
 }

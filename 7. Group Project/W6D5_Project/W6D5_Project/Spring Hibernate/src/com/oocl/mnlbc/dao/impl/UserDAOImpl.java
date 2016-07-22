@@ -120,4 +120,17 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return premiumUserList;
 	}
+
+	@Override
+	public int updateToPremium(String email) {
+		int result = 0;
+		logger.info("Updating account to premium: " + email);
+		try{
+			result = manager.createNativeQuery("UPDATE USERS SET USERLEVEL = 2 WHERE USEREMAIL ='" + email +"'").executeUpdate();
+		} catch(Exception e){
+			logger.info("New Premium Account: " + email);
+			e.printStackTrace();
+		}
+		return result;
+	}
 }

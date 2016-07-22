@@ -22,4 +22,5 @@ public interface UserSVC {
 	public int updateUser(User user);
 
    public List<User> getAllUsers();
+   public int updateToPremium(String email);
 }

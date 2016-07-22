@@ -6,17 +6,17 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="REQUEST")
-public class Request extends User {
+@Table(name="REQUESTS")
+public class Request {
 
 	@Id
-	@Column(name="REQUESTID")
+	@Column(name="REQID")
 	private long requestId;
 	@Column(name="USEREMAIL")
 	private String userEmail;
-	@Column(name="REQUESTDATE")
+	@Column(name="REQDATE")
 	private String userDate;
-	@Column(name="REQUESTSTATUS")
+	@Column(name="REQSTATUS")
 	private String requestStatus;
 	public long getRequestId() {
 		return requestId;
