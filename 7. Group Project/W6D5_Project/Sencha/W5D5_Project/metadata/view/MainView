@@ -446,7 +446,7 @@
                                         "baseCls": null,
                                         "cls": null,
                                         "fieldCls": "textCls",
-                                        "fieldLabel": null,
+                                        "fieldLabel": "Number of Visitors",
                                         "id": "countField",
                                         "itemId": "countField",
                                         "labelCls": null,

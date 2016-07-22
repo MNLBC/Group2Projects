@@ -215,7 +215,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin2.hide();
                     userField.setValue('Visitor');
                     idField.setValue(0);
-                    countField.setValue(parseInt(0));
+                    countField.setValue(countField.getValue()-1);
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }

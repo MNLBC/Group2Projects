@@ -256,6 +256,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     flex: 0,
                                     id: 'countField',
                                     itemId: 'countField',
+                                    fieldLabel: 'Number of Visitors',
                                     value: 'Number of Visitors: 0',
                                     fieldCls: 'textCls'
                                 },

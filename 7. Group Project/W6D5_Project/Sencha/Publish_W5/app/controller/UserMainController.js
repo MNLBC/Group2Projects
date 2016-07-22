@@ -110,7 +110,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                 userField.setValue(record.userFname);
                                 idField.setValue(record.userId);
                                 addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
-                                countField.setValue(1);
+                                countField.setValue(countField.getValue()+1);
                             }
                         }
                     });
