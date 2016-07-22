@@ -144,59 +144,77 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var sp = Ext.getCmp('spRegCombo').getValue();
         var country = Ext.getCmp('countryRegCombo').getValue();
         var pass = Ext.getCmp('passRegField').getValue();
+        var occupation = Ext.getCmp('OccupRegField').getValue();
+        var premiumCode1 = Ext.getCmp('pCodeField').getValue();
+        var user;
 
         if(fname=='Scott'||fname=='John'){
             Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
             return;
         }
 
-        var user = {
+
+        Ext.Ajax.request({
+            url : "premiumRegister",
+            method: 'POST',
+            params : {
+                premiumCode: premiumCode1
+            },
+            async: false,
+            callback : function(options, success, response){
+                if(response.responseText==='success'){
+                    console.log('Valid code');
+                    user = {
             "userId":'',
             "userFname":fname,
             "userLname":lname,
             "userEmail":email,
+            "userPass":pass,
+            "userOccupation":occupation,
             "userAddress1":address1,
             "userAddress2":address2,
-            "userPass":pass,
             "userCity":city,
             "userSp":sp,
             "userCountry":country,
-            "userType":'C'
+            "userType":'C',
+            "userLevel":2
         };
+                }else{
+                    console.log('Invalid code');
+                    user = {
+            "userId":'',
+            "userFname":fname,
+            "userLname":lname,
+            "userEmail":email,
+            "userPass":pass,
+            "userOccupation":occupation,
+            "userAddress1":address1,
+            "userAddress2":address2,
+            "userCity":city,
+            "userSp":sp,
+            "userCountry":country,
+            "userType":'C',
+            "userLevel":1
+        };
+                }
+            }
+        });
 
 
         Ext.Ajax.request({
-            url : "createUser",
+            url : "register",
             method: 'POST',
             params : {
                 user: Ext.encode(user)
             },
+            async: false,
             jsonData: Ext.util.JSON.encode(user),
             callback : function(options, success, response){
                 if(response.responseText===''){
                     console.log('Failed :(');
                 }else{
                     console.log('Success! :)');
-                    Ext.MessageBox.show({
-                        msg: 'Saving your data, please wait...',
-                        progressText: 'Saving...',
-                        width:300,
-                        wait:true,
-                        waitConfig: {interval:200},
-                        icon:'ext-mb-download', //custom class in msg-box.html
-                        iconHeight: 50,
-                        animateTarget: 'register'
-                    });
-
-                    setTimeout(function(){
-                        Ext.MessageBox.hide();
-                        Ext.MessageBox.show({
-                            title: 'User Registration',
-                            msg: 'User "' + email + '" successfully registered!',
-                            buttons: Ext.MessageBox.OK
-                        });
-                    }, 1000);
-
+                    Ext.Msg.alert('User "' + email + '" successfully registered!');
                     main.hide();
                     home1.show();
                     home2.show();
