@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
 		return 1;
 	}
 	@Override
-	public List<User> getAllUser(long userId, String userFname, String userLname, String userEmail,String userAddress1, String userAddress2, String userSp, int userLevel,String userOccup) {
+	public List<User> getAllUser() {
 	
 	String sql = "SELECT user FROM USERS user";
 	List<User> allUserList = manager.createQuery(sql).getResultList();
