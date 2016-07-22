@@ -85,7 +85,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                     store.add(record);
                     Ext.Ajax.request({
                         url : "getAllProducts",
-                        method : 'POST',
+                        method : 'GET',
                         async : 'false',
                         callback : function(options, success, response) {
                             if (Ext.isEmpty(response.responseText)) {
