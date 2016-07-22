@@ -24,7 +24,6 @@ import com.oocl.mnlbc.validator.RegisterValidator;
  * @since 2016-07-21
  */
 @RestController
-@ResponseBody
 public class RegisterController {
 
 	private UserSVC userSVC;

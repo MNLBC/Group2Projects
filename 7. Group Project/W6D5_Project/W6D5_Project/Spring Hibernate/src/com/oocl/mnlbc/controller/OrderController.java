@@ -23,7 +23,6 @@ import com.oocl.mnlbc.svc.inf.OrdersSVC;
  * @date 07-15-2016
  */
 @RestController
-@ResponseBody
 public class OrderController {
 
    private OrdersSVC orderSVC;

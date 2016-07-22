@@ -56,20 +56,20 @@ public class ProductSVCImpl implements ProductSVC {
 	@Override
 	public int addProduct(Product p) {
 		// TODO Auto-generated method stub
-		return this.prodDAO.addProduct(p);
+		return this.prodDAO.add(p);
 	}
 
 	@Override
 	public int updateProduct(Product p) {
 		// TODO Auto-generated method stub
-		return this.prodDAO.updateProduct(p);
+		return this.prodDAO.update(p);
 	}
 
 	@Override
 	@Transactional
 	public int removeProduct(long id) {
 		// TODO Auto-generated method stub
-		return this.prodDAO.removeProduct(id);
+		return this.prodDAO.remove(id);
 	}
 
 //	public List<OrderProduct> getOrderProd(User user) {
