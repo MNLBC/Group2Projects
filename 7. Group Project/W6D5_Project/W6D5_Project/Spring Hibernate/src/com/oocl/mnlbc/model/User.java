@@ -21,6 +21,8 @@ public class User {
 
 	@Id
 	@Column(name = "USERID")
+	@SequenceGenerator(name = "user_seq", sequenceName = "USERS_SEQ4", allocationSize = 1)
+	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
 	private long userId;
 	@Column(name = "USERFNAME")
 	private String userFname;
