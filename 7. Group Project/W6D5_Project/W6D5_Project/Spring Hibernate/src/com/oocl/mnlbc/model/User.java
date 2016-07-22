@@ -31,7 +31,7 @@ public class User {
 	private String userAddress2;
 	private String userSp;
 	private int userLevel;
-	private String userOccup;
+	private String userOccupation;
 	
 
 	
@@ -43,12 +43,12 @@ public class User {
 		this.userLevel = userLevel;
 	}
 
-	public String getUserOccup() {
-		return userOccup;
+	public String getUserOccupation() {
+		return userOccupation;
 	}
 
-	public void setUserOccup(String userOccup) {
-		this.userOccup = userOccup;
+	public void setUserOccupation(String userOccup) {
+		this.userOccupation = userOccup;
 	}
 
 

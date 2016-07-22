@@ -56,7 +56,6 @@ public class FavoriteItemsDAOImpl implements FavoriteItemsDAO {
 	public int deleteFavoriteItem(long userId, long prodId) {
 		int result = 0;
 		try{
-			List<FavoriteItems> removeList = new ArrayList<FavoriteItems>();
 			result = manager.createNativeQuery("DELETE FROM FAVORITEITEMS WHERE USERID = '" + userId + "' "
 					+ "AND PRODID = '" + prodId + "'").executeUpdate();
 		} catch(Exception e){
@@ -69,7 +68,6 @@ public class FavoriteItemsDAOImpl implements FavoriteItemsDAO {
 	public int addFavoriteItem(long userId, long prodId) {
 		int result = 0;
 		try{
-			List<FavoriteItems> removeList = new ArrayList<FavoriteItems>();
 			result = manager.createNativeQuery("INSERT INTO FAVORITEITEMS(PRODID,USERID) VALUES('" + prodId + "','" + userId +"')").executeUpdate();
 		} catch(Exception e){
 			e.printStackTrace();

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -13,12 +12,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oocl.mnlbc.dao.impl.TempUserDAOImpl;
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
 
 /**
  * Servlet Filter implementation class BlacklistFilter
@@ -45,14 +43,13 @@ public class BlacklistFilter implements Filter {
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
 		String userEmail = req.getParameter("email");
+		
+		LogUtil.logMsg(LogType.INFO, "Filtering: " + userEmail);
 		
 		List<User> blacklist = new ArrayList<User>();
 		TempUserDAOImpl tempDAO = new TempUserDAOImpl();
-		tempDAO.init();
-		EntityManager em = tempDAO.getEntityManager();
-		blacklist = tempDAO.getBlacklist(em);
+		blacklist = tempDAO.getBlacklist();
 		boolean blacklisted = false;
 		
 		for(int i = 0; i < blacklist.size(); i++){
@@ -62,9 +59,10 @@ public class BlacklistFilter implements Filter {
 		}
 		
 		if(blacklisted == false){
+			LogUtil.logMsg(LogType.INFO, "Filtering success");
 			chain.doFilter(request, response);
 		} else{
-			
+			LogUtil.logMsg(LogType.WARN, "Blacklisted: " + userEmail);
 		}
 	}
 
