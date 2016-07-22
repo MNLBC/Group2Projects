@@ -1,0 +1,117 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "CartProductController",
+        "id": "cartProductController"
+    },
+    "name": "MyController",
+    "designerId": "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#cartProductGrid",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onCartProductGridDblClick",
+                "implHandler": [
+                    "if(Ext.isEmpty(this.cartProdWindow)){",
+                    " this.cartProdWindow = Ext.create('W5D5_Project.view.CartProductWindow');",
+                    "}",
+                    "Ext.getCmp('cartProductImg').setSrc('resources/img/' +record.data.prodImg + '.png');",
+                    "Ext.getCmp('cartProductNameField').setValue(record.data.prodName);",
+                    "Ext.getCmp('cartProductPriceField').setValue(record.data.prodPrice);",
+                    "Ext.getCmp('cartProductQtyField').setValue(record.data.prodQty);",
+                    "this.cartProdWindow.setTitle(record.data.prodName);",
+                    "this.cartProdWindow.show();"
+                ],
+                "name": "rowdblclick",
+                "scope": "me"
+            },
+            "name": "onCartProductGridDblClick",
+            "designerId": "ebb45b55-a7e9-432f-85f9-0fea9e2adb03"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#cartProductUpdateButton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onCartProductUpdateClick",
+                "implHandler": [
+                    "var prodId,prodQty,prodStore,selected;",
+                    "this.selected = selected;",
+                    "",
+                    "prodId = Ext.getCmp('cartProductGrid').getSelectionModel().selected.items[0].data.prodId;",
+                    "prodQty = Ext.getCmp('cartProductQtyField').getValue();",
+                    "prodStore = Ext.getStore('CartProductStore');",
+                    "",
+                    "Ext.each(prodStore.data.items,function(rec){",
+                    "    if(prodId==rec.data.prodId){",
+                    "        rec.data.prodQty = prodQty;",
+                    "        rec.data.prodSubtotal = rec.data.prodPrice * rec.data.prodSale * rec.data.prodQty;",
+                    "    }",
+                    "});",
+                    "Ext.getCmp('cartProductGrid').getView().refresh();",
+                    "Ext.Msg.alert(\"Success\",\"Quantity Sucessfully Updated!\");",
+                    "this.cartProdWindow.close();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCartProductUpdateClick",
+            "designerId": "a062c0c1-8812-41f9-8fc1-1ea73831a896"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#cartProductRemoveButton",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onCartProductRemoveClick",
+                "implHandler": [
+                    "var prodId,prodStore,selected,",
+                    "    recordToDelete='';",
+                    "this.selected = selected;",
+                    "",
+                    "prodId = Ext.getCmp('cartProductGrid').getSelectionModel().selected.items[0].data.prodId;",
+                    "prodStore = Ext.getStore('CartProductStore');",
+                    "",
+                    "Ext.each(prodStore.data.items,function(record){",
+                    "   if(prodId == record.data.prodId){",
+                    "       recordToDelete = record;",
+                    "   }",
+                    "});",
+                    "if(!Ext.isEmpty(recordToDelete)){",
+                    "    Ext.Msg.alert('Success', 'Item removed from cart');",
+                    "    Ext.getCmp('cartProductGrid').getView().refresh();",
+                    "    prodStore.remove(recordToDelete);",
+                    "}",
+                    "",
+                    "this.cartProdWindow.close();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCartProductRemoveClick",
+            "designerId": "b6b93451-8412-477d-b6b1-20723a15a945"
+        }
+    ]
+}

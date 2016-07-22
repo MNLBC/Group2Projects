@@ -1688,7 +1688,8 @@ Ext.define('W6D5_Project.view.MainView', {
                                                                                             id: 'fnameRegField',
                                                                                             fieldLabel: 'First Name',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z_\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -1738,6 +1739,14 @@ Ext.define('W6D5_Project.view.MainView', {
                                                                                             xtype: 'textfield',
                                                                                             id: 'address2RegField',
                                                                                             fieldLabel: 'Address 2'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            id: 'occupRegField',
+                                                                                            fieldLabel: 'Occupation',
+                                                                                            inputType: 'email',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -1805,14 +1814,198 @@ Ext.define('W6D5_Project.view.MainView', {
                                                 },
                                                 {
                                                     xtype: 'panel',
-                                                    flex: 0,
+                                                    flex: 1,
                                                     height: 25,
                                                     title: '',
+                                                    layout: {
+                                                        type: 'vbox',
+                                                        align: 'stretch'
+                                                    },
                                                     items: [
                                                         {
                                                             xtype: 'displayfield',
                                                             fieldLabel: '',
-                                                            value: 'Account Info'
+                                                            value: 'Account Info',
+                                                            fieldCls: 'textCls'
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'form',
+                                                                    height: 602,
+                                                                    id: 'accForm',
+                                                                    itemId: 'accForm',
+                                                                    width: 397,
+                                                                    bodyPadding: 10,
+                                                                    title: '',
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accFirstName',
+                                                                            itemId: 'accFirstName',
+                                                                            fieldLabel: 'First Name',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'First Name'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accLastName',
+                                                                            itemId: 'accLastName',
+                                                                            fieldLabel: 'Last Name',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'Last Name'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accAddress1',
+                                                                            itemId: 'accAddress1',
+                                                                            fieldLabel: 'Address1',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'Address Line 1'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accAddress2',
+                                                                            itemId: 'accAddress2',
+                                                                            fieldLabel: 'Address2',
+                                                                            emptyText: 'Address Line 2'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'combobox',
+                                                                            anchor: '100%',
+                                                                            id: 'accCountry',
+                                                                            itemId: 'accCountry',
+                                                                            fieldLabel: 'Country',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'Country',
+                                                                            displayField: 'CountryName',
+                                                                            queryMode: 'local',
+                                                                            store: 'CountryStore'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'combobox',
+                                                                            anchor: '100%',
+                                                                            id: 'accCity',
+                                                                            itemId: 'accCity',
+                                                                            fieldLabel: 'City',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'City',
+                                                                            displayField: 'CountryName',
+                                                                            queryMode: 'local',
+                                                                            store: 'CountryStore'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'combobox',
+                                                                            anchor: '100%',
+                                                                            id: 'accSp',
+                                                                            itemId: 'accSp',
+                                                                            fieldLabel: 'State/Province',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'State or Province',
+                                                                            displayField: 'SP',
+                                                                            queryMode: 'local',
+                                                                            store: 'SPStore'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accOccupation',
+                                                                            itemId: 'accOccupation',
+                                                                            fieldLabel: 'Occupation',
+                                                                            emptyText: 'N/A'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accEmail',
+                                                                            itemId: 'accEmail',
+                                                                            fieldLabel: 'Email',
+                                                                            inputType: 'email',
+                                                                            emptyText: 'example@example.com'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accPassword',
+                                                                            itemId: 'accPassword',
+                                                                            fieldLabel: 'Password',
+                                                                            inputType: 'password',
+                                                                            emptyText: 'Password'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accFirstName1',
+                                                                            itemId: 'accFirstName1',
+                                                                            fieldLabel: 'Account Type',
+                                                                            value: 'Normal User'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 39,
+                                                                                    id: 'accUpdateBtn',
+                                                                                    itemId: 'accUpdateBtn',
+                                                                                    width: 107,
+                                                                                    text: 'UPDATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    height: 39,
+                                                                                    width: 33
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 39,
+                                                                                    id: 'accPremBtn',
+                                                                                    itemId: 'accPremBtn',
+                                                                                    width: 236,
+                                                                                    text: 'APPLY FOR PREMIUM'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 }

@@ -62,7 +62,7 @@ Ext.define('W6D5_Project.controller.UserMgmtController', {
     },
 
     onUserInfoGridSelectionChange: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
+                var controller = W6D5_Project.app.getController('UserMgmtController');
                 var grid = Ext.getCmp('userInfoGrid');
                 var selected = grid.getSelectionModel().selected.items[0].data;
                 controller.setUserFormValues(selected);
@@ -83,12 +83,12 @@ Ext.define('W6D5_Project.controller.UserMgmtController', {
     },
 
     onUserResetBtnClick: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
+                var controller = W6D5_Project.app.getController('UserMgmtController');
                 controller.UserResetFormValues();
     },
 
     onUserUpdateBtnClick: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
+                var controller = W6D5_Project.app.getController('UserMgmtController');
                 var store = Ext.getStore('UserStore');
                 var user = controller.getUserFormValues();
                 var id = Ext.getCmp('userIdField').getValue();
@@ -126,7 +126,7 @@ Ext.define('W6D5_Project.controller.UserMgmtController', {
     },
 
     onUserCreateBtnClick: function() {
-        var controller = W5D5_Project.app.getController('UserMgmtController');
+        var controller = W6D5_Project.app.getController('UserMgmtController');
                 var store = Ext.getStore('UserStore');
                 var user = controller.getUserFormValues();
                 store.add(user);
@@ -168,7 +168,7 @@ Ext.define('W6D5_Project.controller.UserMgmtController', {
     },
 
     onUserDeleteBtnClick: function() {
-                        var controller = W5D5_Project.app.getController('UserMgmtController');
+                        var controller = W6D5_Project.app.getController('UserMgmtController');
                         var store = Ext.getStore('UserStore');
                         var id = Ext.getCmp('userIdField').getValue();
 

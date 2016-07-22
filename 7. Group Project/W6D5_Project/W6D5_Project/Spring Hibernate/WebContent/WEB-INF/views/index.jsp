@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>W5D5_Project</title>
+    <title>W6D5_Project</title>
     <script>
         var Ext = Ext || {};
         Ext.theme = {

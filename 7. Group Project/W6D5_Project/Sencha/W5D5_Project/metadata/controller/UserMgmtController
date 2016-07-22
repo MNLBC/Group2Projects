@@ -1,0 +1,436 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "UserMgmtController",
+        "id": "userMgmtController"
+    },
+    "name": "MyController",
+    "designerId": "989fc48a-7112-4705-ba58-0de4da28a18a",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userCountryCombo",
+                "designer|targetType": "MyComboBox1",
+                "fn": "onUserCountryComboChange",
+                "implHandler": [
+                    "var state = Ext.getStore('SPStore');",
+                    "var country = Ext.getCmp('userCountryCombo').value;",
+                    "state.filter('CountryName', country);"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onUserCountryComboChange",
+            "designerId": "4df03e20-e3e5-4313-9f8d-cd50301ee257"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userInfoGrid",
+                "designer|targetType": "MyGridPanel",
+                "fn": "onUserInfoGridSelectionChange",
+                "implHandler": [
+                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var grid = Ext.getCmp('userInfoGrid');",
+                    "        var selected = grid.getSelectionModel().selected.items[0].data;",
+                    "        controller.setUserFormValues(selected);"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onUserInfoGridSelectionChange",
+            "designerId": "9c4f0f29-668d-4e0c-96a6-8d2f4a749c35"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "user"
+                ],
+                "fn": "setUserFormValues",
+                "implHandler": [
+                    "Ext.getCmp('userIdField').setValue(user.userId);",
+                    "Ext.getCmp('userFnameField').setValue(user.userFname);",
+                    "Ext.getCmp('userLnameField').setValue(user.userLname);",
+                    "Ext.getCmp('userEmailField').setValue(user.userEmail);",
+                    "Ext.getCmp('userPassField').setValue(user.userPass);",
+                    "Ext.getCmp('userTypeCombo').setValue(user.userType);",
+                    "Ext.getCmp('userAddress1Field').setValue(user.userAddress1);",
+                    "Ext.getCmp('userAddress2Field').setValue(user.userAddress2);",
+                    "Ext.getCmp('userCityField').setValue(user.userCity);",
+                    "Ext.getCmp('userSPCombo').setValue(user.userSP);",
+                    "Ext.getCmp('userCountryCombo').setValue(user.userCountry);"
+                ]
+            },
+            "name": "setUserFormValues",
+            "designerId": "7bd83669-54bd-424c-97f8-1047289f52d4"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getUserFormValues",
+                "implHandler": [
+                    "var store = Ext.getStore('UserStore');",
+                    "var userId = Ext.getCmp('userIdField').getValue();",
+                    "var userFname = Ext.getCmp('userFnameField').getValue();",
+                    "var userLname = Ext.getCmp('userLnameField').getValue();",
+                    "var userEmail = Ext.getCmp('userEmailField').getValue();",
+                    "var userPass = Ext.getCmp('userPassField').getValue();",
+                    "var userAddress1 = Ext.getCmp('userAddress1Field').getValue();",
+                    "var userAddress2 = Ext.getCmp('userAddress2Field').getValue();",
+                    "var userPass = Ext.getCmp('userPassField').getValue();",
+                    "var userCity = Ext.getCmp('userCityField').getValue();",
+                    "var userSP = Ext.getCmp('userSPCombo').getValue();",
+                    "var userCountry = Ext.getCmp('userCountryCombo').getValue();",
+                    "var userType = Ext.getCmp('userTypeCombo').getValue();",
+                    "",
+                    "",
+                    "if (store.getCount() > 0)",
+                    "{",
+                    "    var maxId = store.getAt(0).get('userId'); // initialise to the first record's id value.",
+                    "    store.each(function(rec) // go through all the records",
+                    "               {",
+                    "                   maxId = Math.max(maxId, rec.get('userId'));",
+                    "               });",
+                    "}",
+                    "",
+                    "userId = maxId + 1;",
+                    "",
+                    "",
+                    "var user = {",
+                    "    \"userId\":userId,",
+                    "    \"userFname\":userFname,",
+                    "    \"userLname\":userLname,",
+                    "    \"userEmail\":userEmail,",
+                    "    \"userAddress1\":userAddress1,",
+                    "    \"userAddress2\":userAddress2,",
+                    "    \"userPass\":userPass,",
+                    "    \"userCity\":userCity,",
+                    "    \"userSP\":userSP,",
+                    "    \"userCountry\":userCountry,",
+                    "    \"userType\":userType",
+                    "};",
+                    "",
+                    "return user;"
+                ]
+            },
+            "name": "getUserFormValues",
+            "designerId": "cf507cbc-8a88-4837-b31e-28f2f979455c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#UserMgmtResetBtn",
+                "designer|targetType": "MyButton5",
+                "fn": "onUserMgmtResetBtnClick",
+                "implHandler": [
+                    "        var search = Ext.getCmp('userMgmtSearchField').setValue('');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserMgmtResetBtnClick",
+            "designerId": "6feb6efa-bdf1-4558-91bd-940233ccc74e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "UserResetFormValues",
+                "implHandler": [
+                    "        Ext.getCmp('userIdField').setValue('');",
+                    "        Ext.getCmp('userFnameField').setValue('');",
+                    "        Ext.getCmp('userLnameField').setValue('');",
+                    "        Ext.getCmp('userEmailField').setValue('');",
+                    "        Ext.getCmp('userAddress1Field').setValue('');",
+                    "        Ext.getCmp('userAddress2Field').setValue('');",
+                    "        Ext.getCmp('userCityField').setValue('');",
+                    "        Ext.getCmp('userSPCombo').setValue('');",
+                    "        Ext.getCmp('userCountryCombo').setValue('');",
+                    "        Ext.getCmp('userPassField').setValue('');",
+                    "        Ext.getCmp('userTypeCombo').setValue('');"
+                ]
+            },
+            "name": "UserResetFormValues",
+            "designerId": "201ecd72-28ee-499f-b101-5ceab7d2ef13"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userMgmtSearchBtn",
+                "designer|targetType": "MyButton4",
+                "fn": "onUserMgmtSearchBtnClick",
+                "implHandler": [
+                    "     var searchVal = Ext.getCmp('userMgmtSearchField').getValue();",
+                    "     var store = Ext.getStore('UserStore');",
+                    "            if(Ext.isEmpty(searchVal)){",
+                    "                store.clearFilter();",
+                    "            }else{",
+                    "                store.filter('userFname', searchVal);",
+                    "            }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserMgmtSearchBtnClick",
+            "designerId": "9b52a091-9bbb-401c-a9b6-ac3418877a91"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#UserResetBtn",
+                "designer|targetType": "MyButton1",
+                "fn": "onUserResetBtnClick",
+                "implHandler": [
+                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        controller.UserResetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserResetBtnClick",
+            "designerId": "d0f86c42-bcd0-4376-8592-115abd0c66d6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userUpdateBtn",
+                "designer|targetType": "MyButton3",
+                "fn": "onUserUpdateBtnClick",
+                "implHandler": [
+                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var store = Ext.getStore('UserStore');",
+                    "        var user = controller.getUserFormValues();",
+                    "        var id = Ext.getCmp('userIdField').getValue();",
+                    "        var grid = Ext.getCmp('userInfoGrid');",
+                    "",
+                    "                        if(Ext.isEmpty(id)){",
+                    "                            Ext.Msg.show({",
+                    "                            title:'',",
+                    "                            msg: 'Please select a record to update.',",
+                    "                            buttons: Ext.Msg.OK,",
+                    "                            icon: Ext.Msg.WARNING",
+                    "                        });",
+                    "                        }else{",
+                    "                            Ext.each(store.data.items, function(rec){",
+                    "            if(rec.data.userId == id){",
+                    "                rec.data.userFname = user.userFname;",
+                    "                rec.data.userLname = user.userLname;",
+                    "                rec.data.userEmail = user.userEmail;",
+                    "                rec.data.userAddress1 = user.userAddress1;",
+                    "                rec.data.userAddress2 = user.userAddress2;",
+                    "                rec.data.userPass = user.userPass;",
+                    "                rec.data.userCity = user.userCity;",
+                    "                rec.data.userSP = user.userSP;",
+                    "                rec.data.userCountry = user.userCountry;",
+                    "                rec.data.userType = user.userType;",
+                    "            }",
+                    "        });",
+                    "                        }",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "        controller.UserResetFormValues();",
+                    "        grid.getView().refresh();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserUpdateBtnClick",
+            "designerId": "ac30cb95-9ed6-4918-aa77-3f13445473e9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userCreateBtn",
+                "designer|targetType": "MyButton2",
+                "fn": "onUserCreateBtnClick",
+                "implHandler": [
+                    "var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var store = Ext.getStore('UserStore');",
+                    "        var user = controller.getUserFormValues();",
+                    "        store.add(user);",
+                    "        controller.UserResetFormValues();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserCreateBtnClick",
+            "designerId": "fd9c2562-db12-4cd5-be5d-4a224d1a7bad"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userMgmtCreateBtn",
+                "designer|targetType": "MyButton6",
+                "fn": "onUserMgmtCreateBtnClick",
+                "implHandler": [
+                    "var userGrid = this.getUserInfoGrid();",
+                    "var userStore = userGrid.getStore();",
+                    "",
+                    "var userModel = Ext.create('UserManagement.model.UserModel');",
+                    "userModel.set(\"userFname\", \"First Name\");",
+                    "userModel.set(\"userLname\", \"Last Name\");",
+                    "userModel.set(\"userEmail\", \"Email\");",
+                    "userModel.set(\"userPass\", \"Password\");",
+                    "userModel.set(\"userAddress1\", \"Address 1\");",
+                    "userModel.set(\"userAddress2\", \"Address 2\");",
+                    "userModel.set(\"userSP\", \"State/Province\");",
+                    "userModel.set(\"userCity\", \"City\");",
+                    "userModel.set(\"userCountry\", \"Country\");",
+                    "userModel.set(\"userType\", \"Customer\");",
+                    "",
+                    "userStore.add(userModel);",
+                    "",
+                    "userGrid.editingPlugin.startEdit(userModel, 1);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserMgmtCreateBtnClick",
+            "designerId": "1e548f89-4610-4853-9bb0-55c16b716d69"
+        },
+        {
+            "type": "controllerref",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "ref": "userInfoGrid",
+                "selector": "#userInfoGrid"
+            },
+            "name": "userInfoGrid",
+            "designerId": "b489f92c-30fd-4643-9667-e4016ce968fc"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userMgmtDeleteBtn",
+                "designer|targetType": "MyButton7",
+                "fn": "onUserMgmtDeleteBtnClick",
+                "implHandler": [
+                    "         var userGrid = this.getUserInfoGrid();",
+                    "                var userStore = userGrid.getStore();",
+                    "",
+                    "                //delete selected rows if selModel is checkboxmodel",
+                    "                var selectedRows = userGrid.getSelectionModel().getSelection();",
+                    "",
+                    "                if (selectedRows.length)",
+                    "                    userStore.remove(selectedRows);",
+                    "                else",
+                    "                    Ext.Msg.alert('Status', 'Please select at least one record to delete!');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserMgmtDeleteBtnClick",
+            "designerId": "2a67afa8-f68c-4c2b-aac0-5c694f663a8a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userDeleteBtn",
+                "designer|targetType": "MyButton",
+                "fn": "onUserDeleteBtnClick",
+                "implHandler": [
+                    "                var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "                var store = Ext.getStore('UserStore');",
+                    "                var id = Ext.getCmp('userIdField').getValue();",
+                    "",
+                    "                if(Ext.isEmpty(id)){",
+                    "                    Ext.Msg.show({",
+                    "                    title:'',",
+                    "                    msg: 'Please select a record to delete.',",
+                    "                    buttons: Ext.Msg.OK,",
+                    "                    icon: Ext.Msg.WARNING",
+                    "                });",
+                    "                }else{",
+                    "                   Ext.each(store.data.items, function(rec){",
+                    "                    if(rec.data.userId == id){",
+                    "                        controller.UserResetFormValues();",
+                    "                        store.remove(rec);",
+                    "                    }",
+                    "                  });",
+                    "                }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserDeleteBtnClick",
+            "designerId": "13896761-5a27-4901-8d88-15121d18c5b3"
+        }
+    ]
+}

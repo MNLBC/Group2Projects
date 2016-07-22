@@ -16,9 +16,9 @@ import com.oocl.mnlbc.model.User;
 /**
  * 
  * @author Danna Soquiat
- * @since 2016-07-16 
+ * @since 2016-07-16
  * 
- * DAO Implementation for USER TABLE
+ *        DAO Implementation for USER TABLE
  *
  */
 
@@ -27,10 +27,9 @@ import com.oocl.mnlbc.model.User;
 public class UserDAOImpl implements UserDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(UserDAOImpl.class);
-	
+
 	@PersistenceContext
 	private EntityManager manager;
-	
 
 	@Override
 	public int createUser(User user) {
@@ -38,80 +37,71 @@ public class UserDAOImpl implements UserDAO {
 		logger.info("User saved successfully! User Details=" + user);
 		return 1;
 	}
+
 	@Override
 	public List<User> getAllUser() {
-	
-	String sql = "SELECT user FROM USERS user";
-	List<User> allUserList = manager.createQuery(sql).getResultList();
-	for (User allUser : allUserList) {
-		logger.info("User Email List:" + allUser);
+
+		String sql = "SELECT user FROM User user";
+		List<User> allUserList = manager.createQuery(sql).getResultList();
+		for (User allUser : allUserList) {
+			logger.info("User Email List:" + allUser);
+		}
+		return allUserList;
 	}
-	return allUserList;
-}
-		
 
 	@Override
 	public User getUser(String email, String password) {
-		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM USERS user" + " WHERE user.USEREMAIL='" + email + "' AND user.USERPASS='" + password + "'";
+		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM User user" + " WHERE user.userEmail='" + email
+				+ "' AND user.userPass='" + password + "'";
 		User user = manager.createQuery(sql, User.class).getSingleResult();
-		
-//		User user = (User) session	.createQuery(sql).uniqueResult();
 
 		logger.info("User email and password" + email + password);
 		return user;
 	}
+
 	@Override
 	public List<User> getUserByEmail(String email) {
-		String sql = "SELECT useremail FROM USERS useremail" + "WHERE useremail.USEREMAIL='" + email + "'";
+		String sql = "SELECT useremail FROM User useremail" + "WHERE useremail.userEmail='" + email + "'";
 		List<User> userEmailList = manager.createQuery(sql).getResultList();
 		for (User userEmail : userEmailList) {
 			logger.info("User Email List:" + userEmail);
 		}
 		return userEmailList;
 	}
+
 	@Override
 	public List<User> getUserBlackList() {
-		String sql = "SELECT user FROM USERS user WHERE user.USERTYPE='BLACKLIST'";
+		String sql = "SELECT user FROM User user WHERE user.userType='BLACKLIST'";
 		List<User> blackList = manager.createQuery(sql).getResultList();
 		for (User userblacklist : blackList) {
 			logger.info("Blacklisted user:" + userblacklist);
 		}
 		return blackList;
 	}
+
 	@Override
 	public int updateUser(User user) {
 
-//		Session session = this.sessionFactory.getCurrentSession();
-//		session.update(user);
-//		logger.info("User updated successfully! User details:" + user);
-//		return 1;
-		
 		User newUser = manager.find(User.class, user.getUserId());
 		newUser = user;
 		logger.info("Product updated successfully!=" + newUser);
 		return 1;
 	}
+
 	@Override
 	public int deleteUser(long id) {
-//		Session session = this.sessionFactory.getCurrentSession();
-//		User user = (User) session.load(User.class, new Long(id));
-//
-//		if (null != user) {
-//			session.delete(user);
-			
-			
-			User deletedUser = manager.find(User.class, id);
-			manager.remove(deletedUser);
-			logger.info("User deleted successfully!=" + deletedUser);
-			return 1;
+
+		User deletedUser = manager.find(User.class, id);
+		manager.remove(deletedUser);
+		logger.info("User deleted successfully!=" + deletedUser);
+		return 1;
 
 	}
 
 	@Override
 	public boolean validateUser(String email) {
-		String sql = "SELECT user FROM USERS user" + "WHERE user.USEREMAIL='" + email + "'";
+		String sql = "SELECT user FROM User user" + "WHERE user.userEmail='" + email + "'";
 		User user = (User) manager.createQuery(sql).getSingleResult();
-		
 
 		if (user != null) {
 			return true;
@@ -120,14 +110,14 @@ public class UserDAOImpl implements UserDAO {
 		logger.info("User email address is:" + email);
 		return false;
 	}
-	
+
 	@Override
 	public List<User> getPremiumUser() {
-		String sql = "SELECT premiumuser FROM USERS premiumuser WHERE premiumuser.USERLEVEL=2";
+		String sql = "SELECT premiumuser FROM User premiumuser WHERE premiumuser.userLevel=2";
 		List<User> premiumUserList = manager.createQuery(sql).getResultList();
 		for (User premiumUser : premiumUserList) {
 			logger.info("Premium User List:" + premiumUserList);
 		}
 		return premiumUserList;
-	}		
+	}
 }

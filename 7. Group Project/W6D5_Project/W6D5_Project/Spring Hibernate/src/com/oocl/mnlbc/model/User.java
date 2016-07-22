@@ -20,22 +20,35 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "userId")
+	@Column(name = "USERID")
 	@SequenceGenerator(name = "user_seq", sequenceName = "USERS_SEQ4", allocationSize = 1)
 	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
 	private long userId;
+	@Column(name = "USERFNAME")
 	private String userFname;
+	@Column(name = "USERLNAME")
 	private String userLname;
+	@Column(name = "USEREMAIL")
 	private String userEmail;
+	@Column(name = "USERADDRESS1")
 	private String userAddress1;
+	@Column(name = "USERADDRESS2")
 	private String userAddress2;
+	@Column(name = "USERSP")
 	private String userSp;
+	@Column(name = "USERLEVEL")
 	private int userLevel;
+	@Column(name = "USEROCCUPATION")
 	private String userOccupation;
+	@Column(name = "USERCITY")
 	private String userCity;
+	@Column(name = "USERCOUNTRY")
 	private String userCountry;
+	@Column(name = "USERPASS")
 	private String userPass;
+	@Column(name = "USERTYPE")
 	private String userType;
+
 
 	/**
 	 * @return the userId

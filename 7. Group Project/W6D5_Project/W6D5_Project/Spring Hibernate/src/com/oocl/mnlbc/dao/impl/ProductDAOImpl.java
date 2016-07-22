@@ -53,7 +53,13 @@ public class ProductDAOImpl implements ProductDAO {
 	public int updateProduct(Product product) {
 
 		Product newProduct = manager.find(Product.class, product.getProdId());
-		newProduct = product;
+		newProduct.setProdCat(product.getProdCat());
+		newProduct.setProdDesc(product.getProdDesc());
+		newProduct.setProdImg(product.getProdImg());
+		newProduct.setProdName(product.getProdName());
+		newProduct.setProdPrice(product.getProdPrice());
+		newProduct.setProdSale(product.getProdSale());
+		newProduct.setProdStock(product.getProdStock());
 		logger.info("Product updated successfully!=" + newProduct);
 		return 1;
 	}
@@ -61,7 +67,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductByCategory(String category) {
 
-		String sql = "Select products From Product products where product.PRODCAT = '" + category + "'";
+		String sql = "Select products From Product products where product.prodCat = '" + category + "'";
 		List<Product> productList = manager.createQuery(sql).getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);

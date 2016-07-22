@@ -1,0 +1,481 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "MainController",
+        "id": "mainController"
+    },
+    "name": "MyController",
+    "designerId": "6381b4e0-18f9-467d-b71c-8ab953a1507c",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#menuBtn",
+                "designer|targetType": "MyButton",
+                "fn": "onMenuBtnClick",
+                "implHandler": [
+                    "var menu = Ext.getCmp('menuPanel'),",
+                    "    btn = Ext.getCmp('menuBtn');",
+                    "if(menu.hidden){",
+                    "//     btn.update({cls: 'actmenuBtnCls'});",
+                    "    menu.show();",
+                    "}else{",
+                    "//     btn.update({cls: 'menuBtnCls'});",
+                    "    menu.hide();",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onMenuBtnClick",
+            "designerId": "034752c8-7d96-4e33-80de-03650e65e680"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#cartBtn",
+                "designer|targetType": "MyButton1",
+                "fn": "onCartBtnClick",
+                "implHandler": [
+                    "var cart = Ext.getCmp('cartPanel');",
+                    "if(cart.hidden){",
+                    "    cart.show();",
+                    "}else{",
+                    "    cart.hide();",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCartBtnClick",
+            "designerId": "6c6c2f18-a632-4d1f-8b5d-1687737c2f71"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#digitalBtn",
+                "designer|targetType": "MyButton2",
+                "fn": "onDigitalBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('digitalPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();",
+                    "controller.addProductsToPage('digital');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onDigitalBtnClick",
+            "designerId": "7e7b7f9a-1111-4dca-8eea-c51a970132d1"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#luxuryBtn",
+                "designer|targetType": "MyButton3",
+                "fn": "onLuxuryBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('luxuryPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();",
+                    "controller.addProductsToPage('luxury');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onLuxuryBtnClick",
+            "designerId": "cdfac957-b059-4712-9ea3-fbe25e289750"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#casualBtn",
+                "designer|targetType": "MyButton4",
+                "fn": "onCasualBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('casualPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();",
+                    "controller.addProductsToPage('casual');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCasualBtnClick",
+            "designerId": "872166cf-be38-4ea1-9908-8745a1bf25e6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#sportsBtn",
+                "designer|targetType": "MyButton5",
+                "fn": "onSportsBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('sportsPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();",
+                    "controller.addProductsToPage('sports');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onSportsBtnClick",
+            "designerId": "c01d6dc4-a769-4802-9032-fd3094effa4e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#dressBtn",
+                "designer|targetType": "MyButton6",
+                "fn": "onDressBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('dressPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "// controller.clearItems();",
+                    "controller.addProductsToPage('dress');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onDressBtnClick",
+            "designerId": "f19dd383-5aab-45d3-8fa0-ef68f4815218"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#menuPanel",
+                "designer|targetType": "MyPanel7",
+                "fn": "onMenuPanelBlur",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "panel.hide();"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "name": "onMenuPanelBlur",
+            "designerId": "d81fe33b-1e7b-4f13-af78-1052aa86689a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#menuCont",
+                "designer|targetType": "MyContainer11",
+                "fn": "onMenuContBlur",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "panel.hide();"
+                ],
+                "name": "blur",
+                "scope": "me"
+            },
+            "name": "onMenuContBlur",
+            "designerId": "f4d856bf-3633-406b-9785-0be541189db9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#prodMgmtBtn",
+                "designer|targetType": "MyButton11",
+                "fn": "onProdMgmtBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('productPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onProdMgmtBtnClick",
+            "designerId": "a1bf0ba4-fb4d-47ce-817c-7d2946c03720"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#checkOutBtn",
+                "designer|targetType": "MyButton12",
+                "fn": "onCheckOutBtnClick",
+                "implHandler": [
+                    "var store = Ext.getStore('CartProductStore'),",
+                    "    total = 0, count = 0,",
+                    "    address = Ext.getCmp('addField'),",
+                    "    scope = this;",
+                    "Ext.each(store.data.items, function(rec){",
+                    "    count = count + rec.data.prodQty;",
+                    "    total = total + rec.data.prodSubtotal;",
+                    "});",
+                    "",
+                    "Ext.Msg.show({",
+                    "    title:'Confirm Checkout',",
+                    "    message: 'Are you sure you want to check out?',",
+                    "    buttons: Ext.Msg.YESNO,",
+                    "    icon: Ext.Msg.QUESTION,",
+                    "    fn: function(btn) {",
+                    "        if (btn === 'yes') {",
+                    "            console.log('Yes pressed');",
+                    "            if(Ext.isEmpty(scope.orderWin)){",
+                    "             scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');",
+                    "            }",
+                    "            Ext.getCmp('sumAdd').setValue(address.getValue());",
+                    "            Ext.getCmp('sumAmount').setValue(total);",
+                    "            Ext.getCmp('sumProds').setValue(count);",
+                    "            scope.orderWin.show();",
+                    "        } else if (btn === 'no') {",
+                    "            console.log('No pressed');",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onCheckOutBtnClick",
+            "designerId": "0a4c1963-e5b6-429a-8b54-69e784391d94"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#logoutBtn",
+                "designer|targetType": "MyButton13",
+                "fn": "onLogoutBtnClick",
+                "implHandler": [
+                    "Ext.Msg.show({",
+                    "    title:'Confirm Logout',",
+                    "    message: 'Are you sure you want to log out?',",
+                    "    buttons: Ext.Msg.YESNO,",
+                    "    icon: Ext.Msg.QUESTION,",
+                    "    fn: function(btn) {",
+                    "        if (btn === 'yes') {",
+                    "            console.log('Yes pressed');",
+                    "            var home1 = Ext.getCmp('headerPanel');",
+                    "            var home2 = Ext.getCmp('subHeaderPanel');",
+                    "            var home3 = Ext.getCmp('categoryPanel');",
+                    "            var admin1 = Ext.getCmp('userMgmtBtn');",
+                    "            var admin2 = Ext.getCmp('prodMgmtBtn');",
+                    "            var panel = Ext.getCmp('mainTabPanel');",
+                    "            var tab = Ext.getCmp('setPanel');",
+                    "            var userField = Ext.getCmp('userField');",
+                    "            var countField = Ext.getCmp('countField'),",
+                    "                idField = Ext.getCmp('idField');",
+                    "            panel.setActiveTab(tab);",
+                    "            var controller = W5D5_Project.app.getController('ShopController');",
+                    "            controller.clearItems();",
+                    "            controller.addProductsToPage('digital');",
+                    "            home1.hide();",
+                    "            home2.hide();",
+                    "            home3.hide();",
+                    "            admin1.hide();",
+                    "            admin2.hide();",
+                    "            userField.setValue('Visitor');",
+                    "            idField.setValue(0);",
+                    "            countField.setValue(parseInt(0));",
+                    "        } else if (btn === 'no') {",
+                    "            console.log('No pressed');",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onLogoutBtnClick",
+            "designerId": "4b25374b-4591-41c4-9b5c-5bff52b94a4d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userMgmtBtn",
+                "designer|targetType": "MyButton10",
+                "fn": "onUserMgmtBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('userPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserMgmtBtnClick",
+            "designerId": "0e70ec80-b34c-4cc5-a168-5c8ecd99999e"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderConfirm",
+                "designer|targetType": "MyButton8",
+                "fn": "onOrderConfirmClick",
+                "implHandler": [
+                    "var items =[];",
+                    "",
+                    "if(!Ext.isEmpty(this.orderWin)){",
+                    "    this.orderWin.hide();",
+                    "}",
+                    "Ext.Msg.alert(\"Order Success!\", \"Your order has been processed! Please wait for your items to be delivered.\");",
+                    "var store = Ext.getStore('CartProductStore');",
+                    "Ext.each(store.data.items,function(rec){",
+                    "    items.push(Ext.encode(rec.data));",
+                    "});",
+                    "",
+                    "store.removeAll();",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url : \"checkout\",",
+                    "    method : \"GET\",",
+                    "    params : {",
+                    "        userid: Ext.getCmp('idField').getValue(),",
+                    "        cartprod: Ext.util.JSON.encode(items)",
+                    "    },",
+                    "    jsonData: Ext.util.JSON.encode(items),",
+                    "    callback : function(options, success, response){",
+                    "        if(response.responseText===''){",
+                    "            console.log('Failed :(');",
+                    "        }else{",
+                    "            console.log('Success! :)');",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderConfirmClick",
+            "designerId": "7a660955-881d-454c-9618-909660bc25d9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderCancel",
+                "designer|targetType": "MyButton14",
+                "fn": "onOrderCancelClick",
+                "implHandler": [
+                    "if(!Ext.isEmpty(this.orderWin)){",
+                    "                     this.orderWin.hide();",
+                    "                    }"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderCancelClick",
+            "designerId": "3bfeb106-2ceb-4b59-8478-20316f04cdd5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accForm",
+                "designer|params": [
+                    "me, field"
+                ],
+                "designer|targetType": "MyForm3",
+                "fn": "onAccFormBeforeAdd",
+                "implHandler": [
+                    "if (!field.allowBlank){",
+                    "    field.labelSeparator += '<span style=\"color: rgb(255, 0, 0); padding-left: 2px;\">*</span>';",
+                    "}"
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "name": "onAccFormBeforeAdd",
+            "designerId": "55b80f08-4732-4578-a897-d317d2342ad8"
+        }
+    ]
+}

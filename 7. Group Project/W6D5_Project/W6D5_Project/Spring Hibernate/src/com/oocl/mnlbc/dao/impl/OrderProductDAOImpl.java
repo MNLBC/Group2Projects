@@ -76,7 +76,10 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	@Override
 	public int updateOrderProduct(OrderProduct orderProduct) {
 		OrderProduct newOrderProduct = manager.find(OrderProduct.class, orderProduct.getProdId());
-		newOrderProduct = orderProduct;
+		newOrderProduct.setOrderId(orderProduct.getOrderId());
+		newOrderProduct.setOrderProdId(orderProduct.getOrderProdId());
+		newOrderProduct.setOrderProdQty(orderProduct.getOrderProdQty());
+		newOrderProduct.setProdId(orderProduct.getProdId());
 		logger.info("OrderProduct updated successfully, Orderproduct details=" + newOrderProduct);
 		return 1;
 	}
