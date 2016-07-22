@@ -27,6 +27,6 @@
   </filter>
   <filter-mapping>
     <filter-name>blacklistFilter</filter-name>
-    <url-pattern>/getUser</url-pattern>
+    <url-pattern>/login</url-pattern>
   </filter-mapping>
 </web-app>

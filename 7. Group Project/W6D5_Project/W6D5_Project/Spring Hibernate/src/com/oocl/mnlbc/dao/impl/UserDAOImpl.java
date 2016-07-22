@@ -99,11 +99,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean validateUser(String email) {
-		String sql = "SELECT user FROM User user" + "WHERE user.userEmail='" + email + "'";
-		User user = (User) manager.createQuery(sql).getSingleResult();
+	public boolean validateUser(String email, String password) {
+		String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "' AND user.userPass='" + password + "'";
+		List<User> user = manager.createQuery(sql).getResultList();
 
-		if (user != null) {
+		if (!user.isEmpty()) {
 			return true;
 		}
 

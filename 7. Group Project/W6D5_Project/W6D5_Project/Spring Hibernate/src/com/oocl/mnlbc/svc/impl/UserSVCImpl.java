@@ -24,8 +24,8 @@ public class UserSVCImpl implements UserSVC {
 
 	@Override
 	@Transactional
-	public boolean validateUser(String email) {
-		return this.userDAO.validateUser(email);
+	public boolean validateUser(String email, String password) {
+		return this.userDAO.validateUser(email, password);
 	}
 
 	@Override

@@ -41,8 +41,8 @@ public class LoginController {
    @RequestMapping(value = "/login", method = RequestMethod.POST)
    public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
       if(email.isEmpty() && password.isEmpty())
-         return this.userSVC.validateUser(email);
-      return false;
+         return false;
+      return this.userSVC.validateUser(email, password);
    }
 
    /**

@@ -5,7 +5,7 @@ import java.util.List;
 import com.oocl.mnlbc.model.User;
 
 public interface UserSVC {
-	public boolean validateUser(String email);
+	public boolean validateUser(String email, String password);
 
 	public User getUser(String email, String password);
 

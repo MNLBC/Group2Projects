@@ -6,7 +6,7 @@ import com.oocl.mnlbc.model.User;
 
 public interface UserDAO {
 	public List<User> getAllUser();
-	public boolean validateUser(String email);
+	public boolean validateUser(String email, String password);
 	public User getUser(String email, String password);
 	public int createUser(User user);  
 	public List<User> getUserByEmail(String email);
