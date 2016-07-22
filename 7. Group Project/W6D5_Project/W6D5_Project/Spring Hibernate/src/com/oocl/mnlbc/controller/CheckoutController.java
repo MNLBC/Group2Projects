@@ -27,52 +27,52 @@ import com.oocl.mnlbc.svc.inf.OrdersSVC;
 @ResponseBody
 public class CheckoutController {
 
-   private OrdersSVC orderSVC;
-   private OrderProductSVC orderprodSVC;
-
-   @Autowired(required = true)
-   @Qualifier(value = "ordersService")
-   public void setOrdersService(OrdersSVC orderSVC) {
-      this.orderSVC = orderSVC;
-   }
-
-   @Autowired(required = true)
-   @Qualifier(value = "orderProductService")
-   public void setOrderProdService(OrderProductSVC orderprodSVC) {
-      this.orderprodSVC = orderprodSVC;
-   }
-
-   /**
-    * createOrder web service
-    * 
-    * @return boolean
-    */
-   @RequestMapping(value = "/checkout", method = RequestMethod.POST)
-   public boolean createOrder(@RequestParam("userid") long userid,
-      @RequestParam("orderproductlist") List<OrderProduct> orderproductlist) {
-      int result = this.orderSVC.createOrder(userid, orderproductlist);
-      this.addOrderProducts(orderproductlist);
-      if (userid >= 0 && orderproductlist != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
-
-   /**
-    * calls OrderProductSVCImpl to add Order Products to OrderProduct table
-    * 
-    * @return boolean
-    */
-   public boolean addOrderProducts(List<OrderProduct> orderproductlist) {
-      int result = this.orderprodSVC.addOrderProducts(orderproductlist);
-      if (orderproductlist != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+   // private OrdersSVC orderSVC;
+   // private OrderProductSVC orderprodSVC;
+   //
+   // @Autowired(required = true)
+   // @Qualifier(value = "ordersService")
+   // public void setOrdersService(OrdersSVC orderSVC) {
+   // this.orderSVC = orderSVC;
+   // }
+   //
+   // @Autowired(required = true)
+   // @Qualifier(value = "orderProductService")
+   // public void setOrderProdService(OrderProductSVC orderprodSVC) {
+   // this.orderprodSVC = orderprodSVC;
+   // }
+   //
+   // /**
+   // * createOrder web service
+   // *
+   // * @return boolean
+   // */
+   // @RequestMapping(value = "/checkout", method = RequestMethod.POST)
+   // public boolean createOrder(@RequestParam("userid") long userid,
+   // @RequestParam("orderproductlist") List<CartProduct> cartproductlist) {
+   // int result = this.orderSVC.createOrder(userid, orderproductlist);
+   // this.addOrderProducts(orderproductlist);
+   // if (userid >= 0 && orderproductlist != null) {
+   // if (result != 1 || result == 0)
+   // return false;
+   // return true;
+   // }
+   // return false;
+   // }
+   //
+   // /**
+   // * calls OrderProductSVCImpl to add Order Products to OrderProduct table
+   // *
+   // * @return boolean
+   // */
+   // public boolean addOrderProducts(List<OrderProduct> orderproductlist) {
+   // int result = this.orderprodSVC.addOrderProducts(orderproductlist);
+   // if (orderproductlist != null) {
+   // if (result != 1 || result == 0)
+   // return false;
+   // return true;
+   // }
+   // return false;
+   // }
 
 }

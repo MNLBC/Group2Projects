@@ -3,7 +3,12 @@
  */
 package com.oocl.mnlbc.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * @author Lance Jasper C. Lopez
@@ -11,178 +16,200 @@ import javax.persistence.Column;
  * @desc Hibernate Migration to Cart Product Model
  * 
  */
-public class CartProduct extends Product {
+@Entity
+@Table(name = "CARTPRODUCT")
+public class CartProduct implements Serializable {
 
-	@Column(name = "USERID")
-	private int userId;
-	@Column(name = "PRODID")
-	private long prodId;
-	@Column(name = "PRODNAME")
-	private String prodName;
-	@Column(name = "PRODCAT")
-	private String prodCat;
-	@Column(name = "PRODDESC")
-	private String prodDesc;
-	@Column(name = "PRODPRICE")
-	private float prodPrice;
-	@Column(name = "PRODSALE")
-	private float prodSale;
-	@Column(name = "PRODSTOCK")
-	private int prodStock;
-	@Column(name = "PRODIMG")
-	private String prodImg;
-	@Column(name = "PRODSUBTOTAL")
-	private float prodSubtotal;
+   @Id
+   @Column(name = "CARTPRODID")
+   private long cartprodId;
+   @Column(name = "USERID")
+   private long userId;
+   @Column(name = "PRODID")
+   private long prodId;
+   @Column(name = "PRODNAME")
+   private String prodName;
+   @Column(name = "PRODCAT")
+   private String prodCat;
+   @Column(name = "PRODDESC")
+   private String prodDesc;
+   @Column(name = "PRODPRICE")
+   private float prodPrice;
+   @Column(name = "PRODSALE")
+   private float prodSale;
+   @Column(name = "PRODSTOCK")
+   private int prodStock;
+   @Column(name = "PRODIMG")
+   private String prodImg;
+   @Column(name = "PRODQTY")
+   private int prodQty;
+   @Column(name = "PRODSUBTOTAL")
+   private float prodSubtotal;
 
-	/**
-	 * @return the userId
-	 */
-	public int getUserId() {
-		return userId;
-	}
+   public long getCartprodId() {
+      return cartprodId;
+   }
 
-	/**
-	 * @param userId
-	 *            the userId to set
-	 */
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+   public void setCartprodId(long cartprodId) {
+      this.cartprodId = cartprodId;
+   }
 
-	/**
-	 * @return the prodId
-	 */
-	public long getProdId() {
-		return prodId;
-	}
+   public int getProdQty() {
+      return prodQty;
+   }
 
-	/**
-	 * @param prodId
-	 *            the prodId to set
-	 */
-	public void setProdId(int prodId) {
-		this.prodId = prodId;
-	}
+   public void setProdQty(int prodQty) {
+      this.prodQty = prodQty;
+   }
 
-	/**
-	 * @return the prodName
-	 */
-	public String getProdName() {
-		return prodName;
-	}
+   /**
+    * @return the userId
+    */
+   public long getUserId() {
+      return userId;
+   }
 
-	/**
-	 * @param prodName
-	 *            the prodName to set
-	 */
-	public void setProdName(String prodName) {
-		this.prodName = prodName;
-	}
+   /**
+    * @param userId
+    *           the userId to set
+    */
+   public void setUserId(long userId) {
+      this.userId = userId;
+   }
 
-	/**
-	 * @return the prodCat
-	 */
-	public String getProdCat() {
-		return prodCat;
-	}
+   /**
+    * @return the prodId
+    */
+   public long getProdId() {
+      return prodId;
+   }
 
-	/**
-	 * @param prodCat
-	 *            the prodCat to set
-	 */
-	public void setProdCat(String prodCat) {
-		this.prodCat = prodCat;
-	}
+   /**
+    * @param prodId
+    *           the prodId to set
+    */
+   public void setProdId(long prodId) {
+      this.prodId = prodId;
+   }
 
-	/**
-	 * @return the prodDesc
-	 */
-	public String getProdDesc() {
-		return prodDesc;
-	}
+   /**
+    * @return the prodName
+    */
+   public String getProdName() {
+      return prodName;
+   }
 
-	/**
-	 * @param prodDesc
-	 *            the prodDesc to set
-	 */
-	public void setProdDesc(String prodDesc) {
-		this.prodDesc = prodDesc;
-	}
+   /**
+    * @param prodName
+    *           the prodName to set
+    */
+   public void setProdName(String prodName) {
+      this.prodName = prodName;
+   }
 
-	/**
-	 * @return the prodPrice
-	 */
-	public float getProdPrice() {
-		return prodPrice;
-	}
+   /**
+    * @return the prodCat
+    */
+   public String getProdCat() {
+      return prodCat;
+   }
 
-	/**
-	 * @param prodPrice
-	 *            the prodPrice to set
-	 */
-	public void setProdPrice(float prodPrice) {
-		this.prodPrice = prodPrice;
-	}
+   /**
+    * @param prodCat
+    *           the prodCat to set
+    */
+   public void setProdCat(String prodCat) {
+      this.prodCat = prodCat;
+   }
 
-	/**
-	 * @return the prodSale
-	 */
-	public float getProdSale() {
-		return prodSale;
-	}
+   /**
+    * @return the prodDesc
+    */
+   public String getProdDesc() {
+      return prodDesc;
+   }
 
-	/**
-	 * @param prodSale
-	 *            the prodSale to set
-	 */
-	public void setProdSale(float prodSale) {
-		this.prodSale = prodSale;
-	}
+   /**
+    * @param prodDesc
+    *           the prodDesc to set
+    */
+   public void setProdDesc(String prodDesc) {
+      this.prodDesc = prodDesc;
+   }
 
-	/**
-	 * @return the prodStock
-	 */
-	public int getProdStock() {
-		return prodStock;
-	}
+   /**
+    * @return the prodPrice
+    */
+   public float getProdPrice() {
+      return prodPrice;
+   }
 
-	/**
-	 * @param prodStock
-	 *            the prodStock to set
-	 */
-	public void setProdStock(int prodStock) {
-		this.prodStock = prodStock;
-	}
+   /**
+    * @param prodPrice
+    *           the prodPrice to set
+    */
+   public void setProdPrice(float prodPrice) {
+      this.prodPrice = prodPrice;
+   }
 
-	/**
-	 * @return the prodImg
-	 */
-	public String getProdImg() {
-		return prodImg;
-	}
+   /**
+    * @return the prodSale
+    */
+   public float getProdSale() {
+      return prodSale;
+   }
 
-	/**
-	 * @param prodImg
-	 *            the prodImg to set
-	 */
-	public void setProdImg(String prodImg) {
-		this.prodImg = prodImg;
-	}
+   /**
+    * @param prodSale
+    *           the prodSale to set
+    */
+   public void setProdSale(float prodSale) {
+      this.prodSale = prodSale;
+   }
 
-	/**
-	 * @return the prodSubtotal
-	 */
-	public float getProdSubtotal() {
-		return prodSubtotal;
-	}
+   /**
+    * @return the prodStock
+    */
+   public int getProdStock() {
+      return prodStock;
+   }
 
-	/**
-	 * @param prodSubtotal
-	 *            the prodSubtotal to set
-	 */
-	public void setProdSubtotal(float prodSubtotal) {
-		this.prodSubtotal = prodSubtotal;
-	}
+   /**
+    * @param prodStock
+    *           the prodStock to set
+    */
+   public void setProdStock(int prodStock) {
+      this.prodStock = prodStock;
+   }
 
+   /**
+    * @return the prodImg
+    */
+   public String getProdImg() {
+      return prodImg;
+   }
+
+   /**
+    * @param prodImg
+    *           the prodImg to set
+    */
+   public void setProdImg(String prodImg) {
+      this.prodImg = prodImg;
+   }
+
+   /**
+    * @return the prodSubtotal
+    */
+   public float getProdSubtotal() {
+      return prodSubtotal;
+   }
+
+   /**
+    * @param prodSubtotal
+    *           the prodSubtotal to set
+    */
+   public void setProdSubtotal(float prodSubtotal) {
+      this.prodSubtotal = prodSubtotal;
+   }
 
 }

@@ -98,10 +98,18 @@
 	<beans:bean id="userService" class="com.oocl.mnlbc.svc.impl.UserSVCImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
-	<beans:bean id="favoriteDAO" class="com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl">
+	<beans:bean id="favoriteDAO"
+		class="com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl">
 	</beans:bean>
-	<beans:bean id="favoriteService" class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
+	<beans:bean id="favoriteService"
+		class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
 		<beans:property name="favoriteDAO" ref="favoriteDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="cartProductDAO" class="com.oocl.mnlbc.dao.impl.CartProductDAOImpl">
+	</beans:bean>
+	<beans:bean id="cartProductService" class="com.oocl.mnlbc.svc.impl.CartProductSVCImpl">
+		<beans:property name="cartProductDAO" ref="cartProductDAO"></beans:property>
 	</beans:bean>
 
 
