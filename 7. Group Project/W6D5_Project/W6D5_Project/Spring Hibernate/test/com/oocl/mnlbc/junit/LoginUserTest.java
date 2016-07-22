@@ -13,16 +13,17 @@ import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.UserSVC;
 
 /**
- * @author fuentka
- *
+ * @author Kassandra Ysabel Fuentes
+ * @since 07-22-2016
  */
-public class LoginTestUnit {
+public class LoginUserTest {
 
 	User user;
 	private static final String userEmail1 = "myEmail@domain.com";
 	private static final String userPass1 = "password001";
 	private static final String userEmail2 = "sample@email.com";
 	private static final String userPass2 = "Password";
+	private static final String blacklist = "Blacklist";
 
 	/**
 	 * @throws java.lang.Exception
@@ -31,7 +32,7 @@ public class LoginTestUnit {
 	@Before
 	public void setUp() throws Exception {
 		user = new User(001, "First Name", "Last Name", "sample@email.com", "Address 1", "Address 2", "State", 2,
-				"Occupation", "City", "Country", "Password", "Type");
+				"Occupation", "City", "Country", "Password", "Blacklist");
 	}
 
 	/**
@@ -57,7 +58,19 @@ public class LoginTestUnit {
 	 */
 	@Test
 	public void testGetBlackList() {
-		fail("Not yet implemented");
+		String type = user.getUserType();
+		boolean check = false;
+		switch(type)
+		{
+		case "Admin":
+			check = false;
+			break;
+		case "Blacklist":
+			check = true;
+			break;
+		default:
+			check = false;
+		}
+		assertTrue(check);
 	}
-
 }

@@ -95,4 +95,22 @@ public class Order {
 		this.orderTotal = orderTotal;
 	}
 
+	/**
+	 * @param orderId
+	 * @param orderDate
+	 * @param orderTotal
+	 * @param userId
+	 */
+	public Order(long orderId, String orderDate, float orderTotal, long userId) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.orderTotal = orderTotal;
+		this.userId = userId;
+	}
+	
+	public Order() {
+		
+	}
+
 }

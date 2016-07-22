@@ -161,4 +161,30 @@ public class Product {
 		this.prodStock = prodStock;
 	}
 
+	/**
+	 * @param prodId
+	 * @param prodName
+	 * @param prodDesc
+	 * @param prodCat
+	 * @param prodImg
+	 * @param prodPrice
+	 * @param prodSale
+	 * @param prodStock
+	 */
+	public Product(long prodId, String prodName, String prodDesc, String prodCat, String prodImg, float prodPrice,
+			float prodSale, int prodStock) {
+		super();
+		this.prodId = prodId;
+		this.prodName = prodName;
+		this.prodDesc = prodDesc;
+		this.prodCat = prodCat;
+		this.prodImg = prodImg;
+		this.prodPrice = prodPrice;
+		this.prodSale = prodSale;
+		this.prodStock = prodStock;
+	}
+
+	public Product() {
+
+	}
 }
