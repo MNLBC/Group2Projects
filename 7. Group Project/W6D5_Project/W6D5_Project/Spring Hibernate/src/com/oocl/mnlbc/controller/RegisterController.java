@@ -2,14 +2,18 @@ package com.oocl.mnlbc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oocl.mnlbc.model.Response;
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.UserSVC;
+import com.oocl.mnlbc.validator.RegisterValidator;
 
 /**
  * Handles web services for Register
@@ -21,28 +25,49 @@ import com.oocl.mnlbc.svc.inf.UserSVC;
 @ResponseBody
 public class RegisterController {
 
-   private UserSVC userSVC;
+	private UserSVC userSVC;
 
-   @Autowired(required = true)
-   @Qualifier(value = "userService")
-   public void setUserService(UserSVC userSVC) {
-      this.userSVC = userSVC;
-   }
-   
-   /**
-    * Register web service
-    * 
-    * @param User
-    * @return boolean
-    */
-   @RequestMapping(value = "/register", method = RequestMethod.POST)
-   public boolean registerUser(@RequestBody User user) {
-      int result = this.userSVC.createUser(user);
-      if (user != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+	@Autowired(required = true)
+	@Qualifier(value = "userService")
+	public void setUserService(UserSVC userSVC) {
+		this.userSVC = userSVC;
+	}
+
+	/**
+	 * Register web service
+	 * 
+	 * @param User
+	 * @return boolean
+	 */
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public Response createUser(@Validated(RegisterValidator.class) @RequestBody User user, BindingResult result) {
+		Response response = new Response();
+
+		if (!result.hasErrors()) {
+			int save = userSVC.createUser(user);
+			if (user != null) {
+				if (save == 1) {
+					response.setResponseCode(0);
+				} else {
+					response.setResponseCode(1);
+				}
+			}
+			response.setResponseCode(2);
+		} else {
+			response.setResponseCode(4);
+			response.setErrors(result.getAllErrors());
+		}
+		return response;
+	}
+	
+//	@RequestMapping(value = "/register", method = RequestMethod.POST)
+//	public boolean registerUser(@RequestBody User user) {
+//		int result = this.userSVC.createUser(user);
+//		if (user != null) {
+//			if (result != 1 || result == 0)
+//				return false;
+//			return true;
+//		}
+//		return false;
+//	}
 }

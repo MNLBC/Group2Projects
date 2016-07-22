@@ -28,7 +28,6 @@ import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.svc.inf.UserSVC;
 import com.oocl.mnlbc.util.LogType;
 import com.oocl.mnlbc.util.LogUtil;
-import com.oocl.mnlbc.validator.ErrorMessage;
 import com.oocl.mnlbc.validator.LoginValidator;
 import com.oocl.mnlbc.validator.RegisterValidator;
 
