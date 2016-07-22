@@ -43,14 +43,6 @@ public class JmsAdminController {
       HttpServletRequest request) {
       try {
          JmsProducer.sendRequest("adminTopic", username, message);
-         List<String> requestList = (List<String>) request.getServletContext().getAttribute("requestList");
-         if (requestList == null) {
-            requestList = new ArrayList<String>();
-         }
-         requestList.add(message);
-         request.getServletContext().setAttribute("requestList", requestList);
-         LogUtil.logMsg(LogType.INFO, "Requesting User: " + message);
-         LogUtil.logMsg(LogType.INFO, "Number of Requests: " + requestList.size());
          return 1;
       } catch (Exception e) {
          LogUtil.logMsg(LogType.ERROR, "Error: " + e);

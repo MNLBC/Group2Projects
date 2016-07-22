@@ -49,11 +49,15 @@ Ext.define('W6D5_Project.model.CartProductModel', {
         },
         {
             type: 'int',
-            name: 'prodQty'
+            name: 'prodStock'
         },
         {
             type: 'string',
             name: 'prodImg'
+        },
+        {
+            type: 'int',
+            name: 'prodQty'
         },
         {
             type: 'float',

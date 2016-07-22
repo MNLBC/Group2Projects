@@ -52,7 +52,8 @@ Ext.application({
         'ProductController',
         'UserMainController',
         'UserMgmtController',
-        'AccountController'
+        'AccountController',
+        'RequestController'
     ],
     name: 'W6D5_Project',
 

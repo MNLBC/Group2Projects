@@ -24,6 +24,9 @@ Ext.define('W5D5_Project.controller.AccountController', {
         },
         "#accPremBtn": {
             click: 'onAccPremBtnClick'
+        },
+        "#accCheckStatus": {
+            click: 'onAccCheckStatusClick'
         }
     },
 
@@ -32,6 +35,10 @@ Ext.define('W5D5_Project.controller.AccountController', {
     },
 
     onAccPremBtnClick: function() {
+
+    },
+
+    onAccCheckStatusClick: function() {
 
     }
 

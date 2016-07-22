@@ -49,6 +49,10 @@ Ext.define('W5D5_Project.model.CartProductModel', {
         },
         {
             type: 'int',
+            name: 'prodStock'
+        },
+        {
+            type: 'int',
             name: 'prodQty'
         },
         {
@@ -58,10 +62,6 @@ Ext.define('W5D5_Project.model.CartProductModel', {
         {
             type: 'float',
             name: 'prodSubtotal'
-        },
-        {
-            type: 'int',
-            name: 'is_deleted'
         }
     ]
 });
