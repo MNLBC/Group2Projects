@@ -20,7 +20,6 @@ import com.oocl.mnlbc.svc.inf.UserSVC;
  * @date 2016-07-21
  */
 @RestController
-@ResponseBody
 public class UserController {
 
    private UserSVC userSVC;
