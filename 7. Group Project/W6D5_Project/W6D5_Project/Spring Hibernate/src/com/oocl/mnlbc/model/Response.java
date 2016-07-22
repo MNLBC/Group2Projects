@@ -5,6 +5,9 @@ import java.util.List;
 
 import org.springframework.validation.ObjectError;
 
+import com.oocl.mnlbc.util.LogType;
+import com.oocl.mnlbc.util.LogUtil;
+
 /**
  * @author Kassandra Ysabel Fuentes
  * @since 07-21-2016
@@ -25,16 +28,22 @@ public class Response {
 		switch(responseCode)
 	      {
 	         case 0 :
-	            System.out.println("Successfully saved in database"); 
+	            LogUtil.logMsg(LogType.INFO, "Successfully saved in database");
 	            break;
 	         case 1 :
-	        	 System.out.println("Database error"); 
+	        	 LogUtil.logMsg(LogType.WARN, "Error in database");
 		            break;
 	         case 2 :
-	        	 System.out.println("User is null"); 
+	        	 LogUtil.logMsg(LogType.WARN, "User is null"); 
+		            break;
+	         case 3 :
+	        	 LogUtil.logMsg(LogType.WARN, "Login Failed"); 
+		            break;
+	         case 4 :
+	        	 LogUtil.logMsg(LogType.INFO, "Login Successful"); 
 		            break;
 	         default :
-	            System.out.println("Binding error");
+	        	 LogUtil.logMsg(LogType.WARN, "Binding error");
 	      }
 	}
 	/**
