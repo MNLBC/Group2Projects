@@ -49,7 +49,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
         partCnt = Math.ceil(pageSize[0] / 3);
         partRem = pageSize[0] % 3;
         for (var x = 0; x < items.length; x++) {
-            if (partCnt < 3 && partRem !== 0) {
+            if (partRem !== 0) {
                 if (part == partCnt && partCtr <= partRem) {
                     prod.push(items[x]);
                     partCtr++;
