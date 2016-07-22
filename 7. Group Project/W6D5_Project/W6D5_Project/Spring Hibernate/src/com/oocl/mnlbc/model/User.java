@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 /**
  * @author Danna Soquiat
- *	@since 2016-07-21
+ * @since 2016-07-21
  */
 @Entity
 @Table(name = "USERS")
@@ -21,6 +21,8 @@ public class User {
 
 	@Id
 	@Column(name = "USERID")
+	@SequenceGenerator(name = "user_seq", sequenceName = "USERS_SEQ4", allocationSize = 1)
+	@GeneratedValue(generator = "user_seq", strategy = GenerationType.SEQUENCE)
 	private long userId;
 	@Column(name = "USERFNAME")
 	private String userFname;
@@ -46,68 +48,7 @@ public class User {
 	private String userPass;
 	@Column(name = "USERTYPE")
 	private String userType;
-	
 
-	
-	public int getUserLevel() {
-		return userLevel;
-	}
-
-	public void setUserLevel(int userLevel) {
-		this.userLevel = userLevel;
-	}
-
-	public String getUserOccupation() {
-		return userOccupation;
-	}
-
-	public void setUserOccupation(String userOccup) {
-		this.userOccupation = userOccup;
-	}
-
-
-	public String getUserAddress1() {
-		return userAddress1;
-	}
-
-	public void setUserAddress1(String userAddress1) {
-		this.userAddress1 = userAddress1;
-	}
-
-	public String getUserAddress2() {
-		return userAddress2;
-	}
-
-	public void setUserAddress2(String userAddress2) {
-		this.userAddress2 = userAddress2;
-	}
-
-	public String getUserSp() {
-		return userSp;
-	}
-
-	public void setUserSp(String userSp) {
-		this.userSp = userSp;
-	}
-
-
-
-	public User(long userId, String userFname, String userLname, String userEmail, String userStreet, String userCity,
-			String userCountry, String userPass, String userType) {
-		super();
-		this.userId = userId;
-		this.userFname = userFname;
-		this.userLname = userLname;
-		this.userEmail = userEmail;
-		this.userCity = userCity;
-		this.userCountry = userCountry;
-		this.userPass = userPass;
-		this.userType = userType;
-	}
-
-	public User() {
-
-	}
 
 	/**
 	 * @return the userId
@@ -170,6 +111,81 @@ public class User {
 	}
 
 	/**
+	 * @return the userAddress1
+	 */
+	public String getUserAddress1() {
+		return userAddress1;
+	}
+
+	/**
+	 * @param userAddress1
+	 *            the userAddress1 to set
+	 */
+	public void setUserAddress1(String userAddress1) {
+		this.userAddress1 = userAddress1;
+	}
+
+	/**
+	 * @return the userAddress2
+	 */
+	public String getUserAddress2() {
+		return userAddress2;
+	}
+
+	/**
+	 * @param userAddress2
+	 *            the userAddress2 to set
+	 */
+	public void setUserAddress2(String userAddress2) {
+		this.userAddress2 = userAddress2;
+	}
+
+	/**
+	 * @return the userSp
+	 */
+	public String getUserSp() {
+		return userSp;
+	}
+
+	/**
+	 * @param userSp
+	 *            the userSp to set
+	 */
+	public void setUserSp(String userSp) {
+		this.userSp = userSp;
+	}
+
+	/**
+	 * @return the userLevel
+	 */
+	public int getUserLevel() {
+		return userLevel;
+	}
+
+	/**
+	 * @param userLevel
+	 *            the userLevel to set
+	 */
+	public void setUserLevel(int userLevel) {
+		this.userLevel = userLevel;
+	}
+
+	/**
+	 * @return the userOccupation
+	 */
+	public String getUserOccupation() {
+		return userOccupation;
+	}
+
+	/**
+	 * @param userOccupation
+	 *            the userOccupation to set
+	 */
+	public void setUserOccupation(String userOccupation) {
+		this.userOccupation = userOccupation;
+	}
+
+	/**
 	 * @return the userCity
 	 */
 	public String getUserCity() {
@@ -229,4 +245,26 @@ public class User {
 		this.userType = userType;
 	}
 
+	public User(long userId, String userFname, String userLname, String userEmail, String userAddress1,
+			String userAddress2, String userSp, int userLevel, String userOccupation, String userCity,
+			String userCountry, String userPass, String userType) {
+		super();
+		this.userId = userId;
+		this.userFname = userFname;
+		this.userLname = userLname;
+		this.userEmail = userEmail;
+		this.userAddress1 = userAddress1;
+		this.userAddress2 = userAddress2;
+		this.userSp = userSp;
+		this.userLevel = userLevel;
+		this.userOccupation = userOccupation;
+		this.userCity = userCity;
+		this.userCountry = userCountry;
+		this.userPass = userPass;
+		this.userType = userType;
+	}
+
+	public User() {
+
+	}
 }

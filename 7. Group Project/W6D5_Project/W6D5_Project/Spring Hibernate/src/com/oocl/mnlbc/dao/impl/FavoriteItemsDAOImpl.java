@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.FavoriteItemsDAO;
-import com.oocl.mnlbc.model.FavoriteItems;
 import com.oocl.mnlbc.model.Product;
 
 /**

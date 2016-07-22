@@ -71,6 +71,32 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "userPass"
+            },
+            "name": "MyField14",
+            "designerId": "5a319239-2481-4561-9d97-aae1864e4fd0"
+        },
+        {
+            "type": "Ext.data.field.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userOccupation"
+            },
+            "name": "MyField16",
+            "designerId": "87a75c65-eb00-4d23-a177-1f8413ea3d2e"
+        },
+        {
+            "type": "Ext.data.field.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "userAddress1"
             },
             "name": "MyField9",
@@ -136,10 +162,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "userPass"
+                "name": "userType"
             },
-            "name": "MyField14",
-            "designerId": "5a319239-2481-4561-9d97-aae1864e4fd0"
+            "name": "MyField15",
+            "designerId": "66e5672b-416b-4b13-abdf-7d4c00acd70d"
         },
         {
             "type": "Ext.data.field.Field",
@@ -149,10 +175,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "userType"
+                "name": "userLevel"
             },
-            "name": "MyField15",
-            "designerId": "66e5672b-416b-4b13-abdf-7d4c00acd70d"
+            "name": "MyField17",
+            "designerId": "f83a2119-c4e0-4608-9c03-882bed0e952f"
         }
     ]
 }

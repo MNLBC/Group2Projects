@@ -2,7 +2,10 @@ package com.oocl.mnlbc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +20,8 @@ public class FavoriteItems {
 
 	@Id
 	@Column(name = "FAVEITEMID")
+	@SequenceGenerator(name = "favorite_seq", sequenceName = "FAVORITEITEMS_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "favorite_seq", strategy = GenerationType.SEQUENCE)
 	private int favoriteItemId;
 	@Column(name= "USERID")
 	private int userId;

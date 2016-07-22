@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.svc.inf.FavoriteItemsSVC;
-import com.oocl.mnlbc.svc.inf.ProductSVC;
 
 /**
  * Controller for FAVORITEITEMS

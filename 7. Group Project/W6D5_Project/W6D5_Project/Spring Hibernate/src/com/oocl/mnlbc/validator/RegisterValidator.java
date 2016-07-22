@@ -16,7 +16,8 @@ import org.springframework.validation.Validator;
 import com.oocl.mnlbc.model.User;
 
 /**
- * @author fuentka
+ * @author Kassandra Ysabel Fuentes
+ * @since 07-21-2016
  *
  */
 public class RegisterValidator implements Validator {

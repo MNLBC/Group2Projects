@@ -1742,7 +1742,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
-                                                                                            id: 'occupRegField',
+                                                                                            id: 'OccupRegField',
+                                                                                            itemId: 'OccupRegField',
                                                                                             fieldLabel: 'Occupation',
                                                                                             inputType: 'email',
                                                                                             allowBlank: false,
@@ -1763,6 +1764,12 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             inputType: 'password',
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            id: 'pCodeField',
+                                                                                            itemId: 'pCodeField',
+                                                                                            fieldLabel: 'Premium Code:'
                                                                                         }
                                                                                     ]
                                                                                 }

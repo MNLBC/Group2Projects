@@ -49,7 +49,7 @@ public class ProductsController {
     * 
     * @return List<Product>
     */
-   @RequestMapping(value = "/getProductsByCategory", method = RequestMethod.GET)
+   @RequestMapping(value = "/getProductsByCategory", method = RequestMethod.POST)
    public List<Product> getProductsByCategory(@RequestParam String category) {
       if (!category.isEmpty()) {
          return this.prodSVC.getProductsByCategory(category);

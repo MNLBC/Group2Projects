@@ -5,7 +5,10 @@ package com.oocl.mnlbc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +24,8 @@ public class Order {
 
 	@Id
 	@Column(name = "ORDERID")
+	@SequenceGenerator(name = "order_seq", sequenceName = "ORDERS_SEQ3", allocationSize = 1)
+	@GeneratedValue(generator = "order_seq", strategy = GenerationType.SEQUENCE)
 	private long orderId;
 
 	@Column(name = "ORDERDATE")

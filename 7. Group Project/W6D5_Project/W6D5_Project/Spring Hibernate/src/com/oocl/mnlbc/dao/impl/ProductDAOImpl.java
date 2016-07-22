@@ -53,7 +53,13 @@ public class ProductDAOImpl implements ProductDAO {
 	public int updateProduct(Product product) {
 
 		Product newProduct = manager.find(Product.class, product.getProdId());
-		newProduct = product;
+		newProduct.setProdCat(product.getProdCat());
+		newProduct.setProdDesc(product.getProdDesc());
+		newProduct.setProdImg(product.getProdImg());
+		newProduct.setProdName(product.getProdName());
+		newProduct.setProdPrice(product.getProdPrice());
+		newProduct.setProdSale(product.getProdSale());
+		newProduct.setProdStock(product.getProdStock());
 		logger.info("Product updated successfully!=" + newProduct);
 		return 1;
 	}
