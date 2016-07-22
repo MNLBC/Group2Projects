@@ -15,8 +15,6 @@ public class CartProduct extends Product {
 
 	@Column(name = "USERID")
 	private int userId;
-	@Column(name = "ORDERID")
-	private int orderId;
 	@Column(name = "PRODID")
 	private long prodId;
 	@Column(name = "PRODNAME")
@@ -35,8 +33,6 @@ public class CartProduct extends Product {
 	private String prodImg;
 	@Column(name = "PRODSUBTOTAL")
 	private float prodSubtotal;
-	@Column(name = "IS_DELETED")
-	private boolean isDeleted;
 
 	/**
 	 * @return the userId
@@ -51,21 +47,6 @@ public class CartProduct extends Product {
 	 */
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}
-
-	/**
-	 * @return the orderId
-	 */
-	public int getOrderId() {
-		return orderId;
-	}
-
-	/**
-	 * @param orderId
-	 *            the orderId to set
-	 */
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
 	}
 
 	/**
@@ -203,19 +184,5 @@ public class CartProduct extends Product {
 		this.prodSubtotal = prodSubtotal;
 	}
 
-	/**
-	 * @return the isDeleted
-	 */
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-	/**
-	 * @param isDeleted
-	 *            the isDeleted to set
-	 */
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
 
 }
