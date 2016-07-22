@@ -72,6 +72,6 @@ public class UserSVCImpl implements UserSVC {
 
    @Override
    public List<User> getAllUsers() {
-      return this.userDAO.getAllUsers();
+      return this.userDAO.getAllUser();
    }
 }
