@@ -73,9 +73,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             callback : function(options, success, response) {
                 if (Ext.isEmpty(response.responseText)) {
                     console.log('Failed :(');
-                    Ext.Msg.alert("User",
-                                  "Account does not exist. Login again or register");
-                } else {
+                    Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+                } else if(response.resposeText=='true') {
                     console.log('Success! :)');
                     record = Ext.decode(response.responseText);
                     isExist = true;
@@ -85,11 +84,12 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                     }
                     store.add(record);
                     Ext.Ajax.request({
-                        url : "getProducts",
+                        url : "getAllProducts",
                         method : 'POST',
                         async : 'false',
                         callback : function(options, success, response) {
                             if (Ext.isEmpty(response.responseText)) {
+                                Ext.Msg.alert("Products", "Error in getting products");
                                 console.log('Failed ');
                             } else {
                                 console.log('Success! ');
@@ -114,6 +114,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                             }
                         }
                     });
+                }else{
+                    Ext.Msg.alert("User", "Account does not exist. Login again or register");
                 }
             }
         });
