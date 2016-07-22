@@ -20,18 +20,32 @@ import javax.persistence.Table;
 public class User {
 
 	@Id
-	@Column(name = "userId")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "USERS_SEQ2")
+	@Column(name = "USERID")
 	private long userId;
+	@Column(name = "USERFNAME")
 	private String userFname;
+	@Column(name = "USERLNAME")
 	private String userLname;
+	@Column(name = "USEREMAIL")
 	private String userEmail;
+	@Column(name = "USERADDRESS1")
 	private String userAddress1;
+	@Column(name = "USERADDRESS2")
 	private String userAddress2;
+	@Column(name = "USERSP")
 	private String userSp;
+	@Column(name = "USERLEVEL")
 	private int userLevel;
+	@Column(name = "USEROCCUPATION")
 	private String userOccupation;
+	@Column(name = "USERCITY")
+	private String userCity;
+	@Column(name = "USERCOUNTRY")
+	private String userCountry;
+	@Column(name = "USERPASS")
+	private String userPass;
+	@Column(name = "USERTYPE")
+	private String userType;
 	
 
 	
@@ -76,10 +90,7 @@ public class User {
 		this.userSp = userSp;
 	}
 
-	private String userCity;
-	private String userCountry;
-	private String userPass;
-	private String userType;
+
 
 	public User(long userId, String userFname, String userLname, String userEmail, String userStreet, String userCity,
 			String userCountry, String userPass, String userType) {
