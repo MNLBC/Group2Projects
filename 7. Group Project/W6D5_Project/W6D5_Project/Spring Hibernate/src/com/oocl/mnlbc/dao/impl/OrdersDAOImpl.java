@@ -48,7 +48,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public List<Order> getOrdersByUser(long userId) {
 
 		List<Order> orderList = new ArrayList<Order>();
-		String query = "Select orders From Order orders where USERID=" + userId;
+		String query = "Select orders From Order orders where orders.userId=" + userId;
 		orderList = manager.createQuery(query, Order.class).getResultList();
 		for (Order order : orderList) {
 			logger.info("Order list" + order);

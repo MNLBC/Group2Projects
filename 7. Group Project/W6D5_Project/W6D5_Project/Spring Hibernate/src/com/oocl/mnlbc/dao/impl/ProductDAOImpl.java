@@ -61,7 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductByCategory(String category) {
 
-		String sql = "Select products From Product products where product.PRODCAT = '" + category + "'";
+		String sql = "Select products From Product products where product.prodCat = '" + category + "'";
 		List<Product> productList = manager.createQuery(sql).getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);
