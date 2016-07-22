@@ -80,7 +80,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('digitalPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();",
                     "controller.addProductsToPage('digital');"
                 ],
@@ -105,7 +105,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('luxuryPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();",
                     "controller.addProductsToPage('luxury');"
                 ],
@@ -130,7 +130,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('casualPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();",
                     "controller.addProductsToPage('casual');"
                 ],
@@ -155,7 +155,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('sportsPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();",
                     "controller.addProductsToPage('sports');"
                 ],
@@ -180,7 +180,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('dressPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "// controller.clearItems();",
                     "controller.addProductsToPage('dress');"
                 ],
@@ -247,7 +247,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('productPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();"
                 ],
                 "name": "click",
@@ -286,7 +286,7 @@
                     "        if (btn === 'yes') {",
                     "            console.log('Yes pressed');",
                     "            if(Ext.isEmpty(scope.orderWin)){",
-                    "             scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');",
+                    "             scope.orderWin = Ext.create('W6D5_Project.view.OrderWin');",
                     "            }",
                     "            Ext.getCmp('sumAdd').setValue(address.getValue());",
                     "            Ext.getCmp('sumAmount').setValue(total);",
@@ -335,7 +335,7 @@
                     "            var countField = Ext.getCmp('countField'),",
                     "                idField = Ext.getCmp('idField');",
                     "            panel.setActiveTab(tab);",
-                    "            var controller = W5D5_Project.app.getController('ShopController');",
+                    "            var controller = W6D5_Project.app.getController('ShopController');",
                     "            controller.clearItems();",
                     "            controller.addProductsToPage('digital');",
                     "            home1.hide();",
@@ -373,7 +373,7 @@
                     "var panel = Ext.getCmp('mainTabPanel');",
                     "var tab = Ext.getCmp('userPanel');",
                     "panel.setActiveTab(tab);",
-                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "var controller = W6D5_Project.app.getController('ShopController');",
                     "controller.clearItems();"
                 ],
                 "name": "click",
@@ -451,6 +451,31 @@
             },
             "name": "onOrderCancelClick",
             "designerId": "3bfeb106-2ceb-4b59-8478-20316f04cdd5"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accForm",
+                "designer|params": [
+                    "me, field"
+                ],
+                "designer|targetType": "MyForm3",
+                "fn": "onAccFormBeforeAdd",
+                "implHandler": [
+                    "if (!field.allowBlank){",
+                    "    field.labelSeparator += '<span style=\"color: rgb(255, 0, 0); padding-left: 2px;\">*</span>';",
+                    "}"
+                ],
+                "name": "beforeadd",
+                "scope": "me"
+            },
+            "name": "onAccFormBeforeAdd",
+            "designerId": "55b80f08-4732-4578-a897-d317d2342ad8"
         }
     ]
 }

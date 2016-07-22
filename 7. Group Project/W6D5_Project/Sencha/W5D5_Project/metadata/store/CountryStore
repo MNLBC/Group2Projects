@@ -1,0 +1,37 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "data": [
+            "[{CountryName: 'Afghanistan'},",
+            "{CountryName: 'Austria'},",
+            "{CountryName: 'Belgium'},",
+            "{CountryName: 'Cambodia'},",
+            "{CountryName: 'China'},",
+            "{CountryName: 'Colombia'},",
+            "{CountryName: 'Croatia'},",
+            "{CountryName: 'France'},",
+            "{CountryName: 'Japan'},",
+            "{CountryName: 'Macau'},",
+            "{CountryName: 'Madagascar'},",
+            "{CountryName: 'Malaysia'},",
+            "{CountryName: 'Philippines'},",
+            "{CountryName: 'Poland'},",
+            "{CountryName: 'Portugal'},",
+            "{CountryName: 'Singapore'},",
+            "{CountryName: 'Sweden'},",
+            "{CountryName: 'Taiwan'},",
+            "{CountryName: 'Thailand'},",
+            "{CountryName: 'USA'}]"
+        ],
+        "designer|userClassName": "CountryStore",
+        "model": "CountryModel",
+        "storeId": "countryStore"
+    },
+    "name": "MyStore",
+    "designerId": "24d33529-ff8b-4983-8003-f4730c78c424"
+}
