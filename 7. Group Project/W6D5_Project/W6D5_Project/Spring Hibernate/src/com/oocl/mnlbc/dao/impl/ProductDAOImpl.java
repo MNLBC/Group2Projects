@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.oocl.mnlbc.dao.abstr.GenericCRUDImpl;
 import com.oocl.mnlbc.dao.inf.ProductDAO;
 import com.oocl.mnlbc.model.Product;
 
@@ -23,20 +24,20 @@ import com.oocl.mnlbc.model.Product;
 
 @Repository
 @Transactional
-public class ProductDAOImpl implements ProductDAO {
+public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductDAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductDAOImpl.class);
 
 	@PersistenceContext
 	private EntityManager manager;
 
-	@Override
-	public int addProduct(Product product) {
-
-		manager.persist(product);
-		logger.info("Product saved successfully, Product details=" + product);
-		return 1;
-	}
+	// @Override
+	// public int addProduct(Product product) {
+	//
+	// manager.persist(product);
+	// logger.info("Product saved successfully, Product details=" + product);
+	// return 1;
+	// }
 
 	@Override
 	public List<Product> listProduct() {
@@ -49,20 +50,20 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList;
 	}
 
-	@Override
-	public int updateProduct(Product product) {
-
-		Product newProduct = manager.find(Product.class, product.getProdId());
-		newProduct.setProdCat(product.getProdCat());
-		newProduct.setProdDesc(product.getProdDesc());
-		newProduct.setProdImg(product.getProdImg());
-		newProduct.setProdName(product.getProdName());
-		newProduct.setProdPrice(product.getProdPrice());
-		newProduct.setProdSale(product.getProdSale());
-		newProduct.setProdStock(product.getProdStock());
-		logger.info("Product updated successfully!=" + newProduct);
-		return 1;
-	}
+	// @Override
+	// public int updateProduct(Product product) {
+	//
+	// Product newProduct = manager.find(Product.class, product.getProdId());
+	// newProduct.setProdCat(product.getProdCat());
+	// newProduct.setProdDesc(product.getProdDesc());
+	// newProduct.setProdImg(product.getProdImg());
+	// newProduct.setProdName(product.getProdName());
+	// newProduct.setProdPrice(product.getProdPrice());
+	// newProduct.setProdSale(product.getProdSale());
+	// newProduct.setProdStock(product.getProdStock());
+	// logger.info("Product updated successfully!=" + newProduct);
+	// return 1;
+	// }
 
 	@Override
 	public List<Product> getProductByCategory(String category) {
@@ -75,12 +76,12 @@ public class ProductDAOImpl implements ProductDAO {
 		return productList;
 	}
 
-	@Override
-	public int removeProduct(long prodId) {
-		Product removeProduct = manager.find(Product.class, prodId);
-		manager.remove(removeProduct);
-		logger.info("Product deleted successfully!=" + removeProduct);
-		return 1;
-	}
+	// @Override
+	// public int removeProduct(long prodId) {
+	// Product removeProduct = manager.find(Product.class, prodId);
+	// manager.remove(removeProduct);
+	// logger.info("Product deleted successfully!=" + removeProduct);
+	// return 1;
+	// }
 
 }
