@@ -6,7 +6,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl;
 import com.oocl.mnlbc.dao.inf.FavoriteItemsDAO;
 import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.svc.inf.FavoriteItemsSVC;
