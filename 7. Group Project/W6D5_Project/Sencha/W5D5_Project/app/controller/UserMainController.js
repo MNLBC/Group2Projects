@@ -58,8 +58,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var admin2 = Ext.getCmp('prodMgmtBtn'), record = '';
         var isExist = false;
 
-        if (email == 'Scott' || email == 'John') {
-            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+        if(!Ext.getCmp('loginPanel').isValid()){
+            Ext.Msg.alert("Login", "Please fill out email and password");
             return;
         }
         Ext.Ajax.request({
@@ -150,11 +150,10 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var premiumCode1 = Ext.getCmp('pCodeField').getValue();
         var user;
 
-        if(fname=='Scott'||fname=='John'){
-            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+        if(!Ext.getCmp('userRegPanel').isValid()){
+            Ext.Msg.alert("Register", "Please fill out required fields");
             return;
         }
-
 
         Ext.Ajax.request({
             url : "premiumRegister",

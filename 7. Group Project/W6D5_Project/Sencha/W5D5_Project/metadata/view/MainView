@@ -449,10 +449,14 @@
                                         "fieldLabel": "Number of Visitors",
                                         "id": "countField",
                                         "itemId": "countField",
+                                        "labelAlign": null,
                                         "labelCls": null,
                                         "labelClsExtra": null,
+                                        "labelPad": 0,
+                                        "labelWidth": 150,
                                         "layout|flex": 0,
-                                        "value": "Number of Visitors: 0"
+                                        "value": "0",
+                                        "width": 174
                                     },
                                     "name": "MyDisplayField9",
                                     "designerId": "26692317-bab8-4007-a2e4-817889aada80"
