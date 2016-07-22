@@ -74,7 +74,7 @@
                     "        if (Ext.isEmpty(response.responseText)) {",
                     "            console.log('Failed :(');",
                     "            Ext.Msg.alert(\"User\", \"Sorry but you are prohibited to access this site\");",
-                    "        } else if(response.resposeText=='true') {",
+                    "        } else if(response.responseText=='true') {",
                     "            console.log('Success! :)');",
                     "            record = Ext.decode(response.responseText);",
                     "            isExist = true;",
