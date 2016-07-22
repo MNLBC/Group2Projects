@@ -13,12 +13,12 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.view.OrderWin', {
+Ext.define('W6D5_Project.view.OrderWin', {
     extend: 'Ext.window.Window',
     alias: 'widget.orderwin',
 
     requires: [
-        'W5D5_Project.view.OrderWinViewModel',
+        'W6D5_Project.view.OrderWinViewModel',
         'Ext.toolbar.Spacer',
         'Ext.container.Container',
         'Ext.form.field.Display',

@@ -12,7 +12,8 @@
             "CartProductController",
             "ProductController",
             "UserMainController",
-            "UserMgmtController"
+            "UserMgmtController",
+            "AccountController"
         ],
         "models": [
             "CategoryModel",

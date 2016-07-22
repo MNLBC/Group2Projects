@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.controller.CartProductController', {
+Ext.define('W6D5_Project.controller.CartProductController', {
     extend: 'Ext.app.Controller',
 
     id: 'cartProductController',
@@ -32,7 +32,7 @@ Ext.define('W5D5_Project.controller.CartProductController', {
 
     onCartProductGridDblClick: function(tableview, record, tr, rowIndex, e, eOpts) {
         if(Ext.isEmpty(this.cartProdWindow)){
-         this.cartProdWindow = Ext.create('W5D5_Project.view.CartProductWindow');
+         this.cartProdWindow = Ext.create('W6D5_Project.view.CartProductWindow');
         }
         Ext.getCmp('cartProductImg').setSrc('resources/img/' +record.data.prodImg + '.png');
         Ext.getCmp('cartProductNameField').setValue(record.data.prodName);

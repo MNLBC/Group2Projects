@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.CartProductStore', {
+Ext.define('W6D5_Project.store.CartProductStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.CartProductModel'
+        'W6D5_Project.model.CartProductModel'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +25,7 @@ Ext.define('W5D5_Project.store.CartProductStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'cartProductStore',
-            model: 'W5D5_Project.model.CartProductModel',
+            model: 'W6D5_Project.model.CartProductModel',
             listeners: {
                 datachanged: {
                     fn: me.onStoreDataChangeD,

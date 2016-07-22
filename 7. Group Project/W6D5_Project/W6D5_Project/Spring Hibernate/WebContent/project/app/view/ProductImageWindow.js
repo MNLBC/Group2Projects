@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.view.ProductImageWindow', {
+Ext.define('W6D5_Project.view.ProductImageWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.ProductImageWindow',
 

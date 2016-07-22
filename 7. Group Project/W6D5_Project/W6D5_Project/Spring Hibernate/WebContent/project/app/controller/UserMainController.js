@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.controller.UserMainController', {
+Ext.define('W6D5_Project.controller.UserMainController', {
     extend: 'Ext.app.Controller',
 
     id: 'userMainController',
@@ -33,6 +33,9 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         },
         "#loginForgotBtn": {
             click: 'onLoginForgotBtnClick'
+        },
+        "#reg1Cntr": {
+            beforeadd: 'onReg1CntrBeforeAdd'
         }
     },
 
@@ -52,67 +55,65 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var home2 = Ext.getCmp('subHeaderPanel');
         var home3 = Ext.getCmp('categoryPanel');
         var admin1 = Ext.getCmp('userMgmtBtn');
-        var admin2 = Ext.getCmp('prodMgmtBtn'),
-            record = '';
+        var admin2 = Ext.getCmp('prodMgmtBtn'), record = '';
         var isExist = false;
 
-        if(email=='Scott'||email=='John'){
+        if (email == 'Scott' || email == 'John') {
             Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
             return;
         }
         Ext.Ajax.request({
-            url : "getUser",
+            url : "login",
             method : "GET",
-            async: 'false',
+            async : 'false',
             params : {
-                email: email,
-                password: password
+                email : email,
+                password : password
             },
-            callback : function(options, success, response){
-                if(Ext.isEmpty(response.responseText)){
+            callback : function(options, success, response) {
+                if (Ext.isEmpty(response.responseText)) {
                     console.log('Failed :(');
-                     Ext.Msg.alert("User", "Account does not exist. Login again or register");
-                }else{
+                    Ext.Msg.alert("User",
+                                  "Account does not exist. Login again or register");
+                } else {
                     console.log('Success! :)');
                     record = Ext.decode(response.responseText);
                     isExist = true;
                     if (record.userType == 'A') {
-                    admin1.show();
-                    admin2.show();
+                        admin1.show();
+                        admin2.show();
                     }
                     store.add(record);
                     Ext.Ajax.request({
-            url : "getProducts",
-            method: 'POST',
-                async: 'false',
-            callback : function(options, success, response){
-                if(Ext.isEmpty(response.responseText)){
-                    console.log('Failed ');
-                }else{
-                    console.log('Success! ');
-                    var prodStore = Ext.getStore('ProductStore');
-                    var jsonResponse = Ext.JSON.decode(response.responseText);
-                    prodStore.loadData(jsonResponse);
-                     var panel = Ext.getCmp('mainTabPanel');
-            var tab = Ext.getCmp('digitalPanel');
-            var userField = Ext.getCmp('userField');
-            var countField = Ext.getCmp('countField'),
-                idField = Ext.getCmp('idField'),
-                addField = Ext.getCmp('addField');
-            panel.setActiveTab(tab);
-            var controller = W5D5_Project.app.getController('ShopController');
-            controller.clearItems();
-            controller.addProductsToPage('digital');
-            home1.show();
-            home2.show();
-            home3.show();
-            userField.setValue(record.userFname);
-            idField.setValue(record.userId);
-            addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
-            countField.setValue(1);
-                }
-            }
-            });
+                        url : "getProducts",
+                        method : 'POST',
+                        async : 'false',
+                        callback : function(options, success, response) {
+                            if (Ext.isEmpty(response.responseText)) {
+                                console.log('Failed ');
+                            } else {
+                                console.log('Success! ');
+                                var prodStore = Ext.getStore('ProductStore');
+                                var jsonResponse = Ext.JSON.decode(response.responseText);
+                                prodStore.loadData(jsonResponse);
+                                var panel = Ext.getCmp('mainTabPanel');
+                                var tab = Ext.getCmp('digitalPanel');
+                                var userField = Ext.getCmp('userField');
+                                var countField = Ext.getCmp('countField'), idField = Ext.getCmp('idField'), addField = Ext.getCmp('addField');
+                                panel.setActiveTab(tab);
+                                var controller = W6D5_Project.app.getController('ShopController');
+                                controller.clearItems();
+                                controller.addProductsToPage('digital');
+                                home1.show();
+                                home2.show();
+                                home3.show();
+                                userField.setValue(record.userFname);
+                                idField.setValue(record.userId);
+                                addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                countField.setValue(1);
+                            }
+                        }
+                    });
                 }
             }
         });
@@ -222,6 +223,12 @@ Ext.define('W5D5_Project.controller.UserMainController', {
 
         contact.show();
         home1.hide();
+    },
+
+    onReg1CntrBeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+        field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
     }
 
 });

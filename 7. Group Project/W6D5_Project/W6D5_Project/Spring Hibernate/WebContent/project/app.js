@@ -51,12 +51,13 @@ Ext.application({
         'CartProductController',
         'ProductController',
         'UserMainController',
-        'UserMgmtController'
+        'UserMgmtController',
+        'AccountController'
     ],
-    name: 'W5D5_Project',
+    name: 'W6D5_Project',
 
     launch: function() {
-        Ext.create('W5D5_Project.view.MainView');
+        Ext.create('W6D5_Project.view.MainView');
         Ext.define('ProductTemplate', {
             extend: 'Ext.container.Container',
             alias: 'widget.producttemplate',

@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.CountryStore', {
+Ext.define('W6D5_Project.store.CountryStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.CountryModel'
+        'W6D5_Project.model.CountryModel'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +25,7 @@ Ext.define('W5D5_Project.store.CountryStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'countryStore',
-            model: 'W5D5_Project.model.CountryModel',
+            model: 'W6D5_Project.model.CountryModel',
             data: [
                 {
                     CountryName: 'Afghanistan'

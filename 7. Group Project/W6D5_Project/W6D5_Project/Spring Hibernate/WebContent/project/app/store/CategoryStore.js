@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.CategoryStore', {
+Ext.define('W6D5_Project.store.CategoryStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.CategoryModel'
+        'W6D5_Project.model.CategoryModel'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +25,7 @@ Ext.define('W5D5_Project.store.CategoryStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'categoryStore',
-            model: 'W5D5_Project.model.CategoryModel',
+            model: 'W6D5_Project.model.CategoryModel',
             data: [
                 {
                     categories: 'Casual'

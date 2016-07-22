@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.UserStore', {
+Ext.define('W6D5_Project.store.UserStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.UserModel',
+        'W6D5_Project.model.UserModel',
         'Ext.data.proxy.Ajax',
         'Ext.data.reader.Json'
     ],
@@ -27,7 +27,7 @@ Ext.define('W5D5_Project.store.UserStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'UserStore',
-            model: 'W5D5_Project.model.UserModel',
+            model: 'W6D5_Project.model.UserModel',
             proxy: {
                 type: 'ajax',
                 reader: {

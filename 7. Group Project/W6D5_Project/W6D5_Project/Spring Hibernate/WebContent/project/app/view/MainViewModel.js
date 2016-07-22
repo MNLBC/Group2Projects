@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.view.MainViewModel', {
+Ext.define('W6D5_Project.view.MainViewModel', {
     extend: 'Ext.app.ViewModel',
     alias: 'viewmodel.mainview'
 

@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.UserTypeStore', {
+Ext.define('W6D5_Project.store.UserTypeStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.UserTypeModel'
+        'W6D5_Project.model.UserTypeModel'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +25,7 @@ Ext.define('W5D5_Project.store.UserTypeStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'userTypeStore',
-            model: 'W5D5_Project.model.UserTypeModel',
+            model: 'W6D5_Project.model.UserTypeModel',
             data: [
                 {
                     Name: 'Customer',

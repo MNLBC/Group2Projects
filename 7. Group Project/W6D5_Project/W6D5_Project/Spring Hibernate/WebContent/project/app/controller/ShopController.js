@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.controller.ShopController', {
+Ext.define('W6D5_Project.controller.ShopController', {
     extend: 'Ext.app.Controller',
 
     id: 'shopController',

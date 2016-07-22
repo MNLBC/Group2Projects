@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.ProductStoreB', {
+Ext.define('W6D5_Project.store.ProductStoreB', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.ProductModel',
+        'W6D5_Project.model.ProductModel',
         'Ext.data.proxy.JsonP'
     ],
 
@@ -26,7 +26,7 @@ Ext.define('W5D5_Project.store.ProductStoreB', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'productStore',
-            model: 'W5D5_Project.model.ProductModel',
+            model: 'W6D5_Project.model.ProductModel',
             data: [
                 {
                     prodId: 1,

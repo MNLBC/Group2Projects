@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.controller.ProductController', {
+Ext.define('W6D5_Project.controller.ProductController', {
     extend: 'Ext.app.Controller',
 
     id: 'productController',
@@ -209,7 +209,7 @@ Ext.define('W5D5_Project.controller.ProductController', {
     },
 
     onProductDoubleClick: function(tableview, record, tr, rowIndex, e, eOpts) {
-        var prodWindow = Ext.create('W5D5_Project.view.ProductImageWindow');
+        var prodWindow = Ext.create('W6D5_Project.view.ProductImageWindow');
         Ext.getCmp('productImage').setSrc('resources/img/' +record.data.prodImg + '.png');
         prodWindow.setTitle(record.data.prodName);
         prodWindow.show();

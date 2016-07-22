@@ -283,7 +283,7 @@
                 "designer|targetType": "Ext.grid.View",
                 "fn": "onProductDoubleClick",
                 "implHandler": [
-                    "var prodWindow = Ext.create('W5D5_Project.view.ProductImageWindow');",
+                    "var prodWindow = Ext.create('W6D5_Project.view.ProductImageWindow');",
                     "Ext.getCmp('productImage').setSrc('resources/img/' +record.data.prodImg + '.png');",
                     "prodWindow.setTitle(record.data.prodName);",
                     "prodWindow.show();",

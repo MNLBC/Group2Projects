@@ -46,7 +46,7 @@
                 "designer|targetType": "MyGridPanel",
                 "fn": "onUserInfoGridSelectionChange",
                 "implHandler": [
-                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var controller = W6D5_Project.app.getController('UserMgmtController');",
                     "        var grid = Ext.getCmp('userInfoGrid');",
                     "        var selected = grid.getSelectionModel().selected.items[0].data;",
                     "        controller.setUserFormValues(selected);"
@@ -227,7 +227,7 @@
                 "designer|targetType": "MyButton1",
                 "fn": "onUserResetBtnClick",
                 "implHandler": [
-                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var controller = W6D5_Project.app.getController('UserMgmtController');",
                     "        controller.UserResetFormValues();"
                 ],
                 "name": "click",
@@ -248,7 +248,7 @@
                 "designer|targetType": "MyButton3",
                 "fn": "onUserUpdateBtnClick",
                 "implHandler": [
-                    "        var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "        var controller = W6D5_Project.app.getController('UserMgmtController');",
                     "        var store = Ext.getStore('UserStore');",
                     "        var user = controller.getUserFormValues();",
                     "        var id = Ext.getCmp('userIdField').getValue();",
@@ -302,7 +302,7 @@
                 "designer|targetType": "MyButton2",
                 "fn": "onUserCreateBtnClick",
                 "implHandler": [
-                    "var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "var controller = W6D5_Project.app.getController('UserMgmtController');",
                     "        var store = Ext.getStore('UserStore');",
                     "        var user = controller.getUserFormValues();",
                     "        store.add(user);",
@@ -406,7 +406,7 @@
                 "designer|targetType": "MyButton",
                 "fn": "onUserDeleteBtnClick",
                 "implHandler": [
-                    "                var controller = W5D5_Project.app.getController('UserMgmtController');",
+                    "                var controller = W6D5_Project.app.getController('UserMgmtController');",
                     "                var store = Ext.getStore('UserStore');",
                     "                var id = Ext.getCmp('userIdField').getValue();",
                     "",

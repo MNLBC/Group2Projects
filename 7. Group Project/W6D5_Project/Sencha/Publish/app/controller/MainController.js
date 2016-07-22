@@ -63,6 +63,9 @@ Ext.define('W6D5_Project.controller.MainController', {
         },
         "#orderCancel": {
             click: 'onOrderCancelClick'
+        },
+        "#accForm": {
+            beforeadd: 'onAccFormBeforeAdd'
         }
     },
 
@@ -91,7 +94,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('digitalPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
         controller.addProductsToPage('digital');
     },
@@ -100,7 +103,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('luxuryPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
         controller.addProductsToPage('luxury');
     },
@@ -109,7 +112,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('casualPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
         controller.addProductsToPage('casual');
     },
@@ -118,7 +121,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('sportsPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
         controller.addProductsToPage('sports');
     },
@@ -127,7 +130,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('dressPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         // controller.clearItems();
         controller.addProductsToPage('dress');
     },
@@ -146,7 +149,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('productPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
     },
 
@@ -169,7 +172,7 @@ Ext.define('W6D5_Project.controller.MainController', {
                 if (btn === 'yes') {
                     console.log('Yes pressed');
                     if(Ext.isEmpty(scope.orderWin)){
-                     scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
+                     scope.orderWin = Ext.create('W6D5_Project.view.OrderWin');
                     }
                     Ext.getCmp('sumAdd').setValue(address.getValue());
                     Ext.getCmp('sumAmount').setValue(total);
@@ -202,7 +205,7 @@ Ext.define('W6D5_Project.controller.MainController', {
                     var countField = Ext.getCmp('countField'),
                         idField = Ext.getCmp('idField');
                     panel.setActiveTab(tab);
-                    var controller = W5D5_Project.app.getController('ShopController');
+                    var controller = W6D5_Project.app.getController('ShopController');
                     controller.clearItems();
                     controller.addProductsToPage('digital');
                     home1.hide();
@@ -224,7 +227,7 @@ Ext.define('W6D5_Project.controller.MainController', {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('userPanel');
         panel.setActiveTab(tab);
-        var controller = W5D5_Project.app.getController('ShopController');
+        var controller = W6D5_Project.app.getController('ShopController');
         controller.clearItems();
     },
 
@@ -264,6 +267,12 @@ Ext.define('W6D5_Project.controller.MainController', {
         if(!Ext.isEmpty(this.orderWin)){
                              this.orderWin.hide();
                             }
+    },
+
+    onAccFormBeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
     }
 
 });

@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.model.ProductModel', {
+Ext.define('W6D5_Project.model.ProductModel', {
     extend: 'Ext.data.Model',
 
     requires: [

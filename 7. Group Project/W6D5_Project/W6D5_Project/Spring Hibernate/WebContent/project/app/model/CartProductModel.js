@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.model.CartProductModel', {
+Ext.define('W6D5_Project.model.CartProductModel', {
     extend: 'Ext.data.Model',
 
     requires: [

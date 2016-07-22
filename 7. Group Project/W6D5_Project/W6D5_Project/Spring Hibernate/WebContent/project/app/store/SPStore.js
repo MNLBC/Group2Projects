@@ -13,11 +13,11 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.store.SPStore', {
+Ext.define('W6D5_Project.store.SPStore', {
     extend: 'Ext.data.Store',
 
     requires: [
-        'W5D5_Project.model.SPModel'
+        'W6D5_Project.model.SPModel'
     ],
 
     constructor: function(cfg) {
@@ -25,7 +25,7 @@ Ext.define('W5D5_Project.store.SPStore', {
         cfg = cfg || {};
         me.callParent([Ext.apply({
             storeId: 'SPStore',
-            model: 'W5D5_Project.model.SPModel',
+            model: 'W6D5_Project.model.SPModel',
             data: [
                 {
                     CountryName: 'Afghanistan',

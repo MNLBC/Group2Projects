@@ -51,7 +51,8 @@ Ext.application({
         'CartProductController',
         'ProductController',
         'UserMainController',
-        'UserMgmtController'
+        'UserMgmtController',
+        'AccountController'
     ],
     name: 'W6D5_Project',
 

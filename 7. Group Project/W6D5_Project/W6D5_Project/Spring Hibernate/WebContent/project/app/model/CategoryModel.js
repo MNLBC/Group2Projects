@@ -13,7 +13,7 @@
  * Do NOT hand edit this file.
  */
 
-Ext.define('W5D5_Project.model.CategoryModel', {
+Ext.define('W6D5_Project.model.CategoryModel', {
     extend: 'Ext.data.Model',
     alias: 'model.CategoryModel',
 
