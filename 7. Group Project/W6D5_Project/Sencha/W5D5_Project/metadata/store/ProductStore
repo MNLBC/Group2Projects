@@ -21,7 +21,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "url": "getProducts"
+                "url": "getAllProducts"
             },
             "name": "MyAjaxProxy1",
             "designerId": "6fb89c80-3dbb-49d1-9a84-94dce337b7b8",

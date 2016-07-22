@@ -30,7 +30,7 @@ Ext.define('W5D5_Project.store.ProductStore', {
             model: 'W5D5_Project.model.ProductModel',
             proxy: {
                 type: 'ajax',
-                url: 'getProducts',
+                url: 'getAllProducts',
                 reader: {
                     type: 'json'
                 }
