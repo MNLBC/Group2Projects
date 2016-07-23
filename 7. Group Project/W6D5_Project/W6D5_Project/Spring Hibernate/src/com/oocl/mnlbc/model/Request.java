@@ -2,8 +2,17 @@ package com.oocl.mnlbc.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+
+/**
+ * @author SOQUIDA
+ * @since 2016-07-22
+ */
 
 @Entity
 @Table(name="REQUESTS")
@@ -11,6 +20,8 @@ public class Request {
 
 	@Id
 	@Column(name="REQID")
+	@SequenceGenerator(name = "requests_seq", sequenceName = "REQUESTS_SEQ", allocationSize = 1)
+	@GeneratedValue(generator = "requests_seq", strategy = GenerationType.SEQUENCE)
 	private long requestId;
 	@Column(name="USEREMAIL")
 	private String userEmail;
@@ -18,6 +29,8 @@ public class Request {
 	private String userDate;
 	@Column(name="REQSTATUS")
 	private String requestStatus;
+	
+	
 	public long getRequestId() {
 		return requestId;
 	}

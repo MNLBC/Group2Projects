@@ -13,7 +13,7 @@ import com.oocl.mnlbc.model.Request;
 public interface RequestSVC {
 	
 	public int createRequest(String useremail);
-	public List<Request> getRequestByUserEmail(String useremail);
+	public Request getRequestByUserEmail(String useremail);
 	public List<Request> getAllRequest();
 	public int updateRequest(Request request);
 

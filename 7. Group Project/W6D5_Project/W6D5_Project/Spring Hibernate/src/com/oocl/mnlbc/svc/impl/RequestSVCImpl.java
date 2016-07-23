@@ -35,7 +35,7 @@ public class RequestSVCImpl implements RequestSVC {
 	
 	@Override
 	@Transactional
-	public List<Request> getRequestByUserEmail(String useremail){
+	public Request getRequestByUserEmail(String useremail){
 		return this.requestDAO.getRequestByUserEmail(useremail);
 		
 	}

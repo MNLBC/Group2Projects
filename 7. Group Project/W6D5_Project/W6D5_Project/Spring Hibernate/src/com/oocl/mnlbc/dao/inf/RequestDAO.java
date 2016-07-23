@@ -12,7 +12,7 @@ import com.oocl.mnlbc.model.Request;
 public interface RequestDAO {
 	
 	public int createRequest(Request request);
-	public List<Request> getRequestByUserEmail(String useremail);
+	public Request getRequestByUserEmail(String useremail);
 	List<Request> getAllRequest();
 	public int updateRequest(Request request);
 

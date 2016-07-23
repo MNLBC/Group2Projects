@@ -1,5 +1,6 @@
 package com.oocl.mnlbc.dao.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +33,10 @@ public class RequestDAOImpl implements RequestDAO {
 
 	@Override
 	public List<Request> getAllRequest() {
-		String sql = "SELECT request FROM Request request";
+		String sql = "SELECT request FROM REQUESTS request";
 		List<Request> allRequestList = manager.createQuery(sql).getResultList();
 		for (Request allRequest : allRequestList) {
-			logger.info("All Request List:" + allRequest);
+			logger.info("Request List:" + allRequest);
 		}
 		return allRequestList;
 	}
@@ -48,20 +49,31 @@ public class RequestDAOImpl implements RequestDAO {
 	}
 
 	@Override
-	public List<Request> getRequestByUserEmail(String useremail) {
-		List<Request> userRequestList = new ArrayList<Request>();
-		String query = "SELECT userReq FROM REQUEST userReq WHERE userReq.USEREMAIL =" + useremail;
-		userRequestList = manager.createQuery(query, Request.class).getResultList();
-		for (Request userReq : userRequestList) {
-			logger.info("User Request" + userReq);
+	public Request getRequestByUserEmail(String useremail) {
+		Request requestUserEmail = new Request();
+		String query = "SELECT * FROM REQUESTS WHERE USEREMAIL ='"+ useremail + "'AND REQID IN (SELECT MAX(REQID) FROM REQUESTS WHERE USEREMAIL = '"+useremail +"')";
+//		userRequestList = manager.createNativeQuery(query, Request.class).getResultList();
+//		for (Request userReq : userRequestList) {
+//			logger.info("User Request" + userReq);
+//		}
+		List<Object[]> userRequests = manager.createNativeQuery(query).getResultList();
+		for(int i= 0; i < userRequests.size(); i++){
+			BigDecimal d = (BigDecimal) userRequests.get(i)[0];
+			requestUserEmail.setRequestId(d.longValue());
+			requestUserEmail.setUserEmail((String)userRequests.get(i)[1]);
+			requestUserEmail.setUserDate((String)userRequests.get(i)[2]);
+			requestUserEmail.setRequestStatus((String) userRequests.get(i)[3]);
 		}
-		return userRequestList;
+		return requestUserEmail;
 	}
 
 	@Override
 	public int updateRequest(Request request) {
 		Request updateRequest = manager.find(Request.class, request.getRequestId());
-		updateRequest = request;
+		updateRequest.setRequestId(request.getRequestId());
+		updateRequest.setUserEmail(request.getUserEmail());
+		updateRequest.setUserDate(request.getUserDate());
+		updateRequest.setRequestStatus(request.getRequestStatus());
 		logger.info("Request updated successfully!=" + updateRequest);
 		return 1;
 	}
