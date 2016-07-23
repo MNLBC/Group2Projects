@@ -12,5 +12,7 @@ public interface CartProductSVC {
 
    public int deleteCartProductsByUser(long userid);
 
+   public int deleteCartProductsByProduct(long prodid, long userid);
+
    public List<CartProduct> getCartProductsByUser(long userid);
 }

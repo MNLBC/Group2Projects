@@ -15,4 +15,6 @@ public interface CartProductDAO {
    public List<CartProduct> getCartProductsByUser(long userid);
 
    public List<CartProduct> checkCartProduct(CartProduct cartproduct);
+
+   public int deleteCartProductsByProduct(long prodid, long userid);
 }

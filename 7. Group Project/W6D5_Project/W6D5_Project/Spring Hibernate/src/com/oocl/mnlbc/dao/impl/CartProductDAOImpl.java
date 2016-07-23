@@ -57,10 +57,10 @@ public class CartProductDAOImpl implements CartProductDAO {
    @Override
    public int deleteCartProductsByUser(long userid) {
       String sql = "SELECT cartproduct FROM CartProduct cartproduct WHERE cartproduct.userId = " + userid;
-      List<CartProduct> cartproductlist = manager.createQuery(sql).getResultList();
+      List<CartProduct> deletedcartprod = manager.createQuery(sql).getResultList();
       logger.info("User ID = " + userid);
-      for (CartProduct cartproduct : cartproductlist) {
-         manager.persist(cartproduct);
+      for (CartProduct cartproduct : deletedcartprod) {
+         manager.remove(cartproduct);
          logger.info("CartProduct deleted successfully!=" + cartproduct);
       }
       return 1;
@@ -72,7 +72,6 @@ public class CartProductDAOImpl implements CartProductDAO {
       List<CartProduct> cartproductlist = manager.createQuery(sql).getResultList();
       logger.info("User ID = " + userid);
       for (CartProduct cartproduct : cartproductlist) {
-         manager.persist(cartproduct);
          logger.info("CartProduct list =" + cartproduct);
       }
       return cartproductlist;
@@ -87,6 +86,17 @@ public class CartProductDAOImpl implements CartProductDAO {
          + "cartproduct.prodId=" + prodid + " ";
       List<CartProduct> cartproductlist = manager.createQuery(sql).getResultList();
       return cartproductlist;
+   }
+
+   @Override
+   public int deleteCartProductsByProduct(long prodid, long userid) {
+      String sql = "SELECT cartproduct FROM CartProduct cartproduct "
+         + "WHERE cartproduct.prodId = " + prodid + " AND "
+            + "cartproduct.userId = " + userid;
+      List<CartProduct> deletedcartprod = manager.createQuery(sql).getResultList();
+      manager.remove(deletedcartprod.get(0));
+      logger.info("CartProduct deleted successfully = " + deletedcartprod.get(0));
+      return 1;
    }
 
 }

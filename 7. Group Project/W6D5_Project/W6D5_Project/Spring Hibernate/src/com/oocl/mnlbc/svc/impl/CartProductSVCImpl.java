@@ -49,4 +49,9 @@ public class CartProductSVCImpl implements CartProductSVC {
       return this.cartProductDAO.getCartProductsByUser(userid);
    }
 
+   @Override
+   public int deleteCartProductsByProduct(long prodid, long userid) {
+      return this.cartProductDAO.deleteCartProductsByProduct(prodid,userid);
+   }
+
 }
