@@ -36,9 +36,20 @@ public class CartProductDAOImpl implements CartProductDAO {
    }
 
    @Override
-   public int updateCartProduct(CartProduct cartproduct) {
-      CartProduct newCartProduct = manager.find(CartProduct.class, cartproduct.getProdId());
-      newCartProduct = cartproduct;
+   public int updateCartProduct(long cartprodid, CartProduct cartproduct) {
+      CartProduct newCartProduct = manager.find(CartProduct.class, cartprodid);
+      newCartProduct.setCartprodId(cartprodid);
+      newCartProduct.setUserId(cartproduct.getUserId());
+      newCartProduct.setProdId(cartproduct.getProdId());
+      newCartProduct.setProdName(cartproduct.getProdName());
+      newCartProduct.setProdCat(cartproduct.getProdCat());
+      newCartProduct.setProdDesc(cartproduct.getProdDesc());
+      newCartProduct.setProdPrice(cartproduct.getProdPrice());
+      newCartProduct.setProdSale(cartproduct.getProdSale());
+      newCartProduct.setProdStock(cartproduct.getProdStock());
+      newCartProduct.setProdImg(cartproduct.getProdImg());
+      newCartProduct.setProdQty(cartproduct.getProdQty());
+      newCartProduct.setProdSubtotal(cartproduct.getProdSubtotal());
       logger.info("CartProduct updated successfully, cartproduct details=" + newCartProduct);
       return 1;
    }
@@ -64,6 +75,17 @@ public class CartProductDAOImpl implements CartProductDAO {
          manager.persist(cartproduct);
          logger.info("CartProduct list =" + cartproduct);
       }
+      return cartproductlist;
+   }
+   
+   @Override
+   public List<CartProduct> checkCartProduct(CartProduct cartproduct) {
+      long userid = cartproduct.getUserId();
+      long prodid = cartproduct.getProdId();
+      String sql = "SELECT cartproduct FROM CartProduct cartproduct "
+         + "WHERE cartproduct.userId=" + userid + " AND "
+         + "cartproduct.prodId=" + prodid + " ";
+      List<CartProduct> cartproductlist = manager.createQuery(sql).getResultList();
       return cartproductlist;
    }
 

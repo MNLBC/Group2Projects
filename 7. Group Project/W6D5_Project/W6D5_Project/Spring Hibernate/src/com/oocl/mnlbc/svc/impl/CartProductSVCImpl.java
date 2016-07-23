@@ -24,15 +24,18 @@ public class CartProductSVCImpl implements CartProductSVC {
 
    @Override
    @Transactional
-   public int createCartProduct(CartProduct cartproduct) {
-      return this.cartProductDAO.createCartProduct(cartproduct);
+   public int addCartProduct(CartProduct cartproduct) {
+      List<CartProduct> result = this.cartProductDAO.checkCartProduct(cartproduct);
+      if(result.isEmpty())
+         return this.cartProductDAO.createCartProduct(cartproduct);
+      return this.cartProductDAO.updateCartProduct(result.get(0).getCartprodId(), cartproduct);
    }
 
-   @Override
-   @Transactional
-   public int updateCartProduct(CartProduct cartproduct) {
-      return this.cartProductDAO.updateCartProduct(cartproduct);
-   }
+//   @Override
+//   @Transactional
+//   public int updateCartProduct(CartProduct cartproduct) {
+//      return this.cartProductDAO.updateCartProduct(cartproduct);
+//   }
 
    @Override
    @Transactional

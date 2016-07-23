@@ -6,9 +6,9 @@ import com.oocl.mnlbc.model.CartProduct;
 
 public interface CartProductSVC {
 
-   public int createCartProduct(CartProduct cartproduct);
+   public int addCartProduct(CartProduct cartproduct);
 
-   public int updateCartProduct(CartProduct cartproduct);
+//   public int updateCartProduct(CartProduct cartproduct);
 
    public int deleteCartProductsByUser(long userid);
 
