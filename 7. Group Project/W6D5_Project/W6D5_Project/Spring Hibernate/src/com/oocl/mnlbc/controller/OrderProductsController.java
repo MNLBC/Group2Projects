@@ -24,7 +24,6 @@ import com.oocl.mnlbc.svc.inf.OrderProductSVC;
  * @since 2016-07-21
  */
 @RestController
-@ResponseBody
 public class OrderProductsController {
 
 	private OrderProductSVC orderprodSVC;

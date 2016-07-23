@@ -31,12 +31,14 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	private EntityManager manager;
 
 	@Override
-	public int addOrderProducts(List<OrderProduct> orderProducts) {
-		for (OrderProduct orderProduct : orderProducts) {
-			manager.persist(orderProduct);
-			logger.info("OrderProducts saved successfully, orderproduct details=" + orderProduct);
+	public int addOrderProducts(List<CartProduct> cartProductList, int orderId, long userId) {
+		for (CartProduct cart : cartProductList) {
+			String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES('"
+					+ orderId +"','"+ cart.getProdId() +"','" + cart.getProdQty() +"')";
+			manager.createNativeQuery(sql).executeUpdate();
+			logger.info("OrderProducts saved successfully, orderproduct details=" + cartProductList);
 		}
-		
+		manager.createNativeQuery("DELETE FROM CARTPRODUCT WHERE USERID = '" + userId +"'").executeUpdate();
 		return 1;
 	}
 
@@ -82,6 +84,17 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 		newOrderProduct.setProdId(orderProduct.getProdId());
 		logger.info("OrderProduct updated successfully, Orderproduct details=" + newOrderProduct);
 		return 1;
+	}
+
+	@Override
+	public List<CartProduct> getCartProductByUserId(long userId) {
+		String sql = "SELECT * FROM CARTPRODUCT WHERE USERID = '" + userId + "'";
+		List<CartProduct> cartProductList = manager.createNativeQuery(sql,CartProduct.class).getResultList();
+		logger.info("User id :" + userId);
+		for (CartProduct cp : cartProductList) {
+			logger.info("Cart Product List :" + cp);
+		}
+		return cartProductList;
 	}
 
 }

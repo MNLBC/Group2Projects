@@ -677,6 +677,7 @@
                                                 },
                                                 {
                                                     "id": "471f0c70-f18b-4448-a59b-05996f5fb21f",
+                                                    "expanded": false,
                                                     "cn": [
                                                         {
                                                             "id": "f962afa6-8892-403d-9c72-95253cfcc199",
@@ -787,6 +788,7 @@
                                                 },
                                                 {
                                                     "id": "5b75e7ab-b476-4919-a1bd-8ce5813ecc4a",
+                                                    "expanded": false,
                                                     "cn": [
                                                         {
                                                             "id": "1d95ab73-f0ce-4578-85ad-b13b16248afd"
@@ -825,10 +827,10 @@
                                                                                     "id": "a9cb3cdb-1d1d-4d12-a63e-63b8e0b1bb43"
                                                                                 },
                                                                                 {
-                                                                                    "id": "0077258f-f868-499e-838b-1b359b044a4d"
+                                                                                    "id": "f7b7fd52-16df-4705-87fe-d94f93af3872"
                                                                                 },
                                                                                 {
-                                                                                    "id": "f7b7fd52-16df-4705-87fe-d94f93af3872"
+                                                                                    "id": "0077258f-f868-499e-838b-1b359b044a4d"
                                                                                 },
                                                                                 {
                                                                                     "id": "021de0e7-39be-451c-8eea-623c5210aa05"
@@ -849,7 +851,11 @@
                                                                                     "id": "f6a3e259-b03a-4f1d-9b50-eb689cb6cffe"
                                                                                 },
                                                                                 {
+                                                                                    "id": "d9f24b87-2b6e-4468-b414-a9ab39510139"
+                                                                                },
+                                                                                {
                                                                                     "id": "bada60cd-1f54-43bc-a8aa-085cd502df94",
+                                                                                    "expanded": false,
                                                                                     "cn": [
                                                                                         {
                                                                                             "id": "d09dae39-0335-4686-a870-c90827680ed8"
@@ -859,6 +865,120 @@
                                                                                         },
                                                                                         {
                                                                                             "id": "51dc095b-0843-4629-84c8-4efb98246dfd"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "id": "f432fb92-6af8-4d72-b24b-10829b331aef"
+                                                                                },
+                                                                                {
+                                                                                    "id": "547295f5-7cd6-4fb7-a30e-c7d763519a06"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "id": "ae02494c-6d18-4b49-b9fb-ef15fb7ef868",
+                                                    "cn": [
+                                                        {
+                                                            "id": "e4dc78d2-e08e-4e8b-b61c-db8b4b4295ce"
+                                                        },
+                                                        {
+                                                            "id": "a65a421c-df86-4bf8-8caa-29b714a430da"
+                                                        },
+                                                        {
+                                                            "id": "4382e9d1-0e9f-46f4-ab55-ee94b8237aeb",
+                                                            "cn": [
+                                                                {
+                                                                    "id": "dcdd2ff6-f63a-438c-861d-309d65eac726"
+                                                                },
+                                                                {
+                                                                    "id": "ed2eda30-3353-41f4-b01b-f1b2fc7b5d7c",
+                                                                    "cn": [
+                                                                        {
+                                                                            "id": "99cf46e1-da00-43f0-ae8b-bef451530aac",
+                                                                            "cn": [
+                                                                                {
+                                                                                    "id": "3611c44a-e7f4-416a-b6fb-2fd475527179"
+                                                                                },
+                                                                                {
+                                                                                    "id": "bcc0b515-cc1d-496f-9d97-32398b95c6d2"
+                                                                                },
+                                                                                {
+                                                                                    "id": "95aa9ee1-dee8-46c5-929a-f2eba1720e05"
+                                                                                },
+                                                                                {
+                                                                                    "id": "7ae74011-2f39-4efe-9a7e-7cdc44de7d5a"
+                                                                                },
+                                                                                {
+                                                                                    "id": "42dda6fb-0e3e-4053-b72f-1bd492651fed"
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            "id": "d018e3ac-4f16-4aaa-8223-577bd525f256",
+                                                                            "cn": [
+                                                                                {
+                                                                                    "id": "0676510f-1338-48a2-9b65-fc01aba7c209"
+                                                                                },
+                                                                                {
+                                                                                    "id": "f7755b61-1d07-446e-985f-cd0a3186e27a"
+                                                                                },
+                                                                                {
+                                                                                    "id": "9c540531-efd2-48a5-a1e3-19160bf4f015"
+                                                                                },
+                                                                                {
+                                                                                    "id": "45f61f8a-41dc-4aaf-abb6-2a46ec0b6fc2"
+                                                                                },
+                                                                                {
+                                                                                    "id": "283ad72a-9e9e-4a56-8e12-6f8243dcdf14"
+                                                                                },
+                                                                                {
+                                                                                    "id": "b29bb1cd-76cd-474e-b6d6-a65e03cab109"
+                                                                                },
+                                                                                {
+                                                                                    "id": "8f517c49-5391-4333-adfd-71a5806d23ad"
+                                                                                },
+                                                                                {
+                                                                                    "id": "7ca6e37a-6c72-4fa5-9baa-63f81bc86320"
+                                                                                },
+                                                                                {
+                                                                                    "id": "205fe3bf-a013-4a52-a936-cd021716e6cb"
+                                                                                },
+                                                                                {
+                                                                                    "id": "de81b54e-fe76-4a05-b451-55fe7f71704c"
+                                                                                },
+                                                                                {
+                                                                                    "id": "83f500a7-8395-49eb-8707-4b2deabb3cb3"
+                                                                                },
+                                                                                {
+                                                                                    "id": "0496bee2-4574-4bb3-8f49-b75da6306c8f"
+                                                                                },
+                                                                                {
+                                                                                    "id": "fbd0244b-bbeb-45d6-8cfd-25ce3f9c34a1"
+                                                                                },
+                                                                                {
+                                                                                    "id": "a3b339b1-349d-4f0d-913d-90fc83c81a92"
+                                                                                },
+                                                                                {
+                                                                                    "id": "4f9bdcc9-94c8-430f-8cbd-007f2daf5604"
+                                                                                },
+                                                                                {
+                                                                                    "id": "e721b7c0-f0cb-4162-9537-2edb94b67478",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "id": "138c8f83-54b5-468d-a911-e1ff77539bc4"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "d57372e1-49c3-415b-a0dc-b6958c6c40c2"
+                                                                                        },
+                                                                                        {
+                                                                                            "id": "06b61083-db44-49fc-976f-7b0478585e0f"
                                                                                         }
                                                                                     ]
                                                                                 }
@@ -1180,10 +1300,13 @@
                     "id": "16d2feaf-d3f0-4995-ab88-71ead64a32f2"
                 },
                 {
-                    "id": "a0c2033a-3d60-4740-be9f-dcb28020dd59"
+                    "id": "7ea53fc6-6144-4cfb-8ac3-fb3908807a71"
                 },
                 {
                     "id": "1d64aa6e-d2d1-4dc5-86f7-086aff9fc6d0"
+                },
+                {
+                    "id": "a0c2033a-3d60-4740-be9f-dcb28020dd59"
                 },
                 {
                     "id": "45c866b2-54df-48b3-8c78-876726c85099"
@@ -1447,6 +1570,20 @@
                 },
                 {
                     "id": "1414ea8d-9056-4168-ac8e-ac7ee9c3ba98"
+                },
+                {
+                    "id": "a4d5b5f8-ced9-4b03-8835-831226caec69"
+                }
+            ]
+        },
+        "4684ccaa-71d6-4594-a7ac-602fb983e6de": {
+            "id": "4684ccaa-71d6-4594-a7ac-602fb983e6de",
+            "cn": [
+                {
+                    "id": "87a34761-be4e-4b42-92e5-0ae9ebcba270"
+                },
+                {
+                    "id": "ee6c8710-d5e4-4f2f-865e-a49be664bf54"
                 }
             ]
         },
@@ -1494,17 +1631,18 @@
             "989fc48a-7112-4705-ba58-0de4da28a18a",
             "4a233968-d775-4e3f-bb64-e9bf44a2485a",
             "2db812da-4759-4b3c-b973-b6404827c865",
-            "8bf6c735-5c04-4a79-9598-a2023bd30072"
+            "8bf6c735-5c04-4a79-9598-a2023bd30072",
+            "4684ccaa-71d6-4594-a7ac-602fb983e6de"
         ]
     },
     "canvasState": {
-        "topInstance": null
+        "topInstance": "66b6c872-a53a-4014-8bd6-37b94d4bcc2a"
     },
     "inspectorState": {
-        "topInstance": "3e2e9c5a-a66d-440a-97f6-51c69b24c11e",
-        "selectedInstance": "3e2e9c5a-a66d-440a-97f6-51c69b24c11e"
+        "topInstance": "4684ccaa-71d6-4594-a7ac-602fb983e6de",
+        "selectedInstance": "4684ccaa-71d6-4594-a7ac-602fb983e6de"
     },
-    "editMode": "code",
+    "editMode": "design",
     "userSettings": {
         "no-cmd": true
     }

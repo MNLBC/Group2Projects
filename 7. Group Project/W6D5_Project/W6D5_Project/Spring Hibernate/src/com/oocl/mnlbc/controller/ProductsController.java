@@ -23,7 +23,6 @@ import com.oocl.mnlbc.svc.inf.ProductSVC;
  * @date 2016-07-21
  */
 @RestController
-@ResponseBody
 public class ProductsController {
 
    private ProductSVC prodSVC;

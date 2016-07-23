@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventLocator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -20,6 +21,7 @@ import com.oocl.mnlbc.model.User;
  * @since 07-21-2016
  *
  */
+@Component
 public class RegisterValidator implements Validator {
 
 	private static final String SIMPLE_EMAIL_REGEX = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
@@ -35,21 +37,21 @@ public class RegisterValidator implements Validator {
 		User userCheck = (User) target;
 		String password = userCheck.getUserPass();
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPassField", "error.email.empty", "Enter a password");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userEmailField", "error.username.empty",
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPass", "error.email.empty", "Enter a password");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userEmail", "error.username.empty",
 				"Enter an email address");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userAddress1Field", "error.address.empty", "Enter a password");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userAddress1", "error.address.empty", "Enter a password");
 
 		if (StringUtils.hasText(userCheck.getUserEmail())
 				&& !Pattern.matches(SIMPLE_EMAIL_REGEX, userCheck.getUserEmail().toUpperCase())) {
-			errors.rejectValue("userEmailField", "error.email.invalid", "Email address entered is invalid");
+			errors.rejectValue("userEmail", "error.email.invalid", "Email address entered is invalid");
 		}
 		if (StringUtils.hasText(userCheck.getUserAddress1())
 				&& !Pattern.matches(SIMPLE_ADDRESS_REGEX, userCheck.getUserAddress1().toUpperCase())) {
-			errors.rejectValue("userAddress1Field", "error.address.invalid", "Address entered is invalid");
+			errors.rejectValue("userAddress1", "error.address.invalid", "Address entered is invalid");
 		}
 		if (password.length() < 8) {
-			errors.rejectValue("userPassField", "error.pass.invalid", "Password must be at least 8 characters.");
+			errors.rejectValue("userPass", "error.pass.invalid", "Password must be at least 8 characters.");
 		}
 	}
 

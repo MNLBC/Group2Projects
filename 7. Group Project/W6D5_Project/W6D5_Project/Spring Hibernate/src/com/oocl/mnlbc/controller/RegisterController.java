@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,15 +24,26 @@ import com.oocl.mnlbc.validator.RegisterValidator;
  * @since 2016-07-21
  */
 @RestController
-@ResponseBody
 public class RegisterController {
 
 	private UserSVC userSVC;
+	@Autowired
+	private RegisterValidator registerValidator;
 
 	@Autowired(required = true)
 	@Qualifier(value = "userService")
 	public void setUserService(UserSVC userSVC) {
 		this.userSVC = userSVC;
+	}
+
+	/**
+	 * Bind Validator for Register
+	 * 
+	 * @param binder
+	 */
+	@InitBinder
+	protected void initBinder(final WebDataBinder binder) {
+		binder.addValidators(registerValidator);
 	}
 
 	/**
@@ -51,23 +64,13 @@ public class RegisterController {
 				} else {
 					response.setResponseCode(1);
 				}
+			} else {
+				response.setResponseCode(2);
 			}
-			response.setResponseCode(2);
 		} else {
-			response.setResponseCode(4);
+			response.setResponseCode(999);
 			response.setErrors(result.getAllErrors());
 		}
 		return response;
 	}
-	
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	public boolean registerUser(@RequestBody User user) {
-//		int result = this.userSVC.createUser(user);
-//		if (user != null) {
-//			if (result != 1 || result == 0)
-//				return false;
-//			return true;
-//		}
-//		return false;
-//	}
 }

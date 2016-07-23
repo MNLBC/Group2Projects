@@ -3,6 +3,7 @@ package com.oocl.mnlbc.validator;
 
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -15,6 +16,7 @@ import com.oocl.mnlbc.model.User;
  * @since 07/20/2016
  *
  */
+@Component
 public class LoginValidator implements Validator {
 
 	private static final String SIMPLE_EMAIL_REGEX = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
@@ -30,16 +32,16 @@ public class LoginValidator implements Validator {
 		User userCheck = (User) target;
 		String password = userCheck.getUserPass();
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userEmailField", "error.email.empty",
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userEmail", "error.email.empty",
 				"Enter an email address");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPassField", "error.password.empty", "Enter a password");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userPass", "error.password.empty", "Enter a password");
 
 		if (StringUtils.hasText(userCheck.getUserEmail())
 				&& !Pattern.matches(SIMPLE_EMAIL_REGEX, userCheck.getUserEmail().toUpperCase())) {
-			errors.rejectValue("userEmailField", "error.email.invalid", "Email address entered is invalid");
+			errors.rejectValue("userEmail", "error.email.invalid", "Email address entered is invalid");
 		}
 		if (password.length() < 8) {
-			errors.rejectValue("userPassField", "error.pass.invalid", "Password must be at least 8 characters.");
+			errors.rejectValue("userPass", "error.pass.invalid", "Password must be at least 8 characters.");
 		}
 	
 	}

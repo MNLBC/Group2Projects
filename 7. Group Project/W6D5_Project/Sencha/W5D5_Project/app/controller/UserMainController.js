@@ -55,17 +55,19 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var home2 = Ext.getCmp('subHeaderPanel');
         var home3 = Ext.getCmp('categoryPanel');
         var admin1 = Ext.getCmp('userMgmtBtn');
-        var admin2 = Ext.getCmp('prodMgmtBtn'), record = '';
+        var admin2 = Ext.getCmp('prodMgmtBtn'),
+            admin3 = Ext.getCmp('userReqBtn'),
+            record = '';
         var isExist = false;
 
-        if (email == 'Scott' || email == 'John') {
-            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+        if (!Ext.getCmp('loginPanel').isValid()) {
+            Ext.Msg.alert("Login", "Please fill out email and password");
             return;
         }
         Ext.Ajax.request({
             url : "login",
             method : "POST",
-            async : 'false',
+            async : false,
             params : {
                 email : email,
                 password : password
@@ -73,47 +75,70 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             callback : function(options, success, response) {
                 if (Ext.isEmpty(response.responseText)) {
                     console.log('Failed :(');
-                    Ext.Msg.alert("User",
-                                  "Account does not exist. Login again or register");
-                } else {
+                    Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+                } else if (response.responseText == 'true') {
                     console.log('Success! :)');
-                    record = Ext.decode(response.responseText);
-                    isExist = true;
-                    if (record.userType == 'A') {
-                        admin1.show();
-                        admin2.show();
-                    }
-                    store.add(record);
                     Ext.Ajax.request({
-                        url : "getProducts",
-                        method : 'POST',
-                        async : 'false',
+                        url : "getUserByEmail",
+                        method : "GET",
+                        async : false,
+                        params : {
+                            email : email
+                        },
                         callback : function(options, success, response) {
-                            if (Ext.isEmpty(response.responseText)) {
-                                console.log('Failed ');
-                            } else {
-                                console.log('Success! ');
-                                var prodStore = Ext.getStore('ProductStore');
-                                var jsonResponse = Ext.JSON.decode(response.responseText);
-                                prodStore.loadData(jsonResponse);
-                                var panel = Ext.getCmp('mainTabPanel');
-                                var tab = Ext.getCmp('digitalPanel');
-                                var userField = Ext.getCmp('userField');
-                                var countField = Ext.getCmp('countField'), idField = Ext.getCmp('idField'), addField = Ext.getCmp('addField');
-                                panel.setActiveTab(tab);
-                                var controller = W5D5_Project.app.getController('ShopController');
-                                controller.clearItems();
-                                controller.addProductsToPage('digital');
-                                home1.show();
-                                home2.show();
-                                home3.show();
-                                userField.setValue(record.userFname);
-                                idField.setValue(record.userId);
-                                addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
-                                countField.setValue(1);
+                            if (!Ext.isEmpty(response.responseText)) {
+                                record = Ext.decode(response.responseText);
+                                record = record[0];
+                                isExist = true;
+                                if (record.userType == 'Admin') {
+                                    // 							admin1.show();
+                                    // 							admin2.show();
+                                    admin3.show();
+                                }
+                                store.add(record);
+                                Ext.Ajax.request({
+                                    url : "getAllProducts",
+                                    method : 'GET',
+                                    async : false,
+                                    callback : function(options, success, response) {
+                                        if (Ext.isEmpty(response.responseText)) {
+                                            Ext.Msg.alert("Products",
+                                                          "Error in getting products");
+                                            console.log('Failed ');
+                                        } else {
+                                            console.log('Success! ');
+                                            var prodStore = Ext.getStore('ProductStore');
+                                            var jsonResponse = Ext.JSON.decode(response.responseText);
+                                            prodStore.loadData(jsonResponse);
+                                            var panel = Ext.getCmp('mainTabPanel');
+                                            var tab = Ext.getCmp('digitalPanel');
+                                            var userField = Ext.getCmp('userField');
+                                            var countField = Ext.getCmp('countField'),
+                                                idField = Ext.getCmp('idField'),
+                                                addField = Ext.getCmp('addField'),
+                                                emailField = Ext.getCmp('emailField'),
+                                                levelField = Ext.getCmp('levelField');
+                                            panel.setActiveTab(tab);
+                                            var controller = W5D5_Project.app.getController('ShopController');
+                                            controller.clearItems();
+                                            controller.addProductsToPage('digital');
+                                            home1.show();
+                                            home2.show();
+                                            home3.show();
+                                            userField.setValue(record.userFname);
+                                            idField.setValue(record.userId);
+                                            addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                            countField.setValue(parseInt(countField.getValue()) + 1);
+                                            emailField.setValue(record.userEmail);
+                                            levelField.setValue(record.userType);
+                                        }
+                                    }
+                                });
                             }
                         }
                     });
+                } else {
+                    Ext.Msg.alert("User", "Account does not exist. Login again or register");
                 }
             }
         });
@@ -148,11 +173,10 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var premiumCode1 = Ext.getCmp('pCodeField').getValue();
         var user;
 
-        if(fname=='Scott'||fname=='John'){
-            Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+        if(!Ext.getCmp('userRegPanel').isValid()){
+            Ext.Msg.alert("Register", "Please fill out required fields");
             return;
         }
-
 
         Ext.Ajax.request({
             url : "premiumRegister",

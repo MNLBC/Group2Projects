@@ -27,7 +27,10 @@ Ext.application({
         'CountryModel',
         'SPModel',
         'UserModel',
-        'UserTypeModel'
+        'UserTypeModel',
+        'OrdersModel',
+        'OrderProductModel',
+        'FavoriteItemsModel'
     ],
     stores: [
         'ProductStoreB',
@@ -37,7 +40,10 @@ Ext.application({
         'CountryStore',
         'SPStore',
         'UserStore',
-        'ProductStore'
+        'ProductStore',
+        'FavoriteItemsStore',
+        'OrdersStore',
+        'OrderProductStore'
     ],
     views: [
         'MainView',
@@ -52,7 +58,8 @@ Ext.application({
         'ProductController',
         'UserMainController',
         'UserMgmtController',
-        'AccountController'
+        'AccountController',
+        'RequestController'
     ],
     name: 'W5D5_Project',
 
@@ -121,6 +128,7 @@ Ext.application({
                                  Ext.each(store.data.items,function(rec){
                                      if(rec.data.prodId==record.prodId){
                                          rec.data.prodQty=rec.data.prodQty+1;
+                                         rec.data.prodSubtotal=rec.data.prodSubtotal+rec.data.prodPrice;
                                          isExists = true;
                                          Ext.getCmp('cartProductGrid').getView().refresh();
                                      }
@@ -132,6 +140,39 @@ Ext.application({
                                  Ext.Msg.alert('Status', 'Added item to cart');
                                  console.log(store);
 
+                             }
+                         }
+                     },
+                     {
+                         xtype: 'button',
+                         text: '',
+                         cls: 'addToFaveBtnCls',
+                         focusCls: '(none)',
+                         listeners: {
+                             'click': function(button, e, eOpts){
+                                 console.log(button);
+                                 console.log(e);
+                                 console.log(button.up('panel').recordData);
+                                 var store = Ext.getStore('FavoriteItemsStore'),
+                                     record = button.up('panel').recordData,
+                                     item = '',
+                                     isExists = false;
+                                 Ext.each(store.data.items, function(rec){
+                                     if(rec.data.prodId==record.prodId){
+                                         isExists=true;
+                                         item=rec;
+                                     }
+                                 });
+                                 if(isExists){
+                                     store.remove(item);
+                                     button.removeCls('addToFaveBtnPinkCls');
+                                     button.addCls('addToFaveBtnCls');
+                                 }else{
+                                     var prod = {faveItemId: '', prodId: record.prodId, userId: Ext.getCmp('userField').getValue()};
+                                     store.add(prod);
+                                     button.removeCls('addToFaveBtnCls');
+                                     button.addCls('addToFaveBtnPinkCls');
+                                 }
                              }
                          }
                      }

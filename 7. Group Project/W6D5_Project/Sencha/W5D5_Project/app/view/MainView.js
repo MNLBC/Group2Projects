@@ -18,8 +18,6 @@ Ext.define('W5D5_Project.view.MainView', {
     alias: 'widget.mainview',
 
     requires: [
-        'W5D5_Project.view.MainViewModel',
-        'W5D5_Project.view.MainViewController',
         'Ext.toolbar.Spacer',
         'Ext.form.field.Display',
         'Ext.Img',
@@ -34,10 +32,6 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.tab.Bar'
     ],
 
-    controller: 'mainview',
-    viewModel: {
-        type: 'mainview'
-    },
     id: 'mainView',
     itemId: 'mainView',
 
@@ -225,6 +219,32 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'prodMgmtBtn',
                                     overCls: '(none)',
                                     text: 'PRODUCT MANAGEMENT'
+                                },
+                                {
+                                    xtype: 'tbspacer',
+                                    flex: 0,
+                                    height: 30
+                                },
+                                {
+                                    xtype: 'button',
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    id: 'userAccBtn',
+                                    itemId: 'userAccBtn',
+                                    overCls: '(none)',
+                                    text: 'ACCOUNT INFORMATION'
+                                },
+                                {
+                                    xtype: 'button',
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    hidden: true,
+                                    id: 'userReqBtn',
+                                    itemId: 'userReqBtn',
+                                    overCls: '(none)',
+                                    text: 'USER REQUESTS'
                                 }
                             ]
                         }
@@ -262,7 +282,11 @@ Ext.define('W5D5_Project.view.MainView', {
                                     flex: 0,
                                     id: 'countField',
                                     itemId: 'countField',
-                                    value: 'Number of Visitors: 0',
+                                    width: 174,
+                                    fieldLabel: 'Number of Visitors',
+                                    labelPad: 0,
+                                    labelWidth: 120,
+                                    value: '0',
                                     fieldCls: 'textCls'
                                 },
                                 {
@@ -293,6 +317,22 @@ Ext.define('W5D5_Project.view.MainView', {
                                     hidden: true,
                                     id: 'addField',
                                     itemId: 'addField',
+                                    value: '0'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    flex: 1,
+                                    hidden: true,
+                                    id: 'emailField',
+                                    itemId: 'emailField',
+                                    value: '0'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    flex: 1,
+                                    hidden: true,
+                                    id: 'levelField',
+                                    itemId: 'levelField',
                                     value: '0'
                                 },
                                 {
@@ -1832,7 +1872,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'displayfield',
                                                             fieldLabel: '',
-                                                            value: 'Account Info',
+                                                            value: 'Account Information',
                                                             fieldCls: 'textCls'
                                                         },
                                                         {
@@ -1911,19 +1951,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         {
                                                                             xtype: 'combobox',
                                                                             anchor: '100%',
-                                                                            id: 'accCity',
-                                                                            itemId: 'accCity',
-                                                                            fieldLabel: 'City',
-                                                                            allowBlank: false,
-                                                                            allowOnlyWhitespace: false,
-                                                                            emptyText: 'City',
-                                                                            displayField: 'CountryName',
-                                                                            queryMode: 'local',
-                                                                            store: 'CountryStore'
-                                                                        },
-                                                                        {
-                                                                            xtype: 'combobox',
-                                                                            anchor: '100%',
                                                                             id: 'accSp',
                                                                             itemId: 'accSp',
                                                                             fieldLabel: 'State/Province',
@@ -1933,6 +1960,16 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             displayField: 'SP',
                                                                             queryMode: 'local',
                                                                             store: 'SPStore'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'textfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accCity',
+                                                                            itemId: 'accCity',
+                                                                            fieldLabel: 'City',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
+                                                                            emptyText: 'City'
                                                                         },
                                                                         {
                                                                             xtype: 'tbspacer',
@@ -1973,10 +2010,23 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         {
                                                                             xtype: 'displayfield',
                                                                             anchor: '100%',
-                                                                            id: 'accFirstName1',
-                                                                            itemId: 'accFirstName1',
+                                                                            id: 'accUserLevel',
+                                                                            itemId: 'accUserLevel',
+                                                                            fieldLabel: 'User Level',
+                                                                            value: 'Normal'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'accAccountType',
+                                                                            itemId: 'accAccountType',
                                                                             fieldLabel: 'Account Type',
-                                                                            value: 'Normal User'
+                                                                            value: 'Customer'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
                                                                         },
                                                                         {
                                                                             xtype: 'container',
@@ -2009,6 +2059,20 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     text: 'APPLY FOR PREMIUM'
                                                                                 }
                                                                             ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'button',
+                                                                            cls: 'genericBtn',
+                                                                            height: 39,
+                                                                            id: 'accCheckStatus',
+                                                                            itemId: 'accCheckStatus',
+                                                                            width: 375,
+                                                                            text: 'CHECK REQUEST STATUS'
                                                                         }
                                                                     ]
                                                                 }
@@ -2016,7 +2080,240 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         }
                                                     ]
                                                 }
-                                            ]
+                                            ],
+                                            tabConfig: {
+                                                xtype: 'tab',
+                                                flex: 1
+                                            }
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            id: 'requestPanel',
+                                            itemId: 'requestPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'hbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    width: 15
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 1,
+                                                    height: 25,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'vbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'displayfield',
+                                                            fieldLabel: '',
+                                                            value: 'User Requests',
+                                                            fieldCls: 'textCls'
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'gridpanel',
+                                                                    flex: 0,
+                                                                    width: 462,
+                                                                    title: '',
+                                                                    columns: [
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'string',
+                                                                            text: 'Request Id'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'string',
+                                                                            text: 'User Email'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            width: 134,
+                                                                            dataIndex: 'string',
+                                                                            text: 'Request Date'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'string',
+                                                                            text: 'Status'
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'form',
+                                                                    height: 602,
+                                                                    id: 'accForm1',
+                                                                    itemId: 'accForm',
+                                                                    width: 397,
+                                                                    bodyPadding: 10,
+                                                                    title: '',
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqFirstName',
+                                                                            itemId: 'reqFirstName',
+                                                                            fieldLabel: 'First Name'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqLastName',
+                                                                            itemId: 'reqLastName',
+                                                                            fieldLabel: 'Last Name'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqAddress1',
+                                                                            itemId: 'reqAddress1',
+                                                                            fieldLabel: 'Address1'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqAddress2',
+                                                                            itemId: 'reqAddress2',
+                                                                            fieldLabel: 'Address2'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqCountry',
+                                                                            itemId: 'reqCountry',
+                                                                            fieldLabel: 'Country'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqSp',
+                                                                            itemId: 'reqSp',
+                                                                            fieldLabel: 'State/Province'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqCity',
+                                                                            itemId: 'reqCity',
+                                                                            fieldLabel: 'City'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqOccupation',
+                                                                            itemId: 'reqOccupation',
+                                                                            fieldLabel: 'Occupation'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqEmail',
+                                                                            itemId: 'reqEmail',
+                                                                            fieldLabel: 'Email'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqPassword',
+                                                                            itemId: 'reqPassword',
+                                                                            fieldLabel: 'Password'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqUserLevel',
+                                                                            itemId: 'reqUserLevel',
+                                                                            fieldLabel: 'User Level',
+                                                                            value: ''
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
+                                                                            id: 'reqAccountType',
+                                                                            itemId: 'reqAccountType',
+                                                                            fieldLabel: 'Account Type',
+                                                                            value: ''
+                                                                        },
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 23,
+                                                                            width: 365
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    flex: 1,
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 39,
+                                                                                    id: 'reqApproveBtn',
+                                                                                    itemId: 'reqApproveBtn',
+                                                                                    width: 107,
+                                                                                    text: 'APPROVE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    height: 39,
+                                                                                    width: 33
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    flex: 1,
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 39,
+                                                                                    id: 'reqRejectBtn',
+                                                                                    itemId: 'reqRejectBtn',
+                                                                                    width: 120,
+                                                                                    text: 'REJECT'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            tabConfig: {
+                                                xtype: 'tab',
+                                                flex: 1
+                                            }
                                         }
                                     ],
                                     tabBar: {

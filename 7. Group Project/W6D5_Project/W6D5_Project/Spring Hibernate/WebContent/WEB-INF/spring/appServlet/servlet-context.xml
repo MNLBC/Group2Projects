@@ -11,7 +11,7 @@
 
 	<!-- DispatcherServlet Context: defines the servlet's request-processing 
 		infrastructure -->
-	<context:component-scan base-package="com.oocl.mnlbc" />
+	<context:component-scan base-package="com.oocl.mnlbc.*" />
 
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<mvc:annotation-driven />
@@ -98,9 +98,11 @@
 	<beans:bean id="userService" class="com.oocl.mnlbc.svc.impl.UserSVCImpl">
 		<beans:property name="userDAO" ref="userDAO"></beans:property>
 	</beans:bean>
-	<beans:bean id="favoriteDAO" class="com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl">
+	<beans:bean id="favoriteDAO"
+		class="com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl">
 	</beans:bean>
-	<beans:bean id="favoriteService" class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
+	<beans:bean id="favoriteService"
+		class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
 		<beans:property name="favoriteDAO" ref="favoriteDAO"></beans:property>
 	</beans:bean>
 	
@@ -108,6 +110,12 @@
 	</beans:bean>
 	<beans:bean id="requestService" class="com.oocl.mnlbc.svc.impl.RequestSVCImpl">
 		<beans:property name="requestDAO" ref="requestDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="cartProductDAO" class="com.oocl.mnlbc.dao.impl.CartProductDAOImpl">
+	</beans:bean>
+	<beans:bean id="cartProductService" class="com.oocl.mnlbc.svc.impl.CartProductSVCImpl">
+		<beans:property name="cartProductDAO" ref="cartProductDAO"></beans:property>
 	</beans:bean>
 
 

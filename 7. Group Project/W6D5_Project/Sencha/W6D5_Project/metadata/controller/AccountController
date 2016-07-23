@@ -45,6 +45,23 @@
             },
             "name": "onAccPremBtnClick",
             "designerId": "1414ea8d-9056-4168-ac8e-ac7ee9c3ba98"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accCheckStatus",
+                "designer|targetType": "MyButton17",
+                "fn": "onAccCheckStatusClick",
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAccCheckStatusClick",
+            "designerId": "a4d5b5f8-ced9-4b03-8835-831226caec69"
         }
     ]
 }

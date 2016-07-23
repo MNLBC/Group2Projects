@@ -13,7 +13,8 @@
             "ProductController",
             "UserMainController",
             "UserMgmtController",
-            "AccountController"
+            "AccountController",
+            "RequestController"
         ],
         "models": [
             "CategoryModel",

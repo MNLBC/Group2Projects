@@ -97,10 +97,10 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "prodQty"
+                "name": "prodStock"
             },
-            "name": "MyInteger3",
-            "designerId": "a0c2033a-3d60-4740-be9f-dcb28020dd59"
+            "name": "MyInteger4",
+            "designerId": "7ea53fc6-6144-4cfb-8ac3-fb3908807a71"
         },
         {
             "type": "Ext.data.field.String",
@@ -114,6 +114,19 @@
             },
             "name": "MyString7",
             "designerId": "1d64aa6e-d2d1-4dc5-86f7-086aff9fc6d0"
+        },
+        {
+            "type": "Ext.data.field.Integer",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "prodQty"
+            },
+            "name": "MyInteger3",
+            "designerId": "a0c2033a-3d60-4740-be9f-dcb28020dd59"
         },
         {
             "type": "Ext.data.field.Number",

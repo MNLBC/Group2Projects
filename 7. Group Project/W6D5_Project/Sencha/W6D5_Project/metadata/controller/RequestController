@@ -1,0 +1,49 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "RequestController"
+    },
+    "name": "MyController",
+    "designerId": "4684ccaa-71d6-4594-a7ac-602fb983e6de",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#reqApproveBtn",
+                "designer|targetType": "MyButton15",
+                "fn": "onReqApproveBtnClick",
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onReqApproveBtnClick",
+            "designerId": "87a34761-be4e-4b42-92e5-0ae9ebcba270"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#reqRejectBtn",
+                "designer|targetType": "MyButton16",
+                "fn": "onReqRejectBtnClick",
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onReqRejectBtnClick",
+            "designerId": "ee6c8710-d5e4-4f2f-865e-a49be664bf54"
+        }
+    ]
+}

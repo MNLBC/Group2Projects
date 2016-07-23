@@ -1,13 +1,18 @@
 package com.oocl.mnlbc.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.oocl.mnlbc.model.User;
@@ -20,8 +25,7 @@ import com.oocl.mnlbc.svc.inf.UserSVC;
  * @since 2016-07-21
  */
 @RestController
-@ResponseBody
-public class LoginController {
+public class LoginController extends HttpServlet{
 
    private UserSVC userSVC;
 
@@ -53,5 +57,11 @@ public class LoginController {
    @RequestMapping(value = "/getBlacklist", method = RequestMethod.GET)
    public List<User> getBlackList() {
       return this.userSVC.getBlackList();
+   }
+   
+   @RequestMapping(value = "/logout")
+   public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	   HttpSession session = request.getSession();
+	   session.invalidate();
    }
 }

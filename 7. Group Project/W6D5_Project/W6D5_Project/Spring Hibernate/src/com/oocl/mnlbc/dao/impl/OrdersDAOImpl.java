@@ -1,10 +1,12 @@
 package com.oocl.mnlbc.dao.impl;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +57,20 @@ public class OrdersDAOImpl implements OrdersDAO {
 		}
 		return orderList;
 
+	}
+
+	@Override
+	public int getOrderByUserId(long userId) {
+		List<Order> orders = new ArrayList<Order>();
+		Query query = manager.createNativeQuery("SELECT MAX(ORDERID) AS ORDERID, USERID FROM ORDERS WHERE USERID ='" + userId + "' "
+				+ "GROUP BY USERID");
+		List<Object[]> o = query.getResultList();
+		int orderId = 0;
+		for(int i = 0; i < o.size();i++){
+			BigDecimal d = (BigDecimal) o.get(i)[0];
+			orderId = d.intValue();
+		}
+		return orderId;
 	}
 
 }

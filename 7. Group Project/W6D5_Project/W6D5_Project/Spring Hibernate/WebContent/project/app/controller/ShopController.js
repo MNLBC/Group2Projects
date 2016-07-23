@@ -49,7 +49,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
         partCnt = Math.ceil(pageSize[0] / 3);
         partRem = pageSize[0] % 3;
         for (var x = 0; x < items.length; x++) {
-            if (partCnt < 3 && partRem !== 0) {
+            if (partRem !== 0) {
                 if (part == partCnt && partCtr <= partRem) {
                     prod.push(items[x]);
                     partCtr++;
@@ -68,6 +68,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
                             });
                             page++;
                             prodList = [];
+                            partCnt = Math.ceil(pageSize[page - 1] / 3);
                             partRem = pageSize[page - 1] % 3;
                         }
                     }
@@ -89,6 +90,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
                             });
                             page++;
                             prodList = [];
+                            partCnt = Math.ceil(pageSize[page - 1] / 3);
                             partRem = pageSize[page - 1] % 3;
                         }
 
@@ -113,6 +115,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
                             });
                             page++;
                             prodList = [];
+                            partCnt = Math.ceil(pageSize[page - 1] / 3);
                             partRem = pageSize[page - 1] % 3;
                         }
                     }
@@ -147,8 +150,24 @@ Ext.define('W5D5_Project.controller.ShopController', {
                         pagetemplate.items.items[0].items.items[3].setValue('RMB '+price + special);
                     }
                     pagetemplate.items.items[0].recordData = item.data;
-                    pagetemplate.items.items[0].recordData.prodStock = 1;
+                    //             pagetemplate.items.items[0].recordData.prodStock = 1;
                     pagetemplate.items.items[0].recordData.prodSubtotal = price;
+
+                    var faveStore = Ext.getStore('FavoriteItemsStore'),
+                        isExists = false;
+                    for(var i = 0; i < faveStore.data.items.length; i++){
+                        var rec = faveStore.data.items[i];
+                        if(rec.data.prodId==item.data.prodId){
+                            isExists=true;
+                        }
+                    }
+                    if(isExists){
+                        pagetemplate.items.items[0].items.items[5].removeCls('addToFaveBtnCls');
+                        pagetemplate.items.items[0].items.items[5].addCls('addToFaveBtnPinkCls');
+                    }else{
+                        pagetemplate.items.items[0].items.items[5].removeCls('addToFaveBtnPinkCls');
+                        pagetemplate.items.items[0].items.items[5].addCls('addToFaveBtnCls');
+                    }
                     panel.add(pagetemplate);
                     panel.doLayout();
                 }

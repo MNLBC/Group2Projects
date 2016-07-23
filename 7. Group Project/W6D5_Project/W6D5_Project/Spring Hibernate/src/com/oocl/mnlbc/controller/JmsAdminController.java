@@ -37,6 +37,7 @@ public class JmsAdminController {
       }
    }
 
+   @SuppressWarnings("unchecked")
    @RequestMapping("/sendAdminMessage")
    public int sendAdminMessage(@RequestParam("username") String username, @RequestParam("message") String message,
       HttpServletRequest request) {

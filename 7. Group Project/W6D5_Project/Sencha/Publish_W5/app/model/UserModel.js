@@ -34,6 +34,12 @@ Ext.define('W5D5_Project.model.UserModel', {
             name: 'userEmail'
         },
         {
+            name: 'userPass'
+        },
+        {
+            name: 'userOccupation'
+        },
+        {
             name: 'userAddress1'
         },
         {
@@ -49,10 +55,10 @@ Ext.define('W5D5_Project.model.UserModel', {
             name: 'userCountry'
         },
         {
-            name: 'userPass'
+            name: 'userType'
         },
         {
-            name: 'userType'
+            name: 'userLevel'
         }
     ]
 });

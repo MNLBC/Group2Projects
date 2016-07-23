@@ -51,7 +51,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUser(String email, String password) {
-		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM User user" + " WHERE user.userEmail='" + email
+		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM User user WHERE user.userEmail='" + email
 				+ "' AND user.userPass='" + password + "'";
 		User user = manager.createQuery(sql, User.class).getSingleResult();
 
@@ -61,7 +61,7 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> getUserByEmail(String email) {
-		String sql = "SELECT useremail FROM User useremail" + "WHERE useremail.userEmail='" + email + "'";
+		String sql = "SELECT useremail FROM User useremail WHERE useremail.userEmail='" + email + "'";
 		List<User> userEmailList = manager.createQuery(sql).getResultList();
 		for (User userEmail : userEmailList) {
 			logger.info("User Email List:" + userEmail);
@@ -83,7 +83,19 @@ public class UserDAOImpl implements UserDAO {
 	public int updateUser(User user) {
 
 		User newUser = manager.find(User.class, user.getUserId());
-		newUser = user;
+		newUser.setUserId(user.getUserId());
+		newUser.setUserFname(user.getUserFname());
+		newUser.setUserLname(user.getUserLname());
+		newUser.setUserEmail(user.getUserEmail());
+		newUser.setUserAddress1(user.getUserAddress1());
+		newUser.setUserAddress2(user.getUserAddress2());
+		newUser.setUserSp(user.getUserSp());
+		newUser.setUserLevel(user.getUserLevel());
+		newUser.setUserOccupation(user.getUserOccupation());
+		newUser.setUserCity(user.getUserCity());
+		newUser.setUserCountry(user.getUserCountry());
+		newUser.setUserPass(user.getUserPass());
+		newUser.setUserType(user.getUserType());
 		logger.info("Product updated successfully!=" + newUser);
 		return 1;
 	}
