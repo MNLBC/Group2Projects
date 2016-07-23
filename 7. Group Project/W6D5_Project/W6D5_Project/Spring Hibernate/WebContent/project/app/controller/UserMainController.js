@@ -131,6 +131,37 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                             countField.setValue(parseInt(countField.getValue()) + 1);
                                             emailField.setValue(record.userEmail);
                                             levelField.setValue(record.userType);
+
+                                            Ext.Ajax.request ({
+                                                url: "favoriteItems",
+                                                method: 'POST',
+                                                params: {
+                                                    userId:Ext.getCmp('idField').getValue()
+                                                },
+                                                async: false,
+                                                calback : function(options, success, response) {
+                                                    if (success === true) {
+                                                        var faveStore = Ext.getStore('FavoriteItemsStore');
+                                                        var result = Ext.JSON.decode(response.responseText);
+                                                        faveStore.loadData(result);
+                                                    }
+                                                }
+                                            });
+                                            Ext.Ajax.request ({
+                                                url: "getCartByUser",
+                                                method: 'POST',
+                                                params: {
+                                                    userid:Ext.getCmp('idField').getValue()
+                                                },
+                                                async: false,
+                                                calback : function(options, success, response) {
+                                                    if (success === true) {
+                                                        var cartStore = Ext.getStore('CartProductStore');
+                                                        var resultSet = Ext.JSON.decode(response.responseText);
+                                                        cartStore.loadData(resultSet);
+                                                    }
+                                                }
+                                            });
                                         }
                                     }
                                 });
