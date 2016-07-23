@@ -180,15 +180,12 @@ Ext.define('W5D5_Project.controller.MainController', {
                     if(Ext.isEmpty(scope.orderWin)){
                      scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
-                    if(Ext.getCmp('levelField')==1){
-                        Ext.getCmp('sumAmount').setFieldLabel('Total Amount (RMB) (10% OFF)');
-                        Ext.getCmp('sumAmount').setLabelWidth(200);
+                    if(Ext.getCmp('levelField')==2){
+                        Ext.getCmp('sumAmount').setValue(total + ' (10% OFF)');
                     }else{
-                        Ext.getCmp('sumAmount').setFieldLabel('Total Amount (RMB)');
-                        Ext.getCmp('sumAmount').setLabelWidth(150);
+                        Ext.getCmp('sumAmount').setValue(total);
                     }
                     Ext.getCmp('sumAdd').setValue(address.getValue());
-                    Ext.getCmp('sumAmount').setValue(total);
                     Ext.getCmp('sumProds').setValue(count);
                     scope.orderWin.show();
                 } else if (btn === 'no') {

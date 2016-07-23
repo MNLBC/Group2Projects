@@ -510,7 +510,7 @@
                                         "labelCls": null,
                                         "labelClsExtra": null,
                                         "labelPad": 0,
-                                        "labelWidth": 150,
+                                        "labelWidth": 120,
                                         "layout|flex": 0,
                                         "value": "0",
                                         "width": 174

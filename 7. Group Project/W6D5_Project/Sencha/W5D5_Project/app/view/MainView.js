@@ -285,7 +285,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     width: 174,
                                     fieldLabel: 'Number of Visitors',
                                     labelPad: 0,
-                                    labelWidth: 150,
+                                    labelWidth: 120,
                                     value: '0',
                                     fieldCls: 'textCls'
                                 },
