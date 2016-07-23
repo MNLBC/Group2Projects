@@ -1727,17 +1727,18 @@
             "6381b4e0-18f9-467d-b71c-8ab953a1507c",
             "83c921ad-c0c9-4249-9ede-23c106f1a3c9",
             "4a233968-d775-4e3f-bb64-e9bf44a2485a",
-            "application"
+            "application",
+            "bbb4289e-5cf1-45bc-9e6a-239c27576977"
         ]
     },
     "canvasState": {
-        "topInstance": "66b6c872-a53a-4014-8bd6-37b94d4bcc2a"
+        "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "66b6c872-a53a-4014-8bd6-37b94d4bcc2a",
-        "selectedInstance": "379b6ebc-c8b4-430f-9292-3e1f7ceba602"
+        "topInstance": "83c921ad-c0c9-4249-9ede-23c106f1a3c9",
+        "selectedInstance": "bf68d6ae-b4e0-49f3-b4fc-da500acfbaf4"
     },
-    "editMode": "design",
+    "editMode": "code",
     "userSettings": {
         "no-cmd": true
     }

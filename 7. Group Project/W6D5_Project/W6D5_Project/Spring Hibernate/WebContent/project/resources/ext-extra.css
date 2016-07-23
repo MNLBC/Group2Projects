@@ -169,3 +169,31 @@ margin-top: 4px;
     border-style: none !important;
     border-radius: 0px !important;
 }
+
+.addToFaveBtnCls, .addToFaveBtnCls:focus, .addToFaveBtnCls:active, .addToFaveBtnCls.active, .addToFaveBtnCls:focus:active {
+    width: 30px!important;
+    height: 30px!important;
+    background: url('img/heart.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 7px !important;
+}
+
+.addToFaveBtnPinkCls, .addToFaveBtnPinkCls:focus, .addToFaveBtnPinkCls:active, .addToFaveBtnPinkCls.active, .addToFaveBtnPinkCls:focus:active {
+    width: 30px!important;
+    height: 30px!important;
+    background: url('img/heart-pink.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 7px !important;
+}
+
+.addToFaveBtnCls:hover, .addToFaveBtnPinkCls:hover{
+    width: 30px!important;
+    height: 30px!important;
+    background: url('img/heart-gray.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 7px !important;
+}
+
