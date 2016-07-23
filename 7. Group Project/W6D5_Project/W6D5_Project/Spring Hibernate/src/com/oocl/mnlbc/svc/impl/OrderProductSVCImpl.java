@@ -48,8 +48,8 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 
 	@Override
 	@Transactional
-	public int addOrderProducts(List<OrderProduct> orderproductlist) {
-		return this.orderProductDAO.addOrderProducts(orderproductlist);
+	public int addOrderProducts(List<CartProduct> cartProductList, int orderId,long userId) {
+		return this.orderProductDAO.addOrderProducts(cartProductList, orderId, userId);
 		// return 0;
 	}
 
@@ -65,6 +65,12 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 	public List<Product> getOrderProductsByOrder(long id) {
 		return null;
 		// return this.orderProductDAO.getOrderProductsByOrder(id);
+	}
+
+	@Override
+	@Transactional
+	public List<CartProduct> getCartProductsByUserId(long userId) {
+		return this.orderProductDAO.getCartProductByUserId(userId);
 	}
 
 }

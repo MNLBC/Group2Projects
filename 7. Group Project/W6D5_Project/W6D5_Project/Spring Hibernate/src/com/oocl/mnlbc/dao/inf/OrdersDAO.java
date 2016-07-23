@@ -10,5 +10,7 @@ public interface OrdersDAO {
 	public List<Order> getOrdersByUser(long userId);
 
 	public int cancelOrder(long id);
+	
+	public int getOrderByUserId(long userId);
 
 }
