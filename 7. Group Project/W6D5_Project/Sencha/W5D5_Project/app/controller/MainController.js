@@ -335,6 +335,23 @@ Ext.define('W5D5_Project.controller.MainController', {
                 panel.setActiveTab(tab);
                 var controller = W5D5_Project.app.getController('ShopController');
                 controller.clearItems();
+        Ext.Ajax.request({
+            url : "getAllRequests",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                                            Ext.Msg.alert("Requests",
+                                                          "Error in getting requests");
+                                            console.log('Failed ');
+                                        } else {
+                                            console.log('Success! ');
+                                            var reqStore = Ext.getStore('RequestStore');
+                                            var jsonResponse = Ext.JSON.decode(response.responseText);
+                                            reqStore.loadData(jsonResponse);
+                                        }
+            }
+        });
     }
 
 });

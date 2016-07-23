@@ -24,14 +24,72 @@ Ext.define('W5D5_Project.controller.RequestController', {
         },
         "#reqRejectBtn": {
             click: 'onReqRejectBtnClick'
+        },
+        "#mygridpanel2": {
+            selectionchange: 'onRequestGridSelectionChange'
         }
     },
 
     onReqApproveBtnClick: function() {
-
+        Ext.Ajax.request({
+                    url : "getUserByEmail",
+                    method: 'GET',
+                    params : {
+                        email: gridEmail
+                    },
+                    async: false,
+                    jsonData: Ext.util.JSON.encode(user),
+                    callback : function(options, success, response){
+                        if (Ext.isEmpty(response.responseText)) {
+                             Ext.Msg.alert("Users","Error in getting Users");
+                             console.log('Failed ');
+                        } else {
+                             console.log('Success! ');
+                             userStore = Ext.getStore('UserStore');
+                             var jsonResponse = Ext.JSON.decode(response.responseText);
+                             userStore.loadData(jsonResponse);
+                        }
+                    }
+                });
     },
 
     onReqRejectBtnClick: function() {
+
+    },
+
+    onRequestGridSelectionChange: function(model, selected, eOpts) {
+        var selected,userStore;
+        this.selected = selected;
+        var gridEmail = selected[0].data.userEmail;
+        Ext.Ajax.request({
+            url : "getUserByEmail",
+            method: 'GET',
+            params : {
+                email: gridEmail
+            },
+            async: false,
+            jsonData: Ext.util.JSON.encode(user),
+            callback : function(options, success, response){
+                if (Ext.isEmpty(response.responseText)) {
+                     Ext.Msg.alert("Users","Error in getting Users");
+                     console.log('Failed ');
+                } else {
+                     console.log('Success! ');
+                     userStore = Ext.getStore('UserStore');
+                     var jsonResponse = Ext.JSON.decode(response.responseText);
+                     userStore.loadData(jsonResponse);
+                }
+            }
+        });
+        Ext.getCmp('reqFirstName').setValue(userStore.data.items[0].userFname);
+        Ext.getCmp('reqLastName').setValue(userStore.data.items[0].userLname);
+        Ext.getCmp('reqAddress1').setValue(userStore.data.items[0].userAddress1);
+        Ext.getCmp('reqAddress2').setValue(userStore.data.items[0].userAddress2);
+        Ext.getCmp('reqCountry').setValue(userStore.data.items[0].userCountry);
+        Ext.getCmp('reqSp').setValue(userStore.data.items[0].userSp);
+        Ext.getCmp('reqCity').setValue(userStore.data.items[0].userCity);
+        Ext.getCmp('reqOccupation').setValue(userStore.data.items[0].userOccupation);
+        Ext.getCmp('reqEmail').setValue(userStore.data.items[0].userEmail);
 
     }
 

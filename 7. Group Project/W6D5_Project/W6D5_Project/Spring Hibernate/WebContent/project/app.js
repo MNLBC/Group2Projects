@@ -30,7 +30,8 @@ Ext.application({
         'UserTypeModel',
         'OrdersModel',
         'OrderProductModel',
-        'FavoriteItemsModel'
+        'FavoriteItemsModel',
+        'RequestModel'
     ],
     stores: [
         'ProductStoreB',
@@ -43,7 +44,8 @@ Ext.application({
         'ProductStore',
         'FavoriteItemsStore',
         'OrdersStore',
-        'OrderProductStore'
+        'OrderProductStore',
+        'RequestStore'
     ],
     views: [
         'MainView',

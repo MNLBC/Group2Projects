@@ -26,7 +26,8 @@
             "UserTypeModel",
             "OrdersModel",
             "OrderProductModel",
-            "FavoriteItemsModel"
+            "FavoriteItemsModel",
+            "RequestModel"
         ],
         "name": "W5D5_Project",
         "stores": [
@@ -40,7 +41,8 @@
             "ProductStore",
             "FavoriteItemsStore",
             "OrdersStore",
-            "OrderProductStore"
+            "OrderProductStore",
+            "RequestStore"
         ],
         "views": [
             "MainView",
