@@ -189,37 +189,37 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                 if(response.responseText==='success'){
                     console.log('Valid code');
                     user = {
-            "userId":'',
-            "userFname":fname,
-            "userLname":lname,
-            "userEmail":email,
-            "userPass":pass,
-            "userOccupation":occupation,
-            "userAddress1":address1,
-            "userAddress2":address2,
-            "userCity":city,
-            "userSp":sp,
-            "userCountry":country,
-            "userType":'C',
-            "userLevel":2
-        };
+                        "userId":'',
+                        "userFname":fname,
+                        "userLname":lname,
+                        "userEmail":email,
+                        "userPass":pass,
+                        "userOccupation":occupation,
+                        "userAddress1":address1,
+                        "userAddress2":address2,
+                        "userCity":city,
+                        "userSp":sp,
+                        "userCountry":country,
+                        "userType":'C',
+                        "userLevel":2
+                    };
                 }else{
                     console.log('Invalid code');
                     user = {
-            "userId":'',
-            "userFname":fname,
-            "userLname":lname,
-            "userEmail":email,
-            "userPass":pass,
-            "userOccupation":occupation,
-            "userAddress1":address1,
-            "userAddress2":address2,
-            "userCity":city,
-            "userSp":sp,
-            "userCountry":country,
-            "userType":'C',
-            "userLevel":1
-        };
+                        "userId":'',
+                        "userFname":fname,
+                        "userLname":lname,
+                        "userEmail":email,
+                        "userPass":pass,
+                        "userOccupation":occupation,
+                        "userAddress1":address1,
+                        "userAddress2":address2,
+                        "userCity":city,
+                        "userSp":sp,
+                        "userCountry":country,
+                        "userType":'C',
+                        "userLevel":1
+                    };
                 }
             }
         });

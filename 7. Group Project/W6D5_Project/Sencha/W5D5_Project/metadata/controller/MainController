@@ -554,10 +554,10 @@
                 "fn": "onUserReqBtnClick",
                 "implHandler": [
                     "var panel = Ext.getCmp('mainTabPanel');",
-                    "        var tab = Ext.getCmp('requestPanel');",
-                    "        panel.setActiveTab(tab);",
-                    "        var controller = W5D5_Project.app.getController('ShopController');",
-                    "        controller.clearItems();"
+                    "var tab = Ext.getCmp('requestPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();"
                 ],
                 "name": "click",
                 "scope": "me"
