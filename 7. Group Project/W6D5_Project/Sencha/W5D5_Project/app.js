@@ -30,7 +30,8 @@ Ext.application({
         'UserTypeModel',
         'OrdersModel',
         'OrderProductModel',
-        'FavoriteItemsModel'
+        'FavoriteItemsModel',
+        'RequestModel'
     ],
     stores: [
         'ProductStoreB',
@@ -43,7 +44,8 @@ Ext.application({
         'ProductStore',
         'FavoriteItemsStore',
         'OrdersStore',
-        'OrderProductStore'
+        'OrderProductStore',
+        'RequestStore'
     ],
     views: [
         'MainView',
@@ -137,6 +139,7 @@ Ext.application({
                                      record.userId=Ext.getCmp('idField').getValue();
                                      record.cartprodId='';
                                      record.prodQty=1;
+                                     delete record[id];
                                      store.add(record);
                                  }
                                  Ext.Msg.alert('Status', 'Added item to cart');
@@ -145,8 +148,9 @@ Ext.application({
                                      url : 'addToCart',
                                      method : 'POST',
                                      params : {
-                                         cartproduct : Ext.encode(record)
+                                         cartproduct : Ext.util.JSON.encode(record)
                                      },
+                                     jsondata : Ext.util.JSON.encode(record),
                                      callback : function(options, success, response){
                                          if(!Ext.isEmpty(response.responseText)){
                                              console.log("success!");

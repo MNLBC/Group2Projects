@@ -45,6 +45,57 @@
             },
             "name": "onReqRejectBtnClick",
             "designerId": "da2d2929-8fb3-418c-b46d-d99814c294fa"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#requestGrid",
+                "designer|targetType": "MyGridPanel2",
+                "fn": "onRequestGridSelectionChange",
+                "implHandler": [
+                    "var selected,userStore;",
+                    "        this.selected = selected;",
+                    "        var gridEmail = selected[0].data.userEmail;",
+                    "        Ext.Ajax.request({",
+                    "            url : \"getUserByEmail\",",
+                    "            method: 'GET',",
+                    "            params : {",
+                    "                email: gridEmail",
+                    "            },",
+                    "            async: false,",
+                    "            jsonData: Ext.util.JSON.encode(user),",
+                    "            callback : function(options, success, response){",
+                    "                if (Ext.isEmpty(response.responseText)) {",
+                    "                     Ext.Msg.alert(\"Users\",\"Error in getting Users\");",
+                    "                     console.log('Failed ');",
+                    "                } else {",
+                    "                     console.log('Success! ');",
+                    "                     userStore = Ext.getStore('UserStore');",
+                    "                     var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                     userStore.loadData(jsonResponse);",
+                    "                }",
+                    "            }",
+                    "        });",
+                    "        Ext.getCmp('reqFirstName').setValue(userStore.data.items[0].userFname);",
+                    "        Ext.getCmp('reqLastName').setValue(userStore.data.items[0].userLname);",
+                    "        Ext.getCmp('reqAddress1').setValue(userStore.data.items[0].userAddress1);",
+                    "        Ext.getCmp('reqAddress2').setValue(userStore.data.items[0].userAddress2);",
+                    "        Ext.getCmp('reqCountry').setValue(userStore.data.items[0].userCountry);",
+                    "        Ext.getCmp('reqSp').setValue(userStore.data.items[0].userSp);",
+                    "        Ext.getCmp('reqCity').setValue(userStore.data.items[0].userCity);",
+                    "        Ext.getCmp('reqOccupation').setValue(userStore.data.items[0].userOccupation);",
+                    "        Ext.getCmp('reqEmail').setValue(userStore.data.items[0].userEmail);"
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onRequestGridSelectionChange",
+            "designerId": "f431f992-e7e0-4e1d-8683-63d793579ead"
         }
     ]
 }

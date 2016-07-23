@@ -4491,7 +4491,10 @@
                                                                     },
                                                                     "codeClass": null,
                                                                     "userConfig": {
+                                                                        "id": "requestGrid",
+                                                                        "itemId": "requestGrid",
                                                                         "layout|flex": 0,
+                                                                        "store": "RequestStore",
                                                                         "title": "",
                                                                         "width": 462
                                                                     },
@@ -4506,7 +4509,7 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
-                                                                                "dataIndex": "string",
+                                                                                "dataIndex": "reqId",
                                                                                 "text": "Request Id"
                                                                             },
                                                                             "name": "MyColumn11",
@@ -4520,7 +4523,7 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
-                                                                                "dataIndex": "string",
+                                                                                "dataIndex": "userEmail",
                                                                                 "text": "User Email"
                                                                             },
                                                                             "name": "MyColumn12",
@@ -4534,7 +4537,7 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
-                                                                                "dataIndex": "string",
+                                                                                "dataIndex": "reqDate",
                                                                                 "text": "Request Date",
                                                                                 "width": 134
                                                                             },
@@ -4549,7 +4552,7 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
-                                                                                "dataIndex": "string",
+                                                                                "dataIndex": "reqStatus",
                                                                                 "text": "Status"
                                                                             },
                                                                             "name": "MyColumn14",
@@ -4770,56 +4773,6 @@
                                                                             },
                                                                             "name": "MyDisplayField24",
                                                                             "designerId": "36ac02f8-b461-4204-90b4-0e1f73e7f4ff"
-                                                                        },
-                                                                        {
-                                                                            "type": "Ext.form.field.Display",
-                                                                            "reference": {
-                                                                                "name": "items",
-                                                                                "type": "array"
-                                                                            },
-                                                                            "codeClass": null,
-                                                                            "userConfig": {
-                                                                                "fieldLabel": "Password",
-                                                                                "id": "reqPassword",
-                                                                                "itemId": "reqPassword",
-                                                                                "layout|anchor": "100%"
-                                                                            },
-                                                                            "name": "MyDisplayField25",
-                                                                            "designerId": "677eb86e-f9ec-4bf6-be51-8cb59d68a1b8"
-                                                                        },
-                                                                        {
-                                                                            "type": "Ext.form.field.Display",
-                                                                            "reference": {
-                                                                                "name": "items",
-                                                                                "type": "array"
-                                                                            },
-                                                                            "codeClass": null,
-                                                                            "userConfig": {
-                                                                                "fieldLabel": "User Level",
-                                                                                "id": "reqUserLevel",
-                                                                                "itemId": "reqUserLevel",
-                                                                                "layout|anchor": "100%",
-                                                                                "value": ""
-                                                                            },
-                                                                            "name": "MyDisplayField15",
-                                                                            "designerId": "00697db6-2653-48ce-be37-793e068ddd99"
-                                                                        },
-                                                                        {
-                                                                            "type": "Ext.form.field.Display",
-                                                                            "reference": {
-                                                                                "name": "items",
-                                                                                "type": "array"
-                                                                            },
-                                                                            "codeClass": null,
-                                                                            "userConfig": {
-                                                                                "fieldLabel": "Account Type",
-                                                                                "id": "reqAccountType",
-                                                                                "itemId": "reqAccountType",
-                                                                                "layout|anchor": "100%",
-                                                                                "value": ""
-                                                                            },
-                                                                            "name": "MyDisplayField27",
-                                                                            "designerId": "033d30ca-ecd7-4626-8016-968b5edbe59c"
                                                                         },
                                                                         {
                                                                             "type": "Ext.toolbar.Spacer",

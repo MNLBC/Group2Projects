@@ -2128,28 +2128,31 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 {
                                                                     xtype: 'gridpanel',
                                                                     flex: 0,
+                                                                    id: 'requestGrid',
+                                                                    itemId: 'requestGrid',
                                                                     width: 462,
                                                                     title: '',
+                                                                    store: 'RequestStore',
                                                                     columns: [
                                                                         {
                                                                             xtype: 'gridcolumn',
-                                                                            dataIndex: 'string',
+                                                                            dataIndex: 'reqId',
                                                                             text: 'Request Id'
                                                                         },
                                                                         {
                                                                             xtype: 'gridcolumn',
-                                                                            dataIndex: 'string',
+                                                                            dataIndex: 'userEmail',
                                                                             text: 'User Email'
                                                                         },
                                                                         {
                                                                             xtype: 'gridcolumn',
                                                                             width: 134,
-                                                                            dataIndex: 'string',
+                                                                            dataIndex: 'reqDate',
                                                                             text: 'Request Date'
                                                                         },
                                                                         {
                                                                             xtype: 'gridcolumn',
-                                                                            dataIndex: 'string',
+                                                                            dataIndex: 'reqStatus',
                                                                             text: 'Status'
                                                                         }
                                                                     ]
@@ -2240,29 +2243,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             id: 'reqEmail',
                                                                             itemId: 'reqEmail',
                                                                             fieldLabel: 'Email'
-                                                                        },
-                                                                        {
-                                                                            xtype: 'displayfield',
-                                                                            anchor: '100%',
-                                                                            id: 'reqPassword',
-                                                                            itemId: 'reqPassword',
-                                                                            fieldLabel: 'Password'
-                                                                        },
-                                                                        {
-                                                                            xtype: 'displayfield',
-                                                                            anchor: '100%',
-                                                                            id: 'reqUserLevel',
-                                                                            itemId: 'reqUserLevel',
-                                                                            fieldLabel: 'User Level',
-                                                                            value: ''
-                                                                        },
-                                                                        {
-                                                                            xtype: 'displayfield',
-                                                                            anchor: '100%',
-                                                                            id: 'reqAccountType',
-                                                                            itemId: 'reqAccountType',
-                                                                            fieldLabel: 'Account Type',
-                                                                            value: ''
                                                                         },
                                                                         {
                                                                             xtype: 'tbspacer',
