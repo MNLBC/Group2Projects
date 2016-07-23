@@ -24,6 +24,9 @@ Ext.define('W5D5_Project.model.CartProductModel', {
 
     fields: [
         {
+            name: 'cartProdId'
+        },
+        {
             type: 'int',
             name: 'prodId'
         },
@@ -62,6 +65,9 @@ Ext.define('W5D5_Project.model.CartProductModel', {
         {
             type: 'float',
             name: 'prodSubtotal'
+        },
+        {
+            name: 'userId'
         }
     ]
 });

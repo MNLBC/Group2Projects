@@ -43,7 +43,8 @@ Ext.define('W5D5_Project.controller.CartProductController', {
     },
 
     onCartProductUpdateClick: function(button, e, eOpts) {
-        var prodId,prodQty,prodStore,selected;
+        var prodId,prodQty,prodStore,selected,
+            record = '';
         this.selected = selected;
 
         prodId = Ext.getCmp('cartProductGrid').getSelectionModel().selected.items[0].data.prodId;
@@ -54,10 +55,23 @@ Ext.define('W5D5_Project.controller.CartProductController', {
             if(prodId==rec.data.prodId){
                 rec.data.prodQty = prodQty;
                 rec.data.prodSubtotal = rec.data.prodPrice * rec.data.prodSale * rec.data.prodQty;
+                record = rec.data;
             }
         });
         Ext.getCmp('cartProductGrid').getView().refresh();
         Ext.Msg.alert("Success","Quantity Sucessfully Updated!");
+        Ext.Ajax.request({
+            url : 'addToCart',
+            method : 'POST',
+            params : {
+                cartproduct : Ext.encode(record)
+            },
+            callback : function(options, success, response){
+                if(!Ext.isEmpty(response.responseText)){
+                    console.log("success!");
+                }
+            }
+        });
         this.cartProdWindow.close();
     },
 
@@ -79,7 +93,19 @@ Ext.define('W5D5_Project.controller.CartProductController', {
             Ext.getCmp('cartProductGrid').getView().refresh();
             prodStore.remove(recordToDelete);
         }
-
+        Ext.Ajax.request({
+            url : 'deleteCartByProduct',
+            method : 'POST',
+            params : {
+                prodId : prodId,
+                userId : Ext.getCmp('idField').getValue()
+            },
+            callback : function(options, success, response){
+                if(!Ext.isEmpty(response.responseText)){
+                    console.log("success!");
+                }
+            }
+        });
         this.cartProdWindow.close();
     }
 

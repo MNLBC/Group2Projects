@@ -12,6 +12,19 @@
     "designerId": "911c8c19-7afe-461e-840a-bc476c55debb",
     "cn": [
         {
+            "type": "Ext.data.field.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "cartProdId"
+            },
+            "name": "MyField29",
+            "designerId": "ae31d9f2-799c-4538-bfbb-5df9f25ec003"
+        },
+        {
             "type": "Ext.data.field.Integer",
             "reference": {
                 "name": "fields",
@@ -140,6 +153,19 @@
             },
             "name": "MyNumber4",
             "designerId": "45c866b2-54df-48b3-8c78-876726c85099"
+        },
+        {
+            "type": "Ext.data.field.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userId"
+            },
+            "name": "MyField30",
+            "designerId": "5637e232-f559-4e2a-9cbb-6ac970725aeb"
         }
     ]
 }

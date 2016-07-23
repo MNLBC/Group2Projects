@@ -193,6 +193,18 @@ Ext.define('W5D5_Project.controller.MainController', {
                 }
             }
         });
+        Ext.Ajax.request({
+            url : 'checkout',
+            method : 'POST',
+            params : {
+                userid : Ext.getCmp('idField').getValue()
+            },
+            callback : function(options, success, response){
+                if(!Ext.isEmpty(response.responseText)){
+                    console.log("success!");
+                }
+            }
+        });
     },
 
     onLogoutBtnClick: function() {
