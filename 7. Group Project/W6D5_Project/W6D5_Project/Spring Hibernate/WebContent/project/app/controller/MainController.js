@@ -66,6 +66,12 @@ Ext.define('W5D5_Project.controller.MainController', {
         },
         "#accForm": {
             beforeadd: 'onAccFormBeforeAdd'
+        },
+        "#userAccBtn": {
+            click: 'onUserAccBtnClick'
+        },
+        "#userReqBtn": {
+            click: 'onUserReqBtnClick'
         }
     },
 
@@ -174,8 +180,12 @@ Ext.define('W5D5_Project.controller.MainController', {
                     if(Ext.isEmpty(scope.orderWin)){
                      scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
+                    if(Ext.getCmp('levelField')==2){
+                        Ext.getCmp('sumAmount').setValue(total + ' (10% OFF)');
+                    }else{
+                        Ext.getCmp('sumAmount').setValue(total);
+                    }
                     Ext.getCmp('sumAdd').setValue(address.getValue());
-                    Ext.getCmp('sumAmount').setValue(total);
                     Ext.getCmp('sumProds').setValue(count);
                     scope.orderWin.show();
                 } else if (btn === 'no') {
@@ -199,7 +209,10 @@ Ext.define('W5D5_Project.controller.MainController', {
                     var home3 = Ext.getCmp('categoryPanel');
                     var admin1 = Ext.getCmp('userMgmtBtn');
                     var admin2 = Ext.getCmp('prodMgmtBtn');
+                    var admin3 = Ext.getCmp('userReqBtn');
                     var panel = Ext.getCmp('mainTabPanel');
+                    var panel2 = Ext.getCmp('cartPanel');
+                    var panel3 = Ext.getCmp('menuPanel');
                     var tab = Ext.getCmp('setPanel');
                     var userField = Ext.getCmp('userField');
                     var countField = Ext.getCmp('countField'),
@@ -213,9 +226,26 @@ Ext.define('W5D5_Project.controller.MainController', {
                     home3.hide();
                     admin1.hide();
                     admin2.hide();
+                    admin3.hide();
+                    panel2.collapse();
+                    panel3.collapse();
                     userField.setValue('Visitor');
                     idField.setValue(0);
                     countField.setValue(parseInt(countField.getValue())-1);
+                    Ext.Ajax.request({
+                                    url : "logout",
+                                    method : 'GET',
+                                    async : false,
+                                    callback : function(options, success, response) {
+                                        if (success!==true) {
+                                            console.log('Failed ');
+                                            Ext.Msg.alert("Logout", "Error logging out. Try again later.");
+                                        } else {
+                                            console.log('Success! ');
+                                            Ext.Msg.alert("Logout", "Successfully logged out!");
+                                        }
+                                    }
+                                });
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }
@@ -273,6 +303,38 @@ Ext.define('W5D5_Project.controller.MainController', {
         if (!field.allowBlank){
             field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
         }
+    },
+
+    onUserAccBtnClick: function() {
+        var panel = Ext.getCmp('mainTabPanel');
+                var tab = Ext.getCmp('accountPanel');
+                panel.setActiveTab(tab);
+                var controller = W5D5_Project.app.getController('ShopController');
+                controller.clearItems();
+        Ext.Ajax.request({
+            url : "getUserByEmail",
+            method : "GET",
+            async : false,
+            params : {
+                email: Ext.getCmp('emailField').getValue()
+            },
+            callback : function(options,success,response){
+                if(!Ext.isEmpty(response.responseText)){
+                    var record = Ext.decode(response.responseText),
+                        accControl = W5D5_Project.app.getController('AccountController');
+                    record = record[0];
+                    accControl.setFieldValues(record);
+                }
+            }
+        });
+    },
+
+    onUserReqBtnClick: function() {
+        var panel = Ext.getCmp('mainTabPanel');
+                var tab = Ext.getCmp('requestPanel');
+                panel.setActiveTab(tab);
+                var controller = W5D5_Project.app.getController('ShopController');
+                controller.clearItems();
     }
 
 });

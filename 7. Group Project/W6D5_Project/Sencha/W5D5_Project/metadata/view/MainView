@@ -378,6 +378,63 @@
                                     },
                                     "name": "MyButton11",
                                     "designerId": "f3a7539a-f103-479d-a8b5-2974b22b04ec"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 30,
+                                        "layout|flex": 0
+                                    },
+                                    "name": "MySpacer14",
+                                    "designerId": "15cc1cd4-6645-4d6f-9133-66027d060534"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "orderHistCls",
+                                        "focusCls": "(none)",
+                                        "height": 67,
+                                        "id": "userAccBtn",
+                                        "itemId": "userAccBtn",
+                                        "layout|flex": null,
+                                        "overCls": "(none)",
+                                        "text": "ACCOUNT INFORMATION",
+                                        "textAlign": null
+                                    },
+                                    "name": "MyButton8",
+                                    "designerId": "e5e6656b-5829-45fb-b16e-a469900bcc21"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "orderHistCls",
+                                        "focusCls": "(none)",
+                                        "height": 67,
+                                        "hidden": true,
+                                        "id": "userReqBtn",
+                                        "itemId": "userReqBtn",
+                                        "layout|flex": null,
+                                        "overCls": "(none)",
+                                        "text": "USER REQUESTS",
+                                        "textAlign": null
+                                    },
+                                    "name": "MyButton14",
+                                    "designerId": "cde34729-51fd-4125-aefa-c68a6676f9c6"
                                 }
                             ]
                         }
@@ -453,7 +510,7 @@
                                         "labelCls": null,
                                         "labelClsExtra": null,
                                         "labelPad": 0,
-                                        "labelWidth": 150,
+                                        "labelWidth": 120,
                                         "layout|flex": 0,
                                         "value": "0",
                                         "width": 174
@@ -528,6 +585,42 @@
                                     },
                                     "name": "MyDisplayField13",
                                     "designerId": "6ad9cd7e-a658-4404-8c91-6beb9389cebc"
+                                },
+                                {
+                                    "type": "Ext.form.field.Display",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": null,
+                                        "hidden": true,
+                                        "id": "emailField",
+                                        "itemId": "emailField",
+                                        "layout|flex": 1,
+                                        "value": "0"
+                                    },
+                                    "name": "MyDisplayField26",
+                                    "designerId": "7bb93a89-2237-48c4-929d-d057407630a1"
+                                },
+                                {
+                                    "type": "Ext.form.field.Display",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": null,
+                                        "hidden": true,
+                                        "id": "levelField",
+                                        "itemId": "levelField",
+                                        "layout|flex": 1,
+                                        "value": "0"
+                                    },
+                                    "name": "MyDisplayField29",
+                                    "designerId": "92e31b96-0fce-41cd-abe7-95401aad478b"
                                 },
                                 {
                                     "type": "Ext.button.Button",
@@ -4152,11 +4245,28 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
+                                                                                "fieldLabel": "User Level",
+                                                                                "id": "accUserLevel",
+                                                                                "itemId": "accUserLevel",
+                                                                                "layout|anchor": "100%",
+                                                                                "value": "Normal"
+                                                                            },
+                                                                            "name": "MyDisplayField28",
+                                                                            "designerId": "ea2874e8-b387-422c-8212-213ad19263af"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Display",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
                                                                                 "fieldLabel": "Account Type",
                                                                                 "id": "accAccountType",
                                                                                 "itemId": "accAccountType",
                                                                                 "layout|anchor": "100%",
-                                                                                "value": "Normal User"
+                                                                                "value": "Customer"
                                                                             },
                                                                             "name": "MyDisplayField15",
                                                                             "designerId": "967d773e-4b85-466d-b945-c0322d4ddecb"
@@ -4685,14 +4795,31 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
+                                                                                "fieldLabel": "User Level",
+                                                                                "id": "reqUserLevel",
+                                                                                "itemId": "reqUserLevel",
+                                                                                "layout|anchor": "100%",
+                                                                                "value": ""
+                                                                            },
+                                                                            "name": "MyDisplayField15",
+                                                                            "designerId": "00697db6-2653-48ce-be37-793e068ddd99"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.field.Display",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
                                                                                 "fieldLabel": "Account Type",
                                                                                 "id": "reqAccountType",
                                                                                 "itemId": "reqAccountType",
                                                                                 "layout|anchor": "100%",
                                                                                 "value": ""
                                                                             },
-                                                                            "name": "MyDisplayField15",
-                                                                            "designerId": "00697db6-2653-48ce-be37-793e068ddd99"
+                                                                            "name": "MyDisplayField27",
+                                                                            "designerId": "033d30ca-ecd7-4626-8016-968b5edbe59c"
                                                                         },
                                                                         {
                                                                             "type": "Ext.toolbar.Spacer",
@@ -4993,7 +5120,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "align": "center",
-                                        "dataIndex": "prodStock",
+                                        "dataIndex": "prodQty",
                                         "format": "0",
                                         "text": "Qty",
                                         "width": "15%"

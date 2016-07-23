@@ -40,7 +40,7 @@ public class AddToCartController {
     */
    @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
    public boolean addToCart(@RequestBody CartProduct cartproduct) {
-      int result = this.cartProductSVC.createCartProduct(cartproduct);
+      int result = this.cartProductSVC.addCartProduct(cartproduct);
       if (cartproduct != null) {
          if (result != 1 || result == 0)
             return false;

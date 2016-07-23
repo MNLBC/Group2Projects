@@ -62,6 +62,40 @@
             },
             "name": "onAccCheckStatusClick",
             "designerId": "9581e2ec-ffe0-4152-adb1-514b36fa9ed9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "setFieldValues",
+                "implHandler": [
+                    "Ext.getCmp('accFirstName').setValue(record.userFname);",
+                    "Ext.getCmp('accLastName').setValue(record.userLname);",
+                    "Ext.getCmp('accAddress1').setValue(record.userAddress1);",
+                    "Ext.getCmp('accAddress2').setValue(record.userAddress2);",
+                    "Ext.getCmp('accCountry').setValue(record.userCountry);",
+                    "Ext.getCmp('accSp').setValue(record.userSp);",
+                    "Ext.getCmp('accCity').setValue(record.userCity);",
+                    "Ext.getCmp('accOccupation').setValue(record.userOccupation);",
+                    "Ext.getCmp('accEmail').setValue(record.userEmail);",
+                    "Ext.getCmp('accPassword').setValue(record.userPass);",
+                    "if(record.userLevel=='1'){",
+                    "    Ext.getCmp('accUserLevel').setValue(\"Normal\");",
+                    "}else{",
+                    "    Ext.getCmp('accUserLevel').setValue(\"Premium\");",
+                    "}",
+                    "Ext.getCmp('accAccountType').setValue(record.userType);"
+                ]
+            },
+            "name": "setFieldValues",
+            "designerId": "a5a1b05d-88ad-4279-811b-7ec06e819731"
         }
     ]
 }

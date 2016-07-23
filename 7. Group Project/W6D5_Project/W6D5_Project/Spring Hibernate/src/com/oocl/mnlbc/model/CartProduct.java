@@ -7,7 +7,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,8 @@ public class CartProduct implements Serializable {
 
    @Id
    @Column(name = "CARTPRODID")
+   @SequenceGenerator(name = "cartprod_seq", sequenceName = "CARTPRODUCT_SEQ", allocationSize = 1)
+   @GeneratedValue(generator = "cartprod_seq", strategy = GenerationType.SEQUENCE)
    private long cartprodId;
    @Column(name = "USERID")
    private long userId;

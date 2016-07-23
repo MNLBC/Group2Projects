@@ -74,9 +74,10 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "# of Products",
+                        "fieldLabel": "Number of Products",
                         "id": "sumProds",
                         "itemId": "sumProds",
+                        "labelWidth": 150,
                         "value": "0",
                         "width": 318
                     },
@@ -91,10 +92,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Total Amount",
+                        "fieldLabel": "Total Amount (RMB)",
                         "id": "sumAmount",
                         "itemId": "sumAmount",
-                        "value": "RMB"
+                        "labelAlign": null,
+                        "labelWidth": 150,
+                        "value": "0"
                     },
                     "name": "MyDisplayField11",
                     "designerId": "c22b24bd-ee6d-44f0-b350-5df4e8487930"
