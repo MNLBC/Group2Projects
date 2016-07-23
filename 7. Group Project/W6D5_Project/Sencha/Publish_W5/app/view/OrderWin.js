@@ -65,15 +65,17 @@ Ext.define('W5D5_Project.view.OrderWin', {
                     id: 'sumProds',
                     itemId: 'sumProds',
                     width: 318,
-                    fieldLabel: '# of Products',
+                    fieldLabel: 'Number of Products',
+                    labelWidth: 150,
                     value: '0'
                 },
                 {
                     xtype: 'displayfield',
                     id: 'sumAmount',
                     itemId: 'sumAmount',
-                    fieldLabel: 'Total Amount',
-                    value: 'RMB'
+                    fieldLabel: 'Total Amount (RMB)',
+                    labelWidth: 150,
+                    value: '0'
                 },
                 {
                     xtype: 'textareafield',

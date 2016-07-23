@@ -40,6 +40,25 @@ Ext.define('W5D5_Project.controller.AccountController', {
 
     onAccCheckStatusClick: function() {
 
+    },
+
+    setFieldValues: function(record) {
+        Ext.getCmp('accFirstName').setValue(record.userFname);
+        Ext.getCmp('accLastName').setValue(record.userLname);
+        Ext.getCmp('accAddress1').setValue(record.userAddress1);
+        Ext.getCmp('accAddress2').setValue(record.userAddress2);
+        Ext.getCmp('accCountry').setValue(record.userCountry);
+        Ext.getCmp('accSp').setValue(record.userSp);
+        Ext.getCmp('accCity').setValue(record.userCity);
+        Ext.getCmp('accOccupation').setValue(record.userOccupation);
+        Ext.getCmp('accEmail').setValue(record.userEmail);
+        Ext.getCmp('accPassword').setValue(record.userPass);
+        if(record.userLevel=='1'){
+            Ext.getCmp('accUserLevel').setValue("Normal");
+        }else{
+            Ext.getCmp('accUserLevel').setValue("Premium");
+        }
+        Ext.getCmp('accAccountType').setValue(record.userType);
     }
 
 });

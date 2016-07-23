@@ -180,6 +180,13 @@ Ext.define('W5D5_Project.controller.MainController', {
                     if(Ext.isEmpty(scope.orderWin)){
                      scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
+                    if(Ext.getCmp('levelField')==1){
+                        Ext.getCmp('sumAmount').setFieldLabel('Total Amount (RMB) (10% OFF)');
+                        Ext.getCmp('sumAmount').setLabelWidth(200);
+                    }else{
+                        Ext.getCmp('sumAmount').setFieldLabel('Total Amount (RMB)');
+                        Ext.getCmp('sumAmount').setLabelWidth(150);
+                    }
                     Ext.getCmp('sumAdd').setValue(address.getValue());
                     Ext.getCmp('sumAmount').setValue(total);
                     Ext.getCmp('sumProds').setValue(count);
@@ -307,6 +314,22 @@ Ext.define('W5D5_Project.controller.MainController', {
                 panel.setActiveTab(tab);
                 var controller = W5D5_Project.app.getController('ShopController');
                 controller.clearItems();
+        Ext.Ajax.request({
+            url : "getUserByEmail",
+            method : "GET",
+            async : false,
+            params : {
+                email: Ext.getCmp('emailField').getValue()
+            },
+            callback : function(options,success,response){
+                if(!Ext.isEmpty(response.responseText)){
+                    var record = Ext.decode(response.responseText),
+                        accControl = W5D5_Project.app.getController('AccountController');
+                    record = record[0];
+                    accControl.setFieldValues(record);
+                }
+            }
+        });
     },
 
     onUserReqBtnClick: function() {

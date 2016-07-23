@@ -320,6 +320,22 @@ Ext.define('W5D5_Project.view.MainView', {
                                     value: '0'
                                 },
                                 {
+                                    xtype: 'displayfield',
+                                    flex: 1,
+                                    hidden: true,
+                                    id: 'emailField',
+                                    itemId: 'emailField',
+                                    value: '0'
+                                },
+                                {
+                                    xtype: 'displayfield',
+                                    flex: 1,
+                                    hidden: true,
+                                    id: 'levelField',
+                                    itemId: 'levelField',
+                                    value: '0'
+                                },
+                                {
                                     xtype: 'button',
                                     cls: 'logoutBtnCls',
                                     height: 22,
@@ -1994,10 +2010,18 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         {
                                                                             xtype: 'displayfield',
                                                                             anchor: '100%',
+                                                                            id: 'accUserLevel',
+                                                                            itemId: 'accUserLevel',
+                                                                            fieldLabel: 'User Level',
+                                                                            value: 'Normal'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
                                                                             id: 'accAccountType',
                                                                             itemId: 'accAccountType',
                                                                             fieldLabel: 'Account Type',
-                                                                            value: 'Normal User'
+                                                                            value: 'Customer'
                                                                         },
                                                                         {
                                                                             xtype: 'tbspacer',
@@ -2227,6 +2251,14 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         {
                                                                             xtype: 'displayfield',
                                                                             anchor: '100%',
+                                                                            id: 'reqUserLevel',
+                                                                            itemId: 'reqUserLevel',
+                                                                            fieldLabel: 'User Level',
+                                                                            value: ''
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            anchor: '100%',
                                                                             id: 'reqAccountType',
                                                                             itemId: 'reqAccountType',
                                                                             fieldLabel: 'Account Type',
@@ -2366,7 +2398,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     xtype: 'numbercolumn',
                                     width: '15%',
                                     align: 'center',
-                                    dataIndex: 'prodStock',
+                                    dataIndex: 'prodQty',
                                     text: 'Qty',
                                     format: '0'
                                 },
