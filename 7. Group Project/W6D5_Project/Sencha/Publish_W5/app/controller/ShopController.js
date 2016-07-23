@@ -150,7 +150,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
                         pagetemplate.items.items[0].items.items[3].setValue('RMB '+price + special);
                     }
                     pagetemplate.items.items[0].recordData = item.data;
-        //             pagetemplate.items.items[0].recordData.prodStock = 1;
+                    //             pagetemplate.items.items[0].recordData.prodStock = 1;
                     pagetemplate.items.items[0].recordData.prodSubtotal = price;
                     panel.add(pagetemplate);
                     panel.doLayout();

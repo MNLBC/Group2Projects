@@ -378,6 +378,63 @@
                                     },
                                     "name": "MyButton11",
                                     "designerId": "f3a7539a-f103-479d-a8b5-2974b22b04ec"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 30,
+                                        "layout|flex": 0
+                                    },
+                                    "name": "MySpacer14",
+                                    "designerId": "15cc1cd4-6645-4d6f-9133-66027d060534"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "orderHistCls",
+                                        "focusCls": "(none)",
+                                        "height": 67,
+                                        "id": "userAccBtn",
+                                        "itemId": "userAccBtn",
+                                        "layout|flex": null,
+                                        "overCls": "(none)",
+                                        "text": "ACCOUNT INFORMATION",
+                                        "textAlign": null
+                                    },
+                                    "name": "MyButton8",
+                                    "designerId": "e5e6656b-5829-45fb-b16e-a469900bcc21"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "orderHistCls",
+                                        "focusCls": "(none)",
+                                        "height": 67,
+                                        "hidden": true,
+                                        "id": "userReqBtn",
+                                        "itemId": "userReqBtn",
+                                        "layout|flex": null,
+                                        "overCls": "(none)",
+                                        "text": "USER REQUESTS",
+                                        "textAlign": null
+                                    },
+                                    "name": "MyButton14",
+                                    "designerId": "cde34729-51fd-4125-aefa-c68a6676f9c6"
                                 }
                             ]
                         }

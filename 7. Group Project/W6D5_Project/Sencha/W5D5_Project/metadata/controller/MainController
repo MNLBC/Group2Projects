@@ -329,7 +329,10 @@
                     "            var home3 = Ext.getCmp('categoryPanel');",
                     "            var admin1 = Ext.getCmp('userMgmtBtn');",
                     "            var admin2 = Ext.getCmp('prodMgmtBtn');",
+                    "            var admin3 = Ext.getCmp('userReqBtn');",
                     "            var panel = Ext.getCmp('mainTabPanel');",
+                    "            var panel2 = Ext.getCmp('cartPanel');",
+                    "            var panel3 = Ext.getCmp('menuPanel');",
                     "            var tab = Ext.getCmp('setPanel');",
                     "            var userField = Ext.getCmp('userField');",
                     "            var countField = Ext.getCmp('countField'),",
@@ -343,9 +346,26 @@
                     "            home3.hide();",
                     "            admin1.hide();",
                     "            admin2.hide();",
+                    "            admin3.hide();",
+                    "            panel2.collapse();",
+                    "            panel3.collapse();",
                     "            userField.setValue('Visitor');",
                     "            idField.setValue(0);",
                     "            countField.setValue(parseInt(countField.getValue())-1);",
+                    "            Ext.Ajax.request({",
+                    "                            url : \"logout\",",
+                    "                            method : 'GET',",
+                    "                            async : false,",
+                    "                            callback : function(options, success, response) {",
+                    "                                if (success!==true) {",
+                    "                                    console.log('Failed ');",
+                    "                                    Ext.Msg.alert(\"Logout\", \"Error logging out. Try again later.\");",
+                    "                                } else {",
+                    "                                    console.log('Success! ');",
+                    "                                    Ext.Msg.alert(\"Logout\", \"Successfully logged out!\");",
+                    "                                }",
+                    "                            }",
+                    "                        });",
                     "        } else if (btn === 'no') {",
                     "            console.log('No pressed');",
                     "        }",
@@ -476,6 +496,54 @@
             },
             "name": "onAccFormBeforeAdd",
             "designerId": "55b80f08-4732-4578-a897-d317d2342ad8"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userAccBtn",
+                "designer|targetType": "MyButton8",
+                "fn": "onUserAccBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "        var tab = Ext.getCmp('accountPanel');",
+                    "        panel.setActiveTab(tab);",
+                    "        var controller = W5D5_Project.app.getController('ShopController');",
+                    "        controller.clearItems();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserAccBtnClick",
+            "designerId": "5755ecf3-77d3-45f8-9435-6463514d0452"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#userReqBtn",
+                "designer|targetType": "MyButton14",
+                "fn": "onUserReqBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "        var tab = Ext.getCmp('requestPanel');",
+                    "        panel.setActiveTab(tab);",
+                    "        var controller = W5D5_Project.app.getController('ShopController');",
+                    "        controller.clearItems();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onUserReqBtnClick",
+            "designerId": "356b8371-8ac1-48c7-a1c2-587ba7665e7f"
         }
     ]
 }

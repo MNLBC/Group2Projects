@@ -219,6 +219,32 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'prodMgmtBtn',
                                     overCls: '(none)',
                                     text: 'PRODUCT MANAGEMENT'
+                                },
+                                {
+                                    xtype: 'tbspacer',
+                                    flex: 0,
+                                    height: 30
+                                },
+                                {
+                                    xtype: 'button',
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    id: 'userAccBtn',
+                                    itemId: 'userAccBtn',
+                                    overCls: '(none)',
+                                    text: 'ACCOUNT INFORMATION'
+                                },
+                                {
+                                    xtype: 'button',
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    hidden: true,
+                                    id: 'userReqBtn',
+                                    itemId: 'userReqBtn',
+                                    overCls: '(none)',
+                                    text: 'USER REQUESTS'
                                 }
                             ]
                         }
