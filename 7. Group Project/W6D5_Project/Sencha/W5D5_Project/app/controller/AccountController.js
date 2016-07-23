@@ -27,19 +27,95 @@ Ext.define('W5D5_Project.controller.AccountController', {
         },
         "#accCheckStatus": {
             click: 'onAccCheckStatusClick'
+        },
+        "#accCountry": {
+            change: 'onAccCountryChange'
         }
     },
 
     onAccUpdateBtnClick: function() {
+        var id = Ext.getCmp('idField').getValue();
+        var fname = Ext.getCmp('accFirstName').getValue();
+        var lname = Ext.getCmp('accLastName').getValue();
+        var email = Ext.getCmp('accEmail').getValue();
+        var address1 = Ext.getCmp('accAddress1').getValue();
+        var address2 = Ext.getCmp('accAddress2').getValue();
+        var city = Ext.getCmp('accCity').getValue();
+        var sp = Ext.getCmp('accSp').getValue();
+        var country = Ext.getCmp('accCountry').getValue();
+        var pass = Ext.getCmp('accPassword').getValue();
+        var occupation = Ext.getCmp('accOccupation').getValue();
+        var user;
+         user = {
+                        "userId":id,
+                        "userFname":fname,
+                        "userLname":lname,
+                        "userEmail":email,
+                        "userPass":pass,
+                        "userOccupation":occupation,
+                        "userAddress1":address1,
+                        "userAddress2":address2,
+                        "userCity":city,
+                        "userSp":sp,
+                        "userCountry":country,
+                        "userType":'C',
+                        "userLevel":2
+                    };
+        Ext.Ajax.request({
+            url : "updateUser",
+            method: 'POST',
+            params : {
+                user: Ext.encode(user)
+            },
+            async: false,
+            jsonData: Ext.util.JSON.encode(user),
+            callback : function(options, success, response){
+                if(response.responseText===''){
+                    console.log('Error updating');
 
+                }else {
+                    console.log('user updated!');
+                }
+            }
+        });
     },
 
     onAccPremBtnClick: function() {
-
+        Ext.Ajax.request({
+            url : "sendAdminMessage",
+            async : false,
+            params : {
+                username: Ext.getCmp('accEmail').getValue(),
+                message: 'Request for Premium Account'
+            },
+            callback : function(options,success,response){
+                if(response.responseText === 'success'){
+                    console.log('Request sent');
+                } else {
+                    console.log('Request error');
+                }
+            }
+        });
     },
 
     onAccCheckStatusClick: function() {
+        Ext.Ajax.request({
+            url : "getRequestByUserEmail",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                request = Ext.decode(response.responseText);
+                Ext.Msg.alert("Request Status", "Request status is: " + request);
 
+            }
+        });
+
+    },
+
+    onAccCountryChange: function() {
+        var state = Ext.getStore('SPStore');
+                var country = Ext.getCmp('accCountry').getValue();
+                state.filter('CountryName', country);
     },
 
     setFieldValues: function(record) {

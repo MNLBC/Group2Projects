@@ -23,6 +23,52 @@
                 "designer|controlQuery": "#accUpdateBtn",
                 "designer|targetType": "MyButton15",
                 "fn": "onAccUpdateBtnClick",
+                "implHandler": [
+                    "var id = Ext.getCmp('idField').getValue();",
+                    "var fname = Ext.getCmp('accFirstName').getValue();",
+                    "var lname = Ext.getCmp('accLastName').getValue();",
+                    "var email = Ext.getCmp('accEmail').getValue();",
+                    "var address1 = Ext.getCmp('accAddress1').getValue();",
+                    "var address2 = Ext.getCmp('accAddress2').getValue();",
+                    "var city = Ext.getCmp('accCity').getValue();",
+                    "var sp = Ext.getCmp('accSp').getValue();",
+                    "var country = Ext.getCmp('accCountry').getValue();",
+                    "var pass = Ext.getCmp('accPassword').getValue();",
+                    "var occupation = Ext.getCmp('accOccupation').getValue();",
+                    "var user;",
+                    " user = {",
+                    "                \"userId\":id,",
+                    "                \"userFname\":fname,",
+                    "                \"userLname\":lname,",
+                    "                \"userEmail\":email,",
+                    "                \"userPass\":pass,",
+                    "                \"userOccupation\":occupation,",
+                    "                \"userAddress1\":address1,",
+                    "                \"userAddress2\":address2,",
+                    "                \"userCity\":city,",
+                    "                \"userSp\":sp,",
+                    "                \"userCountry\":country,",
+                    "                \"userType\":'C',",
+                    "                \"userLevel\":2",
+                    "            };",
+                    "Ext.Ajax.request({",
+                    "    url : \"updateUser\",",
+                    "    method: 'POST',",
+                    "    params : {",
+                    "        user: Ext.encode(user)",
+                    "    },",
+                    "    async: false,",
+                    "    jsonData: Ext.util.JSON.encode(user),",
+                    "    callback : function(options, success, response){",
+                    "        if(response.responseText===''){",
+                    "            console.log('Error updating');",
+                    "",
+                    "        }else {",
+                    "            console.log('user updated!');",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
                 "name": "click",
                 "scope": "me"
             },
@@ -40,6 +86,23 @@
                 "designer|controlQuery": "#accPremBtn",
                 "designer|targetType": "MyButton16",
                 "fn": "onAccPremBtnClick",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "    url : \"sendAdminMessage\",",
+                    "    async : false,",
+                    "    params : {",
+                    "        username: Ext.getCmp('accEmail').getValue(),",
+                    "        message: 'Request for Premium Account'",
+                    "    },",
+                    "    callback : function(options,success,response){",
+                    "        if(response.responseText === 'success'){",
+                    "            console.log('Request sent');",
+                    "        } else {",
+                    "            console.log('Request error');",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
                 "name": "click",
                 "scope": "me"
             },
@@ -57,6 +120,19 @@
                 "designer|controlQuery": "#accCheckStatus",
                 "designer|targetType": "MyButton17",
                 "fn": "onAccCheckStatusClick",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "    url : \"getRequestByUserEmail\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    callback : function(options,success,response){",
+                    "        request = Ext.decode(response.responseText);",
+                    "        Ext.Msg.alert(\"Request Status\", \"Request status is: \" + request);",
+                    "",
+                    "    }",
+                    "});",
+                    ""
+                ],
                 "name": "click",
                 "scope": "me"
             },
@@ -96,6 +172,28 @@
             },
             "name": "setFieldValues",
             "designerId": "a5a1b05d-88ad-4279-811b-7ec06e819731"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accCountry",
+                "designer|targetType": "MyComboBox11",
+                "fn": "onAccCountryChange",
+                "implHandler": [
+                    "var state = Ext.getStore('SPStore');",
+                    "        var country = Ext.getCmp('accCountry').getValue();",
+                    "        state.filter('CountryName', country);"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onAccCountryChange",
+            "designerId": "6c589086-4054-4219-a736-9f3bb88a97ec"
         }
     ]
 }
