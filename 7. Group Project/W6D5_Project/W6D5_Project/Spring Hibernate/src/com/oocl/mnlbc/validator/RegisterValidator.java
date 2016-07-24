@@ -25,7 +25,7 @@ import com.oocl.mnlbc.model.User;
 public class RegisterValidator implements Validator {
 
 	private static final String SIMPLE_EMAIL_REGEX = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
-	private static final String SIMPLE_ADDRESS_REGEX = "[a-zA-Z0-9.-]+";
+	private static final String SIMPLE_ADDRESS_REGEX = "[a-zA-Z0-9. +-]+";
 	
 	@Override
 	public boolean supports(Class userClass) {
