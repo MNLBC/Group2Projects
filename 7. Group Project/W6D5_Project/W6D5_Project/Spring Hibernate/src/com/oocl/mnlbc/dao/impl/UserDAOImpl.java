@@ -1,5 +1,7 @@
 package com.oocl.mnlbc.dao.impl;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.UserDAO;
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.util.PasswordHash;
 
 /**
  * 
@@ -112,11 +115,17 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean validateUser(String email, String password) {
-		String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "' AND user.userPass='" + password + "'";
-		List<User> user = manager.createQuery(sql).getResultList();
-
+//		String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "' AND user.userPass='" + password + "'";
+//		List<User> user = manager.createQuery(sql).getResultList();
+	   String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "'";
+	   List<User> user = manager.createQuery(sql).getResultList();
 		if (!user.isEmpty()) {
-			return true;
+	      try {
+            if(PasswordHash.validatePassword(password, user.get(0).getUserPass()))
+               return true;
+         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+            logger.error(e.getMessage());
+         }
 		}
 
 		logger.info("User email address is:" + email);
