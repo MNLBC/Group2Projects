@@ -286,7 +286,7 @@
                     "        if (btn === 'yes') {",
                     "            console.log('Yes pressed');",
                     "            if(Ext.isEmpty(scope.orderWin)){",
-                    "             scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');",
+                    "                scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');",
                     "            }",
                     "            if(Ext.getCmp('levelField')==2){",
                     "                total = total - (total * 0.10);",
@@ -602,6 +602,45 @@
             },
             "name": "onUserReqBtnClick",
             "designerId": "356b8371-8ac1-48c7-a1c2-587ba7665e7f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderHistBtn",
+                "designer|targetType": "MyButton7",
+                "fn": "onOrderHistBtnClick",
+                "implHandler": [
+                    "        var panel = Ext.getCmp('mainTabPanel');",
+                    "        var tab = Ext.getCmp('orderHistPanel');",
+                    "        panel.setActiveTab(tab);",
+                    "        var controller = W5D5_Project.app.getController('ShopController');",
+                    "        controller.clearItems();",
+                    "        Ext.Ajax.request({",
+                    "            url : \"/GET/order/getOrdersByUser/\" + Ext.getCmp('idField').getValue(),",
+                    "            method : \"GET\",",
+                    "            async : false,",
+                    "            callback : function(options,success,response){",
+                    "                if (Ext.isEmpty(response.responseText)) {",
+                    "                    Ext.Msg.alert(\"Order History\",",
+                    "                                  \"Error in getting order history\");",
+                    "                } else {",
+                    "                    var orderStore = Ext.getStore('OrdersStore');",
+                    "                    var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                    orderStore.loadData(jsonResponse);",
+                    "                }",
+                    "            }",
+                    "        });"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderHistBtnClick",
+            "designerId": "b3dcc290-acde-421c-b4b8-5739b675c1a0"
         },
         {
             "type": "basicfunction",

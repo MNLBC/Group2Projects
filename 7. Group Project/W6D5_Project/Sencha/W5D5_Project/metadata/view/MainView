@@ -297,42 +297,6 @@
                                         "hidden": true,
                                         "layout|flex": 0
                                     },
-                                    "name": "MySpacer1",
-                                    "designerId": "baf0be7f-17ed-4604-bf14-33b80aa1faa3"
-                                },
-                                {
-                                    "type": "Ext.button.Button",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "cls": "orderHistCls",
-                                        "focusCls": "(none)",
-                                        "height": 67,
-                                        "hidden": true,
-                                        "id": "orderHistBtn",
-                                        "itemId": "orderHistBtn",
-                                        "overCls": "(none)",
-                                        "text": "ORDER HISTORY",
-                                        "textAlign": null
-                                    },
-                                    "name": "MyButton7",
-                                    "designerId": "9e28c88a-3cf2-40ec-bf5b-e4bad7633d73"
-                                },
-                                {
-                                    "type": "Ext.toolbar.Spacer",
-                                    "reference": {
-                                        "name": "items",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "height": 30,
-                                        "hidden": true,
-                                        "layout|flex": 0
-                                    },
                                     "name": "MySpacer3",
                                     "designerId": "f91ba87e-777b-4d85-bfb1-3c53fc552db8"
                                 },
@@ -414,6 +378,27 @@
                                     },
                                     "name": "MyButton8",
                                     "designerId": "e5e6656b-5829-45fb-b16e-a469900bcc21"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "orderHistCls",
+                                        "focusCls": "(none)",
+                                        "height": 67,
+                                        "id": "orderHistBtn",
+                                        "itemId": "orderHistBtn",
+                                        "layout|flex": 1,
+                                        "overCls": "(none)",
+                                        "text": "ORDER HISTORY",
+                                        "textAlign": null
+                                    },
+                                    "name": "MyButton7",
+                                    "designerId": "9e28c88a-3cf2-40ec-bf5b-e4bad7633d73"
                                 },
                                 {
                                     "type": "Ext.button.Button",
@@ -3917,6 +3902,7 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "autoScroll": true,
                                                 "container|align": "stretch",
                                                 "id": "accountPanel",
                                                 "itemId": "accountPanel",
@@ -4876,6 +4862,192 @@
                                                     },
                                                     "name": "TabConfig8",
                                                     "designerId": "7febee21-55ab-47da-abdd-a54a31fc139c"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.panel.Panel",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "autoScroll": true,
+                                                "container|align": "stretch",
+                                                "id": "orderHistPanel",
+                                                "itemId": "orderHistPanel",
+                                                "layout": "hbox",
+                                                "title": "My Panel"
+                                            },
+                                            "name": "MyPanel36",
+                                            "designerId": "e02f36db-74a4-4b5a-afec-092d174aad4a",
+                                            "cn": [
+                                                {
+                                                    "type": "Ext.toolbar.Spacer",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 0,
+                                                        "width": 15
+                                                    },
+                                                    "name": "MySpacer34",
+                                                    "designerId": "c94e381a-6249-4887-8a35-667d3ff07f83"
+                                                },
+                                                {
+                                                    "type": "Ext.panel.Panel",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "container|align": "stretch",
+                                                        "height": 25,
+                                                        "layout": "vbox",
+                                                        "layout|flex": 1,
+                                                        "title": ""
+                                                    },
+                                                    "name": "MyPanel34",
+                                                    "designerId": "8b9f1fe3-a3d2-47c1-9b22-a77bfb4c8529",
+                                                    "cn": [
+                                                        {
+                                                            "type": "Ext.form.field.Display",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "baseCls": null,
+                                                                "fieldCls": "textCls",
+                                                                "fieldLabel": "",
+                                                                "value": "Order History"
+                                                            },
+                                                            "name": "MyDisplayField12",
+                                                            "designerId": "fe7d209b-4ca7-494d-aec2-f7337282d55c"
+                                                        },
+                                                        {
+                                                            "type": "Ext.container.Container",
+                                                            "reference": {
+                                                                "name": "items",
+                                                                "type": "array"
+                                                            },
+                                                            "codeClass": null,
+                                                            "userConfig": {
+                                                                "container|align": "stretch",
+                                                                "layout": "hbox",
+                                                                "layout|flex": 1
+                                                            },
+                                                            "name": "MyContainer21",
+                                                            "designerId": "172abe87-f5b0-4912-8e9e-fa285fd55852",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "Ext.grid.Panel",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "id": "orderHistGrid",
+                                                                        "itemId": "orderHistGrid",
+                                                                        "layout|flex": 0,
+                                                                        "store": "OrdersStore",
+                                                                        "title": "",
+                                                                        "width": 462
+                                                                    },
+                                                                    "name": "MyGridPanel2",
+                                                                    "designerId": "01862b06-db6e-4cd7-9ec9-277e18b6ee4a",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.grid.column.Column",
+                                                                            "reference": {
+                                                                                "name": "columns",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "dataIndex": "orderId",
+                                                                                "text": "Order Id"
+                                                                            },
+                                                                            "name": "MyColumn11",
+                                                                            "designerId": "9d160ff3-c875-45b4-a1c2-8edecbdf4f29"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.grid.column.Column",
+                                                                            "reference": {
+                                                                                "name": "columns",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "dataIndex": "userId",
+                                                                                "text": "User Id"
+                                                                            },
+                                                                            "name": "MyColumn12",
+                                                                            "designerId": "4c902605-ea85-4cc3-bf91-a2b41723defb"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.grid.column.Column",
+                                                                            "reference": {
+                                                                                "name": "columns",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "dataIndex": "orderTotal",
+                                                                                "text": "Order Total",
+                                                                                "width": 134
+                                                                            },
+                                                                            "name": "MyColumn13",
+                                                                            "designerId": "2d8ed9d8-3d57-4545-ac9b-52bab5cb30f5"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.grid.column.Column",
+                                                                            "reference": {
+                                                                                "name": "columns",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "dataIndex": "orderDate",
+                                                                                "text": "Order Date"
+                                                                            },
+                                                                            "name": "MyColumn14",
+                                                                            "designerId": "c954fe49-69c5-4d14-9ce8-cd9357f364a5"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.grid.View",
+                                                                            "reference": {
+                                                                                "name": "viewConfig",
+                                                                                "type": "object"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "name": "MyGridView2",
+                                                                            "designerId": "bda5bf65-b801-445e-8ecf-af290e18aa68"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "type": "Ext.tab.Tab",
+                                                    "reference": {
+                                                        "name": "tabConfig",
+                                                        "type": "object"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "layout|flex": 1
+                                                    },
+                                                    "name": "TabConfig8",
+                                                    "designerId": "6293baff-ca32-426e-934f-32985c2fb8bc"
                                                 }
                                             ]
                                         },

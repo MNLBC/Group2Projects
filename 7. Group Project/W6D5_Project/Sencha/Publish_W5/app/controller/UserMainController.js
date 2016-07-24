@@ -230,93 +230,93 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             Ext.Msg.alert("Register", "Please fill out required fields");
             return;
         }else{
-        Ext.Ajax.request({
-            url : "getUserByEmail",
-            method : "GET",
-            async : false,
-            params : {
-                email : email
-            },
-            callback : function(options, success, response) {
-                if(!Ext.isEmpty(Ext.decode(response.responseText))){
-                    Ext.Msg.alert('Register','Account with that email already exists.');
-                }else{
-                    Ext.Ajax.request({
-            url : "premiumRegister",
-            method: 'POST',
-            params : {
-                premiumCode: premiumCode1
-            },
-            async: false,
-            callback : function(options, success, response){
-                if(response.responseText==='success'){
-                    console.log('Valid code');
-                    user = {
-                        "userId":'',
-                        "userFname":fname,
-                        "userLname":lname,
-                        "userEmail":email,
-                        "userPass":pass,
-                        "userOccupation":occupation,
-                        "userAddress1":address1,
-                        "userAddress2":address2,
-                        "userCity":city,
-                        "userSp":sp,
-                        "userCountry":country,
-                        "userType":'Customer',
-                        "userLevel":2
-                    };
-                }else{
-                    console.log('Invalid code');
-                    user = {
-                        "userId":'',
-                        "userFname":fname,
-                        "userLname":lname,
-                        "userEmail":email,
-                        "userPass":pass,
-                        "userOccupation":occupation,
-                        "userAddress1":address1,
-                        "userAddress2":address2,
-                        "userCity":city,
-                        "userSp":sp,
-                        "userCountry":country,
-                        "userType":'Customer',
-                        "userLevel":1
-                    };
-                }
-            }
-        });
-
-
-        Ext.Ajax.request({
-            url : "register",
-            method: 'POST',
-            params : {
-                user: Ext.encode(user)
-            },
-            async: false,
-            jsonData: Ext.util.JSON.encode(user),
-            callback : function(options, success, response){
-                if(Ext.isEmpty(response.responseText)){
-                    Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
-                }else{
-                    var resp = Ext.decode(response.responseText);
-                    if(resp.responseCode=='0'){
-                        console.log('Success! :)');
-                        Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
-                        var mainControl = W5D5_Project.app.getController('MainController');
-                        mainControl.clearFrontPage();
-                    }else if(resp.responseCode=='999'){
-                        Ext.Msg.alert('Register','Validation error. Please check field values.');
+            Ext.Ajax.request({
+                url : "getUserByEmail",
+                method : "GET",
+                async : false,
+                params : {
+                    email : email
+                },
+                callback : function(options, success, response) {
+                    if(!Ext.isEmpty(Ext.decode(response.responseText))){
+                        Ext.Msg.alert('Register','Account with that email already exists.');
                     }else{
-                        Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
+                        Ext.Ajax.request({
+                            url : "premiumRegister",
+                            method: 'POST',
+                            params : {
+                                premiumCode: premiumCode1
+                            },
+                            async: false,
+                            callback : function(options, success, response){
+                                if(response.responseText==='success'){
+                                    console.log('Valid code');
+                                    user = {
+                                        "userId":'',
+                                        "userFname":fname,
+                                        "userLname":lname,
+                                        "userEmail":email,
+                                        "userPass":pass,
+                                        "userOccupation":occupation,
+                                        "userAddress1":address1,
+                                        "userAddress2":address2,
+                                        "userCity":city,
+                                        "userSp":sp,
+                                        "userCountry":country,
+                                        "userType":'Customer',
+                                        "userLevel":2
+                                    };
+                                }else{
+                                    console.log('Invalid code');
+                                    user = {
+                                        "userId":'',
+                                        "userFname":fname,
+                                        "userLname":lname,
+                                        "userEmail":email,
+                                        "userPass":pass,
+                                        "userOccupation":occupation,
+                                        "userAddress1":address1,
+                                        "userAddress2":address2,
+                                        "userCity":city,
+                                        "userSp":sp,
+                                        "userCountry":country,
+                                        "userType":'Customer',
+                                        "userLevel":1
+                                    };
+                                }
+                            }
+                        });
+
+
+                        Ext.Ajax.request({
+                            url : "register",
+                            method: 'POST',
+                            params : {
+                                user: Ext.encode(user)
+                            },
+                            async: false,
+                            jsonData: Ext.util.JSON.encode(user),
+                            callback : function(options, success, response){
+                                if(Ext.isEmpty(response.responseText)){
+                                    Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
+                                }else{
+                                    var resp = Ext.decode(response.responseText);
+                                    if(resp.responseCode=='0'){
+                                        console.log('Success! :)');
+                                        Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
+                                        var mainControl = W5D5_Project.app.getController('MainController');
+                                        mainControl.clearFrontPage();
+                                    }else if(resp.responseCode=='999'){
+                                        Ext.Msg.alert('Register','Validation error. Please check field values.');
+                                    }else{
+                                        Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
+                                    }
+                                }
+                            }
+                        });
                     }
                 }
-            }
-        });
-                }
-            }
-        });
+            });
         }
 
 

@@ -188,23 +188,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                     cls: 'orderHistCls',
                                     height: 67,
                                     hidden: true,
-                                    id: 'orderHistBtn',
-                                    itemId: 'orderHistBtn',
-                                    overCls: '(none)',
-                                    text: 'ORDER HISTORY'
-                                },
-                                {
-                                    xtype: 'tbspacer',
-                                    flex: 0,
-                                    height: 30,
-                                    hidden: true
-                                },
-                                {
-                                    xtype: 'button',
-                                    focusCls: '(none)',
-                                    cls: 'orderHistCls',
-                                    height: 67,
-                                    hidden: true,
                                     id: 'userMgmtBtn',
                                     itemId: 'userMgmtBtn',
                                     overCls: '(none)',
@@ -235,6 +218,17 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'userAccBtn',
                                     overCls: '(none)',
                                     text: 'ACCOUNT INFORMATION'
+                                },
+                                {
+                                    xtype: 'button',
+                                    flex: 1,
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    id: 'orderHistBtn',
+                                    itemId: 'orderHistBtn',
+                                    overCls: '(none)',
+                                    text: 'ORDER HISTORY'
                                 },
                                 {
                                     xtype: 'button',
@@ -1847,6 +1841,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                         },
                                         {
                                             xtype: 'panel',
+                                            autoScroll: true,
                                             id: 'accountPanel',
                                             itemId: 'accountPanel',
                                             title: 'My Panel',
@@ -2284,6 +2279,88 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     text: 'REJECT'
                                                                                 }
                                                                             ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            tabConfig: {
+                                                xtype: 'tab',
+                                                flex: 1
+                                            }
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            autoScroll: true,
+                                            id: 'orderHistPanel',
+                                            itemId: 'orderHistPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'hbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    width: 15
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 1,
+                                                    height: 25,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'vbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'displayfield',
+                                                            fieldLabel: '',
+                                                            value: 'Order History',
+                                                            fieldCls: 'textCls'
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'gridpanel',
+                                                                    flex: 0,
+                                                                    id: 'orderHistGrid',
+                                                                    itemId: 'orderHistGrid',
+                                                                    width: 462,
+                                                                    title: '',
+                                                                    store: 'OrdersStore',
+                                                                    columns: [
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'orderId',
+                                                                            text: 'Order Id'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'userId',
+                                                                            text: 'User Id'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            width: 134,
+                                                                            dataIndex: 'orderTotal',
+                                                                            text: 'Order Total'
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridcolumn',
+                                                                            dataIndex: 'orderDate',
+                                                                            text: 'Order Date'
                                                                         }
                                                                     ]
                                                                 }

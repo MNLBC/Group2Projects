@@ -72,6 +72,9 @@ Ext.define('W5D5_Project.controller.MainController', {
         },
         "#userReqBtn": {
             click: 'onUserReqBtnClick'
+        },
+        "#orderHistBtn": {
+            click: 'onOrderHistBtnClick'
         }
     },
 
@@ -178,7 +181,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                 if (btn === 'yes') {
                     console.log('Yes pressed');
                     if(Ext.isEmpty(scope.orderWin)){
-                     scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
+                        scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
                     if(Ext.getCmp('levelField')==2){
                         total = total - (total * 0.10);
@@ -373,6 +376,29 @@ Ext.define('W5D5_Project.controller.MainController', {
                 }
             }
         });
+    },
+
+    onOrderHistBtnClick: function() {
+                var panel = Ext.getCmp('mainTabPanel');
+                var tab = Ext.getCmp('orderHistPanel');
+                panel.setActiveTab(tab);
+                var controller = W5D5_Project.app.getController('ShopController');
+                controller.clearItems();
+                Ext.Ajax.request({
+                    url : "/GET/order/getOrdersByUser/" + Ext.getCmp('idField').getValue(),
+                    method : "GET",
+                    async : false,
+                    callback : function(options,success,response){
+                        if (Ext.isEmpty(response.responseText)) {
+                            Ext.Msg.alert("Order History",
+                                          "Error in getting order history");
+                        } else {
+                            var orderStore = Ext.getStore('OrdersStore');
+                            var jsonResponse = Ext.JSON.decode(response.responseText);
+                            orderStore.loadData(jsonResponse);
+                        }
+                    }
+                });
     },
 
     clearFrontPage: function() {
