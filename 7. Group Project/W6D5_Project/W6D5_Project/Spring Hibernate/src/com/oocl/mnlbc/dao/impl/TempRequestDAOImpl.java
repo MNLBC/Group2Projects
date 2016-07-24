@@ -36,7 +36,7 @@ public class TempRequestDAOImpl {
 	public int createRequest(String email){
 		Connection conn = getConn();
 		int result = 0;
-		String sql = "INSERT INTO REQUESTS(USERMAIL,REQDATE,REQSTATUS) VALUES('" + email +"','"
+		String sql = "INSERT INTO REQUESTS(USEREMAIL,REQDATE,REQSTATUS) VALUES('" + email +"','"
 				+ Timestamp.getTimestamp() + "','PENDING')";
 		PreparedStatement pStmt;
 		try {
