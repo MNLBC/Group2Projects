@@ -45,6 +45,7 @@ public class Response {
 	         default :
 	        	 LogUtil.logMsg(LogType.WARN, "Binding error");
 	      }
+		this.responseCode = responseCode;
 	}
 	/**
 	 * @return the errors
