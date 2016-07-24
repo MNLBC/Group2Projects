@@ -256,6 +256,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                                         } else {
                                             console.log('Success! ');
                                             Ext.Msg.alert("Logout", "Successfully logged out!");
+                                            var mainControl = W5D5_Project.app.getController('MainController');
+                                            mainControl.clearFrontPage();
                                         }
                                     }
                                 });
