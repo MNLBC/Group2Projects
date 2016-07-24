@@ -304,9 +304,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                     if(resp.responseCode=='0'){
                         console.log('Success! :)');
                         Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
-                        main.hide();
-                        home1.show();
-                        home2.show();
                         var mainControl = W5D5_Project.app.getController('MainController');
                         mainControl.clearFrontPage();
                     }else if(resp.responseCode=='999'){
