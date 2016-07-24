@@ -63,13 +63,27 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                      Ext.Msg.alert("Request","Success in approving request");
                                      console.log('Success ');
                                     Ext.Ajax.request({
+                                        url : 'updateToPremium',
+                                        method : 'POST',
+                                        aync : false,
+                                        param : {
+                                            email : userEmail
+                                        },
+                                        callback : function(options, success, response){
+                                            if(response.responseText===true){
+                                                console.log('Success! ');
+                                            }else{
+                                                console.log('Failed! ');
+                                            }
+                                        }
+                                     });
+                                    Ext.Ajax.request({
                                         url : "getAllRequest",
                                         method : "GET",
                                         async : false,
                                         callback : function(options,success,response){
                                             if (Ext.isEmpty(response.responseText)) {
-                                                Ext.Msg.alert("Requests",
-                                                              "Error in getting requests");
+                                                Ext.Msg.alert("Requests", "Error in getting requests");
                                                 console.log('Failed ');
                                             } else {
                                                 console.log('Success! ');
@@ -79,7 +93,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                             }
                                         }
                                     });
-                                                                Ext.getCmp('requestGrid').getView().refresh();
+                                   Ext.getCmp('requestGrid').getView().refresh();
                                 }
                             }
                         });
@@ -123,8 +137,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                         async : false,
                                         callback : function(options,success,response){
                                             if (Ext.isEmpty(response.responseText)) {
-                                                Ext.Msg.alert("Requests",
-                                                              "Error in getting requests");
+                                                Ext.Msg.alert("Requests", "Error in getting requests");
                                                 console.log('Failed ');
                                             } else {
                                                 console.log('Success! ');
@@ -134,7 +147,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                             }
                                         }
                                     });
-                                                                Ext.getCmp('pharmacistGrid').getView().refresh();
+                                    Ext.getCmp('requestGrid').getView().refresh();
                                 }
                             }
                         });
