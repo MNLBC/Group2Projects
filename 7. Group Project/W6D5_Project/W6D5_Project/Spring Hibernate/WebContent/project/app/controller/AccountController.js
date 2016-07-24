@@ -74,9 +74,14 @@ Ext.define('W5D5_Project.controller.AccountController', {
             callback : function(options, success, response){
                 if(response.responseText===''){
                     console.log('Error updating');
-
                 }else {
                     console.log('user updated!');
+                    Ext.getCmp('userField').setValue(user.userFname);
+                    Ext.getCmp('idField').setValue(user.userId);
+                    Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userAddress2 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);
+
+                    Ext.getCmp('emailField').setValue(user.userEmail);
+                    Ext.getCmp('levelField').setValue(user.userType);
                 }
             }
         });
@@ -94,6 +99,7 @@ Ext.define('W5D5_Project.controller.AccountController', {
             },
             callback : function(options,success,response){
                 if(response.responseText === 'success'){
+                    Ext.Msg.alert("Request", "You have requested for an account upgrade. Please wait for admin approval");
                     console.log('Request sent');
                 } else {
                     console.log('Request error');
@@ -107,6 +113,9 @@ Ext.define('W5D5_Project.controller.AccountController', {
             url : "getRequestByUserEmail",
             method : "GET",
             async : false,
+            params : {
+                email : Ext.getCmp('emailField').getValue()
+            },
             callback : function(options,success,response){
                 request = Ext.decode(response.responseText);
                 Ext.Msg.alert("Request Status", "Request status is: " + request);
