@@ -18,7 +18,7 @@ import com.oocl.mnlbc.model.User;
 public class TempUserDAOImpl {
 	private Connection getConn() {
 	      String driver = "oracle.jdbc.driver.OracleDriver";
-	      String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	      String url = "jdbc:oracle:thin:@ZHA-ITA075-W7:1521:xe";
 	      String username = "GROUP2";
 	      String password = "GROUP2";
 	      Connection conn = null;
