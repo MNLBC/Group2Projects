@@ -20,6 +20,7 @@ import com.oocl.mnlbc.model.User;
 /**
  * @author SOQUIDA
  * @since 2016-07-22
+ * 
  */
 
 @Repository

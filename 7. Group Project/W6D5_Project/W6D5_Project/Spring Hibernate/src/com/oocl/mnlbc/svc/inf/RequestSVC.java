@@ -9,7 +9,10 @@ import java.util.List;
  */
 
 import com.oocl.mnlbc.model.Request;
-
+/**
+ * @author Danna Soquiat
+ * @since 2016-07-21
+ */
 public interface RequestSVC {
 	
 	public int createRequest(String useremail);

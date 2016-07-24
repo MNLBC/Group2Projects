@@ -20,6 +20,9 @@ import com.oocl.mnlbc.svc.inf.RequestSVC;
 
 /**
  * @author SOQUIDA
+ * @since 2016-07-22
+ *
+ * Methods to handle webservice request for User Requests 
  *
  */
 
@@ -34,7 +37,13 @@ public class RequestController {
 	public void setRequestService(RequestSVC requestSVC) {
 		this.requestSVC = requestSVC;
 	}
-
+		/**
+	    * addRequest web service
+	    * adds a user request
+	    * 
+	    * @return boolean
+	    * 
+	    */
 	@RequestMapping(value = "/addRequest", method = RequestMethod.POST)
 	public boolean createRequest(@RequestParam("email") String useremail) {
 		int result = this.requestSVC.createRequest(useremail);
@@ -47,6 +56,13 @@ public class RequestController {
 		return false;
 
 	}
+	
+		/**
+	    * getRequestByUserEmail web service
+	    * gets the latest request of any email parameter requested 
+	    * 
+	    * @return Request Object
+	    */
 
 	@RequestMapping(value = "/getRequestByUserEmail", method = RequestMethod.GET)
 	public Request getRequestByUserEmail(@RequestParam("email") String useremail) {
@@ -55,7 +71,15 @@ public class RequestController {
 		}
 		return null;
 	}
-
+	
+	
+	/**
+	    * updateRequest web service
+	    * updates the any pending request
+	    * 
+	    * @return boolean
+	    */
+	
 	@RequestMapping(value = "/updateRequest", method = RequestMethod.POST)
 	public boolean updateRequest(@RequestParam("id") String id, @RequestParam("email") String email, @RequestParam("date") 
 	String date, @RequestParam("status") String status) {
@@ -73,7 +97,13 @@ public class RequestController {
 		}
 
 	}
-
+	
+	/**
+	    * getAllRequest web service
+	    * gets All data from Request table
+	    * 
+	    * @return Request Object
+	    */
 	@RequestMapping(value = "/getAllRequest", method = RequestMethod.GET)
 	public List<Request> getAllRequest() {
 		return this.requestSVC.getAllRequest();

@@ -19,6 +19,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UserCounterController extends HttpServlet {
 	
+	/**
+	    * visitorCount web service
+	    * counts session as 1 user
+	    * 
+	    * @return count
+	    */
+	
 	@RequestMapping("/visitorCount")
 	public @ResponseBody int getVisitorCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int count = 1;
@@ -30,14 +37,5 @@ public class UserCounterController extends HttpServlet {
 
 	}
 	
-	@RequestMapping("/onlineUserCount")
-	public @ResponseBody int getOnlineUserCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int count = 0;
-		HttpSession session = request.getSession();
-
-		count = (int) session.getServletContext().getAttribute("online");
-		return count;
-
-	}
 
 }

@@ -18,7 +18,7 @@ import com.oocl.mnlbc.model.User;
  * @author Danna Soquiat
  * @since 2016-07-16
  * 
- *        DAO Implementation for USER TABLE
+ * DAO Implementation for USER TABLE
  *
  */
 

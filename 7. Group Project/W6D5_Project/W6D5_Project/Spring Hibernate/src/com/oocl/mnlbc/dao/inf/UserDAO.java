@@ -3,7 +3,10 @@ package com.oocl.mnlbc.dao.inf;
 import java.util.List;
 
 import com.oocl.mnlbc.model.User;
-
+/**
+ * @author Danna Soquiat
+ * @since 2016-07-21
+ */
 public interface UserDAO {
 	public List<User> getAllUser();
 	public boolean validateUser(String email, String password);

@@ -14,6 +14,8 @@ import com.oocl.mnlbc.util.Timestamp;
 /**
  * @author SOQUIDA
  * @since 2016-07-22
+ * 
+ * Service Implementation for Request
  */
 
 public class RequestSVCImpl implements RequestSVC {
