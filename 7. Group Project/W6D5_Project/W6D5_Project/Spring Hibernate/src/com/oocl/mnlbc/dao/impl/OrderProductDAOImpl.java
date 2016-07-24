@@ -36,6 +36,8 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 			String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES('"
 					+ orderId +"','"+ cart.getProdId() +"','" + cart.getProdQty() +"')";
 			manager.createNativeQuery(sql).executeUpdate();
+			manager.createNativeQuery("UPDATE PRODUCT SET PRODSTOCK = PRODSTOCK - " + cart.getProdQty() + " WHERE PRODID = "
+					+ "'" + cart.getProdId() + "'").executeUpdate();
 			logger.info("OrderProducts saved successfully, orderproduct details=" + cartProductList);
 		}
 		manager.createNativeQuery("DELETE FROM CARTPRODUCT WHERE USERID = '" + userId +"'").executeUpdate();
