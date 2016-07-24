@@ -45,6 +45,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
         var country = Ext.getCmp('accCountry').getValue();
         var pass = Ext.getCmp('accPassword').getValue();
         var occupation = Ext.getCmp('accOccupation').getValue(),
+            userLevel = Ext.getCmp('accUserLevel').getValue(),
+            accountType = Ext.getCmp('accAccountType').getValue();
             field = Ext.getCmp('accForm');
         var user;
         if(field.isValid()){
@@ -60,8 +62,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
                         "userCity":city,
                         "userSp":sp,
                         "userCountry":country,
-                        "userType":'C',
-                        "userLevel":2
+                        "userType":accountType,
+                        "userLevel":userLevel
                     };
         Ext.Ajax.request({
             url : "updateUser",
