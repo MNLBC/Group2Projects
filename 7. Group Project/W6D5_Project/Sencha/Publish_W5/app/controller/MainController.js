@@ -383,7 +383,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                 var controller = W5D5_Project.app.getController('ShopController');
                 controller.clearItems();
                 Ext.Ajax.request({
-                    url : "/GET/order/getOrdersByUser/" + Ext.getCmp('idField').getValue(),
+                    url : "GET/user/items/" + Ext.getCmp('idField').getValue(),
                     method : "GET",
                     async : false,
                     callback : function(options,success,response){
