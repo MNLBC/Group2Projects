@@ -3782,9 +3782,9 @@
                                                                                                 "allowOnlyWhitespace": false,
                                                                                                 "designer|displayName": "OccupRegField",
                                                                                                 "fieldLabel": "Occupation",
-                                                                                                "id": "OccupRegField",
+                                                                                                "id": "occupRegField",
                                                                                                 "inputType": "email",
-                                                                                                "itemId": "OccupRegField"
+                                                                                                "itemId": "occupRegField"
                                                                                             },
                                                                                             "name": "MyTextField21",
                                                                                             "designerId": "b5fe85f5-bb7f-4830-a555-a28e46a6ba32"

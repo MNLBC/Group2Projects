@@ -238,7 +238,7 @@
                     "var sp = Ext.getCmp('spRegCombo').getValue();",
                     "var country = Ext.getCmp('countryRegCombo').getValue();",
                     "var pass = Ext.getCmp('passRegField').getValue();",
-                    "var occupation = Ext.getCmp('OccupRegField').getValue();",
+                    "var occupation = Ext.getCmp('occupRegField').getValue();",
                     "var premiumCode1 = Ext.getCmp('pCodeField').getValue();",
                     "var user;",
                     "",

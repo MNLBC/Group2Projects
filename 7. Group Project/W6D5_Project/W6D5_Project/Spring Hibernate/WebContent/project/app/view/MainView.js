@@ -1783,8 +1783,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
-                                                                                            id: 'OccupRegField',
-                                                                                            itemId: 'OccupRegField',
+                                                                                            id: 'occupRegField',
+                                                                                            itemId: 'occupRegField',
                                                                                             fieldLabel: 'Occupation',
                                                                                             inputType: 'email',
                                                                                             allowBlank: false,
