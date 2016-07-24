@@ -21,10 +21,11 @@ public class UserCounterController extends HttpServlet {
 	
 	@RequestMapping("/visitorCount")
 	public @ResponseBody int getVisitorCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int count = 0;
+		int count = 1;
 		HttpSession session = request.getSession();
-
-		count = (int) session.getServletContext().getAttribute("ctr");
+		if(session.getServletContext().getAttribute("ctr")!=null){
+		   count = (int) session.getServletContext().getAttribute("ctr");
+		}
 		return count;
 
 	}
