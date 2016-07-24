@@ -140,7 +140,7 @@
                     "                                    }",
                     "",
                     "                                    emailField.setValue(record.userEmail);",
-                    "                                    levelField.setValue(record.userType);",
+                    "                                    levelField.setValue(record.userLevel);",
                     "",
                     "                                    Ext.Ajax.request ({",
                     "                                        url: \"visitorCount\",",

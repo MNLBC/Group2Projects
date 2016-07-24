@@ -140,7 +140,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                             }
 
                                             emailField.setValue(record.userEmail);
-                                            levelField.setValue(record.userType);
+                                            levelField.setValue(record.userLevel);
 
                                             Ext.Ajax.request ({
                                                 url: "visitorCount",

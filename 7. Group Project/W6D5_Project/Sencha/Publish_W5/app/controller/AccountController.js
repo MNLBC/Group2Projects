@@ -86,7 +86,7 @@ Ext.define('W5D5_Project.controller.AccountController', {
                         Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userAddress2 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);
                     }
                     Ext.getCmp('emailField').setValue(user.userEmail);
-                    Ext.getCmp('levelField').setValue(user.userType);
+                    Ext.getCmp('levelField').setValue(user.userLevel);
                 }
             }
         });

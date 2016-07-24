@@ -182,7 +182,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     if(Ext.isEmpty(scope.orderWin)){
                         scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
-                    if(Ext.getCmp('levelField')==2){
+                    if(Ext.getCmp('levelField').getValue()==2){
                         total = total - (total * 0.10);
                         Ext.getCmp('sumAmount').setValue(total + ' (10% OFF)');
                     }else{
