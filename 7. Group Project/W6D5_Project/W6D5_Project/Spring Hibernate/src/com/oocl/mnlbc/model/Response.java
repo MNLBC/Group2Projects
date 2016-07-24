@@ -36,15 +36,10 @@ public class Response {
 	         case 2 :
 	        	 LogUtil.logMsg(LogType.WARN, "User is null"); 
 		            break;
-	         case 3 :
-	        	 LogUtil.logMsg(LogType.WARN, "Login Failed"); 
-		            break;
-	         case 4 :
-	        	 LogUtil.logMsg(LogType.INFO, "Login Successful"); 
-		            break;
 	         default :
 	        	 LogUtil.logMsg(LogType.WARN, "Binding error");
 	      }
+		this.responseCode = responseCode;
 	}
 	/**
 	 * @return the errors

@@ -28,8 +28,8 @@ public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductD
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductDAOImpl.class);
 
-	@PersistenceContext
-	private EntityManager manager;
+//	@PersistenceContext
+//	private EntityManager manager;
 
 	// @Override
 	// public int addProduct(Product product) {
@@ -41,9 +41,10 @@ public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductD
 
 	@Override
 	public List<Product> listProduct() {
+
 		List<Product> productList = new ArrayList<Product>();
 		String query = "Select products From Product products";
-		productList = manager.createQuery(query, Product.class).getResultList();
+		productList = this.entityManager.createQuery(query, Product.class).getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);
 		}
@@ -69,7 +70,7 @@ public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductD
 	public List<Product> getProductByCategory(String category) {
 
 		String sql = "Select products From Product products where product.prodCat = '" + category + "'";
-		List<Product> productList = manager.createQuery(sql).getResultList();
+		List<Product> productList = this.entityManager.createQuery(sql).getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);
 		}
