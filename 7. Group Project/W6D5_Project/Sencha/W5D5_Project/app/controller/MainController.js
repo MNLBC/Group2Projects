@@ -367,9 +367,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                 if (Ext.isEmpty(response.responseText)) {
                     Ext.Msg.alert("Requests",
                                   "Error in getting requests");
-                    console.log('Failed ');
                 } else {
-                    console.log('Success! ');
                     var reqStore = Ext.getStore('RequestStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
                     reqStore.loadData(jsonResponse);

@@ -108,8 +108,8 @@ Ext.define('W5D5_Project.controller.CartProductController', {
             url : 'deleteCartByProduct',
             method : 'POST',
             params : {
-                prodId : prodId,
-                userId : Ext.getCmp('idField').getValue()
+                prodid : prodId,
+                userid : Ext.getCmp('idField').getValue()
             },
             callback : function(options, success, response){
                 if(!Ext.isEmpty(response.responseText)){

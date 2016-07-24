@@ -137,7 +137,11 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                             home3.show();
                                             userField.setValue(record.userFname);
                                             idField.setValue(record.userId);
-                                            addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                            if(Ext.isEmpty(record.userAddress2)){
+                                               addField.setValue(record.userAddress1 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                            }else{
+                                               addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                            }
 
                                             emailField.setValue(record.userEmail);
                                             levelField.setValue(record.userType);

@@ -221,7 +221,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                 },
                                 {
                                     xtype: 'button',
-                                    flex: 1,
                                     focusCls: '(none)',
                                     cls: 'orderHistCls',
                                     height: 67,

@@ -392,7 +392,7 @@
                                         "height": 67,
                                         "id": "orderHistBtn",
                                         "itemId": "orderHistBtn",
-                                        "layout|flex": 1,
+                                        "layout|flex": null,
                                         "overCls": "(none)",
                                         "text": "ORDER HISTORY",
                                         "textAlign": null
