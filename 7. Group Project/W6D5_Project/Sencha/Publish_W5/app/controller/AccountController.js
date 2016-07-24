@@ -120,8 +120,11 @@ Ext.define('W5D5_Project.controller.AccountController', {
             },
             callback : function(options,success,response){
                 request = Ext.decode(response.responseText);
-                Ext.Msg.alert("Request Status", "Request status is: " + request.requestStatus);
-
+                if(Ext.isEmpty(request.requestStatus)){
+                    Ext.Msg.alert("Request Status", "You have no pending requests");
+                }else{
+                    Ext.Msg.alert("Request Status", "Request status is: " + request.requestStatus);
+                }
             }
         });
 
