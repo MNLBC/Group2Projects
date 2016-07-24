@@ -40,7 +40,7 @@ public class OrderController {
     * 
     * @return List<Order>
     */
-   @RequestMapping(value = "/GET/order/getOrdersByUser/{userid}", method = RequestMethod.GET)
+   @RequestMapping(value = "/GET/user/items/{userid}", method = RequestMethod.GET)
    public List<Order> getOrdersByUser(@PathVariable("userid") long userid) {
       if (userid > 0) {
          return this.orderSVC.getOrdersByUser(userid);
