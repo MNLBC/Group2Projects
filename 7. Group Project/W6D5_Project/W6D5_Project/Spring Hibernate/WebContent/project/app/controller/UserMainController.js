@@ -74,10 +74,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             },
             callback : function(options, success, response) {
                 if (Ext.isEmpty(response.responseText)) {
-                    console.log('Failed :(');
                     Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
                 } else if (response.responseText == 'true') {
-                    console.log('Success! :)');
                     Ext.Ajax.request({
                         url : "getUserByEmail",
                         method : "GET",
@@ -114,9 +112,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                         if (Ext.isEmpty(response.responseText)) {
                                             Ext.Msg.alert("Products",
                                                           "Error in getting products");
-                                            console.log('Failed ');
                                         } else {
-                                            console.log('Success! ');
                                             var prodStore = Ext.getStore('ProductStore');
                                             var jsonResponse = Ext.JSON.decode(response.responseText);
                                             prodStore.loadData(jsonResponse);
@@ -200,20 +196,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
             }
         });
 
-        // Ext.each(store.data.items, function(x){
-        //     if (x.data.userEmail == email && x.data.userPass == password){
-        //         isExist = true;
-        //         var type = x.data.userType;
-        //         if (type == 'A') {
-        //             admin1.show();
-        //             admin2.show();
-        //         }
-        //         record = x;
-        //     }
-        //     else{
-
-        //     }
-        // });
     },
 
     onRegisterBtnClick: function() {
@@ -254,7 +236,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                             async: false,
                             callback : function(options, success, response){
                                 if(response.responseText==='success'){
-                                    console.log('Valid code');
                                     user = {
                                         "userId":'',
                                         "userFname":fname,
@@ -271,7 +252,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                         "userLevel":2
                                     };
                                 }else{
-                                    console.log('Invalid code');
                                     user = {
                                         "userId":'',
                                         "userFname":fname,
@@ -306,7 +286,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                 }else{
                                     var resp = Ext.decode(response.responseText);
                                     if(resp.responseCode=='0'){
-                                        console.log('Success! :)');
                                         Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
                                         var mainControl = W5D5_Project.app.getController('MainController');
                                         mainControl.clearFrontPage();
@@ -335,7 +314,6 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var concern = Ext.getCmp('contactConcernCombo').getValue();
         var msg = Ext.getCmp('contactMessageText').getValue();
 
-        //send email
     },
 
     onLoginForgotBtnClick: function() {

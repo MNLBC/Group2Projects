@@ -73,9 +73,9 @@ Ext.define('W5D5_Project.controller.AccountController', {
             jsonData: Ext.util.JSON.encode(user),
             callback : function(options, success, response){
                 if(response.responseText===''){
-                    console.log('Error updating');
+                    Ext.Msg.alert("Update User", "Error encountered in updating user.");
                 }else {
-                    console.log('user updated!');
+                    Ext.Msg.alert("Update User", "User information successfully updated.");
                     Ext.getCmp('userField').setValue(user.userFname);
                     Ext.getCmp('idField').setValue(user.userId);
                     if(Ext.isEmpty(user.userAddress2)){
@@ -103,10 +103,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
             callback : function(options,success,response){
                 if(response.responseText == 1){
                     Ext.Msg.alert("Request", "You have requested for an account upgrade. Please wait for admin approval");
-                    console.log('Request sent');
                 } else {
                     Ext.Msg.alert("Request", "Error in sending request");
-                    console.log('Request error');
                 }
             }
         });

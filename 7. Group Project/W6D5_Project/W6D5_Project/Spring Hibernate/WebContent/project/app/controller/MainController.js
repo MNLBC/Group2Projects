@@ -179,7 +179,6 @@ Ext.define('W5D5_Project.controller.MainController', {
             icon: Ext.Msg.QUESTION,
             fn: function(btn) {
                 if (btn === 'yes') {
-                    console.log('Yes pressed');
                     if(Ext.isEmpty(scope.orderWin)){
                         scope.orderWin = Ext.create('W5D5_Project.view.OrderWin');
                     }
@@ -192,8 +191,6 @@ Ext.define('W5D5_Project.controller.MainController', {
                     Ext.getCmp('sumAdd').setValue(address.getValue());
                     Ext.getCmp('sumProds').setValue(count);
                     scope.orderWin.show();
-                } else if (btn === 'no') {
-                    console.log('No pressed');
                 }
             }
         });
@@ -208,7 +205,6 @@ Ext.define('W5D5_Project.controller.MainController', {
             icon: Ext.Msg.QUESTION,
             fn: function(btn) {
                 if (btn === 'yes') {
-                    console.log('Yes pressed');
                     var home1 = Ext.getCmp('headerPanel');
                     var home2 = Ext.getCmp('subHeaderPanel');
                     var home3 = Ext.getCmp('categoryPanel');
@@ -253,8 +249,6 @@ Ext.define('W5D5_Project.controller.MainController', {
                             }
                         }
                     });
-                } else if (btn === 'no') {
-                    console.log('No pressed');
                 }
             }
         });
@@ -292,9 +286,9 @@ Ext.define('W5D5_Project.controller.MainController', {
             jsonData: Ext.util.JSON.encode(items),
             callback : function(options, success, response){
                 if(response.responseText===''){
-                    console.log('Failed :(');
+                    console.log('Failed');
                 }else{
-                    console.log('Success! :)');
+                    console.log('Success');
                 }
             }
         });
