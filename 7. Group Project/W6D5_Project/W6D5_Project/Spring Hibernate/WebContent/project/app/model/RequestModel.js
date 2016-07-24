@@ -24,7 +24,7 @@ Ext.define('W5D5_Project.model.RequestModel', {
     fields: [
         {
             type: 'int',
-            name: 'reqId'
+            name: 'requestId'
         },
         {
             type: 'string',
@@ -32,11 +32,11 @@ Ext.define('W5D5_Project.model.RequestModel', {
         },
         {
             type: 'string',
-            name: 'reqDate'
+            name: 'userDate'
         },
         {
             type: 'string',
-            name: 'reqStatus'
+            name: 'requestStatus'
         }
     ]
 });

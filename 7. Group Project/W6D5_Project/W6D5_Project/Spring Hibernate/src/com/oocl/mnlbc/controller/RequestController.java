@@ -26,58 +26,53 @@ import com.oocl.mnlbc.svc.inf.RequestSVC;
 @RestController
 @ResponseBody
 public class RequestController {
-	
+
 	private RequestSVC requestSVC;
-	
+
 	@Autowired(required = true)
-	@Qualifier(value="requestService")
-	public void setRequestService(RequestSVC requestSVC){
+	@Qualifier(value = "requestService")
+	public void setRequestService(RequestSVC requestSVC) {
 		this.requestSVC = requestSVC;
 	}
-	
-	
-	@RequestMapping(value ="/addRequest", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/addRequest", method = RequestMethod.POST)
 	public boolean createRequest(@RequestParam("email") String useremail) {
 		int result = this.requestSVC.createRequest(useremail);
-		
-		if(useremail !=null){
+
+		if (useremail != null) {
 			if (result != 1 || result == 0)
-	            return false;
-	         return true;
-	      }
-	      return false;
+				return false;
+			return true;
+		}
+		return false;
 
 	}
-	
+
 	@RequestMapping(value = "/getRequestByUserEmail", method = RequestMethod.GET)
-	public Request getRequestByUserEmail(@RequestParam("email") String useremail){
-	if (!useremail.isEmpty()) {
-        return this.requestSVC.getRequestByUserEmail(useremail);
-     }
-     return null;
-  }
-	
-	
-	@RequestMapping(value = "/updateRequest", method = RequestMethod.POST)
-	public boolean updateRequest(@RequestParam Request request){
-		int result = this.requestSVC.updateRequest(request);
-		if (request != null){
-			 if (result != 1 || result == 0)
-		            return false;
-		         return true;
-		      }
-		      return false;
-			
+	public Request getRequestByUserEmail(@RequestParam("email") String useremail) {
+		if (!useremail.isEmpty()) {
+			return this.requestSVC.getRequestByUserEmail(useremail);
 		}
-	
+		return null;
+	}
+
+	@RequestMapping(value = "/updateRequest", method = RequestMethod.POST)
+	public boolean updateRequest(@RequestParam("request") Request request) {
+		int result = this.requestSVC.updateRequest(request);
+		if (request != null) {
+			if (result != 1 || result == 0) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+
+	}
+
 	@RequestMapping(value = "/getAllRequest", method = RequestMethod.GET)
-	public List<Request> getAllRequest(){
+	public List<Request> getAllRequest() {
 		return this.requestSVC.getAllRequest();
 	}
-	}
-
-
-	
-	
-
-
+}

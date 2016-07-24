@@ -19,7 +19,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "reqId"
+                "name": "requestId"
             },
             "name": "MyInteger5",
             "designerId": "cd1370f6-e2e1-491c-ad71-c248c0ad81e0"
@@ -45,7 +45,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "reqDate"
+                "name": "userDate"
             },
             "name": "MyString9",
             "designerId": "7b971c11-5e2d-48a5-a130-8fde6a9ac8a5"
@@ -58,7 +58,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "reqStatus"
+                "name": "requestStatus"
             },
             "name": "MyString10",
             "designerId": "0b329839-4863-4bd9-af0d-98e0690509bf"

@@ -348,7 +348,7 @@ Ext.define('W5D5_Project.controller.MainController', {
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
         Ext.Ajax.request({
-            url : "getAllRequests",
+            url : "getAllRequest",
             method : "GET",
             async : false,
             callback : function(options,success,response){
