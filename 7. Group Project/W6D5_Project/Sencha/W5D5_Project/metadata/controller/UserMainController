@@ -244,7 +244,7 @@
                     "        email : email",
                     "    },",
                     "    callback : function(options, success, response) {",
-                    "        if(!Ext.isEmpty(response.responseText)){",
+                    "        if(!Ext.isEmpty(Ext.decode(response.responseText))){",
                     "            Ext.Msg.alert('Register','Account with that email already exists.');",
                     "        }else{",
                     "            Ext.Ajax.request({",

@@ -336,6 +336,11 @@ Ext.define('W5D5_Project.controller.MainController', {
                         accControl = W5D5_Project.app.getController('AccountController');
                     record = record[0];
                     accControl.setFieldValues(record);
+                    if(record.userLevel==2){
+                        Ext.getCmp('accPremBtn').hide();
+                    }else{
+                        Ext.getCmp('accPremBtn').show();
+                    }
                 }
             }
         });

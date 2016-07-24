@@ -203,6 +203,7 @@ Ext.application({
                                          callback : function(options, success, response){
                                              if(!Ext.isEmpty(response.responseText)){
                                                  console.log("success!");
+                                                 Ext.Msg.alert("Favorite Items", "Product removed from your favorite items.");
                                              }
                                          }
                                      });
@@ -221,6 +222,7 @@ Ext.application({
                                          callback : function(options, success, response){
                                              if(!Ext.isEmpty(response.responseText)){
                                                  console.log("success!");
+                                                 Ext.Msg.alert("Favorite Items", "Product added to your favorite items.");
                                              }
                                          }
                                      });
