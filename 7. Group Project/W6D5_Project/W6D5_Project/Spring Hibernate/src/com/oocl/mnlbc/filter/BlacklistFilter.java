@@ -24,44 +24,45 @@ import com.oocl.mnlbc.util.LogUtil;
 @WebFilter("/BlacklistFilter")
 public class BlacklistFilter implements Filter {
 
-    /**
-     * Default constructor. 
-     */
-    public BlacklistFilter() {
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * Default constructor.
+	 */
+	public BlacklistFilter() {
+
+	}
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String userEmail = req.getParameter("email");
-		
+
 		LogUtil.logMsg(LogType.INFO, "Filtering: " + userEmail);
-		
+
 		List<User> blacklist = new ArrayList<User>();
 		TempUserDAOImpl tempDAO = new TempUserDAOImpl();
 		blacklist = tempDAO.getBlacklist();
 		boolean blacklisted = false;
-		
-		for(int i = 0; i < blacklist.size(); i++){
-			if(blacklist.get(i).getUserEmail().equals(userEmail)){
+
+		for (int i = 0; i < blacklist.size(); i++) {
+			if (blacklist.get(i).getUserEmail().equals(userEmail)) {
 				blacklisted = true;
 			}
 		}
-		
-		if(blacklisted == false){
+
+		if (blacklisted == false) {
 			LogUtil.logMsg(LogType.INFO, "Filtering success");
 			chain.doFilter(request, response);
-		} else{
+		} else {
 			LogUtil.logMsg(LogType.WARN, "Blacklisted: " + userEmail);
 		}
 	}
@@ -70,7 +71,7 @@ public class BlacklistFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+
 	}
 
 }

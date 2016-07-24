@@ -6,13 +6,11 @@ import com.oocl.mnlbc.model.CartProduct;
 
 public interface CartProductSVC {
 
-   public int addCartProduct(CartProduct cartproduct);
+	public int addCartProduct(CartProduct cartproduct);
 
-//   public int updateCartProduct(CartProduct cartproduct);
+	public int deleteCartProductsByUser(long userid);
 
-   public int deleteCartProductsByUser(long userid);
+	public int deleteCartProductsByProduct(long prodid, long userid);
 
-   public int deleteCartProductsByProduct(long prodid, long userid);
-
-   public List<CartProduct> getCartProductsByUser(long userid);
+	public List<CartProduct> getCartProductsByUser(long userid);
 }

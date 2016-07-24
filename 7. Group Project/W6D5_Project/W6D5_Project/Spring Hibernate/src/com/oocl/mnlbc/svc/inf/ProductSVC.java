@@ -15,9 +15,4 @@ public interface ProductSVC {
 
 	public int removeProduct(long id);
 
-	// public int updateStock(String[] array);
-	// public Product getProduct(String id);
-	
-	
-
 }
