@@ -1760,8 +1760,8 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
-        "selectedInstance": "a062c0c1-8812-41f9-8fc1-1ea73831a896"
+        "topInstance": "application",
+        "selectedInstance": "f308e3f2-7038-4d8e-b192-3494420968e4"
     },
     "editMode": "code",
     "userSettings": {

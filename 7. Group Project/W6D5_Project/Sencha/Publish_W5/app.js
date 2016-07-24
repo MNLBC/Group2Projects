@@ -132,6 +132,7 @@ Ext.application({
                                          rec.data.prodQty=rec.data.prodQty+1;
                                          rec.data.prodSubtotal=rec.data.prodSubtotal+rec.data.prodPrice;
                                          isExists = true;
+                                         record=rec.data;
                                          Ext.getCmp('cartProductGrid').getView().refresh();
                                      }
                                  });
