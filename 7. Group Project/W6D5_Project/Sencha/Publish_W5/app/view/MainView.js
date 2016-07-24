@@ -2088,6 +2088,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                         },
                                         {
                                             xtype: 'panel',
+                                            autoScroll: true,
                                             id: 'requestPanel',
                                             itemId: 'requestPanel',
                                             title: 'My Panel',
@@ -2136,7 +2137,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                     columns: [
                                                                         {
                                                                             xtype: 'gridcolumn',
-                                                                            dataIndex: 'reqId',
+                                                                            dataIndex: 'requestId',
                                                                             text: 'Request Id'
                                                                         },
                                                                         {
@@ -2147,12 +2148,12 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         {
                                                                             xtype: 'gridcolumn',
                                                                             width: 134,
-                                                                            dataIndex: 'reqDate',
+                                                                            dataIndex: 'userDate',
                                                                             text: 'Request Date'
                                                                         },
                                                                         {
                                                                             xtype: 'gridcolumn',
-                                                                            dataIndex: 'reqStatus',
+                                                                            dataIndex: 'requestStatus',
                                                                             text: 'Status'
                                                                         }
                                                                     ]

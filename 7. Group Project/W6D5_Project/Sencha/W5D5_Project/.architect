@@ -1751,15 +1751,17 @@
         "openTabs": [
             "66b6c872-a53a-4014-8bd6-37b94d4bcc2a",
             "0b9f35a0-b669-48da-8453-4f334c3cd1f1",
-            "6381b4e0-18f9-467d-b71c-8ab953a1507c"
+            "6381b4e0-18f9-467d-b71c-8ab953a1507c",
+            "application",
+            "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3"
         ]
     },
     "canvasState": {
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "0b9f35a0-b669-48da-8453-4f334c3cd1f1",
-        "selectedInstance": "0b9f35a0-b669-48da-8453-4f334c3cd1f1"
+        "topInstance": "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
+        "selectedInstance": "a062c0c1-8812-41f9-8fc1-1ea73831a896"
     },
     "editMode": "code",
     "userSettings": {

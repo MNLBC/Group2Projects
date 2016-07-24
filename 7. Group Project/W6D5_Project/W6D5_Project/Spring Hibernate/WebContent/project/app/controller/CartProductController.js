@@ -56,6 +56,7 @@ Ext.define('W5D5_Project.controller.CartProductController', {
                 rec.data.prodQty = prodQty;
                 rec.data.prodSubtotal = rec.data.prodPrice * rec.data.prodSale * rec.data.prodQty;
                 record = rec.data;
+                record.userId = Ext.getCmp('idField').getValue();
             }
         });
         Ext.getCmp('cartProductGrid').getView().refresh();
@@ -64,7 +65,17 @@ Ext.define('W5D5_Project.controller.CartProductController', {
             url : 'addToCart',
             method : 'POST',
             params : {
-                cartproduct : Ext.encode(record)
+                userId: Ext.getCmp('idField').getValue(),
+                prodId: record.prodId,
+                prodName: record.prodName,
+                prodCat: record.prodCat,
+                prodDesc: record.prodDesc,
+                prodPrice: record.prodPrice,
+                prodSale: record.prodSale,
+                prodStock: record.prodStock,
+                prodImg: record.prodImg,
+                prodQty: record.prodQty,
+                prodSubtotal: record.prodSubtotal
             },
             callback : function(options, success, response){
                 if(!Ext.isEmpty(response.responseText)){

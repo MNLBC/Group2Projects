@@ -239,8 +239,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin1.hide();
                     admin2.hide();
                     admin3.hide();
-                    panel2.collapse();
-                    panel3.collapse();
+                    panel2.hide();
+                    panel3.hide();
                     userField.setValue('Visitor');
                     idField.setValue(0);
                     countField.setValue(parseInt(countField.getValue())-1);
@@ -348,7 +348,7 @@ Ext.define('W5D5_Project.controller.MainController', {
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
         Ext.Ajax.request({
-            url : "getAllRequests",
+            url : "getAllRequest",
             method : "GET",
             async : false,
             callback : function(options,success,response){

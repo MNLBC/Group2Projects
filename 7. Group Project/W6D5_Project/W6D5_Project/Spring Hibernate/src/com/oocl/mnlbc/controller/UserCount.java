@@ -18,8 +18,9 @@ public class UserCount extends HttpServlet {
 	public @ResponseBody int getUserCount(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int count = 0;
 		HttpSession session = request.getSession();
-
-		count = (int) session.getServletContext().getAttribute("ctr");
+      if(session.getServletContext().getAttribute("ctr")!=null){
+         count = (int) session.getServletContext().getAttribute("ctr");
+      }
 		return count;
 
 	}

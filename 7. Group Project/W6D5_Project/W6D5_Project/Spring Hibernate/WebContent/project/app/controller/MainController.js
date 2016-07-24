@@ -239,8 +239,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin1.hide();
                     admin2.hide();
                     admin3.hide();
-                    panel2.collapse();
-                    panel3.collapse();
+                    panel2.hide();
+                    panel3.hide();
                     userField.setValue('Visitor');
                     idField.setValue(0);
                     countField.setValue(parseInt(countField.getValue())-1);
