@@ -32,12 +32,11 @@ public class OrderController {
    public void setOrderService(OrdersSVC orderSVC) {
       this.orderSVC = orderSVC;
    }
-   
-   //http://localhost:port/GET/userr/items/{userid}
 
    /**
     * getOrdersByUser web service
     * 
+    * @param userid
     * @return List<Order>
     */
    @RequestMapping(value = "/GET/user/items/{userid}", method = RequestMethod.GET)

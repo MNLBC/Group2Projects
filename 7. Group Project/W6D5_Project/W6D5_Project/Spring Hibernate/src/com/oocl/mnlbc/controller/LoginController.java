@@ -25,7 +25,7 @@ import com.oocl.mnlbc.svc.inf.UserSVC;
  * @since 2016-07-21
  */
 @RestController
-public class LoginController extends HttpServlet{
+public class LoginController extends HttpServlet {
 
    private UserSVC userSVC;
 
@@ -34,7 +34,7 @@ public class LoginController extends HttpServlet{
    public void setUserService(UserSVC userSVC) {
       this.userSVC = userSVC;
    }
-   
+
    /**
     * Login web service
     * 
@@ -44,7 +44,7 @@ public class LoginController extends HttpServlet{
     */
    @RequestMapping(value = "/login", method = RequestMethod.POST)
    public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
-      if(email.isEmpty() && password.isEmpty())
+      if (email.isEmpty() && password.isEmpty())
          return false;
       return this.userSVC.validateUser(email, password);
    }
@@ -58,10 +58,16 @@ public class LoginController extends HttpServlet{
    public List<User> getBlackList() {
       return this.userSVC.getBlackList();
    }
-   
+
+   /**
+    * logout web service
+    * 
+    * @param request
+    * @param response
+    */
    @RequestMapping(value = "/logout")
    public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
-	   HttpSession session = request.getSession();
-	   session.invalidate();
+      HttpSession session = request.getSession();
+      session.invalidate();
    }
 }
