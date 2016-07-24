@@ -54,7 +54,7 @@ public class CartProductController {
    }
    
    @RequestMapping(value = "/getCartByUser", method = RequestMethod.POST)
-   public List<CartProduct> deleteCartProductsByProduct(@RequestParam("userid") long userid) {
+   public List<CartProduct> getCartProductsByUser(@RequestParam("userid") long userid) {
       if (userid >= 0) {
          return this.cartProductSVC.getCartProductsByUser(userid);
       }
