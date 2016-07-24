@@ -7,7 +7,10 @@ import com.oocl.mnlbc.model.Order;
 
 public interface OrdersSVC {
 	public int cancelOrder(Order order);
-   public int createOrder(long userid, List<CartProduct> cartProductList);
-   public List<Order> getOrdersByUser(long userid);
-   public int getOrderByUserId(long userid);
+
+	public int createOrder(long userid, List<CartProduct> cartProductList);
+
+	public List<Order> getOrdersByUser(long userid);
+
+	public int getOrderByUserId(long userid);
 }

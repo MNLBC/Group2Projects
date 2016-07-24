@@ -8,11 +8,16 @@ import com.oocl.mnlbc.model.OrderProduct;
 import com.oocl.mnlbc.model.Product;
 
 public interface OrderProductSVC {
-//	public int removeProduct(String orderId, String productId, int qty);
+
 	public List<Product> getRelatedProducts(Order order);
+
 	public List<CartProduct> getCartProducts(String orderId);
-   public int addOrderProducts(List<CartProduct> cartProductList, int orderId,long userId);
-   public int updateOrderProduct(OrderProduct orderproduct);
-   public List<Product> getOrderProductsByOrder(long id);
-   public List<CartProduct> getCartProductsByUserId(long userId);
+
+	public int addOrderProducts(List<CartProduct> cartProductList, int orderId, long userId);
+
+	public int updateOrderProduct(OrderProduct orderproduct);
+
+	public List<Product> getOrderProductsByOrder(long id);
+
+	public List<CartProduct> getCartProductsByUserId(long userId);
 }

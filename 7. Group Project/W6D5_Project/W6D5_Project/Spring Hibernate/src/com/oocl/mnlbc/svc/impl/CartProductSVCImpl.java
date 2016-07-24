@@ -16,42 +16,36 @@ import com.oocl.mnlbc.svc.inf.CartProductSVC;
  */
 public class CartProductSVCImpl implements CartProductSVC {
 
-   private CartProductDAO cartProductDAO;
+	private CartProductDAO cartProductDAO;
 
-   public void setCartProductDAO(CartProductDAO cartProductDAO) {
-      this.cartProductDAO = cartProductDAO;
-   }
+	public void setCartProductDAO(CartProductDAO cartProductDAO) {
+		this.cartProductDAO = cartProductDAO;
+	}
 
-   @Override
-   @Transactional
-   public int addCartProduct(CartProduct cartproduct) {
-      List<CartProduct> result = this.cartProductDAO.checkCartProduct(cartproduct);
-      if(result.isEmpty())
-         return this.cartProductDAO.createCartProduct(cartproduct);
-      return this.cartProductDAO.updateCartProduct(result.get(0).getCartprodId(), cartproduct);
-   }
+	@Override
+	@Transactional
+	public int addCartProduct(CartProduct cartproduct) {
+		List<CartProduct> result = this.cartProductDAO.checkCartProduct(cartproduct);
+		if (result.isEmpty())
+			return this.cartProductDAO.createCartProduct(cartproduct);
+		return this.cartProductDAO.updateCartProduct(result.get(0).getCartprodId(), cartproduct);
+	}
 
-//   @Override
-//   @Transactional
-//   public int updateCartProduct(CartProduct cartproduct) {
-//      return this.cartProductDAO.updateCartProduct(cartproduct);
-//   }
+	@Override
+	@Transactional
+	public int deleteCartProductsByUser(long userid) {
+		return this.cartProductDAO.deleteCartProductsByUser(userid);
+	}
 
-   @Override
-   @Transactional
-   public int deleteCartProductsByUser(long userid) {
-      return this.cartProductDAO.deleteCartProductsByUser(userid);
-   }
+	@Override
+	@Transactional
+	public List<CartProduct> getCartProductsByUser(long userid) {
+		return this.cartProductDAO.getCartProductsByUser(userid);
+	}
 
-   @Override
-   @Transactional
-   public List<CartProduct> getCartProductsByUser(long userid) {
-      return this.cartProductDAO.getCartProductsByUser(userid);
-   }
-
-   @Override
-   public int deleteCartProductsByProduct(long prodid, long userid) {
-      return this.cartProductDAO.deleteCartProductsByProduct(prodid,userid);
-   }
+	@Override
+	public int deleteCartProductsByProduct(long prodid, long userid) {
+		return this.cartProductDAO.deleteCartProductsByProduct(prodid, userid);
+	}
 
 }

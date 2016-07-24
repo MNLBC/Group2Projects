@@ -20,39 +20,25 @@ import com.oocl.mnlbc.svc.inf.OrderProductSVC;
 
 /**
  * Handles web services for OrderProduct
+ * 
  * @author DENOYME
  * @since 2016-07-21
  */
 @RestController
 public class OrderProductsController {
 
-	private OrderProductSVC orderprodSVC;
+   private OrderProductSVC orderprodSVC;
 
-	@Autowired(required = true)
-	@Qualifier(value = "orderProductService")
-	public void setOrderProdService(OrderProductSVC orderprodSVC) {
-		this.orderprodSVC = orderprodSVC;
-	}
+   @Autowired(required = true)
+   @Qualifier(value = "orderProductService")
+   public void setOrderProdService(OrderProductSVC orderprodSVC) {
+      this.orderprodSVC = orderprodSVC;
+   }
 
-//	@RequestMapping(value = "/getRelatedProducts", method = RequestMethod.GET)
-//	public @ResponseBody List<Product> listRelatedProducts(@RequestParam("order") Order order) {
-//		if (order != null) {
-//			return this.orderprodSvc.getRelatedProducts(order);
-//		}
-//		return null;
-//	}
-//
-//	@RequestMapping(value = "/getCartProducts", method = RequestMethod.GET)
-//	public @ResponseBody List<CartProduct> listCartProducts(@RequestParam("orderid") String id) {
-//		if (id != null) {
-//			return this.orderprodSvc.getCartProducts(id);
-//		}
-//		return null;
-//	}
-	
    /**
     * updateOrderProduct web service
     * 
+    * @param orderproduct
     * @return boolean
     */
    @RequestMapping(value = "/updateOrderProduct", method = RequestMethod.POST)
@@ -65,10 +51,11 @@ public class OrderProductsController {
       }
       return false;
    }
-   
+
    /**
     * getOrderProductsByOrder web service
     * 
+    * @param id
     * @return List<Product>
     */
    @RequestMapping(value = "/getOrderProductsByOrder", method = RequestMethod.GET)

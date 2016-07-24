@@ -2110,7 +2110,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'displayfield',
                                                             fieldLabel: '',
-                                                            value: 'User Requests',
+                                                            value: 'Pending Premium Requests',
                                                             fieldCls: 'textCls'
                                                         },
                                                         {
@@ -2336,7 +2336,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                     flex: 0,
                                                                     id: 'orderHistGrid',
                                                                     itemId: 'orderHistGrid',
-                                                                    width: 462,
+                                                                    width: 538,
                                                                     title: '',
                                                                     store: 'OrdersStore',
                                                                     columns: [
@@ -2358,6 +2358,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                         },
                                                                         {
                                                                             xtype: 'gridcolumn',
+                                                                            width: 201,
                                                                             dataIndex: 'orderDate',
                                                                             text: 'Order Date'
                                                                         }

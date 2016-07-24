@@ -57,11 +57,8 @@ Ext.define('W5D5_Project.controller.RequestController', {
                             callback : function(options, success, response){
                                 if (Ext.isEmpty(response.responseText)) {
                                      Ext.Msg.alert("Request","Error in approving request");
-                                     console.log('Failed ');
                                 } else {
-                                     console.log('Success! ');
                                      Ext.Msg.alert("Request","Success in approving request");
-                                     console.log('Success ');
                                     Ext.Ajax.request({
                                         url : 'updateToPremium',
                                         method : 'POST',
@@ -84,9 +81,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                         callback : function(options,success,response){
                                             if (Ext.isEmpty(response.responseText)) {
                                                 Ext.Msg.alert("Requests", "Error in getting requests");
-                                                console.log('Failed ');
                                             } else {
-                                                console.log('Success! ');
                                                 var reqStore = Ext.getStore('RequestStore');
                                                 var jsonResponse = Ext.JSON.decode(response.responseText);
                                                 reqStore.loadData(jsonResponse);
@@ -126,11 +121,8 @@ Ext.define('W5D5_Project.controller.RequestController', {
                             callback : function(options, success, response){
                                 if (response.responseText=="false") {
                                      Ext.Msg.alert("Request","Error in rejecting request");
-                                     console.log('Failed ');
                                 } else {
-                                     console.log('Success! ');
                                      Ext.Msg.alert("Request","Success in rejecting request");
-                                     console.log('Success ');
                                     Ext.Ajax.request({
                                         url : "getAllRequest",
                                         method : "GET",
@@ -138,9 +130,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                         callback : function(options,success,response){
                                             if (Ext.isEmpty(response.responseText)) {
                                                 Ext.Msg.alert("Requests", "Error in getting requests");
-                                                console.log('Failed ');
                                             } else {
-                                                console.log('Success! ');
                                                 var reqStore = Ext.getStore('RequestStore');
                                                 var jsonResponse = Ext.JSON.decode(response.responseText);
                                                 reqStore.loadData(jsonResponse);

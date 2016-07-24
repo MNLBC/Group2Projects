@@ -45,6 +45,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
         var country = Ext.getCmp('accCountry').getValue();
         var pass = Ext.getCmp('accPassword').getValue();
         var occupation = Ext.getCmp('accOccupation').getValue(),
+            userLevel = Ext.getCmp('levelField').getValue(),
+            accountType = Ext.getCmp('accAccountType').getValue();
             field = Ext.getCmp('accForm');
         var user;
         if(field.isValid()){
@@ -60,8 +62,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
                         "userCity":city,
                         "userSp":sp,
                         "userCountry":country,
-                        "userType":'C',
-                        "userLevel":2
+                        "userType":accountType,
+                        "userLevel":userLevel
                     };
         Ext.Ajax.request({
             url : "updateUser",
@@ -73,9 +75,9 @@ Ext.define('W5D5_Project.controller.AccountController', {
             jsonData: Ext.util.JSON.encode(user),
             callback : function(options, success, response){
                 if(response.responseText===''){
-                    console.log('Error updating');
+                    Ext.Msg.alert("Update User", "Error encountered in updating user.");
                 }else {
-                    console.log('user updated!');
+                    Ext.Msg.alert("Update User", "User information successfully updated.");
                     Ext.getCmp('userField').setValue(user.userFname);
                     Ext.getCmp('idField').setValue(user.userId);
                     if(Ext.isEmpty(user.userAddress2)){
@@ -84,10 +86,12 @@ Ext.define('W5D5_Project.controller.AccountController', {
                         Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userAddress2 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);
                     }
                     Ext.getCmp('emailField').setValue(user.userEmail);
-                    Ext.getCmp('levelField').setValue(user.userType);
+                    Ext.getCmp('levelField').setValue(user.userLevel);
                 }
             }
         });
+        }else{
+          Ext.Msg.alert("Update User", "Validation error. Please check the field values.");
         }
 
     },
@@ -103,10 +107,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
             callback : function(options,success,response){
                 if(response.responseText == 1){
                     Ext.Msg.alert("Request", "You have requested for an account upgrade. Please wait for admin approval");
-                    console.log('Request sent');
                 } else {
                     Ext.Msg.alert("Request", "Error in sending request");
-                    console.log('Request error');
                 }
             }
         });
@@ -122,8 +124,11 @@ Ext.define('W5D5_Project.controller.AccountController', {
             },
             callback : function(options,success,response){
                 request = Ext.decode(response.responseText);
-                Ext.Msg.alert("Request Status", "Request status is: " + request.requestStatus);
-
+                if(Ext.isEmpty(request.requestStatus)){
+                    Ext.Msg.alert("Premium Account Request", "You have no pending requests");
+                }else{
+                    Ext.Msg.alert("Premium Account Request", "Request status is: " + request.requestStatus);
+                }
             }
         });
 

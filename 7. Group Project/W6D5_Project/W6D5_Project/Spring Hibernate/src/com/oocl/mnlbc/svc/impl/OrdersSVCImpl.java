@@ -33,25 +33,6 @@ public class OrdersSVCImpl implements OrdersSVC {
 		return this.orderDAO.cancelOrder(id);
 	}
 
-	// @Override
-	// @Transactional
-	// public int finalOrder(Order order, String timestamp) {
-	// return this.orderDAO.finalOrder(order, timestamp);
-	// }
-	//
-	// @Override
-	// @Transactional
-	// public Order getOrderId(User user) {
-	// return this.orderDAO.getOrderId(user);
-	// }
-
-	// @Override
-	@Transactional
-	public Order getOrder(User user) {
-		// return this.orderDAO.getOrder(user);
-		return null;
-	}
-
 	@Override
 	@Transactional
 	public int createOrder(long userid, List<CartProduct> cartProductList) {
@@ -69,7 +50,7 @@ public class OrdersSVCImpl implements OrdersSVC {
 	@Override
 	@Transactional
 	public List<Order> getOrdersByUser(long userid) {
-		// TODO Auto-generated method stub
+
 		return this.orderDAO.getOrdersByUser(userid);
 	}
 

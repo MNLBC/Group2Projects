@@ -46,12 +46,6 @@ public class UserSVCImpl implements UserSVC {
 		return this.userDAO.createUser(user);
 	}
 
-	// @Override
-	// @Transactional
-	// public int updateUserType(User user, String type) {
-	// return this.userDAO.updateUserType(user, type);
-	// }
-
 	@Override
 	@Transactional
 	public List<User> getBlackList() {

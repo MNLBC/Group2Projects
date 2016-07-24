@@ -34,8 +34,10 @@ public class AddToCartController {
    }
 
    /**
-    * createOrder web service
-    *
+    * addToCart web service
+    * 
+    * @param userId
+    * @param prodId
     * @return boolean
     */
    @RequestMapping(value = "/addToCart", method = RequestMethod.POST)
