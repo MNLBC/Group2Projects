@@ -1753,15 +1753,17 @@
             "0b9f35a0-b669-48da-8453-4f334c3cd1f1",
             "6381b4e0-18f9-467d-b71c-8ab953a1507c",
             "application",
-            "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3"
+            "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
+            "8bf6c735-5c04-4a79-9598-a2023bd30072",
+            "19c4cdf1-f966-4805-9519-99c396a5951b"
         ]
     },
     "canvasState": {
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "application",
-        "selectedInstance": "f308e3f2-7038-4d8e-b192-3494420968e4"
+        "topInstance": "19c4cdf1-f966-4805-9519-99c396a5951b",
+        "selectedInstance": "dfdfe741-dba7-43ea-9be4-a96c3e75a83e"
     },
     "editMode": "code",
     "userSettings": {

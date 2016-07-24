@@ -44,9 +44,11 @@ Ext.define('W5D5_Project.controller.AccountController', {
         var sp = Ext.getCmp('accSp').getValue();
         var country = Ext.getCmp('accCountry').getValue();
         var pass = Ext.getCmp('accPassword').getValue();
-        var occupation = Ext.getCmp('accOccupation').getValue();
+        var occupation = Ext.getCmp('accOccupation').getValue(),
+            field = Ext.getCmp('accForm');
         var user;
-         user = {
+        if(field.isValid()){
+            user = {
                         "userId":id,
                         "userFname":fname,
                         "userLname":lname,
@@ -78,6 +80,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
                 }
             }
         });
+        }
+
     },
 
     onAccPremBtnClick: function() {

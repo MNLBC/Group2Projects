@@ -165,7 +165,7 @@ Ext.define('W5D5_Project.controller.MainController', {
             address = Ext.getCmp('addField'),
             scope = this;
         Ext.each(store.data.items, function(rec){
-            count = count + rec.data.prodQty;
+            count = parseInt(count) + parseInt(rec.data.prodQty);
             total = total + rec.data.prodSubtotal;
         });
 
@@ -289,7 +289,7 @@ Ext.define('W5D5_Project.controller.MainController', {
 
         Ext.Ajax.request({
             url : "checkout",
-            method : "GET",
+            method : "POST",
             params : {
                 userid: Ext.getCmp('idField').getValue(),
                 cartprod: Ext.util.JSON.encode(items)
