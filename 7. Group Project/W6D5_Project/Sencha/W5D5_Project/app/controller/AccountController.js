@@ -45,7 +45,7 @@ Ext.define('W5D5_Project.controller.AccountController', {
         var country = Ext.getCmp('accCountry').getValue();
         var pass = Ext.getCmp('accPassword').getValue();
         var occupation = Ext.getCmp('accOccupation').getValue(),
-            userLevel = Ext.getCmp('accUserLevel').getValue(),
+            userLevel = Ext.getCmp('levelField').getValue(),
             accountType = Ext.getCmp('accAccountType').getValue();
             field = Ext.getCmp('accForm');
         var user;
