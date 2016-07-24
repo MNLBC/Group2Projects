@@ -102,6 +102,7 @@ Ext.define('W5D5_Project.controller.AccountController', {
                     Ext.Msg.alert("Request", "You have requested for an account upgrade. Please wait for admin approval");
                     console.log('Request sent');
                 } else {
+                    Ext.Msg.alert("Request", "You still have a pending request");
                     console.log('Request error');
                 }
             }
@@ -118,7 +119,7 @@ Ext.define('W5D5_Project.controller.AccountController', {
             },
             callback : function(options,success,response){
                 request = Ext.decode(response.responseText);
-                Ext.Msg.alert("Request Status", "Request status is: " + request);
+                Ext.Msg.alert("Request Status", "Request status is: " + request.requestStatus);
 
             }
         });
