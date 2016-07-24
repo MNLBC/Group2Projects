@@ -300,11 +300,18 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                 if(Ext.isEmpty(response.responseText)){
                     Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
                 }else{
-                    console.log('Success! :)');
-                    Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
-                    main.hide();
-                    home1.show();
-                    home2.show();
+                    var resp = Ext.decode(response.responseText);
+                    if(resp.responseCode=='0'){
+                        console.log('Success! :)');
+                        Ext.Msg.alert('Register','User "' + email + '" successfully registered!');
+                        main.hide();
+                        home1.show();
+                        home2.show();
+                    }else if(resp.responseCode=='999'){
+                        Ext.Msg.alert('Register','Validation error. Please check field values.');
+                    }else{
+                        Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
+                    }
                 }
             }
         });

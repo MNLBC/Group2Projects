@@ -125,11 +125,11 @@ Ext.define('W5D5_Project.controller.RequestController', {
                             async: false,
                             callback : function(options, success, response){
                                 if (response.responseText=="false") {
-                                     Ext.Msg.alert("Request","Error in approving request");
+                                     Ext.Msg.alert("Request","Error in rejecting request");
                                      console.log('Failed ');
                                 } else {
                                      console.log('Success! ');
-                                     Ext.Msg.alert("Request","Success in approving request");
+                                     Ext.Msg.alert("Request","Success in rejecting request");
                                      console.log('Success ');
                                     Ext.Ajax.request({
                                         url : "getAllRequest",
