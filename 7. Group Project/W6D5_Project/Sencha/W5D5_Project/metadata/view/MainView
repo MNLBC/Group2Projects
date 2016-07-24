@@ -4958,7 +4958,7 @@
                                                                         "layout|flex": 0,
                                                                         "store": "OrdersStore",
                                                                         "title": "",
-                                                                        "width": 462
+                                                                        "width": 538
                                                                     },
                                                                     "name": "MyGridPanel2",
                                                                     "designerId": "01862b06-db6e-4cd7-9ec9-277e18b6ee4a",
@@ -5015,7 +5015,8 @@
                                                                             "codeClass": null,
                                                                             "userConfig": {
                                                                                 "dataIndex": "orderDate",
-                                                                                "text": "Order Date"
+                                                                                "text": "Order Date",
+                                                                                "width": 201
                                                                             },
                                                                             "name": "MyColumn14",
                                                                             "designerId": "c954fe49-69c5-4d14-9ce8-cd9357f364a5"
