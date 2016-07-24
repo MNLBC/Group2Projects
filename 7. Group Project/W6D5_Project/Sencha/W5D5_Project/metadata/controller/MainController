@@ -380,6 +380,8 @@
                     "                                } else {",
                     "                                    console.log('Success! ');",
                     "                                    Ext.Msg.alert(\"Logout\", \"Successfully logged out!\");",
+                    "                                    var mainControl = W5D5_Project.app.getController('MainController');",
+                    "                                    mainControl.clearFrontPage();",
                     "                                }",
                     "                            }",
                     "                        });",
@@ -599,6 +601,35 @@
             },
             "name": "onUserReqBtnClick",
             "designerId": "356b8371-8ac1-48c7-a1c2-587ba7665e7f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "clearFrontPage",
+                "implHandler": [
+                    "Ext.getCmp('emailLoginField').setValue('');",
+                    "Ext.getCmp('passLoginField').setValue('');",
+                    "",
+                    "Ext.getCmp('fnameRegField').setValue('');",
+                    "Ext.getCmp('lnameRegField').setValue('');",
+                    "Ext.getCmp('countryRegCombo').setValue('');",
+                    "Ext.getCmp('spRegCombo').setValue('');",
+                    "Ext.getCmp('cityRegField').setValue('');",
+                    "Ext.getCmp('address1RegField').setValue('');",
+                    "Ext.getCmp('address2RegField').setValue('');",
+                    "Ext.getCmp('occupRegField').setValue('');",
+                    "Ext.getCmp('emailRegField').setValue('');",
+                    "Ext.getCmp('passRegField').setValue('');",
+                    "Ext.getCmp('pCodeField').setValue('');"
+                ]
+            },
+            "name": "clearFrontPage",
+            "designerId": "7611b147-f155-4249-9543-1a2342778b6b"
         }
     ]
 }

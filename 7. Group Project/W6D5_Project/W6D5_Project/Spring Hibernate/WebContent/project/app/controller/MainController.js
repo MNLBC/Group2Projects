@@ -256,6 +256,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                                         } else {
                                             console.log('Success! ');
                                             Ext.Msg.alert("Logout", "Successfully logged out!");
+                                            var mainControl = W5D5_Project.app.getController('MainController');
+                                            mainControl.clearFrontPage();
                                         }
                                     }
                                 });
@@ -370,6 +372,23 @@ Ext.define('W5D5_Project.controller.MainController', {
                 }
             }
         });
+    },
+
+    clearFrontPage: function() {
+        Ext.getCmp('emailLoginField').setValue('');
+        Ext.getCmp('passLoginField').setValue('');
+
+        Ext.getCmp('fnameRegField').setValue('');
+        Ext.getCmp('lnameRegField').setValue('');
+        Ext.getCmp('countryRegCombo').setValue('');
+        Ext.getCmp('spRegCombo').setValue('');
+        Ext.getCmp('cityRegField').setValue('');
+        Ext.getCmp('address1RegField').setValue('');
+        Ext.getCmp('address2RegField').setValue('');
+        Ext.getCmp('occupRegField').setValue('');
+        Ext.getCmp('emailRegField').setValue('');
+        Ext.getCmp('passRegField').setValue('');
+        Ext.getCmp('pCodeField').setValue('');
     }
 
 });
