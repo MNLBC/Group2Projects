@@ -33,59 +33,59 @@ import com.oocl.mnlbc.validator.RegisterValidator;
 public class RegisterController {
 
    private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
-   
-	private UserSVC userSVC;
-	@Autowired
-	private RegisterValidator registerValidator;
 
-	@Autowired(required = true)
-	@Qualifier(value = "userService")
-	public void setUserService(UserSVC userSVC) {
-		this.userSVC = userSVC;
-	}
+   private UserSVC userSVC;
+   @Autowired
+   private RegisterValidator registerValidator;
 
-	/**
-	 * Bind Validator for Register
-	 * 
-	 * @param binder
-	 */
-	@InitBinder
-	protected void initBinder(final WebDataBinder binder) {
-		binder.addValidators(registerValidator);
-	}
+   @Autowired(required = true)
+   @Qualifier(value = "userService")
+   public void setUserService(UserSVC userSVC) {
+      this.userSVC = userSVC;
+   }
 
-	/**
-	 * Register web service
-	 * 
-	 * @param User
-	 * @return boolean
-	 */
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public Response createUser(@Validated(RegisterValidator.class) @RequestBody User user, BindingResult result) {
-	   String hashedpass = "";
+   /**
+    * Bind Validator for Register
+    * 
+    * @param binder
+    */
+   @InitBinder
+   protected void initBinder(final WebDataBinder binder) {
+      binder.addValidators(registerValidator);
+   }
+
+   /**
+    * Register web service
+    * 
+    * @param User
+    * @return boolean
+    */
+   @RequestMapping(value = "/register", method = RequestMethod.POST)
+   public Response createUser(@Validated(RegisterValidator.class) @RequestBody User user, BindingResult result) {
+      String hashedpass = "";
       try {
          hashedpass = PasswordHash.createHash(user.getUserPass());
       } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
          logger.error(e.getMessage());
       }
-	   user.setUserPass(hashedpass);
-		Response response = new Response();
+      user.setUserPass(hashedpass);
+      Response response = new Response();
 
-		if (!result.hasErrors()) {
-			int save = userSVC.createUser(user);
-			if (user != null) {
-				if (save == 1) {
-					response.setResponseCode(0);
-				} else {
-					response.setResponseCode(1);
-				}
-			} else {
-				response.setResponseCode(2);
-			}
-		} else {
-			response.setResponseCode(999);
-			response.setErrors(result.getAllErrors());
-		}
-		return response;
-	}
+      if (!result.hasErrors()) {
+         int save = userSVC.createUser(user);
+         if (user != null) {
+            if (save == 1) {
+               response.setResponseCode(0);
+            } else {
+               response.setResponseCode(1);
+            }
+         } else {
+            response.setResponseCode(2);
+         }
+      } else {
+         response.setResponseCode(999);
+         response.setErrors(result.getAllErrors());
+      }
+      return response;
+   }
 }
