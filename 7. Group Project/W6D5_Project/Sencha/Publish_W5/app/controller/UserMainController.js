@@ -307,6 +307,8 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                         main.hide();
                         home1.show();
                         home2.show();
+                        var mainControl = W5D5_Project.app.getController('MainController');
+                        mainControl.clearFrontPage();
                     }else if(resp.responseCode=='999'){
                         Ext.Msg.alert('Register','Validation error. Please check field values.');
                     }else{
