@@ -188,23 +188,24 @@ Ext.define('W5D5_Project.controller.MainController', {
                     Ext.getCmp('sumAdd').setValue(address.getValue());
                     Ext.getCmp('sumProds').setValue(count);
                     scope.orderWin.show();
+                    Ext.Ajax.request({
+                        url : 'checkout',
+                        method : 'POST',
+                        params : {
+                            userid : Ext.getCmp('idField').getValue()
+                        },
+                        callback : function(options, success, response){
+                            if(!Ext.isEmpty(response.responseText)){
+                                console.log("success!");
+                            }
+                        }
+                    });
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }
             }
         });
-        Ext.Ajax.request({
-            url : 'checkout',
-            method : 'POST',
-            params : {
-                userid : Ext.getCmp('idField').getValue()
-            },
-            callback : function(options, success, response){
-                if(!Ext.isEmpty(response.responseText)){
-                    console.log("success!");
-                }
-            }
-        });
+
     },
 
     onLogoutBtnClick: function() {

@@ -196,7 +196,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                 {
                                     xtype: 'tbspacer',
                                     flex: 0,
-                                    height: 30
+                                    height: 30,
+                                    hidden: true
                                 },
                                 {
                                     xtype: 'button',

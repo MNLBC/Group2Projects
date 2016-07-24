@@ -330,6 +330,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "height": 30,
+                                        "hidden": true,
                                         "layout|flex": 0
                                     },
                                     "name": "MySpacer3",
