@@ -4451,7 +4451,7 @@
                                                                 "baseCls": null,
                                                                 "fieldCls": "textCls",
                                                                 "fieldLabel": "",
-                                                                "value": "User Requests"
+                                                                "value": "Pending Premium Requests"
                                                             },
                                                             "name": "MyDisplayField12",
                                                             "designerId": "99f4e22f-1349-4040-a688-a3b570f3eaf0"

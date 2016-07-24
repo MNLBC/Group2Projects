@@ -2110,7 +2110,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'displayfield',
                                                             fieldLabel: '',
-                                                            value: 'User Requests',
+                                                            value: 'Pending Premium Requests',
                                                             fieldCls: 'textCls'
                                                         },
                                                         {

@@ -119,13 +119,13 @@
 
 .genericBtn{
     color: blue !important;
-    background: #ddd !important;
+    background: #777 !important;
     border-style: none !important;
     border-radius: 0px !important;
 }
 
 .genericBtn:hover, .genericBtn:focus, .genericBtn:active, .genericBtn.active, .genericBtn:focus:active {
-    background-color: #777 !important;
+    background-color: #ddd !important;
     color: blue !important;
     border-style: none !important;
     border-radius: 0px !important;

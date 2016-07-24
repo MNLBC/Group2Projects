@@ -191,7 +191,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                         }
                     });
                 } else {
-                    Ext.Msg.alert("User", "Account does not exist. Login again or register");
+                    Ext.Msg.alert("User", "Login details are invalid.");
                 }
             }
         });

@@ -88,6 +88,8 @@ Ext.define('W5D5_Project.controller.AccountController', {
                 }
             }
         });
+        }else{
+          Ext.Msg.alert("Update User", "Validation error. Please check the field values.");
         }
 
     },
@@ -121,9 +123,9 @@ Ext.define('W5D5_Project.controller.AccountController', {
             callback : function(options,success,response){
                 request = Ext.decode(response.responseText);
                 if(Ext.isEmpty(request.requestStatus)){
-                    Ext.Msg.alert("Request Status", "You have no pending requests");
+                    Ext.Msg.alert("Premium Account Request", "You have no pending requests");
                 }else{
-                    Ext.Msg.alert("Request Status", "Request status is: " + request.requestStatus);
+                    Ext.Msg.alert("Premium Account Request", "Request status is: " + request.requestStatus);
                 }
             }
         });
