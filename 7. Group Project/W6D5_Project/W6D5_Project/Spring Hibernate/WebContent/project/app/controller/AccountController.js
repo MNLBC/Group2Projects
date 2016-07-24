@@ -98,11 +98,11 @@ Ext.define('W5D5_Project.controller.AccountController', {
                 message: 'Request for Premium Account'
             },
             callback : function(options,success,response){
-                if(response.responseText === 'success'){
+                if(response.responseText == 1){
                     Ext.Msg.alert("Request", "You have requested for an account upgrade. Please wait for admin approval");
                     console.log('Request sent');
                 } else {
-                    Ext.Msg.alert("Request", "You still have a pending request");
+                    Ext.Msg.alert("Request", "Error in sending request");
                     console.log('Request error');
                 }
             }
