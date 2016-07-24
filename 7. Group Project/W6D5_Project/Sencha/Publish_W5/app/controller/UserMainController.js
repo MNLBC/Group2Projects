@@ -290,7 +290,11 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                         var mainControl = W5D5_Project.app.getController('MainController');
                                         mainControl.clearFrontPage();
                                     }else if(resp.responseCode=='999'){
-                                        Ext.Msg.alert('Register','Validation error. Please check field values.');
+                                        var msgs = '';
+                                        Ext.each(resp.errors, function(error){
+                                           msgs = msgs + '<br>' + error.defaultMessage;
+                                        });
+                                        Ext.Msg.alert('Register','Validation error. Please check the following: '+msgs);
                                     }else{
                                         Ext.Msg.alert('Register','There is a problem with the registration. Please try again later');
                                     }
