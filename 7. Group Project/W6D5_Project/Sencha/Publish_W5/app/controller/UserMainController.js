@@ -99,7 +99,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                         async : false,
                                         callback : function(options, success, response){
                                             if(response.responseText==1){
-                                               console.log('Run Admin Topic Subscriber');
+                                                console.log('Run Admin Topic Subscriber');
                                             }
                                         }
                                     });

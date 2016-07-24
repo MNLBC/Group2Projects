@@ -246,21 +246,21 @@ Ext.define('W5D5_Project.controller.MainController', {
                     idField.setValue(0);
                     countField.setValue(parseInt(countField.getValue())-1);
                     Ext.Ajax.request({
-                                    url : "logout",
-                                    method : 'GET',
-                                    async : false,
-                                    callback : function(options, success, response) {
-                                        if (success!==true) {
-                                            console.log('Failed ');
-                                            Ext.Msg.alert("Logout", "Error logging out. Try again later.");
-                                        } else {
-                                            console.log('Success! ');
-                                            Ext.Msg.alert("Logout", "Successfully logged out!");
-                                            var mainControl = W5D5_Project.app.getController('MainController');
-                                            mainControl.clearFrontPage();
-                                        }
-                                    }
-                                });
+                        url : "logout",
+                        method : 'GET',
+                        async : false,
+                        callback : function(options, success, response) {
+                            if (success!==true) {
+                                console.log('Failed ');
+                                Ext.Msg.alert("Logout", "Error logging out. Try again later.");
+                            } else {
+                                console.log('Success! ');
+                                Ext.Msg.alert("Logout", "Successfully logged out!");
+                                var mainControl = W5D5_Project.app.getController('MainController');
+                                mainControl.clearFrontPage();
+                            }
+                        }
+                    });
                 } else if (btn === 'no') {
                     console.log('No pressed');
                 }
