@@ -57,16 +57,19 @@ public class RequestController {
 	}
 
 	@RequestMapping(value = "/updateRequest", method = RequestMethod.POST)
-	public boolean updateRequest(@RequestParam("request") Request request) {
+	public boolean updateRequest(@RequestParam("id") String id, @RequestParam("email") String email, @RequestParam("date") 
+	String date, @RequestParam("status") String status) {
+		long reqId = Long.parseLong(id);
+		Request request = new Request();
+		request.setRequestId(reqId);
+		request.setUserEmail(email);
+		request.setUserDate(date);
+		request.setRequestStatus(status);
 		int result = this.requestSVC.updateRequest(request);
-		if (request != null) {
-			if (result != 1 || result == 0) {
-				return false;
-			} else {
-				return true;
-			}
-		} else {
+		if (result != 1 || result == 0) {
 			return false;
+		} else {
+			return true;
 		}
 
 	}

@@ -48,7 +48,10 @@ Ext.define('W5D5_Project.controller.RequestController', {
                             url : "updateRequest",
                             method: 'POST',
                             params : {
-                                request : Ext.util.JSON.encode(request)
+                                id : requestId,
+                                email: userEmail,
+                                date : userDate,
+                                status : "APPROVED"
                             },
                             async: false,
                             callback : function(options, success, response){
@@ -99,8 +102,11 @@ Ext.define('W5D5_Project.controller.RequestController', {
         Ext.Ajax.request({
                             url : "updateRequest",
                             method: 'POST',
-                            JSONData : {
-                                request : Ext.util.JSON.encode(request)
+                            params : {
+                                id : requestId,
+                                email: userEmail,
+                                date : userDate,
+                                status : "REJECTED"
                             },
                             async: false,
                             callback : function(options, success, response){

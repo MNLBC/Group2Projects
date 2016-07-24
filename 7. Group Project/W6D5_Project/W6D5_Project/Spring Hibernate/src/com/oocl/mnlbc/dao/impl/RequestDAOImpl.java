@@ -33,7 +33,7 @@ public class RequestDAOImpl implements RequestDAO {
 
 	@Override
 	public List<Request> getAllRequest() {
-		String sql = "SELECT request FROM REQUESTS request"
+		String sql = "SELECT request FROM Request request"
 		   + " WHERE request.requestStatus='PENDING'";
 		List<Request> allRequestList = manager.createQuery(sql).getResultList();
 		for (Request allRequest : allRequestList) {
