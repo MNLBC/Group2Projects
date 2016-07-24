@@ -1,6 +1,7 @@
 package com.oocl.mnlbc.dao.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.RequestDAO;
 import com.oocl.mnlbc.model.Request;
+import com.oocl.mnlbc.model.User;
 
 
 /**
@@ -31,7 +33,8 @@ public class RequestDAOImpl implements RequestDAO {
 
 	@Override
 	public List<Request> getAllRequest() {
-		String sql = "SELECT request FROM Request request";
+		String sql = "SELECT request FROM REQUESTS request"
+		   + " WHERE request.requestStatus='PENDING'";
 		List<Request> allRequestList = manager.createQuery(sql).getResultList();
 		for (Request allRequest : allRequestList) {
 			logger.info("Request List:" + allRequest);
@@ -50,6 +53,10 @@ public class RequestDAOImpl implements RequestDAO {
 	public Request getRequestByUserEmail(String useremail) {
 		Request requestUserEmail = new Request();
 		String query = "SELECT * FROM REQUESTS WHERE USEREMAIL ='"+ useremail + "'AND REQID IN (SELECT MAX(REQID) FROM REQUESTS WHERE USEREMAIL = '"+useremail +"')";
+//		userRequestList = manager.createNativeQuery(query, Request.class).getResultList();
+//		for (Request userReq : userRequestList) {
+//			logger.info("User Request" + userReq);
+//		}
 		List<Object[]> userRequests = manager.createNativeQuery(query).getResultList();
 		for(int i= 0; i < userRequests.size(); i++){
 			BigDecimal d = (BigDecimal) userRequests.get(i)[0];
