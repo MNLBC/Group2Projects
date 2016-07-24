@@ -93,6 +93,16 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                 if (record.userType == 'Admin') {
                                     // 							admin1.show();
                                     // 							admin2.show();
+                                    Ext.Ajax.request({
+                                        url : "runAdminConsumer",
+                                        method : "GET",
+                                        async : false,
+                                        callback : function(options, success, response){
+                                            if(response.responseText==1){
+                                               console.log('Run Admin Topic Subscriber');
+                                            }
+                                        }
+                                    });
                                     admin3.show();
                                 }
                                 store.add(record);
