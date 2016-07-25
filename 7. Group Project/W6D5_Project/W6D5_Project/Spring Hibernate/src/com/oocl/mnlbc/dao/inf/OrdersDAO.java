@@ -13,4 +13,5 @@ public interface OrdersDAO {
 	
 	public int getOrderByUserId(long userId);
 
+	public boolean isPremium(long userId);
 }

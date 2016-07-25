@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.OrdersDAO;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.User;
 
 /**
  * 
@@ -71,6 +72,22 @@ public class OrdersDAOImpl implements OrdersDAO {
 			orderId = d.intValue();
 		}
 		return orderId;
+	}
+	
+	@Override
+	public boolean isPremium(long userId){
+		boolean result = false;
+		String sql = "SELECT user FROM User user WHERE user.userId='" + userId + "' AND user.userLevel = 2";
+		   List<User> user = manager.createQuery(sql).getResultList();
+			if (!user.isEmpty()) {
+		      try {
+		    	  result = true;
+	         } catch (Exception e) {
+	        	 result = false;
+	            logger.error(e.getMessage());
+	         }
+			}
+		return result;
 	}
 
 }

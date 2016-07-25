@@ -43,7 +43,15 @@ public class OrdersSVCImpl implements OrdersSVC {
 		for (CartProduct cart : cartProductList) {
 			total += cart.getProdSubtotal();
 		}
-		order.setOrderTotal(total);
+		boolean isPremium = this.orderDAO.isPremium(userid);
+		if (isPremium) {
+			float discount = (float) (total * 0.1);
+			total = total - discount;
+			order.setOrderTotal(total);
+		} else {
+			order.setOrderTotal(total);
+		}
+
 		return this.orderDAO.createOrder(order);
 	}
 
