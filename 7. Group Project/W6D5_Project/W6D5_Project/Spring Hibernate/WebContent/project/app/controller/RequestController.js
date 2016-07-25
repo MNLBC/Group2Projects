@@ -146,8 +146,8 @@ Ext.define('W5D5_Project.controller.RequestController', {
     onRequestGridChange: function(model, selected, eOpts) {
         var selected;
                 this.selected = selected;
-                var gridEmail = selected[0].data.userEmail;
                 if(!Ext.isEmpty(selected[0])){
+                    var gridEmail = selected[0].data.userEmail;
                     Ext.Ajax.request({
                     url : "getUserByEmail",
                     method: 'GET',
