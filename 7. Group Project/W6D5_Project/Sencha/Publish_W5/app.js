@@ -129,7 +129,7 @@ Ext.application({
                                      cartCount = Ext.getCmp('cartCount');
                                  Ext.each(store.data.items,function(rec){
                                      if(rec.data.prodId==record.prodId){
-                                         rec.data.prodQty=rec.data.prodQty+1;
+                                         rec.data.prodQty=parseInt(rec.data.prodQty)+1;
                                          rec.data.prodSubtotal=rec.data.prodSubtotal+rec.data.prodPrice;
                                          isExists = true;
                                          record=rec.data;

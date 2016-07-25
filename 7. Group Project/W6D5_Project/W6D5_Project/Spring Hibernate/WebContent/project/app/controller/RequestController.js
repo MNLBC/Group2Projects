@@ -147,7 +147,8 @@ Ext.define('W5D5_Project.controller.RequestController', {
         var selected;
                 this.selected = selected;
                 var gridEmail = selected[0].data.userEmail;
-                Ext.Ajax.request({
+                if(!Ext.isEmpty(selected[0])){
+                    Ext.Ajax.request({
                     url : "getUserByEmail",
                     method: 'GET',
                     params : {
@@ -175,6 +176,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                 Ext.getCmp('reqCity').setValue(Ext.getStore('UserStore').data.items[0].data.userCity);
                 Ext.getCmp('reqOccupation').setValue(Ext.getStore('UserStore').data.items[0].data.userOccupation);
                 Ext.getCmp('reqEmail').setValue(Ext.getStore('UserStore').data.items[0].data.userEmail);
+                }
     }
 
 });
