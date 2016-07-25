@@ -3658,7 +3658,8 @@
                                                                                                 "allowOnlyWhitespace": false,
                                                                                                 "designer|displayName": "LnameRegField",
                                                                                                 "fieldLabel": "Last Name",
-                                                                                                "id": "lnameRegField"
+                                                                                                "id": "lnameRegField",
+                                                                                                "maskRe": "/^[a-zA-Z_\\- ]+$/"
                                                                                             },
                                                                                             "name": "MyTextField17",
                                                                                             "designerId": "81ddb764-d4ee-4331-85ed-168164b1ca59"
@@ -4006,7 +4007,8 @@
                                                                                 "fieldLabel": "First Name",
                                                                                 "id": "accFirstName",
                                                                                 "itemId": "accFirstName",
-                                                                                "layout|anchor": "100%"
+                                                                                "layout|anchor": "100%",
+                                                                                "maskRe": "/^[a-zA-Z_\\- ]+$/"
                                                                             },
                                                                             "name": "MyTextField26",
                                                                             "designerId": "30655e91-aa2a-4171-a713-38678a922eef"
@@ -4025,7 +4027,8 @@
                                                                                 "fieldLabel": "Last Name",
                                                                                 "id": "accLastName",
                                                                                 "itemId": "accLastName",
-                                                                                "layout|anchor": "100%"
+                                                                                "layout|anchor": "100%",
+                                                                                "maskRe": "/^[a-zA-Z_\\- ]+$/"
                                                                             },
                                                                             "name": "MyTextField27",
                                                                             "designerId": "ca019283-3426-4c77-abae-4e8a08556dff"

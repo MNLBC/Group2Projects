@@ -1730,7 +1730,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'lnameRegField',
                                                                                             fieldLabel: 'Last Name',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z_\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'combobox',
@@ -1895,7 +1896,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             fieldLabel: 'First Name',
                                                                             allowBlank: false,
                                                                             allowOnlyWhitespace: false,
-                                                                            emptyText: 'First Name'
+                                                                            emptyText: 'First Name',
+                                                                            maskRe: /^[a-zA-Z_\- ]+$/
                                                                         },
                                                                         {
                                                                             xtype: 'textfield',
@@ -1905,7 +1907,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             fieldLabel: 'Last Name',
                                                                             allowBlank: false,
                                                                             allowOnlyWhitespace: false,
-                                                                            emptyText: 'Last Name'
+                                                                            emptyText: 'Last Name',
+                                                                            maskRe: /^[a-zA-Z_\- ]+$/
                                                                         },
                                                                         {
                                                                             xtype: 'tbspacer',
