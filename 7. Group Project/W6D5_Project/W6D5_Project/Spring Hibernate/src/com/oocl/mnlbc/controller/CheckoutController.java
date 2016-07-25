@@ -21,7 +21,7 @@ import com.oocl.mnlbc.svc.inf.OrdersSVC;
 /**
  * Handles web services for Checkout
  * 
- * @author DENOYME
+ * @author KALINWI2
  * @since 2016-07-21
  */
 @RestController
@@ -45,6 +45,7 @@ public class CheckoutController {
 	/**
 	 * createOrder web service
 	 *
+	 * @param userid
 	 * @return boolean
 	 */
 	@RequestMapping(value = "/checkout", method = RequestMethod.POST)

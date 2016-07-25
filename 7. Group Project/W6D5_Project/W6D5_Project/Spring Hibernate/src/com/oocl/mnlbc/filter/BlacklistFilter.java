@@ -20,6 +20,8 @@ import com.oocl.mnlbc.util.LogUtil;
 
 /**
  * Servlet Filter implementation class BlacklistFilter
+ * @author KALINWI2
+ * @since 20-JUL-2016
  */
 @WebFilter("/BlacklistFilter")
 public class BlacklistFilter implements Filter {
