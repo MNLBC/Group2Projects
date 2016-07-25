@@ -63,7 +63,7 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                         url : 'updateToPremium',
                                         method : 'POST',
                                         aync : false,
-                                        param : {
+                                        params : {
                                             email : userEmail
                                         },
                                         callback : function(options, success, response){
