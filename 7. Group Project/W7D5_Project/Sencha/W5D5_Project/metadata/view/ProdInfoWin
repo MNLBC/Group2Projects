@@ -1,0 +1,512 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "prodinfowin",
+        "designer|userClassName": "ProdInfoWin",
+        "height": 486,
+        "layout": "hbox",
+        "title": "Product Information",
+        "width": 839
+    },
+    "name": "MyWindow1",
+    "designerId": "9f022093-f1ae-4224-9e51-79dab9104e78",
+    "viewControllerInstanceId": "afbd40b7-260f-4258-95ec-bb840d67c66d",
+    "viewModelInstanceId": "35dd7a49-bf95-481d-8299-84366bab8d2d",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Spacer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 10,
+                "layout|flex": 0,
+                "width": 28
+            },
+            "name": "MySpacer49",
+            "designerId": "5ba1f639-4737-4402-97fb-f0bba4ff6044"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "center",
+                "layout": "vbox",
+                "layout|flex": 0,
+                "width": 318
+            },
+            "name": "MyContainer32",
+            "designerId": "731deb98-b98c-43c5-adaf-9e3023aead29",
+            "cn": [
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 200,
+                        "id": "prodInfoImg",
+                        "itemId": "prodInfoImg",
+                        "width": 200
+                    },
+                    "name": "MyImg5",
+                    "designerId": "0d00721a-60fe-41ee-b316-5d897932d2bb"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "layout|flex": 1
+                    },
+                    "name": "MyContainer34",
+                    "designerId": "6ac07029-fd40-427f-bafe-5bb31ed77c37",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Id",
+                                "id": "prodInfoId",
+                                "itemId": "prodInfoId",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField33",
+                            "designerId": "3c9bd17b-c466-4671-b006-ec17833c9817"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Name",
+                                "id": "prodInfoName",
+                                "itemId": "prodInfoName",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField34",
+                            "designerId": "4446fa37-685e-4bfe-8f0a-daf97ba89e45"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Category",
+                                "id": "prodInfoCat",
+                                "itemId": "prodInfoCat",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField35",
+                            "designerId": "56d9d5be-3fd2-4496-b338-f1aa38c5ece7"
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Description",
+                                "id": "prodInfoDesc",
+                                "itemId": "prodInfoDesc",
+                                "layout|flex": 0,
+                                "readOnly": true,
+                                "value": [
+                                    "Display Field"
+                                ]
+                            },
+                            "name": "MyTextArea3",
+                            "designerId": "a0be0b87-3e5b-4661-a4ad-1198ff505853"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Price",
+                                "id": "prodInfoPrice",
+                                "itemId": "prodInfoPrice",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField37",
+                            "designerId": "b5b1fd65-fdf5-459d-987c-6e1c11baaced"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Spacer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 10,
+                "layout|flex": 0,
+                "width": 18
+            },
+            "name": "MySpacer50",
+            "designerId": "2d9bb42f-aaa9-4892-896e-72cc41e9fce0"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "height": 311,
+                "layout": "vbox",
+                "layout|flex": 1,
+                "width": 369
+            },
+            "name": "MyContainer33",
+            "designerId": "ca4a5f61-0f98-497e-8922-5eb6e197ce62",
+            "cn": [
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 28,
+                        "title": ""
+                    },
+                    "name": "MyPanel40",
+                    "designerId": "dcb29137-06db-4b6c-b6f7-1524fdbcc2e4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "",
+                                "value": "User Reviews:"
+                            },
+                            "name": "MyDisplayField38",
+                            "designerId": "a92e0ff8-2e83-4b7a-a630-82d7fe6d5b08"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "id": "prodInfoReviewGrid",
+                        "itemId": "prodInfoReviewGrid",
+                        "layout|flex": 1,
+                        "title": ""
+                    },
+                    "name": "MyGridPanel5",
+                    "designerId": "4ff0b71f-1df4-48e1-8a05-0c06af46198c",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "center",
+                                "dataIndex": "string",
+                                "text": "User"
+                            },
+                            "name": "MyColumn42",
+                            "designerId": "ed898d5e-e090-4797-8429-1bc9b8db1aaf"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "center",
+                                "dataIndex": "number",
+                                "text": "Rating"
+                            },
+                            "name": "MyColumn43",
+                            "designerId": "bf173926-691a-498b-a8c4-144eeb472914"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "align": "center",
+                                "dataIndex": "date",
+                                "text": "Review",
+                                "width": 227
+                            },
+                            "name": "MyColumn44",
+                            "designerId": "354f6d5f-9013-480d-89e4-891ecb38564c"
+                        },
+                        {
+                            "type": "Ext.grid.View",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyGridView5",
+                            "designerId": "0e525e81-a242-4beb-9189-9cde9739ce3f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 205,
+                        "layout|flex": 0,
+                        "title": ""
+                    },
+                    "name": "MyPanel50",
+                    "designerId": "df432ab2-be93-49ec-9b06-e2d1c5f7f167",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "",
+                                "value": "Your Review:"
+                            },
+                            "name": "MyDisplayField39",
+                            "designerId": "60c9b708-cb14-421c-a719-74cc0200a8b5"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 133
+                            },
+                            "name": "MyContainer35",
+                            "designerId": "629652bc-f135-4502-a2f4-bcbd1dcff698",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Rating",
+                                        "id": "prodInfoRating",
+                                        "itemId": "prodInfoRating"
+                                    },
+                                    "name": "MyComboBox15",
+                                    "designerId": "d1a2351e-dc59-4059-a07a-0fc347febdb0"
+                                },
+                                {
+                                    "type": "Ext.form.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Review",
+                                        "height": 82,
+                                        "id": "prodInfoReview",
+                                        "itemId": "prodInfoReview",
+                                        "width": 438
+                                    },
+                                    "name": "MyTextArea4",
+                                    "designerId": "d64fb571-b804-4c9a-a971-1f114f737f66"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox"
+                            },
+                            "name": "MyContainer36",
+                            "designerId": "4c6ab848-2c36-4b9b-b1f2-14eb132c6dbd",
+                            "cn": [
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 25,
+                                        "width": 149
+                                    },
+                                    "name": "MySpacer52",
+                                    "designerId": "7ad8a2d3-5977-4783-9ab1-ad46e3ef61c8"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "genericBtn",
+                                        "id": "prodInfoPostBtn",
+                                        "itemId": "prodInfoPostBtn",
+                                        "text": "POST"
+                                    },
+                                    "name": "MyButton27",
+                                    "designerId": "59ce1b68-b9a9-4d6d-8e2a-612a54e1b8ca"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "width": 10
+                                    },
+                                    "name": "MySpacer54",
+                                    "designerId": "be9221d4-68e1-4258-b56f-4cd00895ce42"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "genericBtn",
+                                        "id": "prodInfoUpdateBtn",
+                                        "itemId": "prodInfoUpdateBtn",
+                                        "text": "UPDATE"
+                                    },
+                                    "name": "MyButton29",
+                                    "designerId": "902e9ec2-e42c-42c5-8545-eafe7af1b53b"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "width": 10
+                                    },
+                                    "name": "MySpacer51",
+                                    "designerId": "391abd73-42ac-4931-abaa-d65ee32460c5"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "genericBtn",
+                                        "id": "prodInfoRemoveBtn",
+                                        "itemId": "prodInfoRemoveBtn",
+                                        "text": "REMOVE"
+                                    },
+                                    "name": "MyButton28",
+                                    "designerId": "18a97abd-b729-41ab-8bf9-7b847eb1a008"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Spacer",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "height": 10,
+                "layout|flex": 0,
+                "width": 28
+            },
+            "name": "MySpacer53",
+            "designerId": "301f6225-dbbf-47cc-8d84-da7d07741c9d"
+        }
+    ]
+}

@@ -23,12 +23,18 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.Img',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
+        'Ext.grid.Panel',
+        'Ext.grid.column.Number',
+        'Ext.grid.column.Date',
+        'Ext.grid.column.Boolean',
+        'Ext.grid.View',
         'Ext.form.Panel',
         'Ext.form.field.ComboBox',
         'Ext.form.field.TextArea',
-        'Ext.grid.Panel',
-        'Ext.grid.column.Number',
-        'Ext.grid.View',
+        'Ext.menu.Menu',
+        'Ext.menu.Item',
+        'Ext.form.Label',
+        'Ext.form.field.Number',
         'Ext.tab.Bar'
     ],
 
@@ -571,7 +577,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     id: 'mainTabPanel',
                                     itemId: 'mainTabPanel',
                                     title: '',
-                                    activeTab: 7,
+                                    activeTab: 8,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -917,6 +923,142 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         align: 'middle',
                                                         pack: 'center'
                                                     }
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            height: 789,
+                                            id: 'allProdsPanel',
+                                            itemId: 'allProdsPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 73,
+                                                    title: ''
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 69,
+                                                    title: ''
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 1,
+                                                    height: 386,
+                                                    width: 1121,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'gridpanel',
+                                                            flex: 0,
+                                                            height: 561,
+                                                            width: 601,
+                                                            title: '',
+                                                            columns: [
+                                                                {
+                                                                    xtype: 'gridcolumn',
+                                                                    dataIndex: 'string',
+                                                                    text: 'String'
+                                                                },
+                                                                {
+                                                                    xtype: 'numbercolumn',
+                                                                    dataIndex: 'number',
+                                                                    text: 'Number'
+                                                                },
+                                                                {
+                                                                    xtype: 'datecolumn',
+                                                                    dataIndex: 'date',
+                                                                    text: 'Date'
+                                                                },
+                                                                {
+                                                                    xtype: 'booleancolumn',
+                                                                    dataIndex: 'bool',
+                                                                    text: 'Boolean'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            height: 789,
+                                            id: 'faveProdsPanel',
+                                            itemId: 'faveProdsPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 73,
+                                                    title: ''
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 69,
+                                                    title: ''
+                                                },
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 1,
+                                                    height: 386,
+                                                    width: 1121,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'gridpanel',
+                                                            flex: 0,
+                                                            height: 561,
+                                                            width: 601,
+                                                            title: '',
+                                                            columns: [
+                                                                {
+                                                                    xtype: 'gridcolumn',
+                                                                    dataIndex: 'string',
+                                                                    text: 'String'
+                                                                },
+                                                                {
+                                                                    xtype: 'numbercolumn',
+                                                                    dataIndex: 'number',
+                                                                    text: 'Number'
+                                                                },
+                                                                {
+                                                                    xtype: 'datecolumn',
+                                                                    dataIndex: 'date',
+                                                                    text: 'Date'
+                                                                },
+                                                                {
+                                                                    xtype: 'booleancolumn',
+                                                                    dataIndex: 'bool',
+                                                                    text: 'Boolean'
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         },
@@ -2376,6 +2518,1139 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 xtype: 'tab',
                                                 flex: 1
                                             }
+                                        },
+                                        {
+                                            xtype: 'panel',
+                                            id: 'adminPanel',
+                                            itemId: 'adminPanel',
+                                            title: 'My Panel',
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'stretch'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'panel',
+                                                    flex: 0,
+                                                    height: 41,
+                                                    bodyStyle: '{background-color: #eee; !important}',
+                                                    title: ''
+                                                },
+                                                {
+                                                    xtype: 'container',
+                                                    flex: 1,
+                                                    height: 766,
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'panel',
+                                                            flex: 0,
+                                                            hidden: true,
+                                                            width: 204,
+                                                            layout: 'accordion',
+                                                            bodyStyle: '{background-color: #eee; !important}',
+                                                            title: '',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    title: 'User Management',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'button',
+                                                                            height: 43,
+                                                                            width: 201,
+                                                                            text: 'MANAGE USERS'
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    title: 'Product Management'
+                                                                },
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    title: 'Order Management'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'menu',
+                                                            border: false,
+                                                            floating: false,
+                                                            hidden: true,
+                                                            width: 179,
+                                                            bodyBorder: false,
+                                                            collapseDirection: 'left',
+                                                            collapsible: true,
+                                                            title: 'Management Options',
+                                                            titleAlign: 'center',
+                                                            items: [
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    height: 10
+                                                                },
+                                                                {
+                                                                    xtype: 'menuitem',
+                                                                    text: 'User Management'
+                                                                },
+                                                                {
+                                                                    xtype: 'menuitem',
+                                                                    text: 'Product Management'
+                                                                },
+                                                                {
+                                                                    xtype: 'menuitem',
+                                                                    plain: false,
+                                                                    text: 'Order Management'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'panel',
+                                                            flex: 0,
+                                                            id: 'adminMenuPanel',
+                                                            width: 289,
+                                                            bodyStyle: '{background-color: #aaa; !important}',
+                                                            title: '',
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminUserMgmtBtn',
+                                                                    itemId: 'adminUserMgmtBtn',
+                                                                    text: 'USER MANAGEMENT'
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminProdMgmtBtn',
+                                                                    itemId: 'adminProdMgmtBtn',
+                                                                    text: 'PRODUCT MANAGEMENT'
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminOrderMgmtBtn',
+                                                                    itemId: 'adminOrderMgmtBtn',
+                                                                    text: 'ORDER MANAGEMENT'
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminOnlineUsersBtn',
+                                                                    itemId: 'adminOnlineUsersBtn',
+                                                                    text: 'ONLINE USERS'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'tabpanel',
+                                                            flex: 1,
+                                                            id: 'adminTabPanel',
+                                                            activeTab: 0,
+                                                            items: [
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'userMgmtTab',
+                                                                    itemId: 'userMgmtTab',
+                                                                    title: 'Tab 1',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'panel',
+                                                                            flex: 0,
+                                                                            height: 32,
+                                                                            bodyStyle: '{background-color: #ccc; !important}',
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'label',
+                                                                                    cls: 'labelCls',
+                                                                                    height: 24,
+                                                                                    width: 199,
+                                                                                    text: 'USER INFORMATION'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 242,
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    height: 378,
+                                                                                    id: 'userMgmtField1',
+                                                                                    itemId: 'userMgmtField1',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'displayfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtId',
+                                                                                            itemId: 'userMgmtId',
+                                                                                            fieldLabel: 'Id'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtFname',
+                                                                                            itemId: 'userMgmtFname',
+                                                                                            fieldLabel: 'First Name'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtLname',
+                                                                                            itemId: 'userMgmtLname',
+                                                                                            fieldLabel: 'Last Name'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtEmail',
+                                                                                            itemId: 'userMgmtEmail',
+                                                                                            fieldLabel: 'Email'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtPass',
+                                                                                            itemId: 'userMgmtPass',
+                                                                                            fieldLabel: 'Password'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtOccup',
+                                                                                            itemId: 'userMgmtOccup',
+                                                                                            fieldLabel: 'Occupation'
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    id: 'userMgmtField2',
+                                                                                    itemId: 'userMgmtField2',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtAdd1',
+                                                                                            itemId: 'userMgmtAdd1',
+                                                                                            fieldLabel: 'Address 1'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtAdd2',
+                                                                                            itemId: 'userMgmtAdd2',
+                                                                                            fieldLabel: 'Address 2'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCity',
+                                                                                            itemId: 'userMgmtCity',
+                                                                                            fieldLabel: 'City'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtSp',
+                                                                                            itemId: 'userMgmtSp',
+                                                                                            fieldLabel: 'State/Province',
+                                                                                            displayField: 'SP',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'SPStore',
+                                                                                            valueField: 'SP'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCountry',
+                                                                                            itemId: 'userMgmtCountry',
+                                                                                            fieldLabel: 'Country',
+                                                                                            displayField: 'CountryName',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'CountryStore',
+                                                                                            valueField: 'CountryName'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtType',
+                                                                                            itemId: 'userMgmtType',
+                                                                                            fieldLabel: 'Type',
+                                                                                            displayField: 'Type',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'UserTypeStore',
+                                                                                            valueField: 'Name'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtLevel',
+                                                                                            itemId: 'userMgmtLevel',
+                                                                                            fieldLabel: 'Level',
+                                                                                            displayField: 'level',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'UserLevelStore',
+                                                                                            valueField: 'value'
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 41,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'userMgmtReset',
+                                                                                    itemId: 'userMgmtReset',
+                                                                                    width: 87,
+                                                                                    text: 'RESET'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 25,
+                                                                                    width: 114
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'userMgmtCreate',
+                                                                                    itemId: 'userMgmtCreate',
+                                                                                    width: 109,
+                                                                                    text: 'CREATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'userMgmtUpdate',
+                                                                                    itemId: 'userMgmtUpdate',
+                                                                                    width: 120,
+                                                                                    text: 'UPDATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'userMgmtDelete',
+                                                                                    itemId: 'userMgmtDelete',
+                                                                                    width: 120,
+                                                                                    text: 'DELETE'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 44,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    id: 'userMgmtSearch',
+                                                                                    itemId: 'userMgmtSearch',
+                                                                                    width: 571,
+                                                                                    fieldLabel: '',
+                                                                                    emptyText: 'Search By Email'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridpanel',
+                                                                            flex: 1,
+                                                                            id: 'userMgmtGrid',
+                                                                            itemId: 'userMgmtGrid',
+                                                                            title: '',
+                                                                            store: 'UserStore',
+                                                                            columns: [
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userId',
+                                                                                    text: 'Id'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 177,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userFname',
+                                                                                    text: 'First Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 194,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userLname',
+                                                                                    text: 'Last Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 188,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userEmail',
+                                                                                    text: 'Email'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 183,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userPass',
+                                                                                    text: 'Password'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 200,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userOccupation',
+                                                                                    text: 'Occupation'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 227,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userAddress1',
+                                                                                    text: 'Address 1'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 202,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userAddress2',
+                                                                                    text: 'Address 2'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 198,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userCity',
+                                                                                    text: 'City'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 229,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userSp',
+                                                                                    text: 'State/Province'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 243,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userCountry',
+                                                                                    text: 'Country'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 134,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userType',
+                                                                                    text: 'Type'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                                        if(value=='1'){
+                                                                                            return 'Normal';
+                                                                                        }else{
+                                                                                            return 'Premium';
+                                                                                        }
+                                                                                    },
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userLevel',
+                                                                                    text: 'Level'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'prodMgmtTab',
+                                                                    itemId: 'prodMgmtTab',
+                                                                    title: 'Tab 1',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'panel',
+                                                                            flex: 0,
+                                                                            height: 32,
+                                                                            bodyStyle: '{background-color: #ccc; !important}',
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'label',
+                                                                                    cls: 'labelCls',
+                                                                                    height: 24,
+                                                                                    width: 255,
+                                                                                    text: 'PRODUCT INFORMATION'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            flex: 0,
+                                                                            height: 196,
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    height: 378,
+                                                                                    id: 'prodMgmtField1',
+                                                                                    itemId: 'prodMgmtField1',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'displayfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtId',
+                                                                                            itemId: 'prodMgmtId',
+                                                                                            fieldLabel: 'Id'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtName',
+                                                                                            itemId: 'prodMgmtName',
+                                                                                            fieldLabel: 'Name'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtCat',
+                                                                                            itemId: 'prodMgmtCat',
+                                                                                            fieldLabel: 'Category',
+                                                                                            displayField: 'categories',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'CategoryStore',
+                                                                                            valueField: 'categories'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textareafield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtDesc',
+                                                                                            itemId: 'prodMgmtDesc',
+                                                                                            fieldLabel: 'Description'
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    id: 'prodMgmtField2',
+                                                                                    itemId: 'prodMgmtField2',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtPrice',
+                                                                                            itemId: 'prodMgmtPrice',
+                                                                                            fieldLabel: 'Price'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtSale',
+                                                                                            itemId: 'prodMgmtSale',
+                                                                                            fieldLabel: 'Sale'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'numberfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtStock',
+                                                                                            itemId: 'prodMgmtStock',
+                                                                                            fieldLabel: 'Stock'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'prodMgmtImg',
+                                                                                            itemId: 'prodMgmtImg',
+                                                                                            fieldLabel: 'Image Name'
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 50,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'prodMgmtReset',
+                                                                                    itemId: 'prodMgmtReset',
+                                                                                    width: 87,
+                                                                                    text: 'RESET'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 25,
+                                                                                    width: 114
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'prodMgmtCreate',
+                                                                                    itemId: 'prodMgmtCreate',
+                                                                                    width: 109,
+                                                                                    text: 'CREATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'prodMgmtUpdate',
+                                                                                    itemId: 'prodMgmtUpdate',
+                                                                                    width: 120,
+                                                                                    text: 'UPDATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'prodMgmtDelete',
+                                                                                    itemId: 'prodMgmtDelete',
+                                                                                    width: 120,
+                                                                                    text: 'DELETE'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 44,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    id: 'prodMgmtSearch',
+                                                                                    itemId: 'prodMgmtSearch',
+                                                                                    width: 571,
+                                                                                    fieldLabel: '',
+                                                                                    emptyText: 'Search By Product Name'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridpanel',
+                                                                            flex: 1,
+                                                                            id: 'prodMgmtGrid',
+                                                                            itemId: 'prodMgmtGrid',
+                                                                            title: '',
+                                                                            store: 'ProductStore',
+                                                                            columns: [
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodId',
+                                                                                    text: 'Id'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                                        return '<img src="resources/img/' + value + '.png" align="center"/>';
+                                                                                    },
+                                                                                    width: 138,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodImg',
+                                                                                    text: 'Image'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 257,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodName',
+                                                                                    text: 'Name'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 144,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodCat',
+                                                                                    text: 'Category'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 284,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodDesc',
+                                                                                    text: 'Description'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 142,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodPrice',
+                                                                                    text: 'Price (RMB)'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodSale',
+                                                                                    text: 'Sale'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodStock',
+                                                                                    text: 'Stock'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 173,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'prodImg',
+                                                                                    text: 'Image Name'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'orderMgmtTab',
+                                                                    itemId: 'orderMgmtTab',
+                                                                    title: 'Tab 1',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'panel',
+                                                                            flex: 0,
+                                                                            height: 32,
+                                                                            bodyStyle: '{background-color: #ccc; !important}',
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'label',
+                                                                                    cls: 'labelCls',
+                                                                                    height: 24,
+                                                                                    width: 228,
+                                                                                    text: 'ORDER INFORMATION'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            flex: 0,
+                                                                            height: 102,
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    height: 378,
+                                                                                    id: 'orderMgmtField1',
+                                                                                    itemId: 'orderMgmtField1',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'displayfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'orderMgmtId',
+                                                                                            itemId: 'orderMgmtId',
+                                                                                            fieldLabel: 'Id'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'orderMgmtName',
+                                                                                            itemId: 'orderMgmtName',
+                                                                                            fieldLabel: 'User Id'
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'form',
+                                                                                    flex: 0,
+                                                                                    height: 378,
+                                                                                    id: 'orderMgmtField2',
+                                                                                    itemId: 'orderMgmtField2',
+                                                                                    bodyPadding: 10,
+                                                                                    title: '',
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'orderMgmtTotal',
+                                                                                            itemId: 'orderMgmtTotal',
+                                                                                            fieldLabel: 'Total (RMB)',
+                                                                                            displayField: 'categories',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'CategoryStore',
+                                                                                            valueField: 'categories'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'orderMgmtDate',
+                                                                                            itemId: 'orderMgmtDate',
+                                                                                            fieldLabel: 'Date'
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 50,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'orderMgmtReset',
+                                                                                    itemId: 'orderMgmtReset',
+                                                                                    width: 87,
+                                                                                    text: 'RESET'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 25,
+                                                                                    width: 114
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'orderMgmtCreate',
+                                                                                    itemId: 'orderMgmtCreate',
+                                                                                    width: 109,
+                                                                                    text: 'CREATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'orderMgmtUpdate',
+                                                                                    itemId: 'orderMgmtUpdate',
+                                                                                    width: 120,
+                                                                                    text: 'UPDATE'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'button',
+                                                                                    cls: 'genericBtn',
+                                                                                    height: 32,
+                                                                                    id: 'orderMgmtDelete',
+                                                                                    itemId: 'orderMgmtDelete',
+                                                                                    width: 120,
+                                                                                    text: 'DELETE'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 44,
+                                                                            layout: 'hbox',
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    id: 'orderMgmtSearch',
+                                                                                    itemId: 'orderMgmtSearch',
+                                                                                    width: 571,
+                                                                                    fieldLabel: '',
+                                                                                    emptyText: 'Search By Id'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridpanel',
+                                                                            flex: 1,
+                                                                            id: 'orderMgmtGrid',
+                                                                            itemId: 'orderMgmtGrid',
+                                                                            title: '',
+                                                                            store: 'OrdersStore',
+                                                                            columns: [
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'orderId',
+                                                                                    text: 'Id'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'userId',
+                                                                                    text: 'User Id'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 186,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'orderTotal',
+                                                                                    text: 'Total Amount (RMB)'
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 215,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'orderDate',
+                                                                                    text: 'Date'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'onlineUsersTab',
+                                                                    itemId: 'onlineUsersTab',
+                                                                    title: 'Tab 1',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'stretch'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'panel',
+                                                                            flex: 0,
+                                                                            height: 32,
+                                                                            bodyStyle: '{background-color: #ccc; !important}',
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'label',
+                                                                                    cls: 'labelCls',
+                                                                                    height: 24,
+                                                                                    width: 255,
+                                                                                    text: 'LIST OF ONLINE USERS'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'container',
+                                                                            height: 44,
+                                                                            layout: {
+                                                                                type: 'hbox',
+                                                                                align: 'middle'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 26,
+                                                                                    width: 10
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'textfield',
+                                                                                    id: 'onlineUsersSearch',
+                                                                                    itemId: 'onlineUsersSearch',
+                                                                                    width: 571,
+                                                                                    fieldLabel: '',
+                                                                                    emptyText: 'Search By Email'
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        {
+                                                                            xtype: 'gridpanel',
+                                                                            flex: 1,
+                                                                            id: 'onlineUsersGrid',
+                                                                            itemId: 'onlineUsersGrid',
+                                                                            title: '',
+                                                                            store: 'OrdersStore',
+                                                                            columns: [
+                                                                                {
+                                                                                    xtype: 'gridcolumn',
+                                                                                    width: 340,
+                                                                                    align: 'center',
+                                                                                    dataIndex: 'orderId',
+                                                                                    text: 'Email'
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            tabBar: {
+                                                                xtype: 'tabbar',
+                                                                hidden: true
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         }
                                     ],
                                     tabBar: {

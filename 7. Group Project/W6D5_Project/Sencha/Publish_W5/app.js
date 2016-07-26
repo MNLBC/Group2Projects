@@ -45,13 +45,17 @@ Ext.application({
         'FavoriteItemsStore',
         'OrdersStore',
         'OrderProductStore',
-        'RequestStore'
+        'RequestStore',
+        'UserLevelStore'
     ],
     views: [
         'MainView',
         'CartProductWindow',
         'ProductImageWindow',
-        'OrderWin'
+        'OrderWin',
+        'OrderProductWin',
+        'UserInfoWin',
+        'ProdInfoWin'
     ],
     controllers: [
         'MainController',

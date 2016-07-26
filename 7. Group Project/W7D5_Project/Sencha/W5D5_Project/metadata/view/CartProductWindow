@@ -12,8 +12,9 @@
         "height": 250,
         "id": "cartProductWindow",
         "itemId": "cartProductWindow",
+        "modal": true,
         "title": "",
-        "width": 573
+        "width": 593
     },
     "name": "MyWindow",
     "designerId": "1bd0c09f-5261-4645-9c70-d8c3f1cd0c5a",
@@ -87,7 +88,7 @@
                     "userConfig": {
                         "container|align": "stretch",
                         "layout": "vbox",
-                        "width": 318
+                        "width": 331
                     },
                     "name": "MyContainer",
                     "designerId": "cadb4ce5-f042-42ec-b824-9356b8e8dfd8",
@@ -100,7 +101,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "height": 36,
+                                "height": 35,
                                 "layout|flex": 0
                             },
                             "name": "MySpacer1",
@@ -199,7 +200,7 @@
                                         "id": "cartProductUpdateButton",
                                         "itemId": "cartProductUpdateButton",
                                         "layout|flex": null,
-                                        "text": "Update"
+                                        "text": "UPDATE"
                                     },
                                     "name": "MyButton",
                                     "designerId": "6e559a5c-54c0-4a7a-beb3-81e26a67c9a4"
@@ -229,7 +230,7 @@
                                         "id": "cartProductRemoveButton",
                                         "itemId": "cartProductRemoveButton",
                                         "layout|flex": null,
-                                        "text": "Remove From Cart"
+                                        "text": "REMOVE FROM CART"
                                     },
                                     "name": "MyButton1",
                                     "designerId": "b394771f-e3b1-4087-b507-009676592146"

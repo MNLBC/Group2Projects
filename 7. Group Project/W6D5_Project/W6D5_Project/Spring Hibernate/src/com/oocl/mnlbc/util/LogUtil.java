@@ -1,5 +1,8 @@
 package com.oocl.mnlbc.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 
 import com.oocl.mnlbc.model.User;
@@ -12,7 +15,7 @@ import com.oocl.mnlbc.model.User;
  *
  */
 public class LogUtil {
-
+   
    final static Logger logger = Logger.getLogger(User.class);
 
    public static void logMsg(LogType type, String msg) {
@@ -37,5 +40,6 @@ public class LogUtil {
             logger.fatal(msg);
             break;
       }
+      
    }
 }

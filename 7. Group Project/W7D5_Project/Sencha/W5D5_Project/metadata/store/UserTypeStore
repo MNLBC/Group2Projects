@@ -7,7 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "data": [
-            "[{Name:'Customer', Type:'C'},{Name:'Blacklist', Type:'B'}, {Name:'Admin', Type:'A'}]"
+            "[{Name:'Customer', Type:'Customer'},{Name:'Blacklist', Type:'BLACKLIST'}, {Name:'Admin', Type:'Admin'}]"
         ],
         "designer|userClassName": "UserTypeStore",
         "model": "UserTypeModel",
