@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+
+	<!-- DispatcherServlet Context: defines the servlet's request-processing 
+		infrastructure -->
+	<context:component-scan base-package="com.oocl.mnlbc.*" />
+
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<mvc:annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
+		up static resources in the ${webappRoot}/resources directory -->
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<mvc:resources mapping="/projectview/**" location="/project/" />
+	<mvc:resources mapping="/app/**" location="/project/app/" />
+	<mvc:resources mapping="/controller/**" location="/project/app/controller/*.js" />
+	<mvc:resources mapping="/model/**" location="/project/app/model/*.js" />
+	<mvc:resources mapping="/store/**" location="/project/app/store.*js" />
+	<mvc:resources mapping="/view/**" location="/project/app/view/*.js" />
+	<mvc:resources mapping="/resources/img/**" location="/project/resources/img/*.png" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
+		in the /WEB-INF/views directory -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+
+
+
+	<bean id="entityManagerFactoryBean"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- This makes /META-INF/persistence.xml is no longer necessary -->
+		<property name="persistenceUnitName" value="myPersistenceUnit" />
+		<property name="packagesToScan" value="com.oocl.mnlbc.model" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">validate</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@zha-ita075-w7:1521:xe" />
+		<property name="username" value="GROUP2" />
+		<property name="password" value="GROUP2" />
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactoryBean" />
+	</bean>
+
+	<tx:annotation-driven />
+
+	<beans:bean id="productDAO" class="com.oocl.mnlbc.dao.impl.ProductDAOImpl">
+
+	</beans:bean>
+	<beans:bean id="productService" class="com.oocl.mnlbc.svc.impl.ProductSVCImpl">
+		<beans:property name="productDAO" ref="productDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="orderProductDAO" class="com.oocl.mnlbc.dao.impl.OrderProductDAOImpl">
+
+	</beans:bean>
+	<beans:bean id="orderProductService" class="com.oocl.mnlbc.svc.impl.OrderProductSVCImpl">
+		<beans:property name="orderProductDAO" ref="orderProductDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="orderDAO" class="com.oocl.mnlbc.dao.impl.OrdersDAOImpl">
+
+	</beans:bean>
+	<beans:bean id="ordersService" class="com.oocl.mnlbc.svc.impl.OrdersSVCImpl">
+		<beans:property name="orderDAO" ref="orderDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="userDAO" class="com.oocl.mnlbc.dao.impl.UserDAOImpl">
+		<!-- <beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+			/> -->
+	</beans:bean>
+	<beans:bean id="userService" class="com.oocl.mnlbc.svc.impl.UserSVCImpl">
+		<beans:property name="userDAO" ref="userDAO"></beans:property>
+	</beans:bean>
+	<beans:bean id="favoriteDAO"
+		class="com.oocl.mnlbc.dao.impl.FavoriteItemsDAOImpl">
+	</beans:bean>
+	<beans:bean id="favoriteService"
+		class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
+		<beans:property name="favoriteDAO" ref="favoriteDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="requestDAO" class="com.oocl.mnlbc.dao.impl.RequestDAOImpl">
+	</beans:bean>
+	<beans:bean id="requestService" class="com.oocl.mnlbc.svc.impl.RequestSVCImpl">
+		<beans:property name="requestDAO" ref="requestDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="cartProductDAO" class="com.oocl.mnlbc.dao.impl.CartProductDAOImpl">
+	</beans:bean>
+	<beans:bean id="cartProductService" class="com.oocl.mnlbc.svc.impl.CartProductSVCImpl">
+		<beans:property name="cartProductDAO" ref="cartProductDAO"></beans:property>
+	</beans:bean>
+
+
+	<!-- Hibernate 4 SessionFactory Bean definition <beans:bean id="hibernate4AnnotatedSessionFactory" 
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"> <beans:property 
+		name="dataSource" ref="dataSource" /> <beans:property name="annotatedClasses"> 
+		<beans:list> <beans:value>com.oocl.mnlbc.model.Product</beans:value> <beans:value>com.oocl.mnlbc.model.Order</beans:value> 
+		<beans:value>com.oocl.mnlbc.model.OrderProduct</beans:value> <beans:value>com.oocl.mnlbc.model.User</beans:value> 
+		<beans:value>com.oocl.mnlbc.model.CartProduct</beans:value> </beans:list> 
+		</beans:property> <beans:property name="hibernateProperties"> <beans:props> 
+		<beans:prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect 
+		</beans:prop> <beans:prop key="hibernate.show_sql">true</beans:prop> </beans:props> 
+		</beans:property> </beans:bean> <context:component-scan base-package="com.oocl.mnlbc" 
+		/> <tx:annotation-driven transaction-manager="transactionManager" /> <beans:bean 
+		id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"> 
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" 
+		/> </beans:bean> -->
+
+</beans>

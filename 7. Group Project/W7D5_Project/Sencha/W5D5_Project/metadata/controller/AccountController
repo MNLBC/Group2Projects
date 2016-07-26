@@ -1,0 +1,221 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AccountController",
+        "id": "accController"
+    },
+    "name": "MyController",
+    "designerId": "8bf6c735-5c04-4a79-9598-a2023bd30072",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accUpdateBtn",
+                "designer|targetType": "MyButton15",
+                "fn": "onAccUpdateBtnClick",
+                "implHandler": [
+                    "var id = Ext.getCmp('idField').getValue();",
+                    "var fname = Ext.getCmp('accFirstName').getValue();",
+                    "var lname = Ext.getCmp('accLastName').getValue();",
+                    "var email = Ext.getCmp('accEmail').getValue();",
+                    "var address1 = Ext.getCmp('accAddress1').getValue();",
+                    "var address2 = Ext.getCmp('accAddress2').getValue();",
+                    "var city = Ext.getCmp('accCity').getValue();",
+                    "var sp = Ext.getCmp('accSp').getValue();",
+                    "var country = Ext.getCmp('accCountry').getValue();",
+                    "var pass = Ext.getCmp('accPassword').getValue();",
+                    "var occupation = Ext.getCmp('accOccupation').getValue(),",
+                    "    userLevel = Ext.getCmp('levelField').getValue(),",
+                    "    accountType = Ext.getCmp('accAccountType').getValue();",
+                    "    field = Ext.getCmp('accForm');",
+                    "var user;",
+                    "if(field.isValid()){",
+                    "    user = {",
+                    "                \"userId\":id,",
+                    "                \"userFname\":fname,",
+                    "                \"userLname\":lname,",
+                    "                \"userEmail\":email,",
+                    "                \"userPass\":pass,",
+                    "                \"userOccupation\":occupation,",
+                    "                \"userAddress1\":address1,",
+                    "                \"userAddress2\":address2,",
+                    "                \"userCity\":city,",
+                    "                \"userSp\":sp,",
+                    "                \"userCountry\":country,",
+                    "                \"userType\":accountType,",
+                    "                \"userLevel\":userLevel",
+                    "            };",
+                    "Ext.Ajax.request({",
+                    "    url : \"updateUser\",",
+                    "    method: 'POST',",
+                    "    params : {",
+                    "        user: Ext.encode(user)",
+                    "    },",
+                    "    async: false,",
+                    "    jsonData: Ext.util.JSON.encode(user),",
+                    "    callback : function(options, success, response){",
+                    "        if(response.responseText===''){",
+                    "            Ext.Msg.alert(\"Update User\", \"Error encountered in updating user.\");",
+                    "        }else {",
+                    "            Ext.Msg.alert(\"Update User\", \"User information successfully updated.\");",
+                    "            Ext.getCmp('userField').setValue(user.userFname);",
+                    "            Ext.getCmp('idField').setValue(user.userId);",
+                    "            if(Ext.isEmpty(user.userAddress2)){",
+                    "                Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);",
+                    "            }else{",
+                    "                Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userAddress2 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);",
+                    "            }",
+                    "            Ext.getCmp('emailField').setValue(user.userEmail);",
+                    "            Ext.getCmp('levelField').setValue(user.userLevel);",
+                    "        }",
+                    "    }",
+                    "});",
+                    "}else{",
+                    "  Ext.Msg.alert(\"Update User\", \"Validation error. Please check the field values.\");",
+                    "}",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAccUpdateBtnClick",
+            "designerId": "1325fca2-29db-45f0-811d-2f6ea78c776b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accPremBtn",
+                "designer|targetType": "MyButton16",
+                "fn": "onAccPremBtnClick",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "    url : \"sendAdminMessage\",",
+                    "    async : false,",
+                    "    params : {",
+                    "        username: Ext.getCmp('accEmail').getValue(),",
+                    "        message: 'Request for Premium Account'",
+                    "    },",
+                    "    callback : function(options,success,response){",
+                    "        if(response.responseText == 1){",
+                    "            Ext.Msg.alert(\"Request\", \"You have requested for an account upgrade. Please wait for admin approval\");",
+                    "        } else {",
+                    "            Ext.Msg.alert(\"Request\", \"Error in sending request\");",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAccPremBtnClick",
+            "designerId": "1414ea8d-9056-4168-ac8e-ac7ee9c3ba98"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accCheckStatus",
+                "designer|targetType": "MyButton17",
+                "fn": "onAccCheckStatusClick",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "    url : \"getRequestByUserEmail\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    params : {",
+                    "        email : Ext.getCmp('emailField').getValue()",
+                    "    },",
+                    "    callback : function(options,success,response){",
+                    "        request = Ext.decode(response.responseText);",
+                    "        if(Ext.isEmpty(request.requestStatus)){",
+                    "            Ext.Msg.alert(\"Premium Account Request\", \"You have no pending requests\");",
+                    "        }else{",
+                    "            Ext.Msg.alert(\"Premium Account Request\", \"Request status is: \" + request.requestStatus);",
+                    "        }",
+                    "    }",
+                    "});",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAccCheckStatusClick",
+            "designerId": "9581e2ec-ffe0-4152-adb1-514b36fa9ed9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "setFieldValues",
+                "implHandler": [
+                    "Ext.getCmp('accFirstName').setValue(record.userFname);",
+                    "Ext.getCmp('accLastName').setValue(record.userLname);",
+                    "Ext.getCmp('accAddress1').setValue(record.userAddress1);",
+                    "Ext.getCmp('accAddress2').setValue(record.userAddress2);",
+                    "Ext.getCmp('accCountry').setValue(record.userCountry);",
+                    "Ext.getCmp('accSp').setValue(record.userSp);",
+                    "Ext.getCmp('accCity').setValue(record.userCity);",
+                    "Ext.getCmp('accOccupation').setValue(record.userOccupation);",
+                    "Ext.getCmp('accEmail').setValue(record.userEmail);",
+                    "Ext.getCmp('accPassword').setValue(record.userPass);",
+                    "if(record.userLevel=='1'){",
+                    "    Ext.getCmp('accUserLevel').setValue(\"Normal\");",
+                    "}else{",
+                    "    Ext.getCmp('accUserLevel').setValue(\"Premium\");",
+                    "}",
+                    "Ext.getCmp('accAccountType').setValue(record.userType);"
+                ]
+            },
+            "name": "setFieldValues",
+            "designerId": "a5a1b05d-88ad-4279-811b-7ec06e819731"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#accCountry",
+                "designer|targetType": "MyComboBox11",
+                "fn": "onAccCountryChange",
+                "implHandler": [
+                    "var state = Ext.getStore('SPStore');",
+                    "        var country = Ext.getCmp('accCountry').getValue();",
+                    "        state.filter('CountryName', country);"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onAccCountryChange",
+            "designerId": "6c589086-4054-4219-a736-9f3bb88a97ec"
+        }
+    ]
+}

@@ -1,0 +1,258 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "closeAction": "hide",
+        "designer|userAlias": "CartProductWindow",
+        "designer|userClassName": "CartProductWindow",
+        "height": 250,
+        "id": "cartProductWindow",
+        "itemId": "cartProductWindow",
+        "title": "",
+        "width": 573
+    },
+    "name": "MyWindow",
+    "designerId": "1bd0c09f-5261-4645-9c70-d8c3f1cd0c5a",
+    "viewControllerInstanceId": "949ac0f7-5a6b-4785-be68-e5fb0d211c62",
+    "viewModelInstanceId": "8b6390e3-6d3f-4ee4-ba15-efbee8e08b2b",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox"
+            },
+            "name": "MyContainer7",
+            "designerId": "c088c55f-6fba-4c51-8d74-1bfd0079b5a4",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "name": "MySpacer15",
+                    "designerId": "18c2246b-d2d4-4fcc-a7b8-5c67a9380296"
+                },
+                {
+                    "type": "Ext.Img",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 201,
+                        "id": "cartProductImg",
+                        "itemId": "cartProductImg",
+                        "width": 201
+                    },
+                    "name": "MyImg1",
+                    "designerId": "d2560999-ab4d-4ed9-9d97-60d792aaa627"
+                },
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "width": 25
+                    },
+                    "name": "MySpacer",
+                    "designerId": "146adfa5-af3d-4eef-a71c-32a9ae964135"
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "width": 318
+                    },
+                    "name": "MyContainer",
+                    "designerId": "cadb4ce5-f042-42ec-b824-9356b8e8dfd8",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 36,
+                                "layout|flex": 0
+                            },
+                            "name": "MySpacer1",
+                            "designerId": "d51ad60b-baa3-4dee-9710-4183b84d82d7"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Product",
+                                "id": "cartProductNameField",
+                                "itemId": "cartProductNameField",
+                                "layout|flex": null,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField",
+                            "designerId": "43b20303-d7db-4740-930a-3c27141f741c"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Price",
+                                "id": "cartProductPriceField",
+                                "itemId": "cartProductPriceField",
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField1",
+                            "designerId": "a240d5d7-2caf-419c-bdf6-1d1886a65744"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Quantity",
+                                "id": "cartProductQtyField",
+                                "inputType": "number",
+                                "itemId": "cartProductQtyField",
+                                "width": 318
+                            },
+                            "name": "MyTextField",
+                            "designerId": "6bfa816f-cea0-47d7-87a4-e6067432d7c6"
+                        },
+                        {
+                            "type": "Ext.toolbar.Spacer",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 13,
+                                "layout|flex": 0
+                            },
+                            "name": "MySpacer14",
+                            "designerId": "2c9d6f0f-0b99-44cb-a9b8-d3d9b46b4d92"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "container|pack": "center",
+                                "id": "cartProductButtonContainer",
+                                "itemId": "cartProductButtonContainer",
+                                "layout": "hbox"
+                            },
+                            "name": "MyContainer1",
+                            "designerId": "4692221e-d7d8-4858-ac43-6f0a8b2e2523",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "genericBtn",
+                                        "id": "cartProductUpdateButton",
+                                        "itemId": "cartProductUpdateButton",
+                                        "layout|flex": null,
+                                        "text": "Update"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "6e559a5c-54c0-4a7a-beb3-81e26a67c9a4"
+                                },
+                                {
+                                    "type": "Ext.toolbar.Spacer",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1
+                                    },
+                                    "name": "MySpacer13",
+                                    "designerId": "57854759-586f-4309-b66c-cd18b0105d26"
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "cls": "genericBtn",
+                                        "id": "cartProductRemoveButton",
+                                        "itemId": "cartProductRemoveButton",
+                                        "layout|flex": null,
+                                        "text": "Remove From Cart"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "b394771f-e3b1-4087-b507-009676592146"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "width": 6
+                    },
+                    "name": "MySpacer16",
+                    "designerId": "12f3f792-903f-4fe5-b33a-de6556e5bc84"
+                }
+            ]
+        }
+    ]
+}
