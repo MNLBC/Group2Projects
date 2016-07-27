@@ -18,7 +18,7 @@
             "false"
         ],
         "title": "Product Information",
-        "width": 856
+        "width": 961
     },
     "name": "MyWindow1",
     "designerId": "9f022093-f1ae-4224-9e51-79dab9104e78",
@@ -313,8 +313,9 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "align": "center",
-                                        "dataIndex": "string",
-                                        "text": "User"
+                                        "dataIndex": "email",
+                                        "text": "User",
+                                        "width": 212
                                     },
                                     "name": "MyColumn42",
                                     "designerId": "ed898d5e-e090-4797-8429-1bc9b8db1aaf"
@@ -328,7 +329,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "align": "center",
-                                        "dataIndex": "number",
+                                        "dataIndex": "rating",
                                         "text": "Rating"
                                     },
                                     "name": "MyColumn43",
@@ -343,7 +344,8 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "align": "center",
-                                        "dataIndex": "date",
+                                        "cellWrap": true,
+                                        "dataIndex": "review",
                                         "text": "Review",
                                         "width": 252
                                     },
@@ -392,16 +394,18 @@
                                     "designerId": "60c9b708-cb14-421c-a719-74cc0200a8b5"
                                 },
                                 {
-                                    "type": "Ext.container.Container",
+                                    "type": "Ext.form.Panel",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "height": 133
+                                        "height": 133,
+                                        "id": "prodInfoReviewBody",
+                                        "itemId": "prodInfoReviewBody"
                                     },
-                                    "name": "MyContainer35",
+                                    "name": "MyForm4",
                                     "designerId": "629652bc-f135-4502-a2f4-bcbd1dcff698",
                                     "cn": [
                                         {
@@ -412,8 +416,10 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "allowBlank": false,
                                                 "displayField": "rating",
                                                 "fieldLabel": "Rating",
+                                                "forceSelection": true,
                                                 "id": "prodInfoRating",
                                                 "itemId": "prodInfoRating",
                                                 "store": "RatingStore",
@@ -431,11 +437,12 @@
                                             },
                                             "codeClass": null,
                                             "userConfig": {
+                                                "allowBlank": false,
                                                 "fieldLabel": "Review",
-                                                "height": 82,
+                                                "height": 80,
                                                 "id": "prodInfoReview",
                                                 "itemId": "prodInfoReview",
-                                                "width": 472
+                                                "width": 584
                                             },
                                             "name": "MyTextArea4",
                                             "designerId": "d64fb571-b804-4c9a-a971-1f114f737f66"
@@ -495,6 +502,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "cls": "genericBtn",
+                                                "hidden": true,
                                                 "id": "prodInfoUpdateBtn",
                                                 "itemId": "prodInfoUpdateBtn",
                                                 "text": "UPDATE"
@@ -540,7 +548,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "height": 29,
-                                                "width": 33
+                                                "width": 238
                                             },
                                             "name": "MySpacer57",
                                             "designerId": "accafd80-377a-4aa7-a932-48098e012a1d"
@@ -577,7 +585,7 @@
                     "userConfig": {
                         "height": 10,
                         "layout|flex": 0,
-                        "width": 28
+                        "width": 24
                     },
                     "name": "MySpacer53",
                     "designerId": "301f6225-dbbf-47cc-8d84-da7d07741c9d"

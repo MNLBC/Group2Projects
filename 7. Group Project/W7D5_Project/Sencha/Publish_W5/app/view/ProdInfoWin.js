@@ -26,6 +26,7 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
         'Ext.grid.Panel',
         'Ext.grid.column.Column',
         'Ext.grid.View',
+        'Ext.form.Panel',
         'Ext.form.field.ComboBox',
         'Ext.button.Button'
     ],
@@ -36,7 +37,7 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
     height: 501,
     hidden: false,
     resizable: false,
-    width: 856,
+    width: 961,
     closeAction: 'hide',
     title: 'Product Information',
     modal: true,
@@ -180,21 +181,23 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                             columns: [
                                 {
                                     xtype: 'gridcolumn',
+                                    width: 212,
                                     align: 'center',
-                                    dataIndex: 'string',
+                                    dataIndex: 'email',
                                     text: 'User'
                                 },
                                 {
                                     xtype: 'gridcolumn',
                                     align: 'center',
-                                    dataIndex: 'number',
+                                    dataIndex: 'rating',
                                     text: 'Rating'
                                 },
                                 {
                                     xtype: 'gridcolumn',
                                     width: 252,
                                     align: 'center',
-                                    dataIndex: 'date',
+                                    cellWrap: true,
+                                    dataIndex: 'review',
                                     text: 'Review'
                                 }
                             ]
@@ -211,8 +214,10 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                                     value: 'Your Review:'
                                 },
                                 {
-                                    xtype: 'container',
+                                    xtype: 'form',
                                     height: 133,
+                                    id: 'prodInfoReviewBody',
+                                    itemId: 'prodInfoReviewBody',
                                     items: [
                                         {
                                             xtype: 'combobox',
@@ -220,17 +225,20 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                                             itemId: 'prodInfoRating',
                                             width: 332,
                                             fieldLabel: 'Rating',
+                                            allowBlank: false,
                                             displayField: 'rating',
+                                            forceSelection: true,
                                             store: 'RatingStore',
                                             valueField: 'value'
                                         },
                                         {
                                             xtype: 'textareafield',
-                                            height: 82,
+                                            height: 80,
                                             id: 'prodInfoReview',
                                             itemId: 'prodInfoReview',
-                                            width: 472,
-                                            fieldLabel: 'Review'
+                                            width: 584,
+                                            fieldLabel: 'Review',
+                                            allowBlank: false
                                         }
                                     ]
                                 },
@@ -256,6 +264,7 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                                         {
                                             xtype: 'button',
                                             cls: 'genericBtn',
+                                            hidden: true,
                                             id: 'prodInfoUpdateBtn',
                                             itemId: 'prodInfoUpdateBtn',
                                             text: 'UPDATE'
@@ -274,7 +283,7 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                                         {
                                             xtype: 'tbspacer',
                                             height: 29,
-                                            width: 33
+                                            width: 238
                                         },
                                         {
                                             xtype: 'button',
@@ -293,7 +302,7 @@ Ext.define('W5D5_Project.view.ProdInfoWin', {
                     xtype: 'tbspacer',
                     flex: 0,
                     height: 10,
-                    width: 28
+                    width: 24
                 }
             ]
         }

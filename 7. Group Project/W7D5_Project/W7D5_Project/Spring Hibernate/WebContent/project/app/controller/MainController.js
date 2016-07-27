@@ -244,7 +244,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     countField.setValue(parseInt(countField.getValue())-1);
                     Ext.Ajax.request({
                         url : "logout",
-                        method : 'GET',
+                        method : 'POST',
                         async : false,
                         callback : function(options, success, response) {
                             if (success!==true) {

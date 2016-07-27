@@ -2012,7 +2012,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 },
                                                                 {
                                                                     xtype: 'button',
-                                                                    formBind: true,
+                                                                    formBind: false,
                                                                     cls: 'genericBtn',
                                                                     height: 26,
                                                                     id: 'loginBtn',
@@ -2199,7 +2199,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                 },
                                                                                 {
                                                                                     xtype: 'button',
-                                                                                    formBind: true,
+                                                                                    formBind: false,
                                                                                     cls: 'genericBtn',
                                                                                     id: 'registerBtn',
                                                                                     text: 'REGISTER'

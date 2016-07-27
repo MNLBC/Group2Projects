@@ -22,22 +22,22 @@ Ext.define('W5D5_Project.model.ProdReviewModel', {
 
     fields: [
         {
-            name: 'prodReviewId'
+            name: 'reviewId'
         },
         {
-            name: 'prodId'
+            name: 'productId'
         },
         {
-            name: 'userEmail'
+            name: 'email'
         },
         {
-            name: 'prodReview'
+            name: 'review'
         },
         {
-            name: 'prodRating'
+            name: 'rating'
         },
         {
-            name: 'prodReviewDate'
+            name: 'date'
         }
     ]
 });

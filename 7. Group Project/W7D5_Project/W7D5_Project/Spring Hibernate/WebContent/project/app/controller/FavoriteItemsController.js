@@ -29,7 +29,6 @@ Ext.define('W5D5_Project.controller.FavoriteItemsController', {
     onFaveProdsGridRowDblClick: function(tableview, record, tr, rowIndex, e, eOpts) {
         var controller = W5D5_Project.app.getController('ProdInfoController');
         controller.showProdInfoWin(record.data);
-        controller.hideProdInfoWin();
     },
 
     onFaveProdsSearchSelect: function(combo, records, eOpts) {

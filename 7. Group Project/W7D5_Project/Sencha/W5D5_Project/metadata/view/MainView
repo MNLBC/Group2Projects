@@ -4271,7 +4271,7 @@
                                                                     "userConfig": {
                                                                         "cls": "genericBtn",
                                                                         "designer|displayName": "LoginBtn",
-                                                                        "formBind": true,
+                                                                        "formBind": false,
                                                                         "height": 26,
                                                                         "id": "loginBtn",
                                                                         "layout|flex": null,
@@ -4675,7 +4675,7 @@
                                                                                     "userConfig": {
                                                                                         "cls": "genericBtn",
                                                                                         "designer|displayName": "RegisterBtn",
-                                                                                        "formBind": true,
+                                                                                        "formBind": false,
                                                                                         "id": "registerBtn",
                                                                                         "text": "REGISTER"
                                                                                     },

@@ -19,6 +19,15 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
     control: {
         "#prodInfoCartBtn": {
             click: 'onProdInfoCartBtnClick'
+        },
+        "#prodInfoPostBtn": {
+            click: 'onProdInfoPostBtnClick'
+        },
+        "#prodInfoUpdateBtn": {
+            click: 'onProdInfoUpdateBtnClick'
+        },
+        "#prodInfoRemoveBtn": {
+            click: 'onProdInfoRemoveBtnClick'
         }
     },
 
@@ -70,6 +79,76 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
         controller.hideProdInfoWin();
     },
 
+    onProdInfoPostBtnClick: function() {
+        var review = {
+            reviewId : '',
+            productId : Ext.getCmp('prodInfoId').getValue(),
+            email : Ext.getCmp('emailField').getValue(),
+            review : Ext.getCmp('prodInfoReview').getValue(),
+            rating : Ext.getCmp('prodInfoRating').getValue(),
+            date : new Date()
+        };
+
+        if(!Ext.getCmp('prodInfoReviewBody').isValid()){
+            Ext.Msg.alert('Product Review', 'Please fill out rating and review.');
+            return;
+        }
+
+        Ext.Ajax.request({
+            url : 'addProductReview',
+            method : 'POST',
+            params : {
+                review : Ext.encode(review)
+            },
+            jsonData : Ext.util.JSON.encode(review),
+            async : false,
+            callback : function(options, success, response){
+                if(Ext.isEmpty(response.responseText) || response.responseText == 'false'){
+                    Ext.Msg.alert('Product Review', 'Error in posting product review.');
+                }else{
+                    Ext.Msg.alert('Product Review', 'Successfully posted product review.');
+                    var controller = W5D5_Project.app.getController('ProdInfoController');
+                    controller.getProductReviews();
+                }
+            }
+        });
+    },
+
+    onProdInfoUpdateBtnClick: function() {
+
+    },
+
+    onProdInfoRemoveBtnClick: function() {
+
+        var prodReviewStore = Ext.getStore('ProdReviewStore'),
+            reviewId = 0,
+            email = Ext.getCmp('emailField');
+        Ext.each(prodReviewStore.data.items, function(rec){
+           if(rec.data.email == email.getValue()){
+               reviewId = rec.data.reviewId;
+           }
+        });
+
+        Ext.Ajax.request({
+            url : 'removeProductReview',
+            method : 'POST',
+            params : {
+                id : reviewId
+            },
+            async : false,
+            callback : function(options, success, response){
+                if(Ext.isEmpty(response.responseText) || response.responseText == 'false'){
+                    Ext.Msg.alert('Product Review', 'Error in removing product review.');
+                }else{
+                    Ext.Msg.alert('Product Review', 'Successfully removed product review.');
+                    var controller = W5D5_Project.app.getController('ProdInfoController');
+                    controller.getProductReviews();
+                }
+            }
+        });
+
+    },
+
     showProdInfoWin: function(record) {
         this.recordData = record;
         if(Ext.isEmpty(this.prodInfoWin)){
@@ -85,7 +164,52 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
         }else{
             Ext.getCmp('prodInfoPrice').setValue(record.prodPrice);
         }
-        Ext.getCmp('prodInfoAveRating').setValue(5);
+
+
+        Ext.Ajax.request({
+            url : 'getProductReviewByProduct',
+            method : 'POST',
+            params : {
+                productId : record.prodId
+            },
+            async : false,
+            callback : function(options, success, response){
+                if(Ext.isEmpty(response.responseText)){
+                    Ext.Msg.alert('Product Review', 'Error in retrieving product review.');
+                }else{
+                    var prodReviewStore = Ext.getStore('ProdReviewStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText),
+                        review = '',
+                        email = Ext.getCmp('emailField'),
+                        average = 0;
+                    prodReviewStore.loadData(jsonResponse);
+                    Ext.each(prodReviewStore.data.items, function(rec){
+                       if(rec.data.email == email.getValue()){
+                           review = rec;
+                       }
+                       average += parseInt(rec.data.rating);
+                    });
+                    if(average!='0'){
+                       average = average / prodReviewStore.data.items.length;
+                       Ext.getCmp('prodInfoAveRating').setValue(average);
+                    }else{
+                       Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
+                    }
+                    if(!Ext.isEmpty(review)){
+                       Ext.getCmp('prodInfoRating').setValue(review.data.rating);
+                       Ext.getCmp('prodInfoReview').setValue(review.data.review);
+                       Ext.getCmp('prodInfoPostBtn').disable();
+                       Ext.getCmp('prodInfoRemoveBtn').enable();
+                    }else{
+                       Ext.getCmp('prodInfoRating').setValue('');
+                       Ext.getCmp('prodInfoReview').setValue('');
+                       Ext.getCmp('prodInfoPostBtn').enable();
+                       Ext.getCmp('prodInfoRemoveBtn').disable();
+                    }
+                }
+            }
+        });
+
         this.prodInfoWin.show();
     },
 
@@ -93,6 +217,54 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
         if(!Ext.isEmpty(this.prodInfoWin)){
             this.prodInfoWin.hide();
         }
+    },
+
+    getProductReviews: function() {
+        record = this.recordData;
+
+        Ext.Ajax.request({
+            url : 'getProductReviewByProduct',
+            method : 'POST',
+            params : {
+                productId : record.prodId
+            },
+            async : false,
+            callback : function(options, success, response){
+                if(Ext.isEmpty(response.responseText)){
+                    Ext.Msg.alert('Product Review', 'Error in retrieving product review.');
+                }else{
+                    var prodReviewStore = Ext.getStore('ProdReviewStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText),
+                        review = '',
+                        email = Ext.getCmp('emailField'),
+                        average = 0;
+                    prodReviewStore.loadData(jsonResponse);
+                    Ext.each(prodReviewStore.data.items, function(rec){
+                       if(rec.data.email == email.getValue()){
+                           review = rec;
+                       }
+                       average += parseInt(rec.data.rating);
+                    });
+                    if(average!='0'){
+                       average = average / prodReviewStore.data.items.length;
+                       Ext.getCmp('prodInfoAveRating').setValue(average);
+                    }else{
+                       Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
+                    }
+                    if(!Ext.isEmpty(review)){
+                       Ext.getCmp('prodInfoRating').setValue(review.data.rating);
+                       Ext.getCmp('prodInfoReview').setValue(review.data.review);
+                       Ext.getCmp('prodInfoPostBtn').disable();
+                       Ext.getCmp('prodInfoRemoveBtn').enable();
+                    }else{
+                       Ext.getCmp('prodInfoRating').setValue('');
+                       Ext.getCmp('prodInfoReview').setValue('');
+                       Ext.getCmp('prodInfoPostBtn').enable();
+                       Ext.getCmp('prodInfoRemoveBtn').disable();
+                    }
+                }
+            }
+        });
     }
 
 });
