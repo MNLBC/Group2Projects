@@ -62,7 +62,7 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
                 }
             }
         });
-        var user = userStore.items[0].data;
+        var user = userStore.data.items[0].data;
         if(this.userInfoWindow!==null){
             var userLevel;
             Ext.getCmp('userInfoId').setValue(user.userId);
@@ -77,13 +77,14 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
             }
             Ext.getCmp('userInfoLevel').setValue(userLevel);
             Ext.getCmp('userInfoImg').setSrc('resources/img/logo.png');
+            this.userInfoWindow.show();
         }
 
     },
 
     onAdminOnlineUsersClick: function(button, e, eOpts) {
         Ext.Ajax.request({
-            url : "getOnlineUsers",
+            url : "getAllOnline",
             method : "GET",
             async : false,
             callback : function(options,success,response){
@@ -93,7 +94,7 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
                 } else {
                     var onlineUsersStore = Ext.getStore('OnlineUsersStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
-                    userStore.loadData(jsonResponse);
+                    onlineUsersStore.loadData(jsonResponse);
                 }
             }
         });
