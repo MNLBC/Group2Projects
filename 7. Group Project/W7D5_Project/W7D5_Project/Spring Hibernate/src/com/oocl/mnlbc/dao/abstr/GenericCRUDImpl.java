@@ -30,21 +30,21 @@ public abstract class GenericCRUDImpl<T> implements GenericCRUD<T> {
 	}
 
 	@Override
-	public int add(T t) {
+	public boolean add(T t) {
 		this.entityManager.persist(t);
-		return 1;
+		return true;
 	}
 
 	@Override
-	public int update(T t) {
+	public boolean update(T t) {
 		this.entityManager.merge(t);
-		return 1;
+		return true;
 	}
 
 	@Override
-	public int remove(long id) {
+	public boolean remove(long id) {
 		this.entityManager.remove(this.entityManager.find(entityClass, id));
-		return 1;
+		return true;
 	}
 
 }

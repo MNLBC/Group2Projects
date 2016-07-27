@@ -105,7 +105,7 @@
 		class="com.oocl.mnlbc.svc.impl.FavoriteItemsSVCImpl">
 		<beans:property name="favoriteDAO" ref="favoriteDAO"></beans:property>
 	</beans:bean>
-	
+
 	<beans:bean id="requestDAO" class="com.oocl.mnlbc.dao.impl.RequestDAOImpl">
 	</beans:bean>
 	<beans:bean id="requestService" class="com.oocl.mnlbc.svc.impl.RequestSVCImpl">
@@ -116,6 +116,13 @@
 	</beans:bean>
 	<beans:bean id="cartProductService" class="com.oocl.mnlbc.svc.impl.CartProductSVCImpl">
 		<beans:property name="cartProductDAO" ref="cartProductDAO"></beans:property>
+	</beans:bean>
+
+	<beans:bean id="productReviewDAO" class="com.oocl.mnlbc.dao.impl.ProductReviewDAOImpl">
+	</beans:bean>
+	<beans:bean id="productReviewService"
+	class="com.oocl.mnlbc.svc.impl.ProductReviewSVCImpl">
+		<beans:property name="productReviewDAO" ref="productReviewDAO"></beans:property>
 	</beans:bean>
 
 

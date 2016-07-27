@@ -43,20 +43,20 @@ public class ProductSVCImpl implements ProductSVC {
 	}
 
 	@Override
-	public int addProduct(Product p) {
+	public boolean addProduct(Product product) {
 
-		return this.prodDAO.add(p);
+		return this.prodDAO.add(product);
 	}
 
 	@Override
-	public int updateProduct(Product p) {
+	public boolean updateProduct(Product product) {
 
-		return this.prodDAO.update(p);
+		return this.prodDAO.update(product);
 	}
 
 	@Override
 	@Transactional
-	public int removeProduct(long id) {
+	public boolean removeProduct(long id) {
 
 		return this.prodDAO.remove(id);
 	}

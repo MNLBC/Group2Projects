@@ -5,14 +5,14 @@ import java.util.List;
 import com.oocl.mnlbc.model.Product;
 
 public interface ProductSVC {
-	public int addProduct(Product p);
+	public boolean addProduct(Product product);
 
-	public int updateProduct(Product p);
+	public boolean updateProduct(Product product);
 
 	public List<Product> getProducts();
 
 	public List<Product> getProductsByCategory(String category);
 
-	public int removeProduct(long id);
+	public boolean removeProduct(long id);
 
 }
