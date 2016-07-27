@@ -14,4 +14,11 @@ public interface OrdersDAO {
 	public int getOrderByUserId(long userId);
 
 	public boolean isPremium(long userId);
+
+	public List<Order> getOrders();
+	
+	public int updateOrder(Order order);
+
+	public int deleteOrderById(long orderId);
+
 }
