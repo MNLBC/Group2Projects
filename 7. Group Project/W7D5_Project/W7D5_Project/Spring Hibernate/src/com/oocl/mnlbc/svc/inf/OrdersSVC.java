@@ -13,4 +13,12 @@ public interface OrdersSVC {
 	public List<Order> getOrdersByUser(long userid);
 
 	public int getOrderByUserId(long userid);
+
+	public int createOrders(Order order);
+
+	public List<Order> getOrders();
+
+	public int deleteOrderById(long orderId);
+
+	public int updateOrder(Order order);
 }

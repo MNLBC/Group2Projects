@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.Order;
+import com.oocl.mnlbc.model.Product;
 import com.oocl.mnlbc.svc.inf.OrdersSVC;
 
 /**
@@ -46,4 +48,48 @@ public class OrderController {
       }
       return null;
    }
-}
+   
+   @RequestMapping(value = "/getOrders", method = RequestMethod.GET)
+   public List<Order> getOrders(){
+	   return this.orderSVC.getOrders();
+   }
+   
+   @RequestMapping(value="/deleteOrderById", method= RequestMethod.POST)
+   public boolean deleteOrderById(@RequestParam long orderId){
+	   int result = this.orderSVC.deleteOrderById(orderId);
+	   if (orderId >= 0){
+		   if(result != 1 || result == 0)
+			   return false;
+		   	return true;
+	   }
+	   return false;
+   }
+   
+   @RequestMapping(value = "/createOrder", method = RequestMethod.POST)
+   public boolean createOrders(@RequestBody Order order){
+	   int result = this.orderSVC.createOrders(order);
+	      if (order != null) {
+	         if (result != 1 || result == 0)
+	            return false;
+	         return true;
+	      }
+	      return false;
+	   }
+
+   @RequestMapping(value="/updateOrder", method = RequestMethod.POST)
+   public boolean updateOrder(@RequestBody Order order){
+   int result = this.orderSVC.updateOrder(order);
+   if (order != null) {
+      if (result != 1 || result == 0)
+         return false;
+      return true;
+   }
+   return false;
+   }
+   
+   
+ }
+   
+   
+   
+

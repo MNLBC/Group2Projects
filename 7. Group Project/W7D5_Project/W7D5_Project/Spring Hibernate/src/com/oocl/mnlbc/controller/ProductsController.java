@@ -25,87 +25,90 @@ import com.oocl.mnlbc.svc.inf.ProductSVC;
 @RestController
 public class ProductsController {
 
-   private ProductSVC prodSVC;
+	private ProductSVC prodSVC;
 
-   @Autowired(required = true)
-   @Qualifier(value = "productService")
-   public void setProdService(ProductSVC prodSVC) {
-      this.prodSVC = prodSVC;
-   }
+	@Autowired(required = true)
+	@Qualifier(value = "productService")
+	public void setProdService(ProductSVC prodSVC) {
+		this.prodSVC = prodSVC;
+	}
 
-   /**
-    * getAllProducts web service
-    * 
-    * @return List<Product>
-    */
-   @RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
-   public @ResponseBody List<Product> getAllProducts() {
-      return this.prodSVC.getProducts();
-   }
+	/**
+	 * getAllProducts web service
+	 * 
+	 * @return List<Product>
+	 */
+	@RequestMapping(value = "/getAllProducts", method = RequestMethod.GET)
+	public @ResponseBody List<Product> getAllProducts() {
+		return this.prodSVC.getProducts();
+	}
 
-   /**
-    * getProductsByCategory web service
-    * 
-    * @param category
-    * @return List<Product>
-    */
-   @RequestMapping(value = "/getProductsByCategory", method = RequestMethod.POST)
-   public List<Product> getProductsByCategory(@RequestParam String category) {
-      if (!category.isEmpty()) {
-         return this.prodSVC.getProductsByCategory(category);
-      }
-      return null;
-   }
+	/**
+	 * getProductsByCategory web service
+	 * 
+	 * @param category
+	 * @return List<Product>
+	 */
+	@RequestMapping(value = "/getProductsByCategory", method = RequestMethod.POST)
+	public List<Product> getProductsByCategory(@RequestParam String category) {
+		if (!category.isEmpty()) {
+			return this.prodSVC.getProductsByCategory(category);
+		}
+		return null;
+	}
 
-   /**
-    * createProd web service
-    * 
-    * @param product
-    * @return boolean
-    */
-   @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
-   public boolean createProd(@RequestBody Product product) {
-      int result = this.prodSVC.addProduct(product);
-      if (product != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+	/**
+	 * createProd web service
+	 * 
+	 * @param product
+	 * @return boolean
+	 */
+	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+	public boolean createProd(@RequestBody Product product) {
+		boolean result = this.prodSVC.addProduct(product);
+		if (product != null) {
+			if (result != true || result == false) {
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 
-   /**
-    * updateProd web service
-    * 
-    * @param product
-    * @return boolean
-    */
-   @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
-   public boolean updateProd(@RequestBody Product product) {
-      int result = this.prodSVC.updateProduct(product);
-      if (product != null) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+	/**
+	 * updateProd web service
+	 * 
+	 * @param product
+	 * @return boolean
+	 */
+	@RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
+	public boolean updateProd(@RequestBody Product product) {
+		boolean result = this.prodSVC.updateProduct(product);
+		if (product != null) {
+			if (result != true || result == false) {
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 
-   /**
-    * removeProduct web service
-    * 
-    * @param id
-    * @return boolean
-    */
-   @RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
-   public boolean removeProduct(@RequestParam long id) {
-      int result = this.prodSVC.removeProduct(id);
-      if (id >= 0) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
-   }
+	/**
+	 * removeProduct web service
+	 * 
+	 * @param id
+	 * @return boolean
+	 */
+	@RequestMapping(value = "/removeProduct", method = RequestMethod.POST)
+	public boolean removeProduct(@RequestParam long id) {
+		boolean result = this.prodSVC.removeProduct(id);
+		if (id >= 0) {
+			if (result != true || result == false) {
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
 
 }

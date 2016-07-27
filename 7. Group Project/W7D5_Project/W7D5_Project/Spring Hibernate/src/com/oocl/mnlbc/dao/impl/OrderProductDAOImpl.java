@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,14 @@ import com.oocl.mnlbc.model.Product;
  * @desc Migration from Hibernate to JPA DAO Implementation for ORDERS TABLE
  * @since 07/21/2016
  */
+
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @since 07/27/2016
+ * @desc JPA Query Modification to prevent SQL Injection
+ *
+ */
 @Repository
 @Transactional
 public class OrderProductDAOImpl implements OrderProductDAO {
@@ -33,14 +42,24 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	@Override
 	public int addOrderProducts(List<CartProduct> cartProductList, int orderId, long userId) {
 		for (CartProduct cart : cartProductList) {
-			String sql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES('"
-					+ orderId +"','"+ cart.getProdId() +"','" + cart.getProdQty() +"')";
-			manager.createNativeQuery(sql).executeUpdate();
-			manager.createNativeQuery("UPDATE PRODUCT SET PRODSTOCK = PRODSTOCK - " + cart.getProdQty() + " WHERE PRODID = "
-					+ "'" + cart.getProdId() + "'").executeUpdate();
+			String insertSql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES(:orderId, :prodID , :prodQty)";
+			Query query = manager.createNativeQuery(insertSql);
+			query.setParameter("orderId", orderId);
+			query.setParameter("prodId", cart.getProdId());
+			query.setParameter("prodQty", cart.getProdQty());
+			query.executeUpdate();
+
+			String updateSql = "UPDATE PRODUCT SET PRODSTOCK = PRODSTOCK - :prodQty WHERE PRODID = :prodId";
+			query = manager.createNativeQuery(updateSql);
+			query.setParameter("prodQty", cart.getProdQty());
+			query.setParameter("prodId", cart.getProdId());
+			query.executeUpdate();
 			logger.info("OrderProducts saved successfully, orderproduct details=" + cartProductList);
 		}
-		manager.createNativeQuery("DELETE FROM CARTPRODUCT WHERE USERID = '" + userId +"'").executeUpdate();
+		String deleteSql = "DELETE FROM CARTPRODUCT WHERE USERID = :userId";
+		Query query = manager.createNativeQuery(deleteSql);
+		query.setParameter("userId", userId);
+		query.executeUpdate();
 		return 1;
 	}
 
@@ -54,9 +73,10 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 
 	@Override
 	public List<Product> getRelatedProducts(Order order) {
-		String sql = "SELECT A.* FROM PRODUCT A, ORDERPRODUCT B " + "WHERE A.PRODID = B.PRODID " + "AND B.ORDERID = "
-				+ order.getOrderId();
-		List<Product> productList = manager.createNativeQuery(sql).getResultList();
+		String sql = "SELECT A.* FROM PRODUCT A, ORDERPRODUCT B WHERE A.PRODID = B.PRODID AND B.ORDERID = :orderId";
+		Query query = manager.createNativeQuery(sql);
+		query.setParameter("orderId", order.getOrderId());
+		List<Product> productList = query.getResultList();
 		logger.info("Order id :" + order.getOrderId());
 		for (Product product : productList) {
 			logger.info("Product List :" + product);
@@ -66,10 +86,12 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 
 	@Override
 	public List<CartProduct> getCartProducts(String orderId) {
-		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY, A.PRODPRICE*A.PRODSALE*SUM(B.ORDERPRODQTY) AS SUBTOTAL FROM PRODUCT A, ORDERPRODUCT B "
-				+ "WHERE A.PRODID = B.PRODID AND B.ORDERID = " + orderId
+		String sql = "SELECT A.*, SUM(B.ORDERPRODQTY) AS QTY, A.PRODPRICE*A.PRODSALE*SUM(B.ORDERPRODQTY) AS SUBTOTAL "
+				+ "FROM PRODUCT A, ORDERPRODUCT B " + "WHERE A.PRODID = B.PRODID AND B.ORDERID = :orderId "
 				+ "GROUP BY A.PRODID,A.PRODNAME,A.PRODCAT,A.PRODDESC,A.PRODPRICE,A.PRODSALE,A.PRODSTOCK,A.PRODIMG";
-		List<CartProduct> cartProductList = manager.createNativeQuery(sql).getResultList();
+		Query query = manager.createNativeQuery(sql);
+		query.setParameter("orderId", orderId);
+		List<CartProduct> cartProductList = query.getResultList();
 		logger.info("Order id :" + orderId);
 		for (CartProduct cp : cartProductList) {
 			logger.info("Cart Product List :" + cp);
@@ -90,8 +112,10 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 
 	@Override
 	public List<CartProduct> getCartProductByUserId(long userId) {
-		String sql = "SELECT * FROM CARTPRODUCT WHERE USERID = '" + userId + "'";
-		List<CartProduct> cartProductList = manager.createNativeQuery(sql,CartProduct.class).getResultList();
+		String sql = "SELECT * FROM CARTPRODUCT WHERE USERID = :userId";
+		Query query = manager.createNativeQuery(sql, CartProduct.class);
+		query.setParameter("userId", userId);
+		List<CartProduct> cartProductList = query.getResultList();
 		logger.info("User id :" + userId);
 		for (CartProduct cp : cartProductList) {
 			logger.info("Cart Product List :" + cp);
