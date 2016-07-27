@@ -48,25 +48,25 @@ Ext.define('W5D5_Project.controller.AdminController', {
 
     onAdminUserMgmtBtnClick: function() {
         var panel = Ext.getCmp('adminTabPanel');
-        var tab = Ext.getCmp('adminUserMgmtBtn');
+        var tab = Ext.getCmp('userMgmtTab');
         panel.setActiveTab(tab);
     },
 
     onAdminProdMgmtBtnClick: function() {
         var panel = Ext.getCmp('adminTabPanel');
-        var tab = Ext.getCmp('adminProdMgmtBtn');
+        var tab = Ext.getCmp('prodMgmtTab');
         panel.setActiveTab(tab);
     },
 
     onAdminOrderMgmtBtnClick: function() {
         var panel = Ext.getCmp('adminTabPanel');
-        var tab = Ext.getCmp('adminOrderMgmtBtn');
+        var tab = Ext.getCmp('orderMgmtTab');
         panel.setActiveTab(tab);
     },
 
     onAdminOnlineUsersBtnClick: function() {
         var panel = Ext.getCmp('adminTabPanel');
-        var tab = Ext.getCmp('adminOnlineUsersBtn');
+        var tab = Ext.getCmp('onlineUsersTab');
         panel.setActiveTab(tab);
     },
 
