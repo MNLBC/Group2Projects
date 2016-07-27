@@ -135,5 +135,19 @@ public class UserController {
          return false;
       }
    }
+   
+   @RequestMapping(value = "/deleteUserByEmail", method = RequestMethod.POST)
+	   public boolean deleteUserByEmail(@RequestParam("email") String useremail){
+		   int result = this.userSVC.deleteUserByEmail(useremail);
+		   
+		  if (!useremail.isEmpty()){
+			  if (result != 1 || result == 0) 
+				  return false;
+			  	return true;
+		  }
+		  return false;
+	   }
+   }
 
-}
+
+

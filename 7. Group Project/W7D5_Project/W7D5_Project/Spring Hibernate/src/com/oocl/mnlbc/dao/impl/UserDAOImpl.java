@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.oocl.mnlbc.dao.inf.UserDAO;
+import com.oocl.mnlbc.model.CartProduct;
 import com.oocl.mnlbc.model.User;
 import com.oocl.mnlbc.util.PasswordHash;
 
@@ -94,7 +95,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return blackList;
 	}
-
+	
 	@Override
 	public int updateUser(User user) {
 
@@ -122,6 +123,25 @@ public class UserDAOImpl implements UserDAO {
 		User deletedUser = manager.find(User.class, id);
 		manager.remove(deletedUser);
 		logger.info("User deleted successfully!=" + deletedUser);
+		return 1;
+
+	}
+	
+
+	@Override
+	public int deleteUserByEmail(String useremail) {
+		
+//		User deletedUserByEmail = manager.find(User.class, useremail);
+//		manager.remove(deletedUserByEmail);
+//		logger.info("User deleted successfully!=" + deletedUserByEmail);
+//		return 1;
+		
+		
+		String sql = "SELECT usr FROM User usr WHERE usr.userEmail ='" + useremail+"'";
+		Query query = manager.createQuery(sql);
+		List<User> deletedUserByEmail = query.getResultList();
+		manager.remove(deletedUserByEmail.get(0));
+		logger.info("User deleted successfully = " + deletedUserByEmail.get(0));
 		return 1;
 
 	}
