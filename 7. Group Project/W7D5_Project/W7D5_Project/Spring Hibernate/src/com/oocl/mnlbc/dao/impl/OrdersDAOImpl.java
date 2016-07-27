@@ -23,6 +23,14 @@ import com.oocl.mnlbc.model.User;
  * @desc Migration from Hibernate to JPA DAO Implementation for ORDERS TABLE
  * @since 07/21/2016
  */
+
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @since 07/27/2016
+ * @desc JPA Query Modification to prevent SQL Injection
+ *
+ */
 @Repository
 @Transactional
 public class OrdersDAOImpl implements OrdersDAO {
@@ -51,8 +59,10 @@ public class OrdersDAOImpl implements OrdersDAO {
 	public List<Order> getOrdersByUser(long userId) {
 
 		List<Order> orderList = new ArrayList<Order>();
-		String query = "Select orders From Order orders where orders.userId=" + userId;
-		orderList = manager.createQuery(query, Order.class).getResultList();
+		String sql = "Select orders From Order orders where orders.userId=:userId";
+		Query query = manager.createQuery(sql, Order.class);
+		query.setParameter("userId", userId);
+		orderList = query.getResultList();
 		for (Order order : orderList) {
 			logger.info("Order list" + order);
 		}
@@ -63,30 +73,33 @@ public class OrdersDAOImpl implements OrdersDAO {
 	@Override
 	public int getOrderByUserId(long userId) {
 		List<Order> orders = new ArrayList<Order>();
-		Query query = manager.createNativeQuery("SELECT MAX(ORDERID) AS ORDERID, USERID FROM ORDERS WHERE USERID ='" + userId + "' "
-				+ "GROUP BY USERID");
+		String sql = "SELECT MAX(ORDERID) AS ORDERID, USERID FROM ORDERS WHERE USERID = :userId GROUP BY USERID";
+		Query query = manager.createNativeQuery(sql);
+		query.setParameter("userId", userId);
 		List<Object[]> o = query.getResultList();
 		int orderId = 0;
-		for(int i = 0; i < o.size();i++){
+		for (int i = 0; i < o.size(); i++) {
 			BigDecimal d = (BigDecimal) o.get(i)[0];
 			orderId = d.intValue();
 		}
 		return orderId;
 	}
-	
+
 	@Override
-	public boolean isPremium(long userId){
+	public boolean isPremium(long userId) {
 		boolean result = false;
-		String sql = "SELECT user FROM User user WHERE user.userId='" + userId + "' AND user.userLevel = 2";
-		   List<User> user = manager.createQuery(sql).getResultList();
-			if (!user.isEmpty()) {
-		      try {
-		    	  result = true;
-	         } catch (Exception e) {
-	        	 result = false;
-	            logger.error(e.getMessage());
-	         }
+		String sql = "SELECT user FROM User user WHERE user.userId= :userId AND user.userLevel = 2";
+		Query query = manager.createQuery(sql);
+		query.setParameter("userId", userId);
+		List<User> user = query.getResultList();
+		if (!user.isEmpty()) {
+			try {
+				result = true;
+			} catch (Exception e) {
+				result = false;
+				logger.error(e.getMessage());
 			}
+		}
 		return result;
 	}
 

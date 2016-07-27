@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,15 @@ import com.oocl.mnlbc.util.PasswordHash;
  * @author Danna Soquiat
  * @since 2016-07-16
  * 
- * DAO Implementation for USER TABLE
+ *        DAO Implementation for USER TABLE
+ *
+ */
+
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @since 07/27/2016
+ * @desc JPA Query Modification to prevent SQL Injection
  *
  */
 
@@ -54,9 +63,11 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User getUser(String email, String password) {
-		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM User user WHERE user.userEmail='" + email
-				+ "' AND user.userPass='" + password + "'";
-		User user = manager.createQuery(sql, User.class).getSingleResult();
+		String sql = "SELECT user.USEREMAIL, user.USERPASS FROM User user WHERE user.userEmail=:email AND user.userPass=:password";
+		Query query = manager.createQuery(sql, User.class);
+		query.setParameter("email", email);
+		query.setParameter("password", password);
+		User user = (User) query.getSingleResult();
 
 		logger.info("User email and password" + email + password);
 		return user;
@@ -64,8 +75,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public List<User> getUserByEmail(String email) {
-		String sql = "SELECT useremail FROM User useremail WHERE useremail.userEmail='" + email + "'";
-		List<User> userEmailList = manager.createQuery(sql).getResultList();
+		String sql = "SELECT useremail FROM User useremail WHERE useremail.userEmail=:email";
+		Query query = manager.createQuery(sql);
+		query.setParameter("email", email);
+		List<User> userEmailList = query.getResultList();
 		for (User userEmail : userEmailList) {
 			logger.info("User Email List:" + userEmail);
 		}
@@ -115,17 +128,18 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public boolean validateUser(String email, String password) {
-//		String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "' AND user.userPass='" + password + "'";
-//		List<User> user = manager.createQuery(sql).getResultList();
-	   String sql = "SELECT user FROM User user WHERE user.userEmail='" + email + "'";
-	   List<User> user = manager.createQuery(sql).getResultList();
+
+		String sql = "SELECT user FROM User user WHERE user.userEmail=:email";
+		Query query = manager.createQuery(sql);
+		query.setParameter("email", email);
+		List<User> user = query.getResultList();
 		if (!user.isEmpty()) {
-	      try {
-            if(PasswordHash.validatePassword(password, user.get(0).getUserPass()))
-               return true;
-         } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
-            logger.error(e.getMessage());
-         }
+			try {
+				if (PasswordHash.validatePassword(password, user.get(0).getUserPass()))
+					return true;
+			} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
+				logger.error(e.getMessage());
+			}
 		}
 
 		logger.info("User email address is:" + email);
@@ -146,9 +160,12 @@ public class UserDAOImpl implements UserDAO {
 	public int updateToPremium(String email) {
 		int result = 0;
 		logger.info("Updating account to premium: " + email);
-		try{
-			result = manager.createNativeQuery("UPDATE USERS SET USERLEVEL = 2 WHERE USEREMAIL ='" + email +"'").executeUpdate();
-		} catch(Exception e){
+		String sql = "UPDATE USERS SET USERLEVEL = 2 WHERE USEREMAIL =:email";
+		Query query = manager.createNativeQuery(sql);
+		query.setParameter("email", email);
+		try {
+			result = query.executeUpdate();
+		} catch (Exception e) {
 			logger.info("New Premium Account: " + email);
 			e.printStackTrace();
 		}
