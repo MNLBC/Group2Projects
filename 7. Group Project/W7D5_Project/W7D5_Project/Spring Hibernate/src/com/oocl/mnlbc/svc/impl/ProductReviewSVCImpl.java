@@ -9,7 +9,6 @@ import com.oocl.mnlbc.dao.inf.ProductReviewDAO;
 import com.oocl.mnlbc.model.ProductReview;
 import com.oocl.mnlbc.svc.inf.ProductReviewSVC;
 
-
 /**
  * 
  * @author Lance Jasper Lopez
@@ -25,8 +24,8 @@ public class ProductReviewSVCImpl implements ProductReviewSVC {
 	private ProductReviewDAO productReviewDAO;
 
 	/**
-	 * @param prodRevDao
-	 *            the prodRevDao to set
+	 * @param productReviewDAO
+	 *            the productReviewDAO to set
 	 */
 	public void setProductReviewDAO(ProductReviewDAO productReviewDAO) {
 		this.productReviewDAO = productReviewDAO;
@@ -36,6 +35,16 @@ public class ProductReviewSVCImpl implements ProductReviewSVC {
 	public List<ProductReview> getReviews() {
 
 		return this.productReviewDAO.listReview();
+	}
+
+	@Override
+	public List<ProductReview> getReviewsByProduct(long productId) {
+		return this.productReviewDAO.listReviewByProductId(productId);
+	}
+
+	@Override
+	public List<ProductReview> getReviewsByUserProduct(long productId, String userEmail) {
+		return this.productReviewDAO.listReviewByUserAndProducts(productId, userEmail);
 	}
 
 	@Override
@@ -52,7 +61,7 @@ public class ProductReviewSVCImpl implements ProductReviewSVC {
 
 	@Override
 	public boolean removeReview(long id) {
-	
+
 		return this.productReviewDAO.remove(id);
 	}
 
