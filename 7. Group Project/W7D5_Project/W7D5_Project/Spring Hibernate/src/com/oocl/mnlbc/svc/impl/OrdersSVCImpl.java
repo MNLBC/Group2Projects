@@ -58,14 +58,37 @@ public class OrdersSVCImpl implements OrdersSVC {
 	@Override
 	@Transactional
 	public List<Order> getOrdersByUser(long userid) {
-
 		return this.orderDAO.getOrdersByUser(userid);
 	}
-
+	
+	
+	@Override
+	@Transactional
+	public List<Order> getOrders() {
+		return this.orderDAO.getOrders();
+	}
+	
 	@Override
 	@Transactional
 	public int getOrderByUserId(long userid) {
 		return this.orderDAO.getOrderByUserId(userid);
 	}
+	
+	@Override
+	@Transactional
+	public int createOrders(Order order) {
+		return this.orderDAO.createOrder(order);
+	}
 
+	@Override
+	@Transactional
+	public int deleteOrderById(long orderId) {
+		return this.orderDAO.cancelOrder(orderId);
+	}
+
+	@Override
+	@Transactional
+	public int updateOrder(Order order) {
+		return this.orderDAO.updateOrder(order);
+	}
 }

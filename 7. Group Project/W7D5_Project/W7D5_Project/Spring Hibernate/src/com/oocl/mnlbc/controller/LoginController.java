@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.oocl.mnlbc.model.OnlineUser;
 import com.oocl.mnlbc.model.User;
+import com.oocl.mnlbc.svc.inf.OnlineUserSVC;
 import com.oocl.mnlbc.svc.inf.UserSVC;
+import com.oocl.mnlbc.util.Timestamp;
 
 /**
  * Handles web services for Login
@@ -28,11 +31,18 @@ import com.oocl.mnlbc.svc.inf.UserSVC;
 public class LoginController extends HttpServlet {
 
    private UserSVC userSVC;
+   private OnlineUserSVC onlineUserSVC;
 
    @Autowired(required = true)
    @Qualifier(value = "userService")
    public void setUserService(UserSVC userSVC) {
       this.userSVC = userSVC;
+   }
+
+   @Autowired(required = true)
+   @Qualifier(value = "onlineUserService")
+   public void setOnlineUserService(OnlineUserSVC onlineUserSVC) {
+      this.onlineUserSVC = onlineUserSVC;
    }
 
    /**
@@ -46,7 +56,14 @@ public class LoginController extends HttpServlet {
    public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
       if (email.isEmpty() && password.isEmpty())
          return false;
-      return this.userSVC.validateUser(email, password);
+      boolean result = this.userSVC.validateUser(email, password);
+      if (result) {
+         OnlineUser onluser = new OnlineUser();
+         onluser.setUserEmail(email);
+         onluser.setOnlineDate(Timestamp.getTimestamp());
+         this.onlineUserSVC.addOnlineUser(onluser);
+      }
+      return result;
    }
 
    /**
@@ -65,9 +82,16 @@ public class LoginController extends HttpServlet {
     * @param request
     * @param response
     */
-   @RequestMapping(value = "/logout")
-   public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
+   @RequestMapping(value = "/logout", method = RequestMethod.POST)
+   public boolean logoutSystem(HttpServletRequest request, HttpServletResponse response, @RequestParam("email") String email) throws IOException {
       HttpSession session = request.getSession();
       session.invalidate();
+      int result = this.onlineUserSVC.deleteOnlineUser(email);
+      if (!email.isEmpty()) {
+         if (result != 1 || result == 0)
+            return false;
+         return true;
+      }
+      return false;
    }
 }

@@ -117,6 +117,12 @@
 	<beans:bean id="cartProductService" class="com.oocl.mnlbc.svc.impl.CartProductSVCImpl">
 		<beans:property name="cartProductDAO" ref="cartProductDAO"></beans:property>
 	</beans:bean>
+	
+	<beans:bean id="onlineUserDAO" class="com.oocl.mnlbc.dao.impl.OnlineUserDAOImpl">
+	</beans:bean>
+	<beans:bean id="onlineUserService" class="com.oocl.mnlbc.svc.impl.OnlineUserSVCImpl">
+		<beans:property name="onlineUserDAO" ref="onlineUserDAO"></beans:property>
+	</beans:bean>
 
 	<beans:bean id="productReviewDAO" class="com.oocl.mnlbc.dao.impl.ProductReviewDAOImpl">
 	</beans:bean>
