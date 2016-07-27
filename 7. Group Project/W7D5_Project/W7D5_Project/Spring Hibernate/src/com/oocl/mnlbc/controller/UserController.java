@@ -85,6 +85,23 @@ public class UserController {
       }
       return false;
    }
+   
+   /**
+    * updateUserByAdmin web service
+    * 
+    * @param user
+    * @return boolean
+    */
+   @RequestMapping(value = "/updateUserByAdmin", method = RequestMethod.POST)
+   public boolean updateUserByAdmin(@RequestBody User user) {
+      int result = this.userSVC.updateUserByAdmin(user);
+      if (user != null) {
+         if (result != 1 || result == 0)
+            return false;
+         return true;
+      }
+      return false;
+   }
 
    /**
     * deleteUser web service

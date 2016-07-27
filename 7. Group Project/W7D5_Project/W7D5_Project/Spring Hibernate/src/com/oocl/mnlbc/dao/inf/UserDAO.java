@@ -18,4 +18,5 @@ public interface UserDAO {
     public int updateUser(User user);
 	public int deleteUser(long id);
 	public int updateToPremium(String email);
+	public int updateUserByAdmin(User user);
 }
