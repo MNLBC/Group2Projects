@@ -209,6 +209,8 @@
                     "orderDate = Ext.getCmp('orderMgmtDate').getValue();",
                     "orderStore = Ext.getStore('OrdersStore');",
                     "orderDate2 = Ext.Date.format(orderDate,'Ymdhis');",
+                    "",
+                    "if(userId !== \"\"){",
                     "var orderObj = {",
                     "    orderId : 0,",
                     "    userId : userId,",
@@ -250,6 +252,9 @@
                     "        }",
                     "    }",
                     "});",
+                    "} else{",
+                    "    Ext.Msg.alert(\"Orders\",\"USERID must have a value\");",
+                    "}",
                     ""
                 ],
                 "name": "click",
@@ -278,6 +283,7 @@
                     "orderStore = Ext.getStore('OrdersStore');",
                     "orderDate2 = Ext.Date.format(orderDate,'Ymdhis');",
                     "",
+                    "if(userId !== \"\"){",
                     "Ext.each(orderStore.data.items, function(record){",
                     "           if(orderId == record.data.orderId){",
                     "               var orderObj = {",
@@ -318,7 +324,10 @@
                     "               });",
                     "           }",
                     "});",
-                    "Ext.getCmp('orderMgmtGrid').getView().refresh();"
+                    "Ext.getCmp('orderMgmtGrid').getView().refresh();",
+                    "} else{",
+                    "    Ext.Msg.alert(\"Orders\",\"USERID must have a value\");",
+                    "}"
                 ],
                 "name": "click",
                 "scope": "me"

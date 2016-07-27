@@ -148,6 +148,8 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
         orderDate = Ext.getCmp('orderMgmtDate').getValue();
         orderStore = Ext.getStore('OrdersStore');
         orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
+
+        if(userId !== ""){
         var orderObj = {
             orderId : 0,
             userId : userId,
@@ -189,6 +191,9 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
                 }
             }
         });
+        } else{
+            Ext.Msg.alert("Orders","USERID must have a value");
+        }
 
     },
 
@@ -201,6 +206,7 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
         orderStore = Ext.getStore('OrdersStore');
         orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
 
+        if(userId !== ""){
         Ext.each(orderStore.data.items, function(record){
                    if(orderId == record.data.orderId){
                        var orderObj = {
@@ -242,6 +248,9 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
                    }
         });
         Ext.getCmp('orderMgmtGrid').getView().refresh();
+        } else{
+            Ext.Msg.alert("Orders","USERID must have a value");
+        }
     },
 
     onOrderMgmtGridDblClick: function(tableview, record, tr, rowIndex, e, eOpts) {

@@ -3426,7 +3426,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'orderMgmtTotal',
                                                                                             itemId: 'orderMgmtTotal',
                                                                                             fieldLabel: 'Total (RMB)',
-                                                                                            inputType: 'number'
+                                                                                            inputType: 'number',
+                                                                                            maskRe: /([0-9]){3}|([0-9]){2}|([0-9]){1}/g
                                                                                         },
                                                                                         {
                                                                                             xtype: 'datefield',
