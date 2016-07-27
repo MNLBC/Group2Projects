@@ -32,7 +32,8 @@ Ext.application({
         'OrderProductModel',
         'FavoriteItemsModel',
         'RequestModel',
-        'ProdReviewModel'
+        'ProdReviewModel',
+        'OnlineUsersModel'
     ],
     stores: [
         'ProductStoreB',
@@ -50,7 +51,8 @@ Ext.application({
         'UserLevelStore',
         'ProdReviewStore',
         'RatingStore',
-        'FavoriteProductsStore'
+        'FavoriteProductsStore',
+        'OnlineUsersStore'
     ],
     views: [
         'MainView',
@@ -72,7 +74,10 @@ Ext.application({
         'RequestController',
         'ProdInfoController',
         'FavoriteItemsController',
-        'AllProductsController'
+        'AllProductsController',
+        'OnlineUsersController',
+        'OrderMgmtController',
+        'AdminController'
     ],
     name: 'W5D5_Project',
 

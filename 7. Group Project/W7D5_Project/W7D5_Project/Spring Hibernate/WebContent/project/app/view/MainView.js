@@ -29,10 +29,9 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.form.Panel',
         'Ext.form.field.TextArea',
         'Ext.grid.column.Number',
-        'Ext.menu.Menu',
-        'Ext.menu.Item',
         'Ext.form.Label',
         'Ext.form.field.Number',
+        'Ext.form.field.Date',
         'Ext.tab.Bar'
     ],
 
@@ -2900,72 +2899,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'panel',
                                                             flex: 0,
                                                             hidden: true,
-                                                            width: 204,
-                                                            layout: 'accordion',
-                                                            bodyStyle: '{background-color: #eee; !important}',
-                                                            title: '',
-                                                            items: [
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'User Management',
-                                                                    layout: {
-                                                                        type: 'vbox',
-                                                                        align: 'stretch'
-                                                                    },
-                                                                    items: [
-                                                                        {
-                                                                            xtype: 'button',
-                                                                            height: 43,
-                                                                            width: 201,
-                                                                            text: 'MANAGE USERS'
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'Product Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'Order Management'
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            xtype: 'menu',
-                                                            border: false,
-                                                            floating: false,
-                                                            hidden: true,
-                                                            width: 179,
-                                                            bodyBorder: false,
-                                                            collapseDirection: 'left',
-                                                            collapsible: true,
-                                                            title: 'Management Options',
-                                                            titleAlign: 'center',
-                                                            items: [
-                                                                {
-                                                                    xtype: 'tbspacer',
-                                                                    height: 10
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    text: 'User Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    text: 'Product Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    plain: false,
-                                                                    text: 'Order Management'
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            xtype: 'panel',
-                                                            flex: 0,
-                                                            hidden: true,
                                                             id: 'adminMenuPanel',
                                                             width: 289,
                                                             bodyStyle: '{background-color: #aaa; !important}',
@@ -3754,9 +3687,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
-                                                                                            id: 'orderMgmtName',
-                                                                                            itemId: 'orderMgmtName',
-                                                                                            fieldLabel: 'User Id'
+                                                                                            id: 'orderMgmtUserId',
+                                                                                            itemId: 'orderMgmtUserId',
+                                                                                            fieldLabel: 'User Id',
+                                                                                            maskRe: /^[0-9]&/
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3770,18 +3704,16 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'combobox',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtTotal',
                                                                                             itemId: 'orderMgmtTotal',
                                                                                             fieldLabel: 'Total (RMB)',
-                                                                                            displayField: 'categories',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'CategoryStore',
-                                                                                            valueField: 'categories'
+                                                                                            maxValue: 1000000,
+                                                                                            minValue: 0
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'datefield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtDate',
                                                                                             itemId: 'orderMgmtDate',
@@ -3981,13 +3913,13 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             id: 'onlineUsersGrid',
                                                                             itemId: 'onlineUsersGrid',
                                                                             title: '',
-                                                                            store: 'OrdersStore',
+                                                                            store: 'OnlineUsersStore',
                                                                             columns: [
                                                                                 {
                                                                                     xtype: 'gridcolumn',
                                                                                     width: 340,
                                                                                     align: 'center',
-                                                                                    dataIndex: 'orderId',
+                                                                                    dataIndex: 'userEmail',
                                                                                     text: 'Email'
                                                                                 }
                                                                             ]

@@ -17,7 +17,10 @@
             "RequestController",
             "ProdInfoController",
             "FavoriteItemsController",
-            "AllProductsController"
+            "AllProductsController",
+            "OnlineUsersController",
+            "OrderMgmtController",
+            "AdminController"
         ],
         "models": [
             "CategoryModel",
@@ -31,7 +34,8 @@
             "OrderProductModel",
             "FavoriteItemsModel",
             "RequestModel",
-            "ProdReviewModel"
+            "ProdReviewModel",
+            "OnlineUsersModel"
         ],
         "name": "W5D5_Project",
         "stores": [
@@ -50,7 +54,8 @@
             "UserLevelStore",
             "ProdReviewStore",
             "RatingStore",
-            "FavoriteProductsStore"
+            "FavoriteProductsStore",
+            "OnlineUsersStore"
         ],
         "views": [
             "MainView",

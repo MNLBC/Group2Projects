@@ -6167,163 +6167,6 @@
                                                             "codeClass": null,
                                                             "userConfig": {
                                                                 "bodyStyle": [
-                                                                    "{background-color: #eee; !important}"
-                                                                ],
-                                                                "hidden": true,
-                                                                "layout": "accordion",
-                                                                "layout|flex": 0,
-                                                                "title": "",
-                                                                "width": 204
-                                                            },
-                                                            "name": "MyPanel42",
-                                                            "designerId": "dcd4d9c5-02b1-4d3a-8fbe-a8767c747120",
-                                                            "cn": [
-                                                                {
-                                                                    "type": "Ext.panel.Panel",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "container|align": "stretch",
-                                                                        "layout": "vbox",
-                                                                        "title": "User Management"
-                                                                    },
-                                                                    "name": "MyPanel43",
-                                                                    "designerId": "76dc11f6-9404-4d04-963b-38c0cecff9dd",
-                                                                    "cn": [
-                                                                        {
-                                                                            "type": "Ext.button.Button",
-                                                                            "reference": {
-                                                                                "name": "items",
-                                                                                "type": "array"
-                                                                            },
-                                                                            "codeClass": null,
-                                                                            "userConfig": {
-                                                                                "height": 43,
-                                                                                "text": "MANAGE USERS",
-                                                                                "width": 201
-                                                                            },
-                                                                            "name": "MyButton18",
-                                                                            "designerId": "9711c640-3140-4d70-a5db-6e9b9c0931d6"
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    "type": "Ext.panel.Panel",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "title": "Product Management"
-                                                                    },
-                                                                    "name": "MyPanel44",
-                                                                    "designerId": "37aaebdd-7edb-4eb7-b687-fc5657297111"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.panel.Panel",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "title": "Order Management"
-                                                                    },
-                                                                    "name": "MyPanel45",
-                                                                    "designerId": "ffb672ec-4284-40fc-bdb7-f75824e4a408"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "Ext.menu.Menu",
-                                                            "reference": {
-                                                                "name": "items",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "bodyBorder": false,
-                                                                "border": false,
-                                                                "collapseDirection": "left",
-                                                                "collapsible": true,
-                                                                "floating": false,
-                                                                "hidden": true,
-                                                                "title": "Management Options",
-                                                                "titleAlign": "center",
-                                                                "width": 179
-                                                            },
-                                                            "name": "MyMenu",
-                                                            "designerId": "35f6eab6-2098-416c-bc58-1e961f14dd0c",
-                                                            "cn": [
-                                                                {
-                                                                    "type": "Ext.toolbar.Spacer",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "height": 10
-                                                                    },
-                                                                    "name": "MySpacer15",
-                                                                    "designerId": "1d97e05f-89ea-4620-aca8-8535daf7b492"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.menu.Item",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "text": "User Management"
-                                                                    },
-                                                                    "name": "MyMenuItem",
-                                                                    "designerId": "a8a6d44d-6fb5-4f6a-8324-1c4d292f618a"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.menu.Item",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "text": "Product Management"
-                                                                    },
-                                                                    "name": "MyMenuItem1",
-                                                                    "designerId": "3a4491d3-7f70-4389-9299-790caffe486f"
-                                                                },
-                                                                {
-                                                                    "type": "Ext.menu.Item",
-                                                                    "reference": {
-                                                                        "name": "items",
-                                                                        "type": "array"
-                                                                    },
-                                                                    "codeClass": null,
-                                                                    "userConfig": {
-                                                                        "height": null,
-                                                                        "plain": false,
-                                                                        "text": "Order Management"
-                                                                    },
-                                                                    "name": "MyMenuItem2",
-                                                                    "designerId": "82b14357-b09e-4146-afa6-16aaf93baaf7"
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            "type": "Ext.panel.Panel",
-                                                            "reference": {
-                                                                "name": "items",
-                                                                "type": "array"
-                                                            },
-                                                            "codeClass": null,
-                                                            "userConfig": {
-                                                                "bodyStyle": [
                                                                     "{background-color: #aaa; !important}"
                                                                 ],
                                                                 "container|align": "stretch",
@@ -8117,9 +7960,10 @@
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
                                                                                                 "fieldLabel": "User Id",
-                                                                                                "id": "orderMgmtName",
-                                                                                                "itemId": "orderMgmtName",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "id": "orderMgmtUserId",
+                                                                                                "itemId": "orderMgmtUserId",
+                                                                                                "layout|anchor": "100%",
+                                                                                                "maskRe": "/^[0-9]&/"
                                                                                             },
                                                                                             "name": "MyTextField36",
                                                                                             "designerId": "35a2fcdc-294a-4477-aaec-b80f7ec1c158"
@@ -8145,27 +7989,25 @@
                                                                                     "designerId": "99de284b-b6c6-4a52-b172-1b219fbfd00d",
                                                                                     "cn": [
                                                                                         {
-                                                                                            "type": "Ext.form.field.ComboBox",
+                                                                                            "type": "Ext.form.field.Number",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
-                                                                                                "displayField": "categories",
                                                                                                 "fieldLabel": "Total (RMB)",
                                                                                                 "id": "orderMgmtTotal",
                                                                                                 "itemId": "orderMgmtTotal",
                                                                                                 "layout|anchor": "100%",
-                                                                                                "queryMode": "local",
-                                                                                                "store": "CategoryStore",
-                                                                                                "valueField": "categories"
+                                                                                                "maxValue": 1000000,
+                                                                                                "minValue": 0
                                                                                             },
-                                                                                            "name": "MyComboBox14",
+                                                                                            "name": "MyNumberField1",
                                                                                             "designerId": "9d8098bb-ec05-4daf-b8dc-fc406800e4f3"
                                                                                         },
                                                                                         {
-                                                                                            "type": "Ext.form.field.Text",
+                                                                                            "type": "Ext.form.field.Date",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
@@ -8177,7 +8019,7 @@
                                                                                                 "itemId": "orderMgmtDate",
                                                                                                 "layout|anchor": "100%"
                                                                                             },
-                                                                                            "name": "MyTextField48",
+                                                                                            "name": "MyDateField",
                                                                                             "designerId": "5cd50c90-6fd5-4065-b101-72a6c95da075"
                                                                                         }
                                                                                     ]
@@ -8618,7 +8460,7 @@
                                                                                 "id": "onlineUsersGrid",
                                                                                 "itemId": "onlineUsersGrid",
                                                                                 "layout|flex": 1,
-                                                                                "store": "OrdersStore",
+                                                                                "store": "OnlineUsersStore",
                                                                                 "title": ""
                                                                             },
                                                                             "name": "MyGridPanel3",
@@ -8633,7 +8475,7 @@
                                                                                     "codeClass": null,
                                                                                     "userConfig": {
                                                                                         "align": "center",
-                                                                                        "dataIndex": "orderId",
+                                                                                        "dataIndex": "userEmail",
                                                                                         "text": "Email",
                                                                                         "width": 340
                                                                                     },

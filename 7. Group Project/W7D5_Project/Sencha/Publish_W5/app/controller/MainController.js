@@ -317,10 +317,10 @@ Ext.define('W5D5_Project.controller.MainController', {
 
     onUserAccBtnClick: function() {
         var panel = Ext.getCmp('mainTabPanel');
-                var tab = Ext.getCmp('accountPanel');
-                panel.setActiveTab(tab);
-                var controller = W5D5_Project.app.getController('ShopController');
-                controller.clearItems();
+        var tab = Ext.getCmp('accountPanel');
+        panel.setActiveTab(tab);
+        var controller = W5D5_Project.app.getController('ShopController');
+        controller.clearItems();
         Ext.Ajax.request({
             url : "getUserByEmail",
             method : "GET",

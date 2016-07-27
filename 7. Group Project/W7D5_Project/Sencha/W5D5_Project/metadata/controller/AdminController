@@ -1,0 +1,157 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AdminController"
+    },
+    "name": "MyController",
+    "designerId": "08c0f37d-0a6b-4e3a-912a-64883452181f",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminMenuBtn",
+                "designer|targetType": "MyButton",
+                "fn": "onAdminMenuBtnClick",
+                "implHandler": [
+                    "var menu = Ext.getCmp('adminMenuPanel');",
+                    "if(menu.hidden){",
+                    "    menu.show();",
+                    "}else{",
+                    "    menu.hide();",
+                    "}"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminMenuBtnClick",
+            "designerId": "20e325fb-9575-4e0f-be07-2bfb10d3c9ba"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminUserMgmtBtn",
+                "designer|targetType": "MyButton19",
+                "fn": "onAdminUserMgmtBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('adminTabPanel');",
+                    "var tab = Ext.getCmp('adminUserMgmtBtn');",
+                    "panel.setActiveTab(tab);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminUserMgmtBtnClick",
+            "designerId": "85187e0f-fe69-478e-8ef1-80b80b3119b2"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminProdMgmtBtn",
+                "designer|targetType": "MyButton20",
+                "fn": "onAdminProdMgmtBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('adminTabPanel');",
+                    "var tab = Ext.getCmp('adminProdMgmtBtn');",
+                    "panel.setActiveTab(tab);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminProdMgmtBtnClick",
+            "designerId": "70dcfbc3-e44e-46fa-89a4-987111c2894f"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminOrderMgmtBtn",
+                "designer|targetType": "MyButton21",
+                "fn": "onAdminOrderMgmtBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('adminTabPanel');",
+                    "var tab = Ext.getCmp('adminOrderMgmtBtn');",
+                    "panel.setActiveTab(tab);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminOrderMgmtBtnClick",
+            "designerId": "47f2054d-348e-44ec-8b85-7757a02610c9"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminOnlineUsersBtn",
+                "designer|targetType": "MyButton26",
+                "fn": "onAdminOnlineUsersBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('adminTabPanel');",
+                    "var tab = Ext.getCmp('adminOnlineUsersBtn');",
+                    "panel.setActiveTab(tab);"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminOnlineUsersBtnClick",
+            "designerId": "bfb67944-8155-4350-a1dc-8b48189d738b"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminBackBtn",
+                "designer|targetType": "MyButton",
+                "fn": "onAdminBackBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('digitalPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var panel1 = Ext.getCmp('headerPanel'),",
+                    "    panel2 = Ext.getCmp('subHeaderPanel'),",
+                    "    panel3 = Ext.getCmp('categoryPanel');",
+                    "",
+                    "panel1.show();",
+                    "panel2.show();",
+                    "panel3.show();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminBackBtnClick",
+            "designerId": "9444d386-a557-4d58-b9ed-47326dbd6a03"
+        }
+    ]
+}
