@@ -22,7 +22,7 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
         'Ext.toolbar.Spacer',
         'Ext.Img',
         'Ext.form.field.Display',
-        'Ext.form.field.Text',
+        'Ext.form.field.Number',
         'Ext.button.Button'
     ],
 
@@ -85,12 +85,14 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                             value: 'Display Field'
                         },
                         {
-                            xtype: 'textfield',
+                            xtype: 'numberfield',
                             id: 'cartProductQtyField',
                             itemId: 'cartProductQtyField',
                             width: 318,
                             fieldLabel: 'Quantity',
-                            inputType: 'number'
+                            inputType: 'number',
+                            maxValue: 10,
+                            minValue: 1
                         },
                         {
                             xtype: 'tbspacer',

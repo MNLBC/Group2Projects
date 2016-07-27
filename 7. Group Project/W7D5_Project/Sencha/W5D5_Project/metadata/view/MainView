@@ -5006,12 +5006,15 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
+                                                                                "allowBlank": false,
                                                                                 "emptyText": "example@example.com",
                                                                                 "fieldLabel": "Email",
                                                                                 "id": "accEmail",
                                                                                 "inputType": "email",
                                                                                 "itemId": "accEmail",
-                                                                                "layout|anchor": "100%"
+                                                                                "layout|anchor": "100%",
+                                                                                "regex": "/^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/",
+                                                                                "regexText": "Invalid email address format."
                                                                             },
                                                                             "name": "MyTextField28",
                                                                             "designerId": "190a9f20-26ee-4cdc-886b-bd596056fcab"
@@ -5024,6 +5027,8 @@
                                                                             },
                                                                             "codeClass": null,
                                                                             "userConfig": {
+                                                                                "allowBlank": false,
+                                                                                "allowOnlyWhitespace": false,
                                                                                 "emptyText": "Password",
                                                                                 "fieldLabel": "Password",
                                                                                 "id": "accPassword",

@@ -176,6 +176,12 @@ Ext.define('W5D5_Project.controller.MainController', {
             total = 0, count = 0,
             address = Ext.getCmp('addField'),
             scope = this;
+
+        if(Ext.isEmpty(store.data.items)){
+            Ext.Msg.alert('Check-out','Please add products to cart before checking out.');
+            return;
+        }
+
         Ext.each(store.data.items, function(rec){
             count = parseInt(count) + parseInt(rec.data.prodQty);
             total = total + rec.data.prodSubtotal;

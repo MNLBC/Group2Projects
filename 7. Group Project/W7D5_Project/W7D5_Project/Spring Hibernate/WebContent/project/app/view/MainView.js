@@ -2368,7 +2368,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             itemId: 'accEmail',
                                                                             fieldLabel: 'Email',
                                                                             inputType: 'email',
-                                                                            emptyText: 'example@example.com'
+                                                                            allowBlank: false,
+                                                                            emptyText: 'example@example.com',
+                                                                            regex: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                                                                            regexText: 'Invalid email address format.'
                                                                         },
                                                                         {
                                                                             xtype: 'textfield',
@@ -2377,6 +2380,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             itemId: 'accPassword',
                                                                             fieldLabel: 'Password',
                                                                             inputType: 'password',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
                                                                             emptyText: 'Password'
                                                                         },
                                                                         {

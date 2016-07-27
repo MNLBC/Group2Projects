@@ -31,6 +31,12 @@ Ext.define('W5D5_Project.controller.RequestController', {
     },
 
     onReqApproveBtnClick: function() {
+        var grid = Ext.getCmp('requestGrid');
+        if(Ext.isEmpty(grid.getSelectionModel().getSelection())){
+            Ext.Msg.alert("Request","Please select a request to approve.");
+            return;
+        }
+
         var requestId,userEmail,userDate,requestStatus,request;
 
         requestId = Ext.getCmp('requestGrid').getSelectionModel().selected.items[0].data.requestId;
@@ -95,6 +101,13 @@ Ext.define('W5D5_Project.controller.RequestController', {
     },
 
     onReqRejectBtnClick: function() {
+        var grid = Ext.getCmp('requestGrid');
+        if(Ext.isEmpty(grid.getSelectionModel().getSelection())){
+            Ext.Msg.alert("Request","Please select a request to reject.");
+            return;
+        }
+
+
         var requestId,userEmail,userDate,requestStatus,request;
 
         requestId = Ext.getCmp('requestGrid').getSelectionModel().selected.items[0].data.requestId;
@@ -109,38 +122,38 @@ Ext.define('W5D5_Project.controller.RequestController', {
         };
 
         Ext.Ajax.request({
-                            url : "updateRequest",
-                            method: 'POST',
-                            params : {
-                                id : requestId,
-                                email: userEmail,
-                                date : userDate,
-                                status : "REJECTED"
-                            },
-                            async: false,
-                            callback : function(options, success, response){
-                                if (response.responseText=="false") {
-                                     Ext.Msg.alert("Request","Error in rejecting request");
-                                } else {
-                                     Ext.Msg.alert("Request","Success in rejecting request");
-                                    Ext.Ajax.request({
-                                        url : "getAllRequest",
-                                        method : "GET",
-                                        async : false,
-                                        callback : function(options,success,response){
-                                            if (Ext.isEmpty(response.responseText)) {
-                                                Ext.Msg.alert("Requests", "Error in getting requests");
-                                            } else {
-                                                var reqStore = Ext.getStore('RequestStore');
-                                                var jsonResponse = Ext.JSON.decode(response.responseText);
-                                                reqStore.loadData(jsonResponse);
-                                            }
-                                        }
-                                    });
-                                    Ext.getCmp('requestGrid').getView().refresh();
-                                }
+            url : "updateRequest",
+            method: 'POST',
+            params : {
+                id : requestId,
+                email: userEmail,
+                date : userDate,
+                status : "REJECTED"
+            },
+            async: false,
+            callback : function(options, success, response){
+                if (response.responseText=="false") {
+                    Ext.Msg.alert("Request","Error in rejecting request");
+                } else {
+                    Ext.Msg.alert("Request","Success in rejecting request");
+                    Ext.Ajax.request({
+                        url : "getAllRequest",
+                        method : "GET",
+                        async : false,
+                        callback : function(options,success,response){
+                            if (Ext.isEmpty(response.responseText)) {
+                                Ext.Msg.alert("Requests", "Error in getting requests");
+                            } else {
+                                var reqStore = Ext.getStore('RequestStore');
+                                var jsonResponse = Ext.JSON.decode(response.responseText);
+                                reqStore.loadData(jsonResponse);
                             }
-                        });
+                        }
+                    });
+                    Ext.getCmp('requestGrid').getView().refresh();
+                }
+            }
+        });
     },
 
     onRequestGridChange: function(model, selected, eOpts) {
