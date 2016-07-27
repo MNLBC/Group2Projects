@@ -3,8 +3,7 @@ package com.oocl.mnlbc.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +19,14 @@ import com.oocl.mnlbc.model.Product;
  * @author Lance Jasper Lopez
  * @desc Migration from Hibernate to JPA DAO Implementation for PRODUCT TABLE
  * @since 07/21/2016
+ */
+
+/**
+ * 
+ * @author Lance Jasper Lopez
+ * @since 07/27/2016
+ * @desc JPA Query Modification to prevent SQL Injection
+ *
  */
 
 @Repository
@@ -43,8 +50,10 @@ public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductD
 	@Override
 	public List<Product> getProductByCategory(String category) {
 
-		String sql = "Select products From Product products where product.prodCat = '" + category + "'";
-		List<Product> productList = this.entityManager.createQuery(sql).getResultList();
+		String sql = "Select products From Product products where product.prodCat = :category";
+		Query query = this.entityManager.createQuery(sql);
+		query.setParameter("category", category);
+		List<Product> productList = query.getResultList();
 		for (Product product : productList) {
 			logger.info("Product List:" + product);
 		}
