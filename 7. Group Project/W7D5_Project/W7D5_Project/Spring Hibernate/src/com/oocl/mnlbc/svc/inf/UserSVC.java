@@ -24,4 +24,6 @@ public interface UserSVC {
 	public int updateToPremium(String email);
 	
 	public int updateUserByAdmin(User user);
+
+	public int deleteUserByEmail(String useremail);
 }
