@@ -50,7 +50,7 @@ public class ProductDAOImpl extends GenericCRUDImpl<Product> implements ProductD
 	@Override
 	public List<Product> getProductByCategory(String category) {
 
-		String sql = "Select products From Product products where product.prodCat = :category";
+		String sql = "Select products From Product products where products.prodCat = :category";
 		Query query = this.entityManager.createQuery(sql);
 		query.setParameter("category", category);
 		List<Product> productList = query.getResultList();
