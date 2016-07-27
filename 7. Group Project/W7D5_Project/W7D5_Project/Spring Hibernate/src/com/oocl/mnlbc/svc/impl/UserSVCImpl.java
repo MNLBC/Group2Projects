@@ -79,4 +79,8 @@ public class UserSVCImpl implements UserSVC {
    public int updateUserByAdmin(User user) {
       return this.userDAO.updateUserByAdmin(user);
    }
+   @Override
+   public int deleteUserByEmail(String useremail){
+	   return this.userDAO.deleteUserByEmail(useremail);
+   }
 }
