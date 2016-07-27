@@ -35,6 +35,7 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.menu.Item',
         'Ext.form.Label',
         'Ext.form.field.Number',
+        'Ext.form.field.Date',
         'Ext.tab.Bar'
     ],
 
@@ -2682,7 +2683,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'tabpanel',
                                                             flex: 1,
                                                             id: 'adminTabPanel',
-                                                            activeTab: 3,
+                                                            activeTab: 2,
                                                             items: [
                                                                 {
                                                                     xtype: 'panel',
@@ -3405,7 +3406,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtUserId',
                                                                                             itemId: 'orderMgmtUserId',
-                                                                                            fieldLabel: 'User Id'
+                                                                                            fieldLabel: 'User Id',
+                                                                                            maskRe: /([0-9]){3}|([0-9]){2}|([0-9]){1}/g
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3427,7 +3429,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             inputType: 'number'
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'datefield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtDate',
                                                                                             itemId: 'orderMgmtDate',

@@ -64,22 +64,24 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
         var selected;
         this.selected = selected;
 
-        Ext.getCmp('orderMgmtId').setValue(selected.data[0].orderId);
-        Ext.getCmp('orderMgmtUserId').setValue(selected.data[0].userId);
-        Ext.getCmp('orderMgmtTotal').setValue(selected.data[0].orderTotal);
-        Ext.getCmp('orderMgmtDate').setValue(selected.data[0].orderDate);
+        Ext.getCmp('orderMgmtId').setValue(selected[0].data.orderId);
+        Ext.getCmp('orderMgmtUserId').setValue(selected[0].data.userId);
+        Ext.getCmp('orderMgmtTotal').setValue(selected[0].data.orderTotal);
+        var date1 = selected[0].data.orderDate;
+        var date2 = new Date(date1.substr(0,4)+'-'+date1.substr(4,2)+'-'+date1.substr(6,2));
+        Ext.getCmp('orderMgmtDate').setValue(date2);
 
     },
 
     onOrderMgmtSearchChange: function(field, newValue, oldValue, eOpts) {
-        var userID, orderStore;
-                userID = Ext.getCmp('orderMgmtSearch').getValue();
+        var orderId, orderStore;
+                orderId = Ext.getCmp('orderMgmtSearch').getValue();
                 orderStore = Ext.getStore('OrdersStore');
 
-                if(Ext.isEmpty(userEmail)){
+                if(Ext.isEmpty(orderId)){
                     orderStore.clearFilter();
                 } else{
-                    orderStore.filter('userId',userID);
+                    orderStore.filter('orderId',orderId);
                 }
     },
 
@@ -112,8 +114,9 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
                     callback : function(options,success,response){
                         if (Ext.isEmpty(response.responseText)) {
                             Ext.Msg.alert("Orders",
-                                          "Error in retrieving orders");
+                                          "Error in deleting orders");
                         } else {
+                            Ext.Msg.alert("Orders","Order Deleted!");
                             Ext.Ajax.request({
                                 url : "getOrders",
                                 method : "GET",
@@ -139,18 +142,18 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
     },
 
     onOrderMgmtCreateClick: function(button, e, eOpts) {
-        var userId,orderTotal,orderDate,orderStore;
+        var userId,orderTotal,orderDate,orderDate2,orderStore;
         userId = Ext.getCmp('orderMgmtUserId').getValue();
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
         orderDate = Ext.getCmp('orderMgmtDate').getValue();
-        orderStore = Ext.getStore('OrderStore');
-
-        var orderObj = [{
+        orderStore = Ext.getStore('OrdersStore');
+        orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
+        var orderObj = {
             orderId : 0,
             userId : userId,
             orderTotal : orderTotal,
-            orderDate : orderDate
-        }];
+            orderDate : orderDate2 + '.000'
+        };
         Ext.Ajax.request({
             url : "createOrder",
             method : "POST",
@@ -158,10 +161,12 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
             params : {
                 order : Ext.encode(orderObj)
             },
+            jsonData: Ext.util.JSON.encode(orderObj),
             callback : function(options,success,response){
                 if (Ext.isEmpty(response.responseText)) {
                     Ext.Msg.alert("Orders","Error in retrieving orders");
                 } else {
+                    Ext.Msg.alert("Orders","Order Created!");
                     Ext.Ajax.request({
                         url : "getOrders",
                         method : "GET",
@@ -188,21 +193,22 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
     },
 
     onOrderMgmtUpdateClick: function(button, e, eOpts) {
-        var orderId,userId,orderTotal,orderDate,orderStore;
+        var orderId,userId,orderTotal,orderDate,orderDate2,orderStore;
         orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;
         userId = Ext.getCmp('orderMgmtUserId').getValue();
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
         orderDate = Ext.getCmp('orderMgmtDate').getValue();
-        orderStore = Ext.getStore('OrderStore');
+        orderStore = Ext.getStore('OrdersStore');
+        orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
 
         Ext.each(orderStore.data.items, function(record){
-                   if(orderId == record.data.id){
-                       var orderObj = [{
+                   if(orderId == record.data.orderId){
+                       var orderObj = {
                            orderId : orderId,
                            userId : userId,
                            orderTotal : orderTotal,
-                           orderDate : orderDate
-                       }];
+                           orderDate : orderDate2 + '.000'
+                       };
                        Ext.Ajax.request({
                             url : "updateOrder",
                             method : "POST",
@@ -210,10 +216,12 @@ Ext.define('W5D5_Project.controller.OrderHistoryController', {
                             params : {
                                 order : Ext.encode(orderObj)
                             },
+                           jsonData: Ext.util.JSON.encode(orderObj),
                             callback : function(options,success,response){
                                 if (Ext.isEmpty(response.responseText)) {
                                     Ext.Msg.alert("Orders","Error in updating orders");
                                 } else {
+                                    Ext.Msg.alert("Orders","Order Updated!");
                                     Ext.Ajax.request({
                                         url : "getOrders",
                                         method : "GET",
