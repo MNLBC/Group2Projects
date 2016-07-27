@@ -74,4 +74,9 @@ public class UserSVCImpl implements UserSVC {
 	public int updateToPremium(String email) {
 		return this.userDAO.updateToPremium(email);
 	}
+
+   @Override
+   public int updateUserByAdmin(User user) {
+      return this.userDAO.updateUserByAdmin(user);
+   }
 }

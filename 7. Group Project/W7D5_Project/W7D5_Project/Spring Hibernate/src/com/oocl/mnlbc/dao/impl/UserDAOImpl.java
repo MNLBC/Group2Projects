@@ -112,7 +112,7 @@ public class UserDAOImpl implements UserDAO {
 		newUser.setUserCountry(user.getUserCountry());
 		newUser.setUserPass(user.getUserPass());
 		newUser.setUserType(user.getUserType());
-		logger.info("Product updated successfully!=" + newUser);
+		logger.info("User updated successfully!=" + newUser);
 		return 1;
 	}
 
@@ -171,4 +171,23 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return result;
 	}
+
+   @Override
+   public int updateUserByAdmin(User user) {
+      User newUser = manager.find(User.class, user.getUserId());
+      newUser.setUserId(user.getUserId());
+      newUser.setUserFname(user.getUserFname());
+      newUser.setUserLname(user.getUserLname());
+      newUser.setUserEmail(user.getUserEmail());
+      newUser.setUserAddress1(user.getUserAddress1());
+      newUser.setUserAddress2(user.getUserAddress2());
+      newUser.setUserSp(user.getUserSp());
+      newUser.setUserLevel(user.getUserLevel());
+      newUser.setUserOccupation(user.getUserOccupation());
+      newUser.setUserCity(user.getUserCity());
+      newUser.setUserCountry(user.getUserCountry());
+      newUser.setUserType(user.getUserType());
+      logger.info("User updated successfully!=" + newUser);
+      return 1;
+   }
 }
