@@ -31,7 +31,8 @@ Ext.application({
         'OrdersModel',
         'OrderProductModel',
         'FavoriteItemsModel',
-        'RequestModel'
+        'RequestModel',
+        'OnlineUsersModel'
     ],
     stores: [
         'ProductStoreB',
@@ -46,7 +47,8 @@ Ext.application({
         'OrdersStore',
         'OrderProductStore',
         'RequestStore',
-        'UserLevelStore'
+        'UserLevelStore',
+        'OnlineUsersStore'
     ],
     views: [
         'MainView',
@@ -55,7 +57,8 @@ Ext.application({
         'OrderWin',
         'OrderProductWin',
         'UserInfoWin',
-        'ProdInfoWin'
+        'ProdInfoWin',
+        'MyViewport'
     ],
     controllers: [
         'MainController',
@@ -65,7 +68,9 @@ Ext.application({
         'UserMainController',
         'UserMgmtController',
         'AccountController',
-        'RequestController'
+        'RequestController',
+        'OnlineUsersController',
+        'OrderHistoryController'
     ],
     name: 'W5D5_Project',
 

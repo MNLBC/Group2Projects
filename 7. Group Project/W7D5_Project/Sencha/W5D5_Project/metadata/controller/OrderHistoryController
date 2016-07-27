@@ -1,0 +1,367 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "OrderHistoryController"
+    },
+    "name": "MyController",
+    "designerId": "9a65ea1c-9723-4c97-9568-b108d12cc695",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminOrderMgmtBtn",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onOrderMgmtClick",
+                "implHandler": [
+                    "Ext.Ajax.request({",
+                    "    url : \"getOrders\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    callback : function(options,success,response){",
+                    "        if (Ext.isEmpty(response.responseText)) {",
+                    "            Ext.Msg.alert(\"Orders\",",
+                    "                          \"Error in retrieving orders\");",
+                    "        } else {",
+                    "            var orderStore = Ext.getStore('OrdersStore');",
+                    "            var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "            orderStore.loadData(jsonResponse);",
+                    "        }",
+                    "    }",
+                    "});",
+                    "Ext.getCmp('orderMgmtGrid').getView().refresh();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtClick",
+            "designerId": "2a4e382b-da9b-4a33-9118-ac36a1b4a8de"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtGrid",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onOrderMgmtGridSelect",
+                "implHandler": [
+                    "var selected;",
+                    "this.selected = selected;",
+                    "",
+                    "Ext.getCmp('orderMgmtId').setValue(selected.data[0].orderId);",
+                    "Ext.getCmp('orderMgmtUserId').setValue(selected.data[0].userId);",
+                    "Ext.getCmp('orderMgmtTotal').setValue(selected.data[0].orderTotal);",
+                    "Ext.getCmp('orderMgmtDate').setValue(selected.data[0].orderDate);",
+                    ""
+                ],
+                "name": "selectionchange",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtGridSelect",
+            "designerId": "15a2bc90-040c-448f-85f1-5674802c8461"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtSearch",
+                "designer|targetType": "Ext.form.field.Text",
+                "fn": "onOrderMgmtSearchChange",
+                "implHandler": [
+                    "var userID, orderStore;",
+                    "        userID = Ext.getCmp('orderMgmtSearch').getValue();",
+                    "        orderStore = Ext.getStore('OrdersStore');",
+                    "",
+                    "        if(Ext.isEmpty(userEmail)){",
+                    "            orderStore.clearFilter();",
+                    "        } else{",
+                    "            orderStore.filter('userId',userID);",
+                    "        }"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtSearchChange",
+            "designerId": "24a8adf0-5fc5-4f3e-ad4b-3ecb4158999a"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtReset",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onOrderMgmtResetClick",
+                "implHandler": [
+                    "        Ext.getCmp('orderMgmtId').setValue('');",
+                    "        Ext.getCmp('orderMgmtUserId').setValue('');",
+                    "        Ext.getCmp('orderMgmtTotal').setValue('');",
+                    "        Ext.getCmp('orderMgmtDate').setValue('');"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtResetClick",
+            "designerId": "a64ebe19-d6da-4d4c-b3db-3657bfdf4a5c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtDelete",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onOrderMgmtDeleteClick",
+                "implHandler": [
+                    "var orderId, store;",
+                    "orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;",
+                    "store = Ext.getStore('OrdersStore');",
+                    "",
+                    "Ext.each(store.data.items, function(record){",
+                    "    if(orderId == record.data.orderId){",
+                    "        Ext.Msg.alert('Success', 'Record successfully deleted!');",
+                    "        Ext.getCmp('orderMgmtId').setValue('');",
+                    "        Ext.getCmp('orderMgmtUserId').setValue('');",
+                    "        Ext.getCmp('orderMgmtTotal').setValue('');",
+                    "        Ext.getCmp('orderMgmtDate').setValue('');",
+                    "        Ext.Ajax.request({",
+                    "            url : \"deleteOrderById\",",
+                    "            method : \"POST\",",
+                    "            async : false,",
+                    "            params : {",
+                    "                orderId: orderId",
+                    "            },",
+                    "            callback : function(options,success,response){",
+                    "                if (Ext.isEmpty(response.responseText)) {",
+                    "                    Ext.Msg.alert(\"Orders\",",
+                    "                                  \"Error in retrieving orders\");",
+                    "                } else {",
+                    "                    Ext.Ajax.request({",
+                    "                        url : \"getOrders\",",
+                    "                        method : \"GET\",",
+                    "                        async : false,",
+                    "                        callback : function(options,success,response){",
+                    "                            if (Ext.isEmpty(response.responseText)) {",
+                    "                                Ext.Msg.alert(\"Orders\",",
+                    "                                              \"Error in retrieving orders\");",
+                    "                            } else {",
+                    "                                var orderStore = Ext.getStore('OrdersStore');",
+                    "                                var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                                orderStore.loadData(jsonResponse);",
+                    "                            }",
+                    "                        }",
+                    "                    });",
+                    "                    Ext.getCmp('orderMgmtGrid').getView().refresh();",
+                    "                }",
+                    "            }",
+                    "        });",
+                    "        Ext.getCmp('orderMgmtGrid').getView().refresh();",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtDeleteClick",
+            "designerId": "89096482-db56-481c-85fa-fe3291dfe99d"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtCreate",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onOrderMgmtCreateClick",
+                "implHandler": [
+                    "var userId,orderTotal,orderDate,orderStore;",
+                    "userId = Ext.getCmp('orderMgmtUserId').getValue();",
+                    "orderTotal = Ext.getCmp('orderMgmtTotal').getValue();",
+                    "orderDate = Ext.getCmp('orderMgmtDate').getValue();",
+                    "orderStore = Ext.getStore('OrderStore');",
+                    "",
+                    "var orderObj = [{",
+                    "    orderId : 0,",
+                    "    userId : userId,",
+                    "    orderTotal : orderTotal,",
+                    "    orderDate : orderDate",
+                    "}];",
+                    "Ext.Ajax.request({",
+                    "    url : \"createOrder\",",
+                    "    method : \"POST\",",
+                    "    async : false,",
+                    "    params : {",
+                    "        order : Ext.encode(orderObj)",
+                    "    },",
+                    "    callback : function(options,success,response){",
+                    "        if (Ext.isEmpty(response.responseText)) {",
+                    "            Ext.Msg.alert(\"Orders\",\"Error in retrieving orders\");",
+                    "        } else {",
+                    "            Ext.Ajax.request({",
+                    "                url : \"getOrders\",",
+                    "                method : \"GET\",",
+                    "                async : false,",
+                    "                callback : function(options,success,response){",
+                    "                    if (Ext.isEmpty(response.responseText)) {",
+                    "                        Ext.Msg.alert(\"Orders\",\"Error in retrieving orders\");",
+                    "                    } else {",
+                    "                        var orderStore1 = Ext.getStore('OrdersStore');",
+                    "                        var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                        orderStore1.loadData(jsonResponse);",
+                    "                    }",
+                    "                }",
+                    "            });",
+                    "            Ext.getCmp('orderMgmtGrid').getView().refresh();",
+                    "            Ext.getCmp('orderMgmtId').setValue('');",
+                    "            Ext.getCmp('orderMgmtUserId').setValue('');",
+                    "            Ext.getCmp('orderMgmtTotal').setValue('');",
+                    "            Ext.getCmp('orderMgmtDate').setValue('');",
+                    "        }",
+                    "    }",
+                    "});",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtCreateClick",
+            "designerId": "df66acf1-3207-4732-8fde-5456b709f334"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtUpdate",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onOrderMgmtUpdateClick",
+                "implHandler": [
+                    "var orderId,userId,orderTotal,orderDate,orderStore;",
+                    "orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;",
+                    "userId = Ext.getCmp('orderMgmtUserId').getValue();",
+                    "orderTotal = Ext.getCmp('orderMgmtTotal').getValue();",
+                    "orderDate = Ext.getCmp('orderMgmtDate').getValue();",
+                    "orderStore = Ext.getStore('OrderStore');",
+                    "",
+                    "Ext.each(orderStore.data.items, function(record){",
+                    "           if(orderId == record.data.id){",
+                    "               var orderObj = [{",
+                    "                   orderId : orderId,",
+                    "                   userId : userId,",
+                    "                   orderTotal : orderTotal,",
+                    "                   orderDate : orderDate",
+                    "               }];",
+                    "               Ext.Ajax.request({",
+                    "                    url : \"updateOrder\",",
+                    "                    method : \"POST\",",
+                    "                    async : false,",
+                    "                    params : {",
+                    "                        order : Ext.encode(orderObj)",
+                    "                    },",
+                    "                    callback : function(options,success,response){",
+                    "                        if (Ext.isEmpty(response.responseText)) {",
+                    "                            Ext.Msg.alert(\"Orders\",\"Error in updating orders\");",
+                    "                        } else {",
+                    "                            Ext.Ajax.request({",
+                    "                                url : \"getOrders\",",
+                    "                                method : \"GET\",",
+                    "                                async : false,",
+                    "                                callback : function(options,success,response){",
+                    "                                    if (Ext.isEmpty(response.responseText)) {",
+                    "                                        Ext.Msg.alert(\"Orders\",\"Error in retrieving orders\");",
+                    "                                    } else {",
+                    "                                        var orderStore1 = Ext.getStore('OrdersStore');",
+                    "                                        var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                                        orderStore1.loadData(jsonResponse);",
+                    "                                    }",
+                    "                                }",
+                    "                            });",
+                    "                        }",
+                    "                    }",
+                    "               });",
+                    "           }",
+                    "});",
+                    "Ext.getCmp('orderMgmtGrid').getView().refresh();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtUpdateClick",
+            "designerId": "1be24b06-9a25-4d26-8334-4d3933934314"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#orderMgmtGrid",
+                "designer|targetType": "Ext.grid.Panel",
+                "fn": "onOrderMgmtGridDblClick",
+                "implHandler": [
+                    "var orderId;",
+                    "orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;",
+                    "",
+                    "if(Ext.isEmpty(this.cartProdWindow)){",
+                    "    this.orderProductWindow = Ext.create('W5D5_Project.view.OrderProductWin');",
+                    "}",
+                    "",
+                    "Ext.Ajax.request({",
+                    "    url : \"getOrderProductsByOrder\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    params :{",
+                    "        id : orderId  ",
+                    "    },",
+                    "    callback : function(options,success,response){",
+                    "        if (Ext.isEmpty(response.responseText)) {",
+                    "            Ext.Msg.alert(\"Orders\",\"Error in retrieving orders\");",
+                    "        } else {",
+                    "            var orderStore1 = Ext.getStore('OrdersStore');",
+                    "            var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "            orderStore1.loadData(jsonResponse);",
+                    "        }",
+                    "    }",
+                    "});",
+                    "",
+                    "Ext.getCmp('orderProdWin').getView().refresh();"
+                ],
+                "name": "rowdblclick",
+                "scope": "me"
+            },
+            "name": "onOrderMgmtGridDblClick",
+            "designerId": "809e86ab-33ce-49ce-981a-5facd93c489a"
+        }
+    ]
+}

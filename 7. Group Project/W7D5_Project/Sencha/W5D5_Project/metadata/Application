@@ -14,7 +14,9 @@
             "UserMainController",
             "UserMgmtController",
             "AccountController",
-            "RequestController"
+            "RequestController",
+            "OnlineUsersController",
+            "OrderHistoryController"
         ],
         "models": [
             "CategoryModel",
@@ -27,7 +29,8 @@
             "OrdersModel",
             "OrderProductModel",
             "FavoriteItemsModel",
-            "RequestModel"
+            "RequestModel",
+            "OnlineUsersModel"
         ],
         "name": "W5D5_Project",
         "stores": [
@@ -43,7 +46,8 @@
             "OrdersStore",
             "OrderProductStore",
             "RequestStore",
-            "UserLevelStore"
+            "UserLevelStore",
+            "OnlineUsersStore"
         ],
         "views": [
             "MainView",
@@ -52,7 +56,8 @@
             "OrderWin",
             "OrderProductWin",
             "UserInfoWin",
-            "ProdInfoWin"
+            "ProdInfoWin",
+            "MyViewport"
         ]
     },
     "name": "Application",

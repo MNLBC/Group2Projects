@@ -577,7 +577,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     id: 'mainTabPanel',
                                     itemId: 'mainTabPanel',
                                     title: '',
-                                    activeTab: 8,
+                                    activeTab: 9,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -1350,6 +1350,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                         {
                                             xtype: 'panel',
                                             autoScroll: true,
+                                            hidden: true,
                                             id: 'userPanel',
                                             itemId: 'userPanel',
                                             title: 'My Panel',
@@ -3402,8 +3403,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
-                                                                                            id: 'orderMgmtName',
-                                                                                            itemId: 'orderMgmtName',
+                                                                                            id: 'orderMgmtUserId',
+                                                                                            itemId: 'orderMgmtUserId',
                                                                                             fieldLabel: 'User Id'
                                                                                         }
                                                                                     ]
@@ -3418,15 +3419,12 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'combobox',
+                                                                                            xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtTotal',
                                                                                             itemId: 'orderMgmtTotal',
                                                                                             fieldLabel: 'Total (RMB)',
-                                                                                            displayField: 'categories',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'CategoryStore',
-                                                                                            valueField: 'categories'
+                                                                                            inputType: 'number'
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -3629,13 +3627,13 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             id: 'onlineUsersGrid',
                                                                             itemId: 'onlineUsersGrid',
                                                                             title: '',
-                                                                            store: 'OrdersStore',
+                                                                            store: 'OnlineUsersStore',
                                                                             columns: [
                                                                                 {
                                                                                     xtype: 'gridcolumn',
                                                                                     width: 340,
                                                                                     align: 'center',
-                                                                                    dataIndex: 'orderId',
+                                                                                    dataIndex: 'userEmail',
                                                                                     text: 'Email'
                                                                                 }
                                                                             ]

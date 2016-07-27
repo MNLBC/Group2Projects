@@ -1063,7 +1063,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 8,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -2685,6 +2685,7 @@
                                             "userConfig": {
                                                 "autoScroll": true,
                                                 "container|align": "stretch",
+                                                "hidden": true,
                                                 "id": "userPanel",
                                                 "itemId": "userPanel",
                                                 "layout": "hbox",
@@ -7404,8 +7405,8 @@
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
                                                                                                 "fieldLabel": "User Id",
-                                                                                                "id": "orderMgmtName",
-                                                                                                "itemId": "orderMgmtName",
+                                                                                                "id": "orderMgmtUserId",
+                                                                                                "itemId": "orderMgmtUserId",
                                                                                                 "layout|anchor": "100%"
                                                                                             },
                                                                                             "name": "MyTextField36",
@@ -7432,23 +7433,20 @@
                                                                                     "designerId": "99de284b-b6c6-4a52-b172-1b219fbfd00d",
                                                                                     "cn": [
                                                                                         {
-                                                                                            "type": "Ext.form.field.ComboBox",
+                                                                                            "type": "Ext.form.field.Text",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
-                                                                                                "displayField": "categories",
                                                                                                 "fieldLabel": "Total (RMB)",
                                                                                                 "id": "orderMgmtTotal",
+                                                                                                "inputType": "number",
                                                                                                 "itemId": "orderMgmtTotal",
-                                                                                                "layout|anchor": "100%",
-                                                                                                "queryMode": "local",
-                                                                                                "store": "CategoryStore",
-                                                                                                "valueField": "categories"
+                                                                                                "layout|anchor": "100%"
                                                                                             },
-                                                                                            "name": "MyComboBox14",
+                                                                                            "name": "MyTextField",
                                                                                             "designerId": "9d8098bb-ec05-4daf-b8dc-fc406800e4f3"
                                                                                         },
                                                                                         {
@@ -7905,7 +7903,7 @@
                                                                                 "id": "onlineUsersGrid",
                                                                                 "itemId": "onlineUsersGrid",
                                                                                 "layout|flex": 1,
-                                                                                "store": "OrdersStore",
+                                                                                "store": "OnlineUsersStore",
                                                                                 "title": ""
                                                                             },
                                                                             "name": "MyGridPanel3",
@@ -7920,7 +7918,7 @@
                                                                                     "codeClass": null,
                                                                                     "userConfig": {
                                                                                         "align": "center",
-                                                                                        "dataIndex": "orderId",
+                                                                                        "dataIndex": "userEmail",
                                                                                         "text": "Email",
                                                                                         "width": 340
                                                                                     },

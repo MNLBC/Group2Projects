@@ -10,6 +10,7 @@
         "designer|userAlias": "userinfowin",
         "designer|userClassName": "UserInfoWin",
         "height": 462,
+        "itemId": "mywindow",
         "layout": "hbox",
         "modal": true,
         "title": "Detailed User Information",

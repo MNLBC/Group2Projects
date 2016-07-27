@@ -29,15 +29,15 @@ Ext.define('W5D5_Project.store.UserTypeStore', {
             data: [
                 {
                     Name: 'Customer',
-                    Type: 'C'
+                    Type: 'Customer'
                 },
                 {
                     Name: 'Blacklist',
-                    Type: 'B'
+                    Type: 'BLACKLIST'
                 },
                 {
                     Name: 'Admin',
-                    Type: 'A'
+                    Type: 'Admin'
                 }
             ]
         }, cfg)]);
