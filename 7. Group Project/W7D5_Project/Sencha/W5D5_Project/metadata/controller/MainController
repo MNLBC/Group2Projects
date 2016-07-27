@@ -623,6 +623,102 @@
             "designerId": "b3dcc290-acde-421c-b4b8-5739b675c1a0"
         },
         {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminSystemBtn",
+                "designer|targetType": "MyButton31",
+                "fn": "onAdminSystemBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('adminPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var panel1 = Ext.getCmp('headerPanel'),",
+                    "    panel2 = Ext.getCmp('subHeaderPanel'),",
+                    "    panel3 = Ext.getCmp('categoryPanel'),",
+                    "    panel4 = Ext.getCmp('cartPanel'),",
+                    "    panel5 = Ext.getCmp('menuPanel');",
+                    "",
+                    "panel1.hide();",
+                    "panel2.hide();",
+                    "panel3.hide();",
+                    "panel4.hide();",
+                    "panel5.hide();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminSystemBtnClick",
+            "designerId": "3aa8bb6d-6ffc-4ac4-98af-bf7f64eadd7c"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#allBtn",
+                "designer|targetType": "MyButton6",
+                "fn": "onAllBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('allProdsPanel');",
+                    "panel.setActiveTab(tab);",
+                    "var controller = W5D5_Project.app.getController('ShopController');",
+                    "controller.clearItems();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAllBtnClick",
+            "designerId": "334b52cd-eec0-4673-910a-6258abcfd6f6"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#faveBtn",
+                "designer|targetType": "MyButton6",
+                "fn": "onFaveBtnClick",
+                "implHandler": [
+                    "var panel = Ext.getCmp('mainTabPanel');",
+                    "var tab = Ext.getCmp('faveProdsPanel');",
+                    "panel.setActiveTab(tab);",
+                    "",
+                    "var faveStore = Ext.getStore('FavoriteItemsStore'),",
+                    "    prodStore = Ext.getStore('ProductStore'),",
+                    "    store = Ext.getStore('FavoriteProductsStore');",
+                    "",
+                    "faveStore.clearFilter();",
+                    "prodStore.clearFilter();",
+                    "store.clearFilter();",
+                    "",
+                    "Ext.each(prodStore.data.items, function(record){",
+                    "   Ext.each(faveStore.data.items, function(rec){",
+                    "      if(record.data.prodId == rec.data.prodId){",
+                    "          store.add(record);",
+                    "      }",
+                    "   });",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onFaveBtnClick",
+            "designerId": "563b4c4b-c4d9-422a-9233-4ac0de79ac84"
+        },
+        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",

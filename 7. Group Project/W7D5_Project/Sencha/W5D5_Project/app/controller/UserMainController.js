@@ -57,6 +57,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var admin1 = Ext.getCmp('userMgmtBtn');
         var admin2 = Ext.getCmp('prodMgmtBtn'),
             admin3 = Ext.getCmp('userReqBtn'),
+            admin4 = Ext.getCmp('adminSystemBtn');
             record = '';
         var isExist = false;
 
@@ -102,6 +103,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                         }
                                     });
                                     admin3.show();
+                                    admin4.show();
                                 }
                                 store.add(record);
                                 Ext.Ajax.request({

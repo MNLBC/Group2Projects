@@ -1,0 +1,131 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ProdInfoController"
+    },
+    "name": "MyController",
+    "designerId": "9691efee-f0a6-4041-816a-0b1a357e278a",
+    "cn": [
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "record"
+                ],
+                "fn": "showProdInfoWin",
+                "implHandler": [
+                    "this.recordData = record;",
+                    "if(Ext.isEmpty(this.prodInfoWin)){",
+                    "    this.prodInfoWin = Ext.create('W5D5_Project.view.ProdInfoWin');",
+                    "}",
+                    "Ext.getCmp('prodInfoImg').setSrc('resources/img/' + record.prodImg + '.png');",
+                    "Ext.getCmp('prodInfoId').setValue(record.prodId);",
+                    "Ext.getCmp('prodInfoName').setValue(record.prodName);",
+                    "Ext.getCmp('prodInfoCat').setValue(record.prodCat);",
+                    "Ext.getCmp('prodInfoDesc').setValue(record.prodDesc);",
+                    "if(record.prodSale!=1){",
+                    "    Ext.getCmp('prodInfoPrice').setValue(record.prodPrice * record.prodSale);",
+                    "}else{",
+                    "    Ext.getCmp('prodInfoPrice').setValue(record.prodPrice);",
+                    "}",
+                    "Ext.getCmp('prodInfoAveRating').setValue(5);",
+                    "this.prodInfoWin.show();"
+                ]
+            },
+            "name": "showProdInfoWin",
+            "designerId": "d364c2fe-1cd7-4ff9-8c5c-570118a06dea"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "hideProdInfoWin",
+                "implHandler": [
+                    "if(!Ext.isEmpty(this.prodInfoWin)){",
+                    "    this.prodInfoWin.hide();",
+                    "}"
+                ]
+            },
+            "name": "hideProdInfoWin",
+            "designerId": "b360c983-0d9b-4278-8215-663abc5b9e81"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#prodInfoCartBtn",
+                "designer|targetType": "MyButton30",
+                "fn": "onProdInfoCartBtnClick",
+                "implHandler": [
+                    "var store = Ext.getStore('CartProductStore'),",
+                    "    record = this.recordData,",
+                    "    isExists = false,",
+                    "    cartCount = Ext.getCmp('cartCount');",
+                    "Ext.each(store.data.items,function(rec){",
+                    "    if(rec.data.prodId==record.prodId){",
+                    "        rec.data.prodQty=parseInt(rec.data.prodQty)+1;",
+                    "        rec.data.prodSubtotal=rec.data.prodSubtotal+rec.data.prodPrice;",
+                    "        isExists = true;",
+                    "        record=rec.data;",
+                    "        Ext.getCmp('cartProductGrid').getView().refresh();",
+                    "    }",
+                    "});",
+                    "if(!isExists){",
+                    "    record.cartprodId='';",
+                    "    record.prodQty=1;",
+                    "    store.add(record);",
+                    "}",
+                    "Ext.Msg.alert('Status', 'Added item to cart');",
+                    "console.log(store);",
+                    "Ext.Ajax.request({",
+                    "    url : 'addToCart',",
+                    "    method : 'POST',",
+                    "    params : {",
+                    "        userId: Ext.getCmp('idField').getValue(),",
+                    "        prodId: record.prodId,",
+                    "        prodName: record.prodName,",
+                    "        prodCat: record.prodCat,",
+                    "        prodDesc: record.prodDesc,",
+                    "        prodPrice: record.prodPrice,",
+                    "        prodSale: record.prodSale,",
+                    "        prodStock: record.prodStock,",
+                    "        prodImg: record.prodImg,",
+                    "        prodQty: record.prodQty,",
+                    "        prodSubtotal: record.prodSubtotal",
+                    "    },",
+                    "    callback : function(options, success, response){",
+                    "        if(!Ext.isEmpty(response.responseText)){",
+                    "            console.log(\"success!\");",
+                    "        }",
+                    "    }",
+                    "});",
+                    "",
+                    "var controller = W5D5_Project.app.getController('ProdInfoController');",
+                    "controller.hideProdInfoWin();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onProdInfoCartBtnClick",
+            "designerId": "1a2a5927-9678-4a4e-91a7-a3d50316aa11"
+        }
+    ]
+}

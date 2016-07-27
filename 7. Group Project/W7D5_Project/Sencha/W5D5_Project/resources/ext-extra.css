@@ -111,6 +111,24 @@
     font-weight: bold !important;
 }
 
+.adminLabelCls {
+    height: 50px;
+    font: 300 25px/30px sans-serif;
+    color: #666;
+    margin-top: 4px;
+    font-family: 'Arial' !important;
+    font-weight: bold !important;
+}
+
+.headerCls {
+    height: 50px;
+    font: 300 45px/50px sans-serif;
+    color: #fff;
+    margin-top: 4px;
+    font-family: 'Arial' !important;
+    font-weight: bold !important;
+}
+
 .x-btn-default-small .x-btn-inner {
     font-size: 20px !important;
     font-weight: bold !important;
@@ -196,4 +214,3 @@ margin-top: 4px;
     border-style: none !important;
     border-radius: 7px !important;
 }
-
