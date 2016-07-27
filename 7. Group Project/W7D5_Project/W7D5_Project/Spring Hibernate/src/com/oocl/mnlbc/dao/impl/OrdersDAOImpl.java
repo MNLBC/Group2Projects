@@ -103,4 +103,36 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return result;
 	}
 
+	@Override
+	public List<Order> getOrders() {
+		List<Order> orderList = new ArrayList<Order>();
+		String query = "Select orders From Order orders";
+		orderList = manager.createQuery(query, Order.class).getResultList();
+		for (Order order : orderList) {
+			logger.info("Order list" + order);
+		}
+		return orderList;
+	}
+
+	@Override
+	public int updateOrder(Order order) {
+		Order newOrder = manager.find(Order.class, order.getOrderId());
+		newOrder.setOrderId(order.getOrderId());
+		newOrder.setOrderDate(order.getOrderDate());
+		newOrder.setOrderTotal(order.getOrderTotal());
+		newOrder.setUserId(order.getUserId());
+		
+		logger.info("Order updated successfully!=" + newOrder);
+		return 1;
+	}
+
+	@Override
+	public int deleteOrderById(long orderId) {
+		Order deletedOrder = manager.find(Order.class, orderId);
+		manager.remove(deletedOrder);
+		logger.info("Order deleted successfully!=" + deletedOrder);
+		return 1;
+	}
+	
+
 }

@@ -83,7 +83,7 @@ public class Order {
 	/**
 	 * @return the orderTotal
 	 */
-	public double getOrderTotal() {
+	public float getOrderTotal() {
 		return orderTotal;
 	}
 
