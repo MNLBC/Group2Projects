@@ -90,6 +90,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
                 Ext.getCmp('orderMgmtUserId').setValue('');
                 Ext.getCmp('orderMgmtTotal').setValue('');
                 Ext.getCmp('orderMgmtDate').setValue('');
+                Ext.getCmp('orderMgmtSearch').setValue('');
     },
 
     onOrderMgmtDeleteClick: function(button, e, eOpts) {

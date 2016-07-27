@@ -3695,7 +3695,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'orderMgmtUserId',
                                                                                             itemId: 'orderMgmtUserId',
                                                                                             fieldLabel: 'User Id',
-                                                                                            maskRe: /^[0-9]&/
+                                                                                            maskRe: /[0-9.]/
                                                                                         }
                                                                                     ]
                                                                                 },

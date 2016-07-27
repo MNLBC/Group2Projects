@@ -118,7 +118,8 @@
                     "        Ext.getCmp('orderMgmtId').setValue('');",
                     "        Ext.getCmp('orderMgmtUserId').setValue('');",
                     "        Ext.getCmp('orderMgmtTotal').setValue('');",
-                    "        Ext.getCmp('orderMgmtDate').setValue('');"
+                    "        Ext.getCmp('orderMgmtDate').setValue('');",
+                    "        Ext.getCmp('orderMgmtSearch').setValue('');"
                 ],
                 "name": "click",
                 "scope": "me"
