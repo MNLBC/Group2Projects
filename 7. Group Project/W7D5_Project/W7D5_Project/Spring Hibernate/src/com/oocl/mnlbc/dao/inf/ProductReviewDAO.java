@@ -14,4 +14,8 @@ import com.oocl.mnlbc.model.ProductReview;
  */
 public interface ProductReviewDAO extends GenericCRUD<ProductReview> {
 	public List<ProductReview> listReview();
+	
+	public List<ProductReview> listReviewByProductId(long productId);
+	
+	public List<ProductReview> listReviewByUserAndProducts(long productId, String userEmail);
 }

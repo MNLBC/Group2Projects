@@ -38,6 +38,17 @@ public class ProductReviewController {
 		return this.reviewSVC.getReviews();
 	}
 
+	@RequestMapping(value = "/getProductReviewByProduct", method = RequestMethod.POST)
+	public @ResponseBody List<ProductReview> getAllReviewByProduct(@RequestParam long productId) {
+		return this.reviewSVC.getReviewsByProduct(productId);
+	}
+
+	@RequestMapping(value = "/getProductReviewByUserProduct", method = RequestMethod.POST)
+	public @ResponseBody List<ProductReview> getAllReviewByUserProduct(@RequestParam long productId,
+			@RequestParam String userEmail) {
+		return this.reviewSVC.getReviewsByUserProduct(productId, userEmail);
+	}
+
 	@RequestMapping(value = "/addProductReview", method = RequestMethod.POST)
 	public boolean addReview(@RequestBody ProductReview review) {
 
