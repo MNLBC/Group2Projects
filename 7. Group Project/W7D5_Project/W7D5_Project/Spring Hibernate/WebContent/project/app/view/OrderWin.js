@@ -35,6 +35,7 @@ Ext.define('W5D5_Project.view.OrderWin', {
     width: 400,
     closeAction: 'hide',
     title: 'Order Details',
+    modal: true,
 
     layout: {
         type: 'hbox',
@@ -106,7 +107,7 @@ Ext.define('W5D5_Project.view.OrderWin', {
                             id: 'orderConfirm',
                             itemId: 'orderConfirm',
                             width: 184,
-                            text: 'Confirm'
+                            text: 'CONFIRM'
                         },
                         {
                             xtype: 'tbspacer',
@@ -121,7 +122,7 @@ Ext.define('W5D5_Project.view.OrderWin', {
                             id: 'orderCancel',
                             itemId: 'orderCancel',
                             width: 358,
-                            text: 'Cancel'
+                            text: 'CANCEL'
                         }
                     ]
                 },

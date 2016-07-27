@@ -29,9 +29,10 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
     height: 250,
     id: 'cartProductWindow',
     itemId: 'cartProductWindow',
-    width: 573,
+    width: 593,
     closeAction: 'hide',
     title: '',
+    modal: true,
 
     items: [
         {
@@ -58,7 +59,7 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                 },
                 {
                     xtype: 'container',
-                    width: 318,
+                    width: 331,
                     layout: {
                         type: 'vbox',
                         align: 'stretch'
@@ -67,7 +68,7 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                         {
                             xtype: 'tbspacer',
                             flex: 0,
-                            height: 36
+                            height: 35
                         },
                         {
                             xtype: 'displayfield',
@@ -111,7 +112,7 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                                     cls: 'genericBtn',
                                     id: 'cartProductUpdateButton',
                                     itemId: 'cartProductUpdateButton',
-                                    text: 'Update'
+                                    text: 'UPDATE'
                                 },
                                 {
                                     xtype: 'tbspacer',
@@ -122,7 +123,7 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                                     cls: 'genericBtn',
                                     id: 'cartProductRemoveButton',
                                     itemId: 'cartProductRemoveButton',
-                                    text: 'Remove From Cart'
+                                    text: 'REMOVE FROM CART'
                                 }
                             ]
                         }

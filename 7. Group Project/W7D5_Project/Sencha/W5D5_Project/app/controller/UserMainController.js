@@ -330,7 +330,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
 
     onReg1CntrBeforeAdd: function(me, field) {
         if (!field.allowBlank){
-        field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
         }
     }
 

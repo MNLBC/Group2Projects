@@ -14,7 +14,9 @@
             "UserMainController",
             "UserMgmtController",
             "AccountController",
-            "RequestController"
+            "RequestController",
+            "AdminMgmtController",
+            "ProductMgmtController"
         ],
         "models": [
             "CategoryModel",

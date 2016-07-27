@@ -1063,7 +1063,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 8,
+                                        "activeTab": 13,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -5902,10 +5902,12 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "First Name",
                                                                                                 "id": "userMgmtFname",
                                                                                                 "itemId": "userMgmtFname",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "maskRe": "/^[a-zA-Z\\.\\- ]+$/"
                                                                                             },
                                                                                             "name": "MyTextField36",
                                                                                             "designerId": "0e966809-4848-4dc3-8d7a-8d7adfb97403"
@@ -5918,10 +5920,12 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Last Name",
                                                                                                 "id": "userMgmtLname",
                                                                                                 "itemId": "userMgmtLname",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "maskRe": "/^[a-zA-Z\\.\\- ]+$/"
                                                                                             },
                                                                                             "name": "MyTextField38",
                                                                                             "designerId": "bed1cd33-0df5-4aa9-8d4b-8214e4936731"
@@ -5934,6 +5938,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Email",
                                                                                                 "id": "userMgmtEmail",
                                                                                                 "itemId": "userMgmtEmail",
@@ -5950,10 +5955,13 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Password",
                                                                                                 "id": "userMgmtPass",
+                                                                                                "inputType": "password",
                                                                                                 "itemId": "userMgmtPass",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "readOnly": null
                                                                                             },
                                                                                             "name": "MyTextField39",
                                                                                             "designerId": "5b4847e2-afc4-489e-ac87-6c7f54d89c18"
@@ -5966,6 +5974,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Occupation",
                                                                                                 "id": "userMgmtOccup",
                                                                                                 "itemId": "userMgmtOccup",
@@ -5994,6 +6003,48 @@
                                                                                     "designerId": "aeeb6ad3-6241-463b-946e-6847a01a7d06",
                                                                                     "cn": [
                                                                                         {
+                                                                                            "type": "Ext.form.field.ComboBox",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "allowBlank": false,
+                                                                                                "displayField": "CountryName",
+                                                                                                "fieldLabel": "Country",
+                                                                                                "id": "userMgmtCountry",
+                                                                                                "itemId": "userMgmtCountry",
+                                                                                                "layout|anchor": "100%",
+                                                                                                "queryMode": "local",
+                                                                                                "store": "CountryStore",
+                                                                                                "valueField": "CountryName"
+                                                                                            },
+                                                                                            "name": "MyComboBox9",
+                                                                                            "designerId": "951a28d0-5500-44c1-a27e-e0793bacd006"
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.form.field.ComboBox",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "allowBlank": false,
+                                                                                                "displayField": "SP",
+                                                                                                "fieldLabel": "State/Province",
+                                                                                                "id": "userMgmtSp",
+                                                                                                "itemId": "userMgmtSp",
+                                                                                                "layout|anchor": "100%",
+                                                                                                "queryMode": "local",
+                                                                                                "store": "SPStore",
+                                                                                                "valueField": "SP"
+                                                                                            },
+                                                                                            "name": "MyComboBox8",
+                                                                                            "designerId": "5de727e4-a1f4-49c7-922b-99b080350470"
+                                                                                        },
+                                                                                        {
                                                                                             "type": "Ext.form.field.Text",
                                                                                             "reference": {
                                                                                                 "name": "items",
@@ -6001,6 +6052,24 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
+                                                                                                "fieldLabel": "City",
+                                                                                                "id": "userMgmtCity",
+                                                                                                "itemId": "userMgmtCity",
+                                                                                                "layout|anchor": "100%"
+                                                                                            },
+                                                                                            "name": "MyTextField43",
+                                                                                            "designerId": "2feffd7b-60f2-42f3-964e-959bb5613c3b"
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.form.field.Text",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Address 1",
                                                                                                 "id": "userMgmtAdd1",
                                                                                                 "itemId": "userMgmtAdd1",
@@ -6026,22 +6095,6 @@
                                                                                             "designerId": "c12843df-dc7d-42a6-92b9-841a33150b78"
                                                                                         },
                                                                                         {
-                                                                                            "type": "Ext.form.field.Text",
-                                                                                            "reference": {
-                                                                                                "name": "items",
-                                                                                                "type": "array"
-                                                                                            },
-                                                                                            "codeClass": null,
-                                                                                            "userConfig": {
-                                                                                                "fieldLabel": "City",
-                                                                                                "id": "userMgmtCity",
-                                                                                                "itemId": "userMgmtCity",
-                                                                                                "layout|anchor": "100%"
-                                                                                            },
-                                                                                            "name": "MyTextField43",
-                                                                                            "designerId": "2feffd7b-60f2-42f3-964e-959bb5613c3b"
-                                                                                        },
-                                                                                        {
                                                                                             "type": "Ext.form.field.ComboBox",
                                                                                             "reference": {
                                                                                                 "name": "items",
@@ -6049,46 +6102,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
-                                                                                                "displayField": "SP",
-                                                                                                "fieldLabel": "State/Province",
-                                                                                                "id": "userMgmtSp",
-                                                                                                "itemId": "userMgmtSp",
-                                                                                                "layout|anchor": "100%",
-                                                                                                "queryMode": "local",
-                                                                                                "store": "SPStore",
-                                                                                                "valueField": "SP"
-                                                                                            },
-                                                                                            "name": "MyComboBox8",
-                                                                                            "designerId": "5de727e4-a1f4-49c7-922b-99b080350470"
-                                                                                        },
-                                                                                        {
-                                                                                            "type": "Ext.form.field.ComboBox",
-                                                                                            "reference": {
-                                                                                                "name": "items",
-                                                                                                "type": "array"
-                                                                                            },
-                                                                                            "codeClass": null,
-                                                                                            "userConfig": {
-                                                                                                "displayField": "CountryName",
-                                                                                                "fieldLabel": "Country",
-                                                                                                "id": "userMgmtCountry",
-                                                                                                "itemId": "userMgmtCountry",
-                                                                                                "layout|anchor": "100%",
-                                                                                                "queryMode": "local",
-                                                                                                "store": "CountryStore",
-                                                                                                "valueField": "CountryName"
-                                                                                            },
-                                                                                            "name": "MyComboBox9",
-                                                                                            "designerId": "951a28d0-5500-44c1-a27e-e0793bacd006"
-                                                                                        },
-                                                                                        {
-                                                                                            "type": "Ext.form.field.ComboBox",
-                                                                                            "reference": {
-                                                                                                "name": "items",
-                                                                                                "type": "array"
-                                                                                            },
-                                                                                            "codeClass": null,
-                                                                                            "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "displayField": "Type",
                                                                                                 "fieldLabel": "Type",
                                                                                                 "id": "userMgmtType",
@@ -6109,6 +6123,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "displayField": "level",
                                                                                                 "fieldLabel": "Level",
                                                                                                 "id": "userMgmtLevel",
@@ -6369,6 +6384,8 @@
                                                                                     "userConfig": {
                                                                                         "align": "center",
                                                                                         "dataIndex": "userFname",
+                                                                                        "id": "userFname",
+                                                                                        "itemId": "userFname",
                                                                                         "text": "First Name",
                                                                                         "width": 177
                                                                                     },
@@ -6385,6 +6402,8 @@
                                                                                     "userConfig": {
                                                                                         "align": "center",
                                                                                         "dataIndex": "userLname",
+                                                                                        "id": "userLname",
+                                                                                        "itemId": "userLname",
                                                                                         "text": "Last Name",
                                                                                         "width": 194
                                                                                     },
@@ -6401,6 +6420,8 @@
                                                                                     "userConfig": {
                                                                                         "align": "center",
                                                                                         "dataIndex": "userEmail",
+                                                                                        "id": "userEmail",
+                                                                                        "itemId": "userEmail",
                                                                                         "text": "Email",
                                                                                         "width": 188
                                                                                     },
@@ -6733,6 +6754,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Name",
                                                                                                 "id": "prodMgmtName",
                                                                                                 "itemId": "prodMgmtName",
@@ -6749,6 +6771,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "displayField": "categories",
                                                                                                 "fieldLabel": "Category",
                                                                                                 "id": "prodMgmtCat",
@@ -6769,6 +6792,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Description",
                                                                                                 "id": "prodMgmtDesc",
                                                                                                 "itemId": "prodMgmtDesc",
@@ -6804,6 +6828,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Price",
                                                                                                 "id": "prodMgmtPrice",
                                                                                                 "itemId": "prodMgmtPrice",
@@ -6820,6 +6845,7 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
                                                                                                 "fieldLabel": "Sale",
                                                                                                 "id": "prodMgmtSale",
                                                                                                 "itemId": "prodMgmtSale",
@@ -6836,10 +6862,16 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
+                                                                                                "allowDecimals": false,
+                                                                                                "allowExponential": false,
+                                                                                                "allowOnlyWhitespace": false,
                                                                                                 "fieldLabel": "Stock",
                                                                                                 "id": "prodMgmtStock",
                                                                                                 "itemId": "prodMgmtStock",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "minValue": 0,
+                                                                                                "regex": "/^[0-9]*$/"
                                                                                             },
                                                                                             "name": "MyNumberField",
                                                                                             "designerId": "2ded6975-c975-4765-97a3-57bd035a0dde"
@@ -6852,6 +6884,8 @@
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "allowBlank": false,
+                                                                                                "allowOnlyWhitespace": false,
                                                                                                 "fieldLabel": "Image Name",
                                                                                                 "id": "prodMgmtImg",
                                                                                                 "itemId": "prodMgmtImg",

@@ -153,9 +153,9 @@ Ext.define('W5D5_Project.controller.ProductController', {
         {
             maxId = prodStore.getAt(0).get('prodId'); // initialise to the first record's id value.
             prodStore.each(function(rec) // go through all the records
-                       {
-                           maxId = Math.max(maxId, rec.get('prodId'));
-                       });
+                           {
+                               maxId = Math.max(maxId, rec.get('prodId'));
+                           });
         }
 
         prodId = maxId + 1;

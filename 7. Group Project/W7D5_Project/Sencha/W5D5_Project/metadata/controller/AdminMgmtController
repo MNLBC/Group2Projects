@@ -1,0 +1,140 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AdminMgmtController",
+        "id": "adminMgmtController"
+    },
+    "name": "MyController",
+    "designerId": "f6467501-b539-4c7a-a13a-713e16cc8e02",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminUserMgmtBtn",
+                "designer|targetType": "MyButton19",
+                "fn": "onAdminUserMgmtBtnClick",
+                "implHandler": [
+                    "Ext.getCmp('userMgmtTab').show();",
+                    "Ext.getCmp('prodMgmtTab').hide();",
+                    "Ext.getCmp('orderMgmtTab').hide();",
+                    "Ext.getCmp('onlineUsersTab').hide();",
+                    "Ext.Ajax.request({",
+                    "    url : \"getAllUsers\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    callback : function(options,success,response){",
+                    "        if (Ext.isEmpty(response.responseText)) {",
+                    "            Ext.Msg.alert(\"Users\",",
+                    "                          \"Error in getting users\");",
+                    "        } else {",
+                    "            var userStore = Ext.getStore('UserStore');",
+                    "            var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "            userStore.loadData(jsonResponse);",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminUserMgmtBtnClick",
+            "designerId": "74fc3327-2e7f-4a92-820e-993cfd1e86b7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminProdMgmtBtn",
+                "designer|targetType": "MyButton20",
+                "fn": "onAdminProdMgmtBtnClick",
+                "implHandler": [
+                    "Ext.getCmp('userMgmtTab').hide();",
+                    "Ext.getCmp('prodMgmtTab').show();",
+                    "Ext.getCmp('orderMgmtTab').hide();",
+                    "Ext.getCmp('onlineUsersTab').hide();",
+                    "Ext.Ajax.request({",
+                    "    url : \"getAllProducts\",",
+                    "    method : \"GET\",",
+                    "    async : false,",
+                    "    callback : function(options,success,response){",
+                    "        if (Ext.isEmpty(response.responseText)) {",
+                    "            Ext.Msg.alert(\"Products\",",
+                    "                          \"Error in getting products\");",
+                    "        } else {",
+                    "            var prodStore = Ext.getStore('ProductStore');",
+                    "            var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "            prodStore.loadData(jsonResponse);",
+                    "        }",
+                    "    }",
+                    "});"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminProdMgmtBtnClick",
+            "designerId": "eaeb9fd0-ca9f-4dc3-bd40-b2da64adaf49"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminOnlineUsersBtn",
+                "designer|targetType": "MyButton26",
+                "fn": "onAdminOnlineUsersBtnClick",
+                "implHandler": [
+                    "Ext.getCmp('userMgmtTab').hide();",
+                    "Ext.getCmp('prodMgmtTab').hide();",
+                    "Ext.getCmp('orderMgmtTab').hide();",
+                    "Ext.getCmp('onlineUsersTab').show();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminOnlineUsersBtnClick",
+            "designerId": "793b68b9-dcc5-4a55-93e3-9d2037fbb041"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#adminOrderMgmtBtn",
+                "designer|targetType": "MyButton21",
+                "fn": "onAdminOrderMgmtBtnClick",
+                "implHandler": [
+                    "Ext.getCmp('userMgmtTab').hide();",
+                    "Ext.getCmp('prodMgmtTab').hide();",
+                    "Ext.getCmp('orderMgmtTab').show();",
+                    "Ext.getCmp('onlineUsersTab').hide();",
+                    ""
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onAdminOrderMgmtBtnClick",
+            "designerId": "0f18843b-adec-4f61-ba79-c9acea31fa81"
+        }
+    ]
+}

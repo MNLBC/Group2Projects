@@ -27,6 +27,7 @@ Ext.define('W5D5_Project.view.ProductImageWindow', {
     itemId: 'productImageWindow',
     width: 217,
     title: 'Your Product',
+    modal: true,
 
     layout: {
         type: 'vbox',

@@ -397,7 +397,7 @@
                 "fn": "onReg1CntrBeforeAdd",
                 "implHandler": [
                     "if (!field.allowBlank){",
-                    "field.labelSeparator += '<span style=\"color: rgb(255, 0, 0); padding-left: 2px;\">*</span>';",
+                    "    field.labelSeparator += '<span style=\"color: rgb(255, 0, 0); padding-left: 2px;\">*</span>';",
                     "}"
                 ],
                 "name": "beforeadd",

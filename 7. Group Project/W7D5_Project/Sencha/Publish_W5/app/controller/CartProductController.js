@@ -95,9 +95,9 @@ Ext.define('W5D5_Project.controller.CartProductController', {
         prodStore = Ext.getStore('CartProductStore');
 
         Ext.each(prodStore.data.items,function(record){
-           if(prodId == record.data.prodId){
-               recordToDelete = record;
-           }
+            if(prodId == record.data.prodId){
+                recordToDelete = record;
+            }
         });
         if(!Ext.isEmpty(recordToDelete)){
             Ext.Msg.alert('Success', 'Item removed from cart');
