@@ -13,15 +13,15 @@
             "ProductController",
             "UserMainController",
             "AccountController",
-            "RequestController",
             "ProdInfoController",
             "FavoriteItemsController",
             "AllProductsController",
-            "OnlineUsersController",
             "OrderMgmtController",
             "AdminController",
             "UserMgmtController",
-            "ProductMgmtController"
+            "ProductMgmtController",
+            "RequestController",
+            "OnlineUsersController"
         ],
         "models": [
             "CategoryModel",

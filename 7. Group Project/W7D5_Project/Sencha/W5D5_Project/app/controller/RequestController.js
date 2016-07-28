@@ -31,12 +31,6 @@ Ext.define('W5D5_Project.controller.RequestController', {
     },
 
     onReqApproveBtnClick: function() {
-        var grid = Ext.getCmp('requestGrid');
-        if(Ext.isEmpty(grid.getSelectionModel().getSelection())){
-            Ext.Msg.alert("Request","Please select a request to approve.");
-            return;
-        }
-
         var requestId,userEmail,userDate,requestStatus,request;
 
         requestId = Ext.getCmp('requestGrid').getSelectionModel().selected.items[0].data.requestId;
@@ -98,16 +92,18 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                 }
                             }
                         });
+        Ext.getCmp('reqFirstName').setValue('');
+        Ext.getCmp('reqLastName').setValue('');
+        Ext.getCmp('reqAddress1').setValue('');
+        Ext.getCmp('reqAddress2').setValue('');
+        Ext.getCmp('reqCountry').setValue('');
+        Ext.getCmp('reqSp').setValue('');
+        Ext.getCmp('reqCity').setValue('');
+        Ext.getCmp('reqOccupation').setValue('');
+        Ext.getCmp('reqEmail').setValue('');
     },
 
     onReqRejectBtnClick: function() {
-        var grid = Ext.getCmp('requestGrid');
-        if(Ext.isEmpty(grid.getSelectionModel().getSelection())){
-            Ext.Msg.alert("Request","Please select a request to reject.");
-            return;
-        }
-
-
         var requestId,userEmail,userDate,requestStatus,request;
 
         requestId = Ext.getCmp('requestGrid').getSelectionModel().selected.items[0].data.requestId;
@@ -122,42 +118,51 @@ Ext.define('W5D5_Project.controller.RequestController', {
         };
 
         Ext.Ajax.request({
-            url : "updateRequest",
-            method: 'POST',
-            params : {
-                id : requestId,
-                email: userEmail,
-                date : userDate,
-                status : "REJECTED"
-            },
-            async: false,
-            callback : function(options, success, response){
-                if (response.responseText=="false") {
-                    Ext.Msg.alert("Request","Error in rejecting request");
-                } else {
-                    Ext.Msg.alert("Request","Success in rejecting request");
-                    Ext.Ajax.request({
-                        url : "getAllRequest",
-                        method : "GET",
-                        async : false,
-                        callback : function(options,success,response){
-                            if (Ext.isEmpty(response.responseText)) {
-                                Ext.Msg.alert("Requests", "Error in getting requests");
-                            } else {
-                                var reqStore = Ext.getStore('RequestStore');
-                                var jsonResponse = Ext.JSON.decode(response.responseText);
-                                reqStore.loadData(jsonResponse);
+                            url : "updateRequest",
+                            method: 'POST',
+                            params : {
+                                id : requestId,
+                                email: userEmail,
+                                date : userDate,
+                                status : "REJECTED"
+                            },
+                            async: false,
+                            callback : function(options, success, response){
+                                if (response.responseText=="false") {
+                                     Ext.Msg.alert("Request","Error in rejecting request");
+                                } else {
+                                     Ext.Msg.alert("Request","Success in rejecting request");
+                                    Ext.Ajax.request({
+                                        url : "getAllRequest",
+                                        method : "GET",
+                                        async : false,
+                                        callback : function(options,success,response){
+                                            if (Ext.isEmpty(response.responseText)) {
+                                                Ext.Msg.alert("Requests", "Error in getting requests");
+                                            } else {
+                                                var reqStore = Ext.getStore('RequestStore');
+                                                var jsonResponse = Ext.JSON.decode(response.responseText);
+                                                reqStore.loadData(jsonResponse);
+                                            }
+                                        }
+                                    });
+                                    Ext.getCmp('requestGrid').getView().refresh();
+                                }
                             }
-                        }
-                    });
-                    Ext.getCmp('requestGrid').getView().refresh();
-                }
-            }
-        });
+                        });
+        Ext.getCmp('reqFirstName').setValue('');
+        Ext.getCmp('reqLastName').setValue('');
+        Ext.getCmp('reqAddress1').setValue('');
+        Ext.getCmp('reqAddress2').setValue('');
+        Ext.getCmp('reqCountry').setValue('');
+        Ext.getCmp('reqSp').setValue('');
+        Ext.getCmp('reqCity').setValue('');
+        Ext.getCmp('reqOccupation').setValue('');
+        Ext.getCmp('reqEmail').setValue('');
     },
 
     onRequestGridChange: function(model, selected, eOpts) {
-        var selected;
+        var user,selected;
                 this.selected = selected;
                 if(!Ext.isEmpty(selected[0])){
                     var gridEmail = selected[0].data.userEmail;
@@ -174,21 +179,19 @@ Ext.define('W5D5_Project.controller.RequestController', {
                              console.log('Failed ');
                         } else {
                              console.log('Success! ');
-                             var userStore = Ext.getStore('UserStore');
-                             var jsonResponse = Ext.JSON.decode(response.responseText);
-                             userStore.loadData(jsonResponse);
+                             user = Ext.JSON.decode(response.responseText);
                         }
                     }
                 });
-                Ext.getCmp('reqFirstName').setValue(Ext.getStore('UserStore').data.items[0].data.userFname);
-                Ext.getCmp('reqLastName').setValue(Ext.getStore('UserStore').data.items[0].data.userLname);
-                Ext.getCmp('reqAddress1').setValue(Ext.getStore('UserStore').data.items[0].data.userAddress1);
-                Ext.getCmp('reqAddress2').setValue(Ext.getStore('UserStore').data.items[0].data.userAddress2);
-                Ext.getCmp('reqCountry').setValue(Ext.getStore('UserStore').data.items[0].data.userCountry);
-                Ext.getCmp('reqSp').setValue(Ext.getStore('UserStore').data.items[0].data.userSp);
-                Ext.getCmp('reqCity').setValue(Ext.getStore('UserStore').data.items[0].data.userCity);
-                Ext.getCmp('reqOccupation').setValue(Ext.getStore('UserStore').data.items[0].data.userOccupation);
-                Ext.getCmp('reqEmail').setValue(Ext.getStore('UserStore').data.items[0].data.userEmail);
+                Ext.getCmp('reqFirstName').setValue(user[0].userFname);
+                Ext.getCmp('reqLastName').setValue(user[0].userLname);
+                Ext.getCmp('reqAddress1').setValue(user[0].userAddress1);
+                Ext.getCmp('reqAddress2').setValue(user[0].userAddress2);
+                Ext.getCmp('reqCountry').setValue(user[0].userCountry);
+                Ext.getCmp('reqSp').setValue(user[0].userSp);
+                Ext.getCmp('reqCity').setValue(user[0].userCity);
+                Ext.getCmp('reqOccupation').setValue(user[0].userOccupation);
+                Ext.getCmp('reqEmail').setValue(user[0].userEmail);
                 }
     }
 

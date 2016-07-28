@@ -1245,7 +1245,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 9,
+                                        "activeTab": 13,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -5924,6 +5924,7 @@
                                                             "userConfig": {
                                                                 "container|align": "stretch",
                                                                 "height": 70,
+                                                                "hidden": true,
                                                                 "id": "adminMenuContainer",
                                                                 "itemId": "adminMenuContainer",
                                                                 "layout": "hbox",
@@ -6067,6 +6068,7 @@
                                                                 "container|align": "stretch",
                                                                 "container|pack": "end",
                                                                 "height": 70,
+                                                                "hidden": true,
                                                                 "id": "adminBackContainer",
                                                                 "itemId": "adminBackContainer",
                                                                 "layout": "hbox",
@@ -6179,6 +6181,7 @@
                                                                     "{background-color: #aaa; !important}"
                                                                 ],
                                                                 "container|align": "stretch",
+                                                                "hidden": true,
                                                                 "id": "adminMenuPanel",
                                                                 "layout": "vbox",
                                                                 "layout|flex": 0,
@@ -6354,7 +6357,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "activeTab": 1,
+                                                                "activeTab": 0,
                                                                 "id": "adminTabPanel",
                                                                 "layout|flex": 1
                                                             },

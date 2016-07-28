@@ -9,7 +9,7 @@
         "designer|userClassName": "OnlineUsersController"
     },
     "name": "MyController",
-    "designerId": "3bce7a55-1490-4ae5-896b-1bfedf98790f",
+    "designerId": "169c086b-7442-4a4a-8603-142e0a871e36",
     "cn": [
         {
             "type": "controlleraction",
@@ -37,7 +37,7 @@
                 "scope": "me"
             },
             "name": "onOnlineUsersFieldChange",
-            "designerId": "b198e449-860c-4aac-b367-f760c56d8b91"
+            "designerId": "a2d25e1c-4346-44db-a462-6dac33048cbe"
         },
         {
             "type": "controlleraction",
@@ -51,7 +51,7 @@
                 "designer|targetType": "Ext.grid.Panel",
                 "fn": "onOnlineUsersGridDblClick",
                 "implHandler": [
-                    "var userStore;",
+                    "var user;",
                     "var email = Ext.getCmp('onlineUsersGrid').getSelectionModel().selected.items[0].data.userEmail;",
                     "this.userInfoWindow = Ext.create('W5D5_Project.view.UserInfoWin');",
                     "Ext.Ajax.request({",
@@ -66,21 +66,19 @@
                     "            Ext.Msg.alert(\"Online Users\",",
                     "                          \"Error in retrieving user details\");",
                     "        } else {",
-                    "            userStore = Ext.getStore('UserStore');",
-                    "            var jsonResponse = Ext.JSON.decode(response.responseText);",
-                    "            userStore.loadData(jsonResponse);",
+                    "            user = Ext.JSON.decode(response.responseText);",
                     "        }",
                     "    }",
                     "});",
-                    "var user = userStore.data.items[0].data;",
+                    "",
                     "if(this.userInfoWindow!==null){",
                     "    var userLevel;",
-                    "    Ext.getCmp('userInfoId').setValue(user.userId);",
-                    "    Ext.getCmp('userInfoFname').setValue(user.userFname);",
-                    "    Ext.getCmp('userInfoLname').setValue(user.userLname);",
-                    "    Ext.getCmp('userInfoEmail').setValue(user.userEmail);",
-                    "    Ext.getCmp('userInfoType').setValue(user.userType);",
-                    "    if(user.userType == 1){",
+                    "    Ext.getCmp('userInfoId').setValue(user[0].userId);",
+                    "    Ext.getCmp('userInfoFname').setValue(user[0].userFname);",
+                    "    Ext.getCmp('userInfoLname').setValue(user[0].userLname);",
+                    "    Ext.getCmp('userInfoEmail').setValue(user[0].userEmail);",
+                    "    Ext.getCmp('userInfoType').setValue(user[0].userType);",
+                    "    if(user[0].userType == 1){",
                     "        userLevel = 'Normal';",
                     "    } else{",
                     "        userLevel = 'Premium';",
@@ -95,7 +93,7 @@
                 "scope": "me"
             },
             "name": "onOnlineUsersGridDblClick",
-            "designerId": "3b50643f-7b63-461f-8c3e-42baf6554584"
+            "designerId": "4a462a51-69d5-406f-8f39-0fe26c4537b9"
         },
         {
             "type": "controlleraction",
@@ -130,7 +128,7 @@
                 "scope": "me"
             },
             "name": "onAdminOnlineUsersClick",
-            "designerId": "2a912e33-257b-412d-9035-a1caa80af9dc"
+            "designerId": "03853631-f0dd-4b75-bf94-488f68de22d5"
         }
     ]
 }

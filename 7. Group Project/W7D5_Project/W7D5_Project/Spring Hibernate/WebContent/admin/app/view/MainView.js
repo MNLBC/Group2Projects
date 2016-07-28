@@ -3072,14 +3072,19 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                                     flex: 0,
                                                                                                     id: 'adminEmail',
                                                                                                     itemId: 'adminEmail',
-                                                                                                    fieldLabel: 'Email'
+                                                                                                    fieldLabel: 'Email',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
                                                                                                 },
                                                                                                 {
                                                                                                     xtype: 'textfield',
                                                                                                     flex: 0,
                                                                                                     id: 'adminPassword',
                                                                                                     itemId: 'adminPassword',
-                                                                                                    fieldLabel: 'Password'
+                                                                                                    fieldLabel: 'Password',
+                                                                                                    inputType: 'password',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
                                                                                                 },
                                                                                                 {
                                                                                                     xtype: 'tbspacer',

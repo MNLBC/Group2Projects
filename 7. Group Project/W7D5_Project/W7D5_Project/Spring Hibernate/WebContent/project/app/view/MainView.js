@@ -2781,6 +2781,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            hidden: true,
                                                             id: 'adminMenuContainer',
                                                             itemId: 'adminMenuContainer',
                                                             layout: {
@@ -2851,6 +2852,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            hidden: true,
                                                             id: 'adminBackContainer',
                                                             itemId: 'adminBackContainer',
                                                             layout: {
@@ -2907,6 +2909,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'panel',
                                                             flex: 0,
+                                                            hidden: true,
                                                             id: 'adminMenuPanel',
                                                             width: 289,
                                                             bodyStyle: '{background-color: #aaa; !important}',
@@ -2987,7 +2990,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'tabpanel',
                                                             flex: 1,
                                                             id: 'adminTabPanel',
-                                                            activeTab: 1,
+                                                            activeTab: 0,
                                                             items: [
                                                                 {
                                                                     xtype: 'panel',

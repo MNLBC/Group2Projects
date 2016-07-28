@@ -58,7 +58,7 @@ Ext.define('W5D5_Project.controller.UserMainController', {
         var admin2 = Ext.getCmp('prodMgmtBtn'),
             admin3 = Ext.getCmp('userReqBtn'),
             admin4 = Ext.getCmp('adminSystemBtn');
-        record = '';
+            record = '';
         var isExist = false;
 
         if (!Ext.getCmp('loginPanel').isValid()) {
@@ -136,9 +136,9 @@ Ext.define('W5D5_Project.controller.UserMainController', {
                                             userField.setValue(record.userFname);
                                             idField.setValue(record.userId);
                                             if(Ext.isEmpty(record.userAddress2)){
-                                                addField.setValue(record.userAddress1 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                               addField.setValue(record.userAddress1 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
                                             }else{
-                                                addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                               addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
                                             }
 
                                             emailField.setValue(record.userEmail);

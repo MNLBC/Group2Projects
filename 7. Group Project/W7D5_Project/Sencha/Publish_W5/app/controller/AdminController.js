@@ -130,6 +130,7 @@ Ext.define('W5D5_Project.controller.AdminController', {
             admin3 = Ext.getCmp('userReqBtn'),
             admin4 = Ext.getCmp('adminSystemBtn'),
             menuPanel = Ext.getCmp('adminMenuPanel'),
+            tabPanel = Ext.getCmp('adminTabPanel'),
             adminMenuContainer = Ext.getCmp('adminMenuContainer'),
             adminBackContainer = Ext.getCmp('adminBackContainer');
             record = '';
@@ -306,11 +307,11 @@ Ext.define('W5D5_Project.controller.AdminController', {
                                 var userField = Ext.getCmp('userField');
                                 var countField = Ext.getCmp('countField'),
                                     idField = Ext.getCmp('idField'),
-                                    menuPanel = Ext.getCmp('adminMenuPanel'),
+                                    tabPanel = Ext.getCmp('adminTabPanel'),
                                     adminMenuContainer = Ext.getCmp('adminMenuContainer'),
                                     adminBackContainer = Ext.getCmp('adminBackContainer'),
                                     admin4 = Ext.getCmp('adminSystemBtn');
-                                menuPanel.setActiveTab(tab);
+                                tabPanel.setActiveTab(tab);
                                 var controller = W5D5_Project.app.getController('ShopController');
                                 controller.clearItems();
                                 controller.addProductsToPage('digital');
@@ -325,7 +326,7 @@ Ext.define('W5D5_Project.controller.AdminController', {
                                 panel3.hide();
                                 adminMenuContainer.hide();
                                 adminBackContainer.hide();
-                                userField.setValue('Visitor');
+                                userField.setValue('');
                                 idField.setValue(0);
                                 countField.setValue(parseInt(countField.getValue())-1);
                             }
