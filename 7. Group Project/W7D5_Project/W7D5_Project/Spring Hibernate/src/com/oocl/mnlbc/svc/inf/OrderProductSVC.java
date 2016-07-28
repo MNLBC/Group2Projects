@@ -17,7 +17,7 @@ public interface OrderProductSVC {
 
 	public int updateOrderProduct(OrderProduct orderproduct);
 
-	public List<Product> getOrderProductsByOrder(long id);
+	public List<OrderProduct> getOrderProductsByOrder(long orderid);
 
 	public List<CartProduct> getCartProductsByUserId(long userId);
 }

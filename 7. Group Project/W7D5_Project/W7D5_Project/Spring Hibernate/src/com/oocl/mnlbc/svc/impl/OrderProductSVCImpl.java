@@ -52,9 +52,8 @@ public class OrderProductSVCImpl implements OrderProductSVC {
 
 	@Override
 	@Transactional
-	public List<Product> getOrderProductsByOrder(long id) {
-		return null;
-
+	public List<OrderProduct> getOrderProductsByOrder(long orderid) {
+		return this.orderProductDAO.getOrderProductsByOrder(orderid);
 	}
 
 	@Override
