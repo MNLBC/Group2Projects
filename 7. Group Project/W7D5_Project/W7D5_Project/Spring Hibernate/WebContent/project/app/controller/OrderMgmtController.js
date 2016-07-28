@@ -70,6 +70,15 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         var selected;
         this.selected = selected;
 
+        if(Ext.isEmpty(selected)){
+            Ext.getCmp('orderMgmtId').setValue('');
+            Ext.getCmp('orderMgmtUserId').setValue('');
+            Ext.getCmp('orderMgmtTotal').setValue('');
+            Ext.getCmp('orderMgmtDate').setValue('');
+            Ext.getCmp('orderMgmtSearch').setValue('');
+            return;
+        }
+
         Ext.getCmp('orderMgmtId').setValue(selected[0].data.orderId);
         Ext.getCmp('orderMgmtUserId').setValue(selected[0].data.userId);
         Ext.getCmp('orderMgmtTotal').setValue(selected[0].data.orderTotal);

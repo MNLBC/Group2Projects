@@ -1,0 +1,81 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "BrowseProductController"
+    },
+    "name": "MyController",
+    "designerId": "f2a48c56-a48e-4e06-8989-a7592b468483",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#browseProductsField",
+                "designer|targetType": "Ext.form.field.Text",
+                "fn": "onBrowseProductsSearchChange",
+                "implHandler": [
+                    "var productSearch, prodStore;",
+                    "productSearch = Ext.getCmp('browseProductsField').getValue();",
+                    "prodStore = Ext.getStore('ProductStore');",
+                    "",
+                    "if(Ext.isEmpty(productSearch)){",
+                    "    prodStore.clearFilter();",
+                    "} else{",
+                    "    prodStore.filter('prodName',productSearch);",
+                    "}"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onBrowseProductsSearchChange",
+            "designerId": "96ee88c6-fedb-46f1-9fff-0c54fe5a3604"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#showBrowseBtn",
+                "designer|targetType": "Ext.button.Button",
+                "fn": "onBrowseProductClick",
+                "implHandler": [
+                    "                            Ext.Ajax.request({",
+                    "                                url : \"getAllProducts\",",
+                    "                                method : \"GET\",",
+                    "                                async : false,",
+                    "                                callback : function(options,success,response){",
+                    "                                    if (Ext.isEmpty(response.responseText)) {",
+                    "                                        Ext.Msg.alert(\"Products\",",
+                    "                                                      \"Error in retrieving products\");",
+                    "                                    } else {",
+                    "                                        var prodStore = Ext.getStore('ProductStore');",
+                    "                                        var jsonResponse = Ext.JSON.decode(response.responseText);",
+                    "                                        prodStore.loadData(jsonResponse);",
+                    "                                    }",
+                    "                                }",
+                    "                            });",
+                    "",
+                    "var browseProductWindow = Ext.create('W5D5_Project.view.BrowseProductsWin');",
+                    "browseProductWindow.show();",
+                    "Ext.getCmp('browseProductsGrid').getView().refresh();"
+                ],
+                "name": "click",
+                "scope": "me"
+            },
+            "name": "onBrowseProductClick",
+            "designerId": "ce378767-e3c2-46fc-ae62-aa50bbbcd32d"
+        }
+    ]
+}

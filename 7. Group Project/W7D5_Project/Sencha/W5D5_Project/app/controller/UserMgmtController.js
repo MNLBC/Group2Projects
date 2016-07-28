@@ -247,11 +247,8 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
                  Ext.getCmp('userMgmtOccup').setValue(selected[0].data.userOccupation);
                  Ext.getCmp('userMgmtEmail').setValue(selected[0].data.userEmail);
                  Ext.getCmp('userMgmtPass').setValue(selected[0].data.userPass);
-                 switch(selected[0].data.userLevel){
-                    case(1) : Ext.getCmp('userMgmtLevel').setRawValue('Normal'); break;
-                    case(2) : Ext.getCmp('userMgmtLevel').setRawValue('Premium'); break;
-
-                 }
+                 var userMgmtLevel = Ext.getCmp('userMgmtLevel');
+                 userMgmtLevel.select(userMgmtLevel.store.data.items[selected[0].data.userLevel-1]);
                  Ext.getCmp('userMgmtType').setValue(selected[0].data.userType);
                  var pass = Ext.getCmp('userMgmtPass');
                  pass.setReadOnly(true);

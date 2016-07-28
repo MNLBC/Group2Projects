@@ -4194,6 +4194,38 @@
                                                             "designerId": "cdffe302-e864-4c8b-ba41-b2cf64c56998",
                                                             "cn": [
                                                                 {
+                                                                    "type": "Ext.button.Button",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": "genericBtn",
+                                                                        "height": 25,
+                                                                        "id": "showBrowseBtn",
+                                                                        "itemId": "showBrowseBtn",
+                                                                        "layout|flex": null,
+                                                                        "text": "BROWSE",
+                                                                        "width": 111
+                                                                    },
+                                                                    "name": "MyButton33",
+                                                                    "designerId": "ed66736f-49a6-4d40-bff3-a7e8d98b9956"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.toolbar.Spacer",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "layout|flex": 1
+                                                                    },
+                                                                    "name": "MySpacer70",
+                                                                    "designerId": "a52cdf49-48d2-4185-a05b-4ce40c1fd54b"
+                                                                },
+                                                                {
                                                                     "type": "Ext.form.field.Text",
                                                                     "reference": {
                                                                         "name": "items",
@@ -8280,19 +8312,22 @@
                                                                                     "designerId": "1d5826de-6023-4ce2-8e01-1b6579bdce0c",
                                                                                     "cn": [
                                                                                         {
-                                                                                            "type": "Ext.form.field.Display",
+                                                                                            "type": "Ext.form.field.ComboBox",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
                                                                                             },
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
+                                                                                                "displayField": "userId",
                                                                                                 "fieldLabel": "Id",
                                                                                                 "id": "orderMgmtId",
                                                                                                 "itemId": "orderMgmtId",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "store": "UserStore",
+                                                                                                "valueField": "userId"
                                                                                             },
-                                                                                            "name": "MyDisplayField25",
+                                                                                            "name": "MyComboBox18",
                                                                                             "designerId": "67c62ad2-8708-4ac7-8ddc-de928ac2c233"
                                                                                         },
                                                                                         {
