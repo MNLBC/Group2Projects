@@ -150,7 +150,6 @@
                             "userConfig": {
                                 "fieldLabel": "Quantity",
                                 "id": "cartProductQtyField",
-                                "inputType": "number",
                                 "itemId": "cartProductQtyField",
                                 "maxValue": 10,
                                 "minValue": 1,

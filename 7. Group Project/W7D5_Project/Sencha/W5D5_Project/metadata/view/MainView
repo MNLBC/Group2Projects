@@ -1245,7 +1245,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 13,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -6790,7 +6790,9 @@
                                                                                                 "fieldLabel": "Email",
                                                                                                 "id": "userMgmtEmail",
                                                                                                 "itemId": "userMgmtEmail",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "regex": "/^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$/",
+                                                                                                "regexText": "Invalid email address format"
                                                                                             },
                                                                                             "name": "MyTextField37",
                                                                                             "designerId": "6b15318b-ab0e-4e5e-b128-40aea8a2b169"
@@ -7610,7 +7612,8 @@
                                                                                                 "fieldLabel": "Name",
                                                                                                 "id": "prodMgmtName",
                                                                                                 "itemId": "prodMgmtName",
-                                                                                                "layout|anchor": "100%"
+                                                                                                "layout|anchor": "100%",
+                                                                                                "maxLength": 50
                                                                                             },
                                                                                             "name": "MyTextField36",
                                                                                             "designerId": "c153bbd2-da3a-4c4b-b2e9-c5bb62df895f"
@@ -7627,6 +7630,7 @@
                                                                                                 "allowOnlyWhitespace": false,
                                                                                                 "displayField": "categories",
                                                                                                 "fieldLabel": "Category",
+                                                                                                "forceSelection": true,
                                                                                                 "id": "prodMgmtCat",
                                                                                                 "itemId": "prodMgmtCat",
                                                                                                 "layout|anchor": "100%",
@@ -7675,7 +7679,7 @@
                                                                                     "designerId": "78b1bc03-b24d-4fc2-be5a-a9ae1de4ed5e",
                                                                                     "cn": [
                                                                                         {
-                                                                                            "type": "Ext.form.field.Text",
+                                                                                            "type": "Ext.form.field.Number",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
@@ -7683,18 +7687,20 @@
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
                                                                                                 "allowBlank": false,
+                                                                                                "allowExponential": false,
                                                                                                 "allowOnlyWhitespace": false,
                                                                                                 "fieldLabel": "Price",
                                                                                                 "id": "prodMgmtPrice",
                                                                                                 "itemId": "prodMgmtPrice",
                                                                                                 "layout|anchor": "100%",
-                                                                                                "maskRe": "/[0-9.]/"
+                                                                                                "maxValue": 100000,
+                                                                                                "minValue": 1
                                                                                             },
-                                                                                            "name": "MyTextField39",
+                                                                                            "name": "MyNumberField3",
                                                                                             "designerId": "8f6c1b08-c095-4026-80f7-fe76fc3b1ed8"
                                                                                         },
                                                                                         {
-                                                                                            "type": "Ext.form.field.Text",
+                                                                                            "type": "Ext.form.field.Number",
                                                                                             "reference": {
                                                                                                 "name": "items",
                                                                                                 "type": "array"
@@ -7702,14 +7708,16 @@
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
                                                                                                 "allowBlank": false,
+                                                                                                "allowExponential": false,
                                                                                                 "allowOnlyWhitespace": false,
                                                                                                 "fieldLabel": "Sale",
                                                                                                 "id": "prodMgmtSale",
                                                                                                 "itemId": "prodMgmtSale",
                                                                                                 "layout|anchor": "100%",
-                                                                                                "maskRe": "/[0-9.]/"
+                                                                                                "maxValue": 1,
+                                                                                                "minValue": 0.01
                                                                                             },
-                                                                                            "name": "MyTextField40",
+                                                                                            "name": "MyNumberField4",
                                                                                             "designerId": "2eb1d1fe-4490-472b-b6a1-4d020347a447"
                                                                                         },
                                                                                         {

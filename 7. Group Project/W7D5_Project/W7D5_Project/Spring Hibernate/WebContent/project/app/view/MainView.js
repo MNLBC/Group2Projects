@@ -3198,7 +3198,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             itemId: 'userMgmtEmail',
                                                                                             fieldLabel: 'Email',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            regex: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                                                                                            regexText: 'Invalid email address format'
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -3574,7 +3576,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             itemId: 'prodMgmtName',
                                                                                             fieldLabel: 'Name',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maxLength: 50
                                                                                         },
                                                                                         {
                                                                                             xtype: 'combobox',
@@ -3585,6 +3588,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
                                                                                             displayField: 'categories',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'CategoryStore',
                                                                                             valueField: 'categories'
@@ -3609,24 +3613,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtPrice',
                                                                                             itemId: 'prodMgmtPrice',
                                                                                             fieldLabel: 'Price',
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
-                                                                                            maskRe: /[0-9.]/
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 100000,
+                                                                                            minValue: 1
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtSale',
                                                                                             itemId: 'prodMgmtSale',
                                                                                             fieldLabel: 'Sale',
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
-                                                                                            maskRe: /[0-9.]/
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 1,
+                                                                                            minValue: 0.01
                                                                                         },
                                                                                         {
                                                                                             xtype: 'numberfield',

@@ -136,7 +136,7 @@ Ext.define('W5D5_Project.controller.AdminController', {
             record = '';
         var isExist = false;
 
-        if (!Ext.getCmp('adminLoginField').isValid()) {
+        if (!Ext.getCmp('adminLoginFields').isValid()) {
             Ext.Msg.alert("Login", "Please fill out email and password");
             return;
         }
@@ -191,9 +191,6 @@ Ext.define('W5D5_Project.controller.AdminController', {
                                                                 addField = Ext.getCmp('addField'),
                                                                 emailField = Ext.getCmp('emailField'),
                                                                 levelField = Ext.getCmp('levelField');
-                                                            home1.show();
-                                                            home2.show();
-                                                            home3.show();
                                                             admin3.show();
                                                             admin4.show();
                                                             menuPanel.show();
@@ -303,11 +300,12 @@ Ext.define('W5D5_Project.controller.AdminController', {
                                 var admin3 = Ext.getCmp('userReqBtn');
                                 var panel2 = Ext.getCmp('cartPanel');
                                 var panel3 = Ext.getCmp('menuPanel');
-                                var tab = Ext.getCmp('adminLoginPanel');
+                                var tab = Ext.getCmp('adminLoginTab');
                                 var userField = Ext.getCmp('userField');
                                 var countField = Ext.getCmp('countField'),
                                     idField = Ext.getCmp('idField'),
                                     tabPanel = Ext.getCmp('adminTabPanel'),
+                                    menuPanel = Ext.getCmp('adminMenuPanel'),
                                     adminMenuContainer = Ext.getCmp('adminMenuContainer'),
                                     adminBackContainer = Ext.getCmp('adminBackContainer'),
                                     admin4 = Ext.getCmp('adminSystemBtn');
@@ -324,6 +322,7 @@ Ext.define('W5D5_Project.controller.AdminController', {
                                 admin4.hide();
                                 panel2.hide();
                                 panel3.hide();
+                                menuPanel.hide();
                                 adminMenuContainer.hide();
                                 adminBackContainer.hide();
                                 userField.setValue('');

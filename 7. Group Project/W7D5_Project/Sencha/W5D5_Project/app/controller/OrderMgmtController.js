@@ -38,6 +38,12 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         },
         "#orderMgmtUpdate": {
             click: 'onOrderMgmtUpdateClick'
+        },
+        "#orderMgmtField1": {
+            beforeadd: 'onOrderMgmtField1BeforeAdd'
+        },
+        "#orderMgmtField2": {
+            beforeadd: 'onOrderMgmtField2BeforeAdd'
         }
     },
 
@@ -281,6 +287,18 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         });
 
         Ext.getCmp('orderProdWin').getView().refresh();
+    },
+
+    onOrderMgmtField1BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
+    },
+
+    onOrderMgmtField2BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
     }
 
 });

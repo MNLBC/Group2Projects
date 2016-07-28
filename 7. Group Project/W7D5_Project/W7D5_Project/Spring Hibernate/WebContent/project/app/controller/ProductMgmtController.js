@@ -40,6 +40,12 @@ Ext.define('W5D5_Project.controller.ProductMgmtController', {
         },
         "#prodMgmtGrid": {
             selectionchange: 'onProdMgmtGridSelectionChange'
+        },
+        "#prodMgmtField1": {
+            beforeadd: 'onProdMgmtField1BeforeAdd'
+        },
+        "#prodMgmtField2": {
+            beforeadd: 'onProdMgmtField2BeforeAdd'
         }
     },
 
@@ -187,6 +193,18 @@ Ext.define('W5D5_Project.controller.ProductMgmtController', {
         }
 
 
+    },
+
+    onProdMgmtField1BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
+    },
+
+    onProdMgmtField2BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
     },
 
     getProductFormValues: function() {

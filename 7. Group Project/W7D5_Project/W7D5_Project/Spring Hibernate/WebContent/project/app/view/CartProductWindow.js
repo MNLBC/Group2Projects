@@ -90,7 +90,6 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                             itemId: 'cartProductQtyField',
                             width: 318,
                             fieldLabel: 'Quantity',
-                            inputType: 'number',
                             maxValue: 10,
                             minValue: 1
                         },

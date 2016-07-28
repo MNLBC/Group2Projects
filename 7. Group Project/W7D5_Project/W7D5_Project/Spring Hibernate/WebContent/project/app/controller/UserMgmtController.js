@@ -43,6 +43,12 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         },
         "#userMgmtSearch": {
             change: 'onUserMgmtSearchChange'
+        },
+        "#userMgmtField1": {
+            beforeadd: 'onUserMgmtField1BeforeAdd'
+        },
+        "#userMgmtField2": {
+            beforeadd: 'onUserMgmtField2BeforeAdd'
         }
     },
 
@@ -59,7 +65,7 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         		method : "GET",
         		async : false,
         		params : {
-        			email : userEmail
+        			email : user.userEmail
         		},
         		callback : function(options, success, response) {
         			if (success === true) {
@@ -241,7 +247,11 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
                  Ext.getCmp('userMgmtOccup').setValue(selected[0].data.userOccupation);
                  Ext.getCmp('userMgmtEmail').setValue(selected[0].data.userEmail);
                  Ext.getCmp('userMgmtPass').setValue(selected[0].data.userPass);
-                 Ext.getCmp('userMgmtLevel').setValue(selected[0].data.userLevel);
+                 switch(selected[0].data.userLevel){
+                    case(1) : Ext.getCmp('userMgmtLevel').setValue('Normal'); break;
+                    case(2) : Ext.getCmp('userMgmtLevel').setValue('Premium'); break;
+
+                 }
                  Ext.getCmp('userMgmtType').setValue(selected[0].data.userType);
                  var pass = Ext.getCmp('userMgmtPass');
                  pass.setReadOnly(true);
@@ -258,6 +268,18 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
             store.clearFilter();
         }else{
             store.filter('userEmail', searchVal);
+        }
+    },
+
+    onUserMgmtField1BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
+    },
+
+    onUserMgmtField2BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
         }
     },
 
