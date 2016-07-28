@@ -12,7 +12,6 @@
             "CartProductController",
             "ProductController",
             "UserMainController",
-            "UserMgmtController",
             "AccountController",
             "RequestController",
             "ProdInfoController",
@@ -20,7 +19,9 @@
             "AllProductsController",
             "OnlineUsersController",
             "OrderMgmtController",
-            "AdminController"
+            "AdminController",
+            "UserMgmtController",
+            "ProductMgmtController"
         ],
         "models": [
             "CategoryModel",

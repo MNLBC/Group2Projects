@@ -69,7 +69,6 @@ Ext.application({
         'CartProductController',
         'ProductController',
         'UserMainController',
-        'UserMgmtController',
         'AccountController',
         'RequestController',
         'ProdInfoController',
@@ -77,7 +76,9 @@ Ext.application({
         'AllProductsController',
         'OnlineUsersController',
         'OrderMgmtController',
-        'AdminController'
+        'AdminController',
+        'UserMgmtController',
+        'ProductMgmtController'
     ],
     name: 'W5D5_Project',
 

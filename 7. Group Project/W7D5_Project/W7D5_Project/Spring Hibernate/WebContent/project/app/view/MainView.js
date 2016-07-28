@@ -2903,7 +2903,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'panel',
                                                             flex: 0,
-                                                            hidden: true,
                                                             id: 'adminMenuPanel',
                                                             width: 289,
                                                             bodyStyle: '{background-color: #aaa; !important}',
@@ -3036,35 +3035,48 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtFname',
                                                                                             itemId: 'userMgmtFname',
-                                                                                            fieldLabel: 'First Name'
+                                                                                            fieldLabel: 'First Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z\.\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtLname',
                                                                                             itemId: 'userMgmtLname',
-                                                                                            fieldLabel: 'Last Name'
+                                                                                            fieldLabel: 'Last Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z\.\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtEmail',
                                                                                             itemId: 'userMgmtEmail',
-                                                                                            fieldLabel: 'Email'
+                                                                                            fieldLabel: 'Email',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtPass',
                                                                                             itemId: 'userMgmtPass',
-                                                                                            fieldLabel: 'Password'
+                                                                                            fieldLabel: 'Password',
+                                                                                            inputType: 'password',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtOccup',
                                                                                             itemId: 'userMgmtOccup',
-                                                                                            fieldLabel: 'Occupation'
+                                                                                            fieldLabel: 'Occupation',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3077,11 +3089,48 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCountry',
+                                                                                            itemId: 'userMgmtCountry',
+                                                                                            fieldLabel: 'Country',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            displayField: 'CountryName',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'CountryStore',
+                                                                                            valueField: 'CountryName'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtSp',
+                                                                                            itemId: 'userMgmtSp',
+                                                                                            fieldLabel: 'State/Province',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            displayField: 'SP',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'SPStore',
+                                                                                            valueField: 'SP'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCity',
+                                                                                            itemId: 'userMgmtCity',
+                                                                                            fieldLabel: 'City',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
+                                                                                        },
+                                                                                        {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtAdd1',
                                                                                             itemId: 'userMgmtAdd1',
-                                                                                            fieldLabel: 'Address 1'
+                                                                                            fieldLabel: 'Address 1',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -3091,41 +3140,15 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             fieldLabel: 'Address 2'
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtCity',
-                                                                                            itemId: 'userMgmtCity',
-                                                                                            fieldLabel: 'City'
-                                                                                        },
-                                                                                        {
-                                                                                            xtype: 'combobox',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtSp',
-                                                                                            itemId: 'userMgmtSp',
-                                                                                            fieldLabel: 'State/Province',
-                                                                                            displayField: 'SP',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'SPStore',
-                                                                                            valueField: 'SP'
-                                                                                        },
-                                                                                        {
-                                                                                            xtype: 'combobox',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtCountry',
-                                                                                            itemId: 'userMgmtCountry',
-                                                                                            fieldLabel: 'Country',
-                                                                                            displayField: 'CountryName',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'CountryStore',
-                                                                                            valueField: 'CountryName'
-                                                                                        },
-                                                                                        {
                                                                                             xtype: 'combobox',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtType',
                                                                                             itemId: 'userMgmtType',
                                                                                             fieldLabel: 'Type',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'Type',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'UserTypeStore',
                                                                                             valueField: 'Name'
@@ -3136,7 +3159,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'userMgmtLevel',
                                                                                             itemId: 'userMgmtLevel',
                                                                                             fieldLabel: 'Level',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'level',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'UserLevelStore',
                                                                                             valueField: 'value'
@@ -3405,7 +3431,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtName',
                                                                                             itemId: 'prodMgmtName',
-                                                                                            fieldLabel: 'Name'
+                                                                                            fieldLabel: 'Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'combobox',
@@ -3413,6 +3441,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'prodMgmtCat',
                                                                                             itemId: 'prodMgmtCat',
                                                                                             fieldLabel: 'Category',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'categories',
                                                                                             queryMode: 'local',
                                                                                             store: 'CategoryStore',
@@ -3423,7 +3453,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtDesc',
                                                                                             itemId: 'prodMgmtDesc',
-                                                                                            fieldLabel: 'Description'
+                                                                                            fieldLabel: 'Description',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3440,28 +3472,42 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtPrice',
                                                                                             itemId: 'prodMgmtPrice',
-                                                                                            fieldLabel: 'Price'
+                                                                                            fieldLabel: 'Price',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /[0-9.]/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtSale',
                                                                                             itemId: 'prodMgmtSale',
-                                                                                            fieldLabel: 'Sale'
+                                                                                            fieldLabel: 'Sale',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /[0-9.]/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtStock',
                                                                                             itemId: 'prodMgmtStock',
-                                                                                            fieldLabel: 'Stock'
+                                                                                            fieldLabel: 'Stock',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            allowDecimals: false,
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 100,
+                                                                                            minValue: 0
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtImg',
                                                                                             itemId: 'prodMgmtImg',
-                                                                                            fieldLabel: 'Image Name'
+                                                                                            fieldLabel: 'Image Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 }
