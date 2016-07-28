@@ -35,7 +35,6 @@ Ext.define('W5D5_Project.controller.FavoriteItemsController', {
         if(Ext.isEmpty(field.getValue())){
             store.clearFilter();
         }else{
-            store.clearFilter();
             store.filter('prodName',field.getValue());
         }
     }

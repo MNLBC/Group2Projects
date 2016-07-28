@@ -54,7 +54,6 @@
                     "if(Ext.isEmpty(field.getValue())){",
                     "    store.clearFilter();",
                     "}else{",
-                    "    store.clearFilter();",
                     "    store.filter('prodName',field.getValue());",
                     "}"
                 ],
