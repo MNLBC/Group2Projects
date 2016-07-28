@@ -196,7 +196,13 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
                        Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
                     }
                     if(!Ext.isEmpty(review)){
-                       Ext.getCmp('prodInfoRating').setValue(review.data.rating);
+                       switch(review.data.rating){
+                           case(1) : Ext.getCmp('prodInfoRating').setRawValue('1 - Poor'); break;
+                           case(2) : Ext.getCmp('prodInfoRating').setRawValue('2 - Fair'); break;
+                           case(3) : Ext.getCmp('prodInfoRating').setRawValue('3 - Good'); break;
+                           case(4) : Ext.getCmp('prodInfoRating').setRawValue('4 - Very Good'); break;
+                           case(5) : Ext.getCmp('prodInfoRating').setRawValue('5 - Excellent'); break;
+                       }
                        Ext.getCmp('prodInfoReview').setValue(review.data.review);
                        Ext.getCmp('prodInfoPostBtn').disable();
                        Ext.getCmp('prodInfoRemoveBtn').enable();

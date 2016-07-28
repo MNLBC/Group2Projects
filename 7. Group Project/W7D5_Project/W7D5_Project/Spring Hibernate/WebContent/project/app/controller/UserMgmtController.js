@@ -68,7 +68,7 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         			email : user.userEmail
         		},
         		callback : function(options, success, response) {
-        			if (success === true) {
+        			if (!Ext.isEmpty(response.responseText)) {
         				Ext.Msg.alert('Create User','Account with that email already exists.');
         			} else {
         				Ext.Ajax.request({
@@ -87,6 +87,7 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         									if (resp.responseCode == '0') {
         										Ext.Msg.alert('Create User','User "' + userEmail + '" successfully registered!');
         										controller.userRefresh();
+                                                controller.userResetFormValues();
         									} else if (resp.responseCode == '999') {
         										var msgs = '';
         										Ext.each(resp.errors,function(error) {
@@ -103,7 +104,6 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         		}
         	});
         }
-        controller.userResetFormValues();
     },
 
     onUserMgmtResetClick: function() {

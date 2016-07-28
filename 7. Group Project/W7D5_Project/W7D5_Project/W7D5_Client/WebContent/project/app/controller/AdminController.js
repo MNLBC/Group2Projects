@@ -34,6 +34,12 @@ Ext.define('W5D5_Project.controller.AdminController', {
         },
         "#adminBackBtn": {
             click: 'onAdminBackBtnClick'
+        },
+        "#adminLoginBtn": {
+            click: 'onAdminLoginBtnClick'
+        },
+        "#adminLogoutBtn": {
+            click: 'onAdminLogoutBtnClick'
         }
     },
 
@@ -109,6 +115,225 @@ Ext.define('W5D5_Project.controller.AdminController', {
         panel1.show();
         panel2.show();
         panel3.show();
+    },
+
+    onAdminLoginBtnClick: function() {
+        var store = Ext.getStore('UserStore');
+        var email = Ext.getCmp('adminEmail').getValue();
+        var password = Ext.getCmp('adminPassword').getValue();
+        var main = Ext.getCmp('setPanel');
+        var home1 = Ext.getCmp('headerPanel');
+        var home2 = Ext.getCmp('subHeaderPanel');
+        var home3 = Ext.getCmp('categoryPanel');
+        var admin1 = Ext.getCmp('userMgmtBtn');
+        var admin2 = Ext.getCmp('prodMgmtBtn'),
+            admin3 = Ext.getCmp('userReqBtn'),
+            admin4 = Ext.getCmp('adminSystemBtn'),
+            menuPanel = Ext.getCmp('adminMenuPanel'),
+            tabPanel = Ext.getCmp('adminTabPanel'),
+            adminMenuContainer = Ext.getCmp('adminMenuContainer'),
+            adminBackContainer = Ext.getCmp('adminBackContainer');
+            record = '';
+        var isExist = false;
+
+        if (!Ext.getCmp('adminLoginFields').isValid()) {
+            Ext.Msg.alert("Login", "Please fill out email and password");
+            return;
+        }
+        Ext.Ajax.request({
+            url : "login",
+            method : "POST",
+            async : false,
+            params : {
+                email : email,
+                password : password
+            },
+            callback : function(options, success, response) {
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+                } else if (response.responseText == 'true') {
+                    Ext.Ajax.request({
+                        url : "getUserByEmail",
+                        method : "GET",
+                        async : false,
+                        params : {
+                            email : email
+                        },
+                        callback : function(options, success, response) {
+                            if (!Ext.isEmpty(response.responseText)) {
+                                record = Ext.decode(response.responseText);
+                                record = record[0];
+                                isExist = true;
+                                if (record.userType == 'Admin') {
+                                    Ext.Ajax.request({
+                                        url : "runAdminConsumer",
+                                        method : "GET",
+                                        async : false,
+                                        callback : function(options, success, response){
+                                            if(response.responseText==1){
+                                                console.log('Run Admin Topic Subscriber');
+                                                store.add(record);
+                                                Ext.Ajax.request({
+                                                    url : "getAllProducts",
+                                                    method : 'GET',
+                                                    async : false,
+                                                    callback : function(options, success, response) {
+                                                        if (Ext.isEmpty(response.responseText)) {
+                                                            Ext.Msg.alert("Products",
+                                                                          "Error in getting products");
+                                                        } else {
+                                                            var prodStore = Ext.getStore('ProductStore');
+                                                            var jsonResponse = Ext.JSON.decode(response.responseText);
+                                                            prodStore.loadData(jsonResponse);
+                                                            var userField = Ext.getCmp('userField');
+                                                            var countField = Ext.getCmp('countField'),
+                                                                idField = Ext.getCmp('idField'),
+                                                                addField = Ext.getCmp('addField'),
+                                                                emailField = Ext.getCmp('emailField'),
+                                                                levelField = Ext.getCmp('levelField');
+                                                            admin3.show();
+                                                            admin4.show();
+                                                            menuPanel.show();
+                                                            adminMenuContainer.show();
+                                                            adminBackContainer.show();
+                                                            var controller = W5D5_Project.app.getController('ShopController');
+                                                            controller.clearItems();
+                                                            controller.addProductsToPage('digital');
+                                                            userField.setValue(record.userFname);
+                                                            idField.setValue(record.userId);
+                                                            if(Ext.isEmpty(record.userAddress2)){
+                                                               addField.setValue(record.userAddress1 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                                            }else{
+                                                               addField.setValue(record.userAddress1 + ', ' + record.userAddress2 + ', ' + record.userCity + ', ' + record.userSp + ', ' + record.userCountry);
+                                                            }
+                                                            emailField.setValue(record.userEmail);
+                                                            levelField.setValue(record.userLevel);
+                                                            var adminController = W5D5_Project.app.getController('AdminController');
+                                                            adminController.onAdminUserMgmtBtnClick();
+                                                            Ext.Ajax.request ({
+                                                                url: "visitorCount",
+                                                                method: 'GET',
+                                                                async: false,
+                                                                callback : function(options, success, response) {
+                                                                    if (success === true) {
+                                                                        var count = response.responseText;
+                                                                        countField.setValue(count);
+                                                                    }
+                                                                }
+                                                            });
+                                                            Ext.Ajax.request ({
+                                                                url: "favoriteItems",
+                                                                method: 'POST',
+                                                                params: {
+                                                                    userId:Ext.getCmp('idField').getValue()
+                                                                },
+                                                                async: false,
+                                                                callback : function(options, success, response) {
+                                                                    if (success === true) {
+                                                                        var faveStore = Ext.getStore('FavoriteItemsStore');
+                                                                        var result = Ext.JSON.decode(response.responseText);
+                                                                        faveStore.loadData(result);
+                                                                    }
+                                                                }
+                                                            });
+                                                            Ext.Ajax.request ({
+                                                                url: "getCartByUser",
+                                                                method: 'POST',
+                                                                params: {
+                                                                    userid:Ext.getCmp('idField').getValue()
+                                                                },
+                                                                async: false,
+                                                                callback : function(options, success, response) {
+                                                                    if (success === true) {
+                                                                        var cartStore = Ext.getStore('CartProductStore');
+                                                                        var resultSet = Ext.JSON.decode(response.responseText);
+                                                                        cartStore.loadData(resultSet);
+                                                                    }
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    });
+                                }else{
+                                    Ext.Msg.alert("User", "Sorry but you are prohibited to access this site");
+                                }
+                            }
+                        }
+                    });
+                } else {
+                    Ext.Msg.alert("User", "Login details are invalid.");
+                }
+            }
+        });
+
+    },
+
+    onAdminLogoutBtnClick: function() {
+        Ext.Msg.show({
+            title:'Confirm Logout',
+            message: 'Are you sure you want to log out?',
+            buttons: Ext.Msg.YESNO,
+            icon: Ext.Msg.QUESTION,
+            fn: function(btn) {
+                if (btn === 'yes') {
+                    Ext.Ajax.request({
+                        url : "logout",
+                        method : 'POST',
+                        async : false,
+                        callback : function(options, success, response) {
+                            if (success!==true) {
+                                console.log('Failed ');
+                                Ext.Msg.alert("Logout", "Error logging out. Try again later.");
+                            } else {
+                                console.log('Success! ');
+                                Ext.Msg.alert("Logout", "Successfully logged out!");
+                                var mainControl = W5D5_Project.app.getController('MainController');
+                                mainControl.clearFrontPage();
+                                var home1 = Ext.getCmp('headerPanel');
+                                var home2 = Ext.getCmp('subHeaderPanel');
+                                var home3 = Ext.getCmp('categoryPanel');
+                                var admin1 = Ext.getCmp('userMgmtBtn');
+                                var admin2 = Ext.getCmp('prodMgmtBtn');
+                                var admin3 = Ext.getCmp('userReqBtn');
+                                var panel2 = Ext.getCmp('cartPanel');
+                                var panel3 = Ext.getCmp('menuPanel');
+                                var tab = Ext.getCmp('adminLoginTab');
+                                var userField = Ext.getCmp('userField');
+                                var countField = Ext.getCmp('countField'),
+                                    idField = Ext.getCmp('idField'),
+                                    tabPanel = Ext.getCmp('adminTabPanel'),
+                                    menuPanel = Ext.getCmp('adminMenuPanel'),
+                                    adminMenuContainer = Ext.getCmp('adminMenuContainer'),
+                                    adminBackContainer = Ext.getCmp('adminBackContainer'),
+                                    admin4 = Ext.getCmp('adminSystemBtn');
+                                tabPanel.setActiveTab(tab);
+                                var controller = W5D5_Project.app.getController('ShopController');
+                                controller.clearItems();
+                                controller.addProductsToPage('digital');
+                                home1.hide();
+                                home2.hide();
+                                home3.hide();
+                                admin1.hide();
+                                admin2.hide();
+                                admin3.hide();
+                                admin4.hide();
+                                panel2.hide();
+                                panel3.hide();
+                                menuPanel.hide();
+                                adminMenuContainer.hide();
+                                adminBackContainer.hide();
+                                userField.setValue('');
+                                idField.setValue(0);
+                                countField.setValue(parseInt(countField.getValue())-1);
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
 });

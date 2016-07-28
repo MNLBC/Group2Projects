@@ -57,53 +57,53 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
         var user = controller.getUserFormValues();
 
         if (!(Ext.getCmp('userMgmtField1').isValid() || Ext.getCmp('userMgmtField2').isValid())) {
-        	Ext.Msg.alert('Create User', "Please fill out required fields");
-        	return;
+            Ext.Msg.alert('Create User', "Please fill out required fields");
+            return;
         } else {
-        	Ext.Ajax.request({
-        		url : "getUserByEmail",
-        		method : "GET",
-        		async : false,
-        		params : {
-        			email : user.userEmail
-        		},
-        		callback : function(options, success, response) {
-        			if (success === true) {
-        				Ext.Msg.alert('Create User','Account with that email already exists.');
-        			} else {
-        				Ext.Ajax.request({
-        							url : "register",
-        							method : 'POST',
-        							params : {
-        								user : Ext.encode(user)
-        							},
-        							async : false,
-        							jsonData : Ext.util.JSON.encode(user),
-        							callback : function(options, success,response) {
-        								if (Ext.isEmpty(response.responseText)) {
-        									Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
-        								} else {
-        									var resp = Ext.decode(response.responseText);
-        									if (resp.responseCode == '0') {
-        										Ext.Msg.alert('Create User','User "' + userEmail + '" successfully registered!');
-        										controller.userRefresh();
-        									} else if (resp.responseCode == '999') {
-        										var msgs = '';
-        										Ext.each(resp.errors,function(error) {
-        											msgs = msgs + '<br>' + error.defaultMessage;
-        										});
-        										Ext.Msg.alert('Create User','Validation error. Please check the following: '+ msgs);
-        									} else {
-        										Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
-        									}
-        								}
-        							}
-        						});
-        			}
-        		}
-        	});
+            Ext.Ajax.request({
+                url : "getUserByEmail",
+                method : "GET",
+                async : false,
+                params : {
+                    email : user.userEmail
+                },
+                callback : function(options, success, response) {
+                    if (!Ext.isEmpty(response.responseText)) {
+                        Ext.Msg.alert('Create User','Account with that email already exists.');
+                    } else {
+                        Ext.Ajax.request({
+                            url : "register",
+                            method : 'POST',
+                            params : {
+                                user : Ext.encode(user)
+                            },
+                            async : false,
+                            jsonData : Ext.util.JSON.encode(user),
+                            callback : function(options, success,response) {
+                                if (Ext.isEmpty(response.responseText)) {
+                                    Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
+                                } else {
+                                    var resp = Ext.decode(response.responseText);
+                                    if (resp.responseCode == '0') {
+                                        Ext.Msg.alert('Create User','User "' + userEmail + '" successfully registered!');
+                                        controller.userRefresh();
+                                        controller.userResetFormValues();
+                                    } else if (resp.responseCode == '999') {
+                                        var msgs = '';
+                                        Ext.each(resp.errors,function(error) {
+                                            msgs = msgs + '<br>' + error.defaultMessage;
+                                        });
+                                        Ext.Msg.alert('Create User','Validation error. Please check the following: '+ msgs);
+                                    } else {
+                                        Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            });
         }
-        controller.userResetFormValues();
     },
 
     onUserMgmtResetClick: function() {

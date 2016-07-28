@@ -35,6 +35,15 @@
     border-radius: 0px !important;
 }
 
+.shopButtonCls, .shopButtonCls:focus, .shopButtonCls:active, .shopButtonCls.active, .shopButtonCls:focus:active {
+    width: 40px!important;
+    height: 40px!important;
+    background: url('img/shop.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
 .digitalButtonCls, .digitalButtonCls:focus, .digitalButtonCls:active, .digitalButtonCls.active, .digitalButtonCls:focus:active {
     width: 50px!important;
     height: 50px!important;
@@ -80,6 +89,24 @@
     border-radius: 0px !important;
 }
 
+.searchButtonCls, .searchButtonCls:focus, .searchButtonCls:active, .searchButtonCls.active, .searchButtonCls:focus:active {
+    width: 50px!important;
+    height: 50px!important;
+    background: url('img/search.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
+.favoriteButtonCls, .favoriteButtonCls:focus, .favoriteButtonCls:active, .favoriteButtonCls.active, .favoriteButtonCls:focus:active {
+    width: 50px!important;
+    height: 50px!important;
+    background: url('img/favorite.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
 .orderHistCls{
     background-color: transparent !important;
     color: #ddd;
@@ -114,6 +141,15 @@
 .adminLabelCls {
     height: 50px;
     font: 300 25px/30px sans-serif;
+    color: #666;
+    margin-top: 4px;
+    font-family: 'Arial' !important;
+    font-weight: bold !important;
+}
+
+.adminLoginCls {
+    height: 24px;
+    font: 300 20px/24px sans-serif;
     color: #666;
     margin-top: 4px;
     font-family: 'Arial' !important;

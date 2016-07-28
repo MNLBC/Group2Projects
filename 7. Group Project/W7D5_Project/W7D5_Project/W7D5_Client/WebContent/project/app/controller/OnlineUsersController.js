@@ -41,7 +41,7 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
     },
 
     onOnlineUsersGridDblClick: function(tableview, record, tr, rowIndex, e, eOpts) {
-        var userStore;
+        var user;
         var email = Ext.getCmp('onlineUsersGrid').getSelectionModel().selected.items[0].data.userEmail;
         this.userInfoWindow = Ext.create('W5D5_Project.view.UserInfoWin');
         Ext.Ajax.request({
@@ -56,21 +56,19 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
                     Ext.Msg.alert("Online Users",
                                   "Error in retrieving user details");
                 } else {
-                    userStore = Ext.getStore('UserStore');
-                    var jsonResponse = Ext.JSON.decode(response.responseText);
-                    userStore.loadData(jsonResponse);
+                    user = Ext.JSON.decode(response.responseText);
                 }
             }
         });
-        var user = userStore.data.items[0].data;
+
         if(this.userInfoWindow!==null){
             var userLevel;
-            Ext.getCmp('userInfoId').setValue(user.userId);
-            Ext.getCmp('userInfoFname').setValue(user.userFname);
-            Ext.getCmp('userInfoLname').setValue(user.userLname);
-            Ext.getCmp('userInfoEmail').setValue(user.userEmail);
-            Ext.getCmp('userInfoType').setValue(user.userType);
-            if(user.userType == 1){
+            Ext.getCmp('userInfoId').setValue(user[0].userId);
+            Ext.getCmp('userInfoFname').setValue(user[0].userFname);
+            Ext.getCmp('userInfoLname').setValue(user[0].userLname);
+            Ext.getCmp('userInfoEmail').setValue(user[0].userEmail);
+            Ext.getCmp('userInfoType').setValue(user[0].userType);
+            if(user[0].userType == 1){
                 userLevel = 'Normal';
             } else{
                 userLevel = 'Premium';

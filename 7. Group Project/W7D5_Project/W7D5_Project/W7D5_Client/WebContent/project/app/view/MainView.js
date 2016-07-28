@@ -598,7 +598,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'button',
                                                     focusCls: '(none)',
-                                                    cls: 'dressButtonCls',
+                                                    cls: 'searchButtonCls',
                                                     height: 50,
                                                     id: 'allBtn',
                                                     itemId: 'allBtn',
@@ -639,7 +639,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'button',
                                                     focusCls: '(none)',
-                                                    cls: 'dressButtonCls',
+                                                    cls: 'favoriteButtonCls',
                                                     height: 50,
                                                     id: 'faveBtn',
                                                     itemId: 'faveBtn',
@@ -2781,6 +2781,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            hidden: true,
+                                                            id: 'adminMenuContainer',
+                                                            itemId: 'adminMenuContainer',
                                                             layout: {
                                                                 type: 'hbox',
                                                                 align: 'stretch'
@@ -2849,6 +2852,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            hidden: true,
+                                                            id: 'adminBackContainer',
+                                                            itemId: 'adminBackContainer',
                                                             layout: {
                                                                 type: 'hbox',
                                                                 align: 'stretch',
@@ -2871,7 +2877,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             xtype: 'displayfield',
                                                                             flex: 0,
                                                                             fieldLabel: '',
-                                                                            value: 'Go Back',
+                                                                            value: 'Go To Shopping Site',
                                                                             fieldCls: 'textCls'
                                                                         }
                                                                     ]
@@ -2879,7 +2885,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 {
                                                                     xtype: 'button',
                                                                     focusCls: '(none)',
-                                                                    cls: 'menuBtnCls',
+                                                                    cls: 'shopButtonCls',
                                                                     height: 50,
                                                                     id: 'adminBackBtn',
                                                                     itemId: 'adminBackBtn',
@@ -2903,6 +2909,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'panel',
                                                             flex: 0,
+                                                            hidden: true,
                                                             id: 'adminMenuPanel',
                                                             width: 289,
                                                             bodyStyle: '{background-color: #aaa; !important}',
@@ -2963,6 +2970,19 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                     id: 'adminOnlineUsersBtn',
                                                                     itemId: 'adminOnlineUsersBtn',
                                                                     text: 'ONLINE USERS'
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminLogoutBtn',
+                                                                    itemId: 'adminLogoutBtn',
+                                                                    text: 'LOGOUT'
                                                                 }
                                                             ]
                                                         },
@@ -2972,6 +2992,127 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             id: 'adminTabPanel',
                                                             activeTab: 0,
                                                             items: [
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'adminLoginTab',
+                                                                    bodyStyle: '{background-color: #ddd; !important}',
+                                                                    title: 'My Panel',
+                                                                    layout: {
+                                                                        type: 'hbox',
+                                                                        align: 'middle',
+                                                                        pack: 'center'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'form',
+                                                                            height: 189,
+                                                                            id: 'adminLoginForm',
+                                                                            itemId: 'adminLoginForm',
+                                                                            width: 439,
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'vbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'panel',
+                                                                                    flex: 0,
+                                                                                    cls: '',
+                                                                                    height: 33,
+                                                                                    width: 419,
+                                                                                    bodyStyle: '{background-color: #eee; !important}',
+                                                                                    title: '',
+                                                                                    layout: {
+                                                                                        type: 'hbox',
+                                                                                        align: 'stretch',
+                                                                                        pack: 'center'
+                                                                                    },
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'displayfield',
+                                                                                            fieldLabel: '',
+                                                                                            value: 'Admin Login',
+                                                                                            fieldCls: 'adminLoginCls'
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 19,
+                                                                                    width: 21
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'container',
+                                                                                    flex: 1,
+                                                                                    layout: {
+                                                                                        type: 'hbox',
+                                                                                        align: 'stretch'
+                                                                                    },
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'tbspacer',
+                                                                                            flex: 0,
+                                                                                            width: 21
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'form',
+                                                                                            flex: 1,
+                                                                                            height: 83,
+                                                                                            id: 'adminLoginFields',
+                                                                                            itemId: 'adminLoginFields',
+                                                                                            layout: {
+                                                                                                type: 'vbox',
+                                                                                                align: 'stretch'
+                                                                                            },
+                                                                                            items: [
+                                                                                                {
+                                                                                                    xtype: 'textfield',
+                                                                                                    flex: 0,
+                                                                                                    id: 'adminEmail',
+                                                                                                    itemId: 'adminEmail',
+                                                                                                    fieldLabel: 'Email',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'textfield',
+                                                                                                    flex: 0,
+                                                                                                    id: 'adminPassword',
+                                                                                                    itemId: 'adminPassword',
+                                                                                                    fieldLabel: 'Password',
+                                                                                                    inputType: 'password',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'tbspacer',
+                                                                                                    flex: 0,
+                                                                                                    height: 24,
+                                                                                                    width: 21
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'button',
+                                                                                                    cls: 'genericBtn',
+                                                                                                    height: 37,
+                                                                                                    id: 'adminLoginBtn',
+                                                                                                    itemId: 'adminLoginBtn',
+                                                                                                    text: 'LOGIN'
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'tbspacer',
+                                                                                            flex: 0,
+                                                                                            width: 21
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
                                                                 {
                                                                     xtype: 'panel',
                                                                     id: 'userMgmtTab',
@@ -3057,7 +3198,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             itemId: 'userMgmtEmail',
                                                                                             fieldLabel: 'Email',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            regex: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                                                                                            regexText: 'Invalid email address format'
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -3433,7 +3576,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             itemId: 'prodMgmtName',
                                                                                             fieldLabel: 'Name',
                                                                                             allowBlank: false,
-                                                                                            allowOnlyWhitespace: false
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maxLength: 50
                                                                                         },
                                                                                         {
                                                                                             xtype: 'combobox',
@@ -3444,6 +3588,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
                                                                                             displayField: 'categories',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'CategoryStore',
                                                                                             valueField: 'categories'
@@ -3468,24 +3613,28 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtPrice',
                                                                                             itemId: 'prodMgmtPrice',
                                                                                             fieldLabel: 'Price',
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
-                                                                                            maskRe: /[0-9.]/
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 100000,
+                                                                                            minValue: 1
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtSale',
                                                                                             itemId: 'prodMgmtSale',
                                                                                             fieldLabel: 'Sale',
                                                                                             allowBlank: false,
                                                                                             allowOnlyWhitespace: false,
-                                                                                            maskRe: /[0-9.]/
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 1,
+                                                                                            minValue: 0.01
                                                                                         },
                                                                                         {
                                                                                             xtype: 'numberfield',

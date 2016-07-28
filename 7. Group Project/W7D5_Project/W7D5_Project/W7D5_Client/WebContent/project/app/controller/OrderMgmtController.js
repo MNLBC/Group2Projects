@@ -38,6 +38,12 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         },
         "#orderMgmtUpdate": {
             click: 'onOrderMgmtUpdateClick'
+        },
+        "#orderMgmtField1": {
+            beforeadd: 'onOrderMgmtField1BeforeAdd'
+        },
+        "#orderMgmtField2": {
+            beforeadd: 'onOrderMgmtField2BeforeAdd'
         }
     },
 
@@ -94,6 +100,10 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
     },
 
     onOrderMgmtDeleteClick: function(button, e, eOpts) {
+        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected)){
+            Ext.Msg.alert('Order Management','Please select a record to delete.');
+        }
+
         var orderId, store;
         orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;
         store = Ext.getStore('OrdersStore');
@@ -143,6 +153,10 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
     },
 
     onOrderMgmtCreateClick: function(button, e, eOpts) {
+        if(!Ext.getCmp('orderMgmtField1').isValid()||!Ext.getCmp('orderMgmtField2').isValid()){
+            Ext.Msg.alert('Order Management','Validation error. Please check field values.');
+        }
+
         var userId,orderTotal,orderDate,orderDate2,orderStore;
         userId = Ext.getCmp('orderMgmtUserId').getValue();
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
@@ -199,6 +213,12 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
     },
 
     onOrderMgmtUpdateClick: function(button, e, eOpts) {
+        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected)){
+            Ext.Msg.alert('Order Management','Please select a record to update.');
+        }else if(!Ext.getCmp('orderMgmtField1').isValid()||!Ext.getCmp('orderMgmtField2').isValid()){
+            Ext.Msg.alert('Order Management','Validation error. Please check field values.');
+        }
+
         var orderId,userId,orderTotal,orderDate,orderDate2,orderStore;
         orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;
         userId = Ext.getCmp('orderMgmtUserId').getValue();
@@ -270,17 +290,30 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
                 id : orderId
             },
             callback : function(options,success,response){
-                if (Ext.isEmpty(response.responseText)) {
+                if (success=='false') {
                     Ext.Msg.alert("Orders","Error in retrieving orders");
                 } else {
                     var orderStore1 = Ext.getStore('OrdersStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
                     orderStore1.loadData(jsonResponse);
+                    this.orderProductWindow.show();
                 }
             }
         });
 
         Ext.getCmp('orderProdWin').getView().refresh();
+    },
+
+    onOrderMgmtField1BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
+    },
+
+    onOrderMgmtField2BeforeAdd: function(me, field) {
+        if (!field.allowBlank){
+            field.labelSeparator += '<span style="color: rgb(255, 0, 0); padding-left: 2px;">*</span>';
+        }
     }
 
 });

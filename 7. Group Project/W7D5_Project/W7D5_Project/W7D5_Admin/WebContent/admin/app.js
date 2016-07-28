@@ -70,15 +70,15 @@ Ext.application({
         'ProductController',
         'UserMainController',
         'AccountController',
-        'RequestController',
         'ProdInfoController',
         'FavoriteItemsController',
         'AllProductsController',
-        'OnlineUsersController',
         'OrderMgmtController',
         'AdminController',
         'UserMgmtController',
-        'ProductMgmtController'
+        'ProductMgmtController',
+        'RequestController',
+        'OnlineUsersController'
     ],
     name: 'W5D5_Project',
 
