@@ -1,0 +1,97 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "AllProductsController"
+    },
+    "name": "MyController",
+    "designerId": "8ed0b4a6-c13c-476e-9813-2a8cd9fbcd5c",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#allProdsGrid",
+                "designer|params": [
+                    "tableview, record, tr, rowIndex, e, eOpts"
+                ],
+                "designer|targetType": "MyGridPanel7",
+                "fn": "onAllProdsGridRowDblClick",
+                "implHandler": [
+                    "var controller = W5D5_Project.app.getController('ProdInfoController');",
+                    "controller.showProdInfoWin(record.data);"
+                ],
+                "name": "rowdblclick",
+                "scope": "me"
+            },
+            "name": "onAllProdsGridRowDblClick",
+            "designerId": "986ed51c-f460-4c0b-a68c-d2559fc844da"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#allProdsSearch",
+                "designer|params": [
+                    "combo, records, eOpts"
+                ],
+                "designer|targetType": "MyComboBox16",
+                "fn": "onAllProdsSearchSelect",
+                "implHandler": [
+                    "var store = Ext.getStore('ProductStore');",
+                    "if(Ext.isEmpty(combo.getValue())){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "    store.clearFilter();",
+                    "    store.filter('prodName',combo.getValue());",
+                    "}"
+                ],
+                "name": "select",
+                "scope": "me"
+            },
+            "name": "onAllProdsSearchSelect",
+            "designerId": "4728dca6-3a79-4113-b024-dba9f084d0d7"
+        },
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#allProdsSearch",
+                "designer|params": [
+                    "field, newValue, oldValue, eOpts"
+                ],
+                "designer|targetType": "MyComboBox16",
+                "fn": "onAllProdsSearchChange",
+                "implHandler": [
+                    "var store = Ext.getStore('ProductStore');",
+                    "if(Ext.isEmpty(field.getValue())){",
+                    "    store.clearFilter();",
+                    "}else{",
+                    "    store.clearFilter();",
+                    "    store.filter('prodName',field.getValue());",
+                    "}"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onAllProdsSearchChange",
+            "designerId": "ad8d9d18-aa31-4957-997d-a563717fdec9"
+        }
+    ]
+}

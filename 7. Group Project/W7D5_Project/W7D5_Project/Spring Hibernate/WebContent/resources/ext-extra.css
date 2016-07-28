@@ -120,6 +120,15 @@
     font-weight: bold !important;
 }
 
+.adminLoginCls {
+    height: 24px;
+    font: 300 20px/24px sans-serif;
+    color: #666;
+    margin-top: 4px;
+    font-family: 'Arial' !important;
+    font-weight: bold !important;
+}
+
 .headerCls {
     height: 50px;
     font: 300 45px/50px sans-serif;

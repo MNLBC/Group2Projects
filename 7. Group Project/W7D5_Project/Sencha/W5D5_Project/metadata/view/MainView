@@ -1245,7 +1245,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 13,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -5924,6 +5924,8 @@
                                                             "userConfig": {
                                                                 "container|align": "stretch",
                                                                 "height": 70,
+                                                                "id": "adminMenuContainer",
+                                                                "itemId": "adminMenuContainer",
                                                                 "layout": "hbox",
                                                                 "layout|flex": 1
                                                             },
@@ -6065,6 +6067,8 @@
                                                                 "container|align": "stretch",
                                                                 "container|pack": "end",
                                                                 "height": 70,
+                                                                "id": "adminBackContainer",
+                                                                "itemId": "adminBackContainer",
                                                                 "layout": "hbox",
                                                                 "layout|flex": 1
                                                             },
@@ -6112,7 +6116,7 @@
                                                                                 "fieldLabel": "",
                                                                                 "labelAlign": null,
                                                                                 "layout|flex": 0,
-                                                                                "value": "Go Back"
+                                                                                "value": "Go To Shopping Site"
                                                                             },
                                                                             "name": "MyDisplayField6",
                                                                             "designerId": "985bcd07-f81f-4ca9-9abe-dd4f9bc9e52f"
@@ -6307,6 +6311,38 @@
                                                                     },
                                                                     "name": "MyButton26",
                                                                     "designerId": "66cec554-1615-4c8d-b591-a0142e2f71cb"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.toolbar.Spacer",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": 25,
+                                                                        "layout|flex": 0
+                                                                    },
+                                                                    "name": "MySpacer67",
+                                                                    "designerId": "a621da85-30fd-4c8d-a62d-6f96af7e8c9d"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.button.Button",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "cls": "orderHistCls",
+                                                                        "height": 44,
+                                                                        "id": "adminLogoutBtn",
+                                                                        "itemId": "adminLogoutBtn",
+                                                                        "layout|flex": null,
+                                                                        "text": "LOGOUT"
+                                                                    },
+                                                                    "name": "MyButton32",
+                                                                    "designerId": "a590b735-5a7a-4dc6-a7fa-befecdec261b"
                                                                 }
                                                             ]
                                                         },
@@ -6318,13 +6354,259 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "activeTab": 0,
+                                                                "activeTab": 1,
                                                                 "id": "adminTabPanel",
                                                                 "layout|flex": 1
                                                             },
                                                             "name": "MyTabPanel",
                                                             "designerId": "9167bb2f-dd0d-4745-a050-bdb0903d42eb",
                                                             "cn": [
+                                                                {
+                                                                    "type": "Ext.panel.Panel",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "bodyStyle": [
+                                                                            "{background-color: #ddd; !important}"
+                                                                        ],
+                                                                        "container|align": "middle",
+                                                                        "container|pack": "center",
+                                                                        "id": "adminLoginTab",
+                                                                        "layout": "hbox",
+                                                                        "title": "My Panel"
+                                                                    },
+                                                                    "name": "MyPanel42",
+                                                                    "designerId": "1853df6d-7973-4c57-a0c4-6227bddaab46",
+                                                                    "cn": [
+                                                                        {
+                                                                            "type": "Ext.tab.Tab",
+                                                                            "reference": {
+                                                                                "name": "tabConfig",
+                                                                                "type": "object"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "name": "TabConfig13",
+                                                                            "designerId": "a5af4f1a-fd39-4a16-8118-f8fbd200cc33"
+                                                                        },
+                                                                        {
+                                                                            "type": "Ext.form.Panel",
+                                                                            "reference": {
+                                                                                "name": "items",
+                                                                                "type": "array"
+                                                                            },
+                                                                            "codeClass": null,
+                                                                            "userConfig": {
+                                                                                "bodyPadding": null,
+                                                                                "bodyStyle": null,
+                                                                                "container|align": "stretch",
+                                                                                "height": 189,
+                                                                                "id": "adminLoginForm",
+                                                                                "itemId": "adminLoginForm",
+                                                                                "layout": "vbox",
+                                                                                "title": "",
+                                                                                "width": 439
+                                                                            },
+                                                                            "name": "MyForm8",
+                                                                            "designerId": "cda252d7-cc71-4998-8721-c811abbfedd2",
+                                                                            "cn": [
+                                                                                {
+                                                                                    "type": "Ext.panel.Panel",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "bodyStyle": [
+                                                                                            "{background-color: #eee; !important}"
+                                                                                        ],
+                                                                                        "cls": "",
+                                                                                        "container|align": "stretch",
+                                                                                        "container|pack": "center",
+                                                                                        "height": 33,
+                                                                                        "layout": "hbox",
+                                                                                        "layout|flex": 0,
+                                                                                        "title": "",
+                                                                                        "width": 419
+                                                                                    },
+                                                                                    "name": "MyPanel43",
+                                                                                    "designerId": "92f9a66a-c0d0-4b53-bf1f-8368292b8229",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "type": "Ext.form.field.Display",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "fieldCls": "adminLoginCls",
+                                                                                                "fieldLabel": "",
+                                                                                                "value": "Admin Login"
+                                                                                            },
+                                                                                            "name": "MyDisplayField42",
+                                                                                            "designerId": "131e8a74-b89d-4025-ae7f-ac994356c38a"
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    "type": "Ext.toolbar.Spacer",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "height": 19,
+                                                                                        "layout|flex": 0,
+                                                                                        "width": 21
+                                                                                    },
+                                                                                    "name": "MySpacer64",
+                                                                                    "designerId": "60110073-c32e-4d29-9fec-4e86e97152d3"
+                                                                                },
+                                                                                {
+                                                                                    "type": "Ext.container.Container",
+                                                                                    "reference": {
+                                                                                        "name": "items",
+                                                                                        "type": "array"
+                                                                                    },
+                                                                                    "codeClass": null,
+                                                                                    "userConfig": {
+                                                                                        "container|align": "stretch",
+                                                                                        "layout": "hbox",
+                                                                                        "layout|flex": 1
+                                                                                    },
+                                                                                    "name": "MyContainer35",
+                                                                                    "designerId": "dcd613b9-5092-448e-9375-a11697d4f6cb",
+                                                                                    "cn": [
+                                                                                        {
+                                                                                            "type": "Ext.toolbar.Spacer",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "layout|flex": 0,
+                                                                                                "width": 21
+                                                                                            },
+                                                                                            "name": "MySpacer63",
+                                                                                            "designerId": "d44172de-0b47-48c0-b6da-f6b78935604b"
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.form.Panel",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "container|align": "stretch",
+                                                                                                "height": 83,
+                                                                                                "id": "adminLoginFields",
+                                                                                                "itemId": "adminLoginFields",
+                                                                                                "layout": "vbox",
+                                                                                                "layout|flex": 1
+                                                                                            },
+                                                                                            "name": "MyForm9",
+                                                                                            "designerId": "ed29bd76-c6b1-450d-9a24-d1263e597bc7",
+                                                                                            "cn": [
+                                                                                                {
+                                                                                                    "type": "Ext.form.field.Text",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "allowBlank": false,
+                                                                                                        "allowOnlyWhitespace": false,
+                                                                                                        "fieldLabel": "Email",
+                                                                                                        "id": "adminEmail",
+                                                                                                        "itemId": "adminEmail",
+                                                                                                        "layout|flex": 0
+                                                                                                    },
+                                                                                                    "name": "MyTextField",
+                                                                                                    "designerId": "909f9d7c-3962-405e-b5dd-812c9bd53c2c"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "Ext.form.field.Text",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "allowBlank": false,
+                                                                                                        "allowOnlyWhitespace": false,
+                                                                                                        "fieldLabel": "Password",
+                                                                                                        "id": "adminPassword",
+                                                                                                        "inputType": "password",
+                                                                                                        "itemId": "adminPassword",
+                                                                                                        "layout|flex": 0
+                                                                                                    },
+                                                                                                    "name": "MyTextField35",
+                                                                                                    "designerId": "5d12c4d7-de10-4dd3-8d2b-cf78bfb9c441"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "Ext.toolbar.Spacer",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "cls": null,
+                                                                                                        "height": 24,
+                                                                                                        "layout|flex": 0,
+                                                                                                        "width": 21
+                                                                                                    },
+                                                                                                    "name": "MySpacer66",
+                                                                                                    "designerId": "6dc459c0-e060-4565-a191-3d6850ab2b9c"
+                                                                                                },
+                                                                                                {
+                                                                                                    "type": "Ext.button.Button",
+                                                                                                    "reference": {
+                                                                                                        "name": "items",
+                                                                                                        "type": "array"
+                                                                                                    },
+                                                                                                    "codeClass": null,
+                                                                                                    "userConfig": {
+                                                                                                        "cls": "genericBtn",
+                                                                                                        "height": 37,
+                                                                                                        "id": "adminLoginBtn",
+                                                                                                        "itemId": "adminLoginBtn",
+                                                                                                        "layout|flex": null,
+                                                                                                        "text": "LOGIN"
+                                                                                                    },
+                                                                                                    "name": "MyButton18",
+                                                                                                    "designerId": "6a4d0ef8-1e22-48d7-bc10-32ea32f3faa0"
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "Ext.toolbar.Spacer",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "layout|flex": 0,
+                                                                                                "width": 21
+                                                                                            },
+                                                                                            "name": "MySpacer65",
+                                                                                            "designerId": "2fc9c23d-cf37-4c25-b5d1-1bcd58a6b9d2"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
                                                                 {
                                                                     "type": "Ext.panel.Panel",
                                                                     "reference": {

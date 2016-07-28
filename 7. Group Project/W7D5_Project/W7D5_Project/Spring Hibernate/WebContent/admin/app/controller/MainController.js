@@ -232,7 +232,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                     var tab = Ext.getCmp('setPanel');
                     var userField = Ext.getCmp('userField');
                     var countField = Ext.getCmp('countField'),
-                        idField = Ext.getCmp('idField');
+                        idField = Ext.getCmp('idField'),
+                        admin4 = Ext.getCmp('adminSystemBtn');
                     panel.setActiveTab(tab);
                     var controller = W5D5_Project.app.getController('ShopController');
                     controller.clearItems();
@@ -243,6 +244,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin1.hide();
                     admin2.hide();
                     admin3.hide();
+                    admin4.hide();
                     panel2.hide();
                     panel3.hide();
                     userField.setValue('Visitor');

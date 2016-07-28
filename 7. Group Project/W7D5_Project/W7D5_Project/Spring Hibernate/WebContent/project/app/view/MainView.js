@@ -2781,6 +2781,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            id: 'adminMenuContainer',
+                                                            itemId: 'adminMenuContainer',
                                                             layout: {
                                                                 type: 'hbox',
                                                                 align: 'stretch'
@@ -2849,6 +2851,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'container',
                                                             flex: 1,
                                                             height: 70,
+                                                            id: 'adminBackContainer',
+                                                            itemId: 'adminBackContainer',
                                                             layout: {
                                                                 type: 'hbox',
                                                                 align: 'stretch',
@@ -2871,7 +2875,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             xtype: 'displayfield',
                                                                             flex: 0,
                                                                             fieldLabel: '',
-                                                                            value: 'Go Back',
+                                                                            value: 'Go To Shopping Site',
                                                                             fieldCls: 'textCls'
                                                                         }
                                                                     ]
@@ -2963,6 +2967,19 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                     id: 'adminOnlineUsersBtn',
                                                                     itemId: 'adminOnlineUsersBtn',
                                                                     text: 'ONLINE USERS'
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 25
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    cls: 'orderHistCls',
+                                                                    height: 44,
+                                                                    id: 'adminLogoutBtn',
+                                                                    itemId: 'adminLogoutBtn',
+                                                                    text: 'LOGOUT'
                                                                 }
                                                             ]
                                                         },
@@ -2970,8 +2987,129 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'tabpanel',
                                                             flex: 1,
                                                             id: 'adminTabPanel',
-                                                            activeTab: 0,
+                                                            activeTab: 1,
                                                             items: [
+                                                                {
+                                                                    xtype: 'panel',
+                                                                    id: 'adminLoginTab',
+                                                                    bodyStyle: '{background-color: #ddd; !important}',
+                                                                    title: 'My Panel',
+                                                                    layout: {
+                                                                        type: 'hbox',
+                                                                        align: 'middle',
+                                                                        pack: 'center'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'form',
+                                                                            height: 189,
+                                                                            id: 'adminLoginForm',
+                                                                            itemId: 'adminLoginForm',
+                                                                            width: 439,
+                                                                            title: '',
+                                                                            layout: {
+                                                                                type: 'vbox',
+                                                                                align: 'stretch'
+                                                                            },
+                                                                            items: [
+                                                                                {
+                                                                                    xtype: 'panel',
+                                                                                    flex: 0,
+                                                                                    cls: '',
+                                                                                    height: 33,
+                                                                                    width: 419,
+                                                                                    bodyStyle: '{background-color: #eee; !important}',
+                                                                                    title: '',
+                                                                                    layout: {
+                                                                                        type: 'hbox',
+                                                                                        align: 'stretch',
+                                                                                        pack: 'center'
+                                                                                    },
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'displayfield',
+                                                                                            fieldLabel: '',
+                                                                                            value: 'Admin Login',
+                                                                                            fieldCls: 'adminLoginCls'
+                                                                                        }
+                                                                                    ]
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'tbspacer',
+                                                                                    flex: 0,
+                                                                                    height: 19,
+                                                                                    width: 21
+                                                                                },
+                                                                                {
+                                                                                    xtype: 'container',
+                                                                                    flex: 1,
+                                                                                    layout: {
+                                                                                        type: 'hbox',
+                                                                                        align: 'stretch'
+                                                                                    },
+                                                                                    items: [
+                                                                                        {
+                                                                                            xtype: 'tbspacer',
+                                                                                            flex: 0,
+                                                                                            width: 21
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'form',
+                                                                                            flex: 1,
+                                                                                            height: 83,
+                                                                                            id: 'adminLoginFields',
+                                                                                            itemId: 'adminLoginFields',
+                                                                                            layout: {
+                                                                                                type: 'vbox',
+                                                                                                align: 'stretch'
+                                                                                            },
+                                                                                            items: [
+                                                                                                {
+                                                                                                    xtype: 'textfield',
+                                                                                                    flex: 0,
+                                                                                                    id: 'adminEmail',
+                                                                                                    itemId: 'adminEmail',
+                                                                                                    fieldLabel: 'Email',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'textfield',
+                                                                                                    flex: 0,
+                                                                                                    id: 'adminPassword',
+                                                                                                    itemId: 'adminPassword',
+                                                                                                    fieldLabel: 'Password',
+                                                                                                    inputType: 'password',
+                                                                                                    allowBlank: false,
+                                                                                                    allowOnlyWhitespace: false
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'tbspacer',
+                                                                                                    flex: 0,
+                                                                                                    height: 24,
+                                                                                                    width: 21
+                                                                                                },
+                                                                                                {
+                                                                                                    xtype: 'button',
+                                                                                                    cls: 'genericBtn',
+                                                                                                    height: 37,
+                                                                                                    id: 'adminLoginBtn',
+                                                                                                    itemId: 'adminLoginBtn',
+                                                                                                    text: 'LOGIN'
+                                                                                                }
+                                                                                            ]
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'tbspacer',
+                                                                                            flex: 0,
+                                                                                            width: 21
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ]
+                                                                },
                                                                 {
                                                                     xtype: 'panel',
                                                                     id: 'userMgmtTab',
