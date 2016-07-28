@@ -75,12 +75,18 @@ public class UserSVCImpl implements UserSVC {
 		return this.userDAO.updateToPremium(email);
 	}
 
-   @Override
-   public int updateUserByAdmin(User user) {
-      return this.userDAO.updateUserByAdmin(user);
-   }
-   @Override
-   public int deleteUserByEmail(String useremail){
-	   return this.userDAO.deleteUserByEmail(useremail);
-   }
+	@Override
+	public int updateUserByAdmin(User user) {
+		return this.userDAO.updateUserByAdmin(user);
+	}
+
+	@Override
+	public int deleteUserByEmail(String useremail) {
+		return this.userDAO.deleteUserByEmail(useremail);
+	}
+
+	@Override
+	public String getUserPass(String email) {
+		return this.userDAO.getPassByEmail(email);
+	}
 }

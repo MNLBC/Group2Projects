@@ -16,6 +16,8 @@ public interface UserSVC {
 	public List<User> getBlackList();
 
 	public List<User> getUserByEmail(String email);
+	
+	public String getUserPass(String email);
 
 	public int updateUser(User user);
 

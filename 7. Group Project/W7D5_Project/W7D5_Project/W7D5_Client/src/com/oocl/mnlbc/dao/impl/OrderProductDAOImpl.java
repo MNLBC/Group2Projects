@@ -123,4 +123,17 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 		return cartProductList;
 	}
 
+   @Override
+   public List<OrderProduct> getOrderProductsByOrder(long orderid) {
+      String sql = "SELECT orderproduct FROM OrderProduct orderproduct WHERE orderproduct.orderId = :orderId";
+      Query query = manager.createQuery(sql);
+      query.setParameter("orderId", orderid);
+      List<OrderProduct> orderProductList = query.getResultList();
+      logger.info("Order id :" + orderid);
+      for (OrderProduct orderproduct : orderProductList) {
+         logger.info("Order Product List :" + orderproduct);
+      }
+      return orderProductList;
+   }
+
 }

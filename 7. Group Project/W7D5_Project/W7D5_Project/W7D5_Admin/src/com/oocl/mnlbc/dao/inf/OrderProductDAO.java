@@ -14,4 +14,5 @@ public interface OrderProductDAO {
 	public List<CartProduct> getCartProducts(String orderId);
 	public int updateOrderProduct(OrderProduct orderProduct);
 	public List<CartProduct> getCartProductByUserId(long userId);
+	public List<OrderProduct> getOrderProductsByOrder(long orderid);
 }

@@ -59,7 +59,7 @@ public class OrderProductsController {
     * @return List<Product>
     */
    @RequestMapping(value = "/getOrderProductsByOrder", method = RequestMethod.GET)
-   public List<Product> getOrderProductsByOrder(@RequestParam long id) {
+   public List<OrderProduct> getOrderProductsByOrder(@RequestParam long id) {
       if (id >= 0) {
          return this.orderprodSVC.getOrderProductsByOrder(id);
       }

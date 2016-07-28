@@ -54,7 +54,8 @@ public class LoginController extends HttpServlet {
     * @return boolean
     */
    @RequestMapping(value = "/login", method = RequestMethod.POST)
-   public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password, HttpServletRequest request) {
+   public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password,
+      HttpServletRequest request) {
       if (email.isEmpty() && password.isEmpty())
          return false;
       boolean result = this.userSVC.validateUser(email, password);
@@ -85,9 +86,14 @@ public class LoginController extends HttpServlet {
     * @param request
     * @param response
     */
-   @RequestMapping(value = "/logout", method = RequestMethod.GET)
-   public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
-      HttpSession session = request.getSession();
-      session.invalidate();
+   @RequestMapping(value = "/logout", method = RequestMethod.POST)
+   public boolean logoutSystem(HttpServletRequest request, HttpServletResponse response) {
+      try {
+         HttpSession session = request.getSession();
+         session.invalidate();
+         return true;
+      } catch (Exception e) {
+         return false;
+      }
    }
 }

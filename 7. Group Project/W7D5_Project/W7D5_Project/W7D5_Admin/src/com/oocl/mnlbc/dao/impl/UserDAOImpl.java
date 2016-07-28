@@ -95,7 +95,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return blackList;
 	}
-	
+
 	@Override
 	public int updateUser(User user) {
 
@@ -126,19 +126,13 @@ public class UserDAOImpl implements UserDAO {
 		return 1;
 
 	}
-	
 
 	@Override
 	public int deleteUserByEmail(String useremail) {
-		
-//		User deletedUserByEmail = manager.find(User.class, useremail);
-//		manager.remove(deletedUserByEmail);
-//		logger.info("User deleted successfully!=" + deletedUserByEmail);
-//		return 1;
-		
-		
-		String sql = "SELECT usr FROM User usr WHERE usr.userEmail ='" + useremail+"'";
+
+		String sql = "SELECT usr FROM User usr WHERE usr.userEmail =:email";
 		Query query = manager.createQuery(sql);
+		query.setParameter("email", useremail);
 		List<User> deletedUserByEmail = query.getResultList();
 		manager.remove(deletedUserByEmail.get(0));
 		logger.info("User deleted successfully = " + deletedUserByEmail.get(0));
@@ -192,22 +186,34 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 
-   @Override
-   public int updateUserByAdmin(User user) {
-      User newUser = manager.find(User.class, user.getUserId());
-      newUser.setUserId(user.getUserId());
-      newUser.setUserFname(user.getUserFname());
-      newUser.setUserLname(user.getUserLname());
-      newUser.setUserEmail(user.getUserEmail());
-      newUser.setUserAddress1(user.getUserAddress1());
-      newUser.setUserAddress2(user.getUserAddress2());
-      newUser.setUserSp(user.getUserSp());
-      newUser.setUserLevel(user.getUserLevel());
-      newUser.setUserOccupation(user.getUserOccupation());
-      newUser.setUserCity(user.getUserCity());
-      newUser.setUserCountry(user.getUserCountry());
-      newUser.setUserType(user.getUserType());
-      logger.info("User updated successfully!=" + newUser);
-      return 1;
-   }
+	@Override
+	public int updateUserByAdmin(User user) {
+		User newUser = manager.find(User.class, user.getUserId());
+		newUser.setUserId(user.getUserId());
+		newUser.setUserFname(user.getUserFname());
+		newUser.setUserLname(user.getUserLname());
+		newUser.setUserEmail(user.getUserEmail());
+		newUser.setUserAddress1(user.getUserAddress1());
+		newUser.setUserAddress2(user.getUserAddress2());
+		newUser.setUserSp(user.getUserSp());
+		newUser.setUserLevel(user.getUserLevel());
+		newUser.setUserOccupation(user.getUserOccupation());
+		newUser.setUserCity(user.getUserCity());
+		newUser.setUserCountry(user.getUserCountry());
+		newUser.setUserType(user.getUserType());
+		logger.info("User updated successfully!=" + newUser);
+		return 1;
+	}
+
+	@Override
+	public String getPassByEmail(String email) {
+
+		String sql = "SELECT user.userPass FROM User user WHERE user.userEmail=:email";
+		Query query = manager.createQuery(sql, User.class);
+		query.setParameter("email", email);
+		String pass = (String) query.getSingleResult();
+
+		logger.info("Userpass retrieved successfully with hash :" + pass);
+		return pass;
+	}
 }
