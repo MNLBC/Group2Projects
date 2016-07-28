@@ -431,6 +431,7 @@
                                                 },
                                                 {
                                                     "id": "fc20ed95-5fdb-4990-af6a-a9e147d55836",
+                                                    "expanded": false,
                                                     "cn": [
                                                         {
                                                             "id": "b95cce7a-96a7-48e4-9b0e-ca12bd24664a"
@@ -3193,8 +3194,8 @@
         "topInstance": "66b6c872-a53a-4014-8bd6-37b94d4bcc2a"
     },
     "inspectorState": {
-        "topInstance": null,
-        "selectedInstance": null
+        "topInstance": "66b6c872-a53a-4014-8bd6-37b94d4bcc2a",
+        "selectedInstance": "6b0ac6e5-1ea1-459d-8090-2cdc12a7eb65"
     },
     "editMode": "design",
     "userSettings": {

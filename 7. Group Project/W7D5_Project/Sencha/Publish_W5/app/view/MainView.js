@@ -669,7 +669,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'mainTabPanel',
                                     width: 1121,
                                     title: '',
-                                    activeTab: 9,
+                                    activeTab: 13,
                                     items: [
                                         {
                                             xtype: 'panel',
