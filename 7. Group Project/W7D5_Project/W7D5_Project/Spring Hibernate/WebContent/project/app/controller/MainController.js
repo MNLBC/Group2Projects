@@ -413,6 +413,20 @@ Ext.define('W5D5_Project.controller.MainController', {
         panel3.hide();
         panel4.hide();
         panel5.hide();
+        Ext.Ajax.request({
+            url : "getAllUsers",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("Users","Error in getting users");
+                } else {
+                    var userStore = Ext.getStore('UserStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    userStore.loadData(jsonResponse);
+                }
+            }
+        });
     },
 
     onAllBtnClick: function() {
