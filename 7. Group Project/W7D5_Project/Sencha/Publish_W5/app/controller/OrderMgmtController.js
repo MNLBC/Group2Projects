@@ -171,6 +171,13 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
         orderDate = Ext.getCmp('orderMgmtDate').getValue();
         orderStore = Ext.getStore('OrdersStore');
+        if(Ext.isEmpty(orderTotal)){
+            orderTotal = 0;
+        }
+        if(Ext.isEmpty(orderDate)){
+            orderDate = new Date();
+        }
+
         orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
 
         if(userId !== ""){
@@ -234,6 +241,13 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
         orderDate = Ext.getCmp('orderMgmtDate').getValue();
         orderStore = Ext.getStore('OrdersStore');
+        if(Ext.isEmpty(orderTotal)){
+            orderTotal = 0;
+        }
+        if(Ext.isEmpty(orderDate)){
+            orderDate = new Date();
+        }
+
         orderDate2 = Ext.Date.format(orderDate,'Ymdhis');
 
         if(userId !== ""){
@@ -305,7 +319,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
                     var orderStore1 = Ext.getStore('OrderProductStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
                     orderStore1.loadData(jsonResponse);
-                    this.orderProductWindow.show();
+                    Ext.create('W5D5_Project.view.OrderProductWin').show();
                 }
             }
         });
