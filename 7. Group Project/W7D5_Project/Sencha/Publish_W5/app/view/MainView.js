@@ -669,7 +669,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'mainTabPanel',
                                     width: 1121,
                                     title: '',
-                                    activeTab: 13,
+                                    activeTab: 9,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -1106,7 +1106,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             width: 1175,
                                                             title: '',
                                                             rowLines: false,
-                                                            store: 'ProductStore',
+                                                            store: 'AllProductsStore',
                                                             columns: [
                                                                 {
                                                                     xtype: 'gridcolumn',

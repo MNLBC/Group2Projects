@@ -1106,7 +1106,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             width: 1175,
                                                             title: '',
                                                             rowLines: false,
-                                                            store: 'ProductStore',
+                                                            store: 'AllProductsStore',
                                                             columns: [
                                                                 {
                                                                     xtype: 'gridcolumn',

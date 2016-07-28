@@ -9,11 +9,11 @@
         "container|align": "stretch",
         "designer|userAlias": "userinfowin",
         "designer|userClassName": "UserInfoWin",
-        "height": 462,
+        "height": 471,
         "layout": "hbox",
         "modal": true,
         "title": "Detailed User Information",
-        "width": 324
+        "width": 381
     },
     "name": "MyWindow",
     "designerId": "a81fe2b6-21c1-4c40-82e2-963626a7d453",
@@ -29,7 +29,7 @@
             "codeClass": null,
             "userConfig": {
                 "container|align": "center",
-                "height": 386,
+                "height": 438,
                 "layout": "vbox",
                 "layout|flex": 1,
                 "width": 314
@@ -37,6 +37,19 @@
             "name": "MyContainer20",
             "designerId": "1cb612e1-aef9-4fd7-a3f9-652505562671",
             "cn": [
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "name": "MySpacer72",
+                    "designerId": "18902576-72eb-4c21-a3bb-f773e72bcb1f"
+                },
                 {
                     "type": "Ext.Img",
                     "reference": {
@@ -48,6 +61,7 @@
                         "height": 200,
                         "id": "userInfoImg",
                         "itemId": "userInfoImg",
+                        "src": "resources/img/customer.png",
                         "width": 200
                     },
                     "name": "MyImg",
@@ -169,6 +183,19 @@
                     },
                     "name": "MyDisplayField31",
                     "designerId": "04c56f83-2117-4a85-bc80-3164364d0b51"
+                },
+                {
+                    "type": "Ext.toolbar.Spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "name": "MySpacer73",
+                    "designerId": "d5d3deb3-0793-44b7-a2b6-5d513416eb7b"
                 }
             ]
         }

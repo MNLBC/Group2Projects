@@ -249,7 +249,6 @@ Ext.define('W5D5_Project.controller.MainController', {
                     panel3.hide();
                     userField.setValue('');
                     idField.setValue(0);
-                    countField.setValue(parseInt(countField.getValue())-1);
                     Ext.Ajax.request({
                         url : "logout",
                         method : 'POST',
@@ -264,6 +263,10 @@ Ext.define('W5D5_Project.controller.MainController', {
                                 var mainControl = W5D5_Project.app.getController('MainController');
                                 mainControl.clearFrontPage();
                                 Ext.util.Cookies.clear("key");
+                                var faveStore = Ext.getStore('FavoriteItemsStore'),
+                                    allStore = Ext.getStore('AllProductsStore');
+                                faveStore.removeAll();
+                                allStore.removeAll();
                                 Ext.Ajax.request ({
                                     url: "visitorCount",
                                     method: 'GET',

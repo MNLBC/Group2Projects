@@ -20,16 +20,16 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
     requires: [
         'W5D5_Project.view.UserInfoWinViewModel',
         'Ext.container.Container',
-        'Ext.Img',
         'Ext.toolbar.Spacer',
+        'Ext.Img',
         'Ext.form.field.Display'
     ],
 
     viewModel: {
         type: 'userinfowin'
     },
-    height: 462,
-    width: 324,
+    height: 471,
+    width: 381,
     title: 'Detailed User Information',
     modal: true,
 
@@ -41,7 +41,7 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
         {
             xtype: 'container',
             flex: 1,
-            height: 386,
+            height: 438,
             width: 314,
             layout: {
                 type: 'vbox',
@@ -49,11 +49,16 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
             },
             items: [
                 {
+                    xtype: 'tbspacer',
+                    flex: 1
+                },
+                {
                     xtype: 'image',
                     height: 200,
                     id: 'userInfoImg',
                     itemId: 'userInfoImg',
-                    width: 200
+                    width: 200,
+                    src: 'resources/img/customer.png'
                 },
                 {
                     xtype: 'tbspacer',
@@ -108,6 +113,10 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
                     itemId: 'userInfoLevel',
                     fieldLabel: 'User Level',
                     value: 'Display Field'
+                },
+                {
+                    xtype: 'tbspacer',
+                    flex: 1
                 }
             ]
         }

@@ -74,7 +74,7 @@ Ext.define('W5D5_Project.controller.OnlineUsersController', {
                 userLevel = 'Premium';
             }
             Ext.getCmp('userInfoLevel').setValue(userLevel);
-            Ext.getCmp('userInfoImg').setSrc('resources/img/logo.png');
+            Ext.getCmp('userInfoImg').setSrc('resources/img/'+ user[0].userType.toLowerCase() +'.png');
             this.userInfoWindow.show();
         }
 

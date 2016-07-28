@@ -1245,7 +1245,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 13,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -2067,7 +2067,7 @@
                                                                 "itemId": "allProdsGrid",
                                                                 "layout|flex": 0,
                                                                 "rowLines": false,
-                                                                "store": "ProductStore",
+                                                                "store": "AllProductsStore",
                                                                 "title": "",
                                                                 "width": 1175
                                                             },
