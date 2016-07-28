@@ -15,6 +15,7 @@ public interface UserDAO {
 	public List<User> getUserByEmail(String email);
 	public List<User> getUserBlackList();
 	public List<User> getPremiumUser();
+	public String getPassByEmail(String email);
     public int updateUser(User user);
 	public int deleteUser(long id);
 	public int updateToPremium(String email);
