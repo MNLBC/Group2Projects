@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSessionListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.oocl.mnlbc.dao.impl.TempOnlineUserDAOImpl;
 import com.oocl.mnlbc.dao.impl.UserDAOImpl;;
 
 /**
@@ -18,7 +19,9 @@ import com.oocl.mnlbc.dao.impl.UserDAOImpl;;
  */
 @WebListener
 public class UserCounterListener implements HttpSessionListener {
-
+   
+   TempOnlineUserDAOImpl tempOnlineUserDAO = new TempOnlineUserDAOImpl();
+   
    UserDAOImpl userDAO = new UserDAOImpl();
    private static final Logger logger = LoggerFactory.getLogger(UserCounterListener.class);
    /**
@@ -41,7 +44,6 @@ public class UserCounterListener implements HttpSessionListener {
          ctr = new Integer(ctr + 1);
       }
       ctx.setAttribute("ctr", ctr);
-      // session.setMaxInactiveInterval(60);
       logger.info("Session Created:: ID=" + event.getSession().getId());
       logger.info("User Count: " + ctr);
    
@@ -58,6 +60,8 @@ public class UserCounterListener implements HttpSessionListener {
       if (ctr != null && ctr != 0) {
          ctr = new Integer(ctr - 1);
       }
+      String email = (String) session.getAttribute("useremail");
+      this.tempOnlineUserDAO.deleteOnlineUser(email);
       ctx.setAttribute("ctr", ctr);
       session.setMaxInactiveInterval(60);
       logger.info("Session Destroyed:: ID=" + event.getSession().getId());

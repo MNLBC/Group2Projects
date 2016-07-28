@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -53,7 +54,7 @@ public class LoginController extends HttpServlet {
     * @return boolean
     */
    @RequestMapping(value = "/login", method = RequestMethod.POST)
-   public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password) {
+   public boolean loginUser(@RequestParam("email") String email, @RequestParam("password") String password, HttpServletRequest request) {
       if (email.isEmpty() && password.isEmpty())
          return false;
       boolean result = this.userSVC.validateUser(email, password);
@@ -62,6 +63,8 @@ public class LoginController extends HttpServlet {
          onluser.setUserEmail(email);
          onluser.setOnlineDate(Timestamp.getTimestamp());
          this.onlineUserSVC.addOnlineUser(onluser);
+         HttpSession session = request.getSession();
+         session.setAttribute("useremail", email);
       }
       return result;
    }
@@ -82,16 +85,9 @@ public class LoginController extends HttpServlet {
     * @param request
     * @param response
     */
-   @RequestMapping(value = "/logout", method = RequestMethod.POST)
-   public boolean logoutSystem(HttpServletRequest request, HttpServletResponse response, @RequestParam("email") String email) throws IOException {
+   @RequestMapping(value = "/logout", method = RequestMethod.GET)
+   public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
       HttpSession session = request.getSession();
       session.invalidate();
-      int result = this.onlineUserSVC.deleteOnlineUser(email);
-      if (!email.isEmpty()) {
-         if (result != 1 || result == 0)
-            return false;
-         return true;
-      }
-      return false;
    }
 }
