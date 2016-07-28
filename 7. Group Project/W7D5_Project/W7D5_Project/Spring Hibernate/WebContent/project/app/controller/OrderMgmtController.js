@@ -276,12 +276,13 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
                 id : orderId
             },
             callback : function(options,success,response){
-                if (Ext.isEmpty(response.responseText)) {
+                if (success=='false') {
                     Ext.Msg.alert("Orders","Error in retrieving orders");
                 } else {
                     var orderStore1 = Ext.getStore('OrdersStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
                     orderStore1.loadData(jsonResponse);
+                    this.orderProductWindow.show();
                 }
             }
         });
