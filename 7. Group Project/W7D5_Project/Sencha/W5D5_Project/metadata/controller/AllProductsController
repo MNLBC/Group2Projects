@@ -45,35 +45,6 @@
             "userConfig": {
                 "designer|controlQuery": "#allProdsSearch",
                 "designer|params": [
-                    "combo, records, eOpts"
-                ],
-                "designer|targetType": "MyComboBox16",
-                "fn": "onAllProdsSearchSelect",
-                "implHandler": [
-                    "var store = Ext.getStore('ProductStore');",
-                    "if(Ext.isEmpty(combo.getValue())){",
-                    "    store.clearFilter();",
-                    "}else{",
-                    "    store.clearFilter();",
-                    "    store.filter('prodName',combo.getValue());",
-                    "}"
-                ],
-                "name": "select",
-                "scope": "me"
-            },
-            "name": "onAllProdsSearchSelect",
-            "designerId": "4728dca6-3a79-4113-b024-dba9f084d0d7"
-        },
-        {
-            "type": "controlleraction",
-            "reference": {
-                "name": "listeners",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "designer|controlQuery": "#allProdsSearch",
-                "designer|params": [
                     "field, newValue, oldValue, eOpts"
                 ],
                 "designer|targetType": "MyComboBox16",

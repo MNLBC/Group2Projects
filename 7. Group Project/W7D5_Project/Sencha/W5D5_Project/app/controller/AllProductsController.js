@@ -21,7 +21,6 @@ Ext.define('W5D5_Project.controller.AllProductsController', {
             rowdblclick: 'onAllProdsGridRowDblClick'
         },
         "#allProdsSearch": {
-            select: 'onAllProdsSearchSelect',
             change: 'onAllProdsSearchChange'
         }
     },
@@ -29,16 +28,6 @@ Ext.define('W5D5_Project.controller.AllProductsController', {
     onAllProdsGridRowDblClick: function(tableview, record, tr, rowIndex, e, eOpts) {
         var controller = W5D5_Project.app.getController('ProdInfoController');
         controller.showProdInfoWin(record.data);
-    },
-
-    onAllProdsSearchSelect: function(combo, records, eOpts) {
-        var store = Ext.getStore('ProductStore');
-        if(Ext.isEmpty(combo.getValue())){
-            store.clearFilter();
-        }else{
-            store.clearFilter();
-            store.filter('prodName',combo.getValue());
-        }
     },
 
     onAllProdsSearchChange: function(field, newValue, oldValue, eOpts) {
