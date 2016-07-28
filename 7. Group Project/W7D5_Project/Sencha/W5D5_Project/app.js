@@ -61,7 +61,8 @@ Ext.application({
         'OrderWin',
         'OrderProductWin',
         'UserInfoWin',
-        'ProdInfoWin'
+        'ProdInfoWin',
+        'BrowseProductsWin'
     ],
     controllers: [
         'MainController',
@@ -78,7 +79,8 @@ Ext.application({
         'UserMgmtController',
         'ProductMgmtController',
         'RequestController',
-        'OnlineUsersController'
+        'OnlineUsersController',
+        'BrowseProductsController'
     ],
     name: 'W5D5_Project',
 

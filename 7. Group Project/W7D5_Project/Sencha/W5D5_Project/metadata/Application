@@ -21,7 +21,8 @@
             "UserMgmtController",
             "ProductMgmtController",
             "RequestController",
-            "OnlineUsersController"
+            "OnlineUsersController",
+            "BrowseProductsController"
         ],
         "models": [
             "CategoryModel",
@@ -65,7 +66,8 @@
             "OrderWin",
             "OrderProductWin",
             "UserInfoWin",
-            "ProdInfoWin"
+            "ProdInfoWin",
+            "MyWindow"
         ]
     },
     "name": "Application",
