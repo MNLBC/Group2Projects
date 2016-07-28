@@ -52,7 +52,8 @@ Ext.application({
         'ProdReviewStore',
         'RatingStore',
         'FavoriteProductsStore',
-        'OnlineUsersStore'
+        'OnlineUsersStore',
+        'AllProductsStore'
     ],
     views: [
         'MainView',

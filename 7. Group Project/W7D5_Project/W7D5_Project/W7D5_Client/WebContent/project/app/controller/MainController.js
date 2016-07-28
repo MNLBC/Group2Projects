@@ -447,12 +447,23 @@ Ext.define('W5D5_Project.controller.MainController', {
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
 
+        var prodStore = Ext.getStore('ProductStore'),
+            store = Ext.getStore('AllProductsStore');
+
+        prodStore.clearFilter();
+        store.clearFilter();
+
+        Ext.each(prodStore.data.items, function(record){
+           store.add(record);
+        });
     },
 
     onFaveBtnClick: function() {
         var panel = Ext.getCmp('mainTabPanel');
         var tab = Ext.getCmp('faveProdsPanel');
         panel.setActiveTab(tab);
+        var controller = W5D5_Project.app.getController('ShopController');
+        controller.clearItems();
 
         var faveStore = Ext.getStore('FavoriteItemsStore'),
             prodStore = Ext.getStore('ProductStore'),

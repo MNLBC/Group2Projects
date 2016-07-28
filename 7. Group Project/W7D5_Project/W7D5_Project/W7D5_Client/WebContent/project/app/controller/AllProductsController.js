@@ -31,7 +31,7 @@ Ext.define('W5D5_Project.controller.AllProductsController', {
     },
 
     onAllProdsSearchChange: function(field, newValue, oldValue, eOpts) {
-        var store = Ext.getStore('ProductStore');
+        var store = Ext.getStore('AllProductsStore');
         if(Ext.isEmpty(field.getValue())){
             store.clearFilter();
         }else{

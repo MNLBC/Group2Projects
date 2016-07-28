@@ -23,10 +23,10 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.Img',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
-        'Ext.form.field.ComboBox',
         'Ext.grid.Panel',
         'Ext.grid.View',
         'Ext.form.Panel',
+        'Ext.form.field.ComboBox',
         'Ext.form.field.TextArea',
         'Ext.grid.column.Number',
         'Ext.form.Label',
@@ -37,6 +37,7 @@ Ext.define('W5D5_Project.view.MainView', {
 
     id: 'mainView',
     itemId: 'mainView',
+    defaultListenerScope: true,
 
     layout: {
         type: 'vbox',
@@ -1071,16 +1072,12 @@ Ext.define('W5D5_Project.view.MainView', {
                                                     },
                                                     items: [
                                                         {
-                                                            xtype: 'combobox',
+                                                            xtype: 'textfield',
                                                             id: 'allProdsSearch',
                                                             itemId: 'allProdsSearch',
                                                             width: 615,
                                                             fieldLabel: '',
-                                                            emptyText: 'Search Product By Name',
-                                                            displayField: 'prodName',
-                                                            queryMode: 'local',
-                                                            store: 'ProductStore',
-                                                            valueField: 'prodName'
+                                                            emptyText: 'Search Product By Name'
                                                         }
                                                     ]
                                                 },
@@ -1210,15 +1207,15 @@ Ext.define('W5D5_Project.view.MainView', {
                                                     },
                                                     items: [
                                                         {
-                                                            xtype: 'combobox',
+                                                            xtype: 'textfield',
                                                             id: 'faveProdsSearch',
                                                             itemId: 'faveProdsSearch',
                                                             width: 615,
                                                             fieldLabel: '',
                                                             emptyText: 'Search Product By Name',
-                                                            displayField: 'prodName',
-                                                            store: 'FavoriteProductsStore',
-                                                            valueField: 'prodName'
+                                                            listeners: {
+                                                                change: 'onFaveProdsSearchChange'
+                                                            }
                                                         }
                                                     ]
                                                 },
@@ -4274,6 +4271,10 @@ Ext.define('W5D5_Project.view.MainView', {
                 }
             ]
         }
-    ]
+    ],
+
+    onFaveProdsSearchChange: function(field, newValue, oldValue, eOpts) {
+
+    }
 
 });

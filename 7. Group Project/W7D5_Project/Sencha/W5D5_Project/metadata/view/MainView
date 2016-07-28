@@ -1245,7 +1245,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 13,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -2004,24 +2004,20 @@
                                                     "designerId": "8d607cd4-bbee-44c8-b7c8-ca03f7d3f5e1",
                                                     "cn": [
                                                         {
-                                                            "type": "Ext.form.field.ComboBox",
+                                                            "type": "Ext.form.field.Text",
                                                             "reference": {
                                                                 "name": "items",
                                                                 "type": "array"
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "displayField": "prodName",
                                                                 "emptyText": "Search Product By Name",
                                                                 "fieldLabel": "",
                                                                 "id": "allProdsSearch",
                                                                 "itemId": "allProdsSearch",
-                                                                "queryMode": "local",
-                                                                "store": "ProductStore",
-                                                                "valueField": "prodName",
                                                                 "width": 615
                                                             },
-                                                            "name": "MyComboBox16",
+                                                            "name": "MyTextField45",
                                                             "designerId": "b9343d93-da7e-4dcb-bb32-3fcf043a1c44"
                                                         }
                                                     ]
@@ -2316,24 +2312,38 @@
                                                     "designerId": "445fb14b-fe40-47bc-9fbd-19269733fc4f",
                                                     "cn": [
                                                         {
-                                                            "type": "Ext.form.field.ComboBox",
+                                                            "type": "Ext.form.field.Text",
                                                             "reference": {
                                                                 "name": "items",
                                                                 "type": "array"
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "displayField": "prodName",
                                                                 "emptyText": "Search Product By Name",
                                                                 "fieldLabel": "",
                                                                 "id": "faveProdsSearch",
                                                                 "itemId": "faveProdsSearch",
-                                                                "store": "FavoriteProductsStore",
-                                                                "valueField": "prodName",
                                                                 "width": 615
                                                             },
-                                                            "name": "MyComboBox17",
-                                                            "designerId": "c9f3af3d-5743-4002-86c4-04bb8ecc4e93"
+                                                            "name": "MyTextField47",
+                                                            "designerId": "c9f3af3d-5743-4002-86c4-04bb8ecc4e93",
+                                                            "cn": [
+                                                                {
+                                                                    "type": "basiceventbinding",
+                                                                    "reference": {
+                                                                        "name": "listeners",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fn": "onFaveProdsSearchChange",
+                                                                        "name": "change",
+                                                                        "scope": "me"
+                                                                    },
+                                                                    "name": "onFaveProdsSearchChange",
+                                                                    "designerId": "7e51c8e5-3af3-4b5a-a9c6-d02155ef0d70"
+                                                                }
+                                                            ]
                                                         }
                                                     ]
                                                 },

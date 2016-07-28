@@ -50,7 +50,7 @@
                 "designer|targetType": "MyComboBox16",
                 "fn": "onAllProdsSearchChange",
                 "implHandler": [
-                    "var store = Ext.getStore('ProductStore');",
+                    "var store = Ext.getStore('AllProductsStore');",
                     "if(Ext.isEmpty(field.getValue())){",
                     "    store.clearFilter();",
                     "}else{",

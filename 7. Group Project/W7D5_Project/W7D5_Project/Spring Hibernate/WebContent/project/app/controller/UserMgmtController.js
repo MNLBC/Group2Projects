@@ -85,7 +85,7 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
                                 } else {
                                     var resp = Ext.decode(response.responseText);
                                     if (resp.responseCode == '0') {
-                                        Ext.Msg.alert('Create User','User "' + userEmail + '" successfully registered!');
+                                        Ext.Msg.alert('Create User','User "' + user.userEmail + '" successfully registered!');
                                         controller.userRefresh();
                                         controller.userResetFormValues();
                                     } else if (resp.responseCode == '999') {
