@@ -3253,8 +3253,8 @@
         "topInstance": "834d92bf-8e65-4162-b7e9-293b0ebed289"
     },
     "inspectorState": {
-        "topInstance": "834d92bf-8e65-4162-b7e9-293b0ebed289",
-        "selectedInstance": "4abb7ff7-6cda-4ef2-ab15-abe31675f934"
+        "topInstance": null,
+        "selectedInstance": null
     },
     "editMode": "design",
     "userSettings": {

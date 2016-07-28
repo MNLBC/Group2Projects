@@ -147,6 +147,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cellWrap": true,
                                 "dataIndex": "prodName",
                                 "text": "Name",
                                 "width": "18%"
@@ -177,6 +178,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "cellWrap": true,
                                 "dataIndex": "prodDesc",
                                 "text": "Description",
                                 "width": "30%"
@@ -203,7 +205,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "dataIndex": "prodPrice",
-                                "text": "Price",
+                                "text": "Price(RMB)",
                                 "width": "12%"
                             },
                             "name": "MyNumberColumn7",

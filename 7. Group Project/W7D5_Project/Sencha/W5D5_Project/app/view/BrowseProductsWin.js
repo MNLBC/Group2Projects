@@ -85,6 +85,7 @@ Ext.define('W5D5_Project.view.BrowseProductsWin', {
                         {
                             xtype: 'gridcolumn',
                             width: '18%',
+                            cellWrap: true,
                             dataIndex: 'prodName',
                             text: 'Name'
                         },
@@ -97,6 +98,7 @@ Ext.define('W5D5_Project.view.BrowseProductsWin', {
                         {
                             xtype: 'gridcolumn',
                             width: '30%',
+                            cellWrap: true,
                             dataIndex: 'prodDesc',
                             text: 'Description'
                         },
@@ -104,7 +106,7 @@ Ext.define('W5D5_Project.view.BrowseProductsWin', {
                             xtype: 'numbercolumn',
                             width: '12%',
                             dataIndex: 'prodPrice',
-                            text: 'Price'
+                            text: 'Price(RMB)'
                         }
                     ]
                 }
