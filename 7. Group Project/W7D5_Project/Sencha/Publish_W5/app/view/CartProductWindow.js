@@ -18,9 +18,9 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
     alias: 'widget.CartProductWindow',
 
     requires: [
-        'Ext.container.Container',
         'Ext.toolbar.Spacer',
         'Ext.Img',
+        'Ext.form.Panel',
         'Ext.form.field.Display',
         'Ext.form.field.Number',
         'Ext.button.Button'
@@ -58,7 +58,9 @@ Ext.define('W5D5_Project.view.CartProductWindow', {
                     width: 25
                 },
                 {
-                    xtype: 'container',
+                    xtype: 'form',
+                    id: 'cartProductFields',
+                    itemId: 'cartProductFields',
                     width: 331,
                     layout: {
                         type: 'vbox',

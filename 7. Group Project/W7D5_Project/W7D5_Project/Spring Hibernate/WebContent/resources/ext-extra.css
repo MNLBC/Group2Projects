@@ -35,6 +35,15 @@
     border-radius: 0px !important;
 }
 
+.shopButtonCls, .shopButtonCls:focus, .shopButtonCls:active, .shopButtonCls.active, .shopButtonCls:focus:active {
+    width: 40px!important;
+    height: 40px!important;
+    background: url('img/shop.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
 .digitalButtonCls, .digitalButtonCls:focus, .digitalButtonCls:active, .digitalButtonCls.active, .digitalButtonCls:focus:active {
     width: 50px!important;
     height: 50px!important;
@@ -75,6 +84,24 @@
     width: 50px!important;
     height: 50px!important;
     background: url('img/sports.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
+.searchButtonCls, .searchButtonCls:focus, .searchButtonCls:active, .searchButtonCls.active, .searchButtonCls:focus:active {
+    width: 50px!important;
+    height: 50px!important;
+    background: url('img/search.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 0px !important;
+}
+
+.favoriteButtonCls, .favoriteButtonCls:focus, .favoriteButtonCls:active, .favoriteButtonCls.active, .favoriteButtonCls:focus:active {
+    width: 50px!important;
+    height: 50px!important;
+    background: url('img/favorite.png') no-repeat;
     background-size: contain !important;
     border-style: none !important;
     border-radius: 0px !important;

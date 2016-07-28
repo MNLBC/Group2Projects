@@ -524,6 +524,7 @@
                     "panel.setActiveTab(tab);",
                     "var controller = W5D5_Project.app.getController('ShopController');",
                     "controller.clearItems();",
+                    "",
                     "Ext.Ajax.request({",
                     "    url : \"getUserByEmail\",",
                     "    method : \"GET\",",
@@ -542,6 +543,7 @@
                     "            }else{",
                     "                Ext.getCmp('accPremBtn').show();",
                     "            }",
+                    "            Ext.getCmp('levelField').setValue(record.userLevel);",
                     "        }",
                     "    }",
                     "});"

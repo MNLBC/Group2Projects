@@ -79,7 +79,7 @@
                     "designerId": "146adfa5-af3d-4eef-a71c-32a9ae964135"
                 },
                 {
-                    "type": "Ext.container.Container",
+                    "type": "Ext.form.Panel",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -87,10 +87,12 @@
                     "codeClass": null,
                     "userConfig": {
                         "container|align": "stretch",
+                        "id": "cartProductFields",
+                        "itemId": "cartProductFields",
                         "layout": "vbox",
                         "width": 331
                     },
-                    "name": "MyContainer",
+                    "name": "MyForm10",
                     "designerId": "cadb4ce5-f042-42ec-b824-9356b8e8dfd8",
                     "cn": [
                         {

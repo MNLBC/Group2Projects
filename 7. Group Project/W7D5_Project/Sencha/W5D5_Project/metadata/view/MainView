@@ -1119,7 +1119,7 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "baseCls": null,
-                                                        "cls": "dressButtonCls",
+                                                        "cls": "searchButtonCls",
                                                         "focusCls": "(none)",
                                                         "height": 50,
                                                         "icon": null,
@@ -1199,7 +1199,7 @@
                                                     "codeClass": null,
                                                     "userConfig": {
                                                         "baseCls": null,
-                                                        "cls": "dressButtonCls",
+                                                        "cls": "favoriteButtonCls",
                                                         "focusCls": "(none)",
                                                         "height": 50,
                                                         "icon": null,
@@ -6134,7 +6134,7 @@
                                                                     "codeClass": null,
                                                                     "userConfig": {
                                                                         "baseCls": null,
-                                                                        "cls": "menuBtnCls",
+                                                                        "cls": "shopButtonCls",
                                                                         "focusCls": "(none)",
                                                                         "height": 50,
                                                                         "icon": null,

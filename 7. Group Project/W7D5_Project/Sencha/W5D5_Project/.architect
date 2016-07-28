@@ -128,7 +128,6 @@
                                     "cn": [
                                         {
                                             "id": "22d6bb2f-f1c9-461f-8b0f-2a06bebdcfcb",
-                                            "expanded": false,
                                             "cn": [
                                                 {
                                                     "id": "604b67d1-46b7-44f7-aacb-9a7bfc288d0b",
@@ -1229,7 +1228,6 @@
                                                             "cn": [
                                                                 {
                                                                     "id": "863ef1b1-4561-49bb-8da9-b131f18450dc",
-                                                                    "expanded": false,
                                                                     "cn": [
                                                                         {
                                                                             "id": "c2c4a3b2-6062-4680-8e3f-8852edd6266e"
@@ -1692,6 +1690,7 @@
                                                                         },
                                                                         {
                                                                             "id": "710ee455-c221-4b99-8f64-457c6afc138c",
+                                                                            "expanded": false,
                                                                             "cn": [
                                                                                 {
                                                                                     "id": "45ac0bcb-cd24-4163-96ba-3a10082753de"
@@ -1710,6 +1709,7 @@
                                                                                 },
                                                                                 {
                                                                                     "id": "17e55706-d1d3-412c-9186-175c10f3ae65",
+                                                                                    "expanded": false,
                                                                                     "cn": [
                                                                                         {
                                                                                             "id": "1d5826de-6023-4ce2-8e01-1b6579bdce0c",
@@ -3107,8 +3107,8 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "da43a20b-6c73-47ee-89bc-7516ede9b276",
-        "selectedInstance": "c855a2fc-7a64-4980-9164-aa7e1bef4635"
+        "topInstance": "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
+        "selectedInstance": "b6b93451-8412-477d-b6b1-20723a15a945"
     },
     "editMode": "code",
     "userSettings": {

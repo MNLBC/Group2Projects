@@ -598,7 +598,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'button',
                                                     focusCls: '(none)',
-                                                    cls: 'dressButtonCls',
+                                                    cls: 'searchButtonCls',
                                                     height: 50,
                                                     id: 'allBtn',
                                                     itemId: 'allBtn',
@@ -639,7 +639,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'button',
                                                     focusCls: '(none)',
-                                                    cls: 'dressButtonCls',
+                                                    cls: 'favoriteButtonCls',
                                                     height: 50,
                                                     id: 'faveBtn',
                                                     itemId: 'faveBtn',
@@ -2885,7 +2885,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 {
                                                                     xtype: 'button',
                                                                     focusCls: '(none)',
-                                                                    cls: 'menuBtnCls',
+                                                                    cls: 'shopButtonCls',
                                                                     height: 50,
                                                                     id: 'adminBackBtn',
                                                                     itemId: 'adminBackBtn',

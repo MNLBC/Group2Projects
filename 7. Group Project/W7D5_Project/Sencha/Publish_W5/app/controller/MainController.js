@@ -329,6 +329,7 @@ Ext.define('W5D5_Project.controller.MainController', {
         panel.setActiveTab(tab);
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
+
         Ext.Ajax.request({
             url : "getUserByEmail",
             method : "GET",
@@ -347,6 +348,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     }else{
                         Ext.getCmp('accPremBtn').show();
                     }
+                    Ext.getCmp('levelField').setValue(record.userLevel);
                 }
             }
         });
