@@ -1982,12 +1982,24 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             items: [
                                                                 {
                                                                     xtype: 'button',
-                                                                    cls: 'genericBtn',
+                                                                    cls: 'browseBtnCls',
                                                                     height: 25,
                                                                     id: 'showBrowseBtn',
                                                                     itemId: 'showBrowseBtn',
-                                                                    width: 111,
-                                                                    text: 'BROWSE'
+                                                                    text: ''
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    height: 23,
+                                                                    width: 10
+                                                                },
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    flex: 0,
+                                                                    width: 146,
+                                                                    fieldLabel: 'Browse Products',
+                                                                    labelSeparator: ' ',
+                                                                    labelWidth: 150
                                                                 },
                                                                 {
                                                                     xtype: 'tbspacer',

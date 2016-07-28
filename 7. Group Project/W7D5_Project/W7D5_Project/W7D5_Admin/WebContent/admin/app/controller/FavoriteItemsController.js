@@ -21,7 +21,6 @@ Ext.define('W5D5_Project.controller.FavoriteItemsController', {
             rowdblclick: 'onFaveProdsGridRowDblClick'
         },
         "#faveProdsSearch": {
-            select: 'onFaveProdsSearchSelect',
             change: 'onFaveProdsSearchChange'
         }
     },
@@ -31,22 +30,11 @@ Ext.define('W5D5_Project.controller.FavoriteItemsController', {
         controller.showProdInfoWin(record.data);
     },
 
-    onFaveProdsSearchSelect: function(combo, records, eOpts) {
-        var store = Ext.getStore('FavoriteProductsStore');
-        if(Ext.isEmpty(combo.getValue())){
-            store.clearFilter();
-        }else{
-            store.clearFilter();
-            store.filter('prodName',combo.getValue());
-        }
-    },
-
     onFaveProdsSearchChange: function(field, newValue, oldValue, eOpts) {
         var store = Ext.getStore('FavoriteProductsStore');
         if(Ext.isEmpty(field.getValue())){
             store.clearFilter();
         }else{
-            store.clearFilter();
             store.filter('prodName',field.getValue());
         }
     }

@@ -92,7 +92,7 @@
 .searchButtonCls, .searchButtonCls:focus, .searchButtonCls:active, .searchButtonCls.active, .searchButtonCls:focus:active {
     width: 50px!important;
     height: 50px!important;
-    background: url('img/search.png') no-repeat;
+    background: url('img/search2.png') no-repeat;
     background-size: contain !important;
     border-style: none !important;
     border-radius: 0px !important;
@@ -205,6 +205,25 @@ margin-top: 4px;
     width: 50px!important;
     height: 50px!important;
     background: url('img/shopping-cart-light.png') no-repeat;
+    background-color: #777 !important;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 7px !important;
+}
+
+.browseBtnCls, .browseBtnCls:focus, .browseBtnCls:active, .browseBtnCls.active, .browseBtnCls:focus:active {
+    width: 25px!important;
+    height: 25px!important;
+    background: url('img/browse.png') no-repeat;
+    background-size: contain !important;
+    border-style: none !important;
+    border-radius: 7px !important;
+}
+
+.browseBtnCls:hover{
+    width: 25px!important;
+    height: 25px!important;
+    background: url('img/browse-light.png') no-repeat;
     background-color: #777 !important;
     background-size: contain !important;
     border-style: none !important;

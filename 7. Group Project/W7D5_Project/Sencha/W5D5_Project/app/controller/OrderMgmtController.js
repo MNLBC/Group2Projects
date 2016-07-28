@@ -109,7 +109,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
     },
 
     onOrderMgmtDeleteClick: function(button, e, eOpts) {
-        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected)){
+        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0])){
             Ext.Msg.alert('Order Management','Please select a record to delete.');
         }
 
@@ -222,7 +222,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
     },
 
     onOrderMgmtUpdateClick: function(button, e, eOpts) {
-        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected)){
+        if(Ext.isEmpty(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0])){
             Ext.Msg.alert('Order Management','Please select a record to update.');
         }else if(!Ext.getCmp('orderMgmtField1').isValid()||!Ext.getCmp('orderMgmtField2').isValid()){
             Ext.Msg.alert('Order Management','Validation error. Please check field values.');

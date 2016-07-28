@@ -196,7 +196,8 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
                        Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
                     }
                     if(!Ext.isEmpty(review)){
-                       Ext.getCmp('prodInfoRating').setValue(review.data.rating);
+                       var prodInfoRating = Ext.getCmp('prodInfoRating');
+                       prodInfoRating.select(prodInfoRating.store.data.items[review.data.rating-1]);
                        Ext.getCmp('prodInfoReview').setValue(review.data.review);
                        Ext.getCmp('prodInfoPostBtn').disable();
                        Ext.getCmp('prodInfoRemoveBtn').enable();
@@ -252,7 +253,8 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
                        Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
                     }
                     if(!Ext.isEmpty(review)){
-                       Ext.getCmp('prodInfoRating').setValue(review.data.rating);
+                       var prodInfoRating = Ext.getCmp('prodInfoRating');
+                       prodInfoRating.select(prodInfoRating.store.data.items[review.data.rating-1]);
                        Ext.getCmp('prodInfoReview').setValue(review.data.review);
                        Ext.getCmp('prodInfoPostBtn').disable();
                        Ext.getCmp('prodInfoRemoveBtn').enable();

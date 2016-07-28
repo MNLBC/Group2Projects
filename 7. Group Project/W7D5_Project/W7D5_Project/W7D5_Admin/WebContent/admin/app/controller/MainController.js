@@ -232,7 +232,8 @@ Ext.define('W5D5_Project.controller.MainController', {
                     var tab = Ext.getCmp('setPanel');
                     var userField = Ext.getCmp('userField');
                     var countField = Ext.getCmp('countField'),
-                        idField = Ext.getCmp('idField');
+                        idField = Ext.getCmp('idField'),
+                        admin4 = Ext.getCmp('adminSystemBtn');
                     panel.setActiveTab(tab);
                     var controller = W5D5_Project.app.getController('ShopController');
                     controller.clearItems();
@@ -243,9 +244,10 @@ Ext.define('W5D5_Project.controller.MainController', {
                     admin1.hide();
                     admin2.hide();
                     admin3.hide();
+                    admin4.hide();
                     panel2.hide();
                     panel3.hide();
-                    userField.setValue('Visitor');
+                    userField.setValue('');
                     idField.setValue(0);
                     countField.setValue(parseInt(countField.getValue())-1);
                     Ext.Ajax.request({
@@ -327,6 +329,7 @@ Ext.define('W5D5_Project.controller.MainController', {
         panel.setActiveTab(tab);
         var controller = W5D5_Project.app.getController('ShopController');
         controller.clearItems();
+
         Ext.Ajax.request({
             url : "getUserByEmail",
             method : "GET",
@@ -345,6 +348,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     }else{
                         Ext.getCmp('accPremBtn').show();
                     }
+                    Ext.getCmp('levelField').setValue(record.userLevel);
                 }
             }
         });
@@ -404,13 +408,36 @@ Ext.define('W5D5_Project.controller.MainController', {
             panel2 = Ext.getCmp('subHeaderPanel'),
             panel3 = Ext.getCmp('categoryPanel'),
             panel4 = Ext.getCmp('cartPanel'),
-            panel5 = Ext.getCmp('menuPanel');
+            panel5 = Ext.getCmp('menuPanel'),
+            menuPanel = Ext.getCmp('adminMenuPanel'),
+            adminMenuContainer = Ext.getCmp('adminMenuContainer'),
+            adminBackContainer = Ext.getCmp('adminBackContainer'),
+            adminTabPanel = Ext.getCmp('adminTabPanel'),
+            userMgmtTab = Ext.getCmp('userMgmtTab');
 
+        adminTabPanel.setActiveTab(userMgmtTab);
         panel1.hide();
         panel2.hide();
         panel3.hide();
         panel4.hide();
         panel5.hide();
+        menuPanel.show();
+        adminMenuContainer.show();
+        adminBackContainer.show();
+        Ext.Ajax.request({
+            url : "getAllUsers",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("Users","Error in getting users");
+                } else {
+                    var userStore = Ext.getStore('UserStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    userStore.loadData(jsonResponse);
+                }
+            }
+        });
     },
 
     onAllBtnClick: function() {

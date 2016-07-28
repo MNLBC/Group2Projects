@@ -4201,16 +4201,50 @@
                                                                     },
                                                                     "codeClass": null,
                                                                     "userConfig": {
-                                                                        "cls": "genericBtn",
+                                                                        "cls": "browseBtnCls",
                                                                         "height": 25,
                                                                         "id": "showBrowseBtn",
                                                                         "itemId": "showBrowseBtn",
                                                                         "layout|flex": null,
-                                                                        "text": "BROWSE",
-                                                                        "width": 111
+                                                                        "text": "",
+                                                                        "width": null
                                                                     },
                                                                     "name": "MyButton33",
                                                                     "designerId": "ed66736f-49a6-4d40-bff3-a7e8d98b9956"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.toolbar.Spacer",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "height": 23,
+                                                                        "layout|flex": null,
+                                                                        "width": 10
+                                                                    },
+                                                                    "name": "MySpacer71",
+                                                                    "designerId": "88a354b6-d567-405a-96e4-02cab08a5630"
+                                                                },
+                                                                {
+                                                                    "type": "Ext.form.field.Display",
+                                                                    "reference": {
+                                                                        "name": "items",
+                                                                        "type": "array"
+                                                                    },
+                                                                    "codeClass": null,
+                                                                    "userConfig": {
+                                                                        "fieldLabel": "Browse Products",
+                                                                        "labelPad": null,
+                                                                        "labelSeparator": " ",
+                                                                        "labelWidth": 150,
+                                                                        "layout|flex": 0,
+                                                                        "value": null,
+                                                                        "width": 146
+                                                                    },
+                                                                    "name": "MyDisplayField43",
+                                                                    "designerId": "b57bec9e-0e5a-4fe4-9542-0cec8c71860a"
                                                                 },
                                                                 {
                                                                     "type": "Ext.toolbar.Spacer",

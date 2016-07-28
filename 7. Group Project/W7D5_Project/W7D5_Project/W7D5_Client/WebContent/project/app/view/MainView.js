@@ -1981,6 +1981,31 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             },
                                                             items: [
                                                                 {
+                                                                    xtype: 'button',
+                                                                    cls: 'browseBtnCls',
+                                                                    height: 25,
+                                                                    id: 'showBrowseBtn',
+                                                                    itemId: 'showBrowseBtn',
+                                                                    text: ''
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    height: 23,
+                                                                    width: 10
+                                                                },
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    flex: 0,
+                                                                    width: 146,
+                                                                    fieldLabel: 'Browse Products',
+                                                                    labelSeparator: ' ',
+                                                                    labelWidth: 150
+                                                                },
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 1
+                                                                },
+                                                                {
                                                                     xtype: 'textfield',
                                                                     id: 'emailLoginField',
                                                                     fieldLabel: 'Email',
@@ -3878,11 +3903,14 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'displayfield',
+                                                                                            xtype: 'combobox',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtId',
                                                                                             itemId: 'orderMgmtId',
-                                                                                            fieldLabel: 'Id'
+                                                                                            fieldLabel: 'Id',
+                                                                                            displayField: 'userId',
+                                                                                            store: 'UserStore',
+                                                                                            valueField: 'userId'
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
