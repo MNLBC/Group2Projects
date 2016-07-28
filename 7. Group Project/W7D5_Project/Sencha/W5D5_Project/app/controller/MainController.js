@@ -149,7 +149,7 @@ Ext.define('W5D5_Project.controller.MainController', {
         var tab = Ext.getCmp('dressPanel');
         panel.setActiveTab(tab);
         var controller = W5D5_Project.app.getController('ShopController');
-        // controller.clearItems();
+        controller.clearItems();
         controller.addProductsToPage('dress');
     },
 
@@ -199,8 +199,10 @@ Ext.define('W5D5_Project.controller.MainController', {
                     }
                     if(Ext.getCmp('levelField').getValue()==2){
                         total = total - (total * 0.10);
+                        total = Math.ceil(total * 100) / 100;
                         Ext.getCmp('sumAmount').setValue(total + ' (10% OFF)');
                     }else{
+                        total = Math.ceil(total * 100) / 100;
                         Ext.getCmp('sumAmount').setValue(total);
                     }
                     Ext.getCmp('sumAdd').setValue(address.getValue());

@@ -191,6 +191,7 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
                     });
                     if(average!='0'){
                        average = average / prodReviewStore.data.items.length;
+                       average = Math.ceil(average * 10) / 10;
                        Ext.getCmp('prodInfoAveRating').setValue(average);
                     }else{
                        Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');
@@ -248,6 +249,7 @@ Ext.define('W5D5_Project.controller.ProdInfoController', {
                     });
                     if(average!='0'){
                        average = average / prodReviewStore.data.items.length;
+                       average = Math.ceil(average * 10) / 10;
                        Ext.getCmp('prodInfoAveRating').setValue(average);
                     }else{
                        Ext.getCmp('prodInfoAveRating').setValue('Not Yet Rated');

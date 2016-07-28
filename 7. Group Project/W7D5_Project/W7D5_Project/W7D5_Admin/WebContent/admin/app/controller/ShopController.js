@@ -144,7 +144,7 @@ Ext.define('W5D5_Project.controller.ShopController', {
                     if(item.data.prodStock=='0'){
                         special=' (Out of Stock)';
                     }
-
+                    price = Math.ceil(price * 100) / 100;
                     pagetemplate.items.items[0].items.items[3].setValue('RMB '+price);
                     if(special!==''){
                         pagetemplate.items.items[0].items.items[3].setValue('RMB '+price + special);
