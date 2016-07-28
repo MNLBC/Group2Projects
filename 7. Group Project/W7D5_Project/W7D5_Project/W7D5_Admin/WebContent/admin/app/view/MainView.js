@@ -3903,22 +3903,22 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'combobox',
+                                                                                            xtype: 'displayfield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtId',
                                                                                             itemId: 'orderMgmtId',
-                                                                                            fieldLabel: 'Id',
-                                                                                            displayField: 'userId',
-                                                                                            store: 'UserStore',
-                                                                                            valueField: 'userId'
+                                                                                            fieldLabel: 'Id'
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'combobox',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtUserId',
                                                                                             itemId: 'orderMgmtUserId',
                                                                                             fieldLabel: 'User Id',
-                                                                                            maskRe: /[0-9.]/
+                                                                                            maskRe: /[0-9.]/,
+                                                                                            displayField: 'userId',
+                                                                                            store: 'UserStore',
+                                                                                            valueField: 'userId'
                                                                                         }
                                                                                     ]
                                                                                 },

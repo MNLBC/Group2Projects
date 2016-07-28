@@ -302,7 +302,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
                 if (success=='false') {
                     Ext.Msg.alert("Orders","Error in retrieving orders");
                 } else {
-                    var orderStore1 = Ext.getStore('OrdersStore');
+                    var orderStore1 = Ext.getStore('OrderProductStore');
                     var jsonResponse = Ext.JSON.decode(response.responseText);
                     orderStore1.loadData(jsonResponse);
                     this.orderProductWindow.show();

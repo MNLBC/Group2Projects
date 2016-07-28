@@ -52,7 +52,7 @@
                 "designer|targetType": "Ext.button.Button",
                 "fn": "onCartProductUpdateClick",
                 "implHandler": [
-                    "if(!Ext.getCmp('cartProductFields').isValid){",
+                    "if(!Ext.getCmp('cartProductFields').isValid()){",
                     "    Ext.Msg.alert('Add to Cart','Validation error. Please check field values.');",
                     "    return;",
                     "}",

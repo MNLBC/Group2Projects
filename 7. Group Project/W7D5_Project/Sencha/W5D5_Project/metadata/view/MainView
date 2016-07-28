@@ -8346,6 +8346,22 @@
                                                                                     "designerId": "1d5826de-6023-4ce2-8e01-1b6579bdce0c",
                                                                                     "cn": [
                                                                                         {
+                                                                                            "type": "Ext.form.field.Display",
+                                                                                            "reference": {
+                                                                                                "name": "items",
+                                                                                                "type": "array"
+                                                                                            },
+                                                                                            "codeClass": null,
+                                                                                            "userConfig": {
+                                                                                                "fieldLabel": "Id",
+                                                                                                "id": "orderMgmtId",
+                                                                                                "itemId": "orderMgmtId",
+                                                                                                "layout|anchor": "100%"
+                                                                                            },
+                                                                                            "name": "MyDisplayField44",
+                                                                                            "designerId": "67c62ad2-8708-4ac7-8ddc-de928ac2c233"
+                                                                                        },
+                                                                                        {
                                                                                             "type": "Ext.form.field.ComboBox",
                                                                                             "reference": {
                                                                                                 "name": "items",
@@ -8354,31 +8370,15 @@
                                                                                             "codeClass": null,
                                                                                             "userConfig": {
                                                                                                 "displayField": "userId",
-                                                                                                "fieldLabel": "Id",
-                                                                                                "id": "orderMgmtId",
-                                                                                                "itemId": "orderMgmtId",
-                                                                                                "layout|anchor": "100%",
-                                                                                                "store": "UserStore",
-                                                                                                "valueField": "userId"
-                                                                                            },
-                                                                                            "name": "MyComboBox18",
-                                                                                            "designerId": "67c62ad2-8708-4ac7-8ddc-de928ac2c233"
-                                                                                        },
-                                                                                        {
-                                                                                            "type": "Ext.form.field.Text",
-                                                                                            "reference": {
-                                                                                                "name": "items",
-                                                                                                "type": "array"
-                                                                                            },
-                                                                                            "codeClass": null,
-                                                                                            "userConfig": {
                                                                                                 "fieldLabel": "User Id",
                                                                                                 "id": "orderMgmtUserId",
                                                                                                 "itemId": "orderMgmtUserId",
                                                                                                 "layout|anchor": "100%",
-                                                                                                "maskRe": "/[0-9.]/"
+                                                                                                "maskRe": "/[0-9.]/",
+                                                                                                "store": "UserStore",
+                                                                                                "valueField": "userId"
                                                                                             },
-                                                                                            "name": "MyTextField36",
+                                                                                            "name": "MyComboBox19",
                                                                                             "designerId": "35a2fcdc-294a-4477-aaec-b80f7ec1c158"
                                                                                         }
                                                                                     ]
