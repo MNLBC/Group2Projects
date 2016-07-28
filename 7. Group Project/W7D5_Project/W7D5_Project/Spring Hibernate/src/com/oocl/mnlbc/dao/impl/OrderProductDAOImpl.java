@@ -42,7 +42,7 @@ public class OrderProductDAOImpl implements OrderProductDAO {
 	@Override
 	public int addOrderProducts(List<CartProduct> cartProductList, int orderId, long userId) {
 		for (CartProduct cart : cartProductList) {
-			String insertSql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES(:orderId, :prodID , :prodQty)";
+			String insertSql = "INSERT INTO ORDERPRODUCT(ORDERID,PRODID,ORDERPRODQTY) VALUES(:orderId, :prodId , :prodQty)";
 			Query query = manager.createNativeQuery(insertSql);
 			query.setParameter("orderId", orderId);
 			query.setParameter("prodId", cart.getProdId());
