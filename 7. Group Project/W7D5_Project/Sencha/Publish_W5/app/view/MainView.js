@@ -3915,6 +3915,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'orderMgmtUserId',
                                                                                             itemId: 'orderMgmtUserId',
                                                                                             fieldLabel: 'User Id',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             maskRe: /[0-9.]/,
                                                                                             displayField: 'userId',
                                                                                             store: 'UserStore',
