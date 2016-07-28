@@ -85,7 +85,7 @@ public class LoginController extends HttpServlet {
     * @param request
     * @param response
     */
-   @RequestMapping(value = "/logout", method = RequestMethod.GET)
+   @RequestMapping(value = "/logout", method = RequestMethod.POST)
    public void logoutSystem(HttpServletRequest request, HttpServletResponse response) throws IOException {
       HttpSession session = request.getSession();
       session.invalidate();
