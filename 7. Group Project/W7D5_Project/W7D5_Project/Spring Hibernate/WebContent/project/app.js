@@ -427,13 +427,13 @@ Ext.application({
         //     adminBackContainer = Ext.getCmp('adminBackContainer');
         //     record = '';
         // var isExist = false;
-
+        // 	   email = key;
         // Ext.Ajax.request({
         //     url : "getUserByEmail",
         //     method : "GET",
         //     async : false,
         //     params : {
-        //         email : Ext.getCmp('emailLoginField').getValue()
+        //         email : email
         //     },
         //     callback : function(options, success, response) {
         //         if (!Ext.isEmpty(response.responseText)) {
