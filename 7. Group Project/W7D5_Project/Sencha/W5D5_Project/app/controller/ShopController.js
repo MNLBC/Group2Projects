@@ -188,7 +188,9 @@ Ext.define('W5D5_Project.controller.ShopController', {
     },
 
     clearItems: function() {
-        var f, fields=[];
+        var f, fields=[],
+            store = Ext.getStore('ProductStore');
+        store.clearFilter();
         fields.push(Ext.getCmp('digitalPage1'));
         fields.push(Ext.getCmp('digitalPage2'));
         fields.push(Ext.getCmp('digitalPage3'));

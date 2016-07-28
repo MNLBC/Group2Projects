@@ -13,7 +13,7 @@
             }
         },
         "urlPrefix": "",
-        "exportPath": "D:/gitvob/Group2Projects/7. Group Project/W6D5_Project/Sencha/Publish_W5",
+        "exportPath": "D:/gitvob/Group2Projects/7. Group Project/W7D5_Project/Sencha/Publish_W5",
         "projectHasEnabledWebServer": false,
         "lockUrlPrefix": false,
         "buildShouldOverwriteIndex": true,
@@ -60,7 +60,11 @@
             "1b886162-b599-4bf5-9e66-d1000daf01c5",
             "bcb1e148-267f-4889-b2f9-2f406495be83",
             "af60c96f-1e3e-434b-a439-0fc4ca874c42",
-            "b9eff3b9-83f0-4c81-a3dc-61a1687b0594"
+            "b9eff3b9-83f0-4c81-a3dc-61a1687b0594",
+            "34579740-bb61-464c-a2ad-89affe8d1703",
+            "bb129587-a0f7-40e0-b0d3-4b2c23e20e45",
+            "4430abcc-40fd-4a88-a00a-fea5581409e7",
+            "42e00e80-4655-4c08-a04f-c429e9df6d67"
         ],
         "controller": [
             "6381b4e0-18f9-467d-b71c-8ab953a1507c",
@@ -68,9 +72,16 @@
             "ed8a7457-11f7-4b0b-b67b-d8c9aa985fc3",
             "3e2e9c5a-a66d-440a-97f6-51c69b24c11e",
             "19c4cdf1-f966-4805-9519-99c396a5951b",
-            "989fc48a-7112-4705-ba58-0de4da28a18a",
             "8bf6c735-5c04-4a79-9598-a2023bd30072",
-            "0b9f35a0-b669-48da-8453-4f334c3cd1f1"
+            "0b9f35a0-b669-48da-8453-4f334c3cd1f1",
+            "9691efee-f0a6-4041-816a-0b1a357e278a",
+            "cc4e883a-7455-450b-ae26-2a32a8e6336b",
+            "8ed0b4a6-c13c-476e-9813-2a8cd9fbcd5c",
+            "3bce7a55-1490-4ae5-896b-1bfedf98790f",
+            "da43a20b-6c73-47ee-89bc-7516ede9b276",
+            "08c0f37d-0a6b-4e3a-912a-64883452181f",
+            "fd1ce5f2-3d78-4130-9344-3240e3434e18",
+            "76a04962-7580-4755-821e-ef87ee703545"
         ],
         "model": [
             "5b9170e7-337a-4c88-8137-d94bb4179a0f",
@@ -83,7 +94,9 @@
             "8704123d-294e-4f6b-af8d-22d0d210ab51",
             "ff0be924-b158-4e83-a042-eeb08cfc0f30",
             "19d3cdf3-c260-48ba-9513-71363f2bd616",
-            "6e83bb5d-7bf1-4dc7-bccf-143135eae49b"
+            "6e83bb5d-7bf1-4dc7-bccf-143135eae49b",
+            "713af223-ff33-47bc-b9af-de137bf173cd",
+            "55afe3fa-658c-4c4a-8437-53057cc7ea1c"
         ],
         "resource": [
             "65846231-4944-466d-baa2-bbf7c983571c",

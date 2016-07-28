@@ -141,7 +141,7 @@
                             "designerId": "a240d5d7-2caf-419c-bdf6-1d1886a65744"
                         },
                         {
-                            "type": "Ext.form.field.Text",
+                            "type": "Ext.form.field.Number",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
@@ -152,9 +152,11 @@
                                 "id": "cartProductQtyField",
                                 "inputType": "number",
                                 "itemId": "cartProductQtyField",
+                                "maxValue": 10,
+                                "minValue": 1,
                                 "width": 318
                             },
-                            "name": "MyTextField",
+                            "name": "MyNumberField2",
                             "designerId": "6bfa816f-cea0-47d7-87a4-e6067432d7c6"
                         },
                         {

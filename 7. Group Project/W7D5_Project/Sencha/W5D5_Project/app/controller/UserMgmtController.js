@@ -19,220 +19,265 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
     id: 'userMgmtController',
 
     refs: {
-        userInfoGrid: '#userInfoGrid'
+        userMgmtGrid: '#userMgmtGrid'
     },
 
     control: {
-        "#userCountryCombo": {
-            change: 'onUserCountryComboChange'
+        "#userMgmtCreate": {
+            click: 'onUserMgmtCreateClick'
         },
-        "#userInfoGrid": {
-            selectionchange: 'onUserInfoGridSelectionChange'
+        "#userMgmtReset": {
+            click: 'onUserMgmtResetClick'
         },
-        "#UserMgmtResetBtn": {
-            click: 'onUserMgmtResetBtnClick'
+        "#userMgmtCountry": {
+            change: 'onUserMgmtCountryChange'
         },
-        "#userMgmtSearchBtn": {
-            click: 'onUserMgmtSearchBtnClick'
+        "#userMgmtUpdate": {
+            click: 'onUserMgmtUpdateClick'
         },
-        "#UserResetBtn": {
-            click: 'onUserResetBtnClick'
+        "#userMgmtDelete": {
+            click: 'onUserMgmtDeleteClick'
         },
-        "#userUpdateBtn": {
-            click: 'onUserUpdateBtnClick'
+        "#userMgmtGrid": {
+            selectionchange: 'onUserMgmtGridSelectionChange'
         },
-        "#userCreateBtn": {
-            click: 'onUserCreateBtnClick'
-        },
-        "#userMgmtCreateBtn": {
-            click: 'onUserMgmtCreateBtnClick'
-        },
-        "#userMgmtDeleteBtn": {
-            click: 'onUserMgmtDeleteBtnClick'
-        },
-        "#userDeleteBtn": {
-            click: 'onUserDeleteBtnClick'
+        "#userMgmtSearch": {
+            change: 'onUserMgmtSearchChange'
         }
     },
 
-    onUserCountryComboChange: function() {
+    onUserMgmtCreateClick: function() {
+        var controller = W5D5_Project.app.getController('UserMgmtController');
+        var user = controller.getUserFormValues();
+
+        if (!(Ext.getCmp('userMgmtField1').isValid() || Ext.getCmp('userMgmtField2').isValid())) {
+        	Ext.Msg.alert('Create User', "Please fill out required fields");
+        	return;
+        } else {
+        	Ext.Ajax.request({
+        		url : "getUserByEmail",
+        		method : "GET",
+        		async : false,
+        		params : {
+        			email : userEmail
+        		},
+        		callback : function(options, success, response) {
+        			if (success === true) {
+        				Ext.Msg.alert('Create User','Account with that email already exists.');
+        			} else {
+        				Ext.Ajax.request({
+        							url : "register",
+        							method : 'POST',
+        							params : {
+        								user : Ext.encode(user)
+        							},
+        							async : false,
+        							jsonData : Ext.util.JSON.encode(user),
+        							callback : function(options, success,response) {
+        								if (Ext.isEmpty(response.responseText)) {
+        									Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
+        								} else {
+        									var resp = Ext.decode(response.responseText);
+        									if (resp.responseCode == '0') {
+        										Ext.Msg.alert('Create User','User "' + userEmail + '" successfully registered!');
+        										controller.userRefresh();
+        									} else if (resp.responseCode == '999') {
+        										var msgs = '';
+        										Ext.each(resp.errors,function(error) {
+        											msgs = msgs + '<br>' + error.defaultMessage;
+        										});
+        										Ext.Msg.alert('Create User','Validation error. Please check the following: '+ msgs);
+        									} else {
+        										Ext.Msg.alert('Create User','There is a problem with the registration. Please try again later');
+        									}
+        								}
+        							}
+        						});
+        			}
+        		}
+        	});
+        }
+        controller.userResetFormValues();
+    },
+
+    onUserMgmtResetClick: function() {
+        var controller = W5D5_Project.app.getController('UserMgmtController');
+        controller.userResetFormValues();
+        var pass = Ext.getCmp('userMgmtPass');
+        pass.setReadOnly(false);
+    },
+
+    onUserMgmtCountryChange: function() {
         var state = Ext.getStore('SPStore');
-        var country = Ext.getCmp('userCountryCombo').value;
+        var country = Ext.getCmp('userMgmtCountry').value;
         state.filter('CountryName', country);
     },
 
-    onUserInfoGridSelectionChange: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
-                var grid = Ext.getCmp('userInfoGrid');
-                var selected = grid.getSelectionModel().selected.items[0].data;
-                controller.setUserFormValues(selected);
-    },
-
-    onUserMgmtResetBtnClick: function() {
-                var search = Ext.getCmp('userMgmtSearchField').setValue('');
-    },
-
-    onUserMgmtSearchBtnClick: function() {
-             var searchVal = Ext.getCmp('userMgmtSearchField').getValue();
-             var store = Ext.getStore('UserStore');
-                    if(Ext.isEmpty(searchVal)){
-                        store.clearFilter();
-                    }else{
-                        store.filter('userFname', searchVal);
-                    }
-    },
-
-    onUserResetBtnClick: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
-                controller.UserResetFormValues();
-    },
-
-    onUserUpdateBtnClick: function() {
-                var controller = W5D5_Project.app.getController('UserMgmtController');
-                var store = Ext.getStore('UserStore');
-                var user = controller.getUserFormValues();
-                var id = Ext.getCmp('userIdField').getValue();
-                var grid = Ext.getCmp('userInfoGrid');
-
-                                if(Ext.isEmpty(id)){
-                                    Ext.Msg.show({
-                                    title:'',
-                                    msg: 'Please select a record to update.',
-                                    buttons: Ext.Msg.OK,
-                                    icon: Ext.Msg.WARNING
-                                });
-                                }else{
-                                    Ext.each(store.data.items, function(rec){
-                    if(rec.data.userId == id){
-                        rec.data.userFname = user.userFname;
-                        rec.data.userLname = user.userLname;
-                        rec.data.userEmail = user.userEmail;
-                        rec.data.userAddress1 = user.userAddress1;
-                        rec.data.userAddress2 = user.userAddress2;
-                        rec.data.userPass = user.userPass;
-                        rec.data.userCity = user.userCity;
-                        rec.data.userSP = user.userSP;
-                        rec.data.userCountry = user.userCountry;
-                        rec.data.userType = user.userType;
-                    }
-                });
-                                }
-
-
-
-
-                controller.UserResetFormValues();
-                grid.getView().refresh();
-    },
-
-    onUserCreateBtnClick: function() {
+    onUserMgmtUpdateClick: function() {
+        var id = Ext.getCmp('userMgmtId').getValue();
+        var fname = Ext.getCmp('userMgmtFname').getValue();
+        var lname = Ext.getCmp('userMgmtLname').getValue();
+        var email = Ext.getCmp('userMgmtEmail').getValue();
+        var address1 = Ext.getCmp('userMgmtAdd1').getValue();
+        var address2 = Ext.getCmp('userMgmtAdd2').getValue();
+        var city = Ext.getCmp('userMgmtCity').getValue();
+        var sp = Ext.getCmp('userMgmtSp').getValue();
+        var country = Ext.getCmp('userMgmtCountry').getValue();
+        var pass = Ext.getCmp('userMgmtPass').getValue();
+        var occupation = Ext.getCmp('userMgmtOccup').getValue();
+        var userLevel = Ext.getCmp('userMgmtLevel').getValue();
+        var accountType = Ext.getCmp('userMgmtType').getValue();
+        var field1 = Ext.getCmp('userMgmtField1');
+        var field2 = Ext.getCmp('userMgmtField2');
         var controller = W5D5_Project.app.getController('UserMgmtController');
-                var store = Ext.getStore('UserStore');
-                var user = controller.getUserFormValues();
-                store.add(user);
-                controller.UserResetFormValues();
-    },
+        var user;
 
-    onUserMgmtCreateBtnClick: function() {
-        var userGrid = this.getUserInfoGrid();
-        var userStore = userGrid.getStore();
-
-        var userModel = Ext.create('UserManagement.model.UserModel');
-        userModel.set("userFname", "First Name");
-        userModel.set("userLname", "Last Name");
-        userModel.set("userEmail", "Email");
-        userModel.set("userPass", "Password");
-        userModel.set("userAddress1", "Address 1");
-        userModel.set("userAddress2", "Address 2");
-        userModel.set("userSP", "State/Province");
-        userModel.set("userCity", "City");
-        userModel.set("userCountry", "Country");
-        userModel.set("userType", "Customer");
-
-        userStore.add(userModel);
-
-        userGrid.editingPlugin.startEdit(userModel, 1);
-    },
-
-    onUserMgmtDeleteBtnClick: function() {
-                 var userGrid = this.getUserInfoGrid();
-                        var userStore = userGrid.getStore();
-
-                        //delete selected rows if selModel is checkboxmodel
-                        var selectedRows = userGrid.getSelectionModel().getSelection();
-
-                        if (selectedRows.length)
-                            userStore.remove(selectedRows);
-                        else
-                            Ext.Msg.alert('Status', 'Please select at least one record to delete!');
-    },
-
-    onUserDeleteBtnClick: function() {
-                        var controller = W5D5_Project.app.getController('UserMgmtController');
-                        var store = Ext.getStore('UserStore');
-                        var id = Ext.getCmp('userIdField').getValue();
-
-                        if(Ext.isEmpty(id)){
-                            Ext.Msg.show({
-                            title:'',
-                            msg: 'Please select a record to delete.',
-                            buttons: Ext.Msg.OK,
-                            icon: Ext.Msg.WARNING
-                        });
+        if(Ext.isEmpty(id)){
+            Ext.Msg.show({
+             title:'',
+             msg: 'Please select a record to update.',
+             buttons: Ext.Msg.OK,
+             icon: Ext.Msg.WARNING
+           });
+        } else {
+            if(field1.isValid() && field2.isValid()){
+            user = {
+                "userId":id,
+                "userFname":fname,
+                "userLname":lname,
+                "userEmail":email,
+                "userPass":pass,
+                "userOccupation":occupation,
+                "userAddress1":address1,
+                "userAddress2":address2,
+                "userCity":city,
+                "userSp":sp,
+                "userCountry":country,
+                "userType":accountType,
+                "userLevel":userLevel
+            };
+            Ext.Ajax.request({
+                url : "updateUserByAdmin",
+                method: 'POST',
+                params : {
+                    user: Ext.encode(user)
+                },
+                async: false,
+                jsonData: Ext.util.JSON.encode(user),
+                callback : function(options, success, response){
+                    if(response.responseText===''){
+                        Ext.Msg.alert("Update User", "Error encountered in updating user.");
+                    }else {
+                        Ext.Msg.alert("Update User", "User information successfully updated.");
+                        Ext.getCmp('userField').setValue(user.userFname);
+                        Ext.getCmp('idField').setValue(user.userId);
+                        if(Ext.isEmpty(user.userAddress2)){
+                            Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);
                         }else{
-                           Ext.each(store.data.items, function(rec){
-                            if(rec.data.userId == id){
-                                controller.UserResetFormValues();
-                                store.remove(rec);
-                            }
-                          });
+                            Ext.getCmp('addField').setValue(user.userAddress1 + ', ' + user.userAddress2 + ', ' + user.userCity + ', ' + user.userSp + ', ' + user.userCountry);
                         }
+                        Ext.getCmp('emailField').setValue(user.userEmail);
+                        Ext.getCmp('levelField').setValue(user.userLevel);
+                        controller.userRefresh();
+                        controller.userResetFormValues();
+                    }
+                }
+            });
+        }else{
+            Ext.Msg.alert("Update User", "Validation error. Please check the field values.");
+        }
+        }
     },
 
-    setUserFormValues: function(user) {
-        Ext.getCmp('userIdField').setValue(user.userId);
-        Ext.getCmp('userFnameField').setValue(user.userFname);
-        Ext.getCmp('userLnameField').setValue(user.userLname);
-        Ext.getCmp('userEmailField').setValue(user.userEmail);
-        Ext.getCmp('userPassField').setValue(user.userPass);
-        Ext.getCmp('userTypeCombo').setValue(user.userType);
-        Ext.getCmp('userAddress1Field').setValue(user.userAddress1);
-        Ext.getCmp('userAddress2Field').setValue(user.userAddress2);
-        Ext.getCmp('userCityField').setValue(user.userCity);
-        Ext.getCmp('userSPCombo').setValue(user.userSP);
-        Ext.getCmp('userCountryCombo').setValue(user.userCountry);
+    onUserMgmtDeleteClick: function() {
+        var controller = W5D5_Project.app.getController('UserMgmtController');
+        var store = Ext.getStore('UserStore');
+        var id = Ext.getCmp('userMgmtId').getValue();
+        var record = '';
+        if(Ext.isEmpty(id)){
+            Ext.Msg.show({
+             title:'',
+             msg: 'Please select a record to delete.',
+             buttons: Ext.Msg.OK,
+             icon: Ext.Msg.WARNING
+           });
+        }else{
+            Ext.each(store.data.items, function(rec){
+               if(rec.data.userId == id){
+               record = rec;
+            }
+         });
+            if(!Ext.isEmpty(record)){
+             Ext.Ajax.request({
+                url : 'deleteUser',
+                method : 'POST',
+                params : {
+                    id : id
+                },
+                callback : function(options, success, response){
+                    if(!Ext.isEmpty(response.responseText)){
+                        console.log("success!");
+                    }
+                }
+            });
+            store.remove(record);
+            Ext.Msg.alert('Success', 'User successfully deleted');
+            controller.userRefresh();
+        }
+        controller.userResetFormValues();
+        }
+    },
+
+    onUserMgmtGridSelectionChange: function(model, selected, eOpts) {
+             if(!Ext.isEmpty(selected)){
+                 Ext.getCmp('userMgmtId').setValue(selected[0].data.userId);
+                 Ext.getCmp('userMgmtFname').setValue(selected[0].data.userFname);
+                 Ext.getCmp('userMgmtLname').setValue(selected[0].data.userLname);
+                 Ext.getCmp('userMgmtAdd1').setValue(selected[0].data.userAddress1);
+                 Ext.getCmp('userMgmtAdd2').setValue(selected[0].data.userAddress2);
+                 Ext.getCmp('userMgmtCountry').setValue(selected[0].data.userCountry);
+                 Ext.getCmp('userMgmtSp').setValue(selected[0].data.userSp);
+                 Ext.getCmp('userMgmtCity').setValue(selected[0].data.userCity);
+                 Ext.getCmp('userMgmtOccup').setValue(selected[0].data.userOccupation);
+                 Ext.getCmp('userMgmtEmail').setValue(selected[0].data.userEmail);
+                 Ext.getCmp('userMgmtPass').setValue(selected[0].data.userPass);
+                 Ext.getCmp('userMgmtLevel').setValue(selected[0].data.userLevel);
+                 Ext.getCmp('userMgmtType').setValue(selected[0].data.userType);
+                 var pass = Ext.getCmp('userMgmtPass');
+                 pass.setReadOnly(true);
+                }else{
+                    var controller = W5D5_Project.app.getController('UserMgmtController');
+                    controller.userResetFormValues();
+                }
+    },
+
+    onUserMgmtSearchChange: function() {
+        var searchVal = Ext.getCmp('userMgmtSearch').getValue();
+        var store = Ext.getStore('UserStore');
+        if(Ext.isEmpty(searchVal)){
+            store.clearFilter();
+        }else{
+            store.filter('userEmail', searchVal);
+        }
     },
 
     getUserFormValues: function() {
-        var store = Ext.getStore('UserStore');
-        var userId = Ext.getCmp('userIdField').getValue();
-        var userFname = Ext.getCmp('userFnameField').getValue();
-        var userLname = Ext.getCmp('userLnameField').getValue();
-        var userEmail = Ext.getCmp('userEmailField').getValue();
-        var userPass = Ext.getCmp('userPassField').getValue();
-        var userAddress1 = Ext.getCmp('userAddress1Field').getValue();
-        var userAddress2 = Ext.getCmp('userAddress2Field').getValue();
-        var userPass = Ext.getCmp('userPassField').getValue();
-        var userCity = Ext.getCmp('userCityField').getValue();
-        var userSP = Ext.getCmp('userSPCombo').getValue();
-        var userCountry = Ext.getCmp('userCountryCombo').getValue();
-        var userType = Ext.getCmp('userTypeCombo').getValue();
 
-
-        if (store.getCount() > 0)
-        {
-            var maxId = store.getAt(0).get('userId'); // initialise to the first record's id value.
-            store.each(function(rec) // go through all the records
-                       {
-                           maxId = Math.max(maxId, rec.get('userId'));
-                       });
-        }
-
-        userId = maxId + 1;
-
+        var userFname = Ext.getCmp('userMgmtFname').getValue();
+        var userLname = Ext.getCmp('userMgmtLname').getValue();
+        var userEmail = Ext.getCmp('userMgmtEmail').getValue();
+        var userPass = Ext.getCmp('userMgmtPass').getValue();
+        var userAddress1 = Ext.getCmp('userMgmtAdd1').getValue();
+        var userAddress2 = Ext.getCmp('userMgmtAdd2').getValue();
+        var userLevel = Ext.getCmp('userMgmtLevel').getValue();
+        var userOccup = Ext.getCmp('userMgmtOccup').getValue();
+        var userCity = Ext.getCmp('userMgmtCity').getValue();
+        var userSp = Ext.getCmp('userMgmtSp').getValue();
+        var userCountry = Ext.getCmp('userMgmtCountry').getValue();
+        var userType = Ext.getCmp('userMgmtType').getValue();
 
         var user = {
-            "userId":userId,
+            "userId":'',
             "userFname":userFname,
             "userLname":userLname,
             "userEmail":userEmail,
@@ -240,26 +285,50 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
             "userAddress2":userAddress2,
             "userPass":userPass,
             "userCity":userCity,
-            "userSP":userSP,
+            "userSp":userSp,
             "userCountry":userCountry,
+            "userLevel":userLevel,
+            "userOccupation":userOccup,
             "userType":userType
         };
 
         return user;
     },
 
-    UserResetFormValues: function() {
-                Ext.getCmp('userIdField').setValue('');
-                Ext.getCmp('userFnameField').setValue('');
-                Ext.getCmp('userLnameField').setValue('');
-                Ext.getCmp('userEmailField').setValue('');
-                Ext.getCmp('userAddress1Field').setValue('');
-                Ext.getCmp('userAddress2Field').setValue('');
-                Ext.getCmp('userCityField').setValue('');
-                Ext.getCmp('userSPCombo').setValue('');
-                Ext.getCmp('userCountryCombo').setValue('');
-                Ext.getCmp('userPassField').setValue('');
-                Ext.getCmp('userTypeCombo').setValue('');
+    userResetFormValues: function() {
+          Ext.getCmp('userMgmtId').setValue('');
+          Ext.getCmp('userMgmtFname').setValue('');
+          Ext.getCmp('userMgmtLname').setValue('');
+          Ext.getCmp('userMgmtEmail').setValue('');
+          Ext.getCmp('userMgmtAdd1').setValue('');
+          Ext.getCmp('userMgmtAdd2').setValue('');
+          Ext.getCmp('userMgmtCity').setValue('');
+          Ext.getCmp('userMgmtSp').setValue('');
+          Ext.getCmp('userMgmtCountry').setValue('');
+          Ext.getCmp('userMgmtPass').setValue('');
+          Ext.getCmp('userMgmtType').setValue('');
+          Ext.getCmp('userMgmtLevel').setValue('');
+          Ext.getCmp('userMgmtOccup').setValue('');
+          Ext.getCmp('userMgmtSearch').setValue('');
+          Ext.getStore('UserStore').clearFilter();
+    },
+
+    userRefresh: function() {
+        Ext.Ajax.request({
+            url : "getAllUsers",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("Users",
+                                  "Error in getting users");
+                } else {
+                    var userStore = Ext.getStore('UserStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    userStore.loadData(jsonResponse);
+                }
+            }
+        });
     }
 
 });

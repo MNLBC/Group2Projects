@@ -23,18 +23,15 @@ Ext.define('W5D5_Project.view.MainView', {
         'Ext.Img',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
+        'Ext.form.field.ComboBox',
         'Ext.grid.Panel',
-        'Ext.grid.column.Number',
-        'Ext.grid.column.Date',
-        'Ext.grid.column.Boolean',
         'Ext.grid.View',
         'Ext.form.Panel',
-        'Ext.form.field.ComboBox',
         'Ext.form.field.TextArea',
-        'Ext.menu.Menu',
-        'Ext.menu.Item',
+        'Ext.grid.column.Number',
         'Ext.form.Label',
         'Ext.form.field.Number',
+        'Ext.form.field.Date',
         'Ext.tab.Bar'
     ],
 
@@ -245,6 +242,17 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'userReqBtn',
                                     overCls: '(none)',
                                     text: 'USER REQUESTS'
+                                },
+                                {
+                                    xtype: 'button',
+                                    focusCls: '(none)',
+                                    cls: 'orderHistCls',
+                                    height: 67,
+                                    hidden: true,
+                                    id: 'adminSystemBtn',
+                                    itemId: 'adminSystemBtn',
+                                    overCls: '(none)',
+                                    text: 'BACKGROUND SYSTEM'
                                 }
                             ]
                         }
@@ -568,6 +576,88 @@ Ext.define('W5D5_Project.view.MainView', {
                                                     value: 'Dress'
                                                 }
                                             ]
+                                        },
+                                        {
+                                            xtype: 'tbspacer',
+                                            width: 50
+                                        },
+                                        {
+                                            xtype: 'container',
+                                            flex: 0,
+                                            height: 100,
+                                            style: {
+                                                cursor: 'pointer'
+                                            },
+                                            width: 65,
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'center',
+                                                pack: 'center'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'button',
+                                                    focusCls: '(none)',
+                                                    cls: 'dressButtonCls',
+                                                    height: 50,
+                                                    id: 'allBtn',
+                                                    itemId: 'allBtn',
+                                                    overCls: 'testhover',
+                                                    width: 50,
+                                                    text: ''
+                                                },
+                                                {
+                                                    xtype: 'displayfield',
+                                                    flex: 0,
+                                                    height: 15,
+                                                    style: {
+                                                        'font-size': '5px!important'
+                                                    },
+                                                    fieldLabel: '',
+                                                    value: 'Search'
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            xtype: 'tbspacer',
+                                            width: 50
+                                        },
+                                        {
+                                            xtype: 'container',
+                                            flex: 0,
+                                            height: 100,
+                                            style: {
+                                                cursor: 'pointer'
+                                            },
+                                            width: 65,
+                                            layout: {
+                                                type: 'vbox',
+                                                align: 'center',
+                                                pack: 'center'
+                                            },
+                                            items: [
+                                                {
+                                                    xtype: 'button',
+                                                    focusCls: '(none)',
+                                                    cls: 'dressButtonCls',
+                                                    height: 50,
+                                                    id: 'faveBtn',
+                                                    itemId: 'faveBtn',
+                                                    overCls: 'testhover',
+                                                    width: 50,
+                                                    text: ''
+                                                },
+                                                {
+                                                    xtype: 'displayfield',
+                                                    flex: 0,
+                                                    height: 15,
+                                                    style: {
+                                                        'font-size': '5px!important'
+                                                    },
+                                                    fieldLabel: '',
+                                                    value: 'Favorites'
+                                                }
+                                            ]
                                         }
                                     ]
                                 },
@@ -576,8 +666,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                     flex: 1,
                                     id: 'mainTabPanel',
                                     itemId: 'mainTabPanel',
+                                    width: 1121,
                                     title: '',
-                                    activeTab: 8,
+                                    activeTab: 13,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -940,14 +1031,63 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'panel',
                                                     flex: 0,
-                                                    height: 73,
-                                                    title: ''
+                                                    height: 57,
+                                                    bodyStyle: '{background-color: #ccc; !important}',
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            flex: 0,
+                                                            width: 22
+                                                        },
+                                                        {
+                                                            xtype: 'displayfield',
+                                                            width: 369,
+                                                            fieldLabel: '',
+                                                            value: 'ALL PRODUCTS',
+                                                            fieldCls: 'headerCls'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 19
                                                 },
                                                 {
                                                     xtype: 'panel',
                                                     flex: 0,
-                                                    height: 69,
-                                                    title: ''
+                                                    height: 35,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'combobox',
+                                                            id: 'allProdsSearch',
+                                                            itemId: 'allProdsSearch',
+                                                            width: 615,
+                                                            fieldLabel: '',
+                                                            emptyText: 'Search Product By Name',
+                                                            displayField: 'prodName',
+                                                            queryMode: 'local',
+                                                            store: 'ProductStore',
+                                                            valueField: 'prodName'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 19
                                                 },
                                                 {
                                                     xtype: 'panel',
@@ -964,29 +1104,51 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'gridpanel',
                                                             flex: 0,
-                                                            height: 561,
-                                                            width: 601,
+                                                            id: 'allProdsGrid',
+                                                            itemId: 'allProdsGrid',
+                                                            width: 1175,
                                                             title: '',
+                                                            rowLines: false,
+                                                            store: 'ProductStore',
                                                             columns: [
                                                                 {
                                                                     xtype: 'gridcolumn',
-                                                                    dataIndex: 'string',
-                                                                    text: 'String'
+                                                                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                        return '<img src="resources/img/' + value + '.png" align="center"/>';
+                                                                    },
+                                                                    width: 200,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodImg',
+                                                                    text: 'Image'
                                                                 },
                                                                 {
-                                                                    xtype: 'numbercolumn',
-                                                                    dataIndex: 'number',
-                                                                    text: 'Number'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 257,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodName',
+                                                                    text: 'Name'
                                                                 },
                                                                 {
-                                                                    xtype: 'datecolumn',
-                                                                    dataIndex: 'date',
-                                                                    text: 'Date'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 144,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodCat',
+                                                                    text: 'Category'
                                                                 },
                                                                 {
-                                                                    xtype: 'booleancolumn',
-                                                                    dataIndex: 'bool',
-                                                                    text: 'Boolean'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 400,
+                                                                    align: 'center',
+                                                                    cellWrap: true,
+                                                                    dataIndex: 'prodDesc',
+                                                                    text: 'Description'
+                                                                },
+                                                                {
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 142,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodPrice',
+                                                                    text: 'Price (RMB)'
                                                                 }
                                                             ]
                                                         }
@@ -1008,14 +1170,62 @@ Ext.define('W5D5_Project.view.MainView', {
                                                 {
                                                     xtype: 'panel',
                                                     flex: 0,
-                                                    height: 73,
-                                                    title: ''
+                                                    height: 57,
+                                                    bodyStyle: '{background-color: #ccc; !important}',
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'tbspacer',
+                                                            flex: 0,
+                                                            width: 16
+                                                        },
+                                                        {
+                                                            xtype: 'displayfield',
+                                                            width: 391,
+                                                            fieldLabel: '',
+                                                            value: 'FAVORITE ITEMS',
+                                                            fieldCls: 'headerCls'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 19
                                                 },
                                                 {
                                                     xtype: 'panel',
                                                     flex: 0,
-                                                    height: 69,
-                                                    title: ''
+                                                    height: 35,
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch',
+                                                        pack: 'center'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'combobox',
+                                                            id: 'faveProdsSearch',
+                                                            itemId: 'faveProdsSearch',
+                                                            width: 615,
+                                                            fieldLabel: '',
+                                                            emptyText: 'Search Product By Name',
+                                                            displayField: 'prodName',
+                                                            store: 'FavoriteProductsStore',
+                                                            valueField: 'prodName'
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    xtype: 'tbspacer',
+                                                    flex: 0,
+                                                    height: 19
                                                 },
                                                 {
                                                     xtype: 'panel',
@@ -1032,29 +1242,51 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         {
                                                             xtype: 'gridpanel',
                                                             flex: 0,
-                                                            height: 561,
-                                                            width: 601,
+                                                            id: 'faveProdsGrid',
+                                                            itemId: 'faveProdsGrid',
+                                                            width: 1175,
                                                             title: '',
+                                                            rowLines: false,
+                                                            store: 'FavoriteProductsStore',
                                                             columns: [
                                                                 {
                                                                     xtype: 'gridcolumn',
-                                                                    dataIndex: 'string',
-                                                                    text: 'String'
+                                                                    renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+                                                                        return '<img src="resources/img/' + value + '.png" align="center"/>';
+                                                                    },
+                                                                    width: 200,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodImg',
+                                                                    text: 'Image'
                                                                 },
                                                                 {
-                                                                    xtype: 'numbercolumn',
-                                                                    dataIndex: 'number',
-                                                                    text: 'Number'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 257,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodName',
+                                                                    text: 'Name'
                                                                 },
                                                                 {
-                                                                    xtype: 'datecolumn',
-                                                                    dataIndex: 'date',
-                                                                    text: 'Date'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 144,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodCat',
+                                                                    text: 'Category'
                                                                 },
                                                                 {
-                                                                    xtype: 'booleancolumn',
-                                                                    dataIndex: 'bool',
-                                                                    text: 'Boolean'
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 400,
+                                                                    align: 'center',
+                                                                    cellWrap: true,
+                                                                    dataIndex: 'prodDesc',
+                                                                    text: 'Description'
+                                                                },
+                                                                {
+                                                                    xtype: 'gridcolumn',
+                                                                    width: 142,
+                                                                    align: 'center',
+                                                                    dataIndex: 'prodPrice',
+                                                                    text: 'Price (RMB)'
                                                                 }
                                                             ]
                                                         }
@@ -1779,7 +2011,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 },
                                                                 {
                                                                     xtype: 'button',
-                                                                    formBind: true,
+                                                                    formBind: false,
                                                                     cls: 'genericBtn',
                                                                     height: 26,
                                                                     id: 'loginBtn',
@@ -1966,7 +2198,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                 },
                                                                                 {
                                                                                     xtype: 'button',
-                                                                                    formBind: true,
+                                                                                    formBind: false,
                                                                                     cls: 'genericBtn',
                                                                                     id: 'registerBtn',
                                                                                     text: 'REGISTER'
@@ -2136,7 +2368,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             itemId: 'accEmail',
                                                                             fieldLabel: 'Email',
                                                                             inputType: 'email',
-                                                                            emptyText: 'example@example.com'
+                                                                            allowBlank: false,
+                                                                            emptyText: 'example@example.com',
+                                                                            regex: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+                                                                            regexText: 'Invalid email address format.'
                                                                         },
                                                                         {
                                                                             xtype: 'textfield',
@@ -2145,6 +2380,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             itemId: 'accPassword',
                                                                             fieldLabel: 'Password',
                                                                             inputType: 'password',
+                                                                            allowBlank: false,
+                                                                            allowOnlyWhitespace: false,
                                                                             emptyText: 'Password'
                                                                         },
                                                                         {
@@ -2534,7 +2771,125 @@ Ext.define('W5D5_Project.view.MainView', {
                                                     flex: 0,
                                                     height: 41,
                                                     bodyStyle: '{background-color: #eee; !important}',
-                                                    title: ''
+                                                    title: '',
+                                                    layout: {
+                                                        type: 'hbox',
+                                                        align: 'stretch'
+                                                    },
+                                                    items: [
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            height: 70,
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'tbspacer',
+                                                                    flex: 0,
+                                                                    height: 10,
+                                                                    width: 13
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    focusCls: '(none)',
+                                                                    cls: 'menuBtnCls',
+                                                                    height: 50,
+                                                                    id: 'adminMenuBtn',
+                                                                    itemId: 'adminMenuBtn',
+                                                                    overCls: 'testhover',
+                                                                    width: 50,
+                                                                    text: ''
+                                                                },
+                                                                {
+                                                                    xtype: 'container',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'center'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 7,
+                                                                            width: 10
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            flex: 0,
+                                                                            fieldLabel: '',
+                                                                            value: 'Menu',
+                                                                            fieldCls: 'textCls'
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            height: 70,
+                                                            width: 451,
+                                                            layout: {
+                                                                type: 'vbox',
+                                                                align: 'center'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'displayfield',
+                                                                    flex: 1,
+                                                                    fieldLabel: '',
+                                                                    value: 'Admin Background System',
+                                                                    fieldCls: 'adminLabelCls'
+                                                                }
+                                                            ]
+                                                        },
+                                                        {
+                                                            xtype: 'container',
+                                                            flex: 1,
+                                                            height: 70,
+                                                            layout: {
+                                                                type: 'hbox',
+                                                                align: 'stretch',
+                                                                pack: 'end'
+                                                            },
+                                                            items: [
+                                                                {
+                                                                    xtype: 'container',
+                                                                    layout: {
+                                                                        type: 'vbox',
+                                                                        align: 'center'
+                                                                    },
+                                                                    items: [
+                                                                        {
+                                                                            xtype: 'tbspacer',
+                                                                            height: 7,
+                                                                            width: 10
+                                                                        },
+                                                                        {
+                                                                            xtype: 'displayfield',
+                                                                            flex: 0,
+                                                                            fieldLabel: '',
+                                                                            value: 'Go Back',
+                                                                            fieldCls: 'textCls'
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    xtype: 'button',
+                                                                    focusCls: '(none)',
+                                                                    cls: 'menuBtnCls',
+                                                                    height: 50,
+                                                                    id: 'adminBackBtn',
+                                                                    itemId: 'adminBackBtn',
+                                                                    overCls: 'testhover',
+                                                                    width: 50,
+                                                                    text: ''
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 },
                                                 {
                                                     xtype: 'container',
@@ -2545,72 +2900,6 @@ Ext.define('W5D5_Project.view.MainView', {
                                                         align: 'stretch'
                                                     },
                                                     items: [
-                                                        {
-                                                            xtype: 'panel',
-                                                            flex: 0,
-                                                            hidden: true,
-                                                            width: 204,
-                                                            layout: 'accordion',
-                                                            bodyStyle: '{background-color: #eee; !important}',
-                                                            title: '',
-                                                            items: [
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'User Management',
-                                                                    layout: {
-                                                                        type: 'vbox',
-                                                                        align: 'stretch'
-                                                                    },
-                                                                    items: [
-                                                                        {
-                                                                            xtype: 'button',
-                                                                            height: 43,
-                                                                            width: 201,
-                                                                            text: 'MANAGE USERS'
-                                                                        }
-                                                                    ]
-                                                                },
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'Product Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'panel',
-                                                                    title: 'Order Management'
-                                                                }
-                                                            ]
-                                                        },
-                                                        {
-                                                            xtype: 'menu',
-                                                            border: false,
-                                                            floating: false,
-                                                            hidden: true,
-                                                            width: 179,
-                                                            bodyBorder: false,
-                                                            collapseDirection: 'left',
-                                                            collapsible: true,
-                                                            title: 'Management Options',
-                                                            titleAlign: 'center',
-                                                            items: [
-                                                                {
-                                                                    xtype: 'tbspacer',
-                                                                    height: 10
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    text: 'User Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    text: 'Product Management'
-                                                                },
-                                                                {
-                                                                    xtype: 'menuitem',
-                                                                    plain: false,
-                                                                    text: 'Order Management'
-                                                                }
-                                                            ]
-                                                        },
                                                         {
                                                             xtype: 'panel',
                                                             flex: 0,
@@ -2746,35 +3035,48 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtFname',
                                                                                             itemId: 'userMgmtFname',
-                                                                                            fieldLabel: 'First Name'
+                                                                                            fieldLabel: 'First Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z\.\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtLname',
                                                                                             itemId: 'userMgmtLname',
-                                                                                            fieldLabel: 'Last Name'
+                                                                                            fieldLabel: 'Last Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /^[a-zA-Z\.\- ]+$/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtEmail',
                                                                                             itemId: 'userMgmtEmail',
-                                                                                            fieldLabel: 'Email'
+                                                                                            fieldLabel: 'Email',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtPass',
                                                                                             itemId: 'userMgmtPass',
-                                                                                            fieldLabel: 'Password'
+                                                                                            fieldLabel: 'Password',
+                                                                                            inputType: 'password',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtOccup',
                                                                                             itemId: 'userMgmtOccup',
-                                                                                            fieldLabel: 'Occupation'
+                                                                                            fieldLabel: 'Occupation',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -2787,11 +3089,48 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCountry',
+                                                                                            itemId: 'userMgmtCountry',
+                                                                                            fieldLabel: 'Country',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            displayField: 'CountryName',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'CountryStore',
+                                                                                            valueField: 'CountryName'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'combobox',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtSp',
+                                                                                            itemId: 'userMgmtSp',
+                                                                                            fieldLabel: 'State/Province',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            displayField: 'SP',
+                                                                                            queryMode: 'local',
+                                                                                            store: 'SPStore',
+                                                                                            valueField: 'SP'
+                                                                                        },
+                                                                                        {
+                                                                                            xtype: 'textfield',
+                                                                                            anchor: '100%',
+                                                                                            id: 'userMgmtCity',
+                                                                                            itemId: 'userMgmtCity',
+                                                                                            fieldLabel: 'City',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
+                                                                                        },
+                                                                                        {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtAdd1',
                                                                                             itemId: 'userMgmtAdd1',
-                                                                                            fieldLabel: 'Address 1'
+                                                                                            fieldLabel: 'Address 1',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
@@ -2801,41 +3140,15 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             fieldLabel: 'Address 2'
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtCity',
-                                                                                            itemId: 'userMgmtCity',
-                                                                                            fieldLabel: 'City'
-                                                                                        },
-                                                                                        {
-                                                                                            xtype: 'combobox',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtSp',
-                                                                                            itemId: 'userMgmtSp',
-                                                                                            fieldLabel: 'State/Province',
-                                                                                            displayField: 'SP',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'SPStore',
-                                                                                            valueField: 'SP'
-                                                                                        },
-                                                                                        {
-                                                                                            xtype: 'combobox',
-                                                                                            anchor: '100%',
-                                                                                            id: 'userMgmtCountry',
-                                                                                            itemId: 'userMgmtCountry',
-                                                                                            fieldLabel: 'Country',
-                                                                                            displayField: 'CountryName',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'CountryStore',
-                                                                                            valueField: 'CountryName'
-                                                                                        },
-                                                                                        {
                                                                                             xtype: 'combobox',
                                                                                             anchor: '100%',
                                                                                             id: 'userMgmtType',
                                                                                             itemId: 'userMgmtType',
                                                                                             fieldLabel: 'Type',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'Type',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'UserTypeStore',
                                                                                             valueField: 'Name'
@@ -2846,7 +3159,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'userMgmtLevel',
                                                                                             itemId: 'userMgmtLevel',
                                                                                             fieldLabel: 'Level',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'level',
+                                                                                            forceSelection: true,
                                                                                             queryMode: 'local',
                                                                                             store: 'UserLevelStore',
                                                                                             valueField: 'value'
@@ -3115,7 +3431,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtName',
                                                                                             itemId: 'prodMgmtName',
-                                                                                            fieldLabel: 'Name'
+                                                                                            fieldLabel: 'Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         },
                                                                                         {
                                                                                             xtype: 'combobox',
@@ -3123,6 +3441,8 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             id: 'prodMgmtCat',
                                                                                             itemId: 'prodMgmtCat',
                                                                                             fieldLabel: 'Category',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
                                                                                             displayField: 'categories',
                                                                                             queryMode: 'local',
                                                                                             store: 'CategoryStore',
@@ -3133,7 +3453,9 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtDesc',
                                                                                             itemId: 'prodMgmtDesc',
-                                                                                            fieldLabel: 'Description'
+                                                                                            fieldLabel: 'Description',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3150,28 +3472,42 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtPrice',
                                                                                             itemId: 'prodMgmtPrice',
-                                                                                            fieldLabel: 'Price'
+                                                                                            fieldLabel: 'Price',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /[0-9.]/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtSale',
                                                                                             itemId: 'prodMgmtSale',
-                                                                                            fieldLabel: 'Sale'
+                                                                                            fieldLabel: 'Sale',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            maskRe: /[0-9.]/
                                                                                         },
                                                                                         {
                                                                                             xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtStock',
                                                                                             itemId: 'prodMgmtStock',
-                                                                                            fieldLabel: 'Stock'
+                                                                                            fieldLabel: 'Stock',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false,
+                                                                                            allowDecimals: false,
+                                                                                            allowExponential: false,
+                                                                                            maxValue: 100,
+                                                                                            minValue: 0
                                                                                         },
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
                                                                                             id: 'prodMgmtImg',
                                                                                             itemId: 'prodMgmtImg',
-                                                                                            fieldLabel: 'Image Name'
+                                                                                            fieldLabel: 'Image Name',
+                                                                                            allowBlank: false,
+                                                                                            allowOnlyWhitespace: false
                                                                                         }
                                                                                     ]
                                                                                 }
@@ -3402,9 +3738,10 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                         {
                                                                                             xtype: 'textfield',
                                                                                             anchor: '100%',
-                                                                                            id: 'orderMgmtName',
-                                                                                            itemId: 'orderMgmtName',
-                                                                                            fieldLabel: 'User Id'
+                                                                                            id: 'orderMgmtUserId',
+                                                                                            itemId: 'orderMgmtUserId',
+                                                                                            fieldLabel: 'User Id',
+                                                                                            maskRe: /[0-9.]/
                                                                                         }
                                                                                     ]
                                                                                 },
@@ -3418,18 +3755,16 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                                     title: '',
                                                                                     items: [
                                                                                         {
-                                                                                            xtype: 'combobox',
+                                                                                            xtype: 'numberfield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtTotal',
                                                                                             itemId: 'orderMgmtTotal',
                                                                                             fieldLabel: 'Total (RMB)',
-                                                                                            displayField: 'categories',
-                                                                                            queryMode: 'local',
-                                                                                            store: 'CategoryStore',
-                                                                                            valueField: 'categories'
+                                                                                            maxValue: 1000000,
+                                                                                            minValue: 0
                                                                                         },
                                                                                         {
-                                                                                            xtype: 'textfield',
+                                                                                            xtype: 'datefield',
                                                                                             anchor: '100%',
                                                                                             id: 'orderMgmtDate',
                                                                                             itemId: 'orderMgmtDate',
@@ -3629,13 +3964,13 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                             id: 'onlineUsersGrid',
                                                                             itemId: 'onlineUsersGrid',
                                                                             title: '',
-                                                                            store: 'OrdersStore',
+                                                                            store: 'OnlineUsersStore',
                                                                             columns: [
                                                                                 {
                                                                                     xtype: 'gridcolumn',
                                                                                     width: 340,
                                                                                     align: 'center',
-                                                                                    dataIndex: 'orderId',
+                                                                                    dataIndex: 'userEmail',
                                                                                     text: 'Email'
                                                                                 }
                                                                             ]

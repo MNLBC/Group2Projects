@@ -31,7 +31,9 @@ Ext.application({
         'OrdersModel',
         'OrderProductModel',
         'FavoriteItemsModel',
-        'RequestModel'
+        'RequestModel',
+        'ProdReviewModel',
+        'OnlineUsersModel'
     ],
     stores: [
         'ProductStoreB',
@@ -45,13 +47,21 @@ Ext.application({
         'FavoriteItemsStore',
         'OrdersStore',
         'OrderProductStore',
-        'RequestStore'
+        'RequestStore',
+        'UserLevelStore',
+        'ProdReviewStore',
+        'RatingStore',
+        'FavoriteProductsStore',
+        'OnlineUsersStore'
     ],
     views: [
         'MainView',
         'CartProductWindow',
         'ProductImageWindow',
-        'OrderWin'
+        'OrderWin',
+        'OrderProductWin',
+        'UserInfoWin',
+        'ProdInfoWin'
     ],
     controllers: [
         'MainController',
@@ -59,9 +69,16 @@ Ext.application({
         'CartProductController',
         'ProductController',
         'UserMainController',
-        'UserMgmtController',
         'AccountController',
-        'RequestController'
+        'RequestController',
+        'ProdInfoController',
+        'FavoriteItemsController',
+        'AllProductsController',
+        'OnlineUsersController',
+        'OrderMgmtController',
+        'AdminController',
+        'UserMgmtController',
+        'ProductMgmtController'
     ],
     name: 'W5D5_Project',
 
@@ -95,7 +112,19 @@ Ext.application({
                      {
                          xtype: 'image',
                          height: 200,
-                         width: 200
+                         width: 200,
+                         style: {
+                             cursor: 'pointer'
+                         },
+                         listeners: {
+                             el: {
+                                 click: function() {
+                                     var record = Ext.getCmp(this.id).up('panel').recordData;
+                                     var controller = W5D5_Project.app.getController('ProdInfoController');
+                                     controller.showProdInfoWin(record);
+                                 }
+                             }
+                         }
                      },
                      {
                          xtype: 'displayfield',

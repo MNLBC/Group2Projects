@@ -75,6 +75,15 @@ Ext.define('W5D5_Project.controller.MainController', {
         },
         "#orderHistBtn": {
             click: 'onOrderHistBtnClick'
+        },
+        "#adminSystemBtn": {
+            click: 'onAdminSystemBtnClick'
+        },
+        "#allBtn": {
+            click: 'onAllBtnClick'
+        },
+        "#faveBtn": {
+            click: 'onFaveBtnClick'
         }
     },
 
@@ -167,6 +176,12 @@ Ext.define('W5D5_Project.controller.MainController', {
             total = 0, count = 0,
             address = Ext.getCmp('addField'),
             scope = this;
+
+        if(Ext.isEmpty(store.data.items)){
+            Ext.Msg.alert('Check-out','Please add products to cart before checking out.');
+            return;
+        }
+
         Ext.each(store.data.items, function(rec){
             count = parseInt(count) + parseInt(rec.data.prodQty);
             total = total + rec.data.prodSubtotal;
@@ -235,7 +250,7 @@ Ext.define('W5D5_Project.controller.MainController', {
                     countField.setValue(parseInt(countField.getValue())-1);
                     Ext.Ajax.request({
                         url : "logout",
-                        method : 'GET',
+                        method : 'POST',
                         async : false,
                         callback : function(options, success, response) {
                             if (success!==true) {
@@ -308,10 +323,10 @@ Ext.define('W5D5_Project.controller.MainController', {
 
     onUserAccBtnClick: function() {
         var panel = Ext.getCmp('mainTabPanel');
-                var tab = Ext.getCmp('accountPanel');
-                panel.setActiveTab(tab);
-                var controller = W5D5_Project.app.getController('ShopController');
-                controller.clearItems();
+        var tab = Ext.getCmp('accountPanel');
+        panel.setActiveTab(tab);
+        var controller = W5D5_Project.app.getController('ShopController');
+        controller.clearItems();
         Ext.Ajax.request({
             url : "getUserByEmail",
             method : "GET",
@@ -379,6 +394,54 @@ Ext.define('W5D5_Project.controller.MainController', {
                         }
                     }
                 });
+    },
+
+    onAdminSystemBtnClick: function() {
+        var panel = Ext.getCmp('mainTabPanel');
+        var tab = Ext.getCmp('adminPanel');
+        panel.setActiveTab(tab);
+        var panel1 = Ext.getCmp('headerPanel'),
+            panel2 = Ext.getCmp('subHeaderPanel'),
+            panel3 = Ext.getCmp('categoryPanel'),
+            panel4 = Ext.getCmp('cartPanel'),
+            panel5 = Ext.getCmp('menuPanel');
+
+        panel1.hide();
+        panel2.hide();
+        panel3.hide();
+        panel4.hide();
+        panel5.hide();
+    },
+
+    onAllBtnClick: function() {
+        var panel = Ext.getCmp('mainTabPanel');
+        var tab = Ext.getCmp('allProdsPanel');
+        panel.setActiveTab(tab);
+        var controller = W5D5_Project.app.getController('ShopController');
+        controller.clearItems();
+
+    },
+
+    onFaveBtnClick: function() {
+        var panel = Ext.getCmp('mainTabPanel');
+        var tab = Ext.getCmp('faveProdsPanel');
+        panel.setActiveTab(tab);
+
+        var faveStore = Ext.getStore('FavoriteItemsStore'),
+            prodStore = Ext.getStore('ProductStore'),
+            store = Ext.getStore('FavoriteProductsStore');
+
+        faveStore.clearFilter();
+        prodStore.clearFilter();
+        store.clearFilter();
+
+        Ext.each(prodStore.data.items, function(record){
+           Ext.each(faveStore.data.items, function(rec){
+              if(record.data.prodId == rec.data.prodId){
+                  store.add(record);
+              }
+           });
+        });
     },
 
     clearFrontPage: function() {
