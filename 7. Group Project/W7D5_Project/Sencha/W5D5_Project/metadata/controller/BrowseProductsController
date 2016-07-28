@@ -1,0 +1,43 @@
+{
+    "type": "Ext.app.Controller",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "BrowseProductsController"
+    },
+    "name": "MyController",
+    "designerId": "f553f9e5-a311-41d2-9f9d-e5bda16b9de4",
+    "cn": [
+        {
+            "type": "controlleraction",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|controlQuery": "#browseProductsField",
+                "designer|targetType": "Ext.form.field.Text",
+                "fn": "onBrowseProductsSearchChange",
+                "implHandler": [
+                    "var productSearch, prodStore;",
+                    "productSearch = Ext.getCmp('browseProducts').getValue();",
+                    "prodStore = Ext.getStore('ProductStore');",
+                    "",
+                    "if(Ext.isEmpty(productSearch)){",
+                    "    prodStore.clearFilter();",
+                    "} else{",
+                    "    prodStore.filter('prodName',productSearch);",
+                    "}"
+                ],
+                "name": "change",
+                "scope": "me"
+            },
+            "name": "onBrowseProductsSearchChange",
+            "designerId": "fb3504d5-b480-47d7-8d31-b63220905a80"
+        }
+    ]
+}
