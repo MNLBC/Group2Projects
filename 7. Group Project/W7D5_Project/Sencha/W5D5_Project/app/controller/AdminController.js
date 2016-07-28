@@ -50,12 +50,40 @@ Ext.define('W5D5_Project.controller.AdminController', {
         var panel = Ext.getCmp('adminTabPanel');
         var tab = Ext.getCmp('userMgmtTab');
         panel.setActiveTab(tab);
+        Ext.Ajax.request({
+            url : "getAllUsers",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("Users","Error in getting users");
+                } else {
+                    var userStore = Ext.getStore('UserStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    userStore.loadData(jsonResponse);
+                }
+            }
+        });
     },
 
     onAdminProdMgmtBtnClick: function() {
         var panel = Ext.getCmp('adminTabPanel');
         var tab = Ext.getCmp('prodMgmtTab');
         panel.setActiveTab(tab);
+        Ext.Ajax.request({
+            url : "getAllProducts",
+            method : "GET",
+            async : false,
+            callback : function(options,success,response){
+                if (Ext.isEmpty(response.responseText)) {
+                    Ext.Msg.alert("Products","Error in getting products");
+                } else {
+                    var prodStore = Ext.getStore('ProductStore');
+                    var jsonResponse = Ext.JSON.decode(response.responseText);
+                    prodStore.loadData(jsonResponse);
+                }
+            }
+        });
     },
 
     onAdminOrderMgmtBtnClick: function() {
