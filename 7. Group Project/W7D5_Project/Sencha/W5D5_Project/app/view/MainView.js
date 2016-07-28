@@ -578,7 +578,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     id: 'mainTabPanel',
                                     itemId: 'mainTabPanel',
                                     title: '',
-                                    activeTab: 13,
+                                    activeTab: 9,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -2523,6 +2523,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                         },
                                         {
                                             xtype: 'panel',
+                                            hidden: true,
                                             id: 'adminPanel',
                                             itemId: 'adminPanel',
                                             title: 'My Panel',
@@ -2683,7 +2684,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             xtype: 'tabpanel',
                                                             flex: 1,
                                                             id: 'adminTabPanel',
-                                                            activeTab: 2,
+                                                            activeTab: 3,
                                                             items: [
                                                                 {
                                                                     xtype: 'panel',

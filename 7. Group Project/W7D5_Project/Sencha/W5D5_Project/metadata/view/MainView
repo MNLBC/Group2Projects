@@ -1063,7 +1063,7 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "activeTab": 13,
+                                        "activeTab": 9,
                                         "id": "mainTabPanel",
                                         "itemId": "mainTabPanel",
                                         "layout|flex": 1,
@@ -5395,6 +5395,7 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "container|align": "stretch",
+                                                "hidden": true,
                                                 "id": "adminPanel",
                                                 "itemId": "adminPanel",
                                                 "layout": "vbox",
@@ -5759,7 +5760,7 @@
                                                             },
                                                             "codeClass": null,
                                                             "userConfig": {
-                                                                "activeTab": 2,
+                                                                "activeTab": 3,
                                                                 "id": "adminTabPanel",
                                                                 "layout|flex": 1
                                                             },
