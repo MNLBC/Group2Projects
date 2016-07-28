@@ -92,6 +92,15 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                 }
                             }
                         });
+        Ext.getCmp('reqFirstName').setValue('');
+        Ext.getCmp('reqLastName').setValue('');
+        Ext.getCmp('reqAddress1').setValue('');
+        Ext.getCmp('reqAddress2').setValue('');
+        Ext.getCmp('reqCountry').setValue('');
+        Ext.getCmp('reqSp').setValue('');
+        Ext.getCmp('reqCity').setValue('');
+        Ext.getCmp('reqOccupation').setValue('');
+        Ext.getCmp('reqEmail').setValue('');
     },
 
     onReqRejectBtnClick: function() {
@@ -141,6 +150,15 @@ Ext.define('W5D5_Project.controller.RequestController', {
                                 }
                             }
                         });
+        Ext.getCmp('reqFirstName').setValue('');
+        Ext.getCmp('reqLastName').setValue('');
+        Ext.getCmp('reqAddress1').setValue('');
+        Ext.getCmp('reqAddress2').setValue('');
+        Ext.getCmp('reqCountry').setValue('');
+        Ext.getCmp('reqSp').setValue('');
+        Ext.getCmp('reqCity').setValue('');
+        Ext.getCmp('reqOccupation').setValue('');
+        Ext.getCmp('reqEmail').setValue('');
     },
 
     onRequestGridChange: function(model, selected, eOpts) {
