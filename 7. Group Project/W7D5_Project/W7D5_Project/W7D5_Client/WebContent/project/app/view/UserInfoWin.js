@@ -28,7 +28,7 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
     viewModel: {
         type: 'userinfowin'
     },
-    height: 471,
+    height: 478,
     width: 381,
     title: 'Detailed User Information',
     modal: true,
@@ -41,7 +41,7 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
         {
             xtype: 'container',
             flex: 1,
-            height: 438,
+            height: 446,
             width: 314,
             layout: {
                 type: 'vbox',
@@ -50,7 +50,9 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
             items: [
                 {
                     xtype: 'tbspacer',
-                    flex: 1
+                    flex: 0,
+                    height: 16,
+                    width: 46
                 },
                 {
                     xtype: 'image',
@@ -67,52 +69,64 @@ Ext.define('W5D5_Project.view.UserInfoWin', {
                     width: 10
                 },
                 {
-                    xtype: 'displayfield',
+                    xtype: 'container',
                     flex: 0,
-                    id: 'userInfoId',
-                    itemId: 'userInfoId',
-                    fieldLabel: 'Id',
-                    value: 'Display Field'
-                },
-                {
-                    xtype: 'displayfield',
-                    flex: 0,
-                    id: 'userInfoFname',
-                    itemId: 'userInfoFname',
-                    fieldLabel: 'First Name',
-                    value: 'Display Field'
-                },
-                {
-                    xtype: 'displayfield',
-                    flex: 0,
-                    id: 'userInfoLname',
-                    itemId: 'userInfoLname',
-                    fieldLabel: 'Last Name',
-                    value: 'Display Field'
-                },
-                {
-                    xtype: 'displayfield',
-                    flex: 0,
-                    id: 'userInfoEmail',
-                    itemId: 'userInfoEmail',
-                    fieldLabel: 'Email',
-                    value: 'Display Field'
-                },
-                {
-                    xtype: 'displayfield',
-                    flex: 0,
-                    id: 'userInfoType',
-                    itemId: 'userInfoType',
-                    fieldLabel: 'User Type',
-                    value: 'Display Field'
-                },
-                {
-                    xtype: 'displayfield',
-                    flex: 0,
-                    id: 'userInfoLevel',
-                    itemId: 'userInfoLevel',
-                    fieldLabel: 'User Level',
-                    value: 'Display Field'
+                    height: 206,
+                    width: 286,
+                    layout: {
+                        type: 'vbox',
+                        align: 'stretch'
+                    },
+                    items: [
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoId',
+                            itemId: 'userInfoId',
+                            fieldLabel: 'Id',
+                            value: 'Display Field'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoFname',
+                            itemId: 'userInfoFname',
+                            fieldLabel: 'First Name',
+                            value: 'Display Field'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoLname',
+                            itemId: 'userInfoLname',
+                            fieldLabel: 'Last Name',
+                            value: 'Display Field'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoEmail',
+                            itemId: 'userInfoEmail',
+                            fieldLabel: 'Email',
+                            value: 'Display Field'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoType',
+                            itemId: 'userInfoType',
+                            fieldLabel: 'User Type',
+                            value: 'Display Field'
+                        },
+                        {
+                            xtype: 'displayfield',
+                            flex: 0,
+                            id: 'userInfoLevel',
+                            itemId: 'userInfoLevel',
+                            fieldLabel: 'User Level',
+                            value: 'Display Field'
+                        }
+                    ]
                 },
                 {
                     xtype: 'tbspacer',

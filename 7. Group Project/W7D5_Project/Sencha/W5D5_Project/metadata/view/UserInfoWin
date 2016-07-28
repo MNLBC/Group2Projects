@@ -9,7 +9,7 @@
         "container|align": "stretch",
         "designer|userAlias": "userinfowin",
         "designer|userClassName": "UserInfoWin",
-        "height": 471,
+        "height": 478,
         "layout": "hbox",
         "modal": true,
         "title": "Detailed User Information",
@@ -29,7 +29,7 @@
             "codeClass": null,
             "userConfig": {
                 "container|align": "center",
-                "height": 438,
+                "height": 446,
                 "layout": "vbox",
                 "layout|flex": 1,
                 "width": 314
@@ -45,7 +45,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "layout|flex": 1
+                        "height": 16,
+                        "layout|flex": 0,
+                        "width": 46
                     },
                     "name": "MySpacer72",
                     "designerId": "18902576-72eb-4c21-a3bb-f773e72bcb1f"
@@ -83,106 +85,125 @@
                     "designerId": "5f6525c6-8490-4754-8370-531d2a273d2b"
                 },
                 {
-                    "type": "Ext.form.field.Display",
+                    "type": "Ext.container.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Id",
-                        "id": "userInfoId",
-                        "itemId": "userInfoId",
+                        "container|align": "stretch",
+                        "height": 206,
+                        "layout": "vbox",
                         "layout|flex": 0,
-                        "value": "Display Field"
+                        "width": 286
                     },
-                    "name": "MyDisplayField1",
-                    "designerId": "f3f6462a-d362-4278-9994-77e2d401ac4c"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "First Name",
-                        "id": "userInfoFname",
-                        "itemId": "userInfoFname",
-                        "layout|flex": 0,
-                        "value": "Display Field"
-                    },
-                    "name": "MyDisplayField32",
-                    "designerId": "a627e3a8-47d9-4fc7-8584-e8e740bf7993"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "Last Name",
-                        "id": "userInfoLname",
-                        "itemId": "userInfoLname",
-                        "layout|flex": 0,
-                        "value": "Display Field"
-                    },
-                    "name": "MyDisplayField10",
-                    "designerId": "e331d658-6f01-4e50-8f9f-770f56433adf"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "Email",
-                        "id": "userInfoEmail",
-                        "itemId": "userInfoEmail",
-                        "layout|flex": 0,
-                        "value": "Display Field"
-                    },
-                    "name": "MyDisplayField27",
-                    "designerId": "0fcafcbc-4ad9-4db5-9815-c556e22a56bb"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "User Type",
-                        "id": "userInfoType",
-                        "itemId": "userInfoType",
-                        "layout|flex": 0,
-                        "value": "Display Field"
-                    },
-                    "name": "MyDisplayField30",
-                    "designerId": "9fc17f99-9fbc-4b29-9c23-5d50db779c80"
-                },
-                {
-                    "type": "Ext.form.field.Display",
-                    "reference": {
-                        "name": "items",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "User Level",
-                        "id": "userInfoLevel",
-                        "itemId": "userInfoLevel",
-                        "layout|flex": 0,
-                        "value": "Display Field"
-                    },
-                    "name": "MyDisplayField31",
-                    "designerId": "04c56f83-2117-4a85-bc80-3164364d0b51"
+                    "name": "MyContainer45",
+                    "designerId": "95cbc75f-f966-480c-9341-e17209048103",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Id",
+                                "id": "userInfoId",
+                                "itemId": "userInfoId",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField1",
+                            "designerId": "f3f6462a-d362-4278-9994-77e2d401ac4c"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "First Name",
+                                "id": "userInfoFname",
+                                "itemId": "userInfoFname",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField32",
+                            "designerId": "a627e3a8-47d9-4fc7-8584-e8e740bf7993"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Last Name",
+                                "id": "userInfoLname",
+                                "itemId": "userInfoLname",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField10",
+                            "designerId": "e331d658-6f01-4e50-8f9f-770f56433adf"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Email",
+                                "id": "userInfoEmail",
+                                "itemId": "userInfoEmail",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField27",
+                            "designerId": "0fcafcbc-4ad9-4db5-9815-c556e22a56bb"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "User Type",
+                                "id": "userInfoType",
+                                "itemId": "userInfoType",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField30",
+                            "designerId": "9fc17f99-9fbc-4b29-9c23-5d50db779c80"
+                        },
+                        {
+                            "type": "Ext.form.field.Display",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "User Level",
+                                "id": "userInfoLevel",
+                                "itemId": "userInfoLevel",
+                                "layout|flex": 0,
+                                "value": "Display Field"
+                            },
+                            "name": "MyDisplayField31",
+                            "designerId": "04c56f83-2117-4a85-bc80-3164364d0b51"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.toolbar.Spacer",
