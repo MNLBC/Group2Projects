@@ -68,7 +68,7 @@ Ext.define('W5D5_Project.controller.UserMgmtController', {
                     email : user.userEmail
                 },
                 callback : function(options, success, response) {
-                    if (!Ext.isEmpty(response.responseText)) {
+                    if (!Ext.isEmpty(Ext.decode(response.responseText))) {
                         Ext.Msg.alert('Create User','Account with that email already exists.');
                     } else {
                         Ext.Ajax.request({

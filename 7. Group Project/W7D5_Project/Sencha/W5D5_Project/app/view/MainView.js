@@ -668,7 +668,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                     itemId: 'mainTabPanel',
                                     width: 1121,
                                     title: '',
-                                    activeTab: 9,
+                                    activeTab: 13,
                                     items: [
                                         {
                                             xtype: 'panel',
@@ -2910,7 +2910,7 @@ Ext.define('W5D5_Project.view.MainView', {
                                                                 {
                                                                     xtype: 'button',
                                                                     focusCls: '(none)',
-                                                                    cls: 'shopButtonCls',
+                                                                    cls: 'storeButtonCls',
                                                                     height: 50,
                                                                     id: 'adminBackBtn',
                                                                     itemId: 'adminBackBtn',

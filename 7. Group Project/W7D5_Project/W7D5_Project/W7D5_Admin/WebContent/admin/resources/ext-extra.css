@@ -35,10 +35,10 @@
     border-radius: 0px !important;
 }
 
-.shopButtonCls, .shopButtonCls:focus, .shopButtonCls:active, .shopButtonCls.active, .shopButtonCls:focus:active {
+.storeButtonCls, .storeButtonCls:focus, .storeButtonCls:active, .storeButtonCls.active, .storeButtonCls:focus:active {
     width: 40px!important;
     height: 40px!important;
-    background: url('img/shop.png') no-repeat;
+    background: url('img/store.png') no-repeat;
     background-size: contain !important;
     border-style: none !important;
     border-radius: 0px !important;

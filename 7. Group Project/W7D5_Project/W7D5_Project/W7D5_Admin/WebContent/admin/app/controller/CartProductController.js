@@ -43,7 +43,7 @@ Ext.define('W5D5_Project.controller.CartProductController', {
     },
 
     onCartProductUpdateClick: function(button, e, eOpts) {
-        if(!Ext.getCmp('cartProductFields').isValid){
+        if(!Ext.getCmp('cartProductFields').isValid()){
             Ext.Msg.alert('Add to Cart','Validation error. Please check field values.');
             return;
         }
