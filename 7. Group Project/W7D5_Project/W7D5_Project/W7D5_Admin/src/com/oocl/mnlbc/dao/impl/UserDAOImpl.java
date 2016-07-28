@@ -208,11 +208,11 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public String getPassByEmail(String email) {
 
-		String sql = "SELECT user.userPass FROM User user WHERE user.userEmail=:email";
+		String sql = "SELECT user FROM User user WHERE user.userEmail=:email";
 		Query query = manager.createQuery(sql, User.class);
 		query.setParameter("email", email);
-		String pass = (String) query.getSingleResult();
-
+		User user = (User) query.getSingleResult();
+		String pass = user.getUserPass();
 		logger.info("Userpass retrieved successfully with hash :" + pass);
 		return pass;
 	}
