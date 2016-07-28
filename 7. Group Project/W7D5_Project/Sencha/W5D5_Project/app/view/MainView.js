@@ -2210,6 +2210,13 @@ Ext.define('W5D5_Project.view.MainView', {
                                                             ]
                                                         }
                                                     ]
+                                                },
+                                                {
+                                                    xtype: 'button',
+                                                    flex: 1,
+                                                    id: 'showBrowseBtn',
+                                                    itemId: 'showBrowseBtn',
+                                                    text: 'MyButton'
                                                 }
                                             ]
                                         },

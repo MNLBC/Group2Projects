@@ -21,7 +21,8 @@
             "UserMgmtController",
             "ProductMgmtController",
             "RequestController",
-            "OnlineUsersController"
+            "OnlineUsersController",
+            "BrowseProductController"
         ],
         "models": [
             "CategoryModel",

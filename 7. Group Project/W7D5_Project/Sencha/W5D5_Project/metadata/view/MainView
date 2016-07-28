@@ -4699,6 +4699,22 @@
                                                     "codeClass": null,
                                                     "name": "TabConfig5",
                                                     "designerId": "2fc8a691-e6a6-494b-a115-164a02980c8f"
+                                                },
+                                                {
+                                                    "type": "Ext.button.Button",
+                                                    "reference": {
+                                                        "name": "items",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "id": "showBrowseBtn",
+                                                        "itemId": "showBrowseBtn",
+                                                        "layout|flex": 1,
+                                                        "text": "MyButton"
+                                                    },
+                                                    "name": "MyButton33",
+                                                    "designerId": "7025ab7d-3a59-459d-b52c-dd4bf41a4baf"
                                                 }
                                             ]
                                         },

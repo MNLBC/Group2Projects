@@ -206,6 +206,7 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
 
     onOrderMgmtUpdateClick: function(button, e, eOpts) {
         var orderId,userId,orderTotal,orderDate,orderDate2,orderStore;
+        if(Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0] === null){
         orderId = Ext.getCmp('orderMgmtGrid').getSelectionModel().selected.items[0].data.orderId;
         userId = Ext.getCmp('orderMgmtUserId').getValue();
         orderTotal = Ext.getCmp('orderMgmtTotal').getValue();
@@ -257,6 +258,9 @@ Ext.define('W5D5_Project.controller.OrderMgmtController', {
         Ext.getCmp('orderMgmtGrid').getView().refresh();
         } else{
             Ext.Msg.alert("Orders","USERID must have a value");
+        }
+        } else{
+            Ext.Msg.alert("Orders","Please select record to update");
         }
     },
 
