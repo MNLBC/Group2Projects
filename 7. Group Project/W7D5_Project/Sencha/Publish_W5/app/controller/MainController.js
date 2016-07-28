@@ -264,9 +264,13 @@ Ext.define('W5D5_Project.controller.MainController', {
                                 mainControl.clearFrontPage();
                                 Ext.util.Cookies.clear("key");
                                 var faveStore = Ext.getStore('FavoriteItemsStore'),
-                                    allStore = Ext.getStore('AllProductsStore');
+                                    allStore = Ext.getStore('AllProductsStore'),
+                                    faveGrid = Ext.getCmp('faveProdsGrid'),
+                                    allGrid = Ext.getCmp('allProdsGrid');
                                 faveStore.removeAll();
                                 allStore.removeAll();
+                                faveGrid.store.removeAll();
+                                allGrid.store.removeAll();
                                 Ext.Ajax.request ({
                                     url: "visitorCount",
                                     method: 'GET',
