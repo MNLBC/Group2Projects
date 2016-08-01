@@ -1,0 +1,26 @@
+<div class="col-md-5">
+<div class="page-header">
+  <h1>{{ pagename }}<small><br><br>Know you favorite artist</small></h1>
+</div>
+<div class="input-group">
+<input ng-model="f.Name" type="text" class="form-control" placeholder="Input Artist Name" aria-describedby="basic-addon1">
+</div>
+<table style="width:500px;border:1px solid #000" border="1">
+  <thead>
+  	<tr>
+      <th>ID</th>
+  		<th>Artist Name</th>
+		<th>Artist Email</th>
+		<th>Artist Phone</th>
+  	</tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="artist in artists | filter:f" data-ng-click="rowClick(artist)">
+    <td>{{ artist.ID }}</td>
+    <td>{{ artist.Name }}</td>
+    <td>{{ artist.Email }}</td>
+	<td>{{ artist.Phone }}</td>
+  </tr>
+  <tbody>
+</table>
+</div>

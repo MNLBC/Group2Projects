@@ -1,20 +1,19 @@
 var artistApp = angular.module('artistApp', ['ngRoute']);
 
 
-// configure our routes
 artistApp.config(function($routeProvider) {
 
     $routeProvider
 
-    // route for the home page
+    // list page
         .when('/', {
-        templateUrl: 'pages/list.html',
+        templateUrl: 'list.html',
         controller: 'artistListCtr'
     })
 
-    // route for the about page
+    // edit page
     .when('/edit/:ID', {
-        templateUrl: 'pages/edit.html',
+        templateUrl: 'edit.html',
         controller: 'artistEditCtrl'
     })
 
@@ -85,7 +84,7 @@ artistApp.controller('artistEditCtrl', function($scope, $http, $routeParams, $lo
     $scope.artistObj = artistService.getArtistByID(artistId);
 
     $scope.saveArtist = function(artistObj) {
-       alert("Actually it's binded - So It's saved")
+       alert("artist saved!")
     };
 
     $scope.backToList = function(){
