@@ -1,0 +1,1 @@
+Does not work for me if not ran in a server. So i just included the whole project folder :)

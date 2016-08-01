@@ -1,0 +1,66 @@
+<!-- index.html - Ziggy 2016/08/01-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>W9D1_Homework</title>
+
+<!-- style sheets -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<style>
+body {
+	padding-top: 50px;
+}
+</style>
+
+<!-- javascript imports -->
+<script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+
+</head>
+<body>
+<!-- main scope -->
+	<div class="container" ng-app="searchApp"
+		ng-controller="mainController">
+
+		<!-- search box -->
+		<form>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<i class="fa fa-search"></i>
+					</div>
+					<input type="text" class="form-control"
+						placeholder="Search Students" ng-model="searchStudent">
+				</div>
+			</div>
+		</form>
+		<!-- table containing student data -->
+		<table class="table table-bordered table-striped">
+
+			<thead>
+				<tr>
+					<td>Name</td>
+					<td>Email</td>
+					<td>Phone</td>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="student in students | filter:searchStudent"
+					ng-dblclick="showStudent(student)">
+					<td>{{ student.name }}</td>
+					<td>{{ student.email }}</td>
+					<td>{{ student.phone }}</td>
+				</tr>
+			</tbody>
+
+		</table>
+		
+		<!-- this is where the double click goes -->
+		<div ng-view></div>
+	</div>
+</body>
+</html>
