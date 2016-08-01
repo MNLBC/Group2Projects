@@ -1,1 +1,9 @@
-{ "records":[ {"ID":"1","Name":"Justin Bieber","Song":"Baby"}, {"ID":"2","Name":"Shawn Mendes","Song":"Stitches"} ] }
+{ "records":[ 
+{"ID":"1","Name":"Justin Bieber","Email":"justin@bieber.com","Phone":"111111"},
+{"ID":"2","Name":"Taylor Swift","Email":"taylor@swift.com","Phone":"222222"},
+{"ID":"3","Name":"Kylie Jenner","Email":"kylie@jenner.com","Phone":"333333"},
+{"ID":"4","Name":"Shawn Mendes","Email":"shawn@mendes.com","Phone":"444444"},
+{"ID":"5","Name":"John Mayer","Email":"jonh@mayer.com","Phone":"555555"},
+{"ID":"6","Name":"Nicki Minaj","Email":"nicki@minaj.com","Phone":"666666"},
+{"ID":"7","Name":"Justin Timberlake","Email":"justin@timberlake.com","Phone":"777777"}
+] }

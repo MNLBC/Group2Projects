@@ -7,14 +7,16 @@ Search for Name: <input ng-model="f.Name" type="text"/><br/></br>
   	<tr>
       <th>ID</th>
   		<th>Artist Name</th>
-  		<th>Hit Song</th>
+		<th>Artist Email</th>
+		<th>Artist Phone</th>
   	</tr>
   </thead>
   <tbody>
   <tr ng-repeat="artist in artists | filter:f" data-ng-click="rowClick(artist)">
     <td>{{ artist.ID }}</td>
     <td>{{ artist.Name }}</td>
-    <td>{{ artist.Song }}</td>
+    <td>{{ artist.Email }}</td>
+	<td>{{ artist.Phone }}</td>
   </tr>
   <tbody>
 </table>
