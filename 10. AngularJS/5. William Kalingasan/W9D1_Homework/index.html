@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "ISO-8859-1">
+		<script src = "js/angular.min.js"></script>
+		<script src="js/angular-route.min.js"></script>
+		<style>
+			table, th , td {
+			  border: 1px solid grey;
+			  border-collapse: collapse;
+			  padding: 5px;
+			}
+			table tr:nth-child(odd) {
+			  background-color: #f1f1f1;
+			}
+			table tr:nth-child(even) {
+			  background-color: #ffffff;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<div ng-app="mainapp" ng-controller ="maincontroller">
+				<label for = "personName">Name:</label>
+				<input type="text" id = "personName" ng-model = "searchName"/>
+				<button ng-click="searchClick()">Search</button>
+				<br><br>
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Mobile No.</th>
+					</tr>
+					<tr ng-repeat="rec in records | filter:{fullname:searchValue}" ng-dblclick="doubleClick(rec)">
+						<td>{{rec.fullname}}</td>
+						<td>{{rec.email}}</td>
+						<td>{{rec.mobile}}</td>
+					</tr>
+				</table>
+				<div ng-view></div>
+			</div>
+		</center>
+		
+		<script src = "js/mainapp.js">
+		</script>	
+	</body>
+</html>
