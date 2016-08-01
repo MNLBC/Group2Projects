@@ -1,0 +1,20 @@
+<h3>{{ pagename }}</h3>
+
+Search for Name: <input ng-model="f.Name" type="text"/><br/></br>
+
+<table style="width:500px;border:1px solid #000" border="1">
+  <thead>
+  	<tr>
+      <th>ID</th>
+  		<th>Artist Name</th>
+  		<th>Hit Song</th>
+  	</tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="artist in artists | filter:f" data-ng-click="rowClick(artist)">
+    <td>{{ artist.ID }}</td>
+    <td>{{ artist.Name }}</td>
+    <td>{{ artist.Song }}</td>
+  </tr>
+  <tbody>
+</table>
